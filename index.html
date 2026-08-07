@@ -2,12 +2,59 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#040812" />
     <title>Sosyal Hizmet Uzmanı Kaan Özkan</title>
+
+    <style>
+      html,body,#root{margin:0;min-width:320px;min-height:100%;background:#040812}
+      body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+      .bootFallback{
+        min-height:100vh;min-height:100svh;
+        display:grid;place-items:center;
+        padding:24px;
+        color:#f7f9fc;
+        background:
+          radial-gradient(circle at 74% 20%,rgba(47,128,237,.16),transparent 30%),
+          linear-gradient(180deg,#040812,#03070e);
+      }
+      .bootFallback__inner{width:min(92vw,520px);text-align:center}
+      .bootFallback__logo{
+        width:118px;height:78px;margin:0 auto;
+        display:grid;place-items:center;
+        border:1px solid rgba(255,255,255,.22);
+        border-radius:18px;
+        box-shadow:0 0 40px rgba(47,128,237,.12);
+      }
+      .bootFallback__logo span{
+        font-size:44px;font-weight:500;letter-spacing:-.14em;color:#f5f9ff
+      }
+      .bootFallback__logo strong{color:#63b2ff;font-weight:500}
+      .bootFallback__title{
+        margin-top:20px;font-size:10px;letter-spacing:.28em;color:#d8e2ee
+      }
+      .bootFallback__name{
+        margin-top:8px;font-size:8px;letter-spacing:.45em;color:#63b2ff
+      }
+      .bootFallback__line{
+        width:min(68vw,280px);height:1px;margin:24px auto 0;
+        background:linear-gradient(90deg,transparent,rgba(99,178,255,.65),transparent);
+        opacity:.75
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="bootFallback">
+        <div class="bootFallback__inner">
+          <div class="bootFallback__logo"><span>K<strong>Ö</strong></span></div>
+          <div class="bootFallback__title">SOSYAL HİZMET UZMANI</div>
+          <div class="bootFallback__name">KAAN ÖZKAN</div>
+          <div class="bootFallback__line"></div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
