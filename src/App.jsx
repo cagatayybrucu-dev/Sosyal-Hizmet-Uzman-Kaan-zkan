@@ -14,7 +14,7 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIntroDone(true), 2350);
+    const timer = setTimeout(() => setIntroDone(true), 1600);
 
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
@@ -1082,6 +1082,65 @@ main,.hero,.section,.contact,footer{position:relative;z-index:1}
 /* STEP 8 — MOBILE + SMALL SCREEN OPTIMIZATION */
 .mobileQuickBar{display:none}
 
+
+@supports (height: 100dvh){
+  .intro{min-height:100dvh;height:100dvh}
+}
+
+@media(max-width:900px){
+  .intro{
+    min-height:100svh;
+    height:100svh;
+    padding:24px 16px;
+    background:
+      radial-gradient(circle at 50% 42%,rgba(47,128,237,.18),transparent 30%),
+      linear-gradient(180deg,#01040a 0%,#030814 55%,#01040a 100%);
+  }
+  .intro__content{
+    width:100%;
+    max-width:520px;
+    transform:none;
+  }
+  .intro__frame{
+    width:min(92vw,520px);
+    min-width:0;
+    padding:42px 24px 34px;
+  }
+  .intro__frame>.kaanLogo{
+    transform:none !important;
+  }
+  .kaanLogo--large .kaanLogo__mark{
+    width:132px;
+    height:92px;
+  }
+  .kaanLogo--large .kaanLogo__copy span{
+    font-size:10px;
+    letter-spacing:.32em;
+  }
+  .kaanLogo--large .kaanLogo__copy strong{
+    font-size:9px;
+    letter-spacing:.46em;
+  }
+  .intro__subcopy{
+    margin-top:24px;
+    gap:10px;
+    font-size:6px;
+    letter-spacing:.16em;
+  }
+  .intro__subcopy i{width:16px}
+  .intro__loader{
+    width:min(74vw,330px);
+    margin-top:22px;
+  }
+  .intro__status{
+    margin-top:12px;
+    font-size:6px;
+    letter-spacing:.16em;
+    text-align:center;
+  }
+  .intro__grid{opacity:.48}
+}
+
 @media(max-width:900px){
   body{padding-bottom:72px}
   .premiumHeader{border-bottom-color:rgba(255,255,255,.07)}
@@ -1227,10 +1286,75 @@ a,button,input,select,textarea{touch-action:manipulation}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid rgba(99,178,255,.7);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .intro__ambient,.intro__grid,.intro__loader span{animation:none!important}
+  .intro__content,.intro__frame>.kaanLogo,.intro__subcopy,.intro__status{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
 }
 
 @media(max-width:1100px){.headerPhone{display:none}.premiumNav{gap:22px}.hero{padding-inline:5%;grid-template-columns:1fr .8fr}.section,.contact{padding-inline:5%}}
+
+@supports (height: 100dvh){
+  .intro{min-height:100dvh;height:100dvh}
+}
+
+@media(max-width:900px){
+  .intro{
+    min-height:100svh;
+    height:100svh;
+    padding:24px 16px;
+    background:
+      radial-gradient(circle at 50% 42%,rgba(47,128,237,.18),transparent 30%),
+      linear-gradient(180deg,#01040a 0%,#030814 55%,#01040a 100%);
+  }
+  .intro__content{
+    width:100%;
+    max-width:520px;
+    transform:none;
+  }
+  .intro__frame{
+    width:min(92vw,520px);
+    min-width:0;
+    padding:42px 24px 34px;
+  }
+  .intro__frame>.kaanLogo{
+    transform:none !important;
+  }
+  .kaanLogo--large .kaanLogo__mark{
+    width:132px;
+    height:92px;
+  }
+  .kaanLogo--large .kaanLogo__copy span{
+    font-size:10px;
+    letter-spacing:.32em;
+  }
+  .kaanLogo--large .kaanLogo__copy strong{
+    font-size:9px;
+    letter-spacing:.46em;
+  }
+  .intro__subcopy{
+    margin-top:24px;
+    gap:10px;
+    font-size:6px;
+    letter-spacing:.16em;
+  }
+  .intro__subcopy i{width:16px}
+  .intro__loader{
+    width:min(74vw,330px);
+    margin-top:22px;
+  }
+  .intro__status{
+    margin-top:12px;
+    font-size:6px;
+    letter-spacing:.16em;
+    text-align:center;
+  }
+  .intro__grid{opacity:.48}
+}
+
 @media(max-width:900px){
 .premiumHeader{height:82px;padding:0 20px}.premiumHeader--scrolled{height:74px}
 .kaanLogo__mark{width:72px;height:50px}.kaanLogo__copy span{font-size:8px;letter-spacing:.22em}.kaanLogo__copy strong{font-size:7px;letter-spacing:.38em}
