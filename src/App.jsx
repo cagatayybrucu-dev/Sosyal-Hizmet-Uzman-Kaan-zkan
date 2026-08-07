@@ -14,7 +14,27 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIntroDone(true), 1600);
+    let introTimer;
+
+    const playIntro = () => {
+      setIntroDone(false);
+
+      const isMobile = window.matchMedia("(max-width: 900px)").matches;
+      const duration = isMobile ? 2100 : 1350;
+
+      clearTimeout(introTimer);
+      introTimer = setTimeout(() => setIntroDone(true), duration);
+    };
+
+    playIntro();
+
+    // Mobil tarayıcılar sayfayı bellekte tutup geri açtığında React state'i
+    // eski haliyle geri gelebilir. pageshow ile intro'yu tekrar oynatıyoruz.
+    const onPageShow = () => {
+      playIntro();
+    };
+
+    window.addEventListener("pageshow", onPageShow);
 
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
@@ -43,7 +63,8 @@ function App() {
     items.forEach((item) => observer.observe(item));
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(introTimer);
+      window.removeEventListener("pageshow", onPageShow);
       window.removeEventListener("scroll", onScroll);
       observer.disconnect();
     };
@@ -1078,6 +1099,28 @@ main,.hero,.section,.contact,footer{position:relative;z-index:1}
 @keyframes chipFloat{0%,100%{margin-top:0}50%{margin-top:-10px}}
 
 
+
+
+/* MOBILE INTRO VISIBILITY GUARANTEE */
+@media(max-width:900px){
+  .intro{
+    position:fixed!important;
+    inset:0!important;
+    z-index:2147483000!important;
+    display:grid!important;
+    place-items:center!important;
+    opacity:1;
+  }
+  .intro.intro--hidden{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .intro:not(.intro--hidden){
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+}
 
 /* STEP 8 — MOBILE + SMALL SCREEN OPTIMIZATION */
 .mobileQuickBar{display:none}
