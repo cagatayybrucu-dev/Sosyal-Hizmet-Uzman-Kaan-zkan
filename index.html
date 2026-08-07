@@ -1,13 +1,154 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sosyal-hizmet-randevu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#02060d" />
+    <title>Sosyal Hizmet Uzmanı Kaan Özkan</title>
+
+    <style>
+      html,
+      body,
+      #root {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100%;
+        background: #02060d;
+      }
+
+      #pre-react-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(47, 128, 237, 0.18), transparent 30%),
+          linear-gradient(180deg, #01040a 0%, #030814 55%, #01040a 100%);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.38s ease, visibility 0.38s ease;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+
+      #pre-react-splash.pre-react-splash--hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .preSplashInner {
+        width: min(88vw, 430px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .preSplashLogo {
+        position: relative;
+        width: 136px;
+        height: 92px;
+        display: grid;
+        place-items: center;
+      }
+
+      .preSplashLogo::before {
+        content: "";
+        position: absolute;
+        inset: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.48);
+        border-radius: 17px;
+        box-shadow: 0 0 34px rgba(47, 128, 237, 0.13);
+      }
+
+      .preSplashLogo span {
+        position: relative;
+        z-index: 2;
+        margin-left: -5px;
+        color: #eef6ff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 50px;
+        font-weight: 500;
+        letter-spacing: -0.16em;
+      }
+
+      .preSplashLogo strong {
+        color: #64b3ff;
+        font-weight: 500;
+        text-shadow: 0 0 18px rgba(74, 156, 255, 0.36);
+      }
+
+      .preSplashTitle {
+        margin-top: 18px;
+        color: #e8eef7;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.31em;
+      }
+
+      .preSplashName {
+        margin-top: 9px;
+        color: #63b2ff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.48em;
+      }
+
+      .preSplashLine {
+        position: relative;
+        width: min(68vw, 290px);
+        height: 1px;
+        margin-top: 27px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .preSplashLine::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -45%;
+        width: 42%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #6ab6ff, transparent);
+        animation: preSplashScan 1s linear infinite;
+      }
+
+      @keyframes preSplashScan {
+        to {
+          left: 110%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .preSplashLine::after {
+          animation: none;
+          left: 29%;
+        }
+      }
+    </style>
   </head>
+
   <body>
+    <div id="pre-react-splash">
+      <div class="preSplashInner">
+        <div class="preSplashLogo">
+          <span>K<strong>Ö</strong></span>
+        </div>
+
+        <div class="preSplashTitle">SOSYAL HİZMET UZMANI</div>
+        <div class="preSplashName">KAAN ÖZKAN</div>
+        <div class="preSplashLine"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
