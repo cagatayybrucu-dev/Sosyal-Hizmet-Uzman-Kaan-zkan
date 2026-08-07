@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [introDone, setIntroDone] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [heroTilt, setHeroTilt] = useState({ x: 0, y: 0 });
@@ -14,28 +13,6 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    let introTimer;
-
-    const playIntro = () => {
-      setIntroDone(false);
-
-      const isMobile = window.matchMedia("(max-width: 900px)").matches;
-      const duration = isMobile ? 2100 : 1350;
-
-      clearTimeout(introTimer);
-      introTimer = setTimeout(() => setIntroDone(true), duration);
-    };
-
-    playIntro();
-
-    // Mobil tarayıcılar sayfayı bellekte tutup geri açtığında React state'i
-    // eski haliyle geri gelebilir. pageshow ile intro'yu tekrar oynatıyoruz.
-    const onPageShow = () => {
-      playIntro();
-    };
-
-    window.addEventListener("pageshow", onPageShow);
-
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
 
@@ -63,8 +40,6 @@ function App() {
     items.forEach((item) => observer.observe(item));
 
     return () => {
-      clearTimeout(introTimer);
-      window.removeEventListener("pageshow", onPageShow);
       window.removeEventListener("scroll", onScroll);
       observer.disconnect();
     };
@@ -109,7 +84,7 @@ function App() {
           aria-hidden="true"
         />
 
-        <div className={`intro ${introDone ? "intro--hidden" : ""}`}>
+        <div className="intro intro--auto">
           <div className="intro__ambient intro__ambient--one" />
           <div className="intro__ambient intro__ambient--two" />
           <div className="intro__grid" />
@@ -904,9 +879,12 @@ button{font:inherit}
 .menuToggle--open span:last-child{transform:translateY(-4px) rotate(-45deg)}
 
 /* STEP 2 — CINEMATIC OPENING */
-.intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 48%,rgba(42,111,222,.13),transparent 26%),linear-gradient(180deg,#01040a 0%,#030814 52%,#01040a 100%);transition:opacity .82s cubic-bezier(.2,.75,.2,1),visibility .82s ease}
-.intro--hidden{opacity:0;visibility:hidden;pointer-events:none}
-.intro--hidden .intro__content{transform:scale(1.045);filter:blur(7px)}
+.intro{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;overflow:hidden;opacity:1;visibility:visible;pointer-events:auto;background:radial-gradient(circle at 50% 48%,rgba(42,111,222,.13),transparent 26%),linear-gradient(180deg,#01040a 0%,#030814 52%,#01040a 100%)}
+.intro--auto{animation:introAutoHide 2.15s both cubic-bezier(.2,.75,.2,1)}
+@keyframes introAutoHide{
+  0%,72%{opacity:1;visibility:visible;pointer-events:auto}
+  100%{opacity:0;visibility:hidden;pointer-events:none}
+}
 .intro__ambient{position:absolute;border-radius:50%;filter:blur(110px);opacity:.2}
 .intro__ambient--one{width:520px;height:520px;top:-180px;right:10%;background:#1f69da;animation:introAmbientOne 3.4s ease-in-out infinite alternate}
 .intro__ambient--two{width:460px;height:460px;left:8%;bottom:-180px;background:#123e85;opacity:.13;animation:introAmbientTwo 3.8s ease-in-out infinite alternate}
@@ -1101,28 +1079,44 @@ main,.hero,.section,.contact,footer{position:relative;z-index:1}
 
 
 
-/* MOBILE INTRO VISIBILITY GUARANTEE */
+/* STEP 8 — MOBILE + SMALL SCREEN OPTIMIZATION */
+
+/* INTRO: CSS-only so it also works on iOS/Android before React effects run */
 @media(max-width:900px){
   .intro{
-    position:fixed!important;
-    inset:0!important;
-    z-index:2147483000!important;
-    display:grid!important;
-    place-items:center!important;
+    position:fixed;
+    inset:0;
+    width:100vw;
+    min-height:100vh;
+    min-height:100svh;
+    height:100vh;
+    height:100svh;
+    padding:18px;
+    z-index:2147483000;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+  }
+  .intro--auto{
+    animation:introAutoHideMobile 2.35s both cubic-bezier(.2,.75,.2,1);
+  }
+  @keyframes introAutoHideMobile{
+    0%,76%{opacity:1;visibility:visible;pointer-events:auto}
+    100%{opacity:0;visibility:hidden;pointer-events:none}
+  }
+  .intro__content{
+    width:100%;
+    max-width:520px;
     opacity:1;
   }
-  .intro.intro--hidden{
-    opacity:0!important;
-    visibility:hidden!important;
-    pointer-events:none!important;
-  }
-  .intro:not(.intro--hidden){
-    visibility:visible!important;
-    pointer-events:auto!important;
+  .intro__frame{
+    width:min(92vw,520px);
+    min-width:0;
   }
 }
 
-/* STEP 8 — MOBILE + SMALL SCREEN OPTIMIZATION */
 .mobileQuickBar{display:none}
 
 
@@ -1335,6 +1329,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     opacity:1!important;
     transform:none!important;
     filter:none!important;
+  }
+  .intro--auto{animation:introAutoHideReduced 1.45s both!important}
+  @keyframes introAutoHideReduced{
+    0%,70%{opacity:1;visibility:visible;pointer-events:auto}
+    100%{opacity:0;visibility:hidden;pointer-events:none}
   }
 }
 
