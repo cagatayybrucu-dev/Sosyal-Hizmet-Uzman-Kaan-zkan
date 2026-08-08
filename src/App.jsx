@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import heroSlide1 from "./assets/hero-slide-1.jpg";
+import heroSlide2 from "./assets/hero-slide-2.jpg";
 import aboutPhoto from "./assets/kaan-about.jpg";
 
 const Icon = ({ name, size = 22 }) => {
@@ -113,6 +115,42 @@ const process = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroSlide, setHeroSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      image: heroSlide1,
+      eyebrow: "SOSYAL HİZMET UZMANI & AİLE DANIŞMANI",
+      icon: "users",
+      title: "Çift ve Aile",
+      accent: "Danışmanlığı",
+      script: "Ücretsiz Ön Görüşme",
+      description:
+        "İlişkilerde iletişimi güçlendirmek, anlayışı artırmak ve birlikte daha sağlıklı bir yol almak için ilk adımı birlikte atalım.",
+    },
+    {
+      image: heroSlide2,
+      eyebrow: "BİREYSEL & PSİKOSOSYAL DANIŞMANLIK",
+      icon: "heart",
+      title: "Kendinizi Yeniden",
+      accent: "Keşfedin",
+      script: "Ücretsiz Ön Görüşme",
+      description:
+        "Kaygı, stres, yaşam olayları ve duygusal güçlüklerle başa çıkarken güçlü yönlerinizi fark edebileceğiniz güvenli ve profesyonel bir alan.",
+    },
+  ];
+
+  const nextHeroSlide = () => {
+    setHeroSlide((current) => (current + 1) % heroSlides.length);
+  };
+
+  const prevHeroSlide = () => {
+    setHeroSlide((current) =>
+      current === 0 ? heroSlides.length - 1 : current - 1
+    );
+  };
+
+  const activeHero = heroSlides[heroSlide];
   const [scrollProgress, setScrollProgress] = useState(0);
   const [page, setPage] = useState(
     window.location.hash === "#/hakkimda"
@@ -212,164 +250,218 @@ function App() {
           <ProcessDetailPage />
         ) : (
         <main>
-          <section className="hero" id="anasayfa">
-            <div className="heroGlow heroGlow--one" />
-            <div className="heroGlow heroGlow--two" />
+          <section className="premiumSliderHero" id="anasayfa">
+            <div className="premiumSliderHero__bg">
+              {heroSlides.map((slide, index) => (
+                <img
+                  key={slide.title}
+                  src={slide.image}
+                  alt=""
+                  className={index === heroSlide ? "is-active" : ""}
+                />
+              ))}
+              <div className="premiumSliderHero__shade" />
+              <div className="premiumSliderHero__goldGlow" />
+            </div>
 
-            <div className="heroCopy reveal">
-              <div className="eyebrow"><span /> SOSYAL HİZMET UZMANI & AİLE DANIŞMANI</div>
+            <button
+              className="premiumSliderHero__arrow premiumSliderHero__arrow--left"
+              aria-label="Önceki slayt"
+              onClick={prevHeroSlide}
+            >
+              ‹
+            </button>
 
-              <div className="heroStatusLine">
-                <span className="heroStatusLine__dot" />
-                Bireysel • Çift • Aile • Online Danışmanlık
+            <div className="premiumSliderHero__content" key={heroSlide}>
+              <div className="premiumSliderHero__icon">
+                <Icon name={activeHero.icon} size={36} />
+              </div>
+
+              <div className="premiumSliderHero__eyebrow">
+                <span />
+                {activeHero.eyebrow}
               </div>
 
               <h1>
-                Kendinizi anlamak,
+                {activeHero.title}
                 <br />
-                <strong>hayatınızı değiştirebilir.</strong>
+                <strong>{activeHero.accent}</strong>
               </h1>
 
-              <p className="heroLead">
-                Yaşadığınız güçlükleri yalnızca bir sorun olarak değil; yaşam
-                öykünüz, ilişkileriniz, sosyal çevreniz ve güçlü yönlerinizle
-                birlikte ele alan bilimsel, etik ve insan odaklı bir danışmanlık
-                süreci.
-              </p>
-
-              <div className="valueStrip">
-                {values.map((item) => (
-                  <div className="valueItem" key={item.title}>
-                    <div className="valueIcon"><Icon name={item.icon} size={18} /></div>
-                    <div>
-                      <strong>{item.title.toUpperCase()}</strong>
-                      <span>{item.text}</span>
-                    </div>
-                  </div>
-                ))}
+              <div className="premiumSliderHero__script">
+                {activeHero.script}
               </div>
 
-              <div className="heroActions">
-                <a className="btn btnPrimary" href="#iletisim">
-                  RANDEVU AL <Icon name="arrow" size={17} />
-                </a>
-                <a className="btn btnGhost" href="#/hizmetler">
-                  ÇALIŞMA ALANLARINI İNCELE <Icon name="arrow" size={17} />
-                </a>
-              </div>
+              <div className="premiumSliderHero__line" />
 
-              <div className="heroTrust">
-                <div className="trustDots">
-                  <span>KÖ</span><span>01</span><span>02</span><span>03</span>
-                </div>
-                <div>
-                  <strong>Güvenli ve profesyonel yaklaşım</strong>
-                  <p>Gizlilik • Etik • Danışan odaklı süreç</p>
-                </div>
+              <p>{activeHero.description}</p>
+
+              <div className="premiumSliderHero__actions">
+                <a href="#iletisim" className="premiumSliderHero__primary">
+                  ÜCRETSİZ ÖN GÖRÜŞME
+                  <Icon name="arrow" size={18} />
+                </a>
+
+                <a href="#/hizmetler" className="premiumSliderHero__secondary">
+                  ÇALIŞMA ALANLARINI İNCELE
+                </a>
               </div>
             </div>
 
-            <div className="heroVisual reveal revealRight">
-              <div className="visualGrid" />
-              <div className="visualRing visualRing--one" />
-              <div className="visualRing visualRing--two" />
+            <button
+              className="premiumSliderHero__arrow premiumSliderHero__arrow--right"
+              aria-label="Sonraki slayt"
+              onClick={nextHeroSlide}
+            >
+              ›
+            </button>
 
-              <div className="heroPanel">
-                <div className="panelTop">
-                  <span className="onlineDot" />
-                  GÖRÜŞMEYE AÇIK
+            <div className="premiumSliderHero__dots">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.title}
+                  className={index === heroSlide ? "is-active" : ""}
+                  aria-label={`${index + 1}. slayta geç`}
+                  onClick={() => setHeroSlide(index)}
+                />
+              ))}
+            </div>
+
+            <div className="premiumSliderHero__features">
+              <div>
+                <span className="premiumSliderHero__featureIcon">
+                  <Icon name="shield" size={30} />
+                </span>
+                <div>
+                  <strong>Gizlilik</strong>
+                  <p>Tüm görüşmeler etik ve gizlilik ilkeleriyle yürütülür.</p>
                 </div>
+              </div>
 
-                <div className="panelLogo">KÖ</div>
-
-                <div className="panelText">
-                  <span>SOSYAL HİZMET UZMANI • AİLE DANIŞMANI</span>
-                  <strong>KAAN ÖZKAN</strong>
-                  <p>Bilimsel yaklaşım. Güvenli alan. Kişiye özgü destek.</p>
+              <div>
+                <span className="premiumSliderHero__featureIcon">
+                  <Icon name="user" size={30} />
+                </span>
+                <div>
+                  <strong>Kişiye Özgü Yaklaşım</strong>
+                  <p>Her danışanın ihtiyacına göre özel bir yol haritası oluşturulur.</p>
                 </div>
+              </div>
 
-                <div className="panelMetrics">
-                  <div><strong>01</strong><span>GİZLİLİK</span></div>
-                  <div><strong>02</strong><span>DESTEK</span></div>
-                  <div><strong>03</strong><span>ONLINE</span></div>
+              <div>
+                <span className="premiumSliderHero__featureIcon">
+                  <Icon name="heart" size={30} />
+                </span>
+                <div>
+                  <strong>Bütüncül Bakış</strong>
+                  <p>Birey, ilişkiler ve sosyal çevre birlikte değerlendirilir.</p>
                 </div>
+              </div>
 
-                <div className="heroPanel__badge">PREMIUM DANIŞMANLIK</div>
-                <div className="heroPanel__orb" />
-
-                <div className="heroPanel__quote">
-                  <span>YAKLAŞIM</span>
-                  <p>“Her birey, yaşadığı problemden çok daha fazlasıdır.”</p>
-                  <strong>KAAN ÖZKAN</strong>
+              <div>
+                <span className="premiumSliderHero__featureIcon">
+                  <Icon name="check" size={30} />
+                </span>
+                <div>
+                  <strong>Profesyonel Destek</strong>
+                  <p>Bilimsel temelli, etik ve insan odaklı bir yaklaşım.</p>
                 </div>
+              </div>
+            </div>
+          </section>
 
-                <a href="#/surec" className="heroPanel__miniCta">
-                  Sürecin nasıl ilerlediğini görün
+          <section className="homeServicesShowcase">
+            <div className="homeServicesShowcase__head reveal">
+              <div>
+                <span className="homeServicesShowcase__eyebrow">PROFESYONEL ÇALIŞMA ALANLARI</span>
+                <h2>
+                  Size uygun desteği
+                  <strong> birlikte keşfedelim.</strong>
+                </h2>
+              </div>
+
+              <p>
+                Yaşadığınız güçlüğü yalnızca tek bir başlık üzerinden değil;
+                ilişkileriniz, yaşam deneyimleriniz ve sosyal çevrenizle birlikte
+                değerlendiren bütüncül bir danışmanlık yaklaşımı.
+              </p>
+            </div>
+
+            <div className="homeServicesShowcase__grid">
+              <article className="homeServiceFeature reveal">
+                <div className="homeServiceFeature__icon">
+                  <Icon name="heart" size={25} />
+                </div>
+                <span>01</span>
+                <h3>Bireysel Danışmanlık</h3>
+                <ul>
+                  <li>Anksiyete, stres ve duygu düzenleme güçlükleri</li>
+                  <li>Özsaygı, benlik algısı ve psikososyal güçlenme</li>
+                </ul>
+                <a href="#/hizmetler">
+                  Detaylı Bilgi
                   <Icon name="arrow" size={15} />
                 </a>
-              </div>
+              </article>
 
-              <div className="floatCard floatCard--a">
-                <Icon name="shield" size={20} />
-                <div><strong>Güvenli Alan</strong><span>Etik yaklaşım</span></div>
-              </div>
+              <article className="homeServiceFeature reveal">
+                <div className="homeServiceFeature__icon">
+                  <Icon name="users" size={25} />
+                </div>
+                <span>02</span>
+                <h3>Çift & Aile Danışmanlığı</h3>
+                <ul>
+                  <li>İletişim sorunları, ilişki çatışmaları ve güven problemleri</li>
+                  <li>Ayrılık, boşanma ve aile içi roller üzerine destek</li>
+                </ul>
+                <a href="#/hizmetler">
+                  Detaylı Bilgi
+                  <Icon name="arrow" size={15} />
+                </a>
+              </article>
 
-              <div className="floatCard floatCard--b">
-                <Icon name="chat" size={20} />
-                <div><strong>Online Görüşme</strong><span>Esnek planlama</span></div>
-              </div>
-
-              <div className="heroMini">
-                <span>PROFESYONEL DESTEK</span>
-                <strong>Yanınızdayım.</strong>
-                <p>Bireysel görüşme, danışmanlık ve sosyal destek süreçlerinde.</p>
-              </div>
+              <article className="homeServiceFeature reveal">
+                <div className="homeServiceFeature__icon">
+                  <Icon name="shield" size={25} />
+                </div>
+                <span>03</span>
+                <h3>Psikososyal Destek</h3>
+                <ul>
+                  <li>Yas ve kayıp, yaşam olaylarına uyum ve dayanıklılık</li>
+                  <li>Bağımlılık ve farklı psikososyal güçlüklerde destek süreci</li>
+                </ul>
+                <a href="#/hizmetler">
+                  Detaylı Bilgi
+                  <Icon name="arrow" size={15} />
+                </a>
+              </article>
             </div>
-          </section>
 
-          <section className="homePremiumBridge">
-            <div className="homePremiumBridge__intro reveal">
-              <span>NEREDEN BAŞLAMALI?</span>
-              <h2>İhtiyacınıza göre doğru alanı keşfedin.</h2>
-              <p>
-                Danışmanlık sürecine hangi başlıktan başlayacağınızı bilmiyor
-                olabilirsiniz. Aşağıdaki alanlardan size en yakın olanı
-                inceleyebilir veya doğrudan ilk görüşmeyi planlayabilirsiniz.
-              </p>
-            </div>
-
-            <div className="homePremiumBridge__cards">
-              <a href="#/hizmetler" className="homeRouteCard reveal">
-                <div className="homeRouteCard__top">
-                  <span>01</span>
-                  <div><Icon name="compass" size={25} /></div>
+            <div className="homeServicesShowcase__footer reveal">
+              <div className="homeServicesShowcase__benefit">
+                <div className="homeServicesShowcase__benefitIcon">
+                  <Icon name="compass" size={31} />
                 </div>
-                <h3>Çalışma Alanları</h3>
-                <p>Anksiyete, ilişkiler, aile ve çift süreçleri, yas, stres ve psikososyal destek alanlarını inceleyin.</p>
-                <strong>HİZMETLERİ GÖR <Icon name="arrow" size={15} /></strong>
-              </a>
-
-              <a href="#/hakkimda" className="homeRouteCard reveal">
-                <div className="homeRouteCard__top">
-                  <span>02</span>
-                  <div><Icon name="user" size={25} /></div>
+                <div>
+                  <span>DANIŞMANLIĞIN ODAĞI</span>
+                  <h3>Güçlü yönlerinizi görünür hale getiren, kişiye özgü bir yol haritası.</h3>
+                  <p>
+                    Amaç yalnızca mevcut güçlüğü konuşmak değil; yaşam kalitenizi,
+                    ilişkilerinizi ve başa çıkma kaynaklarınızı sürdürülebilir biçimde güçlendirmektir.
+                  </p>
                 </div>
-                <h3>Beni Tanıyın</h3>
-                <p>Eğitim, saha deneyimi, aile danışmanlığı yaklaşımı ve mesleki ilkelerim hakkında bilgi alın.</p>
-                <strong>HAKKIMDA <Icon name="arrow" size={15} /></strong>
-              </a>
+              </div>
 
-              <a href="#/surec" className="homeRouteCard reveal">
-                <div className="homeRouteCard__top">
-                  <span>03</span>
-                  <div><Icon name="route" size={25} /></div>
-                </div>
-                <h3>Süreç Nasıl İlerliyor?</h3>
-                <p>İlk temastan kişiye özgü yol haritasına kadar danışmanlık sürecinin aşamalarını görün.</p>
-                <strong>SÜRECİ İNCELE <Icon name="arrow" size={15} /></strong>
+              <a className="homeServicesShowcase__all" href="#/hizmetler">
+                <span>TÜM</span>
+                <strong>HİZMETLER</strong>
+                <Icon name="arrow" size={22} />
               </a>
             </div>
           </section>
+
+
+          
 
           <section className="homeTrustStatement reveal">
             <div className="homeTrustStatement__mark">“</div>
@@ -2961,6 +3053,683 @@ button{font:inherit}
   .valueItem span{font-size:9px}
   .heroLead{font-size:13px}
   .heroPanel__quote p{font-size:12px}
+}
+
+/* STEP 34 — HOME SERVICES SHOWCASE */
+.homeServicesShowcase{
+  position:relative;
+  padding:96px 5.2% 100px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  background:
+    radial-gradient(circle at 8% 14%,rgba(208,132,36,.045),transparent 22%),
+    radial-gradient(circle at 92% 78%,rgba(47,128,237,.05),transparent 24%),
+    linear-gradient(180deg,#03101d 0%,#020a14 100%);
+}
+.homeServicesShowcase:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+  background-size:72px 72px;
+}
+.homeServicesShowcase__head{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:56px;
+  align-items:end;
+}
+.homeServicesShowcase__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  color:#d8923a;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.20em;
+}
+.homeServicesShowcase__eyebrow:before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:linear-gradient(90deg,#eda94e,#9d5b1e);
+}
+.homeServicesShowcase__head h2{
+  margin-top:13px;
+  max-width:780px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(42px,4.8vw,70px);
+  font-weight:400;
+  line-height:.98;
+  letter-spacing:-.04em;
+  color:#f4f1ec;
+}
+.homeServicesShowcase__head h2 strong{
+  display:block;
+  color:transparent;
+  font-weight:400;
+  background:linear-gradient(180deg,#efb15b,#c97d29);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.homeServicesShowcase__head>p{
+  max-width:560px;
+  padding-left:24px;
+  border-left:1px solid rgba(221,151,65,.24);
+  color:#919aa6;
+  font-size:12px;
+  line-height:1.85;
+}
+.homeServicesShowcase__grid{
+  position:relative;
+  z-index:2;
+  margin-top:42px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.homeServiceFeature{
+  min-height:310px;
+  padding:27px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(221,151,65,.15);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(47,128,237,.055),transparent 28%),
+    linear-gradient(150deg,rgba(8,22,38,.96),rgba(4,13,24,.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 24px 55px rgba(0,0,0,.16);
+  transition:transform .32s ease,border-color .32s ease,box-shadow .32s ease;
+}
+.homeServiceFeature:hover{
+  transform:translateY(-6px);
+  border-color:rgba(230,161,76,.31);
+  box-shadow:0 34px 70px rgba(0,0,0,.23);
+}
+.homeServiceFeature__icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(225,155,70,.23);
+  border-radius:13px;
+  color:#df983f;
+  background:rgba(190,111,24,.04);
+}
+.homeServiceFeature>span{
+  margin-top:22px;
+  color:#566170;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:23px;
+}
+.homeServiceFeature h3{
+  margin-top:8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:27px;
+  font-weight:400;
+}
+.homeServiceFeature ul{
+  margin:18px 0 0;
+  padding:0;
+  list-style:none;
+}
+.homeServiceFeature li{
+  position:relative;
+  padding:10px 0 10px 17px;
+  border-bottom:1px solid rgba(255,255,255,.045);
+  color:#9199a3;
+  font-size:10px;
+  line-height:1.65;
+}
+.homeServiceFeature li:before{
+  content:"✦";
+  position:absolute;
+  left:0;
+  top:11px;
+  color:#d88f38;
+  font-size:8px;
+}
+.homeServiceFeature li:last-child{border-bottom:0}
+.homeServiceFeature a{
+  margin-top:auto;
+  padding-top:22px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  color:#d9933b;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.homeServiceFeature a svg{transition:transform .25s ease}
+.homeServiceFeature a:hover svg{transform:translateX(4px)}
+.homeServicesShowcase__footer{
+  position:relative;
+  z-index:2;
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:1fr 170px;
+  gap:14px;
+}
+.homeServicesShowcase__benefit{
+  min-height:145px;
+  padding:27px 30px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:22px;
+  align-items:center;
+  border:1px solid rgba(221,151,65,.14);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 8% 50%,rgba(207,133,38,.06),transparent 25%),
+    linear-gradient(135deg,rgba(15,31,45,.95),rgba(7,18,31,.94));
+}
+.homeServicesShowcase__benefitIcon{
+  width:66px;
+  height:66px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(225,155,70,.22);
+  border-radius:16px;
+  color:#dc963e;
+  background:rgba(190,111,24,.04);
+}
+.homeServicesShowcase__benefit span{
+  color:#d88f38;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.homeServicesShowcase__benefit h3{
+  margin-top:6px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:400;
+}
+.homeServicesShowcase__benefit p{
+  margin-top:7px;
+  color:#7e8996;
+  font-size:9px;
+  line-height:1.65;
+}
+.homeServicesShowcase__all{
+  min-height:145px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(223,151,65,.24);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(181,105,28,.22),rgba(69,109,142,.18));
+  color:#f2ede6;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 20px 45px rgba(0,0,0,.16);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.homeServicesShowcase__all:hover{
+  transform:translateY(-5px);
+  border-color:rgba(236,169,85,.4);
+  box-shadow:0 28px 60px rgba(0,0,0,.23);
+}
+.homeServicesShowcase__all span{
+  color:#c6b7a3;
+  font-size:7px;
+  letter-spacing:.18em;
+}
+.homeServicesShowcase__all strong{
+  margin-top:5px;
+  font-size:12px;
+  letter-spacing:.08em;
+}
+.homeServicesShowcase__all svg{
+  margin-top:14px;
+  color:#e3a149;
+}
+@media(max-width:980px){
+  .homeServicesShowcase__head{grid-template-columns:1fr;gap:20px}
+  .homeServicesShowcase__head>p{padding-left:18px}
+  .homeServicesShowcase__grid{grid-template-columns:1fr}
+  .homeServiceFeature{min-height:255px}
+}
+@media(max-width:760px){
+  .homeServicesShowcase{padding:72px 18px}
+  .homeServicesShowcase__head h2{font-size:clamp(38px,11vw,54px)}
+  .homeServicesShowcase__footer{grid-template-columns:1fr}
+  .homeServicesShowcase__benefit{grid-template-columns:1fr;text-align:left}
+  .homeServicesShowcase__all{min-height:110px}
+}
+
+/* STEP 35 — PREMIUM COUCH SLIDER HERO */
+.premiumSliderHero{
+  position:relative;
+  min-height:calc(100vh - 98px);
+  padding:110px 7% 210px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  background:#020811;
+}
+.premiumSliderHero__bg{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.premiumSliderHero__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:71% center;
+  filter:saturate(.92) contrast(1.03) brightness(.72);
+  transform:scale(1.025);
+}
+.premiumSliderHero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(2,8,17,.99) 0%,
+      rgba(2,8,17,.97) 24%,
+      rgba(2,8,17,.83) 44%,
+      rgba(2,8,17,.30) 67%,
+      rgba(2,8,17,.10) 100%),
+    linear-gradient(180deg,rgba(2,8,17,.08),rgba(2,8,17,.18));
+}
+.premiumSliderHero__goldGlow{
+  position:absolute;
+  left:20%;
+  top:16%;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:rgba(202,126,34,.05);
+  filter:blur(95px);
+}
+.premiumSliderHero__content{
+  position:relative;
+  z-index:5;
+  max-width:760px;
+}
+.premiumSliderHero__icon{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  margin-bottom:22px;
+  color:#e0a04a;
+  border:1px solid rgba(226,158,74,.22);
+  border-radius:15px;
+  background:rgba(193,112,25,.045);
+}
+.premiumSliderHero__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#d88f38;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.2em;
+}
+.premiumSliderHero__eyebrow span{
+  width:28px;
+  height:1px;
+  background:linear-gradient(90deg,#efa94d,#9b5b1f);
+}
+.premiumSliderHero h1{
+  margin-top:22px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(64px,6.5vw,108px);
+  font-weight:400;
+  line-height:.87;
+  letter-spacing:-.055em;
+  color:#f5f2ed;
+}
+.premiumSliderHero h1 strong{
+  color:transparent;
+  font-weight:400;
+  background:linear-gradient(180deg,#efb15b,#c97b29);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.premiumSliderHero__script{
+  margin-top:18px;
+  color:#df963d;
+  font-family:"Segoe Script","Brush Script MT",cursive;
+  font-size:clamp(32px,3.4vw,55px);
+  line-height:1;
+  transform:rotate(-2deg);
+  transform-origin:left;
+}
+.premiumSliderHero__line{
+  width:86px;
+  height:2px;
+  margin-top:26px;
+  background:linear-gradient(90deg,#d9923a,#f0b059);
+  box-shadow:0 0 12px rgba(219,145,56,.28);
+}
+.premiumSliderHero__content>p{
+  max-width:650px;
+  margin-top:24px;
+  color:#ddd8d0;
+  font-size:14px;
+  line-height:1.9;
+  text-shadow:0 2px 18px rgba(0,0,0,.25);
+}
+.premiumSliderHero__actions{
+  margin-top:30px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.premiumSliderHero__primary,
+.premiumSliderHero__secondary{
+  min-height:52px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.07em;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.premiumSliderHero__primary{
+  min-width:240px;
+  color:#fff;
+  border:1px solid rgba(238,171,87,.30);
+  background:linear-gradient(135deg,#b86b24,#e2a04a);
+  box-shadow:0 18px 45px rgba(178,101,22,.23);
+}
+.premiumSliderHero__secondary{
+  color:#d4d5d6;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(4,13,24,.48);
+  backdrop-filter:blur(10px);
+}
+.premiumSliderHero__primary:hover,
+.premiumSliderHero__secondary:hover{
+  transform:translateY(-2px);
+}
+.premiumSliderHero__primary:hover{
+  box-shadow:0 24px 55px rgba(178,101,22,.32);
+}
+.premiumSliderHero__secondary:hover{
+  border-color:rgba(226,158,74,.24);
+}
+
+.premiumSliderHero__arrow{
+  position:absolute;
+  z-index:6;
+  top:50%;
+  width:52px;
+  height:52px;
+  margin-top:-55px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(222,151,65,.30);
+  border-radius:50%;
+  background:rgba(3,10,19,.52);
+  backdrop-filter:blur(10px);
+  color:#e3a149;
+  font-size:31px;
+  line-height:1;
+}
+.premiumSliderHero__arrow--left{left:24px}
+.premiumSliderHero__arrow--right{right:24px}
+
+.premiumSliderHero__dots{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  bottom:174px;
+  display:flex;
+  gap:10px;
+  transform:translateX(-50%);
+}
+.premiumSliderHero__dots span{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.40);
+}
+.premiumSliderHero__dots .is-active{
+  width:20px;
+  border-radius:999px;
+  background:#d89a46;
+}
+
+.premiumSliderHero__features{
+  position:absolute;
+  z-index:6;
+  left:2%;
+  right:2%;
+  bottom:20px;
+  min-height:145px;
+  padding:20px 28px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  align-items:center;
+  border:1px solid rgba(222,151,65,.22);
+  border-radius:20px;
+  background:rgba(3,12,23,.90);
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 55px rgba(0,0,0,.28);
+}
+.premiumSliderHero__features>div{
+  min-height:92px;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-right:1px solid rgba(222,151,65,.17);
+}
+.premiumSliderHero__features>div:first-child{padding-left:6px}
+.premiumSliderHero__features>div:last-child{
+  border-right:0;
+  padding-right:6px;
+}
+.premiumSliderHero__featureIcon{
+  width:54px;
+  height:54px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  color:#dfa04a;
+}
+.premiumSliderHero__features strong{
+  display:block;
+  color:#f1ede6;
+  font-size:13px;
+  font-weight:500;
+}
+.premiumSliderHero__features p{
+  margin-top:6px;
+  color:#9ba1a9;
+  font-size:9px;
+  line-height:1.6;
+}
+
+@media(max-width:1100px){
+  .premiumSliderHero{
+    padding-left:7%;
+    padding-right:7%;
+  }
+  .premiumSliderHero__features{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .premiumSliderHero__features>div:nth-child(2){
+    border-right:0;
+  }
+  .premiumSliderHero__features>div:nth-child(3),
+  .premiumSliderHero__features>div:nth-child(4){
+    border-top:1px solid rgba(222,151,65,.14);
+    padding-top:16px;
+  }
+  .premiumSliderHero{
+    padding-bottom:270px;
+  }
+  .premiumSliderHero__dots{bottom:235px}
+}
+@media(max-width:760px){
+  .premiumSliderHero{
+    min-height:auto;
+    padding:80px 20px 430px;
+    align-items:flex-start;
+  }
+  .premiumSliderHero__bg img{
+    object-position:70% center;
+  }
+  .premiumSliderHero__shade{
+    background:
+      linear-gradient(180deg,rgba(2,8,17,.96) 0%,rgba(2,8,17,.88) 45%,rgba(2,8,17,.40) 100%),
+      linear-gradient(90deg,rgba(2,8,17,.78),rgba(2,8,17,.14));
+  }
+  .premiumSliderHero h1{
+    font-size:clamp(50px,14vw,72px);
+  }
+  .premiumSliderHero__script{
+    font-size:35px;
+  }
+  .premiumSliderHero__content>p{
+    font-size:13px;
+  }
+  .premiumSliderHero__actions{
+    flex-direction:column;
+  }
+  .premiumSliderHero__primary,
+  .premiumSliderHero__secondary{
+    width:100%;
+  }
+  .premiumSliderHero__arrow{
+    width:44px;
+    height:44px;
+    top:auto;
+    bottom:365px;
+  }
+  .premiumSliderHero__arrow--left{left:16px}
+  .premiumSliderHero__arrow--right{right:16px}
+  .premiumSliderHero__dots{bottom:376px}
+  .premiumSliderHero__features{
+    left:14px;
+    right:14px;
+    bottom:14px;
+    grid-template-columns:1fr;
+    padding:12px 18px;
+  }
+  .premiumSliderHero__features>div,
+  .premiumSliderHero__features>div:first-child,
+  .premiumSliderHero__features>div:last-child{
+    min-height:80px;
+    padding:12px 0;
+    border-right:0;
+    border-top:1px solid rgba(222,151,65,.12);
+  }
+  .premiumSliderHero__features>div:first-child{border-top:0}
+}
+
+/* STEP 36 — REAL 2-SLIDE HERO */
+.premiumSliderHero__bg img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:71% center;
+  opacity:0;
+  transform:scale(1.06);
+  transition:
+    opacity .75s ease,
+    transform 1.1s cubic-bezier(.16,.8,.2,1);
+}
+.premiumSliderHero__bg img.is-active{
+  opacity:1;
+  transform:scale(1.025);
+}
+.premiumSliderHero__content{
+  animation:heroSlideContentIn .62s cubic-bezier(.16,.8,.2,1) both;
+}
+@keyframes heroSlideContentIn{
+  from{
+    opacity:0;
+    transform:translateY(22px);
+    filter:blur(5px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+    filter:none;
+  }
+}
+.premiumSliderHero__dots button{
+  appearance:none;
+  border:0;
+  padding:0;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  cursor:pointer;
+  background:rgba(255,255,255,.40);
+  transition:width .3s ease,background .3s ease,transform .3s ease;
+}
+.premiumSliderHero__dots button:hover{
+  transform:scale(1.15);
+}
+.premiumSliderHero__dots button.is-active{
+  width:24px;
+  border-radius:999px;
+  background:#d89a46;
+}
+.premiumSliderHero__arrow{
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.premiumSliderHero__arrow:hover{
+  transform:scale(1.06);
+  border-color:rgba(234,168,83,.50);
+  background:rgba(3,10,19,.72);
+}
+
+/* STEP 37 — TOK / PREMIUM "ÜCRETSİZ ÖN GÖRÜŞME" TYPOGRAPHY */
+.premiumSliderHero__script{
+  margin-top:22px;
+  display:inline-block;
+  color:#e0a04a;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(25px,2.35vw,39px);
+  font-weight:700;
+  line-height:1.08;
+  letter-spacing:-.025em;
+  text-transform:none;
+  transform:none;
+  text-shadow:0 8px 28px rgba(0,0,0,.28);
+}
+.premiumSliderHero__script:after{
+  content:"";
+  display:block;
+  width:46%;
+  height:1px;
+  margin-top:11px;
+  background:linear-gradient(90deg,#e2a04a,rgba(226,160,74,0));
+}
+.premiumSliderHero__line{
+  display:none;
+}
+@media(max-width:760px){
+  .premiumSliderHero__script{
+    font-size:27px;
+    letter-spacing:-.02em;
+  }
 }
 
 `;
