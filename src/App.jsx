@@ -4,6 +4,7 @@ import heroSlide2 from "./assets/hero-slide-2.jpg";
 import aboutPhoto from "./assets/kaan-about.jpg";
 import servicesHeroRoom from "./assets/services-hero-room.jpg";
 import processHeroDesk from "./assets/process-hero-desk.jpg";
+import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
 
 const Icon = ({ name, size = 22 }) => {
   const common = {
@@ -174,12 +175,16 @@ function App() {
       ? "services"
       : window.location.hash === "#/surec"
       ? "process"
+      : window.location.hash === "#/icerikler"
+      ? "content"
       : window.location.hash === "#/gizlilik"
       ? "privacy"
       : window.location.hash === "#/aydinlatma"
       ? "disclosure"
       : window.location.hash === "#/cerez-politikasi"
       ? "cookies"
+      : window.location.hash === "#/admin"
+      ? "admin"
       : "home"
   );
 
@@ -239,12 +244,16 @@ function App() {
           ? "services"
           : window.location.hash === "#/surec"
           ? "process"
+          : window.location.hash === "#/icerikler"
+          ? "content"
           : window.location.hash === "#/gizlilik"
           ? "privacy"
           : window.location.hash === "#/aydinlatma"
           ? "disclosure"
           : window.location.hash === "#/cerez-politikasi"
           ? "cookies"
+          : window.location.hash === "#/admin"
+          ? "admin"
           : "home";
       setPage(nextPage);
       setMenuOpen(false);
@@ -305,6 +314,14 @@ function App() {
               Süreç
             </a>
             <a
+              href="#/icerikler"
+              className={page === "content" ? "is-active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              İçerikler
+            </a>
+
+            <a
               href="#iletisim"
               className={
                 page === "home" && window.location.hash === "#iletisim"
@@ -334,12 +351,16 @@ function App() {
           <ServicesDetailPage />
         ) : page === "process" ? (
           <ProcessDetailPage />
+        ) : page === "content" ? (
+          <ContentDetailPage />
         ) : page === "privacy" ? (
           <LegalPage type="privacy" />
         ) : page === "disclosure" ? (
           <LegalPage type="disclosure" />
         ) : page === "cookies" ? (
           <LegalPage type="cookies" />
+        ) : page === "admin" ? (
+          <AdminDemoPage />
         ) : (
         <main>
           <section
@@ -688,6 +709,7 @@ function App() {
               <a href="#/hakkimda">Hakkımda <Icon name="arrow" size={14} /></a>
               <a href="#/hizmetler">Hizmetler <Icon name="arrow" size={14} /></a>
               <a href="#/surec">Süreç <Icon name="arrow" size={14} /></a>
+              <a href="#/icerikler">İçerikler <Icon name="arrow" size={14} /></a>
               <a href="#iletisim">İletişim <Icon name="arrow" size={14} /></a>
             </div>
 
@@ -749,6 +771,594 @@ function App() {
 
 
 
+
+
+
+function ContentDetailPage() {
+  const [tab, setTab] = useState("videos");
+
+  // Gerçek YouTube linklerini buradaki url alanlarına yazdığında kapak görseli
+  // otomatik olarak YouTube'dan çekilir.
+  const videos = [
+    {
+      title: "İlişkilerde İletişimin Gücü",
+      description: "Sağlıklı ilişkilerin temelinde etkili ve güvenli iletişim vardır.",
+      category: "İlişkiler",
+      url: "",
+      duration: "12:45",
+    },
+    {
+      title: "Sınır Koymak Neden Önemlidir?",
+      description: "Kendinizi korumak için sağlıklı sınırlar oluşturmanın önemi.",
+      category: "Kişisel Gelişim",
+      url: "",
+      duration: "10:32",
+    },
+    {
+      title: "Kaygıyla Başa Çıkma Yolları",
+      description: "Kaygıyı yaşamayı öğrenmek ve günlük yaşamda düzenlemek.",
+      category: "Psikososyal Destek",
+      url: "",
+      duration: "09:18",
+    },
+    {
+      title: "Özsaygı Nasıl Geliştirilir?",
+      description: "Özsaygının, küçük ama sürdürülebilir adımlarla güçlendirilmesi.",
+      category: "Bireysel",
+      url: "",
+      duration: "11:07",
+    },
+  ];
+
+  const podcasts = [
+    {
+      no: "12",
+      title: "Evlilikte Beklentiler",
+      description: "Beklentiler ilişkileri nasıl etkiler? Gerçekçi beklenti mümkün mü?",
+      duration: "24:18",
+      url: "",
+    },
+    {
+      no: "09",
+      title: "Kendini Anlamak Neden Önemli?",
+      description: "Kendini anlamak, değişimin ve gelişimin ilk adımıdır.",
+      duration: "19:42",
+      url: "",
+    },
+    {
+      no: "07",
+      title: "Aile İçi İletişimde Denge",
+      description: "Aile içinde sağlıklı iletişim nasıl kurulabilir?",
+      duration: "22:33",
+      url: "",
+    },
+    {
+      no: "05",
+      title: "Olumsuz Düşünce Döngüsünü Kırmak",
+      description: "Tekrarlayan düşünce örüntülerini fark etmek ve dönüştürmek.",
+      duration: "21:07",
+      url: "",
+    },
+  ];
+
+  const youtubeId = (url) => {
+    if (!url) return "";
+    try {
+      const parsed = new URL(url);
+      if (parsed.hostname.includes("youtu.be")) return parsed.pathname.slice(1);
+      if (parsed.searchParams.get("v")) return parsed.searchParams.get("v");
+      const match = parsed.pathname.match(/\/(embed|shorts)\/([^/?]+)/);
+      return match ? match[2] : "";
+    } catch {
+      return "";
+    }
+  };
+
+  const openUrl = (url) => {
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <main className="cnt57">
+      <section className="cnt57Hero">
+        <img
+          className="cnt57Hero__image"
+          src={contentHeroMic}
+          alt="Profesyonel podcast mikrofonu ve sıcak stüdyo ortamı"
+        />
+        <div className="cnt57Hero__shade" />
+
+        <a className="cnt57Back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="cnt57Hero__copy">
+          <span className="cnt57Eyebrow">İÇERİKLER</span>
+          <h1>
+            Videolar &
+            <br />
+            <strong>Podcastler</strong>
+          </h1>
+          <i />
+          <p>
+            İlişkiler, aile yaşamı, bireysel gelişim ve psikososyal güçlenme
+            üzerine hazırlanan video ve podcast içerikleri.
+          </p>
+          <div className="cnt57Signature">Kaan Özkan</div>
+        </div>
+
+        <blockquote className="cnt57Quote">
+          <b>“</b>
+          <p>Bilgi, dönüştürür.<br/>Farkındalık, özgürleştirir.<br/>Paylaştıkça çoğalır.</p>
+          <b>”</b>
+        </blockquote>
+      </section>
+
+      <section className="cnt57Body">
+        <div className="cnt57Tabs">
+          <button
+            type="button"
+            className={tab === "videos" ? "is-active" : ""}
+            onClick={() => setTab("videos")}
+          >
+            <Icon name="video" size={19} />
+            VİDEOLAR
+          </button>
+          <button
+            type="button"
+            className={tab === "podcasts" ? "is-active" : ""}
+            onClick={() => setTab("podcasts")}
+          >
+            <Icon name="mic" size={19} />
+            PODCASTLER
+          </button>
+        </div>
+
+        {tab === "videos" && (
+          <section className="cnt57Section">
+            <div className="cnt57Section__head">
+              <div>
+                <Icon name="video" size={18} />
+                <span>YOUTUBE VİDEOLARI</span>
+              </div>
+              <a href="#" onClick={(e) => e.preventDefault()}>
+                TÜM VİDEOLARI GÖR <Icon name="arrow" size={14} />
+              </a>
+            </div>
+
+            <div className="cnt57VideoGrid">
+              {videos.map((video, index) => {
+                const id = youtubeId(video.url);
+                return (
+                  <article
+                    className={"cnt57VideoCard " + (!video.url ? "is-placeholder" : "")}
+                    key={video.title}
+                    onClick={() => openUrl(video.url)}
+                  >
+                    <div className="cnt57VideoCard__thumb">
+                      {id ? (
+                        <img
+                          src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
+                          alt={video.title}
+                        />
+                      ) : (
+                        <div className={"cnt57VideoCard__fallback cnt57VideoCard__fallback--" + (index + 1)}>
+                          <span>{video.title}</span>
+                        </div>
+                      )}
+                      <div className="cnt57Play">▶</div>
+                      <small>{video.duration}</small>
+                    </div>
+
+                    <div className="cnt57VideoCard__body">
+                      <h3>{video.title}</h3>
+                      <p>{video.description}</p>
+                      <div>
+                        <span>YouTube</span>
+                        <span>•</span>
+                        <span>{video.category}</span>
+                        <b><Icon name="arrow" size={14} /></b>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div className="cnt57Hint">
+              <Icon name="info" size={18} />
+              <p>
+                Gerçek YouTube linklerini koda eklediğimizde video kapakları
+                otomatik olarak YouTube'dan gelecektir.
+              </p>
+            </div>
+          </section>
+        )}
+
+        {tab === "podcasts" && (
+          <section className="cnt57Section">
+            <div className="cnt57Section__head">
+              <div>
+                <Icon name="mic" size={18} />
+                <span>PODCASTLER</span>
+              </div>
+              <a href="#" onClick={(e) => e.preventDefault()}>
+                TÜM PODCASTLERİ GÖR <Icon name="arrow" size={14} />
+              </a>
+            </div>
+
+            <div className="cnt57PodcastGrid">
+              {podcasts.map((podcast, index) => (
+                <article className="cnt57PodcastCard" key={podcast.no}>
+                  <div className="cnt57PodcastArt">
+                    <div className="cnt57PodcastArt__ring">
+                      <Icon name={index % 2 === 0 ? "mic" : "message"} size={34} />
+                    </div>
+                    <span>KAAN ÖZKAN</span>
+                  </div>
+
+                  <div className="cnt57PodcastInfo">
+                    <small>#{podcast.no}</small>
+                    <h3>{podcast.title}</h3>
+                    <p>{podcast.description}</p>
+                    <div>
+                      <strong>{podcast.duration}</strong>
+                      <button
+                        type="button"
+                        onClick={() => openUrl(podcast.url)}
+                        disabled={!podcast.url}
+                      >
+                        ▶ Dinle
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div className="cnt57Subscribe">
+          <div className="cnt57Subscribe__icon">🔔</div>
+          <div>
+            <strong>Yeni içeriklerden haberdar olmak için abone olun.</strong>
+            <p>
+              YouTube kanalını ve podcast yayınlarını takip ederek yeni
+              içeriklerden haberdar olabilirsiniz.
+            </p>
+          </div>
+          <a href="#" onClick={(e) => e.preventDefault()}>
+            ▶ YOUTUBE KANALINA GİT
+          </a>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function AdminDemoPage() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [videoItems, setVideoItems] = useState([
+    {
+      id: 1,
+      type: "YouTube",
+      title: "Sağlıklı İletişimin Temelleri",
+      category: "İlişkiler",
+      url: "https://youtube.com/",
+      status: "Yayında",
+    },
+    {
+      id: 2,
+      type: "Podcast",
+      title: "Aile İçi Sınırlar Üzerine",
+      category: "Aile",
+      url: "https://spotify.com/",
+      status: "Taslak",
+    },
+  ]);
+  const [form, setForm] = useState({
+    type: "YouTube",
+    title: "",
+    category: "",
+    url: "",
+    description: "",
+  });
+
+  const addContent = (e) => {
+    e.preventDefault();
+    if (!form.title.trim() || !form.url.trim()) return;
+
+    setVideoItems((items) => [
+      {
+        id: Date.now(),
+        type: form.type,
+        title: form.title.trim(),
+        category: form.category.trim() || "Genel",
+        url: form.url.trim(),
+        status: "Taslak",
+      },
+      ...items,
+    ]);
+
+    setForm({
+      type: "YouTube",
+      title: "",
+      category: "",
+      url: "",
+      description: "",
+    });
+  };
+
+  const removeContent = (id) => {
+    setVideoItems((items) => items.filter((item) => item.id !== id));
+  };
+
+  const stats = [
+    { label: "Toplam İçerik", value: videoItems.length, icon: "video" },
+    { label: "Yayındaki", value: videoItems.filter((x) => x.status === "Yayında").length, icon: "check" },
+    { label: "Taslak", value: videoItems.filter((x) => x.status === "Taslak").length, icon: "edit" },
+    { label: "Randevular", value: "—", icon: "calendar" },
+  ];
+
+  return (
+    <main className="adminDemo">
+      <aside className="adminDemo__sidebar">
+        <div className="adminDemo__brand">
+          <div className="adminDemo__mark">KÖ</div>
+          <div>
+            <strong>ÇAĞATAY BURUCU</strong>
+            <span>Yönetim Paneli</span>
+          </div>
+        </div>
+
+        <nav className="adminDemo__menu">
+          {[
+            ["dashboard", "grid", "Dashboard"],
+            ["content", "video", "YouTube & Podcast"],
+            ["articles", "edit", "İçerikler"],
+            ["appointments", "calendar", "Randevular"],
+            ["users", "users", "Kullanıcılar"],
+            ["settings", "settings", "Ayarlar"],
+          ].map(([key, icon, label]) => (
+            <button
+              key={key}
+              type="button"
+              className={activeTab === key ? "is-active" : ""}
+              onClick={() => setActiveTab(key)}
+            >
+              <Icon name={icon} size={19} />
+              <span>{label}</span>
+            </button>
+          ))}
+        </nav>
+
+        <div className="adminDemo__sidebarFooter">
+          <div className="adminDemo__user">
+            <div>KO</div>
+            <span>
+              <strong>Kaan Özkan</strong>
+              <small>Yönetici</small>
+            </span>
+          </div>
+          <a href="#/">Siteye Dön <Icon name="arrow" size={14} /></a>
+        </div>
+      </aside>
+
+      <section className="adminDemo__main">
+        <header className="adminDemo__topbar">
+          <div>
+            <span>ÇAĞATAY BURUCU ADMİN PANEL / DEMO</span>
+            <h1>
+              {activeTab === "dashboard"
+                ? "Genel Bakış"
+                : activeTab === "content"
+                ? "YouTube & Podcast"
+                : activeTab === "articles"
+                ? "İçerik Yönetimi"
+                : activeTab === "appointments"
+                ? "Randevular"
+                : activeTab === "users"
+                ? "Kullanıcılar"
+                : "Ayarlar"}
+            </h1>
+          </div>
+
+          <div className="adminDemo__demoBadge">
+            <span />
+            DEMO MODU
+          </div>
+        </header>
+
+        {activeTab === "dashboard" && (
+          <>
+            <div className="adminDemo__stats">
+              {stats.map((item) => (
+                <article key={item.label}>
+                  <div><Icon name={item.icon} size={23} /></div>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
+              ))}
+            </div>
+
+            <div className="adminDemo__dashboardGrid">
+              <article className="adminDemo__panel">
+                <div className="adminDemo__panelHead">
+                  <div>
+                    <span>SON İÇERİKLER</span>
+                    <h2>Yayın akışı</h2>
+                  </div>
+                  <button type="button" onClick={() => setActiveTab("content")}>
+                    İçerik Ekle
+                  </button>
+                </div>
+
+                <div className="adminDemo__miniList">
+                  {videoItems.slice(0, 4).map((item) => (
+                    <div key={item.id}>
+                      <div className="adminDemo__miniIcon">
+                        <Icon name={item.type === "YouTube" ? "video" : "mic"} size={18} />
+                      </div>
+                      <span>
+                        <strong>{item.title}</strong>
+                        <small>{item.type} • {item.category}</small>
+                      </span>
+                      <b className={item.status === "Yayında" ? "is-live" : ""}>{item.status}</b>
+                    </div>
+                  ))}
+                </div>
+              </article>
+
+              <article className="adminDemo__panel adminDemo__welcome">
+                <span>YÖNETİCİ PANELİ</span>
+                <h2>İçerikleri kod açmadan yönetin.</h2>
+                <p>
+                  Bu demo arayüzde YouTube ve podcast bağlantısı ekleyebilir,
+                  içerikleri listeleyebilir ve taslak akışını deneyebilirsiniz.
+                  Gerçek kayıt ve kullanıcı giriş sistemi bir sonraki aşamada
+                  Supabase ile bağlanabilir.
+                </p>
+                <button type="button" onClick={() => setActiveTab("content")}>
+                  İçerik Yönetimine Git
+                  <Icon name="arrow" size={16} />
+                </button>
+              </article>
+            </div>
+          </>
+        )}
+
+        {activeTab === "content" && (
+          <div className="adminDemo__contentGrid">
+            <article className="adminDemo__panel">
+              <div className="adminDemo__panelHead">
+                <div>
+                  <span>YENİ İÇERİK</span>
+                  <h2>YouTube / Podcast Ekle</h2>
+                </div>
+              </div>
+
+              <form className="adminDemo__form" onSubmit={addContent}>
+                <label>
+                  <span>İçerik Türü</span>
+                  <select
+                    value={form.type}
+                    onChange={(e) => setForm({ ...form, type: e.target.value })}
+                  >
+                    <option>YouTube</option>
+                    <option>Podcast</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Başlık</span>
+                  <input
+                    value={form.title}
+                    onChange={(e) => setForm({ ...form, title: e.target.value })}
+                    placeholder="Örn. Sağlıklı İletişimin Temelleri"
+                  />
+                </label>
+
+                <label>
+                  <span>Kategori</span>
+                  <input
+                    value={form.category}
+                    onChange={(e) => setForm({ ...form, category: e.target.value })}
+                    placeholder="Örn. Aile / İlişkiler"
+                  />
+                </label>
+
+                <label>
+                  <span>Video / Podcast Linki</span>
+                  <input
+                    value={form.url}
+                    onChange={(e) => setForm({ ...form, url: e.target.value })}
+                    placeholder="https://..."
+                  />
+                </label>
+
+                <label className="adminDemo__full">
+                  <span>Kısa Açıklama</span>
+                  <textarea
+                    rows="5"
+                    value={form.description}
+                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    placeholder="İçeriğin kısa açıklaması..."
+                  />
+                </label>
+
+                <button className="adminDemo__submit" type="submit">
+                  Taslak Olarak Ekle
+                  <Icon name="plus" size={17} />
+                </button>
+              </form>
+            </article>
+
+            <article className="adminDemo__panel">
+              <div className="adminDemo__panelHead">
+                <div>
+                  <span>İÇERİKLER</span>
+                  <h2>Eklenen içerikler</h2>
+                </div>
+                <b>{videoItems.length} kayıt</b>
+              </div>
+
+              <div className="adminDemo__contentList">
+                {videoItems.map((item) => (
+                  <div key={item.id}>
+                    <div className="adminDemo__contentType">
+                      <Icon name={item.type === "YouTube" ? "video" : "mic"} size={18} />
+                    </div>
+                    <span>
+                      <strong>{item.title}</strong>
+                      <small>{item.type} • {item.category}</small>
+                      <em>{item.url}</em>
+                    </span>
+                    <b className={item.status === "Yayında" ? "is-live" : ""}>{item.status}</b>
+                    <button type="button" onClick={() => removeContent(item.id)}>Sil</button>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        )}
+
+        {["articles", "appointments", "users", "settings"].includes(activeTab) && (
+          <article className="adminDemo__panel adminDemo__placeholder">
+            <div className="adminDemo__placeholderIcon">
+              <Icon
+                name={
+                  activeTab === "appointments"
+                    ? "calendar"
+                    : activeTab === "users"
+                    ? "users"
+                    : activeTab === "settings"
+                    ? "settings"
+                    : "edit"
+                }
+                size={35}
+              />
+            </div>
+            <span>DEMO MODÜLÜ</span>
+            <h2>
+              {activeTab === "appointments"
+                ? "Randevu yönetimi burada olacak."
+                : activeTab === "users"
+                ? "Admin ve moderatör hesapları burada yönetilecek."
+                : activeTab === "settings"
+                ? "Site ve panel ayarları burada yer alacak."
+                : "Blog ve diğer site içerikleri burada yönetilecek."}
+            </h2>
+            <p>
+              Bu bölüm şimdilik yalnızca arayüz demosu. Gerçek veri kaydı,
+              giriş ve yetkilendirme sistemi bağlandığında aktif hale getirilebilir.
+            </p>
+          </article>
+        )}
+      </section>
+    </main>
+  );
+}
 
 function ProcessDetailPage() {
   const steps = [
@@ -4667,6 +5277,1005 @@ img{
 @media(max-width:700px){
   .prc53Hero__image{
     object-position:72% 50%;
+  }
+}
+
+/* STEP 55 — PREMIUM ADMIN PANEL DEMO */
+.adminDemo{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(47,128,237,.06),transparent 26%),
+    #020914;
+  color:#f5f1eb;
+}
+.adminDemo__sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  padding:22px 17px;
+  display:flex;
+  flex-direction:column;
+  border-right:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(180deg,#04101e,#020914);
+}
+.adminDemo__brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:7px 6px 24px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+.adminDemo__mark{
+  width:46px;height:46px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.25);
+  border-radius:12px;
+  color:#d99a4a;
+  font:400 20px Georgia,"Times New Roman",serif;
+}
+.adminDemo__brand strong{
+  display:block;
+  font-size:12px;
+}
+.adminDemo__brand span{
+  display:block;
+  margin-top:4px;
+  color:#667487;
+  font-size:9px;
+}
+.adminDemo__menu{
+  margin-top:22px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.adminDemo__menu button{
+  min-height:44px;
+  padding:0 13px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid transparent;
+  border-radius:10px;
+  background:transparent;
+  color:#7e8998;
+  cursor:pointer;
+  text-align:left;
+  font-size:11px;
+}
+.adminDemo__menu button:hover{
+  color:#d5dbe1;
+  background:rgba(255,255,255,.025);
+}
+.adminDemo__menu button.is-active{
+  color:#f4eee7;
+  border-color:rgba(218,151,65,.22);
+  background:linear-gradient(90deg,rgba(184,105,27,.16),rgba(47,128,237,.035));
+  box-shadow:inset 3px 0 0 #d99a4a;
+}
+.adminDemo__menu svg{
+  color:#d99a4a;
+}
+.adminDemo__sidebarFooter{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+.adminDemo__user{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.adminDemo__user>div{
+  width:38px;height:38px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:rgba(218,151,65,.10);
+  color:#d99a4a;
+  font-size:10px;
+}
+.adminDemo__user span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.adminDemo__user strong{font-size:10px}
+.adminDemo__user small{color:#5d6a7b;font-size:8px}
+.adminDemo__sidebarFooter>a{
+  margin-top:14px;
+  min-height:39px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#7d8795;
+  font-size:9px;
+}
+.adminDemo__main{
+  min-width:0;
+  padding:34px 3.4% 70px;
+}
+.adminDemo__topbar{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:25px;
+  margin-bottom:27px;
+}
+.adminDemo__topbar span{
+  color:#d99a4a;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.16em;
+}
+.adminDemo__topbar h1{
+  margin-top:6px;
+  font:400 38px Georgia,"Times New Roman",serif;
+}
+.adminDemo__demoBadge{
+  padding:9px 12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(52,212,134,.18);
+  border-radius:999px;
+  color:#86d7ad!important;
+  font-size:8px!important;
+}
+.adminDemo__demoBadge>span{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#34d486;
+  box-shadow:0 0 12px rgba(52,212,134,.55);
+}
+.adminDemo__stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.adminDemo__stats article{
+  min-height:130px;
+  padding:19px;
+  border:1px solid rgba(218,151,65,.13);
+  border-radius:14px;
+  background:linear-gradient(145deg,#07182a,#04111e);
+}
+.adminDemo__stats article>div{
+  width:40px;height:40px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.19);
+  border-radius:11px;
+  color:#d99a4a;
+}
+.adminDemo__stats span{
+  display:block;
+  margin-top:14px;
+  color:#778496;
+  font-size:9px;
+}
+.adminDemo__stats strong{
+  display:block;
+  margin-top:3px;
+  font:400 30px Georgia,"Times New Roman",serif;
+}
+.adminDemo__dashboardGrid{
+  margin-top:13px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:13px;
+}
+.adminDemo__panel{
+  padding:23px;
+  border:1px solid rgba(218,151,65,.13);
+  border-radius:15px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(47,128,237,.04),transparent 28%),
+    linear-gradient(145deg,#07182a,#04111e);
+  box-shadow:0 20px 50px rgba(0,0,0,.14);
+}
+.adminDemo__panelHead{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  padding-bottom:17px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.adminDemo__panelHead span{
+  color:#d99a4a;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+.adminDemo__panelHead h2{
+  margin-top:5px;
+  font:400 23px Georgia,"Times New Roman",serif;
+}
+.adminDemo__panelHead button,
+.adminDemo__panelHead>b{
+  padding:9px 12px;
+  border:1px solid rgba(218,151,65,.18);
+  border-radius:8px;
+  background:rgba(218,151,65,.04);
+  color:#d99a4a;
+  font-size:8px;
+}
+.adminDemo__miniList{
+  margin-top:10px;
+}
+.adminDemo__miniList>div{
+  min-height:58px;
+  display:grid;
+  grid-template-columns:38px 1fr auto;
+  align-items:center;
+  gap:11px;
+  border-bottom:1px solid rgba(255,255,255,.045);
+}
+.adminDemo__miniIcon{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.15);
+  border-radius:9px;
+  color:#d99a4a;
+}
+.adminDemo__miniList span{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.adminDemo__miniList strong{font-size:10px}
+.adminDemo__miniList small{color:#667487;font-size:8px}
+.adminDemo__miniList b,
+.adminDemo__contentList b{
+  padding:6px 8px;
+  border-radius:999px;
+  background:rgba(218,151,65,.08);
+  color:#c79258;
+  font-size:7px;
+}
+.adminDemo__miniList b.is-live,
+.adminDemo__contentList b.is-live{
+  color:#79d9a4;
+  background:rgba(52,212,134,.08);
+}
+.adminDemo__welcome{
+  display:flex;
+  flex-direction:column;
+  min-height:320px;
+}
+.adminDemo__welcome>span{
+  color:#d99a4a;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+.adminDemo__welcome h2{
+  margin-top:13px;
+  font:400 30px/1.05 Georgia,"Times New Roman",serif;
+}
+.adminDemo__welcome p{
+  margin-top:15px;
+  color:#8994a1;
+  font-size:10px;
+  line-height:1.75;
+}
+.adminDemo__welcome button{
+  margin-top:auto;
+  min-height:45px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid rgba(218,151,65,.20);
+  border-radius:9px;
+  background:linear-gradient(135deg,rgba(183,106,28,.16),rgba(47,128,237,.03));
+  color:#d99a4a;
+  cursor:pointer;
+  font-size:9px;
+}
+.adminDemo__contentGrid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:13px;
+}
+.adminDemo__form{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.adminDemo__form label{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.adminDemo__form label>span{
+  color:#7b8795;
+  font-size:9px;
+}
+.adminDemo__form input,
+.adminDemo__form select,
+.adminDemo__form textarea{
+  width:100%;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:9px;
+  background:#03101d;
+  color:#e6e8ea;
+  padding:12px 13px;
+  outline:none;
+  font-size:10px;
+}
+.adminDemo__form input:focus,
+.adminDemo__form select:focus,
+.adminDemo__form textarea:focus{
+  border-color:rgba(218,151,65,.40);
+}
+.adminDemo__full{
+  grid-column:1/-1;
+}
+.adminDemo__submit{
+  grid-column:1/-1;
+  min-height:48px;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid rgba(218,151,65,.25);
+  border-radius:9px;
+  background:linear-gradient(135deg,#a85e20,#d8963f);
+  color:#fff;
+  cursor:pointer;
+  font-size:9px;
+  font-weight:700;
+}
+.adminDemo__contentList{
+  margin-top:10px;
+}
+.adminDemo__contentList>div{
+  min-height:72px;
+  display:grid;
+  grid-template-columns:38px 1fr auto auto;
+  gap:11px;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.045);
+}
+.adminDemo__contentType{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.15);
+  border-radius:9px;
+  color:#d99a4a;
+}
+.adminDemo__contentList span{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.adminDemo__contentList strong{font-size:10px}
+.adminDemo__contentList small{color:#758192;font-size:8px}
+.adminDemo__contentList em{
+  max-width:280px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#4e5d70;
+  font-size:7px;
+  font-style:normal;
+}
+.adminDemo__contentList button{
+  padding:7px 9px;
+  border:1px solid rgba(255,110,110,.15);
+  border-radius:7px;
+  background:rgba(255,80,80,.04);
+  color:#c87979;
+  cursor:pointer;
+  font-size:8px;
+}
+.adminDemo__placeholder{
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.adminDemo__placeholderIcon{
+  width:72px;height:72px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.20);
+  border-radius:18px;
+  color:#d99a4a;
+}
+.adminDemo__placeholder>span{
+  margin-top:25px;
+  color:#d99a4a;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+.adminDemo__placeholder h2{
+  max-width:650px;
+  margin-top:10px;
+  font:400 31px Georgia,"Times New Roman",serif;
+}
+.adminDemo__placeholder p{
+  max-width:650px;
+  margin-top:13px;
+  color:#82909e;
+  font-size:10px;
+  line-height:1.7;
+}
+@media(max-width:1000px){
+  .adminDemo{
+    grid-template-columns:210px 1fr;
+  }
+  .adminDemo__stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .adminDemo__dashboardGrid,
+  .adminDemo__contentGrid{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:700px){
+  .adminDemo{
+    display:block;
+  }
+  .adminDemo__sidebar{
+    position:relative;
+    width:100%;
+    height:auto;
+    padding:14px;
+  }
+  .adminDemo__menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+  }
+  .adminDemo__sidebarFooter{
+    display:none;
+  }
+  .adminDemo__main{
+    padding:24px 14px 60px;
+  }
+  .adminDemo__topbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .adminDemo__stats{
+    grid-template-columns:1fr 1fr;
+  }
+  .adminDemo__form{
+    grid-template-columns:1fr;
+  }
+  .adminDemo__full,
+  .adminDemo__submit{
+    grid-column:auto;
+  }
+  .adminDemo__contentList>div{
+    grid-template-columns:34px 1fr auto;
+  }
+  .adminDemo__contentList b{
+    display:none;
+  }
+}
+
+/* STEP 57 — PREMIUM CONTENT / VIDEO & PODCAST PAGE */
+.cnt57{
+  min-height:100vh;
+  background:#03101f;
+  color:#f4efe8;
+}
+.cnt57Hero{
+  position:relative;
+  height:410px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(218,151,65,.37);
+}
+.cnt57Hero__image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:69% center;
+}
+.cnt57Hero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#061426 0%,rgba(6,20,38,.98) 31%,rgba(6,20,38,.67) 51%,rgba(6,20,38,.12) 78%),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.2));
+}
+.cnt57Back{
+  position:absolute;
+  z-index:3;
+  left:5.3%;
+  top:26px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#aeb6c0;
+  font-size:10px;
+}
+.cnt57Back span{color:#d99a4a;font-size:16px}
+.cnt57Hero__copy{
+  position:absolute;
+  z-index:2;
+  left:6.2%;
+  top:86px;
+  width:min(540px,43vw);
+}
+.cnt57Eyebrow{
+  color:#dda04f;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.cnt57Hero h1{
+  margin:12px 0 0;
+  font:400 clamp(44px,4.15vw,67px)/.96 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.cnt57Hero h1 strong{
+  color:#d99a4a;
+  font-weight:400;
+}
+.cnt57Hero__copy i{
+  display:block;
+  width:39px;
+  height:2px;
+  margin:20px 0 17px;
+  background:#d99a4a;
+}
+.cnt57Hero__copy p{
+  max-width:530px;
+  color:#dce1e6;
+  font-size:13px;
+  line-height:1.7;
+}
+.cnt57Signature{
+  margin-top:14px;
+  color:#d99a4a;
+  font-family:"Segoe Script","Brush Script MT",cursive;
+  font-size:23px;
+  transform:rotate(-4deg);
+  transform-origin:left center;
+}
+.cnt57Quote{
+  position:absolute;
+  z-index:2;
+  top:95px;
+  right:7%;
+  width:280px;
+  padding-left:28px;
+  border-left:1px solid rgba(218,151,65,.42);
+}
+.cnt57Quote b{
+  display:block;
+  color:#d99a4a;
+  font:400 42px/1 Georgia,serif;
+}
+.cnt57Quote b:last-child{text-align:right}
+.cnt57Quote p{
+  margin:2px 0;
+  color:#eee8e0;
+  font:400 17px/1.7 Georgia,"Times New Roman",serif;
+}
+
+.cnt57Body{
+  position:relative;
+  padding:0 4.6% 55px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(47,128,237,.05),transparent 30%),
+    #03101f;
+}
+.cnt57Tabs{
+  width:min(510px,90vw);
+  height:54px;
+  position:relative;
+  z-index:5;
+  top:-27px;
+  margin:0 auto -8px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  overflow:hidden;
+  border:1px solid rgba(218,151,65,.52);
+  border-radius:999px;
+  background:#071526;
+  box-shadow:0 18px 40px rgba(0,0,0,.24);
+}
+.cnt57Tabs button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:0;
+  background:transparent;
+  color:#e5e8eb;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:700;
+}
+.cnt57Tabs button.is-active{
+  background:linear-gradient(90deg,#bb772b,#d9a650);
+  color:#fff;
+}
+.cnt57Section{
+  max-width:1480px;
+  margin:0 auto;
+  padding-top:18px;
+}
+.cnt57Section__head{
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.cnt57Section__head>div{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#d99a4a;
+}
+.cnt57Section__head span{
+  color:#f0ebe4;
+  font:400 16px Georgia,"Times New Roman",serif;
+}
+.cnt57Section__head>a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#d99a4a;
+  font-size:9px;
+  font-weight:700;
+}
+.cnt57VideoGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.cnt57VideoCard{
+  overflow:hidden;
+  border:1px solid rgba(218,151,65,.38);
+  border-radius:12px;
+  background:linear-gradient(180deg,#07192c,#051423);
+  cursor:pointer;
+  transition:.3s ease;
+}
+.cnt57VideoCard:hover{
+  transform:translateY(-5px);
+  border-color:#d99a4a;
+  box-shadow:0 24px 55px rgba(0,0,0,.25);
+}
+.cnt57VideoCard__thumb{
+  height:178px;
+  position:relative;
+  overflow:hidden;
+  background:#071426;
+}
+.cnt57VideoCard__thumb>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.cnt57VideoCard__fallback{
+  width:100%;
+  height:100%;
+  padding:18px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  background:
+    radial-gradient(circle at 78% 42%,rgba(217,154,74,.26),transparent 22%),
+    linear-gradient(135deg,#091a2d,#1a1515);
+}
+.cnt57VideoCard__fallback--2{
+  background:
+    radial-gradient(circle at 78% 42%,rgba(217,154,74,.21),transparent 24%),
+    linear-gradient(135deg,#16150f,#071729);
+}
+.cnt57VideoCard__fallback--3{
+  background:
+    radial-gradient(circle at 78% 42%,rgba(217,154,74,.18),transparent 22%),
+    linear-gradient(135deg,#081828,#191612);
+}
+.cnt57VideoCard__fallback--4{
+  background:
+    radial-gradient(circle at 78% 42%,rgba(217,154,74,.25),transparent 22%),
+    linear-gradient(135deg,#14110e,#071629);
+}
+.cnt57VideoCard__fallback span{
+  max-width:72%;
+  color:#f1eee9;
+  text-transform:uppercase;
+  font-size:20px;
+  font-weight:800;
+  line-height:1.08;
+}
+.cnt57Play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:46px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  transform:translate(-50%,-50%);
+  border-radius:8px;
+  background:#e21c1c;
+  color:white;
+  font-size:14px;
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+}
+.cnt57VideoCard__thumb small{
+  position:absolute;
+  right:8px;
+  bottom:7px;
+  padding:3px 5px;
+  border-radius:4px;
+  background:rgba(0,0,0,.77);
+  color:#fff;
+  font-size:8px;
+}
+.cnt57VideoCard__body{
+  padding:14px 15px 13px;
+}
+.cnt57VideoCard__body h3{
+  font:400 17px/1.1 Georgia,"Times New Roman",serif;
+}
+.cnt57VideoCard__body p{
+  min-height:38px;
+  margin-top:6px;
+  color:#8c98a5;
+  font-size:9.5px;
+  line-height:1.55;
+}
+.cnt57VideoCard__body>div{
+  margin-top:11px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#778492;
+  font-size:8px;
+}
+.cnt57VideoCard__body b{
+  margin-left:auto;
+  width:29px;height:29px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.45);
+  border-radius:50%;
+  color:#d99a4a;
+}
+.cnt57Hint{
+  margin-top:14px;
+  padding:13px 15px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(218,151,65,.12);
+  border-radius:10px;
+  color:#d99a4a;
+  background:rgba(218,151,65,.025);
+}
+.cnt57Hint p{
+  color:#758393;
+  font-size:9px;
+}
+
+.cnt57PodcastGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.cnt57PodcastCard{
+  min-height:190px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:115px 1fr;
+  gap:14px;
+  border:1px solid rgba(218,151,65,.35);
+  border-radius:12px;
+  background:linear-gradient(145deg,#07192c,#051423);
+}
+.cnt57PodcastArt{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid rgba(218,151,65,.32);
+  border-radius:8px;
+  color:#d99a4a;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(218,151,65,.08),transparent 36%),
+    #061526;
+}
+.cnt57PodcastArt__ring{
+  width:68px;height:68px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(218,151,65,.22);
+  border-radius:50%;
+}
+.cnt57PodcastArt>span{
+  position:absolute;
+  left:0;right:0;bottom:9px;
+  text-align:center;
+  color:#8d704b;
+  font-size:6px;
+  letter-spacing:.13em;
+}
+.cnt57PodcastInfo{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.cnt57PodcastInfo>small{
+  color:#d99a4a;
+  font-size:9px;
+}
+.cnt57PodcastInfo h3{
+  margin-top:7px;
+  font:400 18px/1.08 Georgia,"Times New Roman",serif;
+}
+.cnt57PodcastInfo p{
+  margin-top:8px;
+  color:#8d98a5;
+  font-size:9px;
+  line-height:1.5;
+}
+.cnt57PodcastInfo>div{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.cnt57PodcastInfo strong{
+  color:#d99a4a;
+  font:400 14px Georgia,serif;
+}
+.cnt57PodcastInfo button{
+  min-height:34px;
+  padding:0 13px;
+  border:1px solid rgba(218,151,65,.30);
+  border-radius:6px;
+  background:linear-gradient(135deg,#8f581f,#bb7a2d);
+  color:#fff;
+  cursor:pointer;
+  font-size:9px;
+}
+.cnt57PodcastInfo button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.cnt57Subscribe{
+  max-width:1480px;
+  min-height:78px;
+  margin:16px auto 0;
+  padding:13px 17px;
+  display:grid;
+  grid-template-columns:48px 1fr auto;
+  gap:15px;
+  align-items:center;
+  border:1px solid rgba(218,151,65,.25);
+  border-radius:11px;
+  background:linear-gradient(90deg,#07182a,#041321);
+}
+.cnt57Subscribe__icon{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.26);
+  border-radius:50%;
+  font-size:17px;
+}
+.cnt57Subscribe strong{
+  color:#eee9e2;
+  font:400 14px Georgia,serif;
+}
+.cnt57Subscribe p{
+  margin-top:4px;
+  color:#7f8b98;
+  font-size:9px;
+}
+.cnt57Subscribe>a{
+  min-height:42px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(218,151,65,.38);
+  border-radius:8px;
+  color:#d99a4a;
+  font-size:9px;
+  font-weight:700;
+}
+
+@media(max-width:1100px){
+  .cnt57Quote{display:none}
+  .cnt57VideoGrid{grid-template-columns:repeat(2,1fr)}
+  .cnt57PodcastGrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .cnt57Hero{height:530px}
+  .cnt57Hero__image{object-position:68% center}
+  .cnt57Hero__shade{
+    background:linear-gradient(180deg,rgba(4,16,31,.25),rgba(4,16,31,.96) 56%,#061426 100%);
+  }
+  .cnt57Hero__copy{
+    left:20px;right:20px;top:auto;bottom:35px;width:auto;
+  }
+  .cnt57Hero h1{font-size:48px}
+  .cnt57Hero__copy p{font-size:12px}
+  .cnt57Body{padding:0 18px 40px}
+  .cnt57Tabs{width:92%}
+  .cnt57Section__head{align-items:flex-start}
+  .cnt57Section__head>a{display:none}
+  .cnt57VideoGrid,.cnt57PodcastGrid{grid-template-columns:1fr}
+  .cnt57VideoCard__thumb{height:205px}
+  .cnt57PodcastCard{grid-template-columns:100px 1fr}
+  .cnt57Subscribe{
+    grid-template-columns:42px 1fr;
+  }
+  .cnt57Subscribe>a{
+    grid-column:1/-1;
+    justify-content:center;
+  }
+}
+
+/* STEP 58 — CLEAN CONTENT HERO / NO DUPLICATE TEXT / SHARPER IMAGE */
+.cnt57Hero{
+  height:420px;
+  background:#03101f;
+}
+.cnt57Hero__image{
+  object-fit:cover;
+  object-position:center center;
+  transform:none;
+  filter:saturate(1.06) contrast(1.06) brightness(1.03);
+}
+.cnt57Hero__shade{
+  background:
+    linear-gradient(90deg,
+      #061426 0%,
+      rgba(6,20,38,.98) 27%,
+      rgba(6,20,38,.75) 40%,
+      rgba(6,20,38,.16) 60%,
+      rgba(3,11,21,.16) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.15));
+}
+.cnt57Hero__copy{
+  top:82px;
+}
+.cnt57Quote{
+  top:104px;
+  right:6.2%;
+  width:285px;
+  padding:6px 0 6px 28px;
+  background:linear-gradient(90deg,rgba(3,11,21,.35),transparent);
+  backdrop-filter:blur(1px);
+}
+.cnt57Quote p{
+  text-shadow:0 2px 12px rgba(0,0,0,.7);
+}
+@media(max-width:1100px){
+  .cnt57Hero__image{
+    object-position:58% center;
+  }
+}
+@media(max-width:700px){
+  .cnt57Hero{
+    height:535px;
+  }
+  .cnt57Hero__image{
+    object-position:59% center;
+  }
+  .cnt57Hero__shade{
+    background:
+      linear-gradient(180deg,rgba(4,16,31,.10),rgba(4,16,31,.78) 47%,#061426 82%);
   }
 }
 
