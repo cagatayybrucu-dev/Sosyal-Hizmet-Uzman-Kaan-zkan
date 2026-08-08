@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import heroSlide1 from "./assets/hero-slide-1.jpg";
 import heroSlide2 from "./assets/hero-slide-2.jpg";
 import aboutPhoto from "./assets/kaan-about.jpg";
+import servicesHeroRoom from "./assets/services-hero-room.jpg";
+import processHeroDesk from "./assets/process-hero-desk.jpg";
 
 const Icon = ({ name, size = 22 }) => {
   const common = {
@@ -116,6 +118,8 @@ const process = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
+  const [heroTouchStart, setHeroTouchStart] = useState(null);
 
   const heroSlides = [
     {
@@ -151,6 +155,17 @@ function App() {
   };
 
   const activeHero = heroSlides[heroSlide];
+
+  useEffect(() => {
+    if (heroPaused) return;
+
+    const timer = window.setInterval(() => {
+      setHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 6500);
+
+    return () => window.clearInterval(timer);
+  }, [heroPaused]);
+
   const [scrollProgress, setScrollProgress] = useState(0);
   const [page, setPage] = useState(
     window.location.hash === "#/hakkimda"
@@ -159,8 +174,45 @@ function App() {
       ? "services"
       : window.location.hash === "#/surec"
       ? "process"
+      : window.location.hash === "#/gizlilik"
+      ? "privacy"
+      : window.location.hash === "#/aydinlatma"
+      ? "disclosure"
+      : window.location.hash === "#/cerez-politikasi"
+      ? "cookies"
       : "home"
   );
+
+  useEffect(() => {
+    const seo = {
+      home: ["Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", "Kaan Özkan ile bireysel, çift ve aile danışmanlığı; psikososyal destek ve profesyonel danışmanlık hizmetleri hakkında bilgi alın."],
+      about: ["Hakkımda | Kaan Özkan", "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan'ın mesleki yolculuğu, saha deneyimi ve danışmanlık yaklaşımı."],
+      services: ["Çalışma Alanları | Kaan Özkan", "Bireysel danışmanlık, çift ve aile danışmanlığı, yas, boşanma ve farklı psikososyal güçlüklerde profesyonel çalışma alanlarını inceleyin."],
+      process: ["Danışmanlık Süreci | Kaan Özkan", "Danışmanlık sürecinin nasıl ilerlediğini inceleyin."],
+      privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
+      disclosure: ["KVKK Aydınlatma Metni | Kaan Özkan", "Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni."],
+      cookies: ["Çerez Politikası | Kaan Özkan", "Kaan Özkan web sitesi çerez politikası."]
+    }[page];
+    if (!seo) return;
+    document.title = seo[0];
+    const meta = (key, value, property = false) => {
+      const attr = property ? "property" : "name";
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.content = value;
+    };
+    meta("description", seo[1]);
+    meta("og:title", seo[0], true);
+    meta("og:description", seo[1], true);
+    meta("og:type", "website", true);
+    meta("twitter:card", "summary_large_image");
+    meta("twitter:title", seo[0]);
+    meta("twitter:description", seo[1]);
+  }, [page]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -187,6 +239,12 @@ function App() {
           ? "services"
           : window.location.hash === "#/surec"
           ? "process"
+          : window.location.hash === "#/gizlilik"
+          ? "privacy"
+          : window.location.hash === "#/aydinlatma"
+          ? "disclosure"
+          : window.location.hash === "#/cerez-politikasi"
+          ? "cookies"
           : "home";
       setPage(nextPage);
       setMenuOpen(false);
@@ -225,10 +283,38 @@ function App() {
 
           <nav className={menuOpen ? "nav nav--open" : "nav"}>
             <a href="#anasayfa" onClick={() => setMenuOpen(false)}>Ana Sayfa</a>
-            <a href="#/hizmetler" onClick={() => setMenuOpen(false)}>Hizmetler</a>
-            <a href="#/hakkimda" onClick={() => setMenuOpen(false)}>Hakkımda</a>
-            <a href="#/surec" onClick={() => setMenuOpen(false)}>Süreç</a>
-            <a href="#iletisim" onClick={() => setMenuOpen(false)}>İletişim</a>
+            <a
+              href="#/hizmetler"
+              className={page === "services" ? "is-active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              Hizmetler
+            </a>
+            <a
+              href="#/hakkimda"
+              className={page === "about" ? "is-active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              Hakkımda
+            </a>
+            <a
+              href="#/surec"
+              className={page === "process" ? "is-active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              Süreç
+            </a>
+            <a
+              href="#iletisim"
+              className={
+                page === "home" && window.location.hash === "#iletisim"
+                  ? "is-active"
+                  : ""
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              İletişim
+            </a>
           </nav>
 
           <a className="topCta" href="#iletisim">
@@ -248,9 +334,38 @@ function App() {
           <ServicesDetailPage />
         ) : page === "process" ? (
           <ProcessDetailPage />
+        ) : page === "privacy" ? (
+          <LegalPage type="privacy" />
+        ) : page === "disclosure" ? (
+          <LegalPage type="disclosure" />
+        ) : page === "cookies" ? (
+          <LegalPage type="cookies" />
         ) : (
         <main>
-          <section className="premiumSliderHero" id="anasayfa">
+          <section
+            className="premiumSliderHero"
+            id="anasayfa"
+            onTouchStart={(e) => {
+              setHeroPaused(true);
+              setHeroTouchStart(e.touches[0].clientX);
+            }}
+            onTouchEnd={(e) => {
+              if (heroTouchStart !== null) {
+                const distance = heroTouchStart - e.changedTouches[0].clientX;
+
+                if (Math.abs(distance) > 45) {
+                  if (distance > 0) {
+                    nextHeroSlide();
+                  } else {
+                    prevHeroSlide();
+                  }
+                }
+              }
+
+              setHeroTouchStart(null);
+              setHeroPaused(false);
+            }}
+          >
             <div className="premiumSliderHero__bg">
               {heroSlides.map((slide, index) => (
                 <img
@@ -325,6 +440,16 @@ function App() {
                   onClick={() => setHeroSlide(index)}
                 />
               ))}
+
+              <span
+                key={`${heroSlide}-${heroPaused}`}
+                className={
+                  heroPaused
+                    ? "premiumSliderHero__timer is-paused"
+                    : "premiumSliderHero__timer"
+                }
+                aria-hidden="true"
+              />
             </div>
 
             <div className="premiumSliderHero__features">
@@ -364,7 +489,7 @@ function App() {
                 </span>
                 <div>
                   <strong>Profesyonel Destek</strong>
-                  <p>Bilimsel temelli, etik ve insan odaklı bir yaklaşım.</p>
+                  <p>Etik, insan odaklı ve mesleki sınırlar içinde yürütülen profesyonel destek.</p>
                 </div>
               </div>
             </div>
@@ -463,6 +588,14 @@ function App() {
 
           
 
+          <section className="homeScopeStrip reveal">
+            <div><Icon name="shield" size={20} /></div>
+            <p>
+              Danışmanlık hizmetleri sosyal hizmet ve aile danışmanlığı kapsamında sunulur;
+              tanı ve tıbbi tedavi gerektiren durumlarda ilgili sağlık profesyonellerine yönlendirme yapılır.
+            </p>
+          </section>
+
           <section className="homeTrustStatement reveal">
             <div className="homeTrustStatement__mark">“</div>
             <div>
@@ -478,25 +611,6 @@ function App() {
               YAKLAŞIMIMI TANIYIN
               <Icon name="arrow" size={16} />
             </a>
-          </section>
-
-          <section className="aboutTeaser reveal">
-            <div className="aboutTeaser__left">
-              <span>HAKKIMDA</span>
-              <h2>Kaan Özkan’ı ve mesleki yaklaşımını daha yakından tanıyın.</h2>
-            </div>
-
-            <div className="aboutTeaser__right">
-              <p>
-                Eğitim, saha deneyimi, danışmanlık yaklaşımı ve çalışma alanlarının
-                tamamı ayrı Hakkımda sayfasında.
-              </p>
-
-              <a href="#/hakkimda">
-                DETAYLI HAKKIMDA
-                <Icon name="arrow" size={16} />
-              </a>
-            </div>
           </section>
 
           <section className="section contactSection" id="iletisim">
@@ -542,22 +656,91 @@ function App() {
         </main>
         )}
 
-        <footer className="footer">
-          <div className="footerBrand">
-            <div className="brandMark">KÖ</div>
-            <div>
-              <strong>KAAN ÖZKAN</strong>
-              <span>SOSYAL HİZMET UZMANI</span>
-              <p>Güvenli alan. Net yol. Profesyonel destek.</p>
+        <footer className="premiumFooter">
+          <div className="premiumFooter__glow premiumFooter__glow--one" />
+          <div className="premiumFooter__glow premiumFooter__glow--two" />
+
+          <div className="premiumFooter__top">
+            <div className="premiumFooter__brand">
+              <div className="premiumFooter__brandRow">
+                <div className="premiumFooter__mark">KÖ</div>
+                <div>
+                  <strong>KAAN ÖZKAN</strong>
+                  <span>SOSYAL HİZMET UZMANI & AİLE DANIŞMANI</span>
+                </div>
+              </div>
+
+              <p>
+                Bilimsel, etik ve insan odaklı bir yaklaşımla; bireylerin,
+                çiftlerin ve ailelerin yaşam yolculuklarında profesyonel destek.
+              </p>
+
+              <div className="premiumFooter__badges">
+                <span><Icon name="shield" size={15} /> Gizlilik</span>
+                <span><Icon name="heart" size={15} /> Danışan Odaklı</span>
+                <span><Icon name="check" size={15} /> Etik Yaklaşım</span>
+              </div>
+            </div>
+
+            <div className="premiumFooter__nav">
+              <span className="premiumFooter__title">HIZLI BAĞLANTILAR</span>
+              <a href="#/">Ana Sayfa <Icon name="arrow" size={14} /></a>
+              <a href="#/hakkimda">Hakkımda <Icon name="arrow" size={14} /></a>
+              <a href="#/hizmetler">Hizmetler <Icon name="arrow" size={14} /></a>
+              <a href="#/surec">Süreç <Icon name="arrow" size={14} /></a>
+              <a href="#iletisim">İletişim <Icon name="arrow" size={14} /></a>
+            </div>
+
+            <div className="premiumFooter__contact">
+              <span className="premiumFooter__title">İLETİŞİM & RANDEVU</span>
+
+              <a href="tel:+900000000000" className="premiumFooter__contactRow">
+                <div><Icon name="phone" size={18} /></div>
+                <span>
+                  <small>Telefon</small>
+                  <strong>+90 000 000 00 00</strong>
+                </span>
+              </a>
+
+              <a href="mailto:iletisim@example.com" className="premiumFooter__contactRow">
+                <div><Icon name="mail" size={18} /></div>
+                <span>
+                  <small>E-posta</small>
+                  <strong>iletisim@example.com</strong>
+                </span>
+              </a>
+
+              <a
+                href="https://wa.me/900000000000"
+                className="premiumFooter__contactRow"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div><Icon name="whatsapp" size={18} /></div>
+                <span>
+                  <small>WhatsApp</small>
+                  <strong>Mesaj Gönder</strong>
+                </span>
+              </a>
+
+              <a href="#iletisim" className="premiumFooter__cta">
+                ÜCRETSİZ ÖN GÖRÜŞME
+                <Icon name="arrow" size={16} />
+              </a>
             </div>
           </div>
 
-          <div className="footerCols">
-            <div><span>HIZLI LİNKLER</span><a href="#anasayfa">Ana Sayfa</a><a href="#hizmetler">Hizmetler</a><a href="#/hakkimda">Hakkımda</a><a href="#surec">Süreç</a></div>
-            <div><span>İLETİŞİM</span><a href="tel:+900000000000">Telefon</a><a href="mailto:iletisim@example.com">E-posta</a><a href="#iletisim">Randevu</a></div>
-          </div>
+          <div className="premiumFooter__bottom">
+            <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
 
-          <div className="footerBottom">© 2026 Kaan Özkan — Tüm hakları saklıdır.</div>
+            <div className="premiumFooter__legal">
+              <a href="#/gizlilik">Gizlilik</a>
+              <span>•</span>
+              <a href="#/aydinlatma">Aydınlatma Metni</a>
+              <span>•</span>
+              <a href="#/cerez-politikasi">Çerez Politikası</a>
+            </div>
+          </div>
         </footer>
       </div>
     </>
@@ -571,216 +754,169 @@ function ProcessDetailPage() {
   const steps = [
     {
       no: "01",
-      icon: "search",
-      title: "İlk Temas & İhtiyacı Anlama",
-      text: "İlk görüşmede başvuru nedeninizi, mevcut yaşam koşullarınızı, önceliklerinizi ve beklentilerinizi birlikte değerlendiririz.",
-      detail: "Amaç, süreci acele etmeden doğru çerçevede anlamak ve güvenli bir çalışma zemini oluşturmaktır.",
+      icon: "message",
+      title: "Ön Görüşme",
+      text: "Tanışma ve ihtiyaçların belirlenmesi amacıyla ön görüşme gerçekleştirilir. Sürecin çerçevesi birlikte netleştirilir.",
     },
     {
       no: "02",
-      icon: "compass",
-      title: "Bütüncül Değerlendirme",
-      text: "Yaşanan güçlüğü yalnızca tek bir belirti üzerinden değil; bireysel, ailevi, sosyal ve çevresel etkenlerle birlikte ele alırım.",
-      detail: "Güçlü yönleriniz, destek kaynaklarınız ve değişimi etkileyebilecek yaşam dinamikleri birlikte görünür hale gelir.",
+      icon: "target",
+      title: "Hedef Belirleme",
+      text: "Önceliklerinize göre hedefler belirlenir ve bu hedeflere ulaşmak için kişiye özgü bir yol haritası oluşturulur.",
     },
     {
       no: "03",
-      icon: "bulb",
-      title: "Kişiye Özgü Yol Haritası",
-      text: "İhtiyaçlar ve hedefler doğrultusunda gerçekçi, uygulanabilir ve sürdürülebilir bir danışmanlık planı oluştururuz.",
-      detail: "Her sürecin kendine özgü olduğunu kabul eder; hazır kalıplar yerine kişiye göre şekillenen bir yaklaşım benimserim.",
+      icon: "user",
+      title: "Çalışma ve Uygulama",
+      text: "Belirlenen hedeflere yönelik psikososyal destek yöntemleri kullanılarak farkındalık ve değişim süreci başlatılır.",
     },
     {
       no: "04",
-      icon: "route",
-      title: "Görüşme & Uygulama Süreci",
-      text: "Belirlenen hedefler doğrultusunda görüşmeler ilerler; yeni bakış açıları, iletişim becerileri ve işlevsel başa çıkma yolları üzerinde çalışılır.",
-      detail: "Süreç boyunca danışanın aktif katılımı, kendi kaynaklarını fark etmesi ve değişimin öznesi olması temel önceliktir.",
+      icon: "chart",
+      title: "Değerlendirme",
+      text: "İlerleme düzenli olarak değerlendirilir, ihtiyaçlara göre planlama gözden geçirilir ve yeniden şekillendirilir.",
     },
     {
       no: "05",
       icon: "check",
-      title: "Takip & Değerlendirme",
-      text: "Belirli aralıklarla ilerleme birlikte gözden geçirilir, değişen ihtiyaçlar değerlendirilir ve yol haritası gerektiğinde güncellenir.",
-      detail: "Amaç yalnızca kısa vadeli rahatlama değil, yaşamın içinde sürdürülebilir kazanımlar oluşturabilmektir.",
-    },
-    {
-      no: "06",
-      icon: "heart",
-      title: "Güçlenme & Sürdürülebilirlik",
-      text: "Sürecin sonunda kişinin kendi kararlarını daha güvenle alabilmesi ve yaşamındaki zorluklarla daha işlevsel başa çıkabilmesi hedeflenir.",
-      detail: "Danışmanlık, bağımlılık yaratan değil; bireyin kendi gücünü ve kapasitesini görünür kılan profesyonel bir iş birliğidir.",
+      title: "Sürdürme ve Destek",
+      text: "Kazanımların kalıcı hale gelmesi için destek sürdürülür ve gerektiğinde yeni hedefler belirlenir.",
     },
   ];
 
   return (
-    <main className="processDetailPage">
-      <section className="processDetailHero">
-        <div className="processDetailHero__grid" />
-        <div className="processDetailHero__glow processDetailHero__glow--one" />
-        <div className="processDetailHero__glow processDetailHero__glow--two" />
+    <main className="prc53">
+      <section className="prc53Hero">
+        <img
+          className="prc53Hero__image"
+          src={processHeroDesk}
+          alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası"
+        />
+        <div className="prc53Hero__shade" />
 
-        <a className="processBack" href="#/">
+        <a className="prc53Back" href="#/">
           <span>←</span>
           Ana Sayfaya Dön
         </a>
 
-        <div className="processDetailHero__copy">
-          <div className="processDetailEyebrow">
-            <span />
-            DANIŞMANLIK SÜRECİ
-          </div>
+        <div className="prc53Hero__copy">
+          <span className="prc53Eyebrow">SÜREÇ</span>
 
           <h1>
-            Süreç nasıl
+            Nasıl
             <br />
-            <strong>ilerliyor?</strong>
+            <strong>Çalışıyoruz?</strong>
           </h1>
 
-          <p>
-            Danışmanlık sürecini yalnızca konuşulan bir görüşme olarak değil;
-            güvenli bir ilişki içinde ihtiyaçların anlaşıldığı, hedeflerin
-            netleştiği ve değişimin birlikte yapılandırıldığı profesyonel bir
-            çalışma süreci olarak görüyorum.
-          </p>
+          <i />
 
-          <div className="processHeroTrust">
-            <div>
-              <Icon name="lock" size={22} />
-              <span>Gizlilik</span>
-            </div>
-            <div>
-              <Icon name="shield" size={22} />
-              <span>Etik Yaklaşım</span>
-            </div>
-            <div>
-              <Icon name="users" size={22} />
-              <span>Danışan Odaklı</span>
-            </div>
-          </div>
+          <p>
+            Danışmanlık süreci, sizin ihtiyaçlarınıza ve hedeflerinize uygun
+            şekilde planlanır. Güvenli, saygılı ve iş birliğine dayalı bir süreç
+            yürütürüz.
+          </p>
         </div>
-
-        <aside className="processHeroCard">
-          <div className="processHeroCard__ornament">
-            <span />
-            <b>✦</b>
-            <span />
-          </div>
-
-          <div className="processHeroCard__icon">
-            <Icon name="route" size={40} />
-          </div>
-
-          <span>6 ADIMDA PROFESYONEL SÜREÇ</span>
-          <h2>Net, güvenli ve kişiye özgü bir yol haritası.</h2>
-          <p>
-            Her görüşmenin amacı, sizi hazır bir kalıba uydurmak değil;
-            ihtiyaçlarınızı ve yaşam koşullarınızı doğru anlayarak size özgü bir
-            çalışma zemini oluşturmaktır.
-          </p>
-
-          <a href="#iletisim">
-            Randevu Oluştur
-            <Icon name="arrow" size={16} />
-          </a>
-        </aside>
       </section>
 
-      <section className="processRoadmap">
-        <div className="processRoadmap__head">
-          <span>ADIM ADIM</span>
-          <h2>Danışmanlık yolculuğunun temel aşamaları.</h2>
+      <section className="prc53Flow">
+        <div className="prc53SectionTitle">
+          <span>ÇALIŞMA SÜRECİM</span>
+          <h2>Süreç, kişiye özel ve esnek bir şekilde ilerler.</h2>
         </div>
 
-        <div className="processRoadmap__line" />
-
-        <div className="processRoadmap__grid">
+        <div className="prc53Steps">
           {steps.map((step) => (
-            <article className="processPremiumCard" key={step.no}>
-              <div className="processPremiumCard__top">
-                <span className="processPremiumCard__no">{step.no}</span>
-                <div className="processPremiumCard__icon">
-                  <Icon name={step.icon} size={25} />
-                </div>
+            <article className="prc53Step" key={step.no}>
+              <div className="prc53Step__number">{step.no}</div>
+
+              <div className="prc53Step__icon">
+                <Icon name={step.icon} size={34} />
               </div>
 
               <h3>{step.title}</h3>
               <p>{step.text}</p>
-
-              <div className="processPremiumCard__detail">
-                <span>✦</span>
-                <p>{step.detail}</p>
-              </div>
             </article>
           ))}
         </div>
-      </section>
 
-      <section className="processPrinciples">
-        <div className="processPrinciples__head">
-          <span>ÇALIŞMA İLKELERİ</span>
-          <h2>Süreç boyunca değişmeyen üç temel ilke.</h2>
-        </div>
+        <div className="prc53Trust">
+          <div>
+            <div className="prc53Trust__icon"><Icon name="shield" size={27} /></div>
+            <p><strong>Gizlilik Esastır</strong><span>Tüm görüşmeler gizlilik ilkesi çerçevesinde yürütülür.</span></p>
+          </div>
 
-        <div className="processPrinciples__grid">
-          <article>
-            <div><Icon name="lock" size={28} /></div>
-            <span>01</span>
-            <h3>Gizlilik</h3>
-            <p>Paylaşımlarınız profesyonel etik ve güven çerçevesinde ele alınır.</p>
-          </article>
+          <div>
+            <div className="prc53Trust__icon"><Icon name="user" size={27} /></div>
+            <p><strong>Size Özel Yaklaşım</strong><span>Her danışanın ihtiyaçları farklıdır. Size uygun bir yol haritası oluşturulur.</span></p>
+          </div>
 
-          <article>
-            <div><Icon name="user" size={28} /></div>
-            <span>02</span>
-            <h3>Kişiye Özgülük</h3>
-            <p>Her danışanın yaşam öyküsü, ihtiyaçları ve hedefleri kendine özgüdür.</p>
-          </article>
+          <div>
+            <div className="prc53Trust__icon"><Icon name="calendar" size={27} /></div>
+            <p><strong>Esnek Görüşme Seçenekleri</strong><span>Görüşme biçimi ve sıklığı ihtiyaçlara göre birlikte planlanır.</span></p>
+          </div>
 
-          <article>
-            <div><Icon name="check" size={28} /></div>
-            <span>03</span>
-            <h3>Sürdürülebilirlik</h3>
-            <p>Amaç yalnızca anlık çözüm değil, yaşamın içinde kullanılabilir kazanımlardır.</p>
-          </article>
+          <div>
+            <div className="prc53Trust__icon"><Icon name="heart" size={27} /></div>
+            <p><strong>Sürekli Destek</strong><span>Süreç boyunca ilerleme değerlendirilir ve ihtiyaç halinde destek devam eder.</span></p>
+          </div>
         </div>
       </section>
 
-      <section className="processFinalCta">
-        <div className="processFinalCta__glow" />
+      <section className="prc53Principles">
+        <div className="prc53Principles__mark">KÖ</div>
         <div>
-          <span>İLK ADIM</span>
-          <h2>
-            Süreci konuşmak için
-            <strong> ilk görüşmeyi planlayalım.</strong>
-          </h2>
+          <span>SÜREÇ İLKELERİMİZ</span>
+          <h3>Gönüllülük, gizlilik, saygı, yargılamadan kabul ve iş birliği.</h3>
           <p>
-            Görüşme öncesinde aklınızdaki soruları paylaşabilir, çalışma sürecinin
-            sizin için uygun olup olmadığını birlikte değerlendirebiliriz.
+            Danışmanlık süreci sizin hızınızda ve sizinle birlikte ilerler.
+            İhtiyaçlar, hedefler ve sürecin yönü düzenli olarak birlikte değerlendirilir.
           </p>
         </div>
-
-        <a href="#iletisim">
-          RANDEVU AL
-          <Icon name="arrow" size={18} />
-        </a>
       </section>
     </main>
   );
 }
 
 function ServicesDetailPage() {
+  const quickServices = [
+    {
+      icon: "user",
+      title: "Bireysel Danışmanlık",
+      text: "Kaygı, stres, özsaygı, duygu düzenleme, yaşam olaylarına uyum ve kişisel güçlenme süreçlerinde profesyonel destek.",
+    },
+    {
+      icon: "users",
+      title: "Aile Danışmanlığı",
+      text: "İletişim problemleri, çatışmalar, aile içi roller, sınırlar ve ilişkilerin güçlendirilmesine yönelik danışmanlık.",
+    },
+    {
+      icon: "heart",
+      title: "Evlilik & Çift Danışmanlığı",
+      text: "İlişki sorunları, iletişim, güven, bağlanma, ayrılık ve boşanma süreçlerinde yapılandırılmış destek.",
+    },
+    {
+      icon: "compass",
+      title: "Psikososyal Destek",
+      text: "Zorlayıcı yaşam olayları, kayıp, değişim ve uyum süreçlerinde bireyin kişisel ve sosyal kaynaklarını güçlendiren destek.",
+    },
+    {
+      icon: "message",
+      title: "Gençlere Yönelik Destek",
+      text: "Ergenlik ve genç yetişkinlik döneminde özsaygı, iletişim, kimlik gelişimi, aile ilişkileri ve yaşam uyumuna yönelik destek.",
+    },
+  ];
+
   const groups = [
     {
       no: "01",
       icon: "heart",
       title: "Duygusal İyi Oluş",
       items: [
-        "Anksiyete Bozuklukları",
-        "Depresif Belirtiler",
-        "Yaygın Kaygı Bozukluğu",
-        "Panik Bozukluk",
-        "Obsesif Düşünce Örüntüleri",
+        "Kaygı ve Anksiyete ile İlişkili Psikososyal Güçlükler",
+        "Depresif Belirtilerle Baş Etme ve Psikososyal Destek",
+        "Yoğun ve Süreğen Kaygıyla Baş Etme Süreçleri",
+        "Panik Belirtileriyle Baş Etme ve Psikososyal Destek",
+        "Tekrarlayıcı ve Zorlayıcı Düşünce Örüntüleriyle Baş Etme",
         "Dürtü Kontrol Güçlükleri",
       ],
     },
@@ -818,95 +954,73 @@ function ServicesDetailPage() {
       icon: "check",
       title: "Psikososyal Destek",
       items: [
-        "Dikkat Eksikliği ve Hiperaktivite Bozukluğu (DEHB/ADHD) ile ilişkili psikososyal sorunlar",
+        "DEHB/ADHD ile ilişkili psikososyal ve uyum güçlüklerinde destek",
         "Kişilik Örüntülerine Bağlı İlişki ve Uyum Güçlükleri",
-        "Bipolar Bozukluk Tanısı Bulunan Bireylerin Psikososyal Destek Süreçleri",
-        "Madde Bağımlılığı ve Davranışsal Bağımlılıklar",
+        "Bipolar bozukluk tanısı bulunan bireylerde psikososyal destek ve yaşam düzenine uyum süreçleri",
+        "Madde ve davranışsal bağımlılıklarla ilişkili psikososyal destek süreçleri",
       ],
     },
   ];
 
   return (
-    <main className="servicesDetailPage">
-      <section className="servicesDetailHero">
-        <div className="servicesDetailHero__grid" />
-        <div className="servicesDetailHero__glow servicesDetailHero__glow--one" />
-        <div className="servicesDetailHero__glow servicesDetailHero__glow--two" />
+    <main className="svc52">
+      <section className="svc52Hero">
+        <img className="svc52Hero__image" src={servicesHeroRoom} alt="Sıcak ve sakin danışmanlık görüşme ortamı" />
+        <div className="svc52Hero__shade" />
+        <a className="svc52Back" href="#/"><span>←</span> Ana Sayfaya Dön</a>
 
-        <a className="servicesBack" href="#/">
-          <span>←</span>
-          Ana Sayfaya Dön
-        </a>
-
-        <div className="servicesDetailHero__copy">
-          <div className="servicesDetailEyebrow">
-            <span />
-            HİZMETLER
-          </div>
-
-          <h1>
-            Profesyonel
-            <br />
-            <strong>Çalışma Alanlarım.</strong>
-          </h1>
-
+        <div className="svc52Hero__copy">
+          <span className="svc52Eyebrow">HİZMETLER</span>
+          <h1>Size Nasıl Destek<br/><strong>Olabilirim?</strong></h1>
+          <i />
           <p>
-            Danışmanlık sürecinde her bireyin yaşam öyküsünü, ilişkilerini,
-            sosyal çevresini ve kişisel kaynaklarını birlikte değerlendiriyor;
-            ihtiyaçlara göre şekillenen etik, güvenli ve bütüncül bir çalışma
-            yaklaşımı benimsiyorum.
+            Danışan odaklı, etik değerlere bağlı ve bütüncül bir yaklaşımla;
+            bireysel, ilişkisel ve aile yaşamınızda karşılaştığınız güçlüklerde
+            profesyonel destek sunuyorum.
           </p>
-
-          <div className="servicesDetailHero__meta">
-            <div><strong>01</strong><span>Bireysel</span></div>
-            <div><strong>02</strong><span>Aile & Çift</span></div>
-            <div><strong>03</strong><span>Online</span></div>
-            <div><strong>04</strong><span>Psikososyal</span></div>
-          </div>
         </div>
-
-        <aside className="servicesDetailIntroCard">
-          <div className="servicesDetailIntroCard__icon">
-            <Icon name="compass" size={34} />
-          </div>
-          <span>PROFESYONEL DESTEK</span>
-          <h2>Size uygun çalışma alanını birlikte belirleyelim.</h2>
-          <p>
-            İlk görüşmede ihtiyaçlarınızı, beklentilerinizi ve sürecin sizin için
-            nasıl yapılandırılabileceğini birlikte değerlendiririz.
-          </p>
-          <a href="#iletisim">
-            Randevu Oluştur
-            <Icon name="arrow" size={16} />
-          </a>
-        </aside>
       </section>
 
-      <section className="servicesDetailGridSection">
-        <div className="servicesDetailSectionHead">
-          <span>UZMANLIK ALANLARI</span>
-          <h2>Çalışma alanlarını dört ana başlık altında inceleyebilirsiniz.</h2>
+      <section className="svc52Quick">
+        <div className="svc52SectionTitle">
+          <span>ÇALIŞMA ALANLARIM</span>
+          <h2>Size uygun desteği birlikte belirleyelim.</h2>
         </div>
 
+        <div className="svc52QuickGrid">
+          {quickServices.map((item) => (
+            <article className="svc52QuickCard" key={item.title}>
+              <div className="svc52QuickIcon"><Icon name={item.icon} size={34} /></div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <a href="#svc52-detay">Detaylı Bilgi <Icon name="arrow" size={15}/></a>
+            </article>
+          ))}
+        </div>
+
+        <div className="svc52Trust">
+          <div><Icon name="shield" size={29}/><p><strong>Gizlilik ve Güvenlik</strong><span>Görüşmeler gizlilik ve etik ilkeler çerçevesinde yürütülür.</span></p></div>
+          <div><Icon name="user" size={29}/><p><strong>Bireye Özgü Yaklaşım</strong><span>Her danışanın yaşam öyküsü ve ihtiyacı kendine özgüdür.</span></p></div>
+          <div><Icon name="calendar" size={29}/><p><strong>Esnek Görüşme</strong><span>Uygun görüşme biçimi ve süreç birlikte planlanır.</span></p></div>
+          <div><Icon name="heart" size={29}/><p><strong>Etik & Profesyonel</strong><span>Mesleki sınırlar içinde insan odaklı bir yaklaşım benimsenir.</span></p></div>
+        </div>
+      </section>
+
+      <section id="svc52-detay" className="servicesDetailGridSection svc52Details">
+        <div className="servicesDetailSectionHead">
+          <span>PROFESYONEL ÇALIŞMA ALANLARIM</span>
+          <h2>Destek sunduğum konuları ayrıntılı inceleyebilirsiniz.</h2>
+        </div>
         <div className="servicesDetailGrid">
           {groups.map((group) => (
             <article className="servicesDetailCard" key={group.no}>
               <div className="servicesDetailCard__top">
-                <div>
-                  <span className="servicesDetailCard__no">{group.no}</span>
-                  <h3>{group.title}</h3>
-                </div>
-                <div className="servicesDetailCard__icon">
-                  <Icon name={group.icon} size={25} />
-                </div>
+                <div><span className="servicesDetailCard__no">{group.no}</span><h3>{group.title}</h3></div>
+                <div className="servicesDetailCard__icon"><Icon name={group.icon} size={25}/></div>
               </div>
-
               <div className="servicesDetailCard__list">
                 {group.items.map((item) => (
-                  <div className="servicesDetailItem" key={item}>
-                    <span>✦</span>
-                    <p>{item}</p>
-                  </div>
+                  <div className="servicesDetailItem" key={item}><span>✦</span><p>{item}</p></div>
                 ))}
               </div>
             </article>
@@ -914,168 +1028,286 @@ function ServicesDetailPage() {
         </div>
       </section>
 
-      <section className="servicesDetailNote">
-        <div className="servicesDetailNote__icon">
-          <Icon name="shield" size={25} />
-        </div>
+      <section className="svc52Scope">
+        <div className="svc52Scope__mark">KO</div>
         <div>
-          <span>ÖNEMLİ NOT</span>
-          <h3>Kişiye özgü, etik ve profesyonel değerlendirme.</h3>
+          <span>HİZMET KAPSAMI</span>
+          <h3>Danışmanlık ve psikososyal destek; tanı veya tıbbi tedavi yerine geçmez.</h3>
           <p>
-            Danışmanlık süreci kişisel ihtiyaçlar doğrultusunda planlanır.
-            Gerektiğinde farklı uzmanlık alanlarına veya sağlık hizmetlerine
-            yönlendirme yapılması, profesyonel ve etik yaklaşımın bir parçasıdır.
+            Çalışmalar sosyal hizmet ve aile danışmanlığı çerçevesinde yürütülür.
+            Klinik değerlendirme, psikiyatrik tanı, ilaç düzenlemesi veya tıbbi
+            tedavi gerektiren durumlarda uygun sağlık profesyonellerine yönlendirme yapılır.
           </p>
         </div>
-        <a href="#iletisim">
-          GÖRÜŞME PLANLA
-          <Icon name="arrow" size={16} />
+      </section>
+    </main>
+  );
+}
+
+function LegalPage({ type }) {
+  const content = {
+    privacy: {
+      eyebrow: "GİZLİLİK",
+      title: "Gizlilik Politikası",
+      intro:
+        "Bu sayfa, internet sitesini ziyaret ettiğinizde paylaşılan bilgilerin hangi çerçevede ele alındığını açıklamak amacıyla hazırlanmıştır.",
+      sections: [
+        {
+          title: "1. Genel Yaklaşım",
+          text:
+            "Kaan Özkan tarafından sunulan danışmanlık hizmetlerinde mahremiyet, etik sorumluluk ve kişisel verilerin korunması temel öncelikler arasındadır. İnternet sitesi üzerinden elde edilen bilgiler yalnızca ilgili hizmetlerin yürütülmesi, iletişim kurulması ve kullanıcı deneyiminin iyileştirilmesi amacıyla değerlendirilir.",
+        },
+        {
+          title: "2. Toplanabilecek Bilgiler",
+          text:
+            "Site üzerinden iletişim veya randevu talebi oluşturmanız halinde ad-soyad, telefon numarası, e-posta adresi, tercih edilen görüşme bilgileri ve tarafınızca paylaşılan mesaj içeriği gibi veriler işlenebilir. Teknik olarak zorunlu olması halinde cihaz ve bağlantı bilgileri gibi sınırlı teknik veriler de oluşabilir.",
+        },
+        {
+          title: "3. Kullanım Amaçları",
+          text:
+            "Toplanan bilgiler; iletişim taleplerine yanıt verilmesi, görüşme süreçlerinin planlanması, hizmet kalitesinin sürdürülmesi, hukuki yükümlülüklerin yerine getirilmesi ve bilgi güvenliğinin sağlanması amaçlarıyla kullanılabilir.",
+        },
+        {
+          title: "4. Gizlilik ve Güvenlik",
+          text:
+            "Kişisel verilerin yetkisiz erişim, kayıp, kötüye kullanım veya açıklanmaya karşı korunması için uygun teknik ve idari tedbirlerin uygulanması hedeflenir. Danışmanlık görüşmelerinin içeriği ayrıca mesleki etik ve gizlilik ilkeleri kapsamında değerlendirilir.",
+        },
+        {
+          title: "5. Üçüncü Taraflar",
+          text:
+            "Kişisel veriler, yalnızca hizmetin teknik olarak yürütülmesi için gerekli olması veya kanuni bir yükümlülüğün bulunması halinde ilgili hizmet sağlayıcılar ya da yetkili kamu kurumlarıyla sınırlı şekilde paylaşılabilir.",
+        },
+        {
+          title: "6. Güncellemeler",
+          text:
+            "Bu politika, sitenin işleyişi veya mevzuattaki değişiklikler doğrultusunda güncellenebilir. Güncel metin her zaman bu sayfa üzerinden yayımlanır.",
+        },
+      ],
+    },
+    disclosure: {
+      eyebrow: "KVKK",
+      title: "Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni",
+      intro:
+        "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında; hangi bilgilerin, hangi amaçlarla ve hangi yöntemlerle işlendiğini açık ve anlaşılır şekilde bilmeniz için bu metin hazırlanmıştır.",
+      sections: [
+        {
+          title: "1. Veri Sorumlusu",
+          text:
+            "Bu internet sitesi ve danışmanlık süreçleri kapsamında işlenen kişisel veriler bakımından veri sorumlusu Kaan Özkan'dır. Veri sorumlusuna ait kesin iletişim adresi, telefon ve e-posta bilgileri randevu sistemi yayına alınmadan önce bu metinde ayrıca belirtilecektir.",
+        },
+        {
+          title: "2. Hangi Bilgileri İstiyoruz?",
+          text:
+            "Ön görüşme ve randevu talebinin oluşturulabilmesi için yalnızca ihtiyaçla bağlantılı verilerin alınması hedeflenmektedir. Bunlar; ad-soyad, yaş, telefon numarası, e-posta adresi, tercih edilen görüşme türü, uygun tarih/saat bilgisi ve isteğe bağlı kısa açıklama alanıdır. Kesin doğum tarihi gibi süreç için zorunlu olmayan ek verilerin talep edilmemesi esastır.",
+        },
+        {
+          title: "3. Bu Bilgileri Neden İstiyoruz?",
+          text:
+            "Ad-soyad bilgisi başvuruyu doğru kişiyle eşleştirmek; yaş bilgisi görüşme ve danışmanlık sürecini uygun şekilde değerlendirmek; telefon ve e-posta bilgileri sizinle iletişim kurmak ve randevu hakkında bilgilendirme yapmak; görüşme türü ile tarih/saat tercihleri randevuyu planlamak; kısa açıklama alanı ise başvuru konusunun genel çerçevesini önceden anlayabilmek amacıyla kullanılacaktır.",
+        },
+        {
+          title: "4. Hassas ve Sağlıkla İlgili Bilgiler",
+          text:
+            "Sağlık bilgileri ile bazı kişisel bilgiler özel nitelikli kişisel veri niteliğinde olabilir ve daha sıkı korunmaları gerekir. Bu nedenle ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi, cinsel hayat, biyometrik veya benzeri hassas bilgilerin paylaşılması talep edilmeyecektir. Kullanıcıların da randevu öncesi serbest metin alanında gerekli olmayan hassas bilgileri paylaşmamaları istenecektir.",
+        },
+        {
+          title: "5. Kişisel Verilerin İşlenme Amaçları",
+          text:
+            "Kişisel veriler; ön görüşme ve randevu taleplerinin alınması, sizinle iletişim kurulması, randevunun planlanması ve yönetilmesi, danışmanlık hizmetinin organizasyonu, bilgi güvenliğinin sağlanması, olası uyuşmazlıklarda hakların tesisi veya korunması ve yürürlükteki mevzuattan doğan yükümlülüklerin yerine getirilmesi amaçlarıyla, amaçla bağlantılı, sınırlı ve ölçülü şekilde işlenebilir.",
+        },
+        {
+          title: "6. Toplama Yöntemi ve Hukuki Sebep",
+          text:
+            "Kişisel veriler; internet sitesindeki form, telefon, e-posta, WhatsApp ve benzeri iletişim kanalları üzerinden elektronik veya sözlü yollarla elde edilebilir. Her veri işleme faaliyeti için 6698 sayılı Kanunda yer alan uygun işleme şartı ayrıca belirlenir. Açık rızanın gerekli olduğu bir işlem bulunması halinde açık rıza, bu aydınlatma metninden ayrı ve belirli bir konuya ilişkin olarak alınır.",
+        },
+        {
+          title: "7. Kişisel Veriler Kimlerle Paylaşılabilir?",
+          text:
+            "Kişisel veriler, yalnızca hizmetin yürütülmesi için gerekli olduğu ölçüde ve hukuki şartların bulunması halinde; randevu, e-posta, barındırma veya bilgi teknolojileri gibi teknik hizmet sağlayıcılarla ve kanunen yetkili kamu kurum ve kuruluşlarıyla paylaşılabilir. Kullanılacak gerçek hizmet sağlayıcılar randevu altyapısı kesinleştikten sonra bu metinde açıkça belirtilecektir.",
+        },
+        {
+          title: "8. Saklama Süresi",
+          text:
+            "Kişisel veriler, işlendikleri amaç için gerekli olan süre ve ilgili mevzuatta öngörülen saklama süreleri boyunca tutulur; işleme amacı ve hukuki saklama gerekliliği ortadan kalktığında mevzuata uygun şekilde silinir, yok edilir veya anonim hale getirilir. Randevu altyapısı tamamlandığında her veri kategorisi için uygulanacak saklama süreleri ayrıca netleştirilecektir.",
+        },
+        {
+          title: "9. KVKK Kapsamındaki Haklarınız",
+          text:
+            "6698 sayılı Kanunun 11. maddesi kapsamında; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işleme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme ve Kanunda öngörülen diğer hakları kullanma imkanınız bulunmaktadır.",
+        },
+        {
+          title: "10. Başvuru ve İletişim",
+          text:
+            "KVKK kapsamındaki başvuruların hangi e-posta veya fiziksel adres üzerinden yapılacağı, gerçek iletişim bilgileri kesinleştiğinde bu bölümde yayımlanacaktır. Başvuru kanalının kolay erişilebilir ve kimlik doğrulamaya elverişli şekilde sunulması planlanmaktadır.",
+        },
+      ],
+    },
+    cookies: {
+      eyebrow: "ÇEREZLER",
+      title: "Çerez Politikası",
+      intro:
+        "Bu politika, internet sitesinde kullanılan veya ileride kullanılabilecek çerez ve benzeri teknolojiler hakkında şeffaf bilgi sunmak amacıyla hazırlanmıştır.",
+      sections: [
+        {
+          title: "1. Çerez Nedir?",
+          text:
+            "Çerezler, internet sitesini ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza kaydedilebilen küçük veri dosyalarıdır. Site işlevlerinin çalışmasını sağlamak, tercihleri hatırlamak veya kullanım hakkında sınırlı bilgi edinmek amacıyla kullanılabilir.",
+        },
+        {
+          title: "2. Zorunlu Çerezler",
+          text:
+            "Sitenin güvenli ve temel şekilde çalışması için gerekli olan çerezler, ilgili hizmetin sunulabilmesi amacıyla kullanılabilir. Bu çerezler olmadan bazı temel site fonksiyonları düzgün çalışmayabilir.",
+        },
+        {
+          title: "3. Analitik ve Tercih Çerezleri",
+          text:
+            "İleride ziyaretçi istatistikleri, performans ölçümü veya kullanıcı tercihlerini hatırlamak amacıyla analitik ya da tercih çerezleri kullanılması halinde, kullanılan araçlar ve hukuki dayanakları bu politika üzerinde açıkça belirtilecektir.",
+        },
+        {
+          title: "4. Reklam ve Pazarlama Çerezleri",
+          text:
+            "Bu sürümde reklam veya hedefli pazarlama amaçlı çerez kullanımına ilişkin bir sistem tanımlanmamıştır. Böyle bir teknoloji eklenmesi halinde gerekli bilgilendirme ve uygun olduğu ölçüde tercih/rıza mekanizması ayrıca uygulanacaktır.",
+        },
+        {
+          title: "5. Çerez Tercihleri",
+          text:
+            "Tarayıcı ayarlarınız üzerinden çerezleri silebilir, engelleyebilir veya belirli çerez türlerine ilişkin tercihlerinizi değiştirebilirsiniz. Zorunlu çerezlerin engellenmesi bazı site özelliklerinin çalışmasını etkileyebilir.",
+        },
+        {
+          title: "6. Güncelleme",
+          text:
+            "Siteye yeni analiz, reklam, üçüncü taraf hizmet veya çerez teknolojileri eklenmesi durumunda bu politika gerçek kullanım biçimine göre güncellenecektir.",
+        },
+      ],
+    },
+  }[type];
+
+  return (
+    <main className="legalPage">
+      <section className="legalHero">
+        <div className="legalHero__grid" />
+        <div className="legalHero__glow" />
+
+        <a href="#/" className="legalBack">
+          <span>←</span>
+          Ana Sayfaya Dön
         </a>
+
+        <div className="legalHero__copy">
+          <span>{content.eyebrow}</span>
+          <h1>{content.title}</h1>
+          <p>{content.intro}</p>
+        </div>
+
+        <aside className="legalHero__card">
+          <div className="legalHero__icon">
+            <Icon name={type === "cookies" ? "settings" : "shield"} size={31} />
+          </div>
+          <span>BİLGİLENDİRME</span>
+          <h2>Şeffaflık, gizlilik ve güven.</h2>
+          <p>
+            Bu metinler sitenin mevcut yapısına göre hazırlanmış başlangıç
+            metinleridir. Randevu sistemi ve gerçek iletişim altyapısı
+            tamamlandığında son kez güncellenecektir.
+          </p>
+        </aside>
+      </section>
+
+      <section className="legalContent">
+        <div className="legalContent__toc">
+          <span>İÇERİK</span>
+          {content.sections.map((section) => (
+            <a key={section.title} href={`#legal-${section.title.split(".")[0]}`}>
+              {section.title}
+            </a>
+          ))}
+        </div>
+
+        <article className="legalArticle">
+          {content.sections.map((section) => (
+            <section
+              key={section.title}
+              id={`legal-${section.title.split(".")[0]}`}
+              className="legalArticle__section"
+            >
+              <h2>{section.title}</h2>
+              <p>{section.text}</p>
+            </section>
+          ))}
+
+          <div className="legalArticle__notice">
+            <Icon name="info" size={22} />
+            <div>
+              <strong>Son kontrol notu</strong>
+              <p>
+                İletişim ve randevu altyapısı tamamlandığında veri sorumlusu
+                iletişim bilgileri, kullanılan üçüncü taraf hizmetler ve gerçek
+                çerez/veri akışları bu metinlerle eşleştirilmelidir.
+              </p>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
   );
 }
 
 function AboutDetailPage() {
-  const values = [
-    { icon: "user", title: "İnsan Odaklı", text: "Değeri merkeze alan yaklaşım" },
-    { icon: "shield", title: "Gizlilik ve Güven", text: "Etik ilkelere bağlı, güvenli süreç" },
-    { icon: "check", title: "Çözüm Odaklı", text: "Güç odaklı ve sürdürülebilir çözümler" },
-    { icon: "heart", title: "Bütüncül Bakış", text: "Bireyi sosyal çevresiyle birlikte ele alırım" },
-  ];
-
-  const specialties = [
-    "Aile Danışmanlığı",
-    "Çift Danışmanlığı",
-    "Bireysel Danışmanlık",
-    "Psikososyal Destek",
-  ];
-
   return (
-    <main className="goldAbout">
-      <section className="goldAboutHero">
-        <div className="goldAboutHero__grid" />
-        <div className="goldAboutHero__glow goldAboutHero__glow--one" />
-        <div className="goldAboutHero__glow goldAboutHero__glow--two" />
+    <main className="aboutDirectPage">
+      <section className="aboutDirectHeader">
+        <a href="#/" className="aboutDirectBack">← Ana Sayfaya Dön</a>
 
-        <a className="goldBack" href="#/">
-          <span>←</span>
-          Ana Sayfaya Dön
-        </a>
-
-        <div className="goldAboutHero__left">
-          <div className="goldEyebrow"><span />HAKKIMDA</div>
-
-          <h1>
-            Merhabalar,
-            <br />
-            ben <strong>Kaan ÖZKAN.</strong>
-          </h1>
-
-          <p className="goldLead">
-            Sosyal hizmetin bilimsel yaklaşımı ve aile danışmanlığının bütüncül
-            bakış açısıyla; bireylerin, çiftlerin ve ailelerin yaşam
-            yolculuklarında yanında olmayı, güçlü yönlerini ortaya çıkarmayı ve
-            sürdürülebilir bir değişim sürecine eşlik etmeyi kendime mesleki bir
-            amaç edindim.
-          </p>
-
-          <div className="goldValues">
-            {values.map((item) => (
-              <article className="goldValueCard" key={item.title}>
-                <div className="goldValueIcon"><Icon name={item.icon} size={28} /></div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
+        <div className="aboutDirectHeader__title">
+          <span>HAKKIMDA</span>
+          <h1>Kaan <strong>ÖZKAN</strong></h1>
+          <p>Sosyal Hizmet Uzmanı & Aile Danışmanı</p>
         </div>
+      </section>
 
-        <aside className="goldProfile">
-          <div className="goldProfile__inner">
-            <div className="goldProfile__photo">
-              <img src={aboutPhoto} alt="Kaan Özkan" />
-              <div className="goldProfile__photoShade" />
-            </div>
+      <section className="aboutDirectLayout">
+        <article className="aboutDirectArticle">
+          <div className="aboutDirectArticle__topline">
+            <span>BENİM HİKÂYEM • TAM METİN</span>
+            <div />
+          </div>
 
-            <div className="goldProfile__content">
-              <div className="goldProfile__ornament">
-                <span />
-                <b>✦</b>
-                <span />
-              </div>
+              <p>Merhabalar, ben Kaan ÖZKAN. Sosyal Hizmet Uzmanı ve Aile Danışmanıyım. Meslek hayatımı yalnızca bireylerin yaşadığı sorunları çözmeye değil; onların yaşam öykülerini anlamaya, güçlü yönlerini ortaya çıkarmaya ve sürdürülebilir bir değişim sürecine eşlik etmeye adadım. İnsan davranışını yalnızca bireysel özellikler üzerinden değil; aile, çevre, sosyal sistemler ve yaşam deneyimleriyle birlikte değerlendiren bütüncül bir bakış açısını benimsiyorum.</p>
+              <p>İstanbul Aydın Üniversitesi Sağlık Bilimleri Fakültesi Sosyal Hizmet Bölümü'nden mezun olduktan sonra mesleki gelişimimi yalnızca üniversite eğitimiyle sınırlandırmadım. Eğitim hayatım boyunca farklı yaş grupları ve farklı yaşam deneyimlerine sahip bireylerle çalışabilmek amacıyla gönüllü projelerde, uygulamalı stajlarda ve saha araştırmalarında aktif olarak yer aldım. Böylece sosyal hizmetin teorik yönünü gerçek yaşam deneyimleriyle birleştirme fırsatı elde ettim.</p>
+              <p>Üniversite yıllarında çocuk koruma sistemi, yaşlı bakım hizmetleri, rehabilitasyon merkezleri, sivil toplum kuruluşları ve sosyal hizmet kurumlarında görev alarak sosyal hizmet disiplininin farklı uygulama alanlarını yakından tanıdım. Sulukule Gönüllüleri Derneği, Toplum Gönüllüleri Vakfı (TOG), Florya Çocuk Destek Merkezi (ÇODEM), Kırşehir Aile ve Sosyal Hizmetler İl Müdürlüğü ile palyatif bakım hizmeti sunan Asudem Yaşam ve Sağlık Merkezi gibi kurumlarda yürüttüğüm gönüllülük ve staj çalışmaları; çocuk koruma, sosyal destek mekanizmaları, dezavantajlı gruplarla çalışma, yaşlı refahı ve psikososyal değerlendirme alanlarında önemli saha deneyimleri kazanmamı sağladı.</p>
+              <p>Meslek hayatıma Kırşehir Belediyesi bünyesinde Sosyal Yardım Merkezi'nde Sosyal Çalışmacı olarak başladım. Bu görev sürecinde yüzlerce müracaatçıyla birebir görüşmeler gerçekleştirdim; sosyal inceleme raporlarının hazırlanması, yerinde ev ziyaretleri, psikososyal değerlendirme süreçleri, sosyal yardım mekanizmalarının planlanması ve vaka yönetimi çalışmalarında aktif sorumluluk üstlendim. Her müracaatçının yaşam öyküsünün birbirinden farklı olduğunu, etkili bir sosyal hizmet müdahalesinin ise ancak bireyin sosyal çevresi, aile yapısı, ekonomik koşulları ve psikolojik ihtiyaçları birlikte değerlendirildiğinde mümkün olabileceğini bu süreçte daha derinden deneyimledim.</p>
+              <p>Daha sonra Kırşehir Belediyesi Engelsiz Yaşam Merkezi, BEGEM (Beceri ve Meslek Edindirme Merkezi) ve Bağbaşı Aile Yaşam Merkezi'nde Sosyal Çalışmacı ve Aile Danışmanı olarak görev aldım. Çocuklar, ergenler, yetişkinler, çiftler, aileler ve engelli bireylerle yürüttüğüm danışmanlık süreçlerinde yalnızca mevcut problemleri çözmeye odaklanmak yerine; bireylerin kendi potansiyellerini fark etmelerini, sağlıklı ilişki becerileri geliştirmelerini ve yaşam kalitelerini artırmalarını hedefleyen koruyucu, önleyici ve güçlendirici müdahaleler geliştirdim.</p>
+              <p>Aile danışmanlığı, sosyal hizmet uygulamaları, psikososyal müdahale, travma, kriz yönetimi, çocuk koruma, iletişim becerileri ve mesleki gelişim alanlarında çok sayıda eğitim programına katılarak kendimi sürekli geliştirmeye devam ettim. Çünkü insan davranışını anlamanın ve etkili bir danışmanlık hizmeti sunmanın, yaşam boyu öğrenmeyi benimsemekten geçtiğine inanıyorum.</p>
+              <p>Meslek yaşamım boyunca sosyal hizmetin temel değerleri olan insan hakları, sosyal adalet, eşitlik, etik sorumluluk, gizlilik ve insan onuruna saygı ilkelerini çalışmalarımın merkezine yerleştirdim. Danışmanlık sürecini yalnızca öneriler sunulan bir görüşme olarak değil; danışanın kendisini güven içerisinde ifade edebildiği, yargılanmadan dinlendiği ve değişim için cesaretlendirildiği profesyonel bir iş birliği süreci olarak görüyorum.</p>
+              <p>Çalışmalarımda ağırlıklı olarak bireysel danışmanlık, aile danışmanlığı ve çift danışmanlığı alanlarında hizmet vermekteyim. İletişim problemleri, evlilik ve ilişki çatışmaları, boşanma süreci, güven sorunları, öfke yönetimi, kaygı, yaşam olaylarına uyum güçlüğü, ebeveynlik becerileri, aile içi roller, sınır koyma, benlik saygısı, duygusal dayanıklılık ve psikososyal güçlenme gibi birçok konuda danışanlarıma profesyonel destek sunuyorum.</p>
+              <p>Mesleki uygulamalarımda sosyal hizmetin güç odaklı yaklaşımı, ekolojik sistem yaklaşımı, çözüm odaklı görüşme teknikleri ve aile danışmanlığı ilkelerinden yararlanıyor; her danışanın yaşam öyküsünü kendine özgü bir bütün olarak değerlendiriyorum. Benim için hiçbir danışan yalnızca yaşadığı problemden ibaret değildir. Her bireyin geçmişi, yaşam deneyimleri, güçlü yönleri ve değişim kapasitesi vardır. Danışmanlık sürecindeki temel hedefim, bu potansiyelin ortaya çıkmasına rehberlik etmektir.</p>
+              <p>Akademik gelişimime ve mesleki üretkenliğime de büyük önem veriyorum. Üniversite yıllarında İstanbul Aydın Üniversitesi Sosyal Hizmet Kulübü'nde önce Genel Sekreter, ardından Kulüp Başkanı olarak görev aldım. Bu süreçte çok sayıda bilimsel etkinlik, sosyal sorumluluk projesi, seminer ve öğrenci organizasyonunun planlanması ve yürütülmesinde aktif rol üstlendim. Ayrıca ulusal kongreler, sempozyumlar ve akademik toplantılara katılarak sosyal hizmet alanındaki güncel gelişmeleri yakından takip etmeyi sürdürdüm.</p>
+              <p>Sahadaki çalışmalarımın yanı sıra, bilgi ve deneyimlerimi daha geniş kitlelere ulaştırmayı mesleki sorumluluğumun bir parçası olarak görüyorum. Bu doğrultuda dijital platformlarda sosyal hizmet, aile danışmanlığı, psikososyal güçlenme, sağlıklı ilişkiler, ebeveynlik ve kişisel gelişim konularında bilimsel temelli içerikler üretiyor; toplumun ruh sağlığı okuryazarlığını artırmaya katkı sunmayı amaçlıyorum.</p>
+              <p>Benim için başarılı bir danışmanlık süreci; danışanın yalnızca sorunlarını konuştuğu değil, kendisini yeniden keşfettiği, yaşamına farklı bir bakış açısıyla yön verebildiği ve geleceğe daha güçlü adımlarla ilerleyebildiği bir gelişim yolculuğudur.</p>
+              <p>Her bireyin yaşamında zaman zaman desteğe ihtiyaç duyabileceğine inanıyorum. Doğru zamanda alınan profesyonel destek; yalnızca mevcut sorunların çözümüne değil, daha sağlıklı ilişkiler kurmaya, psikolojik dayanıklılığı artırmaya ve yaşam kalitesini yükseltmeye de önemli katkılar sağlar.</p>
+              <p>Eğer siz de yaşamınızın herhangi bir döneminde profesyonel bir bakış açısına ihtiyaç duyuyor, kendinizi daha iyi anlamak, ilişkilerinizi güçlendirmek veya yaşadığınız güçlüklerle daha sağlıklı başa çıkabilmek için güvenilir bir danışmanlık süreci arıyorsanız, bu yolculukta size bilimsel, etik ve insan odaklı bir yaklaşımla eşlik etmekten memnuniyet duyarım.</p>
+              <p>Boşanma Danışmanlığı ve Yas Danışmanlığı başta olmak üzere yaşamın farklı dönemlerinde ortaya çıkan psikososyal güçlükler üzerine yoğunlaşmaktayım. Danışanlarımla yürüttüğüm profesyonel süreçlerde, her bireyin yaşam öyküsünü, aile dinamiklerini, sosyal çevresini ve kişisel kaynaklarını birlikte değerlendirerek bilimsel temelli, etik ilkelere bağlı ve kişiye özgü bir danışmanlık yaklaşımı benimsiyorum.</p>
+        </article>
 
-              <div className="goldProfile__role">
-                <span />
-                AİLE DANIŞMANI
-                <span />
-              </div>
+        <aside className="aboutDirectProfile">
+          <div className="aboutDirectProfile__photo">
+            <img src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
+          </div>
 
-              <h2>
-                Kaan
-                <strong>ÖZKAN</strong>
-              </h2>
+          <div className="aboutDirectProfile__body">
+            <span>AİLE DANIŞMANI</span>
+            <h2>Kaan Özkan</h2>
+            <p>Sosyal Hizmet Uzmanı</p>
 
-              <div className="goldProfile__shineLine" />
+            <div className="aboutDirectProfile__line" />
 
-              <p className="goldProfile__bio">
-                Aile danışmanlığı, sosyal hizmet uygulamaları ve psikososyal
-                müdahale alanlarında; birey, çift ve ailelere profesyonel destek
-                sunuyorum.
-              </p>
-
-              <ul className="goldSpecialties">
-                {specialties.map((item) => (
-                  <li key={item}>
-                    <span>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="goldSignature">Kaan Özkan</div>
+            <div className="aboutDirectProfile__items">
+              <div><Icon name="shield" size={18} /><span>Etik yaklaşım</span></div>
+              <div><Icon name="lock" size={18} /><span>Gizlilik</span></div>
+              <div><Icon name="heart" size={18} /><span>İnsan odaklı destek</span></div>
             </div>
           </div>
         </aside>
-      </section>
-
-      <section className="goldAboutBody">
-        <div className="goldAboutBody__heading">
-          <span>MESLEKİ YOLCULUK</span>
-          <h2>Deneyim, saha ve danışmanlık yaklaşımım.</h2>
-        </div>
-
-        <div className="goldAboutBody__copy">
-          <p>
-            İstanbul Aydın Üniversitesi Sağlık Bilimleri Fakültesi Sosyal Hizmet
-            Bölümü'nden mezun olduktan sonra mesleki gelişimimi yalnızca
-            üniversite eğitimiyle sınırlandırmadım. Eğitim hayatım boyunca farklı
-            yaş grupları ve farklı yaşam deneyimlerine sahip bireylerle
-            çalışabilmek amacıyla gönüllü projelerde, uygulamalı stajlarda ve saha
-            araştırmalarında aktif olarak yer aldım.
-          </p>
-
-          <p>
-            Üniversite yıllarında çocuk koruma sistemi, yaşlı bakım hizmetleri,
-            rehabilitasyon merkezleri, sivil toplum kuruluşları ve sosyal hizmet
-            kurumlarında görev alarak sosyal hizmet disiplininin farklı uygulama
-            alanlarını yakından tanıdım.
-          </p>
-
-          <p>
-            Meslek hayatıma Kırşehir Belediyesi Sosyal Yardım Merkezi'nde Sosyal
-            Çalışmacı olarak başladım. Ardından Kırşehir Belediyesi Engelsiz
-            Yaşam Merkezi, BEGEM ve Bağbaşı Aile Yaşam Merkezi'nde Sosyal
-            Çalışmacı ve Aile Danışmanı olarak görev aldım.
-          </p>
-
-          <p>
-            Çalışmalarımda güç odaklı yaklaşım, ekolojik sistem yaklaşımı, çözüm
-            odaklı görüşme teknikleri ve aile danışmanlığı ilkelerinden
-            yararlanıyor; her danışanın yaşam öyküsünü kendine özgü bir bütün
-            olarak değerlendiriyorum.
-          </p>
-        </div>
       </section>
     </main>
   );
@@ -1405,699 +1637,6 @@ button{font:inherit}
   .heroVisual{min-height:470px}.visualRing--one{width:350px;height:350px}.visualRing--two{width:270px;height:270px}.heroPanel{width:82%;min-height:410px;padding:24px}.panelLogo{height:190px;font-size:86px}.floatCard{display:none}.heroMini{right:0;bottom:0;width:185px}
   .serviceGrid{grid-template-columns:1fr}.aboutMonogram{min-height:320px}.aboutMonogramRing{width:155px;height:155px;font-size:58px}.aboutStats{grid-template-columns:repeat(2,1fr)}.aboutStats div{border-bottom:1px solid var(--line)}.aboutStats div:nth-child(2){border-right:0}.aboutStats div:nth-child(3),.aboutStats div:nth-child(4){border-bottom:0}
   .contactGrid{grid-template-columns:1fr 1fr}.contactCard--cta{grid-column:1/-1}
-}
-
-/* COMPACT ABOUT TEASER — homepage stays clean */
-.aboutTeaser{
-  margin:0 5.2%;
-  padding:34px 38px;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:40px;
-  align-items:center;
-  border:1px solid rgba(79,156,243,.12);
-  border-radius:18px;
-  background:
-    radial-gradient(circle at 85% 18%,rgba(47,128,237,.07),transparent 26%),
-    linear-gradient(145deg,#071421,#06101b);
-  box-shadow:0 24px 60px rgba(0,0,0,.18);
-}
-.aboutTeaser__left>span{
-  color:#4f9cf3;
-  font-size:8px;
-  letter-spacing:.2em;
-}
-.aboutTeaser__left h2{
-  margin-top:10px;
-  max-width:760px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(28px,3.3vw,46px);
-  font-weight:400;
-  line-height:1.05;
-  letter-spacing:-.03em;
-}
-.aboutTeaser__right p{
-  color:#7f8c9e;
-  font-size:11px;
-  line-height:1.75;
-}
-.aboutTeaser__right a{
-  margin-top:20px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  color:#5ba9ff;
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:.08em;
-}
-.aboutTeaser__right a svg{transition:transform .25s ease}
-.aboutTeaser__right a:hover svg{transform:translateX(4px)}
-
-@media(max-width:820px){
-  .aboutTeaser{
-    margin:0 18px;
-    padding:28px 24px;
-    grid-template-columns:1fr;
-    gap:22px;
-  }
-}
-
-/* DETAILED ABOUT PAGE */
-.aboutActions{display:flex;flex-wrap:wrap;gap:10px}
-
-.aboutDetailPage{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 80% 10%,rgba(47,128,237,.10),transparent 24%),
-    linear-gradient(180deg,#020811,#04101d 48%,#020811);
-}
-.aboutDetailHero{
-  position:relative;
-  min-height:760px;
-  padding:64px 6% 86px;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  align-items:center;
-  gap:7vw;
-  overflow:hidden;
-  border-bottom:1px solid var(--line);
-}
-.aboutDetailHero__glow{
-  position:absolute;
-  right:-180px;top:-80px;
-  width:650px;height:650px;
-  border-radius:50%;
-  background:rgba(47,128,237,.11);
-  filter:blur(120px);
-}
-.aboutDetailHero__grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
-  background-size:70px 70px;
-  mask-image:linear-gradient(to bottom,black,transparent 93%);
-}
-.aboutBack{
-  position:absolute;
-  z-index:3;
-  left:6%;top:34px;
-  display:inline-flex;
-  align-items:center;
-  gap:11px;
-  color:#718097;
-  font-size:8px;
-  letter-spacing:.12em;
-}
-.aboutBack span{color:#5ba9ff;font-size:15px}
-.aboutDetailHero__content{position:relative;z-index:2;max-width:840px}
-.aboutDetailHero__eyebrow{
-  display:flex;align-items:center;gap:10px;
-  color:#4f9cf3;font-size:8px;letter-spacing:.22em;
-}
-.aboutDetailHero__eyebrow span{width:20px;height:1px;background:#4f9cf3}
-.aboutDetailHero h1{
-  margin-top:26px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(58px,6.5vw,106px);
-  font-weight:400;line-height:.92;letter-spacing:-.055em;
-}
-.aboutDetailHero h1 strong{
-  color:#5aa7ff;font-weight:400;
-}
-.aboutDetailHero__lead{
-  max-width:760px;margin-top:30px;
-  color:#a0aaba;font-size:15px;line-height:1.9;
-}
-.aboutDetailHero__tags{
-  margin-top:34px;display:flex;flex-wrap:wrap;gap:9px;
-}
-.aboutDetailHero__tags span{
-  padding:9px 12px;
-  border:1px solid rgba(91,169,255,.12);
-  border-radius:999px;
-  background:rgba(47,128,237,.035);
-  color:#71849b;font-size:7px;letter-spacing:.1em;
-}
-.aboutIdentityCard{
-  position:relative;z-index:2;
-  min-height:480px;padding:38px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:28px;
-  background:
-    radial-gradient(circle at 70% 18%,rgba(47,128,237,.13),transparent 28%),
-    linear-gradient(150deg,rgba(12,28,49,.92),rgba(5,13,24,.82));
-  box-shadow:0 44px 110px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.04);
-}
-.aboutIdentityCard__mark{
-  position:absolute;top:56px;left:50%;transform:translateX(-50%);
-  color:transparent;-webkit-text-stroke:1px rgba(91,169,255,.44);
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:112px;letter-spacing:-.14em;
-}
-.aboutIdentityCard>span{color:#5d6d82;font-size:7px;letter-spacing:.26em}
-.aboutIdentityCard h2{margin-top:10px;font-family:Georgia,"Times New Roman",serif;font-size:36px;font-weight:400}
-.aboutIdentityCard p{margin-top:14px;color:#77869b;font-size:11px;line-height:1.75}
-.aboutIdentityCard__line{height:1px;margin:25px 0 17px;background:linear-gradient(90deg,#4f9cf3,transparent)}
-.aboutIdentityCard__mini{display:flex;gap:16px;color:#4b5c72;font-size:6px;letter-spacing:.13em}
-
-.aboutStory{
-  padding:110px 6%;
-  display:grid;
-  grid-template-columns:220px 1fr;
-  gap:7vw;
-  border-bottom:1px solid var(--line);
-  background:#020a14;
-}
-.aboutStory__side{position:sticky;top:130px;height:max-content}
-.aboutStory__side>span{color:#4f9cf3;font-size:9px}
-.aboutStory__side strong{display:block;margin-top:15px;color:#dfe7f1;font-size:9px;letter-spacing:.16em}
-.aboutStory__side p{margin-top:9px;color:#56657a;font-size:9px;line-height:1.6}
-.aboutStory__content{max-width:1000px}
-.aboutStoryBlock{padding:0 0 46px;margin-bottom:46px;border-bottom:1px solid var(--line)}
-.aboutStoryBlock:last-child{margin-bottom:0}
-.aboutStoryBlock__label{color:#4f9cf3;font-size:8px;letter-spacing:.19em}
-.aboutStoryBlock p{
-  margin-top:20px;color:#9aa5b4;
-  font-size:14px;line-height:1.95;
-}
-.aboutStoryBlock p+p{margin-top:24px}
-
-.aboutValuesPanel{
-  padding:110px 6%;
-  border-bottom:1px solid var(--line);
-  background:
-    radial-gradient(circle at 85% 22%,rgba(47,128,237,.06),transparent 24%),
-    linear-gradient(180deg,#03101d,#020a14);
-}
-.aboutValuesPanel__intro{
-  display:grid;grid-template-columns:110px 1fr;gap:20px;margin-bottom:48px;
-}
-.aboutValuesPanel__intro>span{color:#39495e;font-size:9px}
-.aboutValuesPanel__intro p{color:#4f9cf3;font-size:8px;letter-spacing:.22em}
-.aboutValuesPanel__intro h2{
-  max-width:840px;margin-top:12px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(38px,4.6vw,68px);
-  font-weight:400;line-height:1.02;
-}
-.aboutValuesGrid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
-}
-.aboutValuesGrid article{
-  min-height:250px;padding:28px;
-  border:1px solid var(--line);border-radius:16px;
-  background:linear-gradient(145deg,#071421,#06101b);
-}
-.aboutValuesGrid article>div{
-  width:46px;height:46px;display:grid;place-items:center;
-  border:1px solid rgba(91,169,255,.15);
-  border-radius:10px;color:#5ba9ff;
-}
-.aboutValuesGrid h3{margin-top:28px;font-size:15px;font-weight:500}
-.aboutValuesGrid p{margin-top:12px;color:#718096;font-size:10px;line-height:1.7}
-.aboutValuesPanel__text{
-  max-width:1000px;margin-top:40px;
-  color:#93a0b2;font-size:13px;line-height:1.9;
-}
-
-.aboutExpertise{
-  padding:110px 6%;
-  border-bottom:1px solid var(--line);
-  background:#020a14;
-}
-.aboutExpertise__heading>span{color:#4f9cf3;font-size:8px;letter-spacing:.2em}
-.aboutExpertise__heading h2{
-  max-width:840px;margin-top:14px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(38px,4.5vw,66px);
-  font-weight:400;line-height:1.03;
-}
-.aboutExpertise__chips{
-  margin-top:38px;display:flex;flex-wrap:wrap;gap:9px;
-}
-.aboutExpertise__chips span{
-  padding:10px 13px;
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:999px;
-  background:#071421;color:#728198;
-  font-size:8px;
-}
-.aboutExpertise__copy{
-  margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:50px;
-}
-.aboutExpertise__copy p{color:#95a0b0;font-size:13px;line-height:1.9}
-
-.aboutAcademic{
-  padding:110px 6%;
-  display:grid;grid-template-columns:120px 1fr;gap:40px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg,#020a14,#03101d);
-}
-.aboutAcademic__number{color:#39495e;font-size:9px}
-.aboutAcademic__content{max-width:1000px}
-.aboutAcademic__content>span{color:#4f9cf3;font-size:8px;letter-spacing:.2em}
-.aboutAcademic h2{
-  margin-top:14px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(38px,4.5vw,66px);
-  font-weight:400;line-height:1.03;
-}
-.aboutAcademic p{margin-top:28px;color:#94a0b1;font-size:13px;line-height:1.9}
-
-.aboutClosing{
-  position:relative;overflow:hidden;
-  padding:120px 6%;
-  background:#020811;
-}
-.aboutClosing__glow{
-  position:absolute;right:-150px;top:-180px;
-  width:650px;height:650px;border-radius:50%;
-  background:rgba(47,128,237,.10);filter:blur(120px);
-}
-.aboutClosing>div:last-child{position:relative;z-index:2;max-width:980px}
-.aboutClosing>div>span{color:#4f9cf3;font-size:8px;letter-spacing:.21em}
-.aboutClosing h2{
-  margin-top:16px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(44px,5.3vw,78px);
-  font-weight:400;line-height:1.01;
-}
-.aboutClosing h2 strong{color:#4f9cf3;font-weight:400}
-.aboutClosing p{margin-top:26px;color:#94a0b1;font-size:13px;line-height:1.9}
-.aboutClosing__actions{margin-top:38px;display:flex;gap:10px}
-
-@media(max-width:900px){
-  .aboutDetailHero{grid-template-columns:1fr;min-height:auto;padding:95px 20px 70px}
-  .aboutBack{left:20px;top:25px}
-  .aboutIdentityCard{min-height:420px}
-  .aboutStory{grid-template-columns:1fr;padding:80px 20px}
-  .aboutStory__side{position:static}
-  .aboutValuesPanel,.aboutExpertise,.aboutAcademic,.aboutClosing{padding:80px 20px}
-  .aboutValuesPanel__intro,.aboutAcademic{grid-template-columns:1fr}
-  .aboutValuesGrid{grid-template-columns:repeat(2,1fr)}
-  .aboutExpertise__copy{grid-template-columns:1fr;gap:20px}
-}
-@media(max-width:560px){
-  .aboutDetailHero h1{font-size:52px}
-  .aboutDetailHero__lead{font-size:13px}
-  .aboutIdentityCard{padding:28px;min-height:390px}
-  .aboutIdentityCard__mark{font-size:92px}
-  .aboutStoryBlock p,.aboutValuesPanel__text,.aboutExpertise__copy p,.aboutAcademic p,.aboutClosing p{font-size:12px}
-  .aboutValuesGrid{grid-template-columns:1fr}
-  .aboutValuesGrid article{min-height:210px}
-  .aboutClosing__actions{flex-direction:column}
-  .aboutClosing__actions .btn{width:100%}
-}
-
-/* STEP 26 — RESTORED PREMIUM TOP NAV */
-.topbar{
-  height:98px;
-  padding:0 4.8%;
-  gap:28px;
-  background:
-    linear-gradient(180deg,rgba(4,11,21,.96),rgba(3,9,18,.92));
-  border-bottom:1px solid rgba(255,255,255,.07);
-  box-shadow:
-    0 14px 40px rgba(0,0,0,.20),
-    inset 0 -1px 0 rgba(79,156,243,.025);
-}
-
-.brand{
-  gap:16px;
-}
-
-.brandMark{
-  width:52px;
-  height:52px;
-  padding:0;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(95,173,255,.16);
-  border-radius:14px;
-  background:
-    linear-gradient(145deg,rgba(47,128,237,.07),rgba(255,255,255,.015));
-  color:#f7f9fc;
-  font-size:28px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.04),
-    0 10px 28px rgba(0,0,0,.14);
-}
-
-.brandMark:before{
-  display:none;
-}
-
-.brandText{
-  gap:6px;
-}
-
-.brandText strong{
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:.16em;
-  color:#f3f7fb;
-}
-
-.brandText span{
-  font-size:8px;
-  letter-spacing:.28em;
-  color:#65758a;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,.075);
-  border-radius:18px;
-  background:
-    linear-gradient(180deg,rgba(13,27,47,.82),rgba(5,13,24,.80));
-  box-shadow:
-    0 16px 42px rgba(0,0,0,.24),
-    inset 0 1px 0 rgba(255,255,255,.035);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
-
-.nav a{
-  position:relative;
-  min-width:118px;
-  height:50px;
-  padding:0 20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid transparent;
-  border-radius:12px;
-  color:#a9b4c3;
-  font-size:12.5px;
-  font-weight:600;
-  letter-spacing:.015em;
-  transition:
-    color .28s ease,
-    background .28s ease,
-    border-color .28s ease,
-    transform .28s ease,
-    box-shadow .28s ease;
-}
-
-.nav a::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:12px;
-  opacity:0;
-  background:
-    linear-gradient(145deg,rgba(47,128,237,.12),rgba(255,255,255,.018));
-  transition:opacity .28s ease;
-}
-
-.nav a::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:7px;
-  width:0;
-  height:2px;
-  transform:translateX(-50%);
-  border-radius:999px;
-  background:linear-gradient(90deg,transparent,#65b3ff,transparent);
-  box-shadow:0 0 12px rgba(86,166,255,.48);
-  transition:width .28s ease;
-}
-
-.nav a:hover{
-  color:#fff;
-  border-color:rgba(91,169,255,.18);
-  transform:translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 10px 28px rgba(0,0,0,.16);
-}
-
-.nav a:hover::before{opacity:1}
-.nav a:hover::after{width:52%}
-
-/* Keep Ana Sayfa looking selected on the homepage */
-.nav a:first-child{
-  color:#fff;
-  border-color:rgba(91,169,255,.22);
-  background:
-    linear-gradient(145deg,rgba(38,112,220,.18),rgba(19,57,111,.08));
-}
-
-.nav a:first-child::after{
-  width:44%;
-}
-
-.topCta{
-  min-height:50px;
-  padding:0 22px;
-  gap:10px;
-  border-radius:12px;
-  border-color:rgba(87,165,255,.28);
-  background:
-    linear-gradient(145deg,rgba(47,128,237,.10),rgba(255,255,255,.018));
-  color:#f4f8fd;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.08em;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.045),
-    0 12px 30px rgba(0,0,0,.15);
-}
-
-.topCta:hover{
-  background:
-    linear-gradient(145deg,rgba(47,128,237,.18),rgba(255,255,255,.025));
-  border-color:rgba(98,176,255,.40);
-  transform:translateY(-1px);
-}
-
-@media(max-width:1180px){
-  .topbar{padding:0 3.5%;gap:18px}
-  .nav{gap:5px;padding:6px}
-  .nav a{
-    min-width:98px;
-    height:46px;
-    padding:0 14px;
-    font-size:11px;
-  }
-  .topCta{padding:0 16px}
-}
-
-@media(max-width:900px){
-  .topbar{
-    height:78px;
-    padding:0 18px;
-  }
-
-  .brandMark{
-    width:46px;
-    height:46px;
-    border-radius:12px;
-    font-size:24px;
-  }
-
-  .brandText strong{font-size:10px}
-  .brandText span{font-size:6px}
-
-  .nav{
-    position:fixed;
-    top:78px;
-    left:14px;
-    right:14px;
-    max-height:0;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-    gap:8px;
-    padding:0 12px;
-    border:0;
-    border-radius:0 0 20px 20px;
-    background:rgba(3,10,19,.98);
-    box-shadow:0 28px 60px rgba(0,0,0,.42);
-    transition:max-height .35s ease,padding .35s ease,border-color .35s ease;
-  }
-
-  .nav--open{
-    max-height:440px;
-    padding:14px 12px 18px;
-    border:1px solid rgba(255,255,255,.08);
-  }
-
-  .nav a,
-  .nav a:hover{
-    width:100%;
-    min-width:0;
-    height:54px;
-    padding:0 18px;
-    justify-content:flex-start;
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:12px;
-    background:rgba(255,255,255,.018);
-    color:#c8d2df;
-    font-size:13px;
-    transform:none;
-  }
-
-  .nav a:first-child{
-    border-color:rgba(91,169,255,.22);
-    background:linear-gradient(145deg,rgba(47,128,237,.14),rgba(255,255,255,.02));
-    color:#fff;
-  }
-
-  .nav a::after{display:none}
-  .nav a::before{
-    background:linear-gradient(90deg,rgba(47,128,237,.10),transparent);
-  }
-}
-
-/* STEP 27 — ABOUT PROFILE PHOTO CARD */
-.aboutIdentityCard{
-  padding-top:270px;
-}
-.aboutIdentityCard__photoWrap{
-  position:absolute;
-  top:24px;
-  left:24px;
-  right:24px;
-  height:225px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;
-  background:#071421;
-  box-shadow:
-    0 24px 60px rgba(0,0,0,.30),
-    inset 0 1px 0 rgba(255,255,255,.04);
-}
-.aboutIdentityCard__photo{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 46%;
-  filter:saturate(.88) contrast(1.04) brightness(.86);
-  transform:scale(1.03);
-}
-.aboutIdentityCard__photoShade{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,transparent 45%,rgba(5,13,24,.42) 100%),
-    radial-gradient(circle at 75% 30%,rgba(70,151,255,.10),transparent 32%);
-}
-@media(max-width:900px){
-  .aboutIdentityCard{
-    padding-top:245px;
-  }
-  .aboutIdentityCard__photoWrap{
-    height:200px;
-  }
-}
-@media(max-width:560px){
-  .aboutIdentityCard{
-    padding-top:225px;
-  }
-  .aboutIdentityCard__photoWrap{
-    top:18px;
-    left:18px;
-    right:18px;
-    height:185px;
-    border-radius:17px;
-  }
-}
-
-/* STEP 28 — GOLD PREMIUM ABOUT */
-.goldAbout{
-  min-height:100vh;
-  background:radial-gradient(circle at 78% 18%,rgba(43,99,160,.12),transparent 27%),linear-gradient(180deg,#020914 0%,#020a14 52%,#020811 100%);
-  color:#f6f2eb;
-}
-.goldAboutHero{
-  position:relative;min-height:calc(100vh - 98px);padding:118px 3.2% 86px;
-  display:grid;grid-template-columns:.92fr 1.08fr;gap:5.5vw;align-items:center;
-  overflow:hidden;border-bottom:1px solid rgba(255,255,255,.055);
-}
-.goldAboutHero__grid{position:absolute;inset:0;opacity:.25;background-image:linear-gradient(rgba(255,255,255,.017) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.017) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 95%);pointer-events:none}
-.goldAboutHero__glow{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none}
-.goldAboutHero__glow--one{width:520px;height:520px;right:8%;top:9%;background:rgba(43,120,215,.10)}
-.goldAboutHero__glow--two{width:360px;height:360px;left:-120px;bottom:5%;background:rgba(180,111,32,.045)}
-.goldBack{position:absolute;left:3.2%;top:34px;z-index:4;display:inline-flex;align-items:center;gap:12px;color:#a7a098;font-size:9px}
-.goldBack span{color:#d69033;font-size:17px}
-.goldAboutHero__left{position:relative;z-index:3;max-width:760px}
-.goldEyebrow{display:flex;align-items:center;gap:14px;color:#db963d;font-size:9px;font-weight:700;letter-spacing:.15em}
-.goldEyebrow>span{width:28px;height:2px;background:linear-gradient(90deg,#efb054,#b56b21);box-shadow:0 0 12px rgba(224,151,59,.35)}
-.goldAboutHero h1{margin-top:28px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(62px,6.2vw,112px);font-weight:400;line-height:.86;letter-spacing:-.055em;color:#f6f4f0}
-.goldAboutHero h1 strong{color:transparent;font-weight:400;background:linear-gradient(180deg,#efb25e 0%,#d78b33 58%,#b96820 100%);-webkit-background-clip:text;background-clip:text}
-.goldLead{max-width:710px;margin-top:34px;color:#c4c0ba;font-size:14px;line-height:1.95}
-.goldValues{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
-.goldValueCard{min-height:210px;padding:25px 20px;border:1px solid rgba(224,155,70,.20);border-radius:15px;background:linear-gradient(155deg,rgba(8,23,38,.94),rgba(4,14,25,.88));box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 45px rgba(0,0,0,.14);transition:.3s}
-.goldValueCard:hover{transform:translateY(-5px);border-color:rgba(231,164,79,.36);box-shadow:0 28px 55px rgba(0,0,0,.20)}
-.goldValueIcon{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(235,168,81,.24);border-radius:12px;color:#eea94f;background:rgba(208,126,30,.04)}
-.goldValueCard h3{margin-top:23px;color:#f3eee8;font-size:14px;font-weight:600}
-.goldValueCard p{margin-top:12px;color:#918d87;font-size:10px;line-height:1.65}
-
-.goldProfile{position:relative;z-index:3;padding:18px;border:1px solid rgba(224,155,70,.24);border-radius:28px;background:linear-gradient(145deg,rgba(10,25,41,.92),rgba(4,13,24,.88));box-shadow:0 44px 110px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.035)}
-.goldProfile:before{content:"";position:absolute;top:-2px;left:28%;right:28%;height:2px;background:linear-gradient(90deg,transparent,#67b9ff,transparent);box-shadow:0 0 20px rgba(74,160,255,.46)}
-.goldProfile__inner{min-height:650px;padding:18px;display:grid;grid-template-columns:.98fr 1.02fr;gap:26px;border:1px solid rgba(255,255,255,.065);border-radius:21px;background:radial-gradient(circle at 72% 12%,rgba(43,111,197,.07),transparent 24%),linear-gradient(145deg,rgba(5,18,31,.96),rgba(4,13,23,.94))}
-.goldProfile__photo{position:relative;min-height:610px;overflow:hidden;border:1px solid rgba(221,157,79,.24);border-radius:20px;background:#06101c;box-shadow:0 24px 55px rgba(0,0,0,.24)}
-.goldProfile__photo img{width:100%;height:100%;object-fit:cover;object-position:center 43%;filter:saturate(.92) contrast(1.05) brightness(.88);transform:scale(1.01)}
-.goldProfile__photoShade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(3,10,18,.25) 100%),radial-gradient(circle at 80% 18%,rgba(206,135,49,.05),transparent 30%);pointer-events:none}
-.goldProfile__content{position:relative;padding:24px 24px 22px 10px;display:flex;flex-direction:column;justify-content:center}
-.goldProfile__ornament{display:flex;align-items:center;justify-content:center;gap:15px;color:#d18b35}
-.goldProfile__ornament span{height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(221,151,65,.38))}
-.goldProfile__ornament span:last-child{background:linear-gradient(90deg,rgba(221,151,65,.38),transparent)}
-.goldProfile__ornament b{font-size:21px;font-weight:400}
-.goldProfile__role{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:12px;color:#df963c;font-size:11px;font-weight:600;letter-spacing:.36em}
-.goldProfile__role span{width:30px;height:1px;background:linear-gradient(90deg,#d18b35,transparent)}
-.goldProfile__role span:last-child{background:linear-gradient(90deg,transparent,#d18b35)}
-.goldProfile h2{margin-top:18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,4.4vw,78px);font-weight:400;line-height:.82;letter-spacing:-.045em}
-.goldProfile h2 strong{display:block;margin-top:9px;color:transparent;font-weight:400;background:linear-gradient(180deg,#efb15a,#c97c28);-webkit-background-clip:text;background-clip:text}
-.goldProfile__shineLine{height:1px;margin:28px 0;background:linear-gradient(90deg,rgba(209,139,53,.35),#f0ad55,rgba(209,139,53,.35));box-shadow:0 0 15px rgba(218,146,57,.34)}
-.goldProfile__bio{color:#c8c3bb;font-size:12px;line-height:1.85}
-.goldSpecialties{margin:28px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:17px}
-.goldSpecialties li{display:flex;align-items:center;gap:13px;color:#eee9e2;font-size:12px}
-.goldSpecialties li span{width:23px;height:23px;flex:0 0 auto;display:grid;place-items:center;border:1px solid #c37a28;border-radius:50%;color:#e5a348;font-size:10px}
-.goldSignature{margin-top:36px;color:#d28b35;font-family:"Segoe Script","Brush Script MT",cursive;font-size:31px;transform:rotate(-4deg);transform-origin:left center}
-
-.goldAboutBody{padding:110px 6%;display:grid;grid-template-columns:.65fr 1.35fr;gap:7vw;border-bottom:1px solid rgba(255,255,255,.055);background:#020a14}
-.goldAboutBody__heading>span{color:#d8923a;font-size:8px;letter-spacing:.2em}
-.goldAboutBody__heading h2{margin-top:14px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,4vw,58px);font-weight:400;line-height:1.04}
-.goldAboutBody__copy{columns:2;column-gap:50px}
-.goldAboutBody__copy p{break-inside:avoid;margin:0 0 26px;color:#9a9a98;font-size:12px;line-height:1.95}
-
-@media(max-width:1180px){
-  .goldAboutHero{grid-template-columns:1fr;padding:110px 4% 70px}
-  .goldProfile{max-width:920px}
-  .goldValues{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:820px){
-  .goldAboutHero{padding:90px 18px 60px}
-  .goldBack{left:18px;top:22px}
-  .goldAboutHero h1{font-size:clamp(50px,13vw,72px)}
-  .goldLead{font-size:13px}
-  .goldValues{grid-template-columns:1fr 1fr}
-  .goldProfile{padding:12px;border-radius:22px}
-  .goldProfile__inner{grid-template-columns:1fr;min-height:auto;padding:12px}
-  .goldProfile__photo{min-height:480px}
-  .goldProfile__content{padding:30px 18px 24px}
-  .goldAboutBody{padding:80px 20px;grid-template-columns:1fr}
-  .goldAboutBody__copy{columns:1}
-}
-@media(max-width:520px){
-  .goldValues{grid-template-columns:1fr}
-  .goldValueCard{min-height:170px}
-  .goldProfile__photo{min-height:410px}
-  .goldProfile__role{font-size:9px;letter-spacing:.25em}
-  .goldProfile h2{font-size:54px}
-  .goldSignature{font-size:26px}
 }
 
 /* STEP 29 — PREMIUM PROFESSIONAL SERVICES */
@@ -3729,6 +3268,1405 @@ button{font:inherit}
   .premiumSliderHero__script{
     font-size:27px;
     letter-spacing:-.02em;
+  }
+}
+
+/* STEP 39 — AUTOPLAY + HOVER PAUSE + MOBILE SWIPE */
+.premiumSliderHero{
+  touch-action:pan-y;
+}
+.premiumSliderHero__dots{
+  align-items:center;
+}
+.premiumSliderHero__timer{
+  position:relative;
+  width:52px;
+  height:2px;
+  margin-left:5px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+}
+.premiumSliderHero__timer:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  transform-origin:left center;
+  background:linear-gradient(90deg,#c97b29,#efa94d);
+  animation:heroAutoTimer 6.5s linear forwards;
+}
+.premiumSliderHero__timer.is-paused:after{
+  animation-play-state:paused;
+}
+@keyframes heroAutoTimer{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@media(max-width:760px){
+  .premiumSliderHero__timer{width:38px}
+}
+
+/* STEP 41 — ROUTE-AWARE PREMIUM ACTIVE NAV */
+.nav a:first-child{
+  color:#a9b4c3;
+  border-color:transparent;
+  background:transparent;
+  box-shadow:none;
+}
+.nav a:first-child::after{
+  width:0;
+}
+
+.nav a.is-active{
+  color:#fff;
+  border-color:rgba(226,158,74,.30);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(223,151,63,.10),transparent 62%),
+    linear-gradient(145deg,rgba(189,108,26,.17),rgba(47,128,237,.055));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 10px 28px rgba(0,0,0,.18),
+    0 0 26px rgba(202,126,34,.05);
+}
+
+.nav a.is-active::before{
+  opacity:1;
+}
+
+.nav a.is-active::after{
+  width:54%;
+  background:linear-gradient(90deg,transparent,#e0a04a,transparent);
+  box-shadow:0 0 12px rgba(224,160,74,.44);
+}
+
+.nav a.is-active:hover{
+  color:#fff;
+  border-color:rgba(235,169,84,.38);
+}
+
+@media(max-width:900px){
+  .nav a:first-child{
+    color:#c8d2df;
+    border-color:rgba(255,255,255,.06);
+    background:rgba(255,255,255,.018);
+  }
+
+  .nav a.is-active{
+    color:#fff;
+    border-color:rgba(226,158,74,.28);
+    background:
+      linear-gradient(90deg,rgba(190,111,24,.16),rgba(47,128,237,.035));
+    box-shadow:
+      inset 3px 0 0 #d9953d,
+      inset 0 1px 0 rgba(255,255,255,.04);
+  }
+}
+
+/* STEP 42 — PREMIUM FOOTER */
+.premiumFooter{
+  position:relative;
+  overflow:hidden;
+  padding:72px 5.2% 24px;
+  border-top:1px solid rgba(255,255,255,.06);
+  background:
+    radial-gradient(circle at 10% 20%,rgba(205,131,38,.045),transparent 23%),
+    radial-gradient(circle at 88% 75%,rgba(47,128,237,.05),transparent 25%),
+    #01060d;
+}
+.premiumFooter__glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(100px);
+  pointer-events:none;
+}
+.premiumFooter__glow--one{
+  width:320px;height:320px;
+  left:-100px;top:-80px;
+  background:rgba(202,126,34,.05);
+}
+.premiumFooter__glow--two{
+  width:360px;height:360px;
+  right:-120px;bottom:-120px;
+  background:rgba(47,128,237,.05);
+}
+.premiumFooter__top{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.25fr .65fr .9fr;
+  gap:60px;
+  align-items:start;
+}
+.premiumFooter__brandRow{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.premiumFooter__mark{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(226,158,74,.20);
+  border-radius:15px;
+  background:linear-gradient(145deg,rgba(190,111,24,.08),rgba(47,128,237,.025));
+  color:#f5f1eb;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:29px;
+  letter-spacing:-.12em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.premiumFooter__brandRow strong{
+  display:block;
+  color:#f3f0eb;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.16em;
+}
+.premiumFooter__brandRow span{
+  display:block;
+  margin-top:6px;
+  color:#727f90;
+  font-size:7px;
+  letter-spacing:.22em;
+}
+.premiumFooter__brand>p{
+  max-width:560px;
+  margin-top:22px;
+  color:#7f8996;
+  font-size:11px;
+  line-height:1.8;
+}
+.premiumFooter__badges{
+  margin-top:24px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.premiumFooter__badges span{
+  padding:8px 10px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  border:1px solid rgba(221,151,65,.14);
+  border-radius:999px;
+  background:rgba(190,111,24,.025);
+  color:#918a80;
+  font-size:7px;
+}
+.premiumFooter__badges svg{color:#d9953d}
+
+.premiumFooter__title{
+  display:block;
+  margin-bottom:18px;
+  color:#d8923a;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.premiumFooter__nav{
+  display:flex;
+  flex-direction:column;
+}
+.premiumFooter__nav a{
+  min-height:39px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  border-bottom:1px solid rgba(255,255,255,.045);
+  color:#a5adb8;
+  font-size:10px;
+  transition:color .25s ease,padding-left .25s ease;
+}
+.premiumFooter__nav a:hover{
+  color:#fff;
+  padding-left:4px;
+}
+.premiumFooter__nav svg{color:#d9953d}
+
+.premiumFooter__contact{
+  display:flex;
+  flex-direction:column;
+}
+.premiumFooter__contactRow{
+  padding:11px 0;
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.045);
+}
+.premiumFooter__contactRow>div{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(221,151,65,.15);
+  border-radius:10px;
+  color:#d9953d;
+}
+.premiumFooter__contactRow small{
+  display:block;
+  color:#596879;
+  font-size:7px;
+}
+.premiumFooter__contactRow strong{
+  display:block;
+  margin-top:4px;
+  color:#b9c1cb;
+  font-size:9px;
+  font-weight:500;
+}
+.premiumFooter__cta{
+  margin-top:18px;
+  min-height:48px;
+  padding:0 17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border:1px solid rgba(225,155,70,.25);
+  border-radius:10px;
+  background:linear-gradient(135deg,rgba(187,106,24,.18),rgba(47,128,237,.04));
+  color:#e3a149;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.08em;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.premiumFooter__cta:hover{
+  transform:translateY(-2px);
+  border-color:rgba(234,168,83,.40);
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+.premiumFooter__bottom{
+  position:relative;
+  z-index:2;
+  margin-top:48px;
+  padding-top:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-top:1px solid rgba(255,255,255,.055);
+  color:#475366;
+  font-size:7px;
+}
+.premiumFooter__legal{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.premiumFooter__legal a{
+  color:#596779;
+  transition:color .25s ease;
+}
+.premiumFooter__legal a:hover{color:#aeb7c1}
+.premiumFooter:after{
+  content:"KÖ";
+  position:absolute;
+  right:2%;
+  bottom:-52px;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.022);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:165px;
+  letter-spacing:-.14em;
+  pointer-events:none;
+}
+
+@media(max-width:980px){
+  .premiumFooter__top{
+    grid-template-columns:1fr 1fr;
+  }
+  .premiumFooter__brand{
+    grid-column:1/-1;
+  }
+}
+@media(max-width:700px){
+  .premiumFooter{
+    padding:58px 18px 90px;
+  }
+  .premiumFooter__top{
+    grid-template-columns:1fr;
+    gap:42px;
+  }
+  .premiumFooter__brand{
+    grid-column:auto;
+  }
+  .premiumFooter__brandRow strong{
+    font-size:11px;
+  }
+  .premiumFooter__brand>p{
+    font-size:10px;
+  }
+  .premiumFooter__bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .premiumFooter__legal{
+    flex-wrap:wrap;
+  }
+}
+
+/* STEP 43 — GLOBAL TYPOGRAPHY HIERARCHY / READABILITY */
+
+/* Header navigation */
+.nav a{
+  font-size:11px;
+  line-height:1.25;
+}
+.headerCta{
+  font-size:10px;
+}
+
+/* Hero */
+.premiumSliderHero__eyebrow{
+  font-size:10px;
+  line-height:1.4;
+}
+.premiumSliderHero__content>p{
+  font-size:15px;
+  line-height:1.85;
+}
+.premiumSliderHero__primary,
+.premiumSliderHero__secondary{
+  font-size:10px;
+}
+.premiumSliderHero__features strong{
+  font-size:14px;
+}
+.premiumSliderHero__features p{
+  font-size:11px;
+  line-height:1.6;
+}
+
+/* Homepage services showcase */
+.homeServicesShowcase__eyebrow{
+  font-size:10px;
+}
+.homeServicesShowcase__head>p{
+  font-size:13px;
+  line-height:1.8;
+}
+.homeServiceFeature li{
+  font-size:11px;
+  line-height:1.65;
+}
+.homeServiceFeature a{
+  font-size:10px;
+}
+.homeServicesShowcase__benefit span{
+  font-size:10px;
+}
+.homeServicesShowcase__benefit p{
+  font-size:11px;
+  line-height:1.65;
+}
+.homeServicesShowcase__all span{
+  font-size:10px;
+}
+.homeServicesShowcase__all strong{
+  font-size:13px;
+}
+
+/* Homepage quote / approach section */
+.homeTrustStatement span{
+  font-size:10px;
+}
+.homeTrustStatement p{
+  font-size:12px;
+  line-height:1.75;
+}
+.homeTrustStatement>a{
+  font-size:10px;
+}
+
+/* About page */
+.aboutPage__eyebrow,
+.aboutPage__label,
+.aboutPage__cardEyebrow{
+  font-size:10px;
+}
+.aboutPage__lead,
+.aboutPage__body p{
+  font-size:12px;
+  line-height:1.85;
+}
+.aboutPage__card p,
+.aboutPage__miniCard p{
+  font-size:11px;
+  line-height:1.7;
+}
+.aboutPage__tag,
+.aboutPage__chip{
+  font-size:10px;
+}
+
+/* Services page */
+.servicesPage__eyebrow,
+.servicesPage__label,
+.servicesPage__cardEyebrow{
+  font-size:10px;
+}
+.servicesPage__lead,
+.servicesPage__intro p{
+  font-size:12px;
+  line-height:1.8;
+}
+.servicesPage__card p,
+.servicesPage__card li,
+.servicesPage__note p{
+  font-size:11px;
+  line-height:1.7;
+}
+.servicesPage__chip{
+  font-size:10px;
+}
+
+/* Process page */
+.processPage__eyebrow,
+.processPage__label,
+.processPage__cardEyebrow{
+  font-size:10px;
+}
+.processPage__lead,
+.processPage__intro p{
+  font-size:12px;
+  line-height:1.8;
+}
+.processPage__step p,
+.processPage__principle p,
+.processPage__trust p{
+  font-size:11px;
+  line-height:1.7;
+}
+.processPage__step span,
+.processPage__chip{
+  font-size:10px;
+}
+
+/* Contact */
+.contact .sectionEyebrow,
+.contact .label{
+  font-size:10px;
+}
+.contact p,
+.contact .contactSub,
+.contact .contactItem span{
+  font-size:12px;
+  line-height:1.7;
+}
+.contact .contactItem strong{
+  font-size:12px;
+}
+
+/* Premium footer */
+.premiumFooter__brandRow span{
+  font-size:10px;
+}
+.premiumFooter__brand>p{
+  font-size:12px;
+  line-height:1.75;
+}
+.premiumFooter__badges span{
+  font-size:10px;
+}
+.premiumFooter__title{
+  font-size:10px;
+}
+.premiumFooter__nav a{
+  font-size:11px;
+}
+.premiumFooter__contactRow small{
+  font-size:10px;
+}
+.premiumFooter__contactRow strong{
+  font-size:11px;
+}
+.premiumFooter__cta{
+  font-size:10px;
+}
+.premiumFooter__bottom{
+  font-size:10px;
+}
+
+/* Generic small UI text safety net */
+.eyebrow,
+.sectionEyebrow,
+.kicker,
+.label{
+  font-size:10px;
+}
+
+/* Mobile: avoid tiny text while keeping layout compact */
+@media(max-width:760px){
+  .nav a{
+    font-size:12px;
+  }
+  .premiumSliderHero__eyebrow{
+    font-size:9px;
+  }
+  .premiumSliderHero__content>p{
+    font-size:14px;
+    line-height:1.75;
+  }
+  .premiumSliderHero__features strong{
+    font-size:13px;
+  }
+  .premiumSliderHero__features p{
+    font-size:10.5px;
+  }
+  .homeServicesShowcase__head>p,
+  .aboutPage__lead,
+  .servicesPage__lead,
+  .processPage__lead{
+    font-size:12px;
+  }
+  .homeServiceFeature li,
+  .homeServicesShowcase__benefit p,
+  .homeTrustStatement p{
+    font-size:11px;
+  }
+  .premiumFooter__brand>p,
+  .premiumFooter__nav a,
+  .premiumFooter__contactRow strong{
+    font-size:11px;
+  }
+  .premiumFooter__bottom{
+    font-size:9.5px;
+  }
+}
+
+/* STEP 45 — DIRECT ABOUT PAGE */
+.aboutDirectPage{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 85% 8%,rgba(47,128,237,.08),transparent 25%),
+    linear-gradient(180deg,#020914,#020a14 50%,#020811);
+  color:#f5f1eb;
+}
+.aboutDirectHeader{
+  position:relative;
+  padding:70px 6% 46px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+.aboutDirectBack{
+  display:inline-flex;
+  color:#96918b;
+  font-size:11px;
+}
+.aboutDirectHeader__title{
+  margin-top:42px;
+}
+.aboutDirectHeader__title>span{
+  color:#d9953d;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.20em;
+}
+.aboutDirectHeader__title h1{
+  margin-top:10px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(58px,6vw,94px);
+  font-weight:400;
+  line-height:.92;
+}
+.aboutDirectHeader__title h1 strong{
+  color:#d9953d;
+  font-weight:400;
+}
+.aboutDirectHeader__title p{
+  margin-top:15px;
+  color:#a4adb9;
+  font-size:15px;
+}
+
+.aboutDirectLayout{
+  padding:70px 6% 110px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:70px;
+  align-items:start;
+}
+.aboutDirectArticle{
+  max-width:920px;
+}
+.aboutDirectArticle__topline{
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.aboutDirectArticle__topline span{
+  color:#d9953d;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.aboutDirectArticle__topline div{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(217,149,61,.55),transparent);
+}
+.aboutDirectArticle p{
+  margin:0 0 30px;
+  color:#c1c5ca;
+  font-size:17px;
+  line-height:1.95;
+  letter-spacing:.003em;
+}
+.aboutDirectArticle p:first-of-type{
+  padding:28px 30px;
+  border-left:3px solid #d9953d;
+  border-radius:0 15px 15px 0;
+  background:linear-gradient(90deg,rgba(217,149,61,.07),rgba(47,128,237,.02));
+  color:#ede8e1;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;
+  line-height:1.8;
+}
+.aboutDirectProfile{
+  position:sticky;
+  top:120px;
+  overflow:hidden;
+  border:1px solid rgba(222,151,65,.20);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(9,24,40,.96),rgba(4,13,24,.94));
+  box-shadow:0 34px 80px rgba(0,0,0,.26);
+}
+.aboutDirectProfile__photo{
+  height:360px;
+  overflow:hidden;
+}
+.aboutDirectProfile__photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 42%;
+  filter:saturate(.93) contrast(1.04) brightness(.9);
+}
+.aboutDirectProfile__body{
+  padding:25px 25px 28px;
+}
+.aboutDirectProfile__body>span{
+  color:#d9953d;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.20em;
+}
+.aboutDirectProfile h2{
+  margin-top:8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:35px;
+  font-weight:400;
+}
+.aboutDirectProfile__body>p{
+  margin-top:7px;
+  color:#929cab;
+  font-size:13px;
+}
+.aboutDirectProfile__line{
+  height:1px;
+  margin:22px 0;
+  background:linear-gradient(90deg,#d9953d,transparent);
+}
+.aboutDirectProfile__items{
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+.aboutDirectProfile__items div{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:#aeb6c0;
+  font-size:12px;
+}
+.aboutDirectProfile__items svg{
+  color:#d9953d;
+}
+@media(max-width:900px){
+  .aboutDirectHeader{padding:55px 20px 38px}
+  .aboutDirectLayout{
+    padding:55px 20px 85px;
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+  .aboutDirectProfile{
+    position:static;
+    max-width:520px;
+    order:-1;
+  }
+}
+@media(max-width:600px){
+  .aboutDirectHeader__title h1{font-size:54px}
+  .aboutDirectHeader__title p{font-size:14px}
+  .aboutDirectArticle p{
+    font-size:15px;
+    line-height:1.85;
+  }
+  .aboutDirectArticle p:first-of-type{
+    padding:22px 20px;
+    font-size:17px;
+    line-height:1.75;
+  }
+  .aboutDirectProfile__photo{height:320px}
+}
+
+/* STEP 47 — PREMIUM LEGAL PAGES */
+.legalPage{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 82% 8%,rgba(47,128,237,.08),transparent 25%),
+    linear-gradient(180deg,#020914,#020a14 52%,#020811);
+  color:#f4f1ec;
+}
+.legalHero{
+  position:relative;
+  min-height:520px;
+  padding:105px 6% 70px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:7vw;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+.legalHero__grid{
+  position:absolute;inset:0;pointer-events:none;opacity:.20;
+  background-image:
+    linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,black,transparent 94%);
+}
+.legalHero__glow{
+  position:absolute;right:-100px;top:-80px;
+  width:560px;height:560px;border-radius:50%;
+  background:rgba(47,128,237,.09);filter:blur(110px);
+}
+.legalBack{
+  position:absolute;left:6%;top:32px;z-index:4;
+  display:flex;align-items:center;gap:11px;
+  color:#9b958e;font-size:11px;
+}
+.legalBack span{color:#d9953d;font-size:17px}
+.legalHero__copy{position:relative;z-index:2;max-width:850px}
+.legalHero__copy>span{
+  color:#d9953d;font-size:10px;font-weight:700;letter-spacing:.2em;
+}
+.legalHero h1{
+  margin-top:15px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(48px,5.5vw,82px);
+  font-weight:400;line-height:.96;letter-spacing:-.045em;
+}
+.legalHero__copy>p{
+  max-width:720px;margin-top:24px;
+  color:#aeb4bc;font-size:14px;line-height:1.85;
+}
+.legalHero__card{
+  position:relative;z-index:2;
+  min-height:310px;padding:32px;
+  border:1px solid rgba(222,151,65,.20);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 80% 12%,rgba(47,128,237,.07),transparent 28%),
+    linear-gradient(145deg,rgba(9,24,40,.95),rgba(4,13,24,.93));
+  box-shadow:0 34px 80px rgba(0,0,0,.25);
+}
+.legalHero__icon{
+  width:58px;height:58px;display:grid;place-items:center;
+  border:1px solid rgba(226,158,74,.22);
+  border-radius:14px;color:#d9953d;
+}
+.legalHero__card>span{
+  display:block;margin-top:26px;
+  color:#d9953d;font-size:9px;font-weight:700;letter-spacing:.18em;
+}
+.legalHero__card h2{
+  margin-top:10px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:31px;font-weight:400;line-height:1.08;
+}
+.legalHero__card p{
+  margin-top:16px;color:#8893a0;font-size:11px;line-height:1.75;
+}
+.legalContent{
+  padding:85px 6% 110px;
+  display:grid;
+  grid-template-columns:260px minmax(0,900px);
+  justify-content:center;
+  gap:7vw;
+}
+.legalContent__toc{
+  position:sticky;top:120px;height:max-content;
+  display:flex;flex-direction:column;
+}
+.legalContent__toc>span{
+  margin-bottom:17px;
+  color:#d9953d;font-size:9px;font-weight:700;letter-spacing:.18em;
+}
+.legalContent__toc a{
+  padding:11px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  color:#737f8e;font-size:10px;line-height:1.45;
+  transition:color .25s ease,padding-left .25s ease;
+}
+.legalContent__toc a:hover{
+  color:#d7dbe0;padding-left:4px;
+}
+.legalArticle__section{
+  padding:0 0 34px;
+  margin-bottom:34px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  scroll-margin-top:120px;
+}
+.legalArticle__section h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;font-weight:400;
+}
+.legalArticle__section p{
+  margin-top:15px;
+  color:#b5bac1;font-size:15px;line-height:1.9;
+}
+.legalArticle__notice{
+  margin-top:42px;padding:24px;
+  display:grid;grid-template-columns:auto 1fr;gap:16px;
+  border:1px solid rgba(222,151,65,.17);
+  border-radius:15px;
+  background:linear-gradient(145deg,rgba(217,149,61,.05),rgba(47,128,237,.025));
+}
+.legalArticle__notice>svg{color:#d9953d}
+.legalArticle__notice strong{
+  color:#e8e2da;font-size:12px;
+}
+.legalArticle__notice p{
+  margin-top:7px;color:#8994a0;font-size:11px;line-height:1.7;
+}
+@media(max-width:900px){
+  .legalHero{grid-template-columns:1fr;padding:95px 20px 60px}
+  .legalBack{left:20px;top:24px}
+  .legalHero__card{max-width:680px}
+  .legalContent{grid-template-columns:1fr;padding:70px 20px 90px}
+  .legalContent__toc{position:static}
+}
+@media(max-width:600px){
+  .legalHero h1{font-size:48px}
+  .legalHero__copy>p{font-size:13px}
+  .legalArticle__section h2{font-size:25px}
+  .legalArticle__section p{font-size:14px;line-height:1.82}
+}
+
+/* STEP 48 — UST PANEL OKUNABILIRLIK */
+.nav a{font-size:13px;font-weight:600;letter-spacing:.015em}
+.headerCta{font-size:12px;font-weight:700}
+@media(max-width:900px){.nav a{font-size:14px}.headerCta{font-size:12px}}
+
+/* STEP 49 — KVKK clarity/readability */
+.legalArticle__section:nth-of-type(4){
+  padding:26px 28px;
+  border:1px solid rgba(217,149,61,.18);
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(217,149,61,.055),rgba(47,128,237,.025));
+}
+.legalArticle__section:nth-of-type(4) h2{
+  color:#e4a24b;
+}
+
+/* STEP 50 — ACCESSIBILITY + PROFESSIONAL DETAILS */
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:110px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid #d9953d;
+  outline-offset:4px;
+  border-radius:6px;
+}
+button,
+a{
+  -webkit-tap-highlight-color:rgba(217,149,61,.14);
+}
+button{
+  font:inherit;
+}
+img{
+  max-width:100%;
+}
+@media(max-width:600px){
+  .nav a,
+  .headerCta,
+  button,
+  a{
+    min-height:44px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* STEP 51 — FINAL CONTENT / PROFESSIONAL SCOPE */
+.homeScopeStrip{
+  margin:0;
+  padding:18px 5.2%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border-top:1px solid rgba(255,255,255,.045);
+  border-bottom:1px solid rgba(255,255,255,.045);
+  background:rgba(3,12,22,.62);
+}
+.homeScopeStrip>div{
+  width:38px;height:38px;flex:0 0 auto;
+  display:grid;place-items:center;
+  border:1px solid rgba(222,151,65,.17);
+  border-radius:10px;color:#d9953d;
+}
+.homeScopeStrip p{
+  max-width:980px;
+  color:#8f99a5;
+  font-size:11px;
+  line-height:1.65;
+}
+.servicesScopeNote{
+  margin:0 5.2% 18px;
+  padding:25px 28px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:18px;
+  align-items:start;
+  border:1px solid rgba(222,151,65,.16);
+  border-radius:16px;
+  background:
+    linear-gradient(145deg,rgba(217,149,61,.05),rgba(47,128,237,.025));
+}
+.servicesScopeNote__icon{
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border:1px solid rgba(222,151,65,.20);
+  border-radius:12px;color:#d9953d;
+}
+.servicesScopeNote span{
+  color:#d9953d;font-size:10px;font-weight:700;letter-spacing:.16em;
+}
+.servicesScopeNote h3{
+  margin-top:7px;
+  color:#ece7e0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;font-weight:400;line-height:1.2;
+}
+.servicesScopeNote p{
+  margin-top:9px;
+  color:#8e99a5;
+  font-size:11px;
+  line-height:1.7;
+}
+@media(max-width:700px){
+  .homeScopeStrip{padding:17px 18px;align-items:flex-start}
+  .homeScopeStrip p{font-size:10.5px}
+  .servicesScopeNote{margin:0 18px 18px;padding:22px 20px}
+  .servicesScopeNote h3{font-size:20px}
+}
+
+/* STEP 52 — APPROVED VISUAL STYLE / SERVICES */
+.svc52{background:#03101f;color:#f6f2eb;min-height:100vh}
+.svc52Hero{position:relative;height:430px;overflow:hidden;border-bottom:1px solid rgba(218,151,65,.35)}
+.svc52Hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center}
+.svc52Hero__shade{position:absolute;inset:0;background:linear-gradient(90deg,#061426 0%,rgba(6,20,38,.98) 31%,rgba(6,20,38,.70) 48%,rgba(6,20,38,.08) 78%)}
+.svc52Back{position:absolute;z-index:3;left:5.3%;top:27px;color:#aeb6c0;font-size:10px;display:flex;gap:8px;align-items:center}
+.svc52Back span{color:#d99a4a;font-size:16px}
+.svc52Hero__copy{position:absolute;z-index:2;left:6.2%;top:105px;width:min(520px,42vw)}
+.svc52Eyebrow{color:#dda04f;font-size:14px;font-weight:800;letter-spacing:.08em}
+.svc52Hero h1{margin:14px 0 0;font:400 clamp(43px,4.1vw,65px)/.98 Georgia,"Times New Roman",serif;letter-spacing:-.035em}
+.svc52Hero h1 strong{font-weight:400}
+.svc52Hero__copy i{display:block;width:39px;height:2px;background:#d99a4a;margin:23px 0 20px}
+.svc52Hero__copy p{max-width:530px;color:#e0e4e8;font-size:14px;line-height:1.7}
+.svc52Quick{padding:25px 3.6% 42px;background:radial-gradient(circle at 50% 0,rgba(33,89,143,.08),transparent 32%),#061426}
+.svc52SectionTitle{text-align:center;margin-bottom:22px}
+.svc52SectionTitle span{display:inline-flex;align-items:center;gap:16px;color:#dda04f;font-size:13px;font-weight:800;letter-spacing:.06em}
+.svc52SectionTitle span:before,.svc52SectionTitle span:after{content:"";width:50px;height:1px;background:rgba(218,151,65,.45)}
+.svc52SectionTitle h2{margin-top:6px;font:400 22px/1.2 Georgia,"Times New Roman",serif;color:#eee9e2}
+.svc52QuickGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;max-width:1450px;margin:auto}
+.svc52QuickCard{min-height:275px;padding:22px 18px 18px;text-align:center;border:1px solid rgba(218,151,65,.52);border-radius:12px;background:linear-gradient(180deg,rgba(8,28,50,.9),rgba(5,20,37,.96));box-shadow:0 18px 45px rgba(0,0,0,.18);transition:.3s ease}
+.svc52QuickCard:hover{transform:translateY(-5px);border-color:#d99a4a;box-shadow:0 24px 55px rgba(0,0,0,.28)}
+.svc52QuickIcon{width:66px;height:66px;margin:0 auto 15px;display:grid;place-items:center;border:2px solid #d99a4a;border-radius:50%;color:#d99a4a}
+.svc52QuickCard h3{font-size:15px;color:#f5f0e9;margin-bottom:11px}
+.svc52QuickCard p{color:#c2c9d1;font-size:11.5px;line-height:1.65;min-height:92px}
+.svc52QuickCard a{margin-top:11px;padding-top:13px;border-top:1px solid rgba(218,151,65,.30);display:flex;justify-content:center;align-items:center;gap:8px;color:#dda04f;font-size:11px;font-weight:700}
+.svc52Trust{max-width:1450px;margin:20px auto 0;padding:20px 25px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(7,26,46,.86);box-shadow:0 15px 38px rgba(0,0,0,.20)}
+.svc52Trust>div{display:flex;align-items:center;gap:15px;padding:0 20px;border-right:1px solid rgba(218,151,65,.24);color:#d99a4a}
+.svc52Trust>div:last-child{border-right:0}
+.svc52Trust p{display:flex;flex-direction:column;gap:5px}
+.svc52Trust strong{color:#f3eee8;font-size:11.5px}
+.svc52Trust span{color:#aeb8c3;font-size:9.5px;line-height:1.5}
+.svc52Details{padding-top:60px!important}
+.svc52Scope{margin:0 3.6% 55px;padding:25px 35px;display:grid;grid-template-columns:90px 1fr;align-items:center;gap:25px;border:1px solid rgba(218,151,65,.45);border-radius:14px;background:linear-gradient(90deg,#f4e8d8,#fff8ec);color:#142033;box-shadow:0 20px 50px rgba(0,0,0,.16)}
+.svc52Scope__mark{width:70px;height:70px;display:grid;place-items:center;border:1px solid rgba(170,108,39,.45);border-radius:50%;font:400 25px Georgia,serif;color:#b97830}
+.svc52Scope span{color:#a8682d;font-size:9px;font-weight:800;letter-spacing:.14em}
+.svc52Scope h3{margin-top:5px;font:700 18px/1.25 Georgia,serif}
+.svc52Scope p{margin-top:7px;font-size:11px;line-height:1.65;color:#3e4650}
+@media(max-width:1050px){
+ .svc52QuickGrid{grid-template-columns:repeat(2,1fr)}
+ .svc52QuickCard:last-child{grid-column:1/-1}
+ .svc52Trust{grid-template-columns:repeat(2,1fr);gap:20px}
+ .svc52Trust>div{border-right:0}
+}
+@media(max-width:700px){
+ .svc52Hero{height:530px}
+ .svc52Hero__image{object-position:66% center}
+ .svc52Hero__shade{background:linear-gradient(180deg,rgba(4,16,31,.30),rgba(4,16,31,.96) 58%,#061426 100%)}
+ .svc52Hero__copy{left:20px;right:20px;top:auto;bottom:34px;width:auto}
+ .svc52Hero h1{font-size:46px}
+ .svc52Hero__copy p{font-size:12.5px}
+ .svc52Quick{padding:25px 18px 35px}
+ .svc52QuickGrid{grid-template-columns:1fr}
+ .svc52QuickCard:last-child{grid-column:auto}
+ .svc52Trust{grid-template-columns:1fr;padding:20px}
+ .svc52Trust>div{padding:10px 0}
+ .svc52Scope{margin:0 18px 35px;padding:23px 20px;grid-template-columns:1fr}
+ .svc52Scope__mark{width:58px;height:58px}
+}
+
+/* STEP 53 — PROCESS PAGE / APPROVED MATCHING DESIGN */
+.prc53{
+  min-height:100vh;
+  color:#f5f0e9;
+  background:#04101f;
+}
+.prc53Hero{
+  position:relative;
+  height:430px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(218,151,65,.38);
+}
+.prc53Hero__image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:72% center;
+}
+.prc53Hero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#061426 0%,rgba(6,20,38,.98) 31%,rgba(6,20,38,.72) 48%,rgba(6,20,38,.08) 79%);
+}
+.prc53Back{
+  position:absolute;
+  z-index:3;
+  left:5.3%;
+  top:27px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#aeb6c0;
+  font-size:10px;
+}
+.prc53Back span{color:#d99a4a;font-size:16px}
+.prc53Hero__copy{
+  position:absolute;
+  z-index:2;
+  left:6.2%;
+  top:104px;
+  width:min(545px,43vw);
+}
+.prc53Eyebrow{
+  color:#dda04f;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.prc53Hero h1{
+  margin:14px 0 0;
+  font:400 clamp(43px,4.1vw,65px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.prc53Hero h1 strong{font-weight:400}
+.prc53Hero__copy i{
+  display:block;
+  width:39px;height:2px;
+  margin:23px 0 20px;
+  background:#d99a4a;
+}
+.prc53Hero__copy p{
+  max-width:540px;
+  color:#e0e4e8;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.prc53Flow{
+  padding:24px 3.6% 30px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(33,89,143,.08),transparent 33%),
+    #061426;
+}
+.prc53SectionTitle{
+  text-align:center;
+  margin-bottom:28px;
+}
+.prc53SectionTitle span{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  color:#dda04f;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+.prc53SectionTitle span:before,
+.prc53SectionTitle span:after{
+  content:"";
+  width:50px;height:1px;
+  background:rgba(218,151,65,.48);
+}
+.prc53SectionTitle h2{
+  margin-top:7px;
+  color:#eee9e2;
+  font:400 22px/1.2 Georgia,"Times New Roman",serif;
+}
+
+/* New linked roadmap card design */
+.prc53Steps{
+  position:relative;
+  z-index:1;
+  max-width:1450px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+}
+.prc53Steps:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:7%;
+  right:7%;
+  top:54px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(218,151,65,.58) 10%,rgba(218,151,65,.58) 90%,transparent);
+}
+.prc53Step{
+  position:relative;
+  min-height:278px;
+  padding:27px 20px 22px;
+  text-align:left;
+  overflow:visible;
+  border:1px solid rgba(218,151,65,.55);
+  border-radius:12px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(36,90,143,.08),transparent 30%),
+    linear-gradient(145deg,rgba(8,29,52,.94),rgba(4,17,32,.98));
+  box-shadow:0 18px 48px rgba(0,0,0,.19);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.prc53Step:not(:last-child):after{
+  content:"";
+  position:absolute;
+  top:52px;
+  right:-24px;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#d99a4a;
+  border:3px solid #061426;
+  box-shadow:0 0 0 1px rgba(218,151,65,.38);
+}
+.prc53Step:hover{
+  transform:translateY(-6px);
+  border-color:#dda04f;
+  box-shadow:0 28px 64px rgba(0,0,0,.28);
+}
+.prc53Step__number{
+  position:absolute;
+  top:18px;
+  left:18px;
+  width:38px;height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(218,151,65,.52);
+  border-radius:50%;
+  color:#dda04f;
+  background:rgba(218,151,65,.035);
+  font:700 12px Georgia,"Times New Roman",serif;
+}
+.prc53Step__icon{
+  width:58px;height:58px;
+  margin:7px 0 22px auto;
+  display:grid;
+  place-items:center;
+  color:#d99a4a;
+}
+.prc53Step h3{
+  color:#f5f0e9;
+  font-size:15px;
+  margin-bottom:12px;
+}
+.prc53Step p{
+  color:#c2c9d1;
+  font-size:11.5px;
+  line-height:1.7;
+}
+
+.prc53Trust{
+  max-width:1450px;
+  margin:22px auto 0;
+  padding:15px 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(218,151,65,.35);
+  border-radius:13px;
+  background:linear-gradient(180deg,rgba(7,26,46,.92),rgba(5,20,37,.96));
+  box-shadow:0 15px 38px rgba(0,0,0,.20);
+}
+.prc53Trust>div{
+  min-height:112px;
+  padding:15px 20px;
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:13px;
+  align-items:center;
+  border-right:1px solid rgba(218,151,65,.25);
+}
+.prc53Trust>div:last-child{border-right:0}
+.prc53Trust__icon{
+  width:46px;height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(218,151,65,.42);
+  border-radius:50%;
+  color:#d99a4a;
+}
+.prc53Trust p{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.prc53Trust strong{
+  color:#f3eee8;
+  font-size:11.5px;
+}
+.prc53Trust span{
+  color:#aeb8c3;
+  font-size:9.5px;
+  line-height:1.5;
+}
+
+.prc53Principles{
+  margin:18px 3.6% 55px;
+  min-height:118px;
+  display:grid;
+  grid-template-columns:160px 1fr;
+  overflow:hidden;
+  border:1px solid rgba(218,151,65,.50);
+  border-radius:14px;
+  background:linear-gradient(90deg,#f1e3d1,#fff7eb);
+  color:#142033;
+  box-shadow:0 20px 50px rgba(0,0,0,.16);
+}
+.prc53Principles__mark{
+  display:grid;
+  place-items:center;
+  border-right:1px solid rgba(167,103,35,.32);
+  background:#071426;
+  color:#d99a4a;
+  font:400 31px Georgia,"Times New Roman",serif;
+  letter-spacing:-.10em;
+}
+.prc53Principles>div:last-child{
+  padding:22px 28px;
+}
+.prc53Principles span{
+  color:#a8682d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.prc53Principles h3{
+  margin-top:4px;
+  font:700 18px/1.25 Georgia,"Times New Roman",serif;
+}
+.prc53Principles p{
+  margin-top:7px;
+  color:#3e4650;
+  font-size:11px;
+  line-height:1.65;
+}
+
+@media(max-width:1050px){
+  .prc53Steps{grid-template-columns:repeat(2,1fr)}
+  .prc53Steps:before,.prc53Step:after{display:none!important}
+  .prc53Step:last-child{grid-column:1/-1}
+  .prc53Trust{grid-template-columns:repeat(2,1fr)}
+  .prc53Trust>div:nth-child(2){border-right:0}
+  .prc53Trust>div:nth-child(3),
+  .prc53Trust>div:nth-child(4){border-top:1px solid rgba(218,151,65,.18)}
+}
+@media(max-width:700px){
+  .prc53Hero{height:530px}
+  .prc53Hero__image{object-position:66% center}
+  .prc53Hero__shade{
+    background:linear-gradient(180deg,rgba(4,16,31,.28),rgba(4,16,31,.96) 58%,#061426 100%);
+  }
+  .prc53Hero__copy{
+    left:20px;right:20px;top:auto;bottom:34px;width:auto;
+  }
+  .prc53Hero h1{font-size:46px}
+  .prc53Hero__copy p{font-size:12.5px}
+  .prc53Flow{padding:24px 18px 30px}
+  .prc53Steps{grid-template-columns:1fr}
+  .prc53Step:last-child{grid-column:auto}
+  .prc53Trust{grid-template-columns:1fr;padding:14px}
+  .prc53Trust>div,
+  .prc53Trust>div:nth-child(2),
+  .prc53Trust>div:nth-child(3),
+  .prc53Trust>div:nth-child(4){
+    border-right:0;
+    border-top:1px solid rgba(218,151,65,.18);
+  }
+  .prc53Trust>div:first-child{border-top:0}
+  .prc53Principles{
+    margin:18px 18px 35px;
+    grid-template-columns:1fr;
+  }
+  .prc53Principles__mark{
+    min-height:78px;
+    border-right:0;
+    border-bottom:1px solid rgba(167,103,35,.32);
+  }
+}
+
+/* STEP 54 — PROCESS HERO IMAGE FIT FIX */
+.prc53Hero__image{
+  object-fit:cover;
+  object-position:66% 50%;
+  transform:scale(1);
+}
+@media(min-width:1200px){
+  .prc53Hero__image{
+    object-position:68% 48%;
+  }
+}
+@media(max-width:700px){
+  .prc53Hero__image{
+    object-position:72% 50%;
   }
 }
 
