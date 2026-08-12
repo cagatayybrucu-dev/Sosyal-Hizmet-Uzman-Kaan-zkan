@@ -151,6 +151,7 @@ function App() {
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [heroTouchStart, setHeroTouchStart] = useState(null);
+  const [homeTextSlide, setHomeTextSlide] = useState(0);
 
   const defaultHomeContent = {
     eyebrow: "ÇİFT VE AİLE DANIŞMANI",
@@ -187,6 +188,40 @@ function App() {
   };
 
   const [homeContent, setHomeContent] = useState(defaultHomeContent);
+
+  const homeHeroTextSlides = [
+    {
+      eyebrow: homeContent.eyebrow,
+      titleLine: homeContent.titleLine,
+      titleAccent: homeContent.titleAccent,
+      description: homeContent.description,
+    },
+    {
+      eyebrow: "BİREYSEL DANIŞMANLIK",
+      titleLine: "Kendinizi",
+      titleAccent: "Yeniden Keşfedin",
+      description:
+        "Yaşamın getirdiği güçlükleri daha yakından anlamak, güçlü yönlerinizi fark etmek ve size özgü bir yol haritası oluşturmak için profesyonel destek.",
+    },
+    {
+      eyebrow: "PSİKOSOSYAL DESTEK",
+      titleLine: "Gücünüzü",
+      titleAccent: "Harekete Geçirin",
+      description:
+        "Değişen yaşam koşulları, kayıp, uyum ve zorlayıcı süreçlerde içsel kaynaklarınızı güçlendiren, insan odaklı ve bütüncül bir yaklaşım.",
+    },
+  ];
+
+  const activeHomeText = homeHeroTextSlides[homeTextSlide];
+
+  useEffect(() => {
+    if (page !== "home") return;
+    const timer = window.setInterval(() => {
+      setHomeTextSlide((current) => (current + 1) % homeHeroTextSlides.length);
+    }, 5200);
+    return () => window.clearInterval(timer);
+  }, [page]);
+
 
   const defaultServicesContent = {
     heroEyebrow: "HİZMETLER",
@@ -647,14 +682,16 @@ function App() {
             </div>
 
             <div className="lightHomeHero__content">
-              <span className="lightHomeHero__eyebrow">{homeContent.eyebrow}</span>
+              <div className="lightHomeHero__rotator" key={homeTextSlide}>
+                <span className="lightHomeHero__eyebrow">{activeHomeText.eyebrow}</span>
 
-              <h1>
-                {homeContent.titleLine}
-                <strong>{homeContent.titleAccent}</strong>
-              </h1>
+                <h1>
+                  {activeHomeText.titleLine}
+                  <strong>{activeHomeText.titleAccent}</strong>
+                </h1>
 
-              <p>{homeContent.description}</p>
+                <p>{activeHomeText.description}</p>
+              </div>
 
               <div className="lightHomeHero__actions">
                 <a href="#/randevu" className="lightHomeHero__primary">
@@ -10895,6 +10932,53 @@ img{
 .premiumFooter__creator strong{color:#c59a58;font-weight:700;letter-spacing:.06em}
 .premiumFooter__creator i{color:rgba(197,154,88,.55);font-style:normal}
 @media(max-width:760px){.premiumFooter__creator{justify-content:center;font-size:8.5px}}
+
+/* STEP 85 — AUTO HERO TEXT ROTATOR */
+.lightHomeHero__rotator{
+  will-change:transform,opacity,filter;
+  animation:homeHeroTextIn .78s cubic-bezier(.16,.8,.2,1) both;
+}
+.lightHomeHero__rotator .lightHomeHero__eyebrow{
+  animation:homeHeroEyebrowIn .68s .04s cubic-bezier(.16,.8,.2,1) both;
+}
+.lightHomeHero__rotator h1{
+  animation:homeHeroTitleIn .76s .10s cubic-bezier(.16,.8,.2,1) both;
+}
+.lightHomeHero__rotator h1 strong{
+  animation:homeHeroAccentIn .82s .18s cubic-bezier(.16,.8,.2,1) both;
+}
+.lightHomeHero__rotator>p{
+  animation:homeHeroDescriptionIn .72s .27s cubic-bezier(.16,.8,.2,1) both;
+}
+@keyframes homeHeroTextIn{
+  from{opacity:.15}
+  to{opacity:1}
+}
+@keyframes homeHeroEyebrowIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+@keyframes homeHeroTitleIn{
+  from{opacity:0;transform:translateY(22px);filter:blur(4px)}
+  to{opacity:1;transform:none;filter:none}
+}
+@keyframes homeHeroAccentIn{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+@keyframes homeHeroDescriptionIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .lightHomeHero__rotator,
+  .lightHomeHero__rotator .lightHomeHero__eyebrow,
+  .lightHomeHero__rotator h1,
+  .lightHomeHero__rotator h1 strong,
+  .lightHomeHero__rotator>p{
+    animation:none!important;
+  }
+}
 
 `;
 
