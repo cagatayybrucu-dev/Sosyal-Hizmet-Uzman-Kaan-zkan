@@ -315,6 +315,8 @@ function App() {
       ? "process"
       : window.location.hash === "#/icerikler"
       ? "content"
+      : window.location.hash === "#/iletisim"
+      ? "contact"
       : window.location.hash === "#/randevu"
       ? "appointment"
       : window.location.hash === "#/gizlilik"
@@ -422,6 +424,7 @@ function App() {
       about: ["Hakkımda | Kaan Özkan", "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan'ın mesleki yolculuğu, saha deneyimi ve danışmanlık yaklaşımı."],
       services: ["Çalışma Alanları | Kaan Özkan", "Bireysel danışmanlık, çift ve aile danışmanlığı, yas, boşanma ve farklı psikososyal güçlüklerde profesyonel çalışma alanlarını inceleyin."],
       process: ["Danışmanlık Süreci | Kaan Özkan", "Danışmanlık sürecinin nasıl ilerlediğini inceleyin."],
+      contact: ["İletişim | Kaan Özkan", "Kaan Özkan ile telefon veya e-posta üzerinden iletişime geçin ve randevu süreci hakkında bilgi alın."],
       privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
       disclosure: ["KVKK Aydınlatma Metni | Kaan Özkan", "Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni."],
       cookies: ["Çerez Politikası | Kaan Özkan", "Kaan Özkan web sitesi çerez politikası."]
@@ -474,6 +477,8 @@ function App() {
           ? "process"
           : window.location.hash === "#/icerikler"
           ? "content"
+          : window.location.hash === "#/iletisim"
+          ? "contact"
           : window.location.hash === "#/randevu"
           ? "appointment"
           : window.location.hash === "#/gizlilik"
@@ -592,11 +597,7 @@ function App() {
 
             <a
               href="#/iletisim"
-              className={
-                page === "home" && window.location.hash === "#iletisim"
-                  ? "is-active"
-                  : ""
-              }
+              className={page === "contact" ? "is-active" : ""}
               onClick={() => setMenuOpen(false)}
             >
               İletişim
@@ -622,6 +623,8 @@ function App() {
           <ProcessDetailPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
+        ) : page === "contact" ? (
+          <ContactDetailPage />
         ) : page === "appointment" ? (
           <AppointmentDemoPage />
         ) : page === "privacy" ? (
