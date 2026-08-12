@@ -330,7 +330,7 @@ function App() {
 
     const introTimer = window.setTimeout(() => {
       setShowSiteIntro(false);
-    }, 1900);
+    }, 2100);
 
     return () => window.clearTimeout(introTimer);
   }, [showSiteIntro]);
@@ -12769,7 +12769,7 @@ img{
   background:
     radial-gradient(circle at 50% 48%,rgba(183,132,64,.12),transparent 26%),
     linear-gradient(135deg,#fbf8f3 0%,#f4ede3 52%,#faf6f0 100%);
-  animation:site95Exit .48s cubic-bezier(.72,0,.2,1) 1.42s forwards;
+  animation:site95Exit .48s cubic-bezier(.72,0,.2,1) 1.62s forwards;
 }
 
 .site95Intro__halo{
