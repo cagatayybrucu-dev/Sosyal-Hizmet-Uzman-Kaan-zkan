@@ -5,6 +5,7 @@ import aboutPhoto from "./assets/kaan-about.jpg";
 import servicesHeroRoom from "./assets/services-hero-room.jpg";
 import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
+import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
 
 const Icon = ({ name, size = 22 }) => {
   const common = {
@@ -177,6 +178,8 @@ function App() {
       ? "process"
       : window.location.hash === "#/icerikler"
       ? "content"
+      : window.location.hash === "#/randevu"
+      ? "appointment"
       : window.location.hash === "#/gizlilik"
       ? "privacy"
       : window.location.hash === "#/aydinlatma"
@@ -246,6 +249,8 @@ function App() {
           ? "process"
           : window.location.hash === "#/icerikler"
           ? "content"
+          : window.location.hash === "#/randevu"
+          ? "appointment"
           : window.location.hash === "#/gizlilik"
           ? "privacy"
           : window.location.hash === "#/aydinlatma"
@@ -281,13 +286,29 @@ function App() {
           style={{ transform: `scaleX(${scrollProgress})` }}
           aria-hidden="true"
         />
-        <header className="topbar">
-          <a href="#anasayfa" className="brand" onClick={() => setMenuOpen(false)}>
-            <div className="brandMark">KÖ</div>
-            <div className="brandText">
+        {page !== "admin" && (
+        <a className="podcastTopStrip" href="#/icerikler" onClick={() => setMenuOpen(false)}>
+          <span className="podcastTopStrip__icon">●</span>
+          <strong>Podcast</strong>
+          <span className="podcastTopStrip__copy">Yeni içerikleri keşfet</span>
+          <b>Şimdi Dinle →</b>
+        </a>
+      )}
+      <header className={page === "admin" ? "topbar" : "topbar topbar--light"}>
+          <a href="#anasayfa" className="brand brand--newLogo" onClick={() => setMenuOpen(false)}>
+            <span className="brandEmblemWrap">
+              <img
+                className="brandEmblem"
+                src={kaanOzkanEmblem}
+                alt=""
+                aria-hidden="true"
+              />
+            </span>
+            <span className="brandIdentity">
+              <small>SOSYAL HİZMET UZMANI</small>
               <strong>KAAN ÖZKAN</strong>
-              <span>SOSYAL HİZMET UZMANI</span>
-            </div>
+              <em>AİLE DANIŞMANI</em>
+            </span>
           </a>
 
           <nav className={menuOpen ? "nav nav--open" : "nav"}>
@@ -334,7 +355,7 @@ function App() {
             </a>
           </nav>
 
-          <a className="topCta" href="#iletisim">
+          <a className="topCta" href="#/randevu">
             <Icon name="calendar" size={17} />
             RANDEVU AL
           </a>
@@ -353,6 +374,8 @@ function App() {
           <ProcessDetailPage />
         ) : page === "content" ? (
           <ContentDetailPage />
+        ) : page === "appointment" ? (
+          <AppointmentDemoPage />
         ) : page === "privacy" ? (
           <LegalPage type="privacy" />
         ) : page === "disclosure" ? (
@@ -363,156 +386,63 @@ function App() {
           <AdminDemoPage />
         ) : (
         <main>
-          <section
-            className="premiumSliderHero"
-            id="anasayfa"
-            onTouchStart={(e) => {
-              setHeroPaused(true);
-              setHeroTouchStart(e.touches[0].clientX);
-            }}
-            onTouchEnd={(e) => {
-              if (heroTouchStart !== null) {
-                const distance = heroTouchStart - e.changedTouches[0].clientX;
-
-                if (Math.abs(distance) > 45) {
-                  if (distance > 0) {
-                    nextHeroSlide();
-                  } else {
-                    prevHeroSlide();
-                  }
-                }
-              }
-
-              setHeroTouchStart(null);
-              setHeroPaused(false);
-            }}
-          >
-            <div className="premiumSliderHero__bg">
-              {heroSlides.map((slide, index) => (
-                <img
-                  key={slide.title}
-                  src={slide.image}
-                  alt=""
-                  className={index === heroSlide ? "is-active" : ""}
-                />
-              ))}
-              <div className="premiumSliderHero__shade" />
-              <div className="premiumSliderHero__goldGlow" />
+          <section className="lightHomeHero" id="anasayfa">
+            <div className="lightHomeHero__visual">
+              <img
+                src={servicesHeroRoom}
+                alt="Sıcak ve sakin bir danışmanlık görüşme ortamı"
+              />
+              <div className="lightHomeHero__visualShade" />
             </div>
 
-            <button
-              className="premiumSliderHero__arrow premiumSliderHero__arrow--left"
-              aria-label="Önceki slayt"
-              onClick={prevHeroSlide}
-            >
-              ‹
-            </button>
-
-            <div className="premiumSliderHero__content" key={heroSlide}>
-              <div className="premiumSliderHero__icon">
-                <Icon name={activeHero.icon} size={36} />
-              </div>
-
-              <div className="premiumSliderHero__eyebrow">
-                <span />
-                {activeHero.eyebrow}
-              </div>
+            <div className="lightHomeHero__content">
+              <span className="lightHomeHero__eyebrow">ÇİFT VE AİLE DANIŞMANI</span>
 
               <h1>
-                {activeHero.title}
-                <br />
-                <strong>{activeHero.accent}</strong>
+                Profesyonel
+                <strong>Aile Danışmanlığı</strong>
               </h1>
 
-              <div className="premiumSliderHero__script">
-                {activeHero.script}
-              </div>
+              <p>
+                Danışan odaklı yaklaşım ile güvenilir, etik ve çözüm odaklı
+                sosyal hizmet ve aile danışmanlığı desteği.
+              </p>
 
-              <div className="premiumSliderHero__line" />
-
-              <p>{activeHero.description}</p>
-
-              <div className="premiumSliderHero__actions">
-                <a href="#iletisim" className="premiumSliderHero__primary">
-                  ÜCRETSİZ ÖN GÖRÜŞME
-                  <Icon name="arrow" size={18} />
+              <div className="lightHomeHero__actions">
+                <a href="#/randevu" className="lightHomeHero__primary">
+                  Ücretsiz Ön Görüşme
                 </a>
 
-                <a href="#/hizmetler" className="premiumSliderHero__secondary">
-                  ÇALIŞMA ALANLARINI İNCELE
+                <a href="#/hizmetler" className="lightHomeHero__secondary">
+                  Çalışma Alanları
                 </a>
               </div>
             </div>
 
-            <button
-              className="premiumSliderHero__arrow premiumSliderHero__arrow--right"
-              aria-label="Sonraki slayt"
-              onClick={nextHeroSlide}
-            >
-              ›
-            </button>
-
-            <div className="premiumSliderHero__dots">
-              {heroSlides.map((slide, index) => (
-                <button
-                  key={slide.title}
-                  className={index === heroSlide ? "is-active" : ""}
-                  aria-label={`${index + 1}. slayta geç`}
-                  onClick={() => setHeroSlide(index)}
-                />
-              ))}
-
-              <span
-                key={`${heroSlide}-${heroPaused}`}
-                className={
-                  heroPaused
-                    ? "premiumSliderHero__timer is-paused"
-                    : "premiumSliderHero__timer"
-                }
-                aria-hidden="true"
-              />
-            </div>
-
-            <div className="premiumSliderHero__features">
-              <div>
-                <span className="premiumSliderHero__featureIcon">
-                  <Icon name="shield" size={30} />
+            <div className="lightHomeHero__trust">
+              <article>
+                <div><Icon name="shield" size={25} /></div>
+                <span>
+                  <strong>Güvenli & Gizli</strong>
+                  <p>Görüşmeler gizlilik ve etik ilkeler çerçevesinde yürütülür.</p>
                 </span>
-                <div>
-                  <strong>Gizlilik</strong>
-                  <p>Tüm görüşmeler etik ve gizlilik ilkeleriyle yürütülür.</p>
-                </div>
-              </div>
+              </article>
 
-              <div>
-                <span className="premiumSliderHero__featureIcon">
-                  <Icon name="user" size={30} />
-                </span>
-                <div>
-                  <strong>Kişiye Özgü Yaklaşım</strong>
-                  <p>Her danışanın ihtiyacına göre özel bir yol haritası oluşturulur.</p>
-                </div>
-              </div>
-
-              <div>
-                <span className="premiumSliderHero__featureIcon">
-                  <Icon name="heart" size={30} />
-                </span>
-                <div>
-                  <strong>Bütüncül Bakış</strong>
-                  <p>Birey, ilişkiler ve sosyal çevre birlikte değerlendirilir.</p>
-                </div>
-              </div>
-
-              <div>
-                <span className="premiumSliderHero__featureIcon">
-                  <Icon name="check" size={30} />
-                </span>
-                <div>
+              <article>
+                <div><Icon name="check" size={25} /></div>
+                <span>
                   <strong>Profesyonel Destek</strong>
-                  <p>Etik, insan odaklı ve mesleki sınırlar içinde yürütülen profesyonel destek.</p>
-                </div>
-              </div>
+                  <p>Mesleki sınırlar içinde, insan odaklı profesyonel destek.</p>
+                </span>
+              </article>
+
+              <article>
+                <div><Icon name="user" size={25} /></div>
+                <span>
+                  <strong>Kişiye Özel Yaklaşım</strong>
+                  <p>Her danışanın yaşam öyküsü ve ihtiyaçları kendine özgüdür.</p>
+                </span>
+              </article>
             </div>
           </section>
 
@@ -638,132 +568,75 @@ function App() {
             <div className="contactLead reveal">
               <span className="sectionEyebrow">İLETİŞİME GEÇİN</span>
               <h2>İlk adımı birlikte atalım.</h2>
-              <p>Görüşme ve randevu hakkında bilgi almak için size uygun kanaldan iletişime geçebilirsiniz.</p>
+              <p>Görüşme ve randevu hakkında bilgi almak için telefon veya e-posta üzerinden iletişime geçebilirsiniz.</p>
             </div>
 
             <div className="contactGrid">
-              <a href="tel:+900000000000" className="contactCard reveal">
-                <div className="contactIcon"><Icon name="phone" size={27} /></div>
+              <a href="tel:+905376319371" className="contactCard reveal">
+                <div className="contactIcon"><Icon name="phone" size={22} /></div>
                 <strong>Telefon</strong>
-                <span>+90 000 000 00 00</span>
+                <span>+90 537 631 93 71</span>
               </a>
 
-              <a href="mailto:iletisim@example.com" className="contactCard reveal">
-                <div className="contactIcon"><Icon name="mail" size={27} /></div>
+              <a href="mailto:ailedanismanikaanozkan@gmail.com" className="contactCard reveal">
+                <div className="contactIcon"><Icon name="mail" size={22} /></div>
                 <strong>E-posta</strong>
-                <span>iletisim@example.com</span>
-              </a>
-
-              <a href="https://wa.me/900000000000" className="contactCard reveal" target="_blank" rel="noreferrer">
-                <div className="contactIcon contactIcon--green"><Icon name="whatsapp" size={27} /></div>
-                <strong>WhatsApp</strong>
-                <span>Mesaj Gönder</span>
-              </a>
-
-              <div className="contactCard reveal">
-                <div className="contactIcon"><Icon name="pin" size={27} /></div>
-                <strong>Konum</strong>
-                <span>Türkiye</span>
-              </div>
-
-              <a href="#iletisim" className="contactCard contactCard--cta reveal">
-                <div className="contactIcon"><Icon name="calendar" size={27} /></div>
-                <strong>Randevu Alın</strong>
-                <span>Size uygun zamanı planlayalım</span>
-                <Icon name="arrow" size={17} />
+                <span>ailedanismanikaanozkan@gmail.com</span>
               </a>
             </div>
           </section>
-        </main>
-        )}
 
-        <footer className="premiumFooter">
-          <div className="premiumFooter__glow premiumFooter__glow--one" />
-          <div className="premiumFooter__glow premiumFooter__glow--two" />
-
-          <div className="premiumFooter__top">
-            <div className="premiumFooter__brand">
-              <div className="premiumFooter__brandRow">
-                <div className="premiumFooter__mark">KÖ</div>
-                <div>
+          <footer className="premiumFooter">
+            <div className="premiumFooter__top">
+              <a href="#/anasayfa" className="premiumFooter__brand">
+                <span className="brandEmblemWrap">
+                  <img className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
+                </span>
+                <span>
                   <strong>KAAN ÖZKAN</strong>
-                  <span>SOSYAL HİZMET UZMANI & AİLE DANIŞMANI</span>
-                </div>
+                  <small>SOSYAL HİZMET UZMANI · AİLE DANIŞMANI</small>
+                </span>
+              </a>
+
+              <div className="premiumFooter__nav">
+                <a href="#/anasayfa">Ana Sayfa</a>
+                <a href="#/hizmetler">Hizmetler</a>
+                <a href="#/hakkimda">Hakkımda</a>
+                <a href="#/surec">Süreç</a>
+                <a href="#/icerikler">İçerikler</a>
+                <a href="#/iletisim">İletişim</a>
               </div>
 
-              <p>
-                Bilimsel, etik ve insan odaklı bir yaklaşımla; bireylerin,
-                çiftlerin ve ailelerin yaşam yolculuklarında profesyonel destek.
-              </p>
-
-              <div className="premiumFooter__badges">
-                <span><Icon name="shield" size={15} /> Gizlilik</span>
-                <span><Icon name="heart" size={15} /> Danışan Odaklı</span>
-                <span><Icon name="check" size={15} /> Etik Yaklaşım</span>
-              </div>
-            </div>
-
-            <div className="premiumFooter__nav">
-              <span className="premiumFooter__title">HIZLI BAĞLANTILAR</span>
-              <a href="#/">Ana Sayfa <Icon name="arrow" size={14} /></a>
-              <a href="#/hakkimda">Hakkımda <Icon name="arrow" size={14} /></a>
-              <a href="#/hizmetler">Hizmetler <Icon name="arrow" size={14} /></a>
-              <a href="#/surec">Süreç <Icon name="arrow" size={14} /></a>
-              <a href="#/icerikler">İçerikler <Icon name="arrow" size={14} /></a>
-              <a href="#iletisim">İletişim <Icon name="arrow" size={14} /></a>
-            </div>
-
-            <div className="premiumFooter__contact">
-              <span className="premiumFooter__title">İLETİŞİM & RANDEVU</span>
-
-              <a href="tel:+900000000000" className="premiumFooter__contactRow">
-                <div><Icon name="phone" size={18} /></div>
-                <span>
+              <div className="premiumFooter__contact">
+                <a href="tel:+905376319371">
                   <small>Telefon</small>
-                  <strong>+90 000 000 00 00</strong>
-                </span>
-              </a>
-
-              <a href="mailto:iletisim@example.com" className="premiumFooter__contactRow">
-                <div><Icon name="mail" size={18} /></div>
-                <span>
+                  <strong>+90 537 631 93 71</strong>
+                </a>
+                <a href="mailto:ailedanismanikaanozkan@gmail.com">
                   <small>E-posta</small>
-                  <strong>iletisim@example.com</strong>
-                </span>
-              </a>
+                  <strong>ailedanismanikaanozkan@gmail.com</strong>
+                </a>
+              </div>
 
-              <a
-                href="https://wa.me/900000000000"
-                className="premiumFooter__contactRow"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div><Icon name="whatsapp" size={18} /></div>
-                <span>
-                  <small>WhatsApp</small>
-                  <strong>Mesaj Gönder</strong>
-                </span>
-              </a>
-
-              <a href="#iletisim" className="premiumFooter__cta">
+              <a href="#/randevu" className="premiumFooter__cta">
                 ÜCRETSİZ ÖN GÖRÜŞME
                 <Icon name="arrow" size={16} />
               </a>
             </div>
-          </div>
 
-          <div className="premiumFooter__bottom">
-            <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
-
-            <div className="premiumFooter__legal">
-              <a href="#/gizlilik">Gizlilik</a>
-              <span>•</span>
-              <a href="#/aydinlatma">Aydınlatma Metni</a>
-              <span>•</span>
-              <a href="#/cerez-politikasi">Çerez Politikası</a>
+            <div className="premiumFooter__bottom">
+              <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
+              <div className="premiumFooter__legal">
+                <a href="#/gizlilik">Gizlilik</a>
+                <span>•</span>
+                <a href="#/aydinlatma">Aydınlatma Metni</a>
+                <span>•</span>
+                <a href="#/cerez-politikasi">Çerez Politikası</a>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </main>
+        )}
       </div>
     </>
   );
@@ -773,6 +646,215 @@ function App() {
 
 
 
+
+
+function AppointmentDemoPage() {
+  const [step, setStep] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
+    service: "",
+    format: "",
+    date: "",
+    time: "",
+    name: "",
+    age: "",
+    phone: "",
+    email: "",
+    note: "",
+    kvkk: false,
+  });
+
+  const services = [
+    ["individual", "user", "Bireysel Danışmanlık", "Bireysel güçlükler, yaşam olayları ve psikososyal destek süreçleri."],
+    ["family", "users", "Aile Danışmanlığı", "Aile içi iletişim, roller, sınırlar ve ilişki dinamikleri."],
+    ["couple", "heart", "Çift Danışmanlığı", "İletişim, güven, çatışma, ayrılık ve ilişki süreçleri."],
+    ["other", "message", "Kararsızım / Ön Görüşme", "Hangi hizmetin uygun olduğunu ilk görüşmede birlikte değerlendirelim."],
+  ];
+  const times = ["10:00","11:30","13:00","14:30","16:00","17:30","19:00"];
+
+  const can2 = form.service && form.format;
+  const can3 = form.date && form.time;
+  const canSubmit = form.name.trim() && form.age.trim() && form.phone.trim() && form.email.trim() && form.kvkk;
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (canSubmit) setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <main className="apt60Success">
+        <div className="apt60Success__card">
+          <div className="apt60Success__icon"><Icon name="check" size={36} /></div>
+          <span>RANDEVU TALEBİ ALINDI</span>
+          <h1>Teşekkürler, {form.name.split(" ")[0]}.</h1>
+          <p>
+            Bu ekran şu an tasarım demosudur. Gerçek sistem bağlandığında talebiniz
+            güvenli veritabanına kaydedilecek ve onay bilgisi gönderilecektir.
+          </p>
+          <div className="apt60Success__summary">
+            <div><small>Hizmet</small><strong>{services.find((s) => s[0] === form.service)?.[2]}</strong></div>
+            <div><small>Görüşme</small><strong>{form.format}</strong></div>
+            <div><small>Tarih</small><strong>{form.date}</strong></div>
+            <div><small>Saat</small><strong>{form.time}</strong></div>
+          </div>
+          <a href="#/">Ana Sayfaya Dön <Icon name="arrow" size={15} /></a>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="apt60">
+      <section className="apt60Hero">
+        <div className="apt60Hero__grid" />
+        <a className="apt60Back" href="#/"><span>←</span> Ana Sayfaya Dön</a>
+
+        <div className="apt60Hero__copy">
+          <span>ÜCRETSİZ ÖN GÖRÜŞME</span>
+          <h1>İlk adımı<br/><strong>birlikte atalım.</strong></h1>
+          <p>
+            İhtiyacınızı kısaca anlayalım, uygun danışmanlık biçimini birlikte
+            belirleyelim ve sürecin sizin için doğru olup olmadığını değerlendirelim.
+          </p>
+
+          <div className="apt60Hero__trust">
+            <div><Icon name="shield" size={20}/><span><strong>Gizlilik</strong><small>Bilgileriniz özenle korunur.</small></span></div>
+            <div><Icon name="clock" size={20}/><span><strong>Ücretsiz Ön Görüşme</strong><small>İhtiyacı netleştirme odaklı.</small></span></div>
+          </div>
+        </div>
+
+        <aside className="apt60Hero__aside">
+          <span>NASIL İLERLİYOR?</span>
+          {[
+            ["01","Hizmeti seçin","Size en yakın çalışma alanını belirleyin."],
+            ["02","Tarih ve saat","Uygun görüşme zamanını seçin."],
+            ["03","Bilgilerinizi bırakın","Size ulaşabilmemiz için temel bilgileri girin."],
+            ["04","Onay","Gerçek sistemde talep onay sürecine geçer."],
+          ].map((x) => (
+            <div key={x[0]}><b>{x[0]}</b><p><strong>{x[1]}</strong><small>{x[2]}</small></p></div>
+          ))}
+        </aside>
+      </section>
+
+      <section className="apt60FormArea">
+        <div className="apt60Progress">
+          {[1,2,3].map((n) => (
+            <div key={n} className={step >= n ? "is-active" : ""}>
+              <span>{step > n ? "✓" : n}</span>
+              <p>{n === 1 ? "Hizmet" : n === 2 ? "Zaman" : "Bilgiler"}</p>
+            </div>
+          ))}
+        </div>
+
+        <form className="apt60Card" onSubmit={submit}>
+          {step === 1 && (
+            <div className="apt60Step">
+              <div className="apt60Step__head">
+                <span>01 / HİZMET SEÇİMİ</span>
+                <h2>Hangi konuda görüşmek istersiniz?</h2>
+                <p>Kararsızsanız “Ön Görüşme” seçeneğini tercih edebilirsiniz.</p>
+              </div>
+
+              <div className="apt60Services">
+                {services.map((s) => (
+                  <button key={s[0]} type="button" className={form.service === s[0] ? "is-selected" : ""} onClick={() => setForm({...form, service:s[0]})}>
+                    <div><Icon name={s[1]} size={25}/></div>
+                    <strong>{s[2]}</strong>
+                    <p>{s[3]}</p>
+                    <span>{form.service === s[0] ? "✓" : "→"}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="apt60Format">
+                <span>GÖRÜŞME BİÇİMİ</span>
+                <div>
+                  {[
+                    ["Online Görüşme","video"],
+                    ["Yüz Yüze Görüşme","map"],
+                  ].map((x) => (
+                    <button key={x[0]} type="button" className={form.format === x[0] ? "is-selected" : ""} onClick={() => setForm({...form, format:x[0]})}>
+                      <Icon name={x[1]} size={20}/><strong>{x[0]}</strong>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="apt60Actions">
+                <span />
+                <button type="button" disabled={!can2} onClick={() => setStep(2)}>Tarih ve Saat Seç <Icon name="arrow" size={15}/></button>
+              </div>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="apt60Step">
+              <div className="apt60Step__head">
+                <span>02 / TARİH & SAAT</span>
+                <h2>Size uygun zamanı seçin.</h2>
+                <p>Şimdilik demo saatler gösteriliyor; gerçek müsaitlik takvime bağlanacak.</p>
+              </div>
+
+              <div className="apt60DateGrid">
+                <label>
+                  <span>Görüşme Tarihi</span>
+                  <input type="date" value={form.date} onChange={(e) => setForm({...form, date:e.target.value, time:""})}/>
+                </label>
+                <div className="apt60Times">
+                  <span>Uygun Saat</span>
+                  <div>
+                    {times.map((t) => <button key={t} type="button" className={form.time === t ? "is-selected" : ""} onClick={() => setForm({...form,time:t})}>{t}</button>)}
+                  </div>
+                </div>
+              </div>
+
+              <div className="apt60Notice"><Icon name="info" size={19}/><p>Gerçek sistemde dolu saatler otomatik kapanacak ve aynı saate iki kişi randevu oluşturamayacak.</p></div>
+
+              <div className="apt60Actions">
+                <button type="button" className="is-secondary" onClick={() => setStep(1)}>← Geri</button>
+                <button type="button" disabled={!can3} onClick={() => setStep(3)}>Bilgilerime Geç <Icon name="arrow" size={15}/></button>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div className="apt60Step">
+              <div className="apt60Step__head">
+                <span>03 / İLETİŞİM BİLGİLERİ</span>
+                <h2>Size nasıl ulaşabiliriz?</h2>
+                <p>Yalnızca randevu süreci için gerekli temel bilgileri istiyoruz.</p>
+              </div>
+
+              <div className="apt60Fields">
+                <label><span>Ad Soyad *</span><input value={form.name} onChange={(e)=>setForm({...form,name:e.target.value})} placeholder="Adınız ve soyadınız" required/></label>
+                <label><span>Yaş *</span><input type="number" min="1" max="120" value={form.age} onChange={(e)=>setForm({...form,age:e.target.value})} placeholder="Yaşınız" required/></label>
+                <label><span>Telefon *</span><input type="tel" value={form.phone} onChange={(e)=>setForm({...form,phone:e.target.value})} placeholder="+90 5xx xxx xx xx" required/></label>
+                <label><span>E-posta *</span><input type="email" value={form.email} onChange={(e)=>setForm({...form,email:e.target.value})} placeholder="ornek@email.com" required/></label>
+                <label className="apt60Fields__full">
+                  <span>Kısa Not <small>(isteğe bağlı)</small></span>
+                  <textarea rows="5" value={form.note} onChange={(e)=>setForm({...form,note:e.target.value})} placeholder="Görüşme talebinizin genel çerçevesini kısaca yazabilirsiniz. Lütfen gerekli olmayan sağlık veya hassas kişisel bilgileri paylaşmayın."/>
+                </label>
+              </div>
+
+              <div className="apt60Kvkk">
+                <button type="button" className={form.kvkk ? "is-checked" : ""} onClick={()=>setForm({...form,kvkk:!form.kvkk})}>{form.kvkk ? "✓" : ""}</button>
+                <p><a href="#/aydinlatma" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum ve randevu süreci için gerekli kişisel verilerin işlenmesine ilişkin bilgilendirildim.</p>
+              </div>
+
+              <div className="apt60Sensitive"><Icon name="shield" size={20}/><p>Ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi veya gerekli olmayan hassas kişisel bilgilerinizi paylaşmayın.</p></div>
+
+              <div className="apt60Actions">
+                <button type="button" className="is-secondary" onClick={()=>setStep(2)}>← Geri</button>
+                <button type="submit" disabled={!canSubmit}>Randevu Talebini Oluştur <Icon name="arrow" size={15}/></button>
+              </div>
+            </div>
+          )}
+        </form>
+      </section>
+    </main>
+  );
+}
 
 function ContentDetailPage() {
   const [tab, setTab] = useState("videos");
@@ -1107,7 +1189,7 @@ function AdminDemoPage() {
         <div className="adminDemo__brand">
           <div className="adminDemo__mark">KÖ</div>
           <div>
-            <strong>ÇAĞATAY BURUCU</strong>
+            <strong>Kaan Özkan</strong>
             <span>Yönetim Paneli</span>
           </div>
         </div>
@@ -1148,7 +1230,7 @@ function AdminDemoPage() {
       <section className="adminDemo__main">
         <header className="adminDemo__topbar">
           <div>
-            <span>ÇAĞATAY BURUCU ADMİN PANEL / DEMO</span>
+            <span>YÖNETİM PANELİ / DEMO</span>
             <h1>
               {activeTab === "dashboard"
                 ? "Genel Bakış"
@@ -1361,216 +1443,205 @@ function AdminDemoPage() {
 }
 
 function ProcessDetailPage() {
+  const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+
   const steps = [
-    {
-      no: "01",
-      icon: "message",
-      title: "Ön Görüşme",
-      text: "Tanışma ve ihtiyaçların belirlenmesi amacıyla ön görüşme gerçekleştirilir. Sürecin çerçevesi birlikte netleştirilir.",
-    },
-    {
-      no: "02",
-      icon: "target",
-      title: "Hedef Belirleme",
-      text: "Önceliklerinize göre hedefler belirlenir ve bu hedeflere ulaşmak için kişiye özgü bir yol haritası oluşturulur.",
-    },
-    {
-      no: "03",
-      icon: "user",
-      title: "Çalışma ve Uygulama",
-      text: "Belirlenen hedeflere yönelik psikososyal destek yöntemleri kullanılarak farkındalık ve değişim süreci başlatılır.",
-    },
-    {
-      no: "04",
-      icon: "chart",
-      title: "Değerlendirme",
-      text: "İlerleme düzenli olarak değerlendirilir, ihtiyaçlara göre planlama gözden geçirilir ve yeniden şekillendirilir.",
-    },
-    {
-      no: "05",
-      icon: "check",
-      title: "Sürdürme ve Destek",
-      text: "Kazanımların kalıcı hale gelmesi için destek sürdürülür ve gerektiğinde yeni hedefler belirlenir.",
-    },
+    { no: "01", icon: "message", title: "Ön Görüşme", text: "Tanışma ve ihtiyaçların belirlenmesi amacıyla ön görüşme gerçekleştirilir. Sürecin çerçevesi birlikte netleştirilir." },
+    { no: "02", icon: "target", title: "Hedef Belirleme", text: "Önceliklerinize göre hedefler belirlenir ve bu hedeflere ulaşmak için kişiye özgü bir yol haritası oluşturulur." },
+    { no: "03", icon: "user", title: "Çalışma ve Uygulama", text: "Belirlenen hedeflere yönelik psikososyal destek yöntemleri kullanılarak farkındalık ve değişim süreci başlatılır." },
+    { no: "04", icon: "chart", title: "Değerlendirme", text: "İlerleme düzenli olarak değerlendirilir, ihtiyaçlara göre planlama gözden geçirilir ve yeniden şekillendirilir." },
+    { no: "05", icon: "check", title: "Sürdürme ve Destek", text: "Kazanımların kalıcı hale gelmesi için destek sürdürülür ve gerektiğinde yeni hedefler belirlenir." },
   ];
+
+  const testimonials = [
+    { no: "01", title: "Danışan Yorumu", person: "Danışan", text: `Sevgili Kaan Hocam, o kadar iyi geldiniz ki.. Yıllardır üstesinden gelemediğim ailevi problemlerime, eşimle olan sıkıntılarıma ve aile huzurumuza seanslarınızla ne kadar iyi geldiğinizi anlatamam size.\n\nSeanslarınız oldukça içten, özverili, hassas ve güven veriyor olması benim için çok önemliydi. Bu önyargılarımı ve ailevi problemlerimizi sizlerle aştım. Ne kadar teşekkür etsem azdır.\n\nEmeğinize sağlık 🙏🏻` },
+    { no: "02", title: "Danışan Yorumu", person: "Danışan", text: `Kaan Bey ile 3 Kasım 2024 tarihinde online olarak terapiye başladık ve hayatımın en doğru kararı olduğunu söyleyebilirim.\n\nBenim majör depresyon ve OKB problemim vardı. Tırnak eti yolma, sürekli sayı sayma, güvensizlik, kaygı problemleri ve en önemlisi de öz saygım yoktu.\n\nTerapiler sonucu bunların geçmişten gelen travmalara bağlı olduğunu çözdük ve onara onara devam ettik. Kendisinin içten ve samimi konuşmaları beni çok rahatlatıyor, terapi günü gelsin istiyordum. Terapiden sonra çok mutlu olmaya başladım. Kendime olan özgüvenim yavaş yavaş yerine gelmeye ve depresyon halinden çıkmaya başladım.\n\nKaan Bey’in verdiği ödevleri, stres anında yapmam gerekenleri yaptım. Sayı saymaktan kurtuldum, tırnak eti yolma durumunu aştım. Sınır koymayı, hayır demeyi, kendim için bir şeyler yapmayı çok sevdim…\n\nKaan Bey’i iyi ki tanıdım, iyi ki bu mesleği seçmiş ve bizim gibi bazı problemleri olan insanların hayatlarına küçük dokunuşlarla yeniden gelmesini sağlıyor.\n\nHer şey için çok teşekkür ediyorum. Başarılarınızın devamını diliyorum…` },
+    { no: "03", title: "Çift Danışan Yorumu", person: "Çift Danışan", text: `Seansa başlamadan önce birbirimize karşı vakit ayıramıyorduk, şimdi ise daha çok zaman geçiriyoruz, birbirimizi anlıyoruz, daha çok dinliyoruz.\n\nSeansdan önce öfkeli ve kıskançlık vardı ama şu anda onların hepsi bitti ve daha çok sevgi ve dinlemeye başladık. Tek değil de bir olduğumuzu anladık.\n\nBu konuda senin de katkın var, çok teşekkür ediyoruz.` },
+    { no: "04", title: "Danışan Yorumu", person: "S.K.", text: `Yoğun ve yüksek düzeyde stres, anksiyete ve kaygı bozukluğu yaşıyordum. Uzun zamandır süren bu rahatsız olduğum konuları Kaan Hoca ile pürüzsüz şekilde sabırla aştık.\n\nAlanında oldukça uzman ve işini layıkıyla yapan birisi. Toplu taşımalara binme, akşam dışarı çıkamama gibi korkularım vardı. Hepsini aştık. OKB’den kurtulduğuma inanamıyorum.` },
+    { no: "05", title: "Danışan Yorumu", person: "C.A.", text: `Ekonomik özgürlüğüm yoktu, çıkış yolum yoktu, her türlü şiddeti kabul etmiştim, kendimi insan haricinde her türlü nesne gibi sıradan, basit ve değersiz görüyordum.\n\nKaan Hocamızdan zamanında destek alan bir arkadaşımızın tavsiyesi ile benim de kendisiyle yolum kesişti. Bu kadar değişeceğime hiç ümidim yoktu.\n\nÖn görüşmeden itibaren o kadar işini bilerek yaptığını hissettirdi ki… Terapist unvanından ziyade “yol gösterici, arabulucu, destek verici” nitelikleri ve beni her koşulda inanarak desteklemesi beni yeniden ayağa kaldırdı.\n\nFlört şiddetimi artık rızamla, sesimi çıkararak ve haklarımı arayarak bitirmeme yardımcı oldu.\n\nKadınların; her şeyi kabul edici, ses çıkarmayan, sorgusuz onaylayan değil, tam tersine şiddet karşısında haklarını arayan, sesini çıkaran, erkek şiddetinin karşısında dimdik durması gerektiğinin özgüvenini bana aşıladı.\n\nTeşekkür ediyorum.` },
+    { no: "06", title: "Danışan Yorumu", person: "E.Y.", text: `Eşimle 13 yıllık evlilik birlikteliğimiz vardı. Yıllarca evlilik içerisinde sevgi ve saygı olmadan rutine getirdiğimizi Kaan Bey ile keşfettik.\n\nBirbirimize söylemeye cesaret edemediğimiz, yıllarca içimizde biriktirdiğimiz her şeyi çift terapisi ile ilk kez saygı çerçevesinde konuşabildik.\n\nAile danışmanlığını sürekli yuva kuran bir yer olarak düşünüyordum. Ama bir kadın olarak boşanmanın da evlilik kadar normal bir şey olduğunu anladık.\n\nBoşanma sürecinde yardımları için çok teşekkür ederim. Yıpranmadık, sağlıklı yas sürecine girdik ve atlattık.` },
+    { no: "07", title: "Çift Danışan Yorumu", person: "Y.K. – B.A.", text: `Biz evlilik yolunda sürekli inişli-çıkışlı ilişkiye sahip toksik bir çifttik. Baskılar, psikolojik şiddet karşılıklı ve sürekliydi.\n\nTavsiye üzerine Kaan Bey’i keşfettik. Evliliğe dair anlatılan “korkunç” hikâyeleri uzmanından sağlıklı bir şekilde dinleyerek kendimize ve davranışlarımıza dair ders çıkardık.\n\nİlişkideki birbirimize olan bağımlılığımızı ciddi oranda aştık.\n\nMeğerse çift olmak hayatı birbirine zindan etmek değil, herkes için devam eden hayatta birbirini gerçekten anlamak ve destek olmak demekmiş.\n\nKendisini herkese tavsiye ediyoruz.` },
+    { no: "08", title: "Danışan Yorumu", person: "Danışan", text: `Kaan hocam iyi akşamlar. Bugün sizinle online olarak yaptığımız sürecin sonuna gelmenin heyecanı ile size teşekkür etmek için yazmak istedim.\n\nÖncelikle benim hayallerimin önünü sonsuza kadar açtığınız için, bana yeni bakış açıları kazandırdığınız için, hiç bilmediğim şeyleri öğrettiğiniz için minnettarım. 🙏🏻\n\nBoşanmadan önce ve boşanma sürecinde korkularımla yüzleşip özgürleştirdiğiniz için teşekkür borçluyum size.\n\nŞu an sınırlarım yok ve “elalem ne der” zerre umurumda değil.\n\nSayenizde güçlüyüm, güçlendim ve bütün kadınlara güçlerinin ne olduğunu hep anlatacağım. 💪🏻🙂` },
+    { no: "09", title: "Danışan Yorumu", person: "Danışan", text: `Ben 24 Ekim 2025 tarihi ile sizinle seansa başladım. Üniversite öğrencisiyim, bu yüzden aşırı derecede stres, anksiyete ve panik atak problemleri yaşıyordum.\n\nAma seanslara başladıktan sonra stresle başa çıkmayı, kontrol altına almayı öğrendim.\n\nAyrıca hayır diyememe ve sınır koyamama gibi problemlerim de vardı. Artık kendi değerimi biliyor ve sınır koyabiliyorum.\n\nİyi ki sizinle tanışıp seanslara devam ettim. Size çok teşekkür ederim.` },
+    { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
+  ];
+
+  const visibleTestimonials = showAllTestimonials ? testimonials : testimonials.slice(0, 3);
 
   return (
     <main className="prc53">
       <section className="prc53Hero">
-        <img
-          className="prc53Hero__image"
-          src={processHeroDesk}
-          alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası"
-        />
+        <img className="prc53Hero__image" src={processHeroDesk} alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası" />
         <div className="prc53Hero__shade" />
-
-        <a className="prc53Back" href="#/">
-          <span>←</span>
-          Ana Sayfaya Dön
-        </a>
-
+        <a className="prc53Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
         <div className="prc53Hero__copy">
           <span className="prc53Eyebrow">SÜREÇ</span>
-
-          <h1>
-            Nasıl
-            <br />
-            <strong>Çalışıyoruz?</strong>
-          </h1>
-
+          <h1>Nasıl<br /><strong>Çalışıyoruz?</strong></h1>
           <i />
-
-          <p>
-            Danışmanlık süreci, sizin ihtiyaçlarınıza ve hedeflerinize uygun
-            şekilde planlanır. Güvenli, saygılı ve iş birliğine dayalı bir süreç
-            yürütürüz.
-          </p>
+          <p>Danışmanlık süreci, sizin ihtiyaçlarınıza ve hedeflerinize uygun şekilde planlanır. Güvenli, saygılı ve iş birliğine dayalı bir süreç yürütürüz.</p>
         </div>
       </section>
 
       <section className="prc53Flow">
-        <div className="prc53SectionTitle">
-          <span>ÇALIŞMA SÜRECİM</span>
-          <h2>Süreç, kişiye özel ve esnek bir şekilde ilerler.</h2>
-        </div>
-
+        <div className="prc53SectionTitle"><span>ÇALIŞMA SÜRECİM</span><h2>Süreç, kişiye özel ve esnek bir şekilde ilerler.</h2></div>
         <div className="prc53Steps">
           {steps.map((step) => (
             <article className="prc53Step" key={step.no}>
               <div className="prc53Step__number">{step.no}</div>
-
-              <div className="prc53Step__icon">
-                <Icon name={step.icon} size={34} />
-              </div>
-
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
+              <div className="prc53Step__icon"><Icon name={step.icon} size={34} /></div>
+              <h3>{step.title}</h3><p>{step.text}</p>
             </article>
           ))}
         </div>
-
         <div className="prc53Trust">
-          <div>
-            <div className="prc53Trust__icon"><Icon name="shield" size={27} /></div>
-            <p><strong>Gizlilik Esastır</strong><span>Tüm görüşmeler gizlilik ilkesi çerçevesinde yürütülür.</span></p>
-          </div>
-
-          <div>
-            <div className="prc53Trust__icon"><Icon name="user" size={27} /></div>
-            <p><strong>Size Özel Yaklaşım</strong><span>Her danışanın ihtiyaçları farklıdır. Size uygun bir yol haritası oluşturulur.</span></p>
-          </div>
-
-          <div>
-            <div className="prc53Trust__icon"><Icon name="calendar" size={27} /></div>
-            <p><strong>Esnek Görüşme Seçenekleri</strong><span>Görüşme biçimi ve sıklığı ihtiyaçlara göre birlikte planlanır.</span></p>
-          </div>
-
-          <div>
-            <div className="prc53Trust__icon"><Icon name="heart" size={27} /></div>
-            <p><strong>Sürekli Destek</strong><span>Süreç boyunca ilerleme değerlendirilir ve ihtiyaç halinde destek devam eder.</span></p>
-          </div>
+          <div><div className="prc53Trust__icon"><Icon name="shield" size={27} /></div><p><strong>Gizlilik Esastır</strong><span>Tüm görüşmeler gizlilik ilkesi çerçevesinde yürütülür.</span></p></div>
+          <div><div className="prc53Trust__icon"><Icon name="user" size={27} /></div><p><strong>Size Özel Yaklaşım</strong><span>Her danışanın ihtiyaçları farklıdır. Size uygun bir yol haritası oluşturulur.</span></p></div>
+          <div><div className="prc53Trust__icon"><Icon name="calendar" size={27} /></div><p><strong>Esnek Görüşme Seçenekleri</strong><span>Görüşme biçimi ve sıklığı ihtiyaçlara göre birlikte planlanır.</span></p></div>
+          <div><div className="prc53Trust__icon"><Icon name="heart" size={27} /></div><p><strong>Sürekli Destek</strong><span>Süreç boyunca ilerleme değerlendirilir ve ihtiyaç halinde destek devam eder.</span></p></div>
         </div>
       </section>
 
-      <section className="prc53Principles">
-        <div className="prc53Principles__mark">KÖ</div>
-        <div>
-          <span>SÜREÇ İLKELERİMİZ</span>
-          <h3>Gönüllülük, gizlilik, saygı, yargılamadan kabul ve iş birliği.</h3>
-          <p>
-            Danışmanlık süreci sizin hızınızda ve sizinle birlikte ilerler.
-            İhtiyaçlar, hedefler ve sürecin yönü düzenli olarak birlikte değerlendirilir.
-          </p>
+      <section className="prc53Testimonials">
+        <div className="prc53Testimonials__head">
+          <div><span>DANIŞAN DENEYİMLERİ</span><h2>Süreçten kalan gerçek mesajlar.</h2></div>
+          <p>Danışanların süreç sonrasında sosyal medya ve mesaj yoluyla paylaştığı geri bildirimlerden bazıları.</p>
         </div>
+        <div className={`prc53Testimonials__grid ${showAllTestimonials ? "is-expanded" : ""}`}>
+          {visibleTestimonials.map((item) => (
+            <article className="prc53TestimonialCard" key={item.no}>
+              <div className="prc53TestimonialCard__top"><span className="prc53TestimonialCard__quote">“</span><small>{item.no}</small></div>
+              <p>{item.text}</p>
+              <div className="prc53TestimonialCard__footer">
+                <div><strong>{item.person}</strong><span>{item.title}</span></div>
+                <div className="prc53TestimonialCard__verified"><Icon name="check" size={15} />Mesaj</div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="prc53Testimonials__actions">
+          <button type="button" onClick={() => setShowAllTestimonials((value) => !value)}>
+            {showAllTestimonials ? "Daha Az Göster" : "Daha Fazla Yorum"}<Icon name="arrow" size={16} />
+          </button>
+        </div>
+        <div className="prc53Testimonials__note"><Icon name="info" size={17} /><p>Paylaşımlar danışanların kendi ifadeleridir. Danışmanlık deneyimi ve sonuçları kişiden kişiye farklılık gösterebilir.</p></div>
       </section>
     </main>
   );
 }
 
 function ServicesDetailPage() {
+  const [activeService, setActiveService] = useState("individual");
+
   const quickServices = [
     {
+      id: "individual",
       icon: "user",
       title: "Bireysel Danışmanlık",
-      text: "Kaygı, stres, özsaygı, duygu düzenleme, yaşam olaylarına uyum ve kişisel güçlenme süreçlerinde profesyonel destek.",
+      text: "Duygusal iyi oluş, benlik, dayanıklılık, kaygı, stres ve yaşam olaylarına uyum süreçlerinde kişiye özgü destek.",
     },
     {
+      id: "family",
       icon: "users",
       title: "Aile Danışmanlığı",
-      text: "İletişim problemleri, çatışmalar, aile içi roller, sınırlar ve ilişkilerin güçlendirilmesine yönelik danışmanlık.",
+      text: "Aile içi iletişim, roller, sınırlar, ebeveynlik ve aile yaşamında ortaya çıkan güçlüklerin birlikte ele alınması.",
     },
     {
+      id: "couple",
       icon: "heart",
       title: "Evlilik & Çift Danışmanlığı",
-      text: "İlişki sorunları, iletişim, güven, bağlanma, ayrılık ve boşanma süreçlerinde yapılandırılmış destek.",
+      text: "İletişim, güven, bağlanma, çatışma, ayrılık ve boşanma süreçlerinde ilişki odaklı danışmanlık.",
     },
     {
+      id: "psychosocial",
       icon: "compass",
       title: "Psikososyal Destek",
-      text: "Zorlayıcı yaşam olayları, kayıp, değişim ve uyum süreçlerinde bireyin kişisel ve sosyal kaynaklarını güçlendiren destek.",
-    },
-    {
-      icon: "message",
-      title: "Gençlere Yönelik Destek",
-      text: "Ergenlik ve genç yetişkinlik döneminde özsaygı, iletişim, kimlik gelişimi, aile ilişkileri ve yaşam uyumuna yönelik destek.",
+      text: "Zorlayıcı yaşam olayları, kayıp, değişim ve sosyal uyum süreçlerinde kişisel ve sosyal kaynakları güçlendiren destek.",
     },
   ];
 
-  const groups = [
-    {
+  const detailGroups = {
+    individual: {
       no: "01",
-      icon: "heart",
-      title: "Duygusal İyi Oluş",
+      icon: "user",
+      title: "Bireysel Danışmanlık",
+      intro: "Duygusal iyi oluş ile benlik ve dayanıklılık alanlarını tek bir bireysel danışmanlık başlığı altında birlikte ele alıyorum.",
       items: [
-        "Kaygı ve Anksiyete ile İlişkili Psikososyal Güçlükler",
-        "Depresif Belirtilerle Baş Etme ve Psikososyal Destek",
-        "Yoğun ve Süreğen Kaygıyla Baş Etme Süreçleri",
-        "Panik Belirtileriyle Baş Etme ve Psikososyal Destek",
-        "Tekrarlayıcı ve Zorlayıcı Düşünce Örüntüleriyle Baş Etme",
-        "Dürtü Kontrol Güçlükleri",
+        "Kaygı ve anksiyete ile ilişkili psikososyal güçlükler",
+        "Depresif belirtilerle baş etme ve psikososyal destek",
+        "Yoğun ve süreğen kaygıyla baş etme süreçleri",
+        "Panik belirtileriyle baş etme ve psikososyal destek",
+        "Tekrarlayıcı ve zorlayıcı düşünce örüntüleriyle baş etme",
+        "Dürtü kontrol güçlükleri",
+        "Özsaygı ve kendilik algısı",
+        "Özşefkat geliştirme",
+        "Kimlik ve benlik gelişimi",
+        "Öfke yönetimi",
+        "Duygu düzenleme güçlükleri",
+        "Stres yönetimi",
+        "Yaşam olaylarına uyum süreçleri",
+        "Yas ve kayıp süreci danışmanlığı",
+        "Psikososyal güçlenme ve duygusal dayanıklılık",
+        "Sınır koyma ve sağlıklı iletişim becerileri",
       ],
     },
-    {
+    family: {
       no: "02",
       icon: "users",
-      title: "İlişkiler & Aile",
+      title: "Aile Danışmanlığı",
+      intro: "Aileyi bir bütün olarak değerlendirerek iletişim, roller, sınırlar ve yaşam değişiklikleri üzerine çalışılır.",
       items: [
-        "Kişilerarası İlişki Problemleri",
-        "Çift ve Evlilik Çatışmaları",
-        "İletişim Sorunları",
-        "Güven Problemleri",
-        "Bağlanma Örüntüleri",
-        "Duygusal Bağımlılık",
-        "Ayrılık ve/veya Boşanma Süreçleri",
+        "Aile içi iletişim problemleri",
+        "Aile içi roller ve sorumluluklar",
+        "Sağlıklı sınırlar oluşturma",
+        "Ebeveynlik becerileri",
+        "Ebeveyn–çocuk iletişimi",
+        "Aile içi çatışmaların ele alınması",
+        "Aile ilişkilerinde güven ve iş birliği",
+        "Yaşam değişikliklerine ailece uyum",
+        "Ayrılık ve boşanmanın aile sistemi üzerindeki etkileri",
+        "Boşanma danışmanlığı",
       ],
     },
-    {
+    couple: {
       no: "03",
-      icon: "shield",
-      title: "Benlik & Dayanıklılık",
+      icon: "heart",
+      title: "Evlilik & Çift Danışmanlığı",
+      intro: "Çiftlerin ilişki örüntülerini anlamalarına ve daha sağlıklı iletişim geliştirmelerine yönelik yapılandırılmış bir süreçtir.",
       items: [
-        "Yas ve Kayıp Süreci Danışmanlığı",
-        "Özsaygı ve Kendilik Algısı",
-        "Özşefkat Geliştirme",
-        "Kimlik ve Benlik Gelişimi",
-        "Öfke Yönetimi",
-        "Duygu Düzenleme Güçlükleri",
-        "Stres Yönetimi",
-        "Yaşam Olaylarına Uyum Süreçleri",
+        "Çift ve evlilik çatışmaları",
+        "İletişim sorunları",
+        "Güven problemleri",
+        "Bağlanma örüntüleri",
+        "Duygusal ihtiyaçların ifade edilmesi",
+        "Duygusal bağımlılık",
+        "İlişkide sınır koyma",
+        "Ayrılık ve/veya boşanma süreçleri",
       ],
     },
-    {
+    psychosocial: {
       no: "04",
-      icon: "check",
+      icon: "compass",
       title: "Psikososyal Destek",
+      intro: "Bireyin günlük yaşamını, ilişkilerini ve sosyal uyumunu etkileyen güçlüklerde destekleyici ve güçlendirici çalışmalar yürütülür.",
       items: [
         "DEHB/ADHD ile ilişkili psikososyal ve uyum güçlüklerinde destek",
-        "Kişilik Örüntülerine Bağlı İlişki ve Uyum Güçlükleri",
+        "Kişilik örüntülerine bağlı ilişki ve uyum güçlükleri",
         "Bipolar bozukluk tanısı bulunan bireylerde psikososyal destek ve yaşam düzenine uyum süreçleri",
         "Madde ve davranışsal bağımlılıklarla ilişkili psikososyal destek süreçleri",
+        "Zorlayıcı yaşam olaylarına uyum",
+        "Sosyal destek kaynaklarını güçlendirme",
       ],
     },
-  ];
+  };
+
+  const activeDetail = detailGroups[activeService];
+
+  const openServiceDetail = (id) => {
+    setActiveService(id);
+    window.setTimeout(() => {
+      document.getElementById("svc52-detay")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 40);
+  };
 
   return (
     <main className="svc52">
@@ -1597,13 +1668,18 @@ function ServicesDetailPage() {
           <h2>Size uygun desteği birlikte belirleyelim.</h2>
         </div>
 
-        <div className="svc52QuickGrid">
+        <div className="svc52QuickGrid svc52QuickGrid--four">
           {quickServices.map((item) => (
-            <article className="svc52QuickCard" key={item.title}>
+            <article
+              className={`svc52QuickCard ${activeService === item.id ? "is-active" : ""}`}
+              key={item.id}
+            >
               <div className="svc52QuickIcon"><Icon name={item.icon} size={34} /></div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-              <a href="#svc52-detay">Detaylı Bilgi <Icon name="arrow" size={15}/></a>
+              <button type="button" onClick={() => openServiceDetail(item.id)}>
+                Detaylı Bilgi <Icon name="arrow" size={15}/>
+              </button>
             </article>
           ))}
         </div>
@@ -1616,26 +1692,27 @@ function ServicesDetailPage() {
         </div>
       </section>
 
-      <section id="svc52-detay" className="servicesDetailGridSection svc52Details">
+      <section id="svc52-detay" className="servicesDetailGridSection svc52Details svc69DetailSection">
         <div className="servicesDetailSectionHead">
-          <span>PROFESYONEL ÇALIŞMA ALANLARIM</span>
-          <h2>Destek sunduğum konuları ayrıntılı inceleyebilirsiniz.</h2>
+          <span>DETAYLI BİLGİ</span>
+          <h2>{activeDetail.title}</h2>
+          <p>{activeDetail.intro}</p>
         </div>
-        <div className="servicesDetailGrid">
-          {groups.map((group) => (
-            <article className="servicesDetailCard" key={group.no}>
-              <div className="servicesDetailCard__top">
-                <div><span className="servicesDetailCard__no">{group.no}</span><h3>{group.title}</h3></div>
-                <div className="servicesDetailCard__icon"><Icon name={group.icon} size={25}/></div>
-              </div>
-              <div className="servicesDetailCard__list">
-                {group.items.map((item) => (
-                  <div className="servicesDetailItem" key={item}><span>✦</span><p>{item}</p></div>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+
+        <article className="servicesDetailCard svc69DetailCard">
+          <div className="servicesDetailCard__top">
+            <div>
+              <span className="servicesDetailCard__no">{activeDetail.no}</span>
+              <h3>{activeDetail.title}</h3>
+            </div>
+            <div className="servicesDetailCard__icon"><Icon name={activeDetail.icon} size={25}/></div>
+          </div>
+          <div className="servicesDetailCard__list svc69DetailList">
+            {activeDetail.items.map((item) => (
+              <div className="servicesDetailItem" key={item}><span>✦</span><p>{item}</p></div>
+            ))}
+          </div>
+        </article>
       </section>
 
       <section className="svc52Scope">
@@ -1728,7 +1805,7 @@ function LegalPage({ type }) {
         {
           title: "6. Toplama Yöntemi ve Hukuki Sebep",
           text:
-            "Kişisel veriler; internet sitesindeki form, telefon, e-posta, WhatsApp ve benzeri iletişim kanalları üzerinden elektronik veya sözlü yollarla elde edilebilir. Her veri işleme faaliyeti için 6698 sayılı Kanunda yer alan uygun işleme şartı ayrıca belirlenir. Açık rızanın gerekli olduğu bir işlem bulunması halinde açık rıza, bu aydınlatma metninden ayrı ve belirli bir konuya ilişkin olarak alınır.",
+            "Kişisel veriler; internet sitesindeki form, telefon ve e-posta gibi iletişim kanalları üzerinden elektronik veya sözlü yollarla elde edilebilir. Her veri işleme faaliyeti için 6698 sayılı Kanunda yer alan uygun işleme şartı ayrıca belirlenir. Açık rızanın gerekli olduğu bir işlem bulunması halinde açık rıza, bu aydınlatma metninden ayrı ve belirli bir konuya ilişkin olarak alınır.",
         },
         {
           title: "7. Kişisel Veriler Kimlerle Paylaşılabilir?",
@@ -6278,6 +6355,1795 @@ img{
       linear-gradient(180deg,rgba(4,16,31,.10),rgba(4,16,31,.78) 47%,#061426 82%);
   }
 }
+
+/* STEP 60 — PREMIUM RANDEVU */
+.apt60{min-height:100vh;background:#020914;color:#f4efe8}.apt60Hero{position:relative;min-height:560px;padding:110px 6% 72px;display:grid;grid-template-columns:1.08fr .72fr;gap:7vw;align-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.055);background:radial-gradient(circle at 80% 25%,rgba(47,128,237,.08),transparent 28%),radial-gradient(circle at 10% 75%,rgba(218,151,65,.035),transparent 22%),#020914}.apt60Hero__grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 93%)}.apt60Back{position:absolute;top:30px;left:6%;z-index:3;display:flex;gap:9px;align-items:center;color:#8c97a4;font-size:10px}.apt60Back span{color:#d9953d;font-size:17px}.apt60Hero__copy,.apt60Hero__aside{position:relative;z-index:2}.apt60Hero__copy>span,.apt60Step__head>span{color:#d9953d;font-size:10px;font-weight:800;letter-spacing:.18em}.apt60Hero h1{margin-top:15px;font:400 clamp(54px,6vw,92px)/.92 Georgia,serif;letter-spacing:-.05em}.apt60Hero h1 strong{color:#d9953d;font-weight:400}.apt60Hero__copy>p{max-width:720px;margin-top:25px;color:#abb3bd;font-size:15px;line-height:1.85}.apt60Hero__trust{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.apt60Hero__trust>div{min-height:77px;padding:14px;display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:center;border:1px solid rgba(218,151,65,.13);border-radius:12px;background:rgba(7,22,39,.6)}.apt60Hero__trust svg{color:#d9953d}.apt60Hero__trust span,.apt60Hero__aside p{display:flex;flex-direction:column;gap:4px}.apt60Hero__trust strong,.apt60Hero__aside strong{font-size:10px}.apt60Hero__trust small,.apt60Hero__aside small{color:#738090;font-size:8px;line-height:1.4}.apt60Hero__aside{padding:28px;border:1px solid rgba(218,151,65,.2);border-radius:20px;background:linear-gradient(145deg,#08192c,#04111f);box-shadow:0 34px 80px rgba(0,0,0,.25)}.apt60Hero__aside>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.17em}.apt60Hero__aside>div{min-height:76px;display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:center;border-bottom:1px solid rgba(255,255,255,.05)}.apt60Hero__aside>div:last-child{border-bottom:0}.apt60Hero__aside b{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.22);border-radius:50%;color:#d9953d;font:400 11px Georgia,serif}.apt60FormArea{padding:65px 5% 100px;background:#03101f}.apt60Progress{width:min(620px,94vw);margin:0 auto 28px;display:grid;grid-template-columns:repeat(3,1fr);position:relative}.apt60Progress:before{content:"";position:absolute;left:16%;right:16%;top:18px;height:1px;background:rgba(218,151,65,.2)}.apt60Progress>div{position:relative;z-index:1;text-align:center;color:#5f6d7d}.apt60Progress span{width:37px;height:37px;margin:auto;display:grid;place-items:center;border:1px solid rgba(255,255,255,.09);border-radius:50%;background:#04111f;font-size:10px}.apt60Progress p{margin-top:7px;font-size:8px;font-weight:700}.apt60Progress>div.is-active{color:#d9953d}.apt60Progress>div.is-active span{border-color:rgba(218,151,65,.55);background:rgba(218,151,65,.08)}.apt60Card{max-width:1100px;margin:auto;border:1px solid rgba(218,151,65,.16);border-radius:20px;background:linear-gradient(145deg,#07182a,#04111e);box-shadow:0 28px 75px rgba(0,0,0,.2)}.apt60Step{padding:34px}.apt60Step__head h2{margin-top:7px;font:400 clamp(29px,3vw,42px)/1.05 Georgia,serif}.apt60Step__head p{margin-top:9px;color:#7f8b99;font-size:11px}.apt60Services{margin-top:27px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.apt60Services button{position:relative;min-height:145px;padding:20px;text-align:left;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:#041321;color:#f2eee8;cursor:pointer}.apt60Services button:hover,.apt60Services button.is-selected{border-color:rgba(218,151,65,.45);background:linear-gradient(145deg,rgba(174,101,27,.09),#041321)}.apt60Services button>div{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.18);border-radius:10px;color:#d9953d}.apt60Services strong{display:block;margin-top:14px;font:400 19px Georgia,serif}.apt60Services p{max-width:85%;margin-top:7px;color:#7d8997;font-size:9.5px;line-height:1.6}.apt60Services button>span{position:absolute;right:17px;bottom:16px;color:#d9953d}.apt60Format{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05)}.apt60Format>span,.apt60DateGrid label>span,.apt60Times>span,.apt60Fields label>span{color:#8793a1;font-size:9px}.apt60Format>div{margin-top:11px;display:grid;grid-template-columns:1fr 1fr;gap:11px}.apt60Format button,.apt60Times button{min-height:52px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:#03101d;color:#8f9aa8;cursor:pointer}.apt60Format button{display:flex;align-items:center;justify-content:center;gap:10px}.apt60Format button svg{color:#d9953d}.apt60Format button.is-selected,.apt60Times button.is-selected{border-color:rgba(218,151,65,.55);background:rgba(218,151,65,.08);color:#e3a14c}.apt60Actions{margin-top:29px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.05)}.apt60Actions button{min-height:48px;padding:0 18px;display:flex;align-items:center;gap:10px;border:1px solid rgba(218,151,65,.27);border-radius:9px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:9px;font-weight:700}.apt60Actions button:disabled{opacity:.32;cursor:not-allowed}.apt60Actions button.is-secondary{background:transparent;border-color:rgba(255,255,255,.08);color:#8895a4}.apt60DateGrid{margin-top:27px;display:grid;grid-template-columns:.75fr 1.25fr;gap:28px}.apt60DateGrid label,.apt60Times,.apt60Fields label{display:flex;flex-direction:column;gap:8px}.apt60DateGrid input,.apt60Fields input,.apt60Fields textarea{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:#03101d;color:#eef0f2}.apt60DateGrid input{min-height:53px;color-scheme:dark}.apt60Times>div{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.apt60Notice,.apt60Sensitive{margin-top:24px;padding:14px 16px;display:flex;gap:11px;border:1px solid rgba(218,151,65,.13);border-radius:10px;background:rgba(218,151,65,.025);color:#d9953d}.apt60Notice p,.apt60Sensitive p{color:#7d8997;font-size:9.5px;line-height:1.6}.apt60Fields{margin-top:27px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.apt60Fields input{min-height:48px}.apt60Fields__full{grid-column:1/-1}.apt60Kvkk{margin-top:22px;padding:16px;display:grid;grid-template-columns:27px 1fr;gap:12px;border:1px solid rgba(255,255,255,.06);border-radius:10px;background:#03101d}.apt60Kvkk>button{width:25px;height:25px;border:1px solid rgba(218,151,65,.35);border-radius:6px;background:transparent;color:#d9953d;cursor:pointer}.apt60Kvkk p{color:#7f8b99;font-size:9px;line-height:1.65}.apt60Kvkk a{color:#d9953d;text-decoration:underline}.apt60Success{min-height:100vh;padding:30px 18px;display:grid;place-items:center;background:#020914;color:#f4efe8}.apt60Success__card{width:min(660px,100%);padding:42px;text-align:center;border:1px solid rgba(218,151,65,.2);border-radius:22px;background:linear-gradient(145deg,#08192c,#04111e)}.apt60Success__icon{width:72px;height:72px;margin:auto;display:grid;place-items:center;border:1px solid rgba(52,212,134,.25);border-radius:50%;color:#67d99a}.apt60Success__card>span{display:block;margin-top:24px;color:#d9953d;font-size:9px;font-weight:800}.apt60Success h1{margin-top:9px;font:400 42px Georgia,serif}.apt60Success__card>p{margin:14px auto 0;max-width:540px;color:#8995a3;font-size:11px;line-height:1.7}.apt60Success__summary{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left}.apt60Success__summary>div{padding:13px;border:1px solid rgba(255,255,255,.06);border-radius:9px;background:#03101d}.apt60Success__summary small{display:block;color:#637184;font-size:8px}.apt60Success__summary strong{display:block;margin-top:4px;font-size:10px}.apt60Success__card>a{width:100%;min-height:48px;margin-top:22px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(218,151,65,.25);border-radius:9px;color:#d9953d}
+@media(max-width:900px){.apt60Hero{grid-template-columns:1fr;padding:100px 20px 65px}.apt60Back{left:20px}.apt60DateGrid{grid-template-columns:1fr}}
+@media(max-width:650px){.apt60Hero h1{font-size:52px}.apt60Hero__copy>p{font-size:13px}.apt60Hero__trust{grid-template-columns:1fr}.apt60FormArea{padding:55px 16px 80px}.apt60Step{padding:24px 18px}.apt60Services,.apt60Format>div,.apt60Fields{grid-template-columns:1fr}.apt60Times>div{grid-template-columns:repeat(3,1fr)}.apt60Fields__full{grid-column:auto}.apt60Success__card{padding:31px 20px}.apt60Success__summary{grid-template-columns:1fr}}
+
+/* STEP 61 — RANDEVU FORMU OKUNABİLİRLİK */
+.apt60Fields label>span{
+  color:#b7c0cb;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.015em;
+}
+.apt60Fields label>span small{
+  color:#8d99a7;
+  font-size:12px;
+  font-weight:400;
+}
+.apt60Fields input,
+.apt60Fields textarea{
+  font-size:14px;
+  line-height:1.55;
+}
+.apt60Fields input::placeholder,
+.apt60Fields textarea::placeholder{
+  color:#6f7c8c;
+  font-size:13px;
+  opacity:1;
+}
+.apt60Kvkk p{
+  font-size:11.5px;
+  line-height:1.7;
+}
+.apt60Sensitive p,
+.apt60Notice p{
+  font-size:11.5px;
+  line-height:1.65;
+}
+.apt60Step__head p{
+  font-size:13px;
+  line-height:1.65;
+}
+.apt60DateGrid label>span,
+.apt60Times>span,
+.apt60Format>span{
+  color:#aab4c0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+}
+.apt60Times button{
+  font-size:15px;
+}
+@media(max-width:650px){
+  .apt60Fields label>span{font-size:14px}
+  .apt60Fields label>span small{font-size:12px}
+  .apt60Fields input,.apt60Fields textarea{font-size:16px}
+  .apt60Fields input::placeholder,.apt60Fields textarea::placeholder{font-size:14px}
+  .apt60Kvkk p,.apt60Sensitive p,.apt60Notice p{font-size:12px}
+}
+
+/* STEP 62 — AÇIK / SICAK ANA SAYFA DENEMESİ */
+.topbar--light{
+  min-height:112px;
+  padding:0 5.1%;
+  border-bottom:1px solid rgba(130,103,63,.12);
+  background:rgba(250,248,244,.96);
+  box-shadow:0 8px 28px rgba(72,56,36,.06);
+  backdrop-filter:blur(14px);
+}
+.topbar--light .brand{
+  gap:16px;
+}
+.topbar--light .brandMark{
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#9d783a;
+  font:400 37px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:-.12em;
+  box-shadow:none;
+}
+.topbar--light .brandText{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.topbar--light .brandText span{
+  order:1;
+  color:#59606a;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.02em;
+}
+.topbar--light .brandText strong{
+  order:2;
+  margin-top:2px;
+  color:#181c22;
+  font:600 19px/1.15 Georgia,"Times New Roman",serif;
+  letter-spacing:0;
+}
+.topbar--light .nav{
+  padding:8px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+.topbar--light .nav a{
+  min-height:49px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  border-radius:0;
+  color:#20242a;
+  font-size:14px;
+  font-weight:500;
+}
+.topbar--light .nav a:hover,
+.topbar--light .nav a.is-active{
+  color:#8e6b34;
+  background:transparent;
+}
+.topbar--light .nav a.is-active:after{
+  background:#a27b3d;
+}
+.topbar--light .topCta{
+  min-height:50px;
+  padding:0 25px;
+  border:1px solid #9a7438;
+  border-radius:5px;
+  background:linear-gradient(135deg,#a27a3b,#8c682f);
+  color:#fff;
+  box-shadow:0 8px 22px rgba(139,103,47,.15);
+  font-size:12px;
+  font-weight:700;
+}
+.topbar--light .topCta svg{
+  display:none;
+}
+.topbar--light .menuBtn span{
+  background:#252a30;
+}
+
+.lightHomeHero{
+  position:relative;
+  min-height:790px;
+  overflow:hidden;
+  color:#202329;
+  background:
+    radial-gradient(circle at 25% 10%,rgba(255,255,255,.96),transparent 42%),
+    linear-gradient(100deg,#f8f7f4 0%,#f4f2ee 56%,#e8dfd3 100%);
+  border-bottom:1px solid rgba(139,107,57,.10);
+}
+.lightHomeHero__visual{
+  position:absolute;
+  z-index:0;
+  top:0;
+  right:0;
+  width:48%;
+  height:100%;
+  overflow:hidden;
+}
+.lightHomeHero__visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:52% center;
+  filter:saturate(.88) brightness(1.15) contrast(.88);
+}
+.lightHomeHero__visualShade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#f4f2ee 0%,rgba(244,242,238,.88) 11%,rgba(244,242,238,.22) 37%,rgba(244,242,238,0) 66%),
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(112,82,42,.05));
+}
+.lightHomeHero__content{
+  position:relative;
+  z-index:2;
+  width:min(740px,53%);
+  padding:118px 0 230px 9.2%;
+}
+.lightHomeHero__eyebrow{
+  display:block;
+  margin-bottom:23px;
+  color:#2d3035;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.10em;
+}
+.lightHomeHero h1{
+  margin:0;
+  color:#181b20;
+  font:400 clamp(55px,5vw,82px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+}
+.lightHomeHero h1 strong{
+  display:block;
+  margin-top:9px;
+  color:#9a743a;
+  font-weight:400;
+}
+.lightHomeHero__content>p{
+  max-width:600px;
+  margin-top:28px;
+  color:#3f454c;
+  font-size:17px;
+  line-height:1.72;
+}
+.lightHomeHero__actions{
+  margin-top:32px;
+  display:flex;
+  gap:17px;
+  flex-wrap:wrap;
+}
+.lightHomeHero__actions a{
+  min-height:56px;
+  padding:0 29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  font-size:14px;
+  font-weight:600;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.lightHomeHero__actions a:hover{
+  transform:translateY(-2px);
+}
+.lightHomeHero__primary{
+  min-width:225px;
+  border:1px solid #9b7539;
+  background:linear-gradient(135deg,#aa8241,#92703a);
+  color:#fff;
+  box-shadow:0 12px 30px rgba(132,97,43,.17);
+}
+.lightHomeHero__secondary{
+  min-width:190px;
+  border:1px solid rgba(132,101,54,.72);
+  background:rgba(255,255,255,.42);
+  color:#7a6038;
+}
+.lightHomeHero__trust{
+  position:absolute;
+  z-index:4;
+  left:9.2%;
+  bottom:32px;
+  width:min(820px,66%);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid rgba(122,102,75,.12);
+  border-radius:8px;
+  overflow:hidden;
+  background:rgba(248,247,244,.82);
+  box-shadow:0 18px 45px rgba(72,58,39,.08);
+  backdrop-filter:blur(15px);
+}
+.lightHomeHero__trust article{
+  min-height:137px;
+  padding:23px 20px;
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:13px;
+  align-items:start;
+  border-right:1px solid rgba(122,102,75,.10);
+}
+.lightHomeHero__trust article:last-child{
+  border-right:0;
+}
+.lightHomeHero__trust article>div{
+  color:#9b763a;
+}
+.lightHomeHero__trust span{
+  display:block;
+}
+.lightHomeHero__trust strong{
+  display:block;
+  color:#23272c;
+  font-size:13px;
+  font-weight:700;
+}
+.lightHomeHero__trust p{
+  margin-top:9px;
+  color:#5e646c;
+  font-size:11px;
+  line-height:1.65;
+}
+
+/* ana sayfanın bir sonraki bölümüne geçişi daha doğal yap */
+.lightHomeHero + .homeServicesShowcase{
+  border-top:0;
+  box-shadow:inset 0 35px 70px rgba(0,0,0,.025);
+}
+
+@media(max-width:1050px){
+  .topbar--light .nav a{
+    padding:0 12px;
+    font-size:12px;
+  }
+  .lightHomeHero__content{
+    width:60%;
+    padding-left:6%;
+  }
+  .lightHomeHero__trust{
+    left:6%;
+    width:80%;
+  }
+}
+@media(max-width:760px){
+  .topbar--light{
+    min-height:82px;
+    padding:0 18px;
+  }
+  .topbar--light .brandMark{
+    width:43px;
+    height:43px;
+    font-size:28px;
+  }
+  .topbar--light .brandText span{
+    font-size:8px;
+  }
+  .topbar--light .brandText strong{
+    font-size:15px;
+  }
+  .topbar--light .nav{
+    background:#faf8f4;
+    border:1px solid rgba(139,107,57,.10);
+  }
+  .topbar--light .nav a{
+    color:#25292e;
+    font-size:14px;
+  }
+  .topbar--light .topCta{
+    display:none;
+  }
+
+  .lightHomeHero{
+    min-height:930px;
+    background:#f5f2ed;
+  }
+  .lightHomeHero__visual{
+    top:0;
+    width:100%;
+    height:46%;
+  }
+  .lightHomeHero__visual img{
+    object-position:center 55%;
+  }
+  .lightHomeHero__visualShade{
+    background:
+      linear-gradient(180deg,rgba(245,242,237,.04) 0%,rgba(245,242,237,.12) 48%,#f5f2ed 100%);
+  }
+  .lightHomeHero__content{
+    width:auto;
+    padding:410px 22px 330px;
+  }
+  .lightHomeHero__eyebrow{
+    font-size:12px;
+  }
+  .lightHomeHero h1{
+    font-size:49px;
+  }
+  .lightHomeHero__content>p{
+    font-size:14px;
+  }
+  .lightHomeHero__actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .lightHomeHero__actions a{
+    width:100%;
+  }
+  .lightHomeHero__trust{
+    left:18px;
+    right:18px;
+    bottom:25px;
+    width:auto;
+    grid-template-columns:1fr;
+  }
+  .lightHomeHero__trust article{
+    min-height:auto;
+    padding:16px 18px;
+    border-right:0;
+    border-bottom:1px solid rgba(122,102,75,.10);
+  }
+  .lightHomeHero__trust article:last-child{
+    border-bottom:0;
+  }
+}
+
+/* =========================================================
+   STEP 63 — TÜM KAMUSAL SİTE / AÇIK SICAK PREMIUM TEMA
+   Admin paneli bilerek koyu bırakılmıştır.
+   ========================================================= */
+:root{
+  --warm-bg:#f7f4ef;
+  --warm-bg-2:#f0ebe3;
+  --warm-card:#fffdf9;
+  --warm-ink:#1f2328;
+  --warm-copy:#5b6269;
+  --warm-muted:#858b91;
+  --warm-gold:#9b7438;
+  --warm-gold-2:#b18748;
+  --warm-border:rgba(128,98,55,.16);
+  --warm-shadow:0 22px 60px rgba(84,64,39,.09);
+}
+
+/* -------- MAIN / HOME LOWER SECTIONS -------- */
+.pageShell{
+  background:var(--warm-bg);
+}
+.homeServicesShowcase{
+  color:var(--warm-ink);
+  background:
+    radial-gradient(circle at 88% 10%,rgba(177,135,72,.08),transparent 24%),
+    linear-gradient(180deg,#f7f4ef,#f2ede5);
+  border-top:1px solid var(--warm-border);
+  border-bottom:1px solid var(--warm-border);
+}
+.homeServicesShowcase__eyebrow,
+.sectionEyebrow{
+  color:var(--warm-gold)!important;
+}
+.homeServicesShowcase__head h2,
+.homeTrustStatement h2,
+.contactLead h2{
+  color:#202329!important;
+}
+.homeServicesShowcase__head p,
+.homeServiceFeature p,
+.homeServicesShowcase__benefit p,
+.homeTrustStatement p,
+.contactLead p{
+  color:var(--warm-copy)!important;
+}
+.homeServicesShowcase__grid{
+  gap:16px;
+}
+.homeServiceFeature{
+  border:1px solid var(--warm-border)!important;
+  background:rgba(255,253,249,.84)!important;
+  box-shadow:0 15px 40px rgba(84,64,39,.055);
+}
+.homeServiceFeature:hover{
+  border-color:rgba(155,116,56,.34)!important;
+  box-shadow:var(--warm-shadow);
+}
+.homeServiceFeature h3{
+  color:#23262b!important;
+}
+.homeServiceFeature__icon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.20)!important;
+  background:rgba(155,116,56,.045)!important;
+}
+.homeServicesShowcase__all{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.28)!important;
+}
+.homeServicesShowcase__footer{
+  border-color:var(--warm-border)!important;
+  background:linear-gradient(90deg,#e7ddd0,#f6f1ea)!important;
+  color:#24272b!important;
+  box-shadow:var(--warm-shadow);
+}
+.homeServicesShowcase__benefitIcon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.26)!important;
+}
+.homeScopeStrip{
+  border-color:var(--warm-border)!important;
+  background:#eee8df!important;
+}
+.homeScopeStrip>div{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.22)!important;
+}
+.homeScopeStrip p{
+  color:#646a70!important;
+}
+.homeTrustStatement{
+  color:#24272b!important;
+  background:
+    radial-gradient(circle at 12% 50%,rgba(155,116,56,.07),transparent 24%),
+    #f8f5f0!important;
+  border-color:var(--warm-border)!important;
+}
+.homeTrustStatement__mark{
+  color:var(--warm-gold)!important;
+}
+
+/* -------- CONTACT SECTION -------- */
+.contactSection{
+  color:var(--warm-ink)!important;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(155,116,56,.07),transparent 24%),
+    linear-gradient(180deg,#f4efe8,#ece5dc)!important;
+  border-color:var(--warm-border)!important;
+}
+.contactCard{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.86)!important;
+  box-shadow:0 15px 38px rgba(84,64,39,.055)!important;
+}
+.contactCard strong,
+.contactCard h3{
+  color:#24272b!important;
+}
+.contactCard p,
+.contactCard span{
+  color:#676d73!important;
+}
+.contactIcon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.22)!important;
+  background:rgba(155,116,56,.04)!important;
+}
+.contactCard--cta{
+  background:linear-gradient(145deg,#a47d41,#8e6932)!important;
+  color:#fff!important;
+}
+.contactCard--cta strong,
+.contactCard--cta p,
+.contactCard--cta span{
+  color:#fff!important;
+}
+
+/* -------- FOOTER -------- */
+.premiumFooter{
+  color:#25282d!important;
+  background:
+    radial-gradient(circle at 85% 0,rgba(155,116,56,.075),transparent 25%),
+    linear-gradient(180deg,#eee7dd,#e7ded1)!important;
+  border-top:1px solid rgba(128,98,55,.18)!important;
+}
+.premiumFooter__glow{
+  opacity:.18!important;
+}
+.premiumFooter__mark{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.30)!important;
+}
+.premiumFooter__brand strong,
+.premiumFooter__title,
+.premiumFooter__contact strong{
+  color:#24272b!important;
+}
+.premiumFooter__brand span,
+.premiumFooter__brand p,
+.premiumFooter__nav a,
+.premiumFooter__contact span,
+.premiumFooter__contactRow,
+.premiumFooter__bottom,
+.premiumFooter__legal a{
+  color:#666d74!important;
+}
+.premiumFooter__nav a:hover,
+.premiumFooter__legal a:hover{
+  color:var(--warm-gold)!important;
+}
+.premiumFooter__cta{
+  border-color:#987038!important;
+  background:linear-gradient(135deg,#a57c3d,#8e682f)!important;
+  color:white!important;
+}
+
+/* -------- ABOUT -------- */
+.aboutDirectPage{
+  color:var(--warm-ink)!important;
+  background:
+    radial-gradient(circle at 85% 8%,rgba(155,116,56,.08),transparent 23%),
+    linear-gradient(180deg,#f7f4ef,#f0ebe3)!important;
+}
+.aboutDirectBack{
+  color:#777d82!important;
+}
+.aboutDirectBack span{
+  color:var(--warm-gold)!important;
+}
+.aboutDirectHeader{
+  border-bottom-color:var(--warm-border)!important;
+}
+.aboutDirectHeader__title>span,
+.aboutDirectArticle__topline{
+  color:var(--warm-gold)!important;
+}
+.aboutDirectHeader__title h1,
+.aboutDirectArticle h2{
+  color:#202329!important;
+}
+.aboutDirectHeader__title p,
+.aboutDirectArticle p{
+  color:#545b62!important;
+}
+.aboutDirectLayout{
+  border-color:var(--warm-border)!important;
+}
+.aboutDirectProfile{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.88)!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.aboutDirectProfile__photo{
+  background:#e8e1d7!important;
+}
+.aboutDirectProfile__body>span{
+  color:var(--warm-gold)!important;
+}
+.aboutDirectProfile__body h2{
+  color:#22262b!important;
+}
+.aboutDirectProfile__body p,
+.aboutDirectProfile__items span{
+  color:#626970!important;
+}
+.aboutDirectProfile__line{
+  background:rgba(155,116,56,.28)!important;
+}
+
+/* -------- SERVICES -------- */
+.svc52{
+  color:var(--warm-ink)!important;
+  background:var(--warm-bg)!important;
+}
+.svc52Hero{
+  border-bottom-color:rgba(155,116,56,.28)!important;
+  background:#efe8df!important;
+}
+.svc52Hero__image{
+  filter:saturate(.90) brightness(1.13) contrast(.90)!important;
+}
+.svc52Hero__shade{
+  background:
+    linear-gradient(90deg,#f7f4ef 0%,rgba(247,244,239,.98) 31%,rgba(247,244,239,.76) 49%,rgba(247,244,239,.07) 78%)!important;
+}
+.svc52Back{
+  color:#6d7379!important;
+}
+.svc52Back span,
+.svc52Eyebrow{
+  color:var(--warm-gold)!important;
+}
+.svc52Hero h1{
+  color:#202329!important;
+}
+.svc52Hero__copy i{
+  background:var(--warm-gold)!important;
+}
+.svc52Hero__copy p{
+  color:#545b62!important;
+}
+.svc52Quick{
+  background:
+    radial-gradient(circle at 50% 0,rgba(155,116,56,.07),transparent 31%),
+    #f4efe8!important;
+}
+.svc52SectionTitle span{
+  color:var(--warm-gold)!important;
+}
+.svc52SectionTitle span:before,
+.svc52SectionTitle span:after{
+  background:rgba(155,116,56,.36)!important;
+}
+.svc52SectionTitle h2{
+  color:#24272b!important;
+}
+.svc52QuickCard,
+.servicesDetailCard{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.92)!important;
+  box-shadow:0 15px 40px rgba(84,64,39,.055)!important;
+}
+.svc52QuickCard:hover,
+.servicesDetailCard:hover{
+  border-color:rgba(155,116,56,.38)!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.svc52QuickIcon,
+.servicesDetailCard__icon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.28)!important;
+}
+.svc52QuickCard h3,
+.servicesDetailCard h3,
+.servicesDetailSectionHead h2{
+  color:#24272b!important;
+}
+.svc52QuickCard p,
+.servicesDetailItem p,
+.servicesDetailSectionHead p{
+  color:#646b72!important;
+}
+.svc52QuickCard a,
+.servicesDetailCard__no,
+.servicesDetailItem span,
+.servicesDetailSectionHead span{
+  color:var(--warm-gold)!important;
+}
+.svc52Trust{
+  border-color:var(--warm-border)!important;
+  background:#ebe4da!important;
+  box-shadow:0 13px 35px rgba(84,64,39,.055)!important;
+}
+.svc52Trust>div{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.20)!important;
+}
+.svc52Trust strong{
+  color:#272a2e!important;
+}
+.svc52Trust span{
+  color:#676d74!important;
+}
+.servicesDetailGridSection,
+.svc52Details{
+  background:#f7f4ef!important;
+}
+.svc52Scope{
+  border-color:rgba(155,116,56,.28)!important;
+  background:linear-gradient(90deg,#e8ded1,#fbf7f1)!important;
+  color:#23272c!important;
+}
+.svc52Scope__mark,
+.svc52Scope span{
+  color:var(--warm-gold)!important;
+}
+
+/* -------- PROCESS -------- */
+.prc53{
+  color:var(--warm-ink)!important;
+  background:var(--warm-bg)!important;
+}
+.prc53Hero{
+  border-bottom-color:rgba(155,116,56,.28)!important;
+  background:#efe8df!important;
+}
+.prc53Hero__image{
+  filter:saturate(.90) brightness(1.10) contrast(.90)!important;
+}
+.prc53Hero__shade{
+  background:
+    linear-gradient(90deg,#f7f4ef 0%,rgba(247,244,239,.98) 31%,rgba(247,244,239,.75) 49%,rgba(247,244,239,.07) 78%)!important;
+}
+.prc53Back{
+  color:#6d7379!important;
+}
+.prc53Back span,
+.prc53Eyebrow{
+  color:var(--warm-gold)!important;
+}
+.prc53Hero h1{
+  color:#202329!important;
+}
+.prc53Hero__copy i{
+  background:var(--warm-gold)!important;
+}
+.prc53Hero__copy p{
+  color:#545b62!important;
+}
+.prc53Flow{
+  background:
+    radial-gradient(circle at 50% 0,rgba(155,116,56,.065),transparent 30%),
+    #f4efe8!important;
+}
+.prc53SectionTitle span{
+  color:var(--warm-gold)!important;
+}
+.prc53SectionTitle span:before,
+.prc53SectionTitle span:after,
+.prc53Steps:before{
+  background:rgba(155,116,56,.34)!important;
+}
+.prc53SectionTitle h2{
+  color:#25282d!important;
+}
+.prc53Step{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.92)!important;
+  box-shadow:0 16px 42px rgba(84,64,39,.06)!important;
+}
+.prc53Step:hover{
+  border-color:rgba(155,116,56,.40)!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.prc53Step__number{
+  border-color:rgba(155,116,56,.42)!important;
+  color:var(--warm-gold)!important;
+  background:#fbf8f3!important;
+}
+.prc53Step__icon{
+  color:var(--warm-gold)!important;
+}
+.prc53Step h3{
+  color:#24272b!important;
+}
+.prc53Step p{
+  color:#646b72!important;
+}
+.prc53Trust{
+  border-color:var(--warm-border)!important;
+  background:#ebe4da!important;
+}
+.prc53Trust>div{
+  border-color:rgba(155,116,56,.20)!important;
+}
+.prc53Trust__icon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.30)!important;
+}
+.prc53Trust strong{
+  color:#25282d!important;
+}
+.prc53Trust span{
+  color:#666d74!important;
+}
+.prc53Principles{
+  border-color:rgba(155,116,56,.30)!important;
+  background:linear-gradient(90deg,#e7ddd0,#fbf7f1)!important;
+  color:#24272b!important;
+}
+.prc53Principles__mark{
+  background:#9b7438!important;
+  color:white!important;
+}
+.prc53Principles span{
+  color:var(--warm-gold)!important;
+}
+
+/* -------- CONTENTS / VIDEOS & PODCASTS -------- */
+.cnt57{
+  color:var(--warm-ink)!important;
+  background:var(--warm-bg)!important;
+}
+.cnt57Hero{
+  border-bottom-color:rgba(155,116,56,.26)!important;
+  background:#eee7dd!important;
+}
+.cnt57Hero__image{
+  filter:saturate(.84) brightness(1.12) contrast(.91)!important;
+}
+.cnt57Hero__shade{
+  background:
+    linear-gradient(90deg,#f7f4ef 0%,rgba(247,244,239,.98) 30%,rgba(247,244,239,.74) 48%,rgba(247,244,239,.10) 77%)!important;
+}
+.cnt57Back{
+  color:#6d7379!important;
+}
+.cnt57Back span,
+.cnt57Eyebrow,
+.cnt57Signature{
+  color:var(--warm-gold)!important;
+}
+.cnt57Hero h1{
+  color:#202329!important;
+}
+.cnt57Hero h1 strong{
+  color:var(--warm-gold)!important;
+}
+.cnt57Hero__copy i{
+  background:var(--warm-gold)!important;
+}
+.cnt57Hero__copy p{
+  color:#545b62!important;
+}
+.cnt57Quote{
+  border-color:rgba(155,116,56,.32)!important;
+  background:rgba(250,247,242,.43)!important;
+}
+.cnt57Quote b{
+  color:var(--warm-gold)!important;
+}
+.cnt57Quote p{
+  color:#33373c!important;
+  text-shadow:none!important;
+}
+.cnt57Body{
+  background:
+    radial-gradient(circle at 50% 0,rgba(155,116,56,.06),transparent 28%),
+    #f5f1ea!important;
+}
+.cnt57Tabs{
+  border-color:rgba(155,116,56,.38)!important;
+  background:#fffaf4!important;
+  box-shadow:0 15px 38px rgba(84,64,39,.10)!important;
+}
+.cnt57Tabs button{
+  color:#5c6268!important;
+}
+.cnt57Tabs button.is-active{
+  background:linear-gradient(90deg,#aa8141,#927039)!important;
+  color:white!important;
+}
+.cnt57Section__head>div,
+.cnt57Section__head>a{
+  color:var(--warm-gold)!important;
+}
+.cnt57Section__head span{
+  color:#24272b!important;
+}
+.cnt57VideoCard,
+.cnt57PodcastCard{
+  border-color:var(--warm-border)!important;
+  background:#fffdf9!important;
+  box-shadow:0 14px 36px rgba(84,64,39,.055)!important;
+}
+.cnt57VideoCard:hover{
+  border-color:rgba(155,116,56,.38)!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.cnt57VideoCard__body h3,
+.cnt57PodcastInfo h3{
+  color:#25282d!important;
+}
+.cnt57VideoCard__body p,
+.cnt57PodcastInfo p{
+  color:#676e75!important;
+}
+.cnt57VideoCard__body>div{
+  color:#858b91!important;
+}
+.cnt57VideoCard__body b,
+.cnt57PodcastArt,
+.cnt57PodcastArt__ring,
+.cnt57PodcastInfo>small,
+.cnt57PodcastInfo strong{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.26)!important;
+}
+.cnt57PodcastArt{
+  background:#eee7dd!important;
+}
+.cnt57PodcastInfo button{
+  background:linear-gradient(135deg,#9d7437,#b28645)!important;
+  border-color:#9d7437!important;
+}
+.cnt57Hint,
+.cnt57Subscribe{
+  border-color:var(--warm-border)!important;
+  background:#ebe4da!important;
+}
+.cnt57Hint{
+  color:var(--warm-gold)!important;
+}
+.cnt57Hint p,
+.cnt57Subscribe p{
+  color:#686f76!important;
+}
+.cnt57Subscribe strong{
+  color:#25282d!important;
+}
+.cnt57Subscribe__icon{
+  border-color:rgba(155,116,56,.28)!important;
+}
+.cnt57Subscribe>a{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.36)!important;
+}
+
+/* -------- APPOINTMENT -------- */
+.apt60{
+  color:var(--warm-ink)!important;
+  background:var(--warm-bg)!important;
+}
+.apt60Hero{
+  border-bottom-color:var(--warm-border)!important;
+  background:
+    radial-gradient(circle at 80% 25%,rgba(155,116,56,.08),transparent 28%),
+    radial-gradient(circle at 10% 75%,rgba(255,255,255,.90),transparent 26%),
+    linear-gradient(180deg,#f7f4ef,#eee7dd)!important;
+}
+.apt60Hero__grid{
+  opacity:.30!important;
+  background-image:
+    linear-gradient(rgba(128,98,55,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(128,98,55,.035) 1px,transparent 1px)!important;
+}
+.apt60Back{
+  color:#6d747a!important;
+}
+.apt60Back span,
+.apt60Hero__copy>span,
+.apt60Step__head>span{
+  color:var(--warm-gold)!important;
+}
+.apt60Hero h1{
+  color:#202329!important;
+}
+.apt60Hero h1 strong{
+  color:var(--warm-gold)!important;
+}
+.apt60Hero__copy>p{
+  color:#555c63!important;
+}
+.apt60Hero__trust>div{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.70)!important;
+}
+.apt60Hero__trust svg{
+  color:var(--warm-gold)!important;
+}
+.apt60Hero__trust strong,
+.apt60Hero__aside strong{
+  color:#282b30!important;
+}
+.apt60Hero__trust small,
+.apt60Hero__aside small{
+  color:#70777e!important;
+}
+.apt60Hero__aside{
+  border-color:var(--warm-border)!important;
+  background:rgba(255,253,249,.88)!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.apt60Hero__aside>span,
+.apt60Hero__aside b{
+  color:var(--warm-gold)!important;
+}
+.apt60Hero__aside b{
+  border-color:rgba(155,116,56,.30)!important;
+}
+.apt60Hero__aside>div{
+  border-color:rgba(128,98,55,.10)!important;
+}
+.apt60FormArea{
+  background:
+    radial-gradient(circle at 50% 0,rgba(155,116,56,.055),transparent 28%),
+    #f3eee7!important;
+}
+.apt60Progress>div{
+  color:#8b9095!important;
+}
+.apt60Progress>div.is-active{
+  color:var(--warm-gold)!important;
+}
+.apt60Progress span{
+  border-color:rgba(128,98,55,.18)!important;
+  background:#fffdf9!important;
+}
+.apt60Progress>div.is-active span{
+  border-color:rgba(155,116,56,.50)!important;
+  background:#efe4d4!important;
+}
+.apt60Progress:before{
+  background:rgba(155,116,56,.24)!important;
+}
+.apt60Card{
+  border-color:var(--warm-border)!important;
+  background:#fffdf9!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.apt60Step__head h2{
+  color:#23262b!important;
+}
+.apt60Step__head p{
+  color:#696f75!important;
+}
+.apt60Services button{
+  border-color:var(--warm-border)!important;
+  background:#f8f4ee!important;
+  color:#25282d!important;
+}
+.apt60Services button:hover,
+.apt60Services button.is-selected{
+  border-color:rgba(155,116,56,.44)!important;
+  background:#f0e7da!important;
+}
+.apt60Services button>div,
+.apt60Services button>span{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.22)!important;
+}
+.apt60Services p{
+  color:#686f76!important;
+}
+.apt60Format{
+  border-color:rgba(128,98,55,.10)!important;
+}
+.apt60Format>span,
+.apt60DateGrid label>span,
+.apt60Times>span,
+.apt60Fields label>span{
+  color:#666d73!important;
+}
+.apt60Format button,
+.apt60Times button,
+.apt60DateGrid input,
+.apt60Fields input,
+.apt60Fields textarea,
+.apt60Kvkk{
+  border-color:var(--warm-border)!important;
+  background:#f8f4ee!important;
+  color:#282c31!important;
+}
+.apt60DateGrid input{
+  color-scheme:light!important;
+}
+.apt60Format button svg{
+  color:var(--warm-gold)!important;
+}
+.apt60Format button.is-selected,
+.apt60Times button.is-selected{
+  border-color:rgba(155,116,56,.48)!important;
+  background:#eee3d3!important;
+  color:var(--warm-gold)!important;
+}
+.apt60Actions{
+  border-color:rgba(128,98,55,.10)!important;
+}
+.apt60Actions button{
+  background:linear-gradient(135deg,#a47b3d,#8f6931)!important;
+  border-color:#966e33!important;
+}
+.apt60Actions button.is-secondary{
+  background:transparent!important;
+  color:#737a80!important;
+  border-color:rgba(128,98,55,.18)!important;
+}
+.apt60Notice,
+.apt60Sensitive{
+  border-color:var(--warm-border)!important;
+  background:#f3ece2!important;
+  color:var(--warm-gold)!important;
+}
+.apt60Notice p,
+.apt60Sensitive p,
+.apt60Kvkk p{
+  color:#656c72!important;
+}
+.apt60Kvkk>button{
+  border-color:rgba(155,116,56,.38)!important;
+  color:var(--warm-gold)!important;
+}
+.apt60Kvkk a{
+  color:var(--warm-gold)!important;
+}
+.apt60Success{
+  color:var(--warm-ink)!important;
+  background:linear-gradient(180deg,#f7f4ef,#eee7dd)!important;
+}
+.apt60Success__card{
+  border-color:var(--warm-border)!important;
+  background:#fffdf9!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.apt60Success__card>span,
+.apt60Success__card>a{
+  color:var(--warm-gold)!important;
+}
+.apt60Success h1{
+  color:#24272b!important;
+}
+.apt60Success__card>p{
+  color:#676e75!important;
+}
+.apt60Success__summary>div{
+  border-color:var(--warm-border)!important;
+  background:#f6f1ea!important;
+}
+.apt60Success__summary small{
+  color:#878c91!important;
+}
+.apt60Success__summary strong{
+  color:#292c31!important;
+}
+
+/* -------- LEGAL / KVKK / PRIVACY / COOKIES -------- */
+.legalPage{
+  color:var(--warm-ink)!important;
+  background:
+    radial-gradient(circle at 82% 8%,rgba(155,116,56,.07),transparent 25%),
+    linear-gradient(180deg,#f7f4ef,#eee8df)!important;
+}
+.legalHero{
+  border-color:var(--warm-border)!important;
+}
+.legalHero__grid{
+  opacity:.25!important;
+  background-image:
+    linear-gradient(rgba(128,98,55,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(128,98,55,.03) 1px,transparent 1px)!important;
+}
+.legalHero__glow{
+  background:rgba(155,116,56,.07)!important;
+}
+.legalBack{
+  color:#6d747a!important;
+}
+.legalBack span,
+.legalHero__copy>span,
+.legalHero__card>span,
+.legalContent__toc>span{
+  color:var(--warm-gold)!important;
+}
+.legalHero h1,
+.legalHero__card h2,
+.legalArticle__section h2{
+  color:#23262b!important;
+}
+.legalHero__copy>p,
+.legalHero__card p,
+.legalArticle__section p,
+.legalArticle__notice p{
+  color:#626970!important;
+}
+.legalHero__card{
+  border-color:var(--warm-border)!important;
+  background:#fffdf9!important;
+  box-shadow:var(--warm-shadow)!important;
+}
+.legalHero__icon{
+  color:var(--warm-gold)!important;
+  border-color:rgba(155,116,56,.25)!important;
+}
+.legalContent__toc a{
+  color:#777d83!important;
+  border-color:rgba(128,98,55,.10)!important;
+}
+.legalContent__toc a:hover{
+  color:var(--warm-gold)!important;
+}
+.legalArticle__section{
+  border-color:rgba(128,98,55,.11)!important;
+}
+.legalArticle__notice,
+.legalArticle__section:nth-of-type(4){
+  border-color:var(--warm-border)!important;
+  background:#f2eadf!important;
+}
+.legalArticle__notice>svg,
+.legalArticle__section:nth-of-type(4) h2{
+  color:var(--warm-gold)!important;
+}
+
+/* -------- GLOBAL PUBLIC MOBILE POLISH -------- */
+@media(max-width:760px){
+  .svc52Hero__shade,
+  .prc53Hero__shade,
+  .cnt57Hero__shade{
+    background:
+      linear-gradient(180deg,rgba(247,244,239,.04) 0%,rgba(247,244,239,.12) 43%,#f7f4ef 100%)!important;
+  }
+  .svc52Hero__copy p,
+  .prc53Hero__copy p,
+  .cnt57Hero__copy p{
+    color:#4f565d!important;
+  }
+  .svc52Hero h1,
+  .prc53Hero h1,
+  .cnt57Hero h1{
+    text-shadow:0 2px 15px rgba(255,255,255,.45);
+  }
+}
+
+/* =========================================================
+   STEP 64 — AÇIK TEMA / GERÇEK NATIVE PREMIUM POLISH
+   Sadece renk açmak yerine bölüm, kart ve tipografi dili
+   açık tasarıma göre yeniden rafine edildi.
+   ========================================================= */
+
+/* genel ferahlık */
+body{
+  background:#f6f2ec;
+}
+main{
+  overflow-x:hidden;
+}
+section{
+  scroll-margin-top:110px;
+}
+
+/* ana sayfa alt bölümleri artık daha açık ve katmanlı */
+.homeServicesShowcase,
+.homeTrustStatement,
+.contactSection{
+  position:relative;
+}
+.homeServicesShowcase:before,
+.homeTrustStatement:before,
+.contactSection:before{
+  content:"";
+  position:absolute;
+  left:5.2%;
+  right:5.2%;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(155,116,56,.18),transparent);
+}
+.homeServicesShowcase__head,
+.homeTrustStatement__inner,
+.contactSection__inner{
+  max-width:1420px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* hizmet kartlarını “dark card recolor” hissinden çıkar */
+.homeServiceFeature{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px!important;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(177,135,72,.06),transparent 30%),
+    linear-gradient(180deg,#fffdf9,#faf6ef)!important;
+}
+.homeServiceFeature:after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg,#a77d3e,rgba(167,125,62,.15),transparent);
+  opacity:.75;
+}
+.homeServiceFeature__icon{
+  width:54px!important;
+  height:54px!important;
+  border-radius:14px!important;
+  background:#f2e8d9!important;
+}
+.homeServiceFeature h3{
+  margin-top:20px!important;
+  font:400 24px/1.08 Georgia,"Times New Roman",serif!important;
+}
+.homeServiceFeature p{
+  font-size:12px!important;
+  line-height:1.72!important;
+}
+.homeServicesShowcase__benefit{
+  min-height:120px;
+  padding:22px!important;
+}
+.homeServicesShowcase__benefit strong{
+  color:#282b30!important;
+  font-size:12px!important;
+}
+.homeServicesShowcase__benefit p{
+  font-size:10.5px!important;
+  line-height:1.6!important;
+}
+
+/* güven alanını açık temada daha editorial yap */
+.homeTrustStatement{
+  padding-top:84px!important;
+  padding-bottom:84px!important;
+}
+.homeTrustStatement__inner{
+  border:1px solid rgba(128,98,55,.13);
+  border-radius:24px;
+  padding:46px;
+  background:
+    radial-gradient(circle at 92% 12%,rgba(177,135,72,.08),transparent 24%),
+    rgba(255,253,249,.72);
+  box-shadow:0 25px 70px rgba(84,64,39,.075);
+}
+.homeTrustStatement h2{
+  font-size:clamp(38px,4vw,60px)!important;
+  line-height:1.02!important;
+}
+.homeTrustStatement p{
+  font-size:13px!important;
+  line-height:1.8!important;
+}
+.homeTrustStatement__mark{
+  font-size:74px!important;
+  opacity:.22!important;
+}
+
+/* iletişim kartları */
+.contactCard{
+  border-radius:18px!important;
+  background:linear-gradient(180deg,#fffdf9,#faf6ef)!important;
+}
+.contactCard:hover{
+  transform:translateY(-4px);
+  border-color:rgba(155,116,56,.32)!important;
+  box-shadow:0 24px 55px rgba(84,64,39,.10)!important;
+}
+.contactIcon{
+  width:52px!important;
+  height:52px!important;
+  border-radius:14px!important;
+}
+.contactCard h3,
+.contactCard strong{
+  font-size:15px!important;
+}
+.contactCard p,
+.contactCard span{
+  font-size:11px!important;
+  line-height:1.6!important;
+}
+
+/* hakkımda: daha ferah editorial sayfa */
+.aboutDirectLayout{
+  max-width:1500px;
+  margin:0 auto;
+}
+.aboutDirectArticle{
+  background:rgba(255,253,249,.62);
+  border:1px solid rgba(128,98,55,.10);
+  border-radius:24px;
+  padding:40px 42px;
+  box-shadow:0 22px 60px rgba(84,64,39,.055);
+}
+.aboutDirectArticle p{
+  font-size:16px!important;
+  line-height:1.95!important;
+}
+.aboutDirectArticle p:first-of-type{
+  border-left:3px solid #9b7438!important;
+  border-radius:0 14px 14px 0!important;
+  background:#f1e7d8!important;
+  color:#30343a!important;
+}
+.aboutDirectProfile{
+  border-radius:24px!important;
+}
+.aboutDirectProfile__body{
+  padding:28px!important;
+}
+
+/* hizmetler: kart yerleşimi light-native */
+.svc52QuickCard{
+  position:relative;
+  border-radius:18px!important;
+  overflow:hidden;
+}
+.svc52QuickCard:before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+  background:linear-gradient(90deg,#9b7438,rgba(155,116,56,.16),transparent);
+}
+.svc52QuickIcon{
+  background:#f0e5d5!important;
+}
+.svc52QuickCard h3{
+  font:400 19px/1.1 Georgia,"Times New Roman",serif!important;
+}
+.svc52QuickCard p{
+  font-size:12px!important;
+  line-height:1.68!important;
+}
+.servicesDetailCard{
+  border-radius:20px!important;
+  padding:27px!important;
+}
+.servicesDetailCard__top{
+  padding-bottom:18px!important;
+  border-bottom:1px solid rgba(128,98,55,.10);
+}
+.servicesDetailItem{
+  min-height:48px;
+  align-items:flex-start!important;
+}
+.servicesDetailItem p{
+  font-size:12px!important;
+  line-height:1.62!important;
+}
+
+/* süreç: açık temaya özgü timeline görünümü */
+.prc53Steps{
+  gap:16px!important;
+}
+.prc53Step{
+  min-height:300px!important;
+  border-radius:20px!important;
+  padding:32px 22px 24px!important;
+}
+.prc53Step:before{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:0;
+  height:4px;
+  border-radius:999px 999px 0 0;
+  background:linear-gradient(90deg,#a37a3c,rgba(163,122,60,.14));
+}
+.prc53Step__number{
+  width:42px!important;
+  height:42px!important;
+  box-shadow:0 7px 18px rgba(91,66,34,.08);
+}
+.prc53Step h3{
+  font:400 20px/1.08 Georgia,"Times New Roman",serif!important;
+}
+.prc53Step p{
+  font-size:12px!important;
+  line-height:1.7!important;
+}
+.prc53Trust{
+  border-radius:18px!important;
+  background:linear-gradient(90deg,#e9dfd2,#f3ede4)!important;
+}
+
+/* içerikler: daha medya-magazine hissi */
+.cnt57VideoCard,
+.cnt57PodcastCard{
+  border-radius:18px!important;
+  overflow:hidden;
+}
+.cnt57VideoCard__thumb{
+  height:190px!important;
+}
+.cnt57VideoCard__body{
+  padding:18px!important;
+}
+.cnt57VideoCard__body h3{
+  font-size:20px!important;
+}
+.cnt57VideoCard__body p{
+  font-size:11px!important;
+  line-height:1.65!important;
+}
+.cnt57PodcastCard{
+  padding:16px!important;
+}
+.cnt57PodcastInfo h3{
+  font-size:19px!important;
+}
+.cnt57PodcastInfo p{
+  font-size:10.5px!important;
+  line-height:1.6!important;
+}
+.cnt57Subscribe{
+  border-radius:18px!important;
+  padding:18px 22px!important;
+}
+
+/* randevu: form kartlarını daha açık, büyük ve kullanıcı dostu yap */
+.apt60Card{
+  border-radius:26px!important;
+}
+.apt60Step{
+  padding:42px!important;
+}
+.apt60Step__head h2{
+  font-size:clamp(34px,3.4vw,48px)!important;
+}
+.apt60Step__head p{
+  font-size:14px!important;
+}
+.apt60Services{
+  gap:16px!important;
+}
+.apt60Services button{
+  min-height:165px!important;
+  border-radius:18px!important;
+  padding:24px!important;
+}
+.apt60Services strong{
+  font-size:21px!important;
+}
+.apt60Services p{
+  font-size:11.5px!important;
+}
+.apt60Fields{
+  gap:18px!important;
+}
+.apt60Fields label>span{
+  font-size:13px!important;
+  font-weight:700!important;
+}
+.apt60Fields input,
+.apt60Fields textarea{
+  border-radius:12px!important;
+  font-size:15px!important;
+}
+.apt60Fields input{
+  min-height:54px!important;
+}
+.apt60Fields textarea{
+  min-height:150px;
+}
+.apt60Kvkk{
+  border-radius:13px!important;
+}
+.apt60Kvkk p{
+  font-size:11.5px!important;
+}
+.apt60Sensitive p{
+  font-size:11.5px!important;
+}
+
+/* yasal sayfalar daha okunaklı */
+.legalContent{
+  max-width:1450px;
+  margin:0 auto;
+}
+.legalHero__card{
+  border-radius:22px!important;
+}
+.legalArticle__section{
+  padding:0 0 38px!important;
+  margin-bottom:38px!important;
+}
+.legalArticle__section h2{
+  font-size:30px!important;
+}
+.legalArticle__section p{
+  font-size:15px!important;
+  line-height:1.9!important;
+}
+
+/* footer'da açık temaya uygun daha premium final */
+.premiumFooter{
+  padding-top:72px!important;
+}
+.premiumFooter__top{
+  border-bottom:1px solid rgba(128,98,55,.12)!important;
+}
+.premiumFooter__bottom{
+  border-top-color:rgba(128,98,55,.08)!important;
+}
+.premiumFooter__nav a{
+  font-size:11px!important;
+}
+.premiumFooter__cta{
+  border-radius:8px!important;
+  box-shadow:0 12px 28px rgba(128,92,38,.12);
+}
+
+/* mobil */
+@media(max-width:760px){
+  .homeTrustStatement__inner{
+    padding:28px 20px;
+    border-radius:18px;
+  }
+  .aboutDirectArticle{
+    padding:26px 20px;
+    border-radius:18px;
+  }
+  .aboutDirectArticle p{
+    font-size:15px!important;
+    line-height:1.82!important;
+  }
+  .svc52QuickCard,
+  .servicesDetailCard,
+  .prc53Step,
+  .cnt57VideoCard,
+  .cnt57PodcastCard{
+    border-radius:16px!important;
+  }
+  .apt60Step{
+    padding:28px 18px!important;
+  }
+  .apt60Services button{
+    min-height:150px!important;
+    padding:20px!important;
+  }
+  .apt60Fields label>span{
+    font-size:14px!important;
+  }
+  .apt60Fields input,
+  .apt60Fields textarea{
+    font-size:16px!important;
+  }
+}
+
+/* STEP 67 — FINAL LOGO HEADER FIX */
+.brand--newLogo{
+  display:flex!important;
+  align-items:center!important;
+  gap:13px!important;
+  min-width:300px!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+.brandEmblemWrap{
+  width:68px!important;
+  height:68px!important;
+  flex:0 0 68px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.brandEmblem{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+}
+.brandIdentity{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.brandIdentity small{
+  order:1;
+  margin-bottom:4px;
+  color:#757066!important;
+  font-size:8.5px!important;
+  font-weight:700!important;
+  letter-spacing:.12em!important;
+}
+.brandIdentity strong{
+  order:2;
+  color:#1f2328!important;
+  font:600 18px/1.05 Georgia,"Times New Roman",serif!important;
+  letter-spacing:.015em!important;
+}
+.brandIdentity em{
+  order:3;
+  margin-top:5px;
+  color:#9b7438!important;
+  font-size:8px!important;
+  font-style:normal!important;
+  font-weight:700!important;
+  letter-spacing:.15em!important;
+}
+.topbar:not(.topbar--light) .brandIdentity small{
+  color:#8c98a6!important;
+}
+.topbar:not(.topbar--light) .brandIdentity strong{
+  color:#f3eee7!important;
+}
+.topbar:not(.topbar--light) .brandIdentity em{
+  color:#d59a4b!important;
+}
+@media(max-width:1050px){
+  .brand--newLogo{min-width:245px!important;gap:10px!important}
+  .brandEmblemWrap{width:56px!important;height:56px!important;flex-basis:56px!important}
+  .brandIdentity strong{font-size:16px!important}
+  .brandIdentity small{font-size:7.5px!important}
+  .brandIdentity em{font-size:7px!important}
+}
+@media(max-width:760px){
+  .brand--newLogo{min-width:190px!important;gap:8px!important}
+  .brandEmblemWrap{width:46px!important;height:46px!important;flex-basis:46px!important}
+  .brandIdentity strong{font-size:14px!important}
+  .brandIdentity small{font-size:6.5px!important;letter-spacing:.08em!important}
+  .brandIdentity em{font-size:6.5px!important;letter-spacing:.10em!important}
+}
+
+/* STEP68 FIXED */
+.podcastTopStrip{min-height:34px;padding:7px 5%;display:flex;align-items:center;justify-content:center;gap:9px;position:relative;z-index:1001;background:linear-gradient(90deg,#315c47,#46765d,#315c47);color:#fff;text-decoration:none;font-size:11px}.podcastTopStrip__icon{color:#e0bd72;font-size:8px}.podcastTopStrip strong{letter-spacing:.11em;text-transform:uppercase}.podcastTopStrip__copy{color:rgba(255,255,255,.82)}.podcastTopStrip b{margin-left:8px;color:#f2dfae;font-size:10px}
+.lightHomeHero__content{padding-top:105px!important}.lightHomeHero h1{max-width:690px}.lightHomeHero h1 strong{max-width:650px}
+.apt60Hero__aside strong{font-size:16px!important;line-height:1.4!important}.apt60Hero__aside small{font-size:12px!important;line-height:1.65!important}.apt60Hero__trust strong{font-size:14px!important}.apt60Hero__trust small{font-size:11.5px!important;line-height:1.55!important}.apt60Hero__trust>div{padding:18px 16px!important}
+.svc68CategoryDetails{padding:80px 6%;border-top:1px solid rgba(128,98,55,.12);background:#f3eee7}.svc68CategoryDetails__head{max-width:850px;margin:0 auto 34px;text-align:center}.svc68CategoryDetails__head>span{color:#9b7438;font-size:10px;font-weight:800;letter-spacing:.16em}.svc68CategoryDetails__head h2{margin:10px 0 12px;color:#24272b;font:400 clamp(32px,3.4vw,48px)/1.05 Georgia,"Times New Roman",serif}.svc68CategoryDetails__grid{max-width:1120px;margin:0 auto;display:grid;gap:14px}.svc68Detail{overflow:hidden;border:1px solid rgba(128,98,55,.16);border-radius:17px;background:#fffdf9}.svc68Detail summary{min-height:84px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;list-style:none}.svc68Detail summary::-webkit-details-marker{display:none}.svc68Detail summary>span{display:flex;align-items:center;gap:16px}.svc68Detail summary small{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(155,116,56,.28);border-radius:50%;color:#9b7438;font-size:9px}.svc68Detail summary strong{color:#25282d;font:400 20px/1.1 Georgia,"Times New Roman",serif}.svc68Detail summary b{color:#9b7438;font-size:10px}.svc68Detail[open] summary{border-bottom:1px solid rgba(128,98,55,.10);background:#faf5ed}.svc68Detail__body{padding:25px 30px 30px 78px}.svc68Detail__body ul{margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px;list-style:none}.svc68Detail__body li{position:relative;padding-left:18px;color:#34383d;font-size:12px;line-height:1.55}.svc68Detail__body li:before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;border-radius:50%;background:#a47b3d}
+@media(max-width:760px){.podcastTopStrip{min-height:32px;padding:7px 12px;font-size:9px}.podcastTopStrip__copy{display:none}.podcastTopStrip b{font-size:9px}.svc68CategoryDetails{padding:58px 18px}.svc68Detail summary{padding:15px}.svc68Detail summary strong{font-size:17px}.svc68Detail__body{padding:20px 18px 24px}.svc68Detail__body ul{grid-template-columns:1fr}}
+
+/* STEP 69 — CURRENT FILE REPAIR + REQUESTED SERVICE DETAILS */
+.apt60Hero__trust{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.apt60Hero__trust strong{font-size:15px!important;line-height:1.35!important}
+.apt60Hero__trust small{font-size:12px!important;line-height:1.55!important}
+.apt60Hero__aside>span{font-size:13px!important;font-weight:800!important;letter-spacing:.08em!important}
+.apt60Hero__aside strong{font-size:16px!important;line-height:1.4!important}
+.apt60Hero__aside small{font-size:12.5px!important;line-height:1.6!important}
+.svc52QuickGrid--four{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.svc52QuickCard button{margin-top:auto;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:#9b7438;font:700 10px/1.2 inherit;cursor:pointer;padding:15px 0 0}
+.svc52QuickCard.is-active{border-color:rgba(155,116,56,.48)!important;background:#f3e9da!important;box-shadow:0 20px 50px rgba(84,64,39,.10)!important}
+.svc69DetailSection{scroll-margin-top:145px}
+.svc69DetailCard{max-width:1120px;margin:0 auto!important}
+.svc69DetailList{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px!important}
+.svc69DetailList .servicesDetailItem{min-height:55px!important}
+.svc69DetailList .servicesDetailItem p{font-size:13px!important;line-height:1.65!important}
+@media(max-width:1100px){.svc52QuickGrid--four{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){.apt60Hero__trust{grid-template-columns:1fr!important}.svc52QuickGrid--four{grid-template-columns:1fr!important}.svc69DetailList{grid-template-columns:1fr!important}.svc69DetailSection{scroll-margin-top:115px}}
+
+/* STEP 69 — SÜREÇ / DANIŞAN DENEYİMLERİ */
+.prc53Testimonials{position:relative;padding:86px 6% 92px;overflow:hidden;border-top:1px solid rgba(128,98,55,.13);background:radial-gradient(circle at 88% 0,rgba(155,116,56,.09),transparent 25%),radial-gradient(circle at 4% 80%,rgba(114,145,116,.07),transparent 24%),linear-gradient(180deg,#f7f3ed 0%,#eee7dd 100%)}
+.prc53Testimonials:before{content:"";position:absolute;width:360px;height:360px;right:-190px;top:120px;border:1px solid rgba(155,116,56,.11);border-radius:50%;box-shadow:0 0 0 40px rgba(155,116,56,.025),0 0 0 82px rgba(155,116,56,.018);pointer-events:none}
+.prc53Testimonials__head{position:relative;z-index:1;max-width:1400px;margin:0 auto 34px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end}
+.prc53Testimonials__head>div>span{display:block;margin-bottom:10px;color:#9b7438;font-size:10px;font-weight:800;letter-spacing:.18em}.prc53Testimonials__head h2{max-width:760px;margin:0;color:#24272b;font:400 clamp(36px,4.2vw,58px)/1.03 Georgia,"Times New Roman",serif;letter-spacing:-.025em}.prc53Testimonials__head>p{max-width:520px;color:#666d73;font-size:12px;line-height:1.75}
+.prc53Testimonials__grid{position:relative;z-index:1;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}.prc53Testimonials__grid.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+.prc53TestimonialCard{position:relative;overflow:hidden;padding:27px 26px 23px;border:1px solid rgba(128,98,55,.16);border-radius:20px;background:radial-gradient(circle at 92% 3%,rgba(155,116,56,.07),transparent 25%),rgba(255,253,249,.94);box-shadow:0 18px 46px rgba(84,64,39,.065);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}.prc53TestimonialCard:hover{transform:translateY(-4px);border-color:rgba(155,116,56,.34);box-shadow:0 28px 58px rgba(84,64,39,.10)}.prc53TestimonialCard:after{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,#a47b3d,rgba(164,123,61,.08))}
+.prc53TestimonialCard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.prc53TestimonialCard__quote{height:35px;color:#ad8243;font:400 54px/.8 Georgia,"Times New Roman",serif}.prc53TestimonialCard__top small{width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(155,116,56,.18);border-radius:50%;color:#9b7438;font-size:8px;font-weight:800;background:#f5ede2}
+.prc53TestimonialCard>p{margin:14px 0 25px;color:#3e4449;font-size:12.5px;line-height:1.78;white-space:pre-line}.prc53TestimonialCard__footer{padding-top:17px;display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid rgba(128,98,55,.10)}.prc53TestimonialCard__footer>div:first-child{display:flex;flex-direction:column;gap:4px}.prc53TestimonialCard__footer strong{color:#25282d;font:600 13px Georgia,"Times New Roman",serif}.prc53TestimonialCard__footer span{color:#858a8f;font-size:8.5px;letter-spacing:.05em}.prc53TestimonialCard__verified{display:flex;align-items:center;gap:5px;color:#55705f;font-size:8px;font-weight:700}
+.prc53Testimonials__actions{position:relative;z-index:1;max-width:1400px;margin:28px auto 0;display:flex;justify-content:center}.prc53Testimonials__actions button{min-width:210px;min-height:48px;padding:0 20px;display:flex;align-items:center;justify-content:center;gap:12px;border:1px solid #977039;border-radius:9px;background:linear-gradient(135deg,#a77e40,#8e692f);color:#fff;cursor:pointer;font-size:10px;font-weight:800;letter-spacing:.04em;box-shadow:0 12px 28px rgba(128,92,38,.13);transition:transform .25s ease,box-shadow .25s ease}.prc53Testimonials__actions button:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(128,92,38,.18)}
+.prc53Testimonials__note{position:relative;z-index:1;max-width:830px;margin:20px auto 0;padding:12px 15px;display:flex;align-items:flex-start;justify-content:center;gap:9px;border:1px solid rgba(128,98,55,.11);border-radius:10px;color:#9b7438;background:rgba(255,253,249,.52)}.prc53Testimonials__note p{color:#777d82;font-size:9.5px;line-height:1.6}
+@media(max-width:1000px){.prc53Testimonials__head{grid-template-columns:1fr;gap:16px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.prc53Testimonials{padding:64px 18px 70px}.prc53Testimonials__head h2{font-size:38px}.prc53Testimonials__head>p{font-size:12px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:1fr}.prc53TestimonialCard{padding:23px 20px 20px;border-radius:16px}.prc53TestimonialCard>p{font-size:13px;line-height:1.75}.prc53Testimonials__actions button{width:100%}}
 
 `;
 
