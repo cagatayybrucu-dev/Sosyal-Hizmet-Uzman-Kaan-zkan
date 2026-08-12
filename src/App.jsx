@@ -538,7 +538,7 @@ function App() {
             </a>
 
             <a
-              href="#iletisim"
+              href="#/iletisim"
               className={
                 page === "home" && window.location.hash === "#iletisim"
                   ? "is-active"
@@ -831,6 +831,100 @@ function App() {
 
 
 
+
+function ContactDetailPage() {
+  return (
+    <main className="contact80Page">
+      <section className="contact80Hero">
+        <a className="contact80Back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="contact80Hero__copy">
+          <span>İLETİŞİM</span>
+          <h1>
+            İletişime
+            <strong>Geçin</strong>
+          </h1>
+          <p>
+            Görüşme ve randevu süreçleri hakkında bilgi almak için telefon veya
+            e-posta üzerinden doğrudan iletişime geçebilirsiniz.
+          </p>
+        </div>
+
+        <div className="contact80Hero__mark">
+          <div className="brandEmblemWrap">
+            <img className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
+          </div>
+          <div>
+            <small>SOSYAL HİZMET UZMANI</small>
+            <span>AİLE DANIŞMANI</span>
+            <strong>KAAN ÖZKAN</strong>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact80Body">
+        <div className="contact80Intro">
+          <span>DOĞRUDAN İLETİŞİM</span>
+          <h2>Size uygun kanaldan ulaşabilirsiniz.</h2>
+          <p>
+            Mesajlaşma uygulamaları ve konum bilgisi yerine, iletişim yalnızca
+            telefon ve e-posta üzerinden yürütülmektedir.
+          </p>
+        </div>
+
+        <div className="contact80Grid">
+          <a className="contact80Card" href="tel:+905376319371">
+            <div className="contact80Card__icon">
+              <Icon name="phone" size={26} />
+            </div>
+            <span>TELEFON</span>
+            <strong>+90 537 631 93 71</strong>
+            <p>Görüşme ve randevu hakkında bilgi almak için arayabilirsiniz.</p>
+            <b>
+              Ara <Icon name="arrow" size={15} />
+            </b>
+          </a>
+
+          <a
+            className="contact80Card"
+            href="mailto:ailedanismanikaanozkan@gmail.com"
+          >
+            <div className="contact80Card__icon">
+              <Icon name="mail" size={26} />
+            </div>
+            <span>E-POSTA</span>
+            <strong>ailedanismanikaanozkan@gmail.com</strong>
+            <p>
+              Detaylı bilgi ve görüşme talebinizi e-posta üzerinden iletebilirsiniz.
+            </p>
+            <b>
+              E-posta Gönder <Icon name="arrow" size={15} />
+            </b>
+          </a>
+        </div>
+
+        <div className="contact80Appointment">
+          <div>
+            <span>RANDEVU</span>
+            <h3>Doğrudan randevu talebi oluşturmak ister misiniz?</h3>
+            <p>
+              Uygun hizmeti, görüşme biçimini ve tarih-saat seçeneğini belirleyerek
+              güvenli randevu formunu kullanabilirsiniz.
+            </p>
+          </div>
+
+          <a href="#/randevu">
+            Ücretsiz Ön Görüşme
+            <Icon name="arrow" size={16} />
+          </a>
+        </div>
+      </section>
+    </main>
+  );
+}
 
 function AppointmentDemoPage() {
   const [step, setStep] = useState(1);
@@ -10153,6 +10247,288 @@ img{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
+  }
+}
+
+/* STEP 80 — AYRI İLETİŞİM SAYFASI */
+.contact80Page{
+  min-height:100vh;
+  color:#202329;
+  background:
+    radial-gradient(circle at 84% 8%,rgba(155,116,56,.085),transparent 24%),
+    linear-gradient(180deg,#f7f4ef,#eee7dd);
+}
+.contact80Hero{
+  position:relative;
+  min-height:430px;
+  padding:78px 7% 70px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid rgba(128,98,55,.15);
+}
+.contact80Hero:before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:-220px;
+  top:-170px;
+  border:1px solid rgba(155,116,56,.10);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 45px rgba(155,116,56,.025),
+    0 0 0 95px rgba(155,116,56,.018);
+  pointer-events:none;
+}
+.contact80Back{
+  position:absolute;
+  left:7%;
+  top:24px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#6d747a;
+  font-size:10px;
+  font-weight:700;
+}
+.contact80Back span{
+  color:#9b7438;
+}
+.contact80Hero__copy{
+  position:relative;
+  z-index:1;
+}
+.contact80Hero__copy>span,
+.contact80Intro>span,
+.contact80Appointment>div>span{
+  color:#9b7438;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.17em;
+}
+.contact80Hero__copy h1{
+  margin:11px 0 18px;
+  color:#202329;
+  font:400 clamp(54px,6vw,84px)/.96 Georgia,"Times New Roman",serif;
+  letter-spacing:-.04em;
+}
+.contact80Hero__copy h1 strong{
+  display:block;
+  color:#9b7438;
+  font-weight:400;
+}
+.contact80Hero__copy p{
+  max-width:620px;
+  color:#575e65;
+  font-size:15px;
+  line-height:1.78;
+}
+.contact80Hero__mark{
+  position:relative;
+  z-index:1;
+  justify-self:end;
+  width:min(390px,100%);
+  padding:28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border:1px solid rgba(128,98,55,.15);
+  border-radius:22px;
+  background:rgba(255,253,249,.74);
+  box-shadow:0 24px 62px rgba(84,64,39,.08);
+}
+.contact80Hero__mark>div:last-child{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.contact80Hero__mark small{
+  color:#6f6b64;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.contact80Hero__mark span{
+  color:#9b7438;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.10em;
+}
+.contact80Hero__mark strong{
+  color:#24272b;
+  font:600 22px Georgia,"Times New Roman",serif;
+}
+.contact80Body{
+  padding:78px 7% 90px;
+}
+.contact80Intro{
+  max-width:850px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+.contact80Intro h2{
+  margin:10px 0 13px;
+  color:#24272b;
+  font:400 clamp(34px,4vw,52px)/1.04 Georgia,"Times New Roman",serif;
+}
+.contact80Intro p{
+  color:#666d73;
+  font-size:12px;
+  line-height:1.75;
+}
+.contact80Grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.contact80Card{
+  min-height:280px;
+  padding:27px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  border:1px solid rgba(128,98,55,.16);
+  border-radius:21px;
+  background:
+    radial-gradient(circle at 92% 0,rgba(155,116,56,.07),transparent 25%),
+    #fffdf9;
+  box-shadow:0 18px 45px rgba(84,64,39,.06);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.contact80Card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(155,116,56,.34);
+  box-shadow:0 28px 58px rgba(84,64,39,.10);
+}
+.contact80Card__icon{
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(155,116,56,.22);
+  border-radius:15px;
+  background:#f2e8d9;
+  color:#9b7438;
+}
+.contact80Card>span{
+  margin-top:22px;
+  color:#9b7438;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.contact80Card>strong{
+  margin-top:7px;
+  color:#25282d;
+  font:400 24px/1.22 Georgia,"Times New Roman",serif;
+  overflow-wrap:anywhere;
+}
+.contact80Card>p{
+  margin-top:12px;
+  color:#686f76;
+  font-size:11.5px;
+  line-height:1.7;
+}
+.contact80Card>b{
+  margin-top:auto;
+  padding-top:21px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#9b7438;
+  font-size:9px;
+  font-weight:800;
+}
+.contact80Appointment{
+  max-width:1100px;
+  margin:18px auto 0;
+  padding:24px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  border:1px solid rgba(128,98,55,.15);
+  border-radius:18px;
+  background:linear-gradient(90deg,#e9dfd2,#f8f3ec);
+}
+.contact80Appointment h3{
+  margin-top:6px;
+  color:#25282d;
+  font:400 22px Georgia,"Times New Roman",serif;
+}
+.contact80Appointment p{
+  max-width:690px;
+  margin-top:7px;
+  color:#686f76;
+  font-size:10.5px;
+  line-height:1.6;
+}
+.contact80Appointment>a{
+  min-height:48px;
+  padding:0 17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-shrink:0;
+  border:1px solid #987038;
+  border-radius:9px;
+  background:linear-gradient(135deg,#a57c3d,#8e682f);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  box-shadow:0 12px 28px rgba(128,92,38,.12);
+}
+@media(max-width:850px){
+  .contact80Hero{
+    grid-template-columns:1fr;
+    padding-top:90px;
+  }
+  .contact80Hero__mark{
+    justify-self:start;
+  }
+}
+@media(max-width:650px){
+  .contact80Hero{
+    padding:82px 18px 52px;
+  }
+  .contact80Back{
+    left:18px;
+  }
+  .contact80Hero__copy h1{
+    font-size:52px;
+  }
+  .contact80Hero__copy p{
+    font-size:13px;
+  }
+  .contact80Hero__mark{
+    width:100%;
+    padding:20px;
+  }
+  .contact80Body{
+    padding:58px 18px 70px;
+  }
+  .contact80Grid{
+    grid-template-columns:1fr;
+  }
+  .contact80Card{
+    min-height:245px;
+    padding:22px;
+  }
+  .contact80Card>strong{
+    font-size:20px;
+  }
+  .contact80Appointment{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .contact80Appointment>a{
+    width:100%;
   }
 }
 
