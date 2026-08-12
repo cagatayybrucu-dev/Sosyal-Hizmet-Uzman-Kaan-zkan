@@ -1636,6 +1636,7 @@ function AdminDemoPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
+  const [adminIntroVisible, setAdminIntroVisible] = useState(true);
   const [appointments, setAppointments] = useState([]);
   const [appointmentsLoading, setAppointmentsLoading] = useState(false);
   const [appointmentsError, setAppointmentsError] = useState("");
@@ -1725,6 +1726,11 @@ function AdminDemoPage() {
     youtubeChannelUrl: "",
     spotifyChannelUrl: "",
   });
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setAdminIntroVisible(false), 1700);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const loadAppointments = async () => {
     setAppointmentsLoading(true);
@@ -2240,11 +2246,42 @@ function AdminDemoPage() {
     },
   ];
 
+  if (adminIntroVisible) {
+    return (
+      <main className="admin92Intro">
+        <div className="admin92Intro__ambient admin92Intro__ambient--one" />
+        <div className="admin92Intro__ambient admin92Intro__ambient--two" />
+
+        <div className="admin92Intro__center">
+          <div className="admin92Intro__emblem">
+            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+          </div>
+          <span className="admin92Intro__eyebrow">YÖNETİM SİSTEMİ</span>
+          <h1>KAAN ÖZKAN</h1>
+          <p>Sosyal Hizmet Uzmanı · Aile Danışmanı</p>
+
+          <div className="admin92Intro__line">
+            <span />
+          </div>
+
+          <div className="admin92Intro__credit">
+            <small>Web Tasarım &amp; Geliştirme</small>
+            <strong>CB LABS</strong>
+            <i>·</i>
+            <span>Çağatay Burucu</span>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   if (authLoading) {
     return (
       <main className="admin70Login">
         <div className="admin70Login__card">
-          <div className="admin70Login__logo">KÖ</div>
+          <div className="admin70Login__logo admin70Login__logo--image">
+            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+          </div>
           <span>YÖNETİM PANELİ</span>
           <h1>Panel hazırlanıyor...</h1>
         </div>
@@ -2257,7 +2294,9 @@ function AdminDemoPage() {
       <main className="admin70Login">
         <div className="admin70Login__glow" />
         <form className="admin70Login__card" onSubmit={login}>
-          <div className="admin70Login__logo">KÖ</div>
+          <div className="admin70Login__logo admin70Login__logo--image">
+            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+          </div>
           <span>GÜVENLİ YÖNETİM PANELİ</span>
           <h1>Yönetici Girişi</h1>
           <p>
@@ -2296,6 +2335,13 @@ function AdminDemoPage() {
           </button>
 
           <a href="#/">← Siteye Dön</a>
+
+          <div className="admin92LoginCredit">
+            <span>Designed &amp; Developed by</span>
+            <strong>CB LABS</strong>
+            <i>·</i>
+            <b>Çağatay Burucu</b>
+          </div>
         </form>
       </main>
     );
@@ -2305,10 +2351,12 @@ function AdminDemoPage() {
     <main className="adminDemo">
       <aside className="adminDemo__sidebar">
         <div className="adminDemo__brand">
-          <div className="adminDemo__mark">KÖ</div>
+          <div className="adminDemo__mark adminDemo__mark--image">
+            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+          </div>
           <div>
-            <strong>Kaan Özkan</strong>
-            <span>Yönetim Paneli</span>
+            <strong>KAAN ÖZKAN</strong>
+            <span>Sosyal Hizmet Uzmanı · Aile Danışmanı</span>
           </div>
         </div>
 
@@ -2350,13 +2398,20 @@ function AdminDemoPage() {
           </button>
 
           <a href="#/">Siteye Dön <Icon name="arrow" size={14} /></a>
+
+          <div className="admin92SidebarCredit">
+            <small>Web Tasarım &amp; Geliştirme</small>
+            <strong>CB LABS</strong>
+            <span>Çağatay Burucu</span>
+          </div>
         </div>
       </aside>
 
       <section className="adminDemo__main">
         <header className="adminDemo__topbar">
-          <div>
+          <div className="admin92TopbarCopy">
             <span>YÖNETİM PANELİ</span>
+            {activeTab === "dashboard" && <p>Hoş geldiniz, Kaan Özkan 👋</p>}
             <h1>
               {activeTab === "dashboard"
                 ? "Genel Bakış"
@@ -11676,6 +11731,467 @@ img{
   }
   .premiumFooter__legal{
     justify-content:flex-start!important;
+  }
+}
+
+/* STEP 92 — LIGHT PREMIUM ADMIN + CB LABS OPENING */
+
+/* --- Opening sequence --- */
+.admin92Intro{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(192,145,76,.12),transparent 28%),
+    radial-gradient(circle at 82% 72%,rgba(224,190,139,.16),transparent 30%),
+    linear-gradient(135deg,#fbf8f3 0%,#f4ede4 52%,#eee4d6 100%);
+  color:#22272d;
+}
+.admin92Intro:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.20;
+  background-image:
+    linear-gradient(rgba(146,106,50,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(146,106,50,.08) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 78%);
+}
+.admin92Intro__ambient{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(12px);
+  opacity:.42;
+}
+.admin92Intro__ambient--one{
+  width:340px;height:340px;left:-130px;top:-80px;
+  background:rgba(205,159,91,.18);
+  animation:admin92Float 5s ease-in-out infinite alternate;
+}
+.admin92Intro__ambient--two{
+  width:300px;height:300px;right:-90px;bottom:-110px;
+  background:rgba(165,120,62,.13);
+  animation:admin92Float 6s ease-in-out infinite alternate-reverse;
+}
+.admin92Intro__center{
+  position:relative;
+  z-index:2;
+  width:min(520px,calc(100% - 38px));
+  text-align:center;
+  animation:admin92IntroIn .85s cubic-bezier(.16,.8,.2,1) both;
+}
+.admin92Intro__emblem{
+  width:92px;height:92px;margin:0 auto 22px;
+  display:grid;place-items:center;
+  border-radius:28px;
+  border:1px solid rgba(165,119,54,.20);
+  background:rgba(255,255,255,.72);
+  box-shadow:0 24px 60px rgba(102,72,36,.13);
+}
+.admin92Intro__emblem img{width:66px;height:66px;object-fit:contain}
+.admin92Intro__eyebrow{
+  display:block;margin-bottom:10px;
+  font-size:9px;font-weight:800;letter-spacing:.25em;color:#a77736;
+}
+.admin92Intro h1{
+  margin:0;font:500 clamp(35px,5vw,56px) Georgia,"Times New Roman",serif;
+  letter-spacing:.02em;color:#20252a;
+}
+.admin92Intro p{
+  margin:10px 0 0;color:#777d82;font-size:11px;letter-spacing:.09em;
+}
+.admin92Intro__line{
+  width:190px;height:1px;margin:28px auto 20px;overflow:hidden;background:rgba(166,120,57,.16);
+}
+.admin92Intro__line span{
+  display:block;width:100%;height:100%;
+  transform-origin:left;
+  background:linear-gradient(90deg,#976a31,#d5a257);
+  animation:admin92Line 1.35s .15s cubic-bezier(.16,.8,.2,1) both;
+}
+.admin92Intro__credit{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;
+  color:#8d9195;font-size:8.5px;letter-spacing:.08em;
+  animation:admin92Credit .7s .5s ease both;
+}
+.admin92Intro__credit strong{color:#a77736;letter-spacing:.16em}
+.admin92Intro__credit i{font-style:normal;color:#c0a177}
+.admin92Intro__credit span{font-weight:700;color:#4c5156}
+@keyframes admin92IntroIn{
+  from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(7px)}
+  to{opacity:1;transform:none;filter:none}
+}
+@keyframes admin92Line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes admin92Credit{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes admin92Float{to{transform:translate3d(18px,12px,0) scale(1.05)}}
+
+/* --- Login --- */
+.admin70Login{
+  min-height:100vh!important;
+  padding:42px 20px!important;
+  display:grid!important;
+  place-items:center!important;
+  position:relative!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 18% 15%,rgba(191,145,77,.11),transparent 28%),
+    radial-gradient(circle at 88% 82%,rgba(191,145,77,.10),transparent 30%),
+    linear-gradient(135deg,#fbf8f3,#f1e9de)!important;
+}
+.admin70Login__glow{
+  width:540px!important;height:540px!important;left:50%!important;top:44%!important;
+  transform:translate(-50%,-50%)!important;
+  filter:blur(80px)!important;
+  background:rgba(199,151,82,.12)!important;
+}
+.admin70Login__card{
+  position:relative!important;
+  z-index:2!important;
+  width:min(450px,100%)!important;
+  padding:38px 38px 28px!important;
+  border:1px solid rgba(151,108,50,.16)!important;
+  border-radius:28px!important;
+  background:rgba(255,255,255,.86)!important;
+  box-shadow:0 30px 80px rgba(83,59,31,.12)!important;
+  backdrop-filter:blur(18px)!important;
+  color:#252a2f!important;
+  animation:admin92LoginIn .72s cubic-bezier(.16,.8,.2,1) both!important;
+}
+.admin70Login__logo--image{
+  width:74px!important;height:74px!important;margin:0 auto 18px!important;
+  border-radius:22px!important;
+  border:1px solid rgba(163,117,52,.17)!important;
+  background:#fff!important;
+  box-shadow:0 13px 34px rgba(110,76,35,.10)!important;
+  display:grid!important;place-items:center!important;
+}
+.admin70Login__logo--image img{width:52px;height:52px;object-fit:contain}
+.admin70Login__card>span{
+  display:block!important;text-align:center!important;color:#a77736!important;
+  font-size:9px!important;font-weight:800!important;letter-spacing:.19em!important;
+}
+.admin70Login h1{
+  margin:10px 0 8px!important;text-align:center!important;
+  color:#24282d!important;font:500 34px Georgia,"Times New Roman",serif!important;
+}
+.admin70Login p{
+  max-width:330px!important;margin:0 auto 24px!important;text-align:center!important;
+  color:#7c8186!important;font-size:10px!important;line-height:1.7!important;
+}
+.admin70Login label{gap:7px!important;margin-top:13px!important}
+.admin70Login label>span{color:#6f7479!important;font-size:9px!important;font-weight:700!important}
+.admin70Login input{
+  min-height:49px!important;padding:0 14px!important;
+  border:1px solid #ded5ca!important;border-radius:13px!important;
+  background:#fbfaf8!important;color:#24282d!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important;
+}
+.admin70Login input:focus{
+  outline:none!important;border-color:#b88746!important;
+  box-shadow:0 0 0 4px rgba(184,135,70,.09)!important;
+}
+.admin70Login button{
+  min-height:50px!important;margin-top:18px!important;border-radius:13px!important;
+  border:1px solid #a87738!important;
+  background:linear-gradient(135deg,#a77736,#bf8a43)!important;
+  color:#fff!important;box-shadow:0 14px 28px rgba(142,98,44,.18)!important;
+}
+.admin70Login__card>a{
+  margin-top:17px!important;color:#777d82!important;font-size:9px!important;
+}
+.admin70Login__error{
+  border-color:#e8c5c5!important;background:#fff2f1!important;color:#ae4747!important;
+}
+.admin92LoginCredit{
+  margin-top:22px;padding-top:18px;border-top:1px solid #ece4da;
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;
+  color:#a0a3a6;font-size:7.7px;letter-spacing:.055em;
+}
+.admin92LoginCredit strong{color:#a77736;letter-spacing:.14em}
+.admin92LoginCredit i{font-style:normal;color:#c4a87f}
+.admin92LoginCredit b{color:#686d72;font-weight:700}
+@keyframes admin92LoginIn{
+  from{opacity:0;transform:translateY(18px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* --- Main admin shell --- */
+.adminDemo{
+  min-height:100vh!important;
+  display:grid!important;
+  grid-template-columns:264px minmax(0,1fr)!important;
+  background:#f6f2ed!important;
+  color:#252a2f!important;
+}
+.adminDemo__sidebar{
+  position:sticky!important;top:0!important;height:100vh!important;
+  padding:24px 18px 18px!important;
+  background:rgba(255,255,255,.92)!important;
+  border-right:1px solid #e7ded3!important;
+  box-shadow:12px 0 40px rgba(82,58,30,.035)!important;
+}
+.adminDemo__brand{
+  padding:3px 4px 23px!important;
+  display:flex!important;align-items:center!important;gap:13px!important;
+  border-bottom:1px solid #eee6dd!important;
+}
+.adminDemo__mark--image{
+  width:48px!important;height:48px!important;border-radius:15px!important;
+  border:1px solid rgba(160,114,51,.16)!important;background:#fff!important;
+  box-shadow:0 10px 26px rgba(95,67,35,.08)!important;
+  display:grid!important;place-items:center!important;
+}
+.adminDemo__mark--image img{width:35px;height:35px;object-fit:contain}
+.adminDemo__brand strong{
+  color:#25292e!important;font:700 14px Georgia,"Times New Roman",serif!important;
+  letter-spacing:.035em!important;
+}
+.adminDemo__brand span{
+  max-width:150px!important;margin-top:3px!important;color:#8a8f94!important;
+  font-size:7.8px!important;line-height:1.45!important;letter-spacing:.04em!important;
+}
+.adminDemo__menu{
+  margin-top:20px!important;display:grid!important;gap:7px!important;
+}
+.adminDemo__menu button{
+  min-height:44px!important;padding:0 12px!important;
+  border:1px solid transparent!important;border-radius:12px!important;
+  background:transparent!important;color:#5e646a!important;
+  font-size:9.5px!important;font-weight:650!important;
+  transition:.22s ease!important;
+}
+.adminDemo__menu button:hover{
+  transform:translateX(2px)!important;color:#9c6f35!important;background:#faf6f0!important;
+}
+.adminDemo__menu button.is-active{
+  color:#8b612f!important;
+  border-color:rgba(177,127,59,.15)!important;
+  background:linear-gradient(135deg,#fbf5ea,#f1dfbd)!important;
+  box-shadow:0 10px 24px rgba(146,103,48,.08)!important;
+}
+.adminDemo__menu svg{color:#a77736!important}
+.adminDemo__sidebarFooter{
+  border-top:1px solid #eee6dd!important;padding-top:16px!important;
+}
+.adminDemo__user{
+  padding:11px!important;border:1px solid #e7dfd5!important;border-radius:14px!important;
+  background:#fbfaf8!important;
+}
+.adminDemo__user>div{
+  background:linear-gradient(135deg,#d7ab64,#a97838)!important;color:#fff!important;
+}
+.adminDemo__user strong{color:#34393e!important}
+.adminDemo__user small{color:#92969a!important}
+.admin70Logout{
+  margin-top:10px!important;border-color:#e8ddd1!important;background:#fff!important;color:#8b5f31!important;
+}
+.adminDemo__sidebarFooter>a{color:#777d82!important}
+.admin92SidebarCredit{
+  margin-top:16px;padding-top:14px;border-top:1px solid #efe7de;
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+  color:#aaa5a0;font-size:7px;letter-spacing:.05em;
+}
+.admin92SidebarCredit small{width:100%;color:#a6a09a}
+.admin92SidebarCredit strong{color:#a77736;letter-spacing:.13em}
+.admin92SidebarCredit span{color:#74797e;font-weight:700}
+
+/* --- Main content --- */
+.adminDemo__main{
+  min-width:0!important;padding:30px 34px 42px!important;
+  background:
+    radial-gradient(circle at 100% 0,rgba(202,157,94,.10),transparent 22%),
+    #f6f2ed!important;
+}
+.adminDemo__topbar{
+  min-height:84px!important;padding:0 0 22px!important;margin-bottom:18px!important;
+  border-bottom:1px solid #e5dcd2!important;
+  display:flex!important;align-items:flex-end!important;justify-content:space-between!important;
+}
+.admin92TopbarCopy>span{
+  color:#a77736!important;font-size:8px!important;font-weight:800!important;letter-spacing:.17em!important;
+}
+.admin92TopbarCopy>p{
+  margin:4px 0 2px;color:#25292e;font-size:11px;font-weight:700;
+}
+.adminDemo__topbar h1{
+  margin-top:4px!important;color:#20252a!important;
+  font:500 32px Georgia,"Times New Roman",serif!important;
+}
+.adminDemo__demoBadge{
+  min-height:36px!important;padding:0 13px!important;border:1px solid #dfe7dc!important;
+  background:#f6fbf5!important;color:#478153!important;border-radius:999px!important;
+}
+.adminDemo__demoBadge>span{background:#55a061!important;box-shadow:0 0 0 4px rgba(85,160,97,.11)!important}
+
+/* Dashboard KPI cards */
+.adminDemo__stats{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;
+}
+.adminDemo__stats article{
+  min-height:128px!important;padding:20px!important;
+  border:1px solid #e7ded4!important;border-radius:18px!important;
+  background:rgba(255,255,255,.88)!important;
+  box-shadow:0 14px 34px rgba(82,59,32,.055)!important;
+}
+.adminDemo__stats article>div{
+  width:42px!important;height:42px!important;border-radius:13px!important;
+  color:#fff!important;border:0!important;
+  background:linear-gradient(135deg,#cf9a49,#a87534)!important;
+  box-shadow:0 8px 20px rgba(161,113,50,.17)!important;
+}
+.adminDemo__stats article:nth-child(2)>div{background:linear-gradient(135deg,#c589aa,#9c597e)!important}
+.adminDemo__stats article:nth-child(3)>div{background:linear-gradient(135deg,#75b878,#4d9255)!important}
+.adminDemo__stats article:nth-child(4)>div{background:linear-gradient(135deg,#668fe0,#4168c3)!important}
+.adminDemo__stats span{color:#81868b!important;font-size:9px!important}
+.adminDemo__stats strong{color:#25292e!important;font:600 29px Georgia,"Times New Roman",serif!important}
+
+/* Panels */
+.adminDemo__dashboardGrid{gap:16px!important}
+.adminDemo__panel,
+.admin72Cms__head,
+.admin72Cms__section,
+.admin74Media__panel,
+.admin70Appointments__head,
+.admin70Appointments__list,
+.admin74Media{
+  border-color:#e7ded4!important;
+  background:rgba(255,255,255,.90)!important;
+  box-shadow:0 14px 34px rgba(82,59,32,.05)!important;
+}
+.adminDemo__panel{border-radius:18px!important;padding:22px!important}
+.adminDemo__panelHead{border-bottom-color:#eee6dd!important}
+.adminDemo__panelHead span,
+.admin72Cms__head>div>span,
+.admin74Media__head>span,
+.admin70Appointments__head>div>span{
+  color:#a77736!important;
+}
+.adminDemo__panelHead h2,
+.admin72Cms__head h2,
+.admin74Media__head h2,
+.admin70Appointments__head h2,
+.adminDemo__welcome h2{
+  color:#25292e!important;
+}
+.adminDemo__miniList>div,
+.adminDemo__contentList>div,
+.admin74Media__item{
+  border-color:#eee7df!important;
+}
+.adminDemo__miniList strong,
+.adminDemo__contentList strong,
+.admin74Media__item strong{color:#30353a!important}
+.adminDemo__miniList small,
+.adminDemo__contentList small,
+.admin74Media__item small{color:#8d9296!important}
+
+/* CMS light skin */
+.admin72Cms__head{border-radius:18px!important}
+.admin72Cms__head p{color:#7e8388!important}
+.admin72Cms__head>button,
+.adminDemo__panelHead button,
+.admin70Appointments__head>button{
+  border-color:#dbc8ae!important;background:#fffaf3!important;color:#9c6e34!important;
+}
+.admin72Cms__section{border-radius:18px!important}
+.admin72Cms__sectionTitle{border-bottom-color:#ece4da!important}
+.admin72Cms__sectionTitle>span{
+  border-color:#d8bc93!important;color:#a77736!important;background:#fbf6ee!important;
+}
+.admin72Cms__sectionTitle strong{color:#2b3035!important}
+.admin72Cms__sectionTitle small{color:#94989b!important}
+.admin72Cms__fields label>span{color:#777c81!important}
+.admin72Cms__fields input,
+.admin72Cms__fields textarea,
+.adminDemo__form input,
+.adminDemo__form select,
+.adminDemo__form textarea,
+.admin74Media input,
+.admin74Media select,
+.admin74Media textarea{
+  border-color:#e0d7cc!important;background:#fbfaf8!important;color:#252a2f!important;
+}
+.admin72Cms__fields input:focus,
+.admin72Cms__fields textarea:focus,
+.adminDemo__form input:focus,
+.adminDemo__form select:focus,
+.adminDemo__form textarea:focus{
+  border-color:#b98747!important;box-shadow:0 0 0 3px rgba(185,135,71,.08)!important;
+}
+.admin72Cms__save,
+.adminDemo__submit{
+  background:linear-gradient(135deg,#a77736,#bd8842)!important;color:#fff!important;
+  border-color:#9e6e34!important;
+}
+
+/* Appointment table */
+.admin70Appointments__head p{color:#80858a!important}
+.admin70Appointments__list{border-radius:18px!important;overflow:hidden!important}
+.admin70Appointments__row{
+  border-bottom-color:#eee6dd!important;background:transparent!important;
+}
+.admin70Appointments__row:hover{background:#fbf8f4!important}
+.admin70Appointments__row strong{color:#2d3237!important}
+.admin70Appointments__row small{color:#8c9195!important}
+.admin70Status--pending{background:#fff3df!important;color:#a66b13!important;border-color:#f0d5aa!important}
+.admin70Status--approved{background:#eaf6ec!important;color:#3b7f49!important;border-color:#c9e6ce!important}
+.admin70Status--cancelled{background:#fff0ef!important;color:#aa4c4c!important;border-color:#efcdca!important}
+
+/* Media admin */
+.admin74Media__message.is-success{background:#edf8ef!important;border-color:#cae8cf!important;color:#3f7b49!important}
+.admin74Media__message.is-error{background:#fff1ef!important;border-color:#efcfca!important;color:#a64d47!important}
+
+/* Generic admin text cleanup */
+.adminDemo p,
+.admin72Cms p,
+.admin74Media p,
+.admin70Appointments p{color:#7b8085!important}
+.adminDemo__placeholderIcon{background:#f7efe4!important;color:#a77736!important}
+.adminDemo__placeholder>span{color:#a77736!important}
+.adminDemo__placeholder h2{color:#2c3136!important}
+.adminDemo__placeholder p{color:#858a8e!important}
+
+/* Responsive */
+@media(max-width:1050px){
+  .adminDemo{grid-template-columns:220px minmax(0,1fr)!important}
+  .adminDemo__main{padding:26px 24px 38px!important}
+  .adminDemo__stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+  .admin92Intro__emblem{width:78px;height:78px;border-radius:23px}
+  .admin92Intro__emblem img{width:56px;height:56px}
+  .adminDemo{
+    display:block!important;
+  }
+  .adminDemo__sidebar{
+    position:relative!important;height:auto!important;
+    border-right:0!important;border-bottom:1px solid #e7ded3!important;
+  }
+  .adminDemo__menu{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .adminDemo__sidebarFooter{margin-top:20px!important}
+  .adminDemo__main{padding:22px 16px 32px!important}
+  .adminDemo__topbar{align-items:flex-start!important;gap:16px!important}
+  .adminDemo__stats{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:520px){
+  .admin70Login__card{padding:30px 22px 24px!important;border-radius:22px!important}
+  .adminDemo__menu{grid-template-columns:1fr!important}
+  .adminDemo__stats{grid-template-columns:1fr!important}
+  .adminDemo__topbar{flex-direction:column!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .admin92Intro__center,
+  .admin92Intro__line span,
+  .admin92Intro__credit,
+  .admin92Intro__ambient,
+  .admin70Login__card{
+    animation:none!important;
   }
 }
 
