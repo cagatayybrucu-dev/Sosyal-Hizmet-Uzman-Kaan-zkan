@@ -501,7 +501,15 @@ function App() {
       { threshold: 0.12 }
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    const motionTargets = document.querySelectorAll(
+      ".reveal, .svc52SectionTitle, .svc73Card, .svc52Trust, .aboutDirectHeader__title, .aboutDirectArticle, .contact80Hero__copy, .contact80Intro, .contact80Card, .contact80Appointment, .prc53SectionTitle, .prc53Step, .prc53Trust > div, .prc53Testimonials__head, .prc53TestimonialCard"
+    );
+
+    motionTargets.forEach((el, index) => {
+      el.classList.add("motionReveal");
+      el.style.setProperty("--motion-delay", `${Math.min(index % 5, 4) * 70}ms`);
+      observer.observe(el);
+    });
 
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -546,6 +554,21 @@ function App() {
       window.removeEventListener("hashchange", onHashChange);
     };
   }, [page]);
+
+  const handleHomeHeroPointer = (event) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const hero = event.currentTarget;
+    const rect = hero.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    hero.style.setProperty("--hero-x", x.toFixed(3));
+    hero.style.setProperty("--hero-y", y.toFixed(3));
+  };
+
+  const resetHomeHeroPointer = (event) => {
+    event.currentTarget.style.setProperty("--hero-x", "0");
+    event.currentTarget.style.setProperty("--hero-y", "0");
+  };
 
   return (
     <>
@@ -678,7 +701,12 @@ function App() {
           <AdminDemoPage />
         ) : (
         <main>
-          <section className="lightHomeHero" id="anasayfa">
+          <section
+              className="lightHomeHero"
+              id="anasayfa"
+              onMouseMove={handleHomeHeroPointer}
+              onMouseLeave={resetHomeHeroPointer}
+            >
             <div className="lightHomeHero__visual">
               <img
                 loading="lazy" decoding="async" src={servicesHeroRoom}
@@ -3116,6 +3144,28 @@ function AdminDemoPage() {
 
 function ProcessDetailPage({ content }) {
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+  const [timelineProgress, setTimelineProgress] = useState(0);
+
+  useEffect(() => {
+    const updateTimeline = () => {
+      const flow = document.querySelector(".prc53Flow");
+      if (!flow) return;
+      const rect = flow.getBoundingClientRect();
+      const start = window.innerHeight * 0.72;
+      const distance = Math.max(rect.height - window.innerHeight * 0.28, 1);
+      const progress = Math.max(0, Math.min(1, (start - rect.top) / distance));
+      setTimelineProgress(progress);
+    };
+
+    updateTimeline();
+    window.addEventListener("scroll", updateTimeline, { passive: true });
+    window.addEventListener("resize", updateTimeline);
+    return () => {
+      window.removeEventListener("scroll", updateTimeline);
+      window.removeEventListener("resize", updateTimeline);
+    };
+  }, []);
+
 
   const fallbackTestimonials = [
     { no: "01", title: "Danışan Yorumu", person: "Danışan", text: `Sevgili Kaan Hocam, o kadar iyi geldiniz ki.. Yıllardır üstesinden gelemediğim ailevi problemlerime, eşimle olan sıkıntılarıma ve aile huzurumuza seanslarınızla ne kadar iyi geldiğinizi anlatamam size.\n\nSeanslarınız oldukça içten, özverili, hassas ve güven veriyor olması benim için çok önemliydi. Bu önyargılarımı ve ailevi problemlerimizi sizlerle aştım. Ne kadar teşekkür etsem azdır.\n\nEmeğinize sağlık 🙏🏻` },
@@ -3150,9 +3200,15 @@ function ProcessDetailPage({ content }) {
 
       <section className="prc53Flow">
         <div className="prc53SectionTitle"><span>{content.sectionEyebrow}</span><h2>{content.sectionTitle}</h2></div>
-        <div className="prc53Steps">
-          {steps.map((step) => (
-            <article className="prc53Step" key={step.no}>
+        <div className="prc53Steps" style={{ "--timeline-progress": timelineProgress }}>
+          <div className="prc53TimelineTrack" aria-hidden="true">
+            <span />
+          </div>
+          {steps.map((step, index) => (
+            <article
+              className={`prc53Step ${timelineProgress >= index / Math.max(steps.length - 1, 1) ? "is-timeline-active" : ""}`}
+              key={step.no}
+            >
               <div className="prc53Step__number">{step.no}</div>
               <div className="prc53Step__icon"><Icon name={step.icon} size={34} /></div>
               <h3>{step.title}</h3><p>{step.text}</p>
@@ -11066,6 +11122,213 @@ img{
   .lightHomeHero__actions{
     margin-top:23px!important;
   }
+}
+
+/* STEP 89 — PREMIUM GLOBAL MOTION + HERO 3D + PROCESS TIMELINE */
+
+/* Smooth route entrance */
+.pageShell main{
+  animation:premiumPageEnter .62s cubic-bezier(.16,.8,.2,1) both;
+}
+@keyframes premiumPageEnter{
+  from{opacity:0;transform:translateY(10px);filter:blur(4px)}
+  to{opacity:1;transform:none;filter:none}
+}
+
+/* Global scroll reveal system */
+.motionReveal{
+  opacity:0;
+  transform:translateY(28px) scale(.992);
+  filter:blur(6px);
+  transition:
+    opacity .78s cubic-bezier(.16,.8,.2,1) var(--motion-delay,0ms),
+    transform .78s cubic-bezier(.16,.8,.2,1) var(--motion-delay,0ms),
+    filter .72s ease var(--motion-delay,0ms);
+  will-change:opacity,transform,filter;
+}
+.motionReveal.is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+/* Home hero — subtle mouse parallax */
+.lightHomeHero{
+  --hero-x:0;
+  --hero-y:0;
+  perspective:1400px;
+}
+.lightHomeHero__visual{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * -7px),
+      calc(var(--hero-y) * -5px),
+      0
+    )
+    scale(1.018);
+  transition:transform .28s cubic-bezier(.2,.7,.2,1);
+  will-change:transform;
+}
+.lightHomeHero__visual img{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * 11px),
+      calc(var(--hero-y) * 8px),
+      0
+    )
+    scale(1.035);
+  transition:transform .32s cubic-bezier(.2,.7,.2,1);
+  will-change:transform;
+}
+.lightHomeHero__visualShade{
+  transform:translate3d(calc(var(--hero-x) * -3px),0,0);
+  transition:transform .32s cubic-bezier(.2,.7,.2,1);
+}
+.lightHomeHero__content{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * 2px),
+      calc(var(--hero-y) * 1.5px),
+      0
+    );
+  transition:transform .34s cubic-bezier(.2,.7,.2,1);
+}
+.lightHomeHero__trust{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * 3px),
+      calc(var(--hero-y) * 2px),
+      0
+    );
+  transition:transform .36s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;
+}
+.lightHomeHero__rotator h1{
+  overflow:visible;
+}
+.lightHomeHero__rotator h1 strong{
+  transform-origin:left center;
+}
+
+/* Process timeline — scroll controlled gold progress */
+.prc53Steps{
+  --timeline-progress:0;
+}
+.prc53TimelineTrack{
+  position:absolute;
+  z-index:-1;
+  left:7%;
+  right:7%;
+  top:54px;
+  height:2px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(218,151,65,.14);
+  pointer-events:none;
+}
+.prc53TimelineTrack span{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(var(--timeline-progress));
+  transform-origin:left center;
+  background:linear-gradient(90deg,#a87335,#e0a654,#f0c47a);
+  box-shadow:0 0 16px rgba(218,151,65,.38);
+  transition:transform .14s linear;
+}
+.prc53Steps:before{opacity:.22}
+.prc53Step{
+  transition:
+    transform .42s cubic-bezier(.16,.8,.2,1),
+    border-color .42s ease,
+    box-shadow .42s ease,
+    opacity .42s ease;
+}
+.prc53Step.is-timeline-active{
+  border-color:rgba(224,166,84,.86);
+  box-shadow:0 22px 58px rgba(0,0,0,.25),0 0 0 1px rgba(218,151,65,.06);
+}
+.prc53Step.is-timeline-active .prc53Step__number{
+  color:#fff4e4;
+  border-color:#e0a654;
+  background:linear-gradient(135deg,#9b6b31,#d99a4a);
+  box-shadow:0 0 22px rgba(218,151,65,.22);
+}
+.prc53Step.is-timeline-active .prc53Step__icon{
+  color:#e6ad61;
+  transform:translateY(-2px) scale(1.04);
+}
+.prc53Step__number,
+.prc53Step__icon{
+  transition:transform .38s ease,color .38s ease,background .38s ease,border-color .38s ease,box-shadow .38s ease;
+}
+
+/* Desktop hover polish */
+@media (hover:hover) and (pointer:fine){
+  .svc73Card,
+  .contact80Card,
+  .homeServiceFeature,
+  .prc53TestimonialCard{
+    transition:transform .35s cubic-bezier(.16,.8,.2,1),box-shadow .35s ease,border-color .35s ease;
+  }
+  .svc73Card:hover,
+  .contact80Card:hover,
+  .homeServiceFeature:hover,
+  .prc53TestimonialCard:hover{
+    transform:translateY(-5px);
+  }
+}
+
+/* Mobile: motion stays elegant and lightweight */
+@media(max-width:760px){
+  .pageShell main{animation-duration:.45s}
+  .motionReveal{
+    transform:translateY(18px);
+    filter:blur(3px);
+    transition-duration:.62s;
+  }
+  .lightHomeHero__visual,
+  .lightHomeHero__visual img,
+  .lightHomeHero__visualShade,
+  .lightHomeHero__content,
+  .lightHomeHero__trust{
+    transform:none!important;
+  }
+  .prc53TimelineTrack{
+    left:30px;
+    right:auto;
+    top:0;
+    bottom:0;
+    width:2px;
+    height:auto;
+  }
+  .prc53TimelineTrack span{
+    width:100%;
+    height:100%;
+    transform:scaleY(var(--timeline-progress));
+    transform-origin:center top;
+  }
+}
+
+/* Accessibility + battery friendly fallback */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pageShell main,
+  .motionReveal,
+  .lightHomeHero__visual,
+  .lightHomeHero__visual img,
+  .lightHomeHero__visualShade,
+  .lightHomeHero__content,
+  .lightHomeHero__trust,
+  .prc53TimelineTrack span,
+  .prc53Step,
+  .prc53Step__number,
+  .prc53Step__icon{
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .motionReveal{opacity:1!important}
 }
 
 `;
