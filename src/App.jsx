@@ -118,6 +118,34 @@ const process = [
   { n: "04", icon: "check", title: "Takip & Değerlendirme", text: "Süreci gözden geçirir, ihtiyaç oldukça planı günceller ve ilerlemeyi destekleriz." },
 ];
 
+
+const defaultProcessContent = {
+  heroEyebrow: "SÜREÇ",
+  heroTitle: "Nasıl",
+  heroAccent: "Çalışıyoruz?",
+  heroDescription: "Danışmanlık süreci, sizin ihtiyaçlarınıza ve hedeflerinize uygun şekilde planlanır. Güvenli, saygılı ve iş birliğine dayalı bir süreç yürütürüz.",
+  sectionEyebrow: "ÇALIŞMA SÜRECİM",
+  sectionTitle: "Süreç, kişiye özel ve esnek bir şekilde ilerler.",
+  steps: [
+    { no: "01", icon: "message", title: "Ön Görüşme", text: "Tanışma ve ihtiyaçların belirlenmesi amacıyla ön görüşme gerçekleştirilir. Sürecin çerçevesi birlikte netleştirilir." },
+    { no: "02", icon: "target", title: "Hedef Belirleme", text: "Önceliklerinize göre hedefler belirlenir ve bu hedeflere ulaşmak için kişiye özgü bir yol haritası oluşturulur." },
+    { no: "03", icon: "user", title: "Çalışma ve Uygulama", text: "Belirlenen hedeflere yönelik psikososyal destek yöntemleri kullanılarak farkındalık ve değişim süreci başlatılır." },
+    { no: "04", icon: "chart", title: "Değerlendirme", text: "İlerleme düzenli olarak değerlendirilir, ihtiyaçlara göre planlama gözden geçirilir ve yeniden şekillendirilir." },
+    { no: "05", icon: "check", title: "Sürdürme ve Destek", text: "Kazanımların kalıcı hale gelmesi için destek sürdürülür ve gerektiğinde yeni hedefler belirlenir." }
+  ],
+  trustItems: [
+    { icon: "shield", title: "Gizlilik Esastır", text: "Tüm görüşmeler gizlilik ilkesi çerçevesinde yürütülür." },
+    { icon: "user", title: "Size Özel Yaklaşım", text: "Her danışanın ihtiyaçları farklıdır. Size uygun bir yol haritası oluşturulur." },
+    { icon: "calendar", title: "Esnek Görüşme Seçenekleri", text: "Görüşme biçimi ve sıklığı ihtiyaçlara göre birlikte planlanır." },
+    { icon: "heart", title: "Sürekli Destek", text: "Süreç boyunca ilerleme değerlendirilir ve ihtiyaç halinde destek devam eder." }
+  ],
+  testimonialsEyebrow: "DANIŞAN DENEYİMLERİ",
+  testimonialsTitle: "Süreçten kalan gerçek mesajlar.",
+  testimonialsDescription: "Danışanların süreç sonrasında sosyal medya ve mesaj yoluyla paylaştığı geri bildirimlerden bazıları.",
+  testimonialsNote: "Paylaşımlar danışanların kendi ifadeleridir. Danışmanlık deneyimi ve sonuçları kişiden kişiye farklılık gösterebilir.",
+  testimonials: []
+};
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -230,6 +258,7 @@ function App() {
   };
 
   const [servicesContent, setServicesContent] = useState(defaultServicesContent);
+  const [processContent, setProcessContent] = useState(defaultProcessContent);
 
   const heroSlides = [
     {
@@ -361,6 +390,30 @@ function App() {
     return () => {
       active = false;
     };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadProcessContent = async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("content")
+        .eq("id", "process")
+        .maybeSingle();
+
+      if (!active) return;
+      if (error) {
+        console.error("Süreç içeriği yüklenemedi:", error);
+        return;
+      }
+      if (data?.content) {
+        setProcessContent((current) => ({ ...current, ...data.content }));
+      }
+    };
+
+    loadProcessContent();
+    return () => { active = false; };
   }, []);
 
   useEffect(() => {
@@ -566,7 +619,7 @@ function App() {
         ) : page === "services" ? (
           <ServicesDetailPage content={servicesContent} />
         ) : page === "process" ? (
-          <ProcessDetailPage />
+          <ProcessDetailPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
         ) : page === "appointment" ? (
@@ -1567,6 +1620,11 @@ function AdminDemoPage() {
   const [servicesEditorLoading, setServicesEditorLoading] = useState(false);
   const [servicesEditorSaving, setServicesEditorSaving] = useState(false);
   const [servicesEditorMessage, setServicesEditorMessage] = useState("");
+  const [processEditor, setProcessEditor] = useState(defaultProcessContent);
+  const [processEditorLoading, setProcessEditorLoading] = useState(false);
+  const [processEditorSaving, setProcessEditorSaving] = useState(false);
+  const [processEditorMessage, setProcessEditorMessage] = useState("");
+
 
   const [mediaItems, setMediaItems] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
@@ -1654,6 +1712,12 @@ function AdminDemoPage() {
   useEffect(() => {
     if (session && activeTab === "content") {
       loadMediaAdmin();
+    }
+  }, [session, activeTab]);
+
+  useEffect(() => {
+    if (session && activeTab === "process") {
+      loadProcessEditor();
     }
   }, [session, activeTab]);
 
@@ -1799,6 +1863,76 @@ function AdminDemoPage() {
     }
 
     setServicesEditorSaving(false);
+  };
+
+  const loadProcessEditor = async () => {
+    setProcessEditorLoading(true);
+    setProcessEditorMessage("");
+    const { data, error } = await supabase
+      .from("site_content")
+      .select("content")
+      .eq("id", "process")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Süreç içeriği yüklenemedi:", error);
+      setProcessEditorMessage("Süreç içeriği yüklenemedi.");
+    } else {
+      setProcessEditor({ ...defaultProcessContent, ...(data?.content || {}) });
+    }
+    setProcessEditorLoading(false);
+  };
+
+  const saveProcessEditor = async (e) => {
+    e.preventDefault();
+    setProcessEditorSaving(true);
+    setProcessEditorMessage("");
+    const { error } = await supabase.from("site_content").upsert(
+      { id: "process", content: processEditor, updated_at: new Date().toISOString() },
+      { onConflict: "id" }
+    );
+    if (error) {
+      console.error("Süreç kaydedilemedi:", error);
+      setProcessEditorMessage("Kaydetme başarısız. Yetki ayarlarını kontrol edin.");
+    } else {
+      setProcessEditorMessage("Süreç sayfası başarıyla güncellendi.");
+    }
+    setProcessEditorSaving(false);
+  };
+
+  const updateProcessStep = (index, key, value) => {
+    setProcessEditor((current) => ({
+      ...current,
+      steps: current.steps.map((item, i) => i === index ? { ...item, [key]: value } : item)
+    }));
+  };
+  const updateProcessTrust = (index, key, value) => {
+    setProcessEditor((current) => ({
+      ...current,
+      trustItems: current.trustItems.map((item, i) => i === index ? { ...item, [key]: value } : item)
+    }));
+  };
+  const updateProcessTestimonial = (index, key, value) => {
+    setProcessEditor((current) => ({
+      ...current,
+      testimonials: current.testimonials.map((item, i) => i === index ? { ...item, [key]: value } : item)
+    }));
+  };
+  const addProcessTestimonial = () => {
+    setProcessEditor((current) => ({
+      ...current,
+      testimonials: [...(current.testimonials || []), {
+        no: String((current.testimonials?.length || 0) + 1).padStart(2, "0"),
+        title: "Danışan Yorumu", person: "Danışan", text: ""
+      }]
+    }));
+  };
+  const removeProcessTestimonial = (index) => {
+    setProcessEditor((current) => ({
+      ...current,
+      testimonials: current.testimonials.filter((_, i) => i !== index)
+        .map((item, i) => ({ ...item, no: String(i + 1).padStart(2, "0") }))
+    }));
   };
 
   const loadHomeEditor = async () => {
@@ -2102,6 +2236,7 @@ function AdminDemoPage() {
             ["dashboard", "grid", "Dashboard"],
             ["homepage", "edit", "Ana Sayfa"],
             ["services", "grid", "Hizmetler"],
+            ["process", "chart", "Süreç"],
             ["appointments", "calendar", "Randevular"],
             ["content", "video", "YouTube & Podcast"],
             ["articles", "edit", "İçerikler"],
@@ -2148,6 +2283,8 @@ function AdminDemoPage() {
                 ? "Ana Sayfa"
                 : activeTab === "services"
                 ? "Hizmetler"
+                : activeTab === "process"
+                ? "Süreç"
                 : activeTab === "content"
                 ? "YouTube & Podcast"
                 : activeTab === "articles"
@@ -2595,6 +2732,97 @@ function AdminDemoPage() {
           </section>
         )}
 
+        {activeTab === "process" && (
+          <section className="admin73Cms admin81Process">
+            <div className="admin73Cms__head">
+              <div>
+                <span>SİTE İÇERİKLERİ / SÜREÇ</span>
+                <h2>Süreç sayfasındaki tüm metinleri düzenleyin.</h2>
+                <p>Üst alan, süreç adımları, güven kartları ve danışan yorumlarını kod açmadan yönetebilirsiniz.</p>
+              </div>
+              <button type="button" onClick={loadProcessEditor} disabled={processEditorLoading}>
+                {processEditorLoading ? "Yükleniyor..." : "İçeriği Yenile"}
+              </button>
+            </div>
+
+            {processEditorMessage && <div className="admin73Cms__message">{processEditorMessage}</div>}
+
+            {processEditorLoading ? <div className="admin73Cms__loading">Süreç içeriği yükleniyor...</div> : (
+              <form className="admin73Cms__form" onSubmit={saveProcessEditor}>
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>01</span><div><strong>Sayfa Üst Alanı</strong><small>Süreç sayfasının ana başlık ve açıklaması.</small></div></div>
+                  <div className="admin73Cms__fields">
+                    <label><span>Üst Etiket</span><input value={processEditor.heroEyebrow} onChange={(e)=>setProcessEditor({...processEditor,heroEyebrow:e.target.value})}/></label>
+                    <label><span>Başlık</span><input value={processEditor.heroTitle} onChange={(e)=>setProcessEditor({...processEditor,heroTitle:e.target.value})}/></label>
+                    <label><span>Vurgulu Başlık</span><input value={processEditor.heroAccent} onChange={(e)=>setProcessEditor({...processEditor,heroAccent:e.target.value})}/></label>
+                    <label className="is-wide"><span>Açıklama</span><textarea rows="4" value={processEditor.heroDescription} onChange={(e)=>setProcessEditor({...processEditor,heroDescription:e.target.value})}/></label>
+                    <label><span>Bölüm Etiketi</span><input value={processEditor.sectionEyebrow} onChange={(e)=>setProcessEditor({...processEditor,sectionEyebrow:e.target.value})}/></label>
+                    <label><span>Bölüm Başlığı</span><input value={processEditor.sectionTitle} onChange={(e)=>setProcessEditor({...processEditor,sectionTitle:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>02</span><div><strong>Süreç Adımları</strong><small>Beş adımın başlığını ve açıklamasını ayrı ayrı değiştirin.</small></div></div>
+                  <div className="admin81Process__stack">
+                    {processEditor.steps.map((item,index)=>(
+                      <div className="admin81Process__item" key={index}>
+                        <b>{item.no}. ADIM</b>
+                        <input value={item.title} onChange={(e)=>updateProcessStep(index,"title",e.target.value)} placeholder="Başlık"/>
+                        <textarea rows="3" value={item.text} onChange={(e)=>updateProcessStep(index,"text",e.target.value)} placeholder="Açıklama"/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>03</span><div><strong>Güven Kartları</strong><small>Gizlilik, yaklaşım, görüşme ve destek kartlarını yönetin.</small></div></div>
+                  <div className="admin81Process__stack">
+                    {processEditor.trustItems.map((item,index)=>(
+                      <div className="admin81Process__item" key={index}>
+                        <b>KART {index+1}</b>
+                        <input value={item.title} onChange={(e)=>updateProcessTrust(index,"title",e.target.value)} placeholder="Kart başlığı"/>
+                        <textarea rows="2" value={item.text} onChange={(e)=>updateProcessTrust(index,"text",e.target.value)} placeholder="Kart açıklaması"/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>04</span><div><strong>Danışan Deneyimleri</strong><small>Başlıkları, açıklamayı, alt notu ve yorumların tamamını yönetin.</small></div></div>
+                  <div className="admin73Cms__fields">
+                    <label><span>Üst Etiket</span><input value={processEditor.testimonialsEyebrow} onChange={(e)=>setProcessEditor({...processEditor,testimonialsEyebrow:e.target.value})}/></label>
+                    <label><span>Başlık</span><input value={processEditor.testimonialsTitle} onChange={(e)=>setProcessEditor({...processEditor,testimonialsTitle:e.target.value})}/></label>
+                    <label className="is-wide"><span>Açıklama</span><textarea rows="3" value={processEditor.testimonialsDescription} onChange={(e)=>setProcessEditor({...processEditor,testimonialsDescription:e.target.value})}/></label>
+                    <label className="is-wide"><span>Bilgilendirme Notu</span><textarea rows="3" value={processEditor.testimonialsNote} onChange={(e)=>setProcessEditor({...processEditor,testimonialsNote:e.target.value})}/></label>
+                  </div>
+
+                  <div className="admin81Process__testimonialHead">
+                    <strong>Yorumlar</strong>
+                    <button type="button" onClick={addProcessTestimonial}>+ Yeni Yorum Ekle</button>
+                  </div>
+                  <div className="admin81Process__stack">
+                    {(processEditor.testimonials || []).map((item,index)=>(
+                      <div className="admin81Process__item admin81Process__testimonial" key={index}>
+                        <div className="admin81Process__itemTop"><b>YORUM {index+1}</b><button type="button" onClick={()=>removeProcessTestimonial(index)}>Sil</button></div>
+                        <div className="admin81Process__row">
+                          <input value={item.person} onChange={(e)=>updateProcessTestimonial(index,"person",e.target.value)} placeholder="İsim / rumuz"/>
+                          <input value={item.title} onChange={(e)=>updateProcessTestimonial(index,"title",e.target.value)} placeholder="Yorum türü"/>
+                        </div>
+                        <textarea rows="7" value={item.text} onChange={(e)=>updateProcessTestimonial(index,"text",e.target.value)} placeholder="Danışan yorumunun tamamı"/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="admin73Cms__savebar">
+                  <div><strong>Süreç sayfasını yayınla</strong><span>Kaydettiğiniz değişiklikler canlı süreç sayfasında kullanılacaktır.</span></div>
+                  <button type="submit" disabled={processEditorSaving}>{processEditorSaving ? "Kaydediliyor..." : "Süreç Sayfasını Kaydet"}</button>
+                </div>
+              </form>
+            )}
+          </section>
+        )}
+
         {activeTab === "content" && (
           <section className="admin74Media">
             <div className="admin74Media__head">
@@ -2833,18 +3061,10 @@ function AdminDemoPage() {
   );
 }
 
-function ProcessDetailPage() {
+function ProcessDetailPage({ content }) {
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
 
-  const steps = [
-    { no: "01", icon: "message", title: "Ön Görüşme", text: "Tanışma ve ihtiyaçların belirlenmesi amacıyla ön görüşme gerçekleştirilir. Sürecin çerçevesi birlikte netleştirilir." },
-    { no: "02", icon: "target", title: "Hedef Belirleme", text: "Önceliklerinize göre hedefler belirlenir ve bu hedeflere ulaşmak için kişiye özgü bir yol haritası oluşturulur." },
-    { no: "03", icon: "user", title: "Çalışma ve Uygulama", text: "Belirlenen hedeflere yönelik psikososyal destek yöntemleri kullanılarak farkındalık ve değişim süreci başlatılır." },
-    { no: "04", icon: "chart", title: "Değerlendirme", text: "İlerleme düzenli olarak değerlendirilir, ihtiyaçlara göre planlama gözden geçirilir ve yeniden şekillendirilir." },
-    { no: "05", icon: "check", title: "Sürdürme ve Destek", text: "Kazanımların kalıcı hale gelmesi için destek sürdürülür ve gerektiğinde yeni hedefler belirlenir." },
-  ];
-
-  const testimonials = [
+  const fallbackTestimonials = [
     { no: "01", title: "Danışan Yorumu", person: "Danışan", text: `Sevgili Kaan Hocam, o kadar iyi geldiniz ki.. Yıllardır üstesinden gelemediğim ailevi problemlerime, eşimle olan sıkıntılarıma ve aile huzurumuza seanslarınızla ne kadar iyi geldiğinizi anlatamam size.\n\nSeanslarınız oldukça içten, özverili, hassas ve güven veriyor olması benim için çok önemliydi. Bu önyargılarımı ve ailevi problemlerimizi sizlerle aştım. Ne kadar teşekkür etsem azdır.\n\nEmeğinize sağlık 🙏🏻` },
     { no: "02", title: "Danışan Yorumu", person: "Danışan", text: `Kaan Bey ile 3 Kasım 2024 tarihinde online olarak terapiye başladık ve hayatımın en doğru kararı olduğunu söyleyebilirim.\n\nBenim majör depresyon ve OKB problemim vardı. Tırnak eti yolma, sürekli sayı sayma, güvensizlik, kaygı problemleri ve en önemlisi de öz saygım yoktu.\n\nTerapiler sonucu bunların geçmişten gelen travmalara bağlı olduğunu çözdük ve onara onara devam ettik. Kendisinin içten ve samimi konuşmaları beni çok rahatlatıyor, terapi günü gelsin istiyordum. Terapiden sonra çok mutlu olmaya başladım. Kendime olan özgüvenim yavaş yavaş yerine gelmeye ve depresyon halinden çıkmaya başladım.\n\nKaan Bey’in verdiği ödevleri, stres anında yapmam gerekenleri yaptım. Sayı saymaktan kurtuldum, tırnak eti yolma durumunu aştım. Sınır koymayı, hayır demeyi, kendim için bir şeyler yapmayı çok sevdim…\n\nKaan Bey’i iyi ki tanıdım, iyi ki bu mesleği seçmiş ve bizim gibi bazı problemleri olan insanların hayatlarına küçük dokunuşlarla yeniden gelmesini sağlıyor.\n\nHer şey için çok teşekkür ediyorum. Başarılarınızın devamını diliyorum…` },
     { no: "03", title: "Çift Danışan Yorumu", person: "Çift Danışan", text: `Seansa başlamadan önce birbirimize karşı vakit ayıramıyorduk, şimdi ise daha çok zaman geçiriyoruz, birbirimizi anlıyoruz, daha çok dinliyoruz.\n\nSeansdan önce öfkeli ve kıskançlık vardı ama şu anda onların hepsi bitti ve daha çok sevgi ve dinlemeye başladık. Tek değil de bir olduğumuzu anladık.\n\nBu konuda senin de katkın var, çok teşekkür ediyoruz.` },
@@ -2856,7 +3076,9 @@ function ProcessDetailPage() {
     { no: "09", title: "Danışan Yorumu", person: "Danışan", text: `Ben 24 Ekim 2025 tarihi ile sizinle seansa başladım. Üniversite öğrencisiyim, bu yüzden aşırı derecede stres, anksiyete ve panik atak problemleri yaşıyordum.\n\nAma seanslara başladıktan sonra stresle başa çıkmayı, kontrol altına almayı öğrendim.\n\nAyrıca hayır diyememe ve sınır koyamama gibi problemlerim de vardı. Artık kendi değerimi biliyor ve sınır koyabiliyorum.\n\nİyi ki sizinle tanışıp seanslara devam ettim. Size çok teşekkür ederim.` },
     { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
   ];
-
+  const steps = content.steps?.length ? content.steps : defaultProcessContent.steps;
+  const trustItems = content.trustItems?.length ? content.trustItems : defaultProcessContent.trustItems;
+  const testimonials = content.testimonials?.length ? content.testimonials : fallbackTestimonials;
   const visibleTestimonials = showAllTestimonials ? testimonials : testimonials.slice(0, 3);
 
   return (
@@ -2866,15 +3088,15 @@ function ProcessDetailPage() {
         <div className="prc53Hero__shade" />
         <a className="prc53Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
         <div className="prc53Hero__copy">
-          <span className="prc53Eyebrow">SÜREÇ</span>
-          <h1>Nasıl<br /><strong>Çalışıyoruz?</strong></h1>
+          <span className="prc53Eyebrow">{content.heroEyebrow}</span>
+          <h1>{content.heroTitle}<br /><strong>{content.heroAccent}</strong></h1>
           <i />
-          <p>Danışmanlık süreci, sizin ihtiyaçlarınıza ve hedeflerinize uygun şekilde planlanır. Güvenli, saygılı ve iş birliğine dayalı bir süreç yürütürüz.</p>
+          <p>{content.heroDescription}</p>
         </div>
       </section>
 
       <section className="prc53Flow">
-        <div className="prc53SectionTitle"><span>ÇALIŞMA SÜRECİM</span><h2>Süreç, kişiye özel ve esnek bir şekilde ilerler.</h2></div>
+        <div className="prc53SectionTitle"><span>{content.sectionEyebrow}</span><h2>{content.sectionTitle}</h2></div>
         <div className="prc53Steps">
           {steps.map((step) => (
             <article className="prc53Step" key={step.no}>
@@ -2885,17 +3107,19 @@ function ProcessDetailPage() {
           ))}
         </div>
         <div className="prc53Trust">
-          <div><div className="prc53Trust__icon"><Icon name="shield" size={27} /></div><p><strong>Gizlilik Esastır</strong><span>Tüm görüşmeler gizlilik ilkesi çerçevesinde yürütülür.</span></p></div>
-          <div><div className="prc53Trust__icon"><Icon name="user" size={27} /></div><p><strong>Size Özel Yaklaşım</strong><span>Her danışanın ihtiyaçları farklıdır. Size uygun bir yol haritası oluşturulur.</span></p></div>
-          <div><div className="prc53Trust__icon"><Icon name="calendar" size={27} /></div><p><strong>Esnek Görüşme Seçenekleri</strong><span>Görüşme biçimi ve sıklığı ihtiyaçlara göre birlikte planlanır.</span></p></div>
-          <div><div className="prc53Trust__icon"><Icon name="heart" size={27} /></div><p><strong>Sürekli Destek</strong><span>Süreç boyunca ilerleme değerlendirilir ve ihtiyaç halinde destek devam eder.</span></p></div>
+          {trustItems.map((item, index) => (
+            <div key={`${item.title}-${index}`}>
+              <div className="prc53Trust__icon"><Icon name={item.icon || "check"} size={27} /></div>
+              <p><strong>{item.title}</strong><span>{item.text}</span></p>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="prc53Testimonials">
         <div className="prc53Testimonials__head">
-          <div><span>DANIŞAN DENEYİMLERİ</span><h2>Süreçten kalan gerçek mesajlar.</h2></div>
-          <p>Danışanların süreç sonrasında sosyal medya ve mesaj yoluyla paylaştığı geri bildirimlerden bazıları.</p>
+          <div><span>{content.testimonialsEyebrow}</span><h2>{content.testimonialsTitle}</h2></div>
+          <p>{content.testimonialsDescription}</p>
         </div>
         <div className={`prc53Testimonials__grid ${showAllTestimonials ? "is-expanded" : ""}`}>
           {visibleTestimonials.map((item) => (
@@ -2914,7 +3138,7 @@ function ProcessDetailPage() {
             {showAllTestimonials ? "Daha Az Göster" : "Daha Fazla Yorum"}<Icon name="arrow" size={16} />
           </button>
         </div>
-        <div className="prc53Testimonials__note"><Icon name="info" size={17} /><p>Paylaşımlar danışanların kendi ifadeleridir. Danışmanlık deneyimi ve sonuçları kişiden kişiye farklılık gösterebilir.</p></div>
+        <div className="prc53Testimonials__note"><Icon name="info" size={17} /><p>{content.testimonialsNote}</p></div>
       </section>
     </main>
   );
@@ -10531,6 +10755,19 @@ img{
     width:100%;
   }
 }
+
+/* STEP 81 — SÜREÇ CMS */
+.admin81Process__stack{display:grid;gap:12px}
+.admin81Process__item{padding:16px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:#061522;display:grid;gap:10px}
+.admin81Process__item>b{color:#d69a4c;font-size:8px;letter-spacing:.13em}
+.admin81Process__item input,.admin81Process__item textarea{width:100%;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:#03101b;color:#dce3e8;padding:11px 12px;outline:none;font:inherit}
+.admin81Process__item textarea{resize:vertical;line-height:1.6}
+.admin81Process__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin81Process__testimonialHead,.admin81Process__itemTop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.admin81Process__testimonialHead{margin:20px 0 10px;color:#dce3e8}
+.admin81Process__testimonialHead button{border:1px solid rgba(214,154,76,.25);border-radius:8px;background:rgba(214,154,76,.08);color:#d69a4c;padding:9px 12px;cursor:pointer}
+.admin81Process__itemTop button{border:1px solid rgba(225,92,92,.25);border-radius:7px;background:rgba(225,92,92,.08);color:#ef8e8e;padding:7px 10px;cursor:pointer}
+@media(max-width:700px){.admin81Process__row{grid-template-columns:1fr}}
 
 `;
 
