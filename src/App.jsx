@@ -124,6 +124,113 @@ function App() {
   const [heroPaused, setHeroPaused] = useState(false);
   const [heroTouchStart, setHeroTouchStart] = useState(null);
 
+  const defaultHomeContent = {
+    eyebrow: "ÇİFT VE AİLE DANIŞMANI",
+    titleLine: "Profesyonel",
+    titleAccent: "Aile Danışmanlığı",
+    description:
+      "Danışan odaklı yaklaşım ile güvenilir, etik ve çözüm odaklı sosyal hizmet ve aile danışmanlığı desteği.",
+    primaryCta: "Ücretsiz Ön Görüşme",
+    secondaryCta: "Çalışma Alanları",
+    trust1Title: "Güvenli & Gizli",
+    trust1Text: "Görüşmeler gizlilik ve etik ilkeler çerçevesinde yürütülür.",
+    trust2Title: "Profesyonel Destek",
+    trust2Text: "Mesleki sınırlar içinde, insan odaklı profesyonel destek.",
+    trust3Title: "Kişiye Özel Yaklaşım",
+    trust3Text: "Her danışanın yaşam öyküsü ve ihtiyaçları kendine özgüdür.",
+    servicesEyebrow: "PROFESYONEL ÇALIŞMA ALANLARI",
+    servicesTitle: "Size uygun desteği",
+    servicesTitleAccent: " birlikte keşfedelim.",
+    servicesDescription:
+      "Yaşadığınız güçlüğü yalnızca tek bir başlık üzerinden değil; ilişkileriniz, yaşam deneyimleriniz ve sosyal çevrenizle birlikte değerlendiren bütüncül bir danışmanlık yaklaşımı.",
+    service1Title: "Bireysel Danışmanlık",
+    service1Item1: "Anksiyete, stres ve duygu düzenleme güçlükleri",
+    service1Item2: "Özsaygı, benlik algısı ve psikososyal güçlenme",
+    service2Title: "Evlilik, Çift ve Bekâr Danışmanlığı",
+    service2Item1: "İletişim sorunları, ilişki çatışmaları ve güven problemleri",
+    service2Item2: "Ayrılık, boşanma ve aile içi roller üzerine destek",
+    service3Title: "Psikososyal Destek",
+    service3Item1: "Yas ve kayıp, yaşam olaylarına uyum ve dayanıklılık",
+    service3Item2: "Bağımlılık ve farklı psikososyal güçlüklerde destek süreci",
+    trustStatementEyebrow: "KAAN ÖZKAN",
+    trustStatementTitle: "Her birey, yaşadığı problemden çok daha fazlasıdır.",
+    trustStatementText:
+      "Danışmanlık sürecinde yalnızca yaşadığınız soruna değil, o sorunla baş ederken geliştirdiğiniz becerilere, sahip olduğunuz içsel güce ve çevrenizdeki destek kaynaklarına da bakarız. Çünkü değişim; eksik olduğunuz yönleri tamamlamaktan çok, zaten sahip olduğunuz gücü fark ederek onu yaşamınızda etkili bir kaynağa dönüştürmekle başlar.",
+  };
+
+  const [homeContent, setHomeContent] = useState(defaultHomeContent);
+
+  const defaultServicesContent = {
+    heroEyebrow: "HİZMETLER",
+    heroTitle: "Çalışma",
+    heroAccent: "Alanlarım",
+    heroDescription:
+      "Her danışanın yaşam öyküsü, ihtiyaçları ve güçlü yönleri farklıdır. Çalışma alanları bu farklılıklar dikkate alınarak değerlendirilir.",
+    quickTitle: "Profesyonel Çalışma Alanlarım",
+    quickDescription:
+      "İhtiyacınıza en yakın başlığı seçerek detaylı çalışma alanlarını inceleyebilirsiniz.",
+
+    individualTitle: "Bireysel Danışmanlık",
+    individualShort:
+      "Duygusal iyi oluş, benlik, dayanıklılık, kaygı, stres ve yaşam olaylarına uyum süreçlerinde kişiye özgü destek.",
+    individualItems: [
+      "Kaygı ve yaşam olaylarına uyum güçlüğü",
+      "Öfke yönetimi ve duygu düzenleme",
+      "Benlik saygısı ve özgüven",
+      "Duygusal iyi oluş",
+      "Psikososyal güçlenme ve dayanıklılık",
+      "Sınır koyma ve sağlıklı iletişim",
+      "Ayrılık, kayıp ve yas süreçleri",
+      "Kişisel farkındalık ve yaşam becerileri"
+    ],
+
+    familyTitle: "Evlilik, Çift ve Bekâr Danışmanlığı",
+    familyShort:
+      "Aile içi iletişim, roller, sınırlar, ebeveynlik ve yaşam değişikliklerine uyum süreçlerinin birlikte değerlendirilmesi.",
+    familyItems: [
+      "Aile içi iletişim problemleri",
+      "Aile içi roller ve sınırlar",
+      "Ebeveynlik becerileri",
+      "Aile içi çatışmalar",
+      "Evlenme sürecinde olan bireyler/çiftler",
+      "Nişan sürecinde olan bireyler/çiftler",
+      "Güven, bağlanma ve ayrılık sürecinde olan bireyler/çiftler",
+      "Boşanma sürecinde olan bireyler/çiftler",
+      "Yaşam değişikliklerine ailece uyum",
+      "Aile ilişkilerinde güven ve iş birliği"
+    ],
+
+    coupleTitle: "Çift Danışmanlığı",
+    coupleShort:
+      "İlişki dinamikleri, iletişim, güven, çatışma ve ayrılık süreçlerinde çift odaklı değerlendirme ve destek.",
+    coupleItems: [
+      "İletişim problemleri",
+      "Evlilik ve ilişki çatışmaları",
+      "Güven sorunları",
+      "Bağlanma ve duygusal ihtiyaçlar",
+      "Sınır koyma",
+      "Ayrılık ve boşanma süreci"
+    ],
+
+    psychosocialTitle: "Psikososyal Destek",
+    psychosocialShort:
+      "Yaşam olayları, kayıp, yas, sosyal çevre ve bireysel kaynakların birlikte ele alındığı güçlendirme odaklı destek.",
+    psychosocialItems: [
+      "Yas ve kayıp süreçleri",
+      "Yaşam olaylarına uyum",
+      "Sosyal destek kaynaklarının güçlendirilmesi",
+      "Psikososyal dayanıklılık",
+      "Günlük yaşam işlevselliğinin desteklenmesi",
+      "Uygun sosyal kaynaklara yönlendirme",
+      "Afet sonrası psikososyal destek",
+      "Kayıp sonrası psikososyal destek",
+      "Uyum sonrası psikososyal destek",
+      "Göç ve yer değiştirme sonrası psikososyal destek"
+    ]
+  };
+
+  const [servicesContent, setServicesContent] = useState(defaultServicesContent);
+
   const heroSlides = [
     {
       image: heroSlide1,
@@ -191,6 +298,70 @@ function App() {
       ? "admin"
       : "home"
   );
+
+  useEffect(() => {
+    let active = true;
+
+    const loadHomeContent = async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("content")
+        .eq("id", "homepage")
+        .maybeSingle();
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Ana sayfa içeriği yüklenemedi:", error);
+        return;
+      }
+
+      if (data?.content) {
+        setHomeContent((current) => ({
+          ...current,
+          ...data.content,
+        }));
+      }
+    };
+
+    loadHomeContent();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadServicesContent = async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("content")
+        .eq("id", "services")
+        .maybeSingle();
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Hizmetler içeriği yüklenemedi:", error);
+        return;
+      }
+
+      if (data?.content) {
+        setServicesContent((current) => ({
+          ...current,
+          ...data.content,
+        }));
+      }
+    };
+
+    loadServicesContent();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     const seo = {
@@ -288,18 +459,41 @@ function App() {
           aria-hidden="true"
         />
         {page !== "admin" && (
-        <a className="podcastTopStrip" href="#/icerikler" onClick={() => setMenuOpen(false)}>
-          <span className="podcastTopStrip__icon">●</span>
-          <strong>Podcast</strong>
-          <span className="podcastTopStrip__copy">Yeni içerikleri keşfet</span>
-          <b>Şimdi Dinle →</b>
+        <a
+          className="podcastTopStrip podcastTopStrip--spotify"
+          href="#/icerikler"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Podcast içeriklerine git"
+        >
+          <span className="podcastTopStrip__brand">
+            <span className="podcastTopStrip__spotifyIcon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <circle cx="12" cy="12" r="12" fill="currentColor" />
+                <path
+                  d="M17.55 16.42a.74.74 0 0 1-1.02.25c-2.8-1.71-6.32-2.1-10.46-1.15a.74.74 0 1 1-.33-1.44c4.53-1.04 8.42-.6 11.56 1.31.35.22.46.67.25 1.03Zm1.46-3.24a.92.92 0 0 1-1.27.3c-3.2-1.96-8.08-2.53-11.86-1.38a.92.92 0 1 1-.54-1.76c4.33-1.31 9.7-.68 13.37 1.56.43.26.56.83.3 1.28Zm.13-3.37C15.3 7.53 8.96 7.32 5.29 8.43a1.11 1.11 0 1 1-.65-2.12c4.21-1.28 11.22-1.03 15.63 1.58a1.11 1.11 0 0 1-1.13 1.92Z"
+                  fill="#16b957"
+                />
+              </svg>
+            </span>
+            <strong>PODCAST</strong>
+          </span>
+
+          <span className="podcastTopStrip__center">
+            <span className="podcastTopStrip__mic">🎙️</span>
+            <span>Yeni bölümler ve içerikler burada</span>
+          </span>
+
+          <span className="podcastTopStrip__listen">
+            <span className="podcastTopStrip__play">▶</span>
+            Şimdi Dinle
+          </span>
         </a>
       )}
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"}>
           <a href="#anasayfa" className="brand brand--newLogo" onClick={() => setMenuOpen(false)}>
             <span className="brandEmblemWrap">
               <img
-                className="brandEmblem"
+                loading="lazy" decoding="async" className="brandEmblem"
                 src={kaanOzkanEmblem}
                 alt=""
                 aria-hidden="true"
@@ -307,8 +501,8 @@ function App() {
             </span>
             <span className="brandIdentity">
               <small>SOSYAL HİZMET UZMANI</small>
-              <strong>KAAN ÖZKAN</strong>
               <em>AİLE DANIŞMANI</em>
+              <strong>KAAN ÖZKAN</strong>
             </span>
           </a>
 
@@ -370,7 +564,7 @@ function App() {
         {page === "about" ? (
           <AboutDetailPage />
         ) : page === "services" ? (
-          <ServicesDetailPage />
+          <ServicesDetailPage content={servicesContent} />
         ) : page === "process" ? (
           <ProcessDetailPage />
         ) : page === "content" ? (
@@ -390,32 +584,29 @@ function App() {
           <section className="lightHomeHero" id="anasayfa">
             <div className="lightHomeHero__visual">
               <img
-                src={servicesHeroRoom}
+                loading="lazy" decoding="async" src={servicesHeroRoom}
                 alt="Sıcak ve sakin bir danışmanlık görüşme ortamı"
               />
               <div className="lightHomeHero__visualShade" />
             </div>
 
             <div className="lightHomeHero__content">
-              <span className="lightHomeHero__eyebrow">ÇİFT VE AİLE DANIŞMANI</span>
+              <span className="lightHomeHero__eyebrow">{homeContent.eyebrow}</span>
 
               <h1>
-                Profesyonel
-                <strong>Aile Danışmanlığı</strong>
+                {homeContent.titleLine}
+                <strong>{homeContent.titleAccent}</strong>
               </h1>
 
-              <p>
-                Danışan odaklı yaklaşım ile güvenilir, etik ve çözüm odaklı
-                sosyal hizmet ve aile danışmanlığı desteği.
-              </p>
+              <p>{homeContent.description}</p>
 
               <div className="lightHomeHero__actions">
                 <a href="#/randevu" className="lightHomeHero__primary">
-                  Ücretsiz Ön Görüşme
+                  {homeContent.primaryCta}
                 </a>
 
                 <a href="#/hizmetler" className="lightHomeHero__secondary">
-                  Çalışma Alanları
+                  {homeContent.secondaryCta}
                 </a>
               </div>
             </div>
@@ -424,24 +615,24 @@ function App() {
               <article>
                 <div><Icon name="shield" size={25} /></div>
                 <span>
-                  <strong>Güvenli & Gizli</strong>
-                  <p>Görüşmeler gizlilik ve etik ilkeler çerçevesinde yürütülür.</p>
+                  <strong>{homeContent.trust1Title}</strong>
+                  <p>{homeContent.trust1Text}</p>
                 </span>
               </article>
 
               <article>
                 <div><Icon name="check" size={25} /></div>
                 <span>
-                  <strong>Profesyonel Destek</strong>
-                  <p>Mesleki sınırlar içinde, insan odaklı profesyonel destek.</p>
+                  <strong>{homeContent.trust2Title}</strong>
+                  <p>{homeContent.trust2Text}</p>
                 </span>
               </article>
 
               <article>
                 <div><Icon name="user" size={25} /></div>
                 <span>
-                  <strong>Kişiye Özel Yaklaşım</strong>
-                  <p>Her danışanın yaşam öyküsü ve ihtiyaçları kendine özgüdür.</p>
+                  <strong>{homeContent.trust3Title}</strong>
+                  <p>{homeContent.trust3Text}</p>
                 </span>
               </article>
             </div>
@@ -450,18 +641,14 @@ function App() {
           <section className="homeServicesShowcase">
             <div className="homeServicesShowcase__head reveal">
               <div>
-                <span className="homeServicesShowcase__eyebrow">PROFESYONEL ÇALIŞMA ALANLARI</span>
+                <span className="homeServicesShowcase__eyebrow">{homeContent.servicesEyebrow}</span>
                 <h2>
-                  Size uygun desteği
-                  <strong> birlikte keşfedelim.</strong>
+                  {homeContent.servicesTitle}
+                  <strong>{homeContent.servicesTitleAccent}</strong>
                 </h2>
               </div>
 
-              <p>
-                Yaşadığınız güçlüğü yalnızca tek bir başlık üzerinden değil;
-                ilişkileriniz, yaşam deneyimleriniz ve sosyal çevrenizle birlikte
-                değerlendiren bütüncül bir danışmanlık yaklaşımı.
-              </p>
+              <p>{homeContent.servicesDescription}</p>
             </div>
 
             <div className="homeServicesShowcase__grid">
@@ -470,10 +657,10 @@ function App() {
                   <Icon name="heart" size={25} />
                 </div>
                 <span>01</span>
-                <h3>Bireysel Danışmanlık</h3>
+                <h3>{homeContent.service1Title}</h3>
                 <ul>
-                  <li>Anksiyete, stres ve duygu düzenleme güçlükleri</li>
-                  <li>Özsaygı, benlik algısı ve psikososyal güçlenme</li>
+                  <li>{homeContent.service1Item1}</li>
+                  <li>{homeContent.service1Item2}</li>
                 </ul>
                 <a href="#/hizmetler">
                   Detaylı Bilgi
@@ -486,10 +673,10 @@ function App() {
                   <Icon name="users" size={25} />
                 </div>
                 <span>02</span>
-                <h3>Çift & Aile Danışmanlığı</h3>
+                <h3>{homeContent.service2Title}</h3>
                 <ul>
-                  <li>İletişim sorunları, ilişki çatışmaları ve güven problemleri</li>
-                  <li>Ayrılık, boşanma ve aile içi roller üzerine destek</li>
+                  <li>{homeContent.service2Item1}</li>
+                  <li>{homeContent.service2Item2}</li>
                 </ul>
                 <a href="#/hizmetler">
                   Detaylı Bilgi
@@ -502,10 +689,10 @@ function App() {
                   <Icon name="shield" size={25} />
                 </div>
                 <span>03</span>
-                <h3>Psikososyal Destek</h3>
+                <h3>{homeContent.service3Title}</h3>
                 <ul>
-                  <li>Yas ve kayıp, yaşam olaylarına uyum ve dayanıklılık</li>
-                  <li>Bağımlılık ve farklı psikososyal güçlüklerde destek süreci</li>
+                  <li>{homeContent.service3Item1}</li>
+                  <li>{homeContent.service3Item2}</li>
                 </ul>
                 <a href="#/hizmetler">
                   Detaylı Bilgi
@@ -523,8 +710,9 @@ function App() {
                   <span>DANIŞMANLIĞIN ODAĞI</span>
                   <h3>Güçlü yönlerinizi görünür hale getiren, kişiye özgü bir yol haritası.</h3>
                   <p>
-                    Amaç yalnızca mevcut güçlüğü konuşmak değil; yaşam kalitenizi,
-                    ilişkilerinizi ve başa çıkma kaynaklarınızı sürdürülebilir biçimde güçlendirmektir.
+                    Amaç yalnızca sorunlar karşısında baş etme kapasitenizi arttırmak değil;
+                    konfor alanınızın kalitesini, ilişkilerinizdeki çatışmayı ve bireysel iyilik
+                    halinizi pozitif davranışçı bakış açısıyla güçlendirmektir.
                   </p>
                 </div>
               </div>
@@ -543,21 +731,16 @@ function App() {
           <section className="homeScopeStrip reveal">
             <div><Icon name="shield" size={20} /></div>
             <p>
-              Danışmanlık hizmetleri sosyal hizmet ve aile danışmanlığı kapsamında sunulur;
-              tanı ve tıbbi tedavi gerektiren durumlarda ilgili sağlık profesyonellerine yönlendirme yapılır.
+              Danışmanlık hizmetleri sosyal hizmet müdahale yaklaşımları ve aile danışmanlığı kapsamında sunulur.
             </p>
           </section>
 
           <section className="homeTrustStatement reveal">
             <div className="homeTrustStatement__mark">“</div>
             <div>
-              <span>KAAN ÖZKAN</span>
-              <h2>Her birey, yaşadığı problemden çok daha fazlasıdır.</h2>
-              <p>
-                Danışmanlıkta temel hedefim; yaşadığınız güçlüğün ötesinde güçlü
-                yönlerinizi, kaynaklarınızı ve değişim kapasitenizi birlikte
-                görünür hale getirmektir.
-              </p>
+              <span>{homeContent.trustStatementEyebrow}</span>
+              <h2>{homeContent.trustStatementTitle}</h2>
+              <p>{homeContent.trustStatementText}</p>
             </div>
             <a href="#/hakkimda">
               YAKLAŞIMIMI TANIYIN
@@ -591,7 +774,7 @@ function App() {
             <div className="premiumFooter__top">
               <a href="#/anasayfa" className="premiumFooter__brand">
                 <span className="brandEmblemWrap">
-                  <img className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
+                  <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
                 </span>
                 <span>
                   <strong>KAAN ÖZKAN</strong>
@@ -925,70 +1108,60 @@ function AppointmentDemoPage() {
 
 function ContentDetailPage() {
   const [tab, setTab] = useState("videos");
+  const [mediaItems, setMediaItems] = useState([]);
+  const [mediaLoading, setMediaLoading] = useState(true);
+  const [channelLinks, setChannelLinks] = useState({
+    youtubeChannelUrl: "",
+    spotifyChannelUrl: "",
+  });
 
-  // Gerçek YouTube linklerini buradaki url alanlarına yazdığında kapak görseli
-  // otomatik olarak YouTube'dan çekilir.
-  const videos = [
-    {
-      title: "İlişkilerde İletişimin Gücü",
-      description: "Sağlıklı ilişkilerin temelinde etkili ve güvenli iletişim vardır.",
-      category: "İlişkiler",
-      url: "",
-      duration: "12:45",
-    },
-    {
-      title: "Sınır Koymak Neden Önemlidir?",
-      description: "Kendinizi korumak için sağlıklı sınırlar oluşturmanın önemi.",
-      category: "Kişisel Gelişim",
-      url: "",
-      duration: "10:32",
-    },
-    {
-      title: "Kaygıyla Başa Çıkma Yolları",
-      description: "Kaygıyı yaşamayı öğrenmek ve günlük yaşamda düzenlemek.",
-      category: "Psikososyal Destek",
-      url: "",
-      duration: "09:18",
-    },
-    {
-      title: "Özsaygı Nasıl Geliştirilir?",
-      description: "Özsaygının, küçük ama sürdürülebilir adımlarla güçlendirilmesi.",
-      category: "Bireysel",
-      url: "",
-      duration: "11:07",
-    },
-  ];
+  useEffect(() => {
+    let active = true;
 
-  const podcasts = [
-    {
-      no: "12",
-      title: "Evlilikte Beklentiler",
-      description: "Beklentiler ilişkileri nasıl etkiler? Gerçekçi beklenti mümkün mü?",
-      duration: "24:18",
-      url: "",
-    },
-    {
-      no: "09",
-      title: "Kendini Anlamak Neden Önemli?",
-      description: "Kendini anlamak, değişimin ve gelişimin ilk adımıdır.",
-      duration: "19:42",
-      url: "",
-    },
-    {
-      no: "07",
-      title: "Aile İçi İletişimde Denge",
-      description: "Aile içinde sağlıklı iletişim nasıl kurulabilir?",
-      duration: "22:33",
-      url: "",
-    },
-    {
-      no: "05",
-      title: "Olumsuz Düşünce Döngüsünü Kırmak",
-      description: "Tekrarlayan düşünce örüntülerini fark etmek ve dönüştürmek.",
-      duration: "21:07",
-      url: "",
-    },
-  ];
+    const loadMedia = async () => {
+      setMediaLoading(true);
+
+      const [{ data: items, error: itemsError }, { data: links, error: linksError }] =
+        await Promise.all([
+          supabase
+            .from("media_contents")
+            .select("id,type,title,description,category,url,duration,status,sort_order,created_at")
+            .eq("status", "published")
+            .order("sort_order", { ascending: true })
+            .order("created_at", { ascending: false }),
+          supabase
+            .from("site_content")
+            .select("content")
+            .eq("id", "media_channels")
+            .maybeSingle(),
+        ]);
+
+      if (!active) return;
+
+      if (itemsError) {
+        console.error("İçerikler yüklenemedi:", itemsError);
+      } else {
+        setMediaItems(items || []);
+      }
+
+      if (linksError) {
+        console.error("Kanal bağlantıları yüklenemedi:", linksError);
+      } else if (links?.content) {
+        setChannelLinks((current) => ({ ...current, ...links.content }));
+      }
+
+      setMediaLoading(false);
+    };
+
+    loadMedia();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const videos = mediaItems.filter((item) => item.type === "youtube");
+  const podcasts = mediaItems.filter((item) => item.type === "podcast");
 
   const youtubeId = (url) => {
     if (!url) return "";
@@ -1011,7 +1184,7 @@ function ContentDetailPage() {
     <main className="cnt57">
       <section className="cnt57Hero">
         <img
-          className="cnt57Hero__image"
+          loading="lazy" decoding="async" className="cnt57Hero__image"
           src={contentHeroMic}
           alt="Profesyonel podcast mikrofonu ve sıcak stüdyo ortamı"
         />
@@ -1064,122 +1237,164 @@ function ContentDetailPage() {
           </button>
         </div>
 
-        {tab === "videos" && (
-          <section className="cnt57Section">
-            <div className="cnt57Section__head">
-              <div>
-                <Icon name="video" size={18} />
-                <span>YOUTUBE VİDEOLARI</span>
-              </div>
-              <a href="#" onClick={(e) => e.preventDefault()}>
-                TÜM VİDEOLARI GÖR <Icon name="arrow" size={14} />
-              </a>
-            </div>
+        {mediaLoading ? (
+          <div className="cnt74Loading">İçerikler yükleniyor...</div>
+        ) : (
+          <>
+            {tab === "videos" && (
+              <section className="cnt57Section">
+                <div className="cnt57Section__head">
+                  <div>
+                    <Icon name="video" size={18} />
+                    <span>YOUTUBE VİDEOLARI</span>
+                  </div>
+                  {channelLinks.youtubeChannelUrl && (
+                    <a
+                      href={channelLinks.youtubeChannelUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      YOUTUBE KANALINA GİT <Icon name="arrow" size={14} />
+                    </a>
+                  )}
+                </div>
 
-            <div className="cnt57VideoGrid">
-              {videos.map((video, index) => {
-                const id = youtubeId(video.url);
-                return (
-                  <article
-                    className={"cnt57VideoCard " + (!video.url ? "is-placeholder" : "")}
-                    key={video.title}
-                    onClick={() => openUrl(video.url)}
-                  >
-                    <div className="cnt57VideoCard__thumb">
-                      {id ? (
-                        <img
-                          src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
-                          alt={video.title}
-                        />
-                      ) : (
-                        <div className={"cnt57VideoCard__fallback cnt57VideoCard__fallback--" + (index + 1)}>
-                          <span>{video.title}</span>
+                {videos.length === 0 ? (
+                  <div className="cnt74Empty">
+                    Henüz yayınlanmış YouTube videosu bulunmuyor.
+                  </div>
+                ) : (
+                  <div className="cnt57VideoGrid">
+                    {videos.map((video, index) => {
+                      const id = youtubeId(video.url);
+                      return (
+                        <article
+                          className="cnt57VideoCard"
+                          key={video.id}
+                          onClick={() => openUrl(video.url)}
+                        >
+                          <div className="cnt57VideoCard__thumb">
+                            {id ? (
+                              <img
+                                loading="lazy" decoding="async" src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
+                                alt={video.title}
+                              />
+                            ) : (
+                              <div className={"cnt57VideoCard__fallback cnt57VideoCard__fallback--" + ((index % 4) + 1)}>
+                                <span>{video.title}</span>
+                              </div>
+                            )}
+                            <div className="cnt57Play">▶</div>
+                            {video.duration && <small>{video.duration}</small>}
+                          </div>
+
+                          <div className="cnt57VideoCard__body">
+                            <h3>{video.title}</h3>
+                            <p>{video.description}</p>
+                            <div>
+                              <span>YouTube</span>
+                              {video.category && (
+                                <>
+                                  <span>•</span>
+                                  <span>{video.category}</span>
+                                </>
+                              )}
+                              <b><Icon name="arrow" size={14} /></b>
+                            </div>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </section>
+            )}
+
+            {tab === "podcasts" && (
+              <section className="cnt57Section">
+                <div className="cnt57Section__head">
+                  <div>
+                    <Icon name="mic" size={18} />
+                    <span>PODCASTLER</span>
+                  </div>
+                  {channelLinks.spotifyChannelUrl && (
+                    <a
+                      href={channelLinks.spotifyChannelUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      SPOTIFY'DA AÇ <Icon name="arrow" size={14} />
+                    </a>
+                  )}
+                </div>
+
+                {podcasts.length === 0 ? (
+                  <div className="cnt74Empty">
+                    Henüz yayınlanmış podcast bölümü bulunmuyor.
+                  </div>
+                ) : (
+                  <div className="cnt57PodcastGrid">
+                    {podcasts.map((podcast, index) => (
+                      <article className="cnt57PodcastCard" key={podcast.id}>
+                        <div className="cnt57PodcastArt">
+                          <div className="cnt57PodcastArt__ring">
+                            <Icon name={index % 2 === 0 ? "mic" : "message"} size={34} />
+                          </div>
+                          <span>KAAN ÖZKAN</span>
                         </div>
-                      )}
-                      <div className="cnt57Play">▶</div>
-                      <small>{video.duration}</small>
-                    </div>
 
-                    <div className="cnt57VideoCard__body">
-                      <h3>{video.title}</h3>
-                      <p>{video.description}</p>
-                      <div>
-                        <span>YouTube</span>
-                        <span>•</span>
-                        <span>{video.category}</span>
-                        <b><Icon name="arrow" size={14} /></b>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                        <div className="cnt57PodcastInfo">
+                          <small>#{String(index + 1).padStart(2, "0")}</small>
+                          <h3>{podcast.title}</h3>
+                          <p>{podcast.description}</p>
+                          <div>
+                            <strong>{podcast.duration || "Podcast"}</strong>
+                            <button
+                              type="button"
+                              onClick={() => openUrl(podcast.url)}
+                            >
+                              ▶ Spotify'da Dinle
+                            </button>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                )}
+              </section>
+            )}
+          </>
+        )}
 
-            <div className="cnt57Hint">
-              <Icon name="info" size={18} />
+        <div className="cnt74Channels">
+          <div className="cnt74Channels__copy">
+            <div className="cnt57Subscribe__icon">🔔</div>
+            <div>
+              <strong>Yeni içeriklerden haberdar olun.</strong>
               <p>
-                Gerçek YouTube linklerini koda eklediğimizde video kapakları
-                otomatik olarak YouTube'dan gelecektir.
+                YouTube kanalını ve Spotify podcast yayınlarını doğrudan takip
+                edebilirsiniz.
               </p>
             </div>
-          </section>
-        )}
-
-        {tab === "podcasts" && (
-          <section className="cnt57Section">
-            <div className="cnt57Section__head">
-              <div>
-                <Icon name="mic" size={18} />
-                <span>PODCASTLER</span>
-              </div>
-              <a href="#" onClick={(e) => e.preventDefault()}>
-                TÜM PODCASTLERİ GÖR <Icon name="arrow" size={14} />
-              </a>
-            </div>
-
-            <div className="cnt57PodcastGrid">
-              {podcasts.map((podcast, index) => (
-                <article className="cnt57PodcastCard" key={podcast.no}>
-                  <div className="cnt57PodcastArt">
-                    <div className="cnt57PodcastArt__ring">
-                      <Icon name={index % 2 === 0 ? "mic" : "message"} size={34} />
-                    </div>
-                    <span>KAAN ÖZKAN</span>
-                  </div>
-
-                  <div className="cnt57PodcastInfo">
-                    <small>#{podcast.no}</small>
-                    <h3>{podcast.title}</h3>
-                    <p>{podcast.description}</p>
-                    <div>
-                      <strong>{podcast.duration}</strong>
-                      <button
-                        type="button"
-                        onClick={() => openUrl(podcast.url)}
-                        disabled={!podcast.url}
-                      >
-                        ▶ Dinle
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <div className="cnt57Subscribe">
-          <div className="cnt57Subscribe__icon">🔔</div>
-          <div>
-            <strong>Yeni içeriklerden haberdar olmak için abone olun.</strong>
-            <p>
-              YouTube kanalını ve podcast yayınlarını takip ederek yeni
-              içeriklerden haberdar olabilirsiniz.
-            </p>
           </div>
-          <a href="#" onClick={(e) => e.preventDefault()}>
-            ▶ YOUTUBE KANALINA GİT
-          </a>
+
+          <div className="cnt74Channels__buttons">
+            {channelLinks.youtubeChannelUrl && (
+              <a href={channelLinks.youtubeChannelUrl} target="_blank" rel="noreferrer">
+                ▶ YouTube Kanalı
+              </a>
+            )}
+            {channelLinks.spotifyChannelUrl && (
+              <a
+                className="is-spotify"
+                href={channelLinks.spotifyChannelUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                ● Spotify Podcast
+              </a>
+            )}
+          </div>
         </div>
       </section>
     </main>
@@ -1188,67 +1403,594 @@ function ContentDetailPage() {
 
 function AdminDemoPage() {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [videoItems, setVideoItems] = useState([
-    {
-      id: 1,
-      type: "YouTube",
-      title: "Sağlıklı İletişimin Temelleri",
-      category: "İlişkiler",
-      url: "https://youtube.com/",
-      status: "Yayında",
-    },
-    {
-      id: 2,
-      type: "Podcast",
-      title: "Aile İçi Sınırlar Üzerine",
-      category: "Aile",
-      url: "https://spotify.com/",
-      status: "Taslak",
-    },
-  ]);
-  const [form, setForm] = useState({
-    type: "YouTube",
+  const [session, setSession] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [appointments, setAppointments] = useState([]);
+  const [appointmentsLoading, setAppointmentsLoading] = useState(false);
+  const [appointmentsError, setAppointmentsError] = useState("");
+  const [updatingId, setUpdatingId] = useState(null);
+  const [appointmentFilter, setAppointmentFilter] = useState("all");
+
+  const emptyHomeEditor = {
+    eyebrow: "",
+    titleLine: "",
+    titleAccent: "",
+    description: "",
+    primaryCta: "",
+    secondaryCta: "",
+    trust1Title: "",
+    trust1Text: "",
+    trust2Title: "",
+    trust2Text: "",
+    trust3Title: "",
+    trust3Text: "",
+    servicesEyebrow: "",
+    servicesTitle: "",
+    servicesTitleAccent: "",
+    servicesDescription: "",
+    service1Title: "",
+    service1Item1: "",
+    service1Item2: "",
+    service2Title: "",
+    service2Item1: "",
+    service2Item2: "",
+    service3Title: "",
+    service3Item1: "",
+    service3Item2: "",
+    trustStatementEyebrow: "",
+    trustStatementTitle: "",
+    trustStatementText: "",
+  };
+  const [homeEditor, setHomeEditor] = useState(emptyHomeEditor);
+  const [homeEditorLoading, setHomeEditorLoading] = useState(false);
+  const [homeEditorSaving, setHomeEditorSaving] = useState(false);
+  const [homeEditorMessage, setHomeEditorMessage] = useState("");
+
+  const emptyServicesEditor = {
+    heroEyebrow: "",
+    heroTitle: "",
+    heroAccent: "",
+    heroDescription: "",
+    quickTitle: "",
+    quickDescription: "",
+    individualTitle: "",
+    individualShort: "",
+    individualItems: [],
+    familyTitle: "",
+    familyShort: "",
+    familyItems: [],
+    coupleTitle: "",
+    coupleShort: "",
+    coupleItems: [],
+    psychosocialTitle: "",
+    psychosocialShort: "",
+    psychosocialItems: [],
+  };
+  const [servicesEditor, setServicesEditor] = useState(emptyServicesEditor);
+  const [servicesEditorLoading, setServicesEditorLoading] = useState(false);
+  const [servicesEditorSaving, setServicesEditorSaving] = useState(false);
+  const [servicesEditorMessage, setServicesEditorMessage] = useState("");
+
+  const [mediaItems, setMediaItems] = useState([]);
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [mediaSaving, setMediaSaving] = useState(false);
+  const [mediaMessage, setMediaMessage] = useState("");
+  const [mediaForm, setMediaForm] = useState({
+    type: "youtube",
     title: "",
+    description: "",
     category: "",
     url: "",
-    description: "",
+    duration: "",
+    status: "published",
+    sort_order: 100,
+  });
+  const [channelEditor, setChannelEditor] = useState({
+    youtubeChannelUrl: "",
+    spotifyChannelUrl: "",
   });
 
-  const addContent = (e) => {
-    e.preventDefault();
-    if (!form.title.trim() || !form.url.trim()) return;
+  const loadAppointments = async () => {
+    setAppointmentsLoading(true);
+    setAppointmentsError("");
 
-    setVideoItems((items) => [
-      {
-        id: Date.now(),
-        type: form.type,
-        title: form.title.trim(),
-        category: form.category.trim() || "Genel",
-        url: form.url.trim(),
-        status: "Taslak",
-      },
-      ...items,
-    ]);
+    const { data, error } = await supabase
+      .from("appointments")
+      .select(
+        "id,service,format,appointment_date,appointment_time,full_name,age,phone,email,note,status,created_at"
+      )
+      .order("appointment_date", { ascending: true })
+      .order("appointment_time", { ascending: true });
 
-    setForm({
-      type: "YouTube",
-      title: "",
-      category: "",
-      url: "",
-      description: "",
+    if (error) {
+      console.error("Randevular yüklenemedi:", error);
+      setAppointmentsError(
+        "Randevular yüklenemedi. Supabase RLS yetkilerini kontrol edin."
+      );
+      setAppointments([]);
+    } else {
+      setAppointments(data || []);
+    }
+
+    setAppointmentsLoading(false);
+  };
+
+  useEffect(() => {
+    let mounted = true;
+
+    supabase.auth.getSession().then(({ data }) => {
+      if (!mounted) return;
+      setSession(data.session || null);
+      setAuthLoading(false);
     });
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, nextSession) => {
+        setSession(nextSession);
+        setAuthLoading(false);
+      }
+    );
+
+    return () => {
+      mounted = false;
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (session) loadAppointments();
+    else setAppointments([]);
+  }, [session]);
+
+  useEffect(() => {
+    if (session && activeTab === "homepage") {
+      loadHomeEditor();
+    }
+  }, [session, activeTab]);
+
+  useEffect(() => {
+    if (session && activeTab === "services") {
+      loadServicesEditor();
+    }
+  }, [session, activeTab]);
+
+  useEffect(() => {
+    if (session && activeTab === "content") {
+      loadMediaAdmin();
+    }
+  }, [session, activeTab]);
+
+  const login = async (e) => {
+    e.preventDefault();
+    setAuthError("");
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+
+    if (error) {
+      console.error("Admin giriş hatası:", error);
+      setAuthError("E-posta veya şifre hatalı.");
+    }
   };
 
-  const removeContent = (id) => {
-    setVideoItems((items) => items.filter((item) => item.id !== id));
+  const logout = async () => {
+    await supabase.auth.signOut();
+    setActiveTab("dashboard");
   };
+
+  const updateAppointmentStatus = async (id, status) => {
+    setUpdatingId(id);
+    setAppointmentsError("");
+
+    const { error } = await supabase
+      .from("appointments")
+      .update({ status })
+      .eq("id", id);
+
+    if (error) {
+      console.error("Randevu durum güncelleme hatası:", error);
+      setAppointmentsError(
+        "Randevu durumu güncellenemedi. Yetki ayarlarını kontrol edin."
+      );
+    } else {
+      setAppointments((items) =>
+        items.map((item) =>
+          item.id === id ? { ...item, status } : item
+        )
+      );
+    }
+
+    setUpdatingId(null);
+  };
+
+
+  const deleteAppointment = async (id) => {
+    const confirmed = window.confirm(
+      "Bu randevu kaydını kalıcı olarak silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
+    );
+    if (!confirmed) return;
+
+    setUpdatingId(id);
+    setAppointmentsError("");
+
+    const { error } = await supabase
+      .from("appointments")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Randevu silme hatası:", error);
+      setAppointmentsError(
+        "Randevu silinemedi. Supabase yetkilerini kontrol edin."
+      );
+    } else {
+      setAppointments((items) => items.filter((item) => item.id !== id));
+    }
+
+    setUpdatingId(null);
+  };
+
+  const normalizeLines = (value) =>
+    value
+      .split("\n")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+  const loadServicesEditor = async () => {
+    setServicesEditorLoading(true);
+    setServicesEditorMessage("");
+
+    const { data, error } = await supabase
+      .from("site_content")
+      .select("content")
+      .eq("id", "services")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Hizmetler içeriği yüklenemedi:", error);
+      setServicesEditorMessage("Hizmetler içeriği yüklenemedi.");
+    } else {
+      setServicesEditor({
+        ...emptyServicesEditor,
+        ...(data?.content || {}),
+      });
+    }
+
+    setServicesEditorLoading(false);
+  };
+
+  const saveServicesEditor = async (e) => {
+    e.preventDefault();
+    setServicesEditorSaving(true);
+    setServicesEditorMessage("");
+
+    const payload = {
+      ...servicesEditor,
+      individualItems: Array.isArray(servicesEditor.individualItems)
+        ? servicesEditor.individualItems
+        : normalizeLines(servicesEditor.individualItems),
+      familyItems: Array.isArray(servicesEditor.familyItems)
+        ? servicesEditor.familyItems
+        : normalizeLines(servicesEditor.familyItems),
+      coupleItems: Array.isArray(servicesEditor.coupleItems)
+        ? servicesEditor.coupleItems
+        : normalizeLines(servicesEditor.coupleItems),
+      psychosocialItems: Array.isArray(servicesEditor.psychosocialItems)
+        ? servicesEditor.psychosocialItems
+        : normalizeLines(servicesEditor.psychosocialItems),
+    };
+
+    const { error } = await supabase
+      .from("site_content")
+      .upsert(
+        {
+          id: "services",
+          content: payload,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
+    if (error) {
+      console.error("Hizmetler kaydedilemedi:", error);
+      setServicesEditorMessage("Kaydetme başarısız. Yetki ayarlarını kontrol edin.");
+    } else {
+      setServicesEditorMessage("Hizmetler başarıyla güncellendi.");
+      setServicesEditor(payload);
+    }
+
+    setServicesEditorSaving(false);
+  };
+
+  const loadHomeEditor = async () => {
+    setHomeEditorLoading(true);
+    setHomeEditorMessage("");
+
+    const { data, error } = await supabase
+      .from("site_content")
+      .select("content")
+      .eq("id", "homepage")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Ana sayfa içeriği yüklenemedi:", error);
+      setHomeEditorMessage("Ana sayfa içeriği yüklenemedi.");
+    } else {
+      setHomeEditor({
+        ...emptyHomeEditor,
+        ...(data?.content || {}),
+      });
+    }
+
+    setHomeEditorLoading(false);
+  };
+
+  const saveHomeEditor = async (e) => {
+    e.preventDefault();
+    setHomeEditorSaving(true);
+    setHomeEditorMessage("");
+
+    const { error } = await supabase
+      .from("site_content")
+      .upsert(
+        {
+          id: "homepage",
+          content: homeEditor,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
+    if (error) {
+      console.error("Ana sayfa kaydedilemedi:", error);
+      setHomeEditorMessage("Kaydetme başarısız. Yetki ayarlarını kontrol edin.");
+    } else {
+      setHomeEditorMessage("Ana sayfa başarıyla güncellendi.");
+    }
+
+    setHomeEditorSaving(false);
+  };
+
+  const loadMediaAdmin = async () => {
+    setMediaLoading(true);
+    setMediaMessage("");
+
+    const [{ data: items, error: itemsError }, { data: links, error: linksError }] =
+      await Promise.all([
+        supabase
+          .from("media_contents")
+          .select("id,type,title,description,category,url,duration,status,sort_order,created_at")
+          .order("created_at", { ascending: false }),
+        supabase
+          .from("site_content")
+          .select("content")
+          .eq("id", "media_channels")
+          .maybeSingle(),
+      ]);
+
+    if (itemsError) {
+      console.error("Medya içerikleri yüklenemedi:", itemsError);
+      setMediaMessage("İçerikler yüklenemedi.");
+    } else {
+      setMediaItems(items || []);
+    }
+
+    if (linksError) {
+      console.error("Kanal linkleri yüklenemedi:", linksError);
+    } else if (links?.content) {
+      setChannelEditor((current) => ({ ...current, ...links.content }));
+    }
+
+    setMediaLoading(false);
+  };
+
+  const saveChannelLinks = async () => {
+    setMediaSaving(true);
+    setMediaMessage("");
+
+    const { error } = await supabase
+      .from("site_content")
+      .upsert(
+        {
+          id: "media_channels",
+          content: channelEditor,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
+    if (error) {
+      console.error("Kanal bağlantıları kaydedilemedi:", error);
+      setMediaMessage("YouTube / Spotify kanal bağlantıları kaydedilemedi.");
+    } else {
+      setMediaMessage("Kanal bağlantıları başarıyla kaydedildi.");
+    }
+
+    setMediaSaving(false);
+  };
+
+  const addContent = async (e) => {
+    e.preventDefault();
+    if (!mediaForm.title.trim() || !mediaForm.url.trim()) return;
+
+    setMediaSaving(true);
+    setMediaMessage("");
+
+    const { error } = await supabase.from("media_contents").insert({
+      type: mediaForm.type,
+      title: mediaForm.title.trim(),
+      description: mediaForm.description.trim(),
+      category: mediaForm.category.trim() || null,
+      url: mediaForm.url.trim(),
+      duration: mediaForm.duration.trim() || null,
+      status: mediaForm.status,
+      sort_order: Number(mediaForm.sort_order) || 100,
+    });
+
+    if (error) {
+      console.error("İçerik eklenemedi:", error);
+      setMediaMessage("İçerik eklenemedi. Linki ve yetkileri kontrol edin.");
+    } else {
+      setMediaMessage("İçerik başarıyla eklendi.");
+      setMediaForm({
+        type: "youtube",
+        title: "",
+        description: "",
+        category: "",
+        url: "",
+        duration: "",
+        status: "published",
+        sort_order: 100,
+      });
+      await loadMediaAdmin();
+    }
+
+    setMediaSaving(false);
+  };
+
+  const updateMediaStatus = async (id, status) => {
+    setMediaSaving(true);
+    setMediaMessage("");
+
+    const { error } = await supabase
+      .from("media_contents")
+      .update({ status })
+      .eq("id", id);
+
+    if (error) {
+      console.error("İçerik durumu değiştirilemedi:", error);
+      setMediaMessage("İçerik durumu değiştirilemedi.");
+    } else {
+      setMediaItems((items) =>
+        items.map((item) => (item.id === id ? { ...item, status } : item))
+      );
+    }
+
+    setMediaSaving(false);
+  };
+
+  const removeContent = async (id) => {
+    if (!window.confirm("Bu içeriği silmek istediğinize emin misiniz?")) return;
+
+    setMediaSaving(true);
+    setMediaMessage("");
+
+    const { error } = await supabase
+      .from("media_contents")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("İçerik silinemedi:", error);
+      setMediaMessage("İçerik silinemedi.");
+    } else {
+      setMediaItems((items) => items.filter((item) => item.id !== id));
+      setMediaMessage("İçerik silindi.");
+    }
+
+    setMediaSaving(false);
+  };
+
+  const statusLabel = (status) =>
+    status === "approved"
+      ? "Onaylandı"
+      : status === "cancelled"
+      ? "İptal"
+      : "Bekliyor";
+
+  const pendingCount = appointments.filter(
+    (item) => item.status === "pending"
+  ).length;
+
+  const filteredAppointments =
+    appointmentFilter === "all"
+      ? appointments
+      : appointments.filter((item) => item.status === appointmentFilter);
 
   const stats = [
-    { label: "Toplam İçerik", value: videoItems.length, icon: "video" },
-    { label: "Yayındaki", value: videoItems.filter((x) => x.status === "Yayında").length, icon: "check" },
-    { label: "Taslak", value: videoItems.filter((x) => x.status === "Taslak").length, icon: "edit" },
-    { label: "Randevular", value: "—", icon: "calendar" },
+    { label: "Toplam İçerik", value: mediaItems.length, icon: "video" },
+    {
+      label: "Yayındaki",
+      value: mediaItems.filter((x) => x.status === "published").length,
+      icon: "check",
+    },
+    {
+      label: "Bekleyen Randevu",
+      value: pendingCount,
+      icon: "calendar",
+    },
+    {
+      label: "Toplam Randevu",
+      value: appointments.length,
+      icon: "users",
+    },
   ];
+
+  if (authLoading) {
+    return (
+      <main className="admin70Login">
+        <div className="admin70Login__card">
+          <div className="admin70Login__logo">KÖ</div>
+          <span>YÖNETİM PANELİ</span>
+          <h1>Panel hazırlanıyor...</h1>
+        </div>
+      </main>
+    );
+  }
+
+  if (!session) {
+    return (
+      <main className="admin70Login">
+        <div className="admin70Login__glow" />
+        <form className="admin70Login__card" onSubmit={login}>
+          <div className="admin70Login__logo">KÖ</div>
+          <span>GÜVENLİ YÖNETİM PANELİ</span>
+          <h1>Yönetici Girişi</h1>
+          <p>
+            Randevuları görüntülemek ve yönetmek için yetkili hesabınızla giriş yapın.
+          </p>
+
+          <label>
+            <span>E-posta</span>
+            <input
+              type="email"
+              autoComplete="username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@ornek.com"
+              required
+            />
+          </label>
+
+          <label>
+            <span>Şifre</span>
+            <input
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+            />
+          </label>
+
+          {authError && <div className="admin70Login__error">{authError}</div>}
+
+          <button type="submit">
+            GİRİŞ YAP
+            <Icon name="arrow" size={16} />
+          </button>
+
+          <a href="#/">← Siteye Dön</a>
+        </form>
+      </main>
+    );
+  }
 
   return (
     <main className="adminDemo">
@@ -1264,9 +2006,11 @@ function AdminDemoPage() {
         <nav className="adminDemo__menu">
           {[
             ["dashboard", "grid", "Dashboard"],
+            ["homepage", "edit", "Ana Sayfa"],
+            ["services", "grid", "Hizmetler"],
+            ["appointments", "calendar", "Randevular"],
             ["content", "video", "YouTube & Podcast"],
             ["articles", "edit", "İçerikler"],
-            ["appointments", "calendar", "Randevular"],
             ["users", "users", "Kullanıcılar"],
             ["settings", "settings", "Ayarlar"],
           ].map(([key, icon, label]) => (
@@ -1284,12 +2028,17 @@ function AdminDemoPage() {
 
         <div className="adminDemo__sidebarFooter">
           <div className="adminDemo__user">
-            <div>KO</div>
+            <div>{(session.user.email || "AD").slice(0, 2).toUpperCase()}</div>
             <span>
-              <strong>Kaan Özkan</strong>
+              <strong>{session.user.email}</strong>
               <small>Yönetici</small>
             </span>
           </div>
+
+          <button className="admin70Logout" type="button" onClick={logout}>
+            Çıkış Yap
+          </button>
+
           <a href="#/">Siteye Dön <Icon name="arrow" size={14} /></a>
         </div>
       </aside>
@@ -1297,10 +2046,14 @@ function AdminDemoPage() {
       <section className="adminDemo__main">
         <header className="adminDemo__topbar">
           <div>
-            <span>YÖNETİM PANELİ / DEMO</span>
+            <span>YÖNETİM PANELİ</span>
             <h1>
               {activeTab === "dashboard"
                 ? "Genel Bakış"
+                : activeTab === "homepage"
+                ? "Ana Sayfa"
+                : activeTab === "services"
+                ? "Hizmetler"
                 : activeTab === "content"
                 ? "YouTube & Podcast"
                 : activeTab === "articles"
@@ -1313,9 +2066,9 @@ function AdminDemoPage() {
             </h1>
           </div>
 
-          <div className="adminDemo__demoBadge">
+          <div className="adminDemo__demoBadge adminDemo__demoBadge--live">
             <span />
-            DEMO MODU
+            SUPABASE BAĞLI
           </div>
         </header>
 
@@ -1335,41 +2088,47 @@ function AdminDemoPage() {
               <article className="adminDemo__panel">
                 <div className="adminDemo__panelHead">
                   <div>
-                    <span>SON İÇERİKLER</span>
-                    <h2>Yayın akışı</h2>
+                    <span>SON RANDEVULAR</span>
+                    <h2>Randevu akışı</h2>
                   </div>
-                  <button type="button" onClick={() => setActiveTab("content")}>
-                    İçerik Ekle
+                  <button type="button" onClick={() => setActiveTab("appointments")}>
+                    Tümünü Gör
                   </button>
                 </div>
 
-                <div className="adminDemo__miniList">
-                  {videoItems.slice(0, 4).map((item) => (
-                    <div key={item.id}>
-                      <div className="adminDemo__miniIcon">
-                        <Icon name={item.type === "YouTube" ? "video" : "mic"} size={18} />
+                <div className="admin70MiniAppointments">
+                  {appointmentsLoading ? (
+                    <p>Randevular yükleniyor...</p>
+                  ) : appointments.length === 0 ? (
+                    <p>Henüz randevu kaydı bulunmuyor.</p>
+                  ) : (
+                    appointments.slice(0, 5).map((item) => (
+                      <div key={item.id}>
+                        <span>
+                          <strong>{item.full_name}</strong>
+                          <small>
+                            {item.appointment_date} • {String(item.appointment_time).slice(0, 5)}
+                          </small>
+                        </span>
+                        <b className={`admin70Status admin70Status--${item.status}`}>
+                          {statusLabel(item.status)}
+                        </b>
                       </div>
-                      <span>
-                        <strong>{item.title}</strong>
-                        <small>{item.type} • {item.category}</small>
-                      </span>
-                      <b className={item.status === "Yayında" ? "is-live" : ""}>{item.status}</b>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </article>
 
               <article className="adminDemo__panel adminDemo__welcome">
-                <span>YÖNETİCİ PANELİ</span>
-                <h2>İçerikleri kod açmadan yönetin.</h2>
+                <span>GERÇEK RANDEVU YÖNETİMİ</span>
+                <h2>Yeni talepleri tek panelden yönetin.</h2>
                 <p>
-                  Bu demo arayüzde YouTube ve podcast bağlantısı ekleyebilir,
-                  içerikleri listeleyebilir ve taslak akışını deneyebilirsiniz.
-                  Gerçek kayıt ve kullanıcı giriş sistemi bir sonraki aşamada
-                  Supabase ile bağlanabilir.
+                  Siteden oluşturulan randevular Supabase veritabanından canlı
+                  olarak alınır. Bekleyen talepleri onaylayabilir veya iptal
+                  edebilirsiniz.
                 </p>
-                <button type="button" onClick={() => setActiveTab("content")}>
-                  İçerik Yönetimine Git
+                <button type="button" onClick={() => setActiveTab("appointments")}>
+                  Randevulara Git
                   <Icon name="arrow" size={16} />
                 </button>
               </article>
@@ -1377,109 +2136,586 @@ function AdminDemoPage() {
           </>
         )}
 
-        {activeTab === "content" && (
-          <div className="adminDemo__contentGrid">
-            <article className="adminDemo__panel">
-              <div className="adminDemo__panelHead">
-                <div>
-                  <span>YENİ İÇERİK</span>
-                  <h2>YouTube / Podcast Ekle</h2>
-                </div>
+        {activeTab === "homepage" && (
+          <section className="admin72Cms">
+            <div className="admin72Cms__head">
+              <div>
+                <span>SİTE İÇERİKLERİ / ANA SAYFA</span>
+                <h2>Ana sayfadaki yazıları düzenleyin.</h2>
+                <p>
+                  Buradaki değişiklikler kaydedildiğinde ziyaretçilerin gördüğü
+                  ana sayfaya yansır. Tasarım ve kod yapısı değişmez.
+                </p>
               </div>
+              <button type="button" onClick={loadHomeEditor} disabled={homeEditorLoading}>
+                {homeEditorLoading ? "Yükleniyor..." : "İçeriği Yenile"}
+              </button>
+            </div>
 
-              <form className="adminDemo__form" onSubmit={addContent}>
-                <label>
-                  <span>İçerik Türü</span>
-                  <select
-                    value={form.type}
-                    onChange={(e) => setForm({ ...form, type: e.target.value })}
-                  >
-                    <option>YouTube</option>
-                    <option>Podcast</option>
-                  </select>
-                </label>
-
-                <label>
-                  <span>Başlık</span>
-                  <input
-                    value={form.title}
-                    onChange={(e) => setForm({ ...form, title: e.target.value })}
-                    placeholder="Örn. Sağlıklı İletişimin Temelleri"
-                  />
-                </label>
-
-                <label>
-                  <span>Kategori</span>
-                  <input
-                    value={form.category}
-                    onChange={(e) => setForm({ ...form, category: e.target.value })}
-                    placeholder="Örn. Aile / İlişkiler"
-                  />
-                </label>
-
-                <label>
-                  <span>Video / Podcast Linki</span>
-                  <input
-                    value={form.url}
-                    onChange={(e) => setForm({ ...form, url: e.target.value })}
-                    placeholder="https://..."
-                  />
-                </label>
-
-                <label className="adminDemo__full">
-                  <span>Kısa Açıklama</span>
-                  <textarea
-                    rows="5"
-                    value={form.description}
-                    onChange={(e) => setForm({ ...form, description: e.target.value })}
-                    placeholder="İçeriğin kısa açıklaması..."
-                  />
-                </label>
-
-                <button className="adminDemo__submit" type="submit">
-                  Taslak Olarak Ekle
-                  <Icon name="plus" size={17} />
-                </button>
-              </form>
-            </article>
-
-            <article className="adminDemo__panel">
-              <div className="adminDemo__panelHead">
-                <div>
-                  <span>İÇERİKLER</span>
-                  <h2>Eklenen içerikler</h2>
-                </div>
-                <b>{videoItems.length} kayıt</b>
-              </div>
-
-              <div className="adminDemo__contentList">
-                {videoItems.map((item) => (
-                  <div key={item.id}>
-                    <div className="adminDemo__contentType">
-                      <Icon name={item.type === "YouTube" ? "video" : "mic"} size={18} />
+            {homeEditorLoading ? (
+              <div className="admin72Cms__loading">Ana sayfa içeriği yükleniyor...</div>
+            ) : (
+              <form className="admin72Cms__form" onSubmit={saveHomeEditor}>
+                <div className="admin72Cms__section">
+                  <div className="admin72Cms__sectionTitle">
+                    <span>01</span>
+                    <div>
+                      <strong>Hero Alanı</strong>
+                      <small>Sayfanın ilk görünen büyük başlık alanı.</small>
                     </div>
-                    <span>
-                      <strong>{item.title}</strong>
-                      <small>{item.type} • {item.category}</small>
-                      <em>{item.url}</em>
-                    </span>
-                    <b className={item.status === "Yayında" ? "is-live" : ""}>{item.status}</b>
-                    <button type="button" onClick={() => removeContent(item.id)}>Sil</button>
                   </div>
-                ))}
-              </div>
-            </article>
-          </div>
+
+                  <div className="admin72Cms__fields">
+                    <label><span>Üst Etiket</span><input value={homeEditor.eyebrow} onChange={(e)=>setHomeEditor({...homeEditor,eyebrow:e.target.value})}/></label>
+                    <label><span>Başlık 1. Satır</span><input value={homeEditor.titleLine} onChange={(e)=>setHomeEditor({...homeEditor,titleLine:e.target.value})}/></label>
+                    <label><span>Gold Başlık</span><input value={homeEditor.titleAccent} onChange={(e)=>setHomeEditor({...homeEditor,titleAccent:e.target.value})}/></label>
+                    <label className="admin72Cms__full"><span>Açıklama</span><textarea rows="4" value={homeEditor.description} onChange={(e)=>setHomeEditor({...homeEditor,description:e.target.value})}/></label>
+                    <label><span>Birincil Buton</span><input value={homeEditor.primaryCta} onChange={(e)=>setHomeEditor({...homeEditor,primaryCta:e.target.value})}/></label>
+                    <label><span>İkincil Buton</span><input value={homeEditor.secondaryCta} onChange={(e)=>setHomeEditor({...homeEditor,secondaryCta:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                <div className="admin72Cms__section">
+                  <div className="admin72Cms__sectionTitle">
+                    <span>02</span>
+                    <div>
+                      <strong>Güven Kartları</strong>
+                      <small>Hero alanının altındaki üç kısa bilgi kartı.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin72Cms__fields">
+                    <label><span>1. Kart Başlığı</span><input value={homeEditor.trust1Title} onChange={(e)=>setHomeEditor({...homeEditor,trust1Title:e.target.value})}/></label>
+                    <label><span>1. Kart Açıklaması</span><input value={homeEditor.trust1Text} onChange={(e)=>setHomeEditor({...homeEditor,trust1Text:e.target.value})}/></label>
+                    <label><span>2. Kart Başlığı</span><input value={homeEditor.trust2Title} onChange={(e)=>setHomeEditor({...homeEditor,trust2Title:e.target.value})}/></label>
+                    <label><span>2. Kart Açıklaması</span><input value={homeEditor.trust2Text} onChange={(e)=>setHomeEditor({...homeEditor,trust2Text:e.target.value})}/></label>
+                    <label><span>3. Kart Başlığı</span><input value={homeEditor.trust3Title} onChange={(e)=>setHomeEditor({...homeEditor,trust3Title:e.target.value})}/></label>
+                    <label><span>3. Kart Açıklaması</span><input value={homeEditor.trust3Text} onChange={(e)=>setHomeEditor({...homeEditor,trust3Text:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                <div className="admin72Cms__section">
+                  <div className="admin72Cms__sectionTitle">
+                    <span>03</span>
+                    <div>
+                      <strong>Çalışma Alanları</strong>
+                      <small>Ana sayfadaki üç hizmet kartı ve bölüm başlığı.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin72Cms__fields">
+                    <label><span>Bölüm Etiketi</span><input value={homeEditor.servicesEyebrow} onChange={(e)=>setHomeEditor({...homeEditor,servicesEyebrow:e.target.value})}/></label>
+                    <label><span>Bölüm Başlığı</span><input value={homeEditor.servicesTitle} onChange={(e)=>setHomeEditor({...homeEditor,servicesTitle:e.target.value})}/></label>
+                    <label><span>Gold Başlık</span><input value={homeEditor.servicesTitleAccent} onChange={(e)=>setHomeEditor({...homeEditor,servicesTitleAccent:e.target.value})}/></label>
+                    <label className="admin72Cms__full"><span>Bölüm Açıklaması</span><textarea rows="4" value={homeEditor.servicesDescription} onChange={(e)=>setHomeEditor({...homeEditor,servicesDescription:e.target.value})}/></label>
+
+                    <label><span>1. Hizmet Başlığı</span><input value={homeEditor.service1Title} onChange={(e)=>setHomeEditor({...homeEditor,service1Title:e.target.value})}/></label>
+                    <label><span>1. Hizmet / Madde 1</span><input value={homeEditor.service1Item1} onChange={(e)=>setHomeEditor({...homeEditor,service1Item1:e.target.value})}/></label>
+                    <label><span>1. Hizmet / Madde 2</span><input value={homeEditor.service1Item2} onChange={(e)=>setHomeEditor({...homeEditor,service1Item2:e.target.value})}/></label>
+
+                    <label><span>2. Hizmet Başlığı</span><input value={homeEditor.service2Title} onChange={(e)=>setHomeEditor({...homeEditor,service2Title:e.target.value})}/></label>
+                    <label><span>2. Hizmet / Madde 1</span><input value={homeEditor.service2Item1} onChange={(e)=>setHomeEditor({...homeEditor,service2Item1:e.target.value})}/></label>
+                    <label><span>2. Hizmet / Madde 2</span><input value={homeEditor.service2Item2} onChange={(e)=>setHomeEditor({...homeEditor,service2Item2:e.target.value})}/></label>
+
+                    <label><span>3. Hizmet Başlığı</span><input value={homeEditor.service3Title} onChange={(e)=>setHomeEditor({...homeEditor,service3Title:e.target.value})}/></label>
+                    <label><span>3. Hizmet / Madde 1</span><input value={homeEditor.service3Item1} onChange={(e)=>setHomeEditor({...homeEditor,service3Item1:e.target.value})}/></label>
+                    <label><span>3. Hizmet / Madde 2</span><input value={homeEditor.service3Item2} onChange={(e)=>setHomeEditor({...homeEditor,service3Item2:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                <div className="admin72Cms__section">
+                  <div className="admin72Cms__sectionTitle">
+                    <span>04</span>
+                    <div>
+                      <strong>Yaklaşım Mesajı</strong>
+                      <small>Ana sayfanın altındaki büyük alıntı bölümü.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin72Cms__fields">
+                    <label><span>Etiket</span><input value={homeEditor.trustStatementEyebrow} onChange={(e)=>setHomeEditor({...homeEditor,trustStatementEyebrow:e.target.value})}/></label>
+                    <label className="admin72Cms__full"><span>Büyük Başlık</span><input value={homeEditor.trustStatementTitle} onChange={(e)=>setHomeEditor({...homeEditor,trustStatementTitle:e.target.value})}/></label>
+                    <label className="admin72Cms__full"><span>Açıklama</span><textarea rows="4" value={homeEditor.trustStatementText} onChange={(e)=>setHomeEditor({...homeEditor,trustStatementText:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                {homeEditorMessage && (
+                  <div className={`admin72Cms__message ${homeEditorMessage.includes("başarıyla") ? "is-success" : "is-error"}`}>
+                    {homeEditorMessage}
+                  </div>
+                )}
+
+                <div className="admin72Cms__save">
+                  <div>
+                    <strong>Değişiklikleri yayınla</strong>
+                    <span>Kaydettiğiniz içerik ana sayfada kullanılacaktır.</span>
+                  </div>
+                  <button type="submit" disabled={homeEditorSaving}>
+                    {homeEditorSaving ? "Kaydediliyor..." : "Ana Sayfayı Kaydet"}
+                    {!homeEditorSaving && <Icon name="check" size={16}/>}
+                  </button>
+                </div>
+              </form>
+            )}
+          </section>
         )}
 
-        {["articles", "appointments", "users", "settings"].includes(activeTab) && (
+        {activeTab === "services" && (
+          <section className="admin73Cms">
+            <div className="admin73Cms__head">
+              <div>
+                <span>SİTE İÇERİKLERİ / HİZMETLER</span>
+                <h2>Hizmetler sayfasını düzenleyin.</h2>
+                <p>
+                  Başlıkları, açıklamaları ve detaylı bilgi maddelerini kod
+                  açmadan değiştirebilirsiniz.
+                </p>
+              </div>
+              <button type="button" onClick={loadServicesEditor} disabled={servicesEditorLoading}>
+                {servicesEditorLoading ? "Yükleniyor..." : "İçeriği Yenile"}
+              </button>
+            </div>
+
+            {servicesEditorLoading ? (
+              <div className="admin73Cms__loading">Hizmetler içeriği yükleniyor...</div>
+            ) : (
+              <form className="admin73Cms__form" onSubmit={saveServicesEditor}>
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle">
+                    <span>01</span>
+                    <div>
+                      <strong>Sayfa Üst Alanı</strong>
+                      <small>Hizmetler sayfasının hero başlık ve açıklaması.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin73Cms__fields">
+                    <label><span>Üst Etiket</span><input value={servicesEditor.heroEyebrow} onChange={(e)=>setServicesEditor({...servicesEditor,heroEyebrow:e.target.value})}/></label>
+                    <label><span>Ana Başlık</span><input value={servicesEditor.heroTitle} onChange={(e)=>setServicesEditor({...servicesEditor,heroTitle:e.target.value})}/></label>
+                    <label><span>Gold Başlık</span><input value={servicesEditor.heroAccent} onChange={(e)=>setServicesEditor({...servicesEditor,heroAccent:e.target.value})}/></label>
+                    <label className="admin73Cms__full"><span>Hero Açıklaması</span><textarea rows="4" value={servicesEditor.heroDescription} onChange={(e)=>setServicesEditor({...servicesEditor,heroDescription:e.target.value})}/></label>
+                    <label><span>Bölüm Başlığı</span><input value={servicesEditor.quickTitle} onChange={(e)=>setServicesEditor({...servicesEditor,quickTitle:e.target.value})}/></label>
+                    <label><span>Bölüm Açıklaması</span><input value={servicesEditor.quickDescription} onChange={(e)=>setServicesEditor({...servicesEditor,quickDescription:e.target.value})}/></label>
+                  </div>
+                </div>
+
+                {[
+                  ["02","Bireysel Danışmanlık","individual"],
+                  ["03","Aile Danışmanlığı","family"],
+                  ["04","Çift Danışmanlığı","couple"],
+                  ["05","Psikososyal Destek","psychosocial"],
+                ].map(([no,label,key]) => (
+                  <div className="admin73Cms__section" key={key}>
+                    <div className="admin73Cms__sectionTitle">
+                      <span>{no}</span>
+                      <div>
+                        <strong>{label}</strong>
+                        <small>Kart başlığı, kısa açıklaması ve detay maddeleri.</small>
+                      </div>
+                    </div>
+
+                    <div className="admin73Cms__fields">
+                      <label>
+                        <span>Başlık</span>
+                        <input
+                          value={servicesEditor[`${key}Title`] || ""}
+                          onChange={(e)=>setServicesEditor({...servicesEditor,[`${key}Title`]:e.target.value})}
+                        />
+                      </label>
+
+                      <label className="admin73Cms__full">
+                        <span>Kısa Açıklama</span>
+                        <textarea
+                          rows="3"
+                          value={servicesEditor[`${key}Short`] || ""}
+                          onChange={(e)=>setServicesEditor({...servicesEditor,[`${key}Short`]:e.target.value})}
+                        />
+                      </label>
+
+                      <label className="admin73Cms__full">
+                        <span>Detay Maddeleri — Her satıra bir madde yazın</span>
+                        <textarea
+                          rows="9"
+                          value={
+                            Array.isArray(servicesEditor[`${key}Items`])
+                              ? servicesEditor[`${key}Items`].join("\n")
+                              : servicesEditor[`${key}Items`] || ""
+                          }
+                          onChange={(e)=>setServicesEditor({...servicesEditor,[`${key}Items`]:e.target.value})}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                ))}
+
+                {servicesEditorMessage && (
+                  <div className={`admin73Cms__message ${servicesEditorMessage.includes("başarıyla") ? "is-success" : "is-error"}`}>
+                    {servicesEditorMessage}
+                  </div>
+                )}
+
+                <div className="admin73Cms__save">
+                  <div>
+                    <strong>Değişiklikleri yayınla</strong>
+                    <span>Kaydettiğiniz içerikler Hizmetler sayfasında kullanılacaktır.</span>
+                  </div>
+                  <button type="submit" disabled={servicesEditorSaving}>
+                    {servicesEditorSaving ? "Kaydediliyor..." : "Hizmetleri Kaydet"}
+                    {!servicesEditorSaving && <Icon name="check" size={16}/>}
+                  </button>
+                </div>
+              </form>
+            )}
+          </section>
+        )}
+
+        {activeTab === "appointments" && (
+          <section className="admin70Appointments">
+            <div className="admin70Appointments__head">
+              <div>
+                <span>RANDEVU YÖNETİMİ</span>
+                <h2>Danışan randevu talepleri</h2>
+                <p>
+                  Bekleyen, onaylanan ve iptal edilen randevuları filtreleyebilir;
+                  gerektiğinde kayıtları kalıcı olarak silebilirsiniz.
+                </p>
+              </div>
+
+              <button type="button" onClick={loadAppointments} disabled={appointmentsLoading}>
+                {appointmentsLoading ? "Yenileniyor..." : "Listeyi Yenile"}
+              </button>
+            </div>
+
+            <div className="admin76Filters">
+              {[
+                ["all", "Tümü", appointments.length],
+                ["pending", "Bekleyen", appointments.filter((item)=>item.status==="pending").length],
+                ["approved", "Onaylanan", appointments.filter((item)=>item.status==="approved").length],
+                ["cancelled", "İptal Edilen", appointments.filter((item)=>item.status==="cancelled").length],
+              ].map(([key,label,count]) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={appointmentFilter === key ? "is-active" : ""}
+                  onClick={()=>setAppointmentFilter(key)}
+                >
+                  <span>{label}</span>
+                  <b>{count}</b>
+                </button>
+              ))}
+            </div>
+
+            {appointmentsError && (
+              <div className="admin70Appointments__error">
+                <Icon name="info" size={18} />
+                <p>{appointmentsError}</p>
+              </div>
+            )}
+
+            {appointmentsLoading ? (
+              <div className="admin70Appointments__empty">Randevular yükleniyor...</div>
+            ) : filteredAppointments.length === 0 ? (
+              <div className="admin70Appointments__empty">
+                Bu filtrede randevu kaydı bulunmuyor.
+              </div>
+            ) : (
+              <div className="admin70Appointments__list">
+                {filteredAppointments.map((item) => (
+                  <article className="admin70AppointmentCard" key={item.id}>
+                    <div className="admin70AppointmentCard__top">
+                      <div>
+                        <span className={`admin70Status admin70Status--${item.status}`}>
+                          {statusLabel(item.status)}
+                        </span>
+                        <h3>{item.full_name}</h3>
+                        <p>{item.service} • {item.format}</p>
+                      </div>
+
+                      <div className="admin70AppointmentCard__date">
+                        <strong>{item.appointment_date}</strong>
+                        <span>{String(item.appointment_time).slice(0, 5)}</span>
+                      </div>
+                    </div>
+
+                    <div className="admin70AppointmentCard__details">
+                      <div>
+                        <small>Telefon</small>
+                        <a href={`tel:${item.phone}`}>{item.phone}</a>
+                      </div>
+                      <div>
+                        <small>E-posta</small>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </div>
+                      <div>
+                        <small>Yaş</small>
+                        <strong>{item.age}</strong>
+                      </div>
+                      <div>
+                        <small>Kayıt Tarihi</small>
+                        <strong>
+                          {new Date(item.created_at).toLocaleString("tr-TR")}
+                        </strong>
+                      </div>
+                    </div>
+
+                    {item.note && (
+                      <div className="admin70AppointmentCard__note">
+                        <small>Danışan Notu</small>
+                        <p>{item.note}</p>
+                      </div>
+                    )}
+
+                    <div className="admin70AppointmentCard__actions">
+                      <button
+                        type="button"
+                        className="is-approve"
+                        disabled={updatingId === item.id || item.status === "approved"}
+                        onClick={() => updateAppointmentStatus(item.id, "approved")}
+                      >
+                        <Icon name="check" size={15} />
+                        Onayla
+                      </button>
+
+                      <button
+                        type="button"
+                        className="is-cancel"
+                        disabled={updatingId === item.id || item.status === "cancelled"}
+                        onClick={() => updateAppointmentStatus(item.id, "cancelled")}
+                      >
+                        İptal Et
+                      </button>
+
+                      <button
+                        type="button"
+                        className="is-delete"
+                        disabled={updatingId === item.id}
+                        onClick={() => deleteAppointment(item.id)}
+                      >
+                        Kalıcı Sil
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        {activeTab === "content" && (
+          <section className="admin74Media">
+            <div className="admin74Media__head">
+              <div>
+                <span>YOUTUBE & PODCAST YÖNETİMİ</span>
+                <h2>İçerikleri kod açmadan yayınlayın.</h2>
+                <p>
+                  YouTube video linklerini, Spotify podcast bölümlerini ve kanal
+                  bağlantılarını buradan yönetebilirsiniz.
+                </p>
+              </div>
+              <button type="button" onClick={loadMediaAdmin} disabled={mediaLoading}>
+                {mediaLoading ? "Yükleniyor..." : "İçeriği Yenile"}
+              </button>
+            </div>
+
+            <div className="admin74Media__channels">
+              <div className="admin74Media__channelTitle">
+                <span>01</span>
+                <div>
+                  <strong>Kanal Bağlantıları</strong>
+                  <small>YouTube kanalınız ve Spotify podcast sayfanız.</small>
+                </div>
+              </div>
+
+              <div className="admin74Media__channelFields">
+                <label>
+                  <span>YouTube Kanal Linki</span>
+                  <input
+                    value={channelEditor.youtubeChannelUrl}
+                    onChange={(e)=>setChannelEditor({...channelEditor,youtubeChannelUrl:e.target.value})}
+                    placeholder="https://www.youtube.com/@kanaliniz"
+                  />
+                </label>
+                <label>
+                  <span>Spotify Podcast / Show Linki</span>
+                  <input
+                    value={channelEditor.spotifyChannelUrl}
+                    onChange={(e)=>setChannelEditor({...channelEditor,spotifyChannelUrl:e.target.value})}
+                    placeholder="https://open.spotify.com/show/..."
+                  />
+                </label>
+              </div>
+
+              <button
+                className="admin74Media__channelSave"
+                type="button"
+                onClick={saveChannelLinks}
+                disabled={mediaSaving}
+              >
+                Kanal Bağlantılarını Kaydet
+                <Icon name="check" size={15}/>
+              </button>
+            </div>
+
+            <div className="admin74Media__grid">
+              <article className="admin74Media__panel">
+                <div className="admin74Media__panelHead">
+                  <span>02 / YENİ İÇERİK</span>
+                  <h3>Video veya podcast ekleyin.</h3>
+                </div>
+
+                <form className="admin74Media__form" onSubmit={addContent}>
+                  <label>
+                    <span>İçerik Türü</span>
+                    <select
+                      value={mediaForm.type}
+                      onChange={(e)=>setMediaForm({...mediaForm,type:e.target.value})}
+                    >
+                      <option value="youtube">YouTube Video</option>
+                      <option value="podcast">Spotify Podcast</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Başlık</span>
+                    <input
+                      value={mediaForm.title}
+                      onChange={(e)=>setMediaForm({...mediaForm,title:e.target.value})}
+                      placeholder="İçerik başlığı"
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    <span>Kategori</span>
+                    <input
+                      value={mediaForm.category}
+                      onChange={(e)=>setMediaForm({...mediaForm,category:e.target.value})}
+                      placeholder="İlişkiler / Aile / Bireysel"
+                    />
+                  </label>
+
+                  <label>
+                    <span>Süre</span>
+                    <input
+                      value={mediaForm.duration}
+                      onChange={(e)=>setMediaForm({...mediaForm,duration:e.target.value})}
+                      placeholder="12:45"
+                    />
+                  </label>
+
+                  <label className="admin74Media__full">
+                    <span>{mediaForm.type === "youtube" ? "YouTube Video Linki" : "Spotify Bölüm Linki"}</span>
+                    <input
+                      value={mediaForm.url}
+                      onChange={(e)=>setMediaForm({...mediaForm,url:e.target.value})}
+                      placeholder={mediaForm.type === "youtube" ? "https://youtu.be/..." : "https://open.spotify.com/episode/..."}
+                      required
+                    />
+                  </label>
+
+                  <label className="admin74Media__full">
+                    <span>Kısa Açıklama</span>
+                    <textarea
+                      rows="5"
+                      value={mediaForm.description}
+                      onChange={(e)=>setMediaForm({...mediaForm,description:e.target.value})}
+                      placeholder="İçerik hakkında kısa açıklama..."
+                    />
+                  </label>
+
+                  <label>
+                    <span>Yayın Durumu</span>
+                    <select
+                      value={mediaForm.status}
+                      onChange={(e)=>setMediaForm({...mediaForm,status:e.target.value})}
+                    >
+                      <option value="published">Hemen Yayınla</option>
+                      <option value="draft">Taslak</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Sıralama</span>
+                    <input
+                      type="number"
+                      value={mediaForm.sort_order}
+                      onChange={(e)=>setMediaForm({...mediaForm,sort_order:e.target.value})}
+                    />
+                  </label>
+
+                  <button type="submit" disabled={mediaSaving}>
+                    {mediaSaving ? "Kaydediliyor..." : "İçeriği Ekle"}
+                    {!mediaSaving && <Icon name="plus" size={16}/>}
+                  </button>
+                </form>
+              </article>
+
+              <article className="admin74Media__panel">
+                <div className="admin74Media__panelHead">
+                  <span>03 / YAYIN AKIŞI</span>
+                  <h3>Eklenen içerikler</h3>
+                </div>
+
+                {mediaLoading ? (
+                  <div className="admin74Media__empty">İçerikler yükleniyor...</div>
+                ) : mediaItems.length === 0 ? (
+                  <div className="admin74Media__empty">Henüz içerik eklenmedi.</div>
+                ) : (
+                  <div className="admin74Media__list">
+                    {mediaItems.map((item) => (
+                      <div className="admin74Media__item" key={item.id}>
+                        <div className="admin74Media__type">
+                          <Icon name={item.type === "youtube" ? "video" : "mic"} size={18}/>
+                        </div>
+                        <div className="admin74Media__itemCopy">
+                          <strong>{item.title}</strong>
+                          <span>
+                            {item.type === "youtube" ? "YouTube" : "Spotify Podcast"}
+                            {item.category ? ` • ${item.category}` : ""}
+                          </span>
+                          <small>{item.url}</small>
+                        </div>
+                        <div className="admin74Media__itemActions">
+                          <b className={item.status === "published" ? "is-live" : ""}>
+                            {item.status === "published" ? "Yayında" : "Taslak"}
+                          </b>
+                          <button
+                            type="button"
+                            onClick={()=>updateMediaStatus(item.id,item.status === "published" ? "draft" : "published")}
+                            disabled={mediaSaving}
+                          >
+                            {item.status === "published" ? "Taslağa Al" : "Yayınla"}
+                          </button>
+                          <button
+                            type="button"
+                            className="is-delete"
+                            onClick={()=>removeContent(item.id)}
+                            disabled={mediaSaving}
+                          >
+                            Sil
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </article>
+            </div>
+
+            {mediaMessage && (
+              <div className={`admin74Media__message ${mediaMessage.includes("başarıyla") || mediaMessage.includes("silindi") ? "is-success" : "is-error"}`}>
+                {mediaMessage}
+              </div>
+            )}
+          </section>
+        )}
+
+        {["articles", "users", "settings"].includes(activeTab) && (
           <article className="adminDemo__panel adminDemo__placeholder">
             <div className="adminDemo__placeholderIcon">
               <Icon
                 name={
-                  activeTab === "appointments"
-                    ? "calendar"
-                    : activeTab === "users"
+                  activeTab === "users"
                     ? "users"
                     : activeTab === "settings"
                     ? "settings"
@@ -1488,20 +2724,14 @@ function AdminDemoPage() {
                 size={35}
               />
             </div>
-            <span>DEMO MODÜLÜ</span>
+            <span>SONRAKİ MODÜL</span>
             <h2>
-              {activeTab === "appointments"
-                ? "Randevu yönetimi burada olacak."
-                : activeTab === "users"
+              {activeTab === "users"
                 ? "Admin ve moderatör hesapları burada yönetilecek."
                 : activeTab === "settings"
                 ? "Site ve panel ayarları burada yer alacak."
                 : "Blog ve diğer site içerikleri burada yönetilecek."}
             </h2>
-            <p>
-              Bu bölüm şimdilik yalnızca arayüz demosu. Gerçek veri kaydı,
-              giriş ve yetkilendirme sistemi bağlandığında aktif hale getirilebilir.
-            </p>
           </article>
         )}
       </section>
@@ -1538,7 +2768,7 @@ function ProcessDetailPage() {
   return (
     <main className="prc53">
       <section className="prc53Hero">
-        <img className="prc53Hero__image" src={processHeroDesk} alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası" />
+        <img loading="eager" decoding="async" fetchPriority="high" className="prc53Hero__image" src={processHeroDesk} alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası" />
         <div className="prc53Hero__shade" />
         <a className="prc53Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
         <div className="prc53Hero__copy">
@@ -1596,411 +2826,113 @@ function ProcessDetailPage() {
   );
 }
 
-function ServicesDetailPage() {
-  const [activeService, setActiveService] = useState("individual");
-
-  const quickServices = [
+function ServicesDetailPage({ content }) {
+  const serviceCards = [
     {
-      id: "individual",
-      icon: "user",
-      title: "Bireysel Danışmanlık",
-      text: "Duygusal iyi oluş, benlik, dayanıklılık, kaygı, stres ve yaşam olaylarına uyum süreçlerinde kişiye özgü destek.",
-    },
-    {
-      id: "family",
-      icon: "users",
-      title: "Aile Danışmanlığı",
-      text: "Aile içi iletişim, roller, sınırlar, ebeveynlik ve aile yaşamında ortaya çıkan güçlüklerin birlikte ele alınması.",
-    },
-    {
-      id: "couple",
-      icon: "heart",
-      title: "Evlilik & Çift Danışmanlığı",
-      text: "İletişim, güven, bağlanma, çatışma, ayrılık ve boşanma süreçlerinde ilişki odaklı danışmanlık.",
-    },
-    {
-      id: "psychosocial",
-      icon: "compass",
-      title: "Psikososyal Destek",
-      text: "Zorlayıcı yaşam olayları, kayıp, değişim ve sosyal uyum süreçlerinde kişisel ve sosyal kaynakları güçlendiren destek.",
-    },
-  ];
-
-  const detailGroups = {
-    individual: {
       no: "01",
       icon: "user",
-      title: "Bireysel Danışmanlık",
-      intro: "Duygusal iyi oluş ile benlik ve dayanıklılık alanlarını tek bir bireysel danışmanlık başlığı altında birlikte ele alıyorum.",
-      items: [
-        "Kaygı ve anksiyete ile ilişkili psikososyal güçlükler",
-        "Depresif belirtilerle baş etme ve psikososyal destek",
-        "Yoğun ve süreğen kaygıyla baş etme süreçleri",
-        "Panik belirtileriyle baş etme ve psikososyal destek",
-        "Tekrarlayıcı ve zorlayıcı düşünce örüntüleriyle baş etme",
-        "Dürtü kontrol güçlükleri",
-        "Özsaygı ve kendilik algısı",
-        "Özşefkat geliştirme",
-        "Kimlik ve benlik gelişimi",
-        "Öfke yönetimi",
-        "Duygu düzenleme güçlükleri",
-        "Stres yönetimi",
-        "Yaşam olaylarına uyum süreçleri",
-        "Yas ve kayıp süreci danışmanlığı",
-        "Psikososyal güçlenme ve duygusal dayanıklılık",
-        "Sınır koyma ve sağlıklı iletişim becerileri",
-      ],
+      title: content.individualTitle,
+      short: content.individualShort,
+      items: content.individualItems || [],
     },
-    family: {
+    {
       no: "02",
       icon: "users",
-      title: "Aile Danışmanlığı",
-      intro: "Aileyi bir bütün olarak değerlendirerek iletişim, roller, sınırlar ve yaşam değişiklikleri üzerine çalışılır.",
-      items: [
-        "Aile içi iletişim problemleri",
-        "Aile içi roller ve sorumluluklar",
-        "Sağlıklı sınırlar oluşturma",
-        "Ebeveynlik becerileri",
-        "Ebeveyn–çocuk iletişimi",
-        "Aile içi çatışmaların ele alınması",
-        "Aile ilişkilerinde güven ve iş birliği",
-        "Yaşam değişikliklerine ailece uyum",
-        "Ayrılık ve boşanmanın aile sistemi üzerindeki etkileri",
-        "Boşanma danışmanlığı",
-      ],
+      title: content.familyTitle,
+      short: content.familyShort,
+      items: content.familyItems || [],
     },
-    couple: {
+    {
       no: "03",
       icon: "heart",
-      title: "Evlilik & Çift Danışmanlığı",
-      intro: "Çiftlerin ilişki örüntülerini anlamalarına ve daha sağlıklı iletişim geliştirmelerine yönelik yapılandırılmış bir süreçtir.",
-      items: [
-        "Çift ve evlilik çatışmaları",
-        "İletişim sorunları",
-        "Güven problemleri",
-        "Bağlanma örüntüleri",
-        "Duygusal ihtiyaçların ifade edilmesi",
-        "Duygusal bağımlılık",
-        "İlişkide sınır koyma",
-        "Ayrılık ve/veya boşanma süreçleri",
-      ],
+      title: content.coupleTitle,
+      short: content.coupleShort,
+      items: content.coupleItems || [],
     },
-    psychosocial: {
+    {
       no: "04",
-      icon: "compass",
-      title: "Psikososyal Destek",
-      intro: "Bireyin günlük yaşamını, ilişkilerini ve sosyal uyumunu etkileyen güçlüklerde destekleyici ve güçlendirici çalışmalar yürütülür.",
-      items: [
-        "DEHB/ADHD ile ilişkili psikososyal ve uyum güçlüklerinde destek",
-        "Kişilik örüntülerine bağlı ilişki ve uyum güçlükleri",
-        "Bipolar bozukluk tanısı bulunan bireylerde psikososyal destek ve yaşam düzenine uyum süreçleri",
-        "Madde ve davranışsal bağımlılıklarla ilişkili psikososyal destek süreçleri",
-        "Zorlayıcı yaşam olaylarına uyum",
-        "Sosyal destek kaynaklarını güçlendirme",
-      ],
+      icon: "shield",
+      title: content.psychosocialTitle,
+      short: content.psychosocialShort,
+      items: content.psychosocialItems || [],
     },
-  };
-
-  const activeDetail = detailGroups[activeService];
-
-  const openServiceDetail = (id) => {
-    setActiveService(id);
-    window.setTimeout(() => {
-      document.getElementById("svc52-detay")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 40);
-  };
+  ];
 
   return (
     <main className="svc52">
       <section className="svc52Hero">
-        <img className="svc52Hero__image" src={servicesHeroRoom} alt="Sıcak ve sakin danışmanlık görüşme ortamı" />
+        <img
+          loading="lazy" decoding="async" className="svc52Hero__image"
+          src={servicesHeroRoom}
+          alt="Sakin ve profesyonel danışmanlık görüşme ortamı"
+        />
         <div className="svc52Hero__shade" />
-        <a className="svc52Back" href="#/"><span>←</span> Ana Sayfaya Dön</a>
+
+        <a className="svc52Back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
 
         <div className="svc52Hero__copy">
-          <span className="svc52Eyebrow">HİZMETLER</span>
-          <h1>Size Nasıl Destek<br/><strong>Olabilirim?</strong></h1>
+          <span className="svc52Eyebrow">{content.heroEyebrow}</span>
+          <h1>
+            {content.heroTitle}
+            <br />
+            <strong>{content.heroAccent}</strong>
+          </h1>
           <i />
-          <p>
-            Danışan odaklı, etik değerlere bağlı ve bütüncül bir yaklaşımla;
-            bireysel, ilişkisel ve aile yaşamınızda karşılaştığınız güçlüklerde
-            profesyonel destek sunuyorum.
-          </p>
+          <p>{content.heroDescription}</p>
         </div>
       </section>
 
       <section className="svc52Quick">
         <div className="svc52SectionTitle">
-          <span>ÇALIŞMA ALANLARIM</span>
-          <h2>Size uygun desteği birlikte belirleyelim.</h2>
+          <span>{content.quickTitle}</span>
+          <h2>İhtiyacınıza uygun desteği birlikte belirleyelim.</h2>
+          <p>{content.quickDescription}</p>
         </div>
 
-        <div className="svc52QuickGrid svc52QuickGrid--four">
-          {quickServices.map((item) => (
-            <article
-              className={`svc52QuickCard ${activeService === item.id ? "is-active" : ""}`}
-              key={item.id}
-            >
-              <div className="svc52QuickIcon"><Icon name={item.icon} size={34} /></div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-              <button type="button" onClick={() => openServiceDetail(item.id)}>
-                Detaylı Bilgi <Icon name="arrow" size={15}/>
-              </button>
-            </article>
+        <div className="svc73Grid">
+          {serviceCards.map((service) => (
+            <details className="svc73Card" key={service.no}>
+              <summary>
+                <div className="svc73Card__top">
+                  <span className="svc73Card__no">{service.no}</span>
+                  <div className="svc73Card__icon">
+                    <Icon name={service.icon} size={27} />
+                  </div>
+                </div>
+
+                <h3>{service.title}</h3>
+                <p>{service.short}</p>
+
+                <div className="svc73Card__action">
+                  <span>Detaylı Bilgi</span>
+                  <b>+</b>
+                </div>
+              </summary>
+
+              <div className="svc73Card__details">
+                <ul>
+                  {service.items.map((item, index) => (
+                    <li key={`${service.no}-${index}`}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </details>
           ))}
         </div>
-
-        <div className="svc52Trust">
-          <div><Icon name="shield" size={29}/><p><strong>Gizlilik ve Güvenlik</strong><span>Görüşmeler gizlilik ve etik ilkeler çerçevesinde yürütülür.</span></p></div>
-          <div><Icon name="user" size={29}/><p><strong>Bireye Özgü Yaklaşım</strong><span>Her danışanın yaşam öyküsü ve ihtiyacı kendine özgüdür.</span></p></div>
-          <div><Icon name="calendar" size={29}/><p><strong>Esnek Görüşme</strong><span>Uygun görüşme biçimi ve süreç birlikte planlanır.</span></p></div>
-          <div><Icon name="heart" size={29}/><p><strong>Etik & Profesyonel</strong><span>Mesleki sınırlar içinde insan odaklı bir yaklaşım benimsenir.</span></p></div>
-        </div>
       </section>
 
-      <section id="svc52-detay" className="servicesDetailGridSection svc52Details svc69DetailSection">
-        <div className="servicesDetailSectionHead">
-          <span>DETAYLI BİLGİ</span>
-          <h2>{activeDetail.title}</h2>
-          <p>{activeDetail.intro}</p>
-        </div>
-
-        <article className="servicesDetailCard svc69DetailCard">
-          <div className="servicesDetailCard__top">
-            <div>
-              <span className="servicesDetailCard__no">{activeDetail.no}</span>
-              <h3>{activeDetail.title}</h3>
-            </div>
-            <div className="servicesDetailCard__icon"><Icon name={activeDetail.icon} size={25}/></div>
-          </div>
-          <div className="servicesDetailCard__list svc69DetailList">
-            {activeDetail.items.map((item) => (
-              <div className="servicesDetailItem" key={item}><span>✦</span><p>{item}</p></div>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      <section className="svc52Scope">
-        <div className="svc52Scope__mark">KO</div>
-        <div>
-          <span>HİZMET KAPSAMI</span>
-          <h3>Danışmanlık ve psikososyal destek; tanı veya tıbbi tedavi yerine geçmez.</h3>
-          <p>
-            Çalışmalar sosyal hizmet ve aile danışmanlığı çerçevesinde yürütülür.
-            Klinik değerlendirme, psikiyatrik tanı, ilaç düzenlemesi veya tıbbi
-            tedavi gerektiren durumlarda uygun sağlık profesyonellerine yönlendirme yapılır.
-          </p>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-function LegalPage({ type }) {
-  const content = {
-    privacy: {
-      eyebrow: "GİZLİLİK",
-      title: "Gizlilik Politikası",
-      intro:
-        "Bu sayfa, internet sitesini ziyaret ettiğinizde paylaşılan bilgilerin hangi çerçevede ele alındığını açıklamak amacıyla hazırlanmıştır.",
-      sections: [
-        {
-          title: "1. Genel Yaklaşım",
-          text:
-            "Kaan Özkan tarafından sunulan danışmanlık hizmetlerinde mahremiyet, etik sorumluluk ve kişisel verilerin korunması temel öncelikler arasındadır. İnternet sitesi üzerinden elde edilen bilgiler yalnızca ilgili hizmetlerin yürütülmesi, iletişim kurulması ve kullanıcı deneyiminin iyileştirilmesi amacıyla değerlendirilir.",
-        },
-        {
-          title: "2. Toplanabilecek Bilgiler",
-          text:
-            "Site üzerinden iletişim veya randevu talebi oluşturmanız halinde ad-soyad, telefon numarası, e-posta adresi, tercih edilen görüşme bilgileri ve tarafınızca paylaşılan mesaj içeriği gibi veriler işlenebilir. Teknik olarak zorunlu olması halinde cihaz ve bağlantı bilgileri gibi sınırlı teknik veriler de oluşabilir.",
-        },
-        {
-          title: "3. Kullanım Amaçları",
-          text:
-            "Toplanan bilgiler; iletişim taleplerine yanıt verilmesi, görüşme süreçlerinin planlanması, hizmet kalitesinin sürdürülmesi, hukuki yükümlülüklerin yerine getirilmesi ve bilgi güvenliğinin sağlanması amaçlarıyla kullanılabilir.",
-        },
-        {
-          title: "4. Gizlilik ve Güvenlik",
-          text:
-            "Kişisel verilerin yetkisiz erişim, kayıp, kötüye kullanım veya açıklanmaya karşı korunması için uygun teknik ve idari tedbirlerin uygulanması hedeflenir. Danışmanlık görüşmelerinin içeriği ayrıca mesleki etik ve gizlilik ilkeleri kapsamında değerlendirilir.",
-        },
-        {
-          title: "5. Üçüncü Taraflar",
-          text:
-            "Kişisel veriler, yalnızca hizmetin teknik olarak yürütülmesi için gerekli olması veya kanuni bir yükümlülüğün bulunması halinde ilgili hizmet sağlayıcılar ya da yetkili kamu kurumlarıyla sınırlı şekilde paylaşılabilir.",
-        },
-        {
-          title: "6. Güncellemeler",
-          text:
-            "Bu politika, sitenin işleyişi veya mevzuattaki değişiklikler doğrultusunda güncellenebilir. Güncel metin her zaman bu sayfa üzerinden yayımlanır.",
-        },
-      ],
-    },
-    disclosure: {
-      eyebrow: "KVKK",
-      title: "Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni",
-      intro:
-        "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında; hangi bilgilerin, hangi amaçlarla ve hangi yöntemlerle işlendiğini açık ve anlaşılır şekilde bilmeniz için bu metin hazırlanmıştır.",
-      sections: [
-        {
-          title: "1. Veri Sorumlusu",
-          text:
-            "Bu internet sitesi ve danışmanlık süreçleri kapsamında işlenen kişisel veriler bakımından veri sorumlusu Kaan Özkan'dır. Veri sorumlusuna ait kesin iletişim adresi, telefon ve e-posta bilgileri randevu sistemi yayına alınmadan önce bu metinde ayrıca belirtilecektir.",
-        },
-        {
-          title: "2. Hangi Bilgileri İstiyoruz?",
-          text:
-            "Ön görüşme ve randevu talebinin oluşturulabilmesi için yalnızca ihtiyaçla bağlantılı verilerin alınması hedeflenmektedir. Bunlar; ad-soyad, yaş, telefon numarası, e-posta adresi, tercih edilen görüşme türü, uygun tarih/saat bilgisi ve isteğe bağlı kısa açıklama alanıdır. Kesin doğum tarihi gibi süreç için zorunlu olmayan ek verilerin talep edilmemesi esastır.",
-        },
-        {
-          title: "3. Bu Bilgileri Neden İstiyoruz?",
-          text:
-            "Ad-soyad bilgisi başvuruyu doğru kişiyle eşleştirmek; yaş bilgisi görüşme ve danışmanlık sürecini uygun şekilde değerlendirmek; telefon ve e-posta bilgileri sizinle iletişim kurmak ve randevu hakkında bilgilendirme yapmak; görüşme türü ile tarih/saat tercihleri randevuyu planlamak; kısa açıklama alanı ise başvuru konusunun genel çerçevesini önceden anlayabilmek amacıyla kullanılacaktır.",
-        },
-        {
-          title: "4. Hassas ve Sağlıkla İlgili Bilgiler",
-          text:
-            "Sağlık bilgileri ile bazı kişisel bilgiler özel nitelikli kişisel veri niteliğinde olabilir ve daha sıkı korunmaları gerekir. Bu nedenle ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi, cinsel hayat, biyometrik veya benzeri hassas bilgilerin paylaşılması talep edilmeyecektir. Kullanıcıların da randevu öncesi serbest metin alanında gerekli olmayan hassas bilgileri paylaşmamaları istenecektir.",
-        },
-        {
-          title: "5. Kişisel Verilerin İşlenme Amaçları",
-          text:
-            "Kişisel veriler; ön görüşme ve randevu taleplerinin alınması, sizinle iletişim kurulması, randevunun planlanması ve yönetilmesi, danışmanlık hizmetinin organizasyonu, bilgi güvenliğinin sağlanması, olası uyuşmazlıklarda hakların tesisi veya korunması ve yürürlükteki mevzuattan doğan yükümlülüklerin yerine getirilmesi amaçlarıyla, amaçla bağlantılı, sınırlı ve ölçülü şekilde işlenebilir.",
-        },
-        {
-          title: "6. Toplama Yöntemi ve Hukuki Sebep",
-          text:
-            "Kişisel veriler; internet sitesindeki form, telefon ve e-posta gibi iletişim kanalları üzerinden elektronik veya sözlü yollarla elde edilebilir. Her veri işleme faaliyeti için 6698 sayılı Kanunda yer alan uygun işleme şartı ayrıca belirlenir. Açık rızanın gerekli olduğu bir işlem bulunması halinde açık rıza, bu aydınlatma metninden ayrı ve belirli bir konuya ilişkin olarak alınır.",
-        },
-        {
-          title: "7. Kişisel Veriler Kimlerle Paylaşılabilir?",
-          text:
-            "Kişisel veriler, yalnızca hizmetin yürütülmesi için gerekli olduğu ölçüde ve hukuki şartların bulunması halinde; randevu, e-posta, barındırma veya bilgi teknolojileri gibi teknik hizmet sağlayıcılarla ve kanunen yetkili kamu kurum ve kuruluşlarıyla paylaşılabilir. Kullanılacak gerçek hizmet sağlayıcılar randevu altyapısı kesinleştikten sonra bu metinde açıkça belirtilecektir.",
-        },
-        {
-          title: "8. Saklama Süresi",
-          text:
-            "Kişisel veriler, işlendikleri amaç için gerekli olan süre ve ilgili mevzuatta öngörülen saklama süreleri boyunca tutulur; işleme amacı ve hukuki saklama gerekliliği ortadan kalktığında mevzuata uygun şekilde silinir, yok edilir veya anonim hale getirilir. Randevu altyapısı tamamlandığında her veri kategorisi için uygulanacak saklama süreleri ayrıca netleştirilecektir.",
-        },
-        {
-          title: "9. KVKK Kapsamındaki Haklarınız",
-          text:
-            "6698 sayılı Kanunun 11. maddesi kapsamında; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işleme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme ve Kanunda öngörülen diğer hakları kullanma imkanınız bulunmaktadır.",
-        },
-        {
-          title: "10. Başvuru ve İletişim",
-          text:
-            "KVKK kapsamındaki başvuruların hangi e-posta veya fiziksel adres üzerinden yapılacağı, gerçek iletişim bilgileri kesinleştiğinde bu bölümde yayımlanacaktır. Başvuru kanalının kolay erişilebilir ve kimlik doğrulamaya elverişli şekilde sunulması planlanmaktadır.",
-        },
-      ],
-    },
-    cookies: {
-      eyebrow: "ÇEREZLER",
-      title: "Çerez Politikası",
-      intro:
-        "Bu politika, internet sitesinde kullanılan veya ileride kullanılabilecek çerez ve benzeri teknolojiler hakkında şeffaf bilgi sunmak amacıyla hazırlanmıştır.",
-      sections: [
-        {
-          title: "1. Çerez Nedir?",
-          text:
-            "Çerezler, internet sitesini ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza kaydedilebilen küçük veri dosyalarıdır. Site işlevlerinin çalışmasını sağlamak, tercihleri hatırlamak veya kullanım hakkında sınırlı bilgi edinmek amacıyla kullanılabilir.",
-        },
-        {
-          title: "2. Zorunlu Çerezler",
-          text:
-            "Sitenin güvenli ve temel şekilde çalışması için gerekli olan çerezler, ilgili hizmetin sunulabilmesi amacıyla kullanılabilir. Bu çerezler olmadan bazı temel site fonksiyonları düzgün çalışmayabilir.",
-        },
-        {
-          title: "3. Analitik ve Tercih Çerezleri",
-          text:
-            "İleride ziyaretçi istatistikleri, performans ölçümü veya kullanıcı tercihlerini hatırlamak amacıyla analitik ya da tercih çerezleri kullanılması halinde, kullanılan araçlar ve hukuki dayanakları bu politika üzerinde açıkça belirtilecektir.",
-        },
-        {
-          title: "4. Reklam ve Pazarlama Çerezleri",
-          text:
-            "Bu sürümde reklam veya hedefli pazarlama amaçlı çerez kullanımına ilişkin bir sistem tanımlanmamıştır. Böyle bir teknoloji eklenmesi halinde gerekli bilgilendirme ve uygun olduğu ölçüde tercih/rıza mekanizması ayrıca uygulanacaktır.",
-        },
-        {
-          title: "5. Çerez Tercihleri",
-          text:
-            "Tarayıcı ayarlarınız üzerinden çerezleri silebilir, engelleyebilir veya belirli çerez türlerine ilişkin tercihlerinizi değiştirebilirsiniz. Zorunlu çerezlerin engellenmesi bazı site özelliklerinin çalışmasını etkileyebilir.",
-        },
-        {
-          title: "6. Güncelleme",
-          text:
-            "Siteye yeni analiz, reklam, üçüncü taraf hizmet veya çerez teknolojileri eklenmesi durumunda bu politika gerçek kullanım biçimine göre güncellenecektir.",
-        },
-      ],
-    },
-  }[type];
-
-  return (
-    <main className="legalPage">
-      <section className="legalHero">
-        <div className="legalHero__grid" />
-        <div className="legalHero__glow" />
-
-        <a href="#/" className="legalBack">
-          <span>←</span>
-          Ana Sayfaya Dön
-        </a>
-
-        <div className="legalHero__copy">
-          <span>{content.eyebrow}</span>
-          <h1>{content.title}</h1>
-          <p>{content.intro}</p>
-        </div>
-
-        <aside className="legalHero__card">
-          <div className="legalHero__icon">
-            <Icon name={type === "cookies" ? "settings" : "shield"} size={31} />
-          </div>
-          <span>BİLGİLENDİRME</span>
-          <h2>Şeffaflık, gizlilik ve güven.</h2>
-          <p>
-            Bu metinler sitenin mevcut yapısına göre hazırlanmış başlangıç
-            metinleridir. Randevu sistemi ve gerçek iletişim altyapısı
-            tamamlandığında son kez güncellenecektir.
-          </p>
-        </aside>
-      </section>
-
-      <section className="legalContent">
-        <div className="legalContent__toc">
-          <span>İÇERİK</span>
-          {content.sections.map((section) => (
-            <a key={section.title} href={`#legal-${section.title.split(".")[0]}`}>
-              {section.title}
-            </a>
-          ))}
-        </div>
-
-        <article className="legalArticle">
-          {content.sections.map((section) => (
-            <section
-              key={section.title}
-              id={`legal-${section.title.split(".")[0]}`}
-              className="legalArticle__section"
-            >
-              <h2>{section.title}</h2>
-              <p>{section.text}</p>
-            </section>
-          ))}
-
-          <div className="legalArticle__notice">
-            <Icon name="info" size={22} />
-            <div>
-              <strong>Son kontrol notu</strong>
-              <p>
-                İletişim ve randevu altyapısı tamamlandığında veri sorumlusu
-                iletişim bilgileri, kullanılan üçüncü taraf hizmetler ve gerçek
-                çerez/veri akışları bu metinlerle eşleştirilmelidir.
-              </p>
-            </div>
-          </div>
-        </article>
+      <section className="svc52Trust">
+        <div><Icon name="shield" size={22} /></div>
+        <p>
+          <strong>Gizlilik ve etik yaklaşım</strong>
+          <span>
+            Görüşmeler mesleki sınırlar, gizlilik ve kişiye özgü değerlendirme
+            ilkeleri çerçevesinde yürütülür.
+          </span>
+        </p>
       </section>
     </main>
   );
@@ -2045,7 +2977,7 @@ function AboutDetailPage() {
 
         <aside className="aboutDirectProfile">
           <div className="aboutDirectProfile__photo">
-            <img src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
+            <img loading="lazy" decoding="async" src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
           </div>
 
           <div className="aboutDirectProfile__body">
@@ -8232,6 +9164,996 @@ section{
 }
 .apt60Actions button:disabled{
   cursor:not-allowed!important;
+}
+
+/* STEP 71 — GERÇEK ADMIN RANDEVU YÖNETİMİ */
+.admin70Login{
+  min-height:100vh;
+  padding:30px 18px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 75% 12%,rgba(47,128,237,.09),transparent 28%),
+    radial-gradient(circle at 12% 85%,rgba(218,151,65,.055),transparent 24%),
+    #020914;
+  color:#f4efe8;
+}
+.admin70Login__glow{
+  position:absolute;
+  width:500px;height:500px;
+  border-radius:50%;
+  background:rgba(47,128,237,.07);
+  filter:blur(110px);
+}
+.admin70Login__card{
+  position:relative;
+  z-index:2;
+  width:min(440px,100%);
+  padding:36px;
+  border:1px solid rgba(218,151,65,.20);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(8,24,42,.97),rgba(3,13,25,.97));
+  box-shadow:0 38px 90px rgba(0,0,0,.35);
+}
+.admin70Login__logo{
+  width:58px;height:58px;
+  display:grid;place-items:center;
+  border:1px solid rgba(218,151,65,.28);
+  border-radius:15px;
+  color:#d9953d;
+  font:400 24px Georgia,"Times New Roman",serif;
+}
+.admin70Login__card>span{
+  display:block;
+  margin-top:24px;
+  color:#d9953d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.admin70Login h1{
+  margin-top:8px;
+  font:400 38px Georgia,"Times New Roman",serif;
+}
+.admin70Login p{
+  margin-top:12px;
+  color:#8995a3;
+  font-size:11px;
+  line-height:1.7;
+}
+.admin70Login label{
+  margin-top:17px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.admin70Login label>span{
+  color:#7d8997;
+  font-size:9px;
+}
+.admin70Login input{
+  min-height:48px;
+  padding:0 13px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#03101d;
+  color:#fff;
+}
+.admin70Login button{
+  width:100%;
+  min-height:49px;
+  margin-top:21px;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid rgba(218,151,65,.30);
+  border-radius:9px;
+  background:linear-gradient(135deg,#a85e20,#d8963f);
+  color:#fff;
+  cursor:pointer;
+  font-size:9px;
+  font-weight:800;
+}
+.admin70Login__card>a{
+  min-height:42px;
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#788595;
+  font-size:9px;
+}
+.admin70Login__error{
+  margin-top:13px;
+  padding:10px 12px;
+  border:1px solid rgba(255,100,100,.18);
+  border-radius:8px;
+  background:rgba(255,70,70,.045);
+  color:#d79393;
+  font-size:9px;
+}
+.admin70Logout{
+  width:100%;
+  min-height:36px;
+  margin-top:12px;
+  border:1px solid rgba(218,151,65,.14);
+  border-radius:8px;
+  background:rgba(218,151,65,.035);
+  color:#a99378;
+  cursor:pointer;
+  font-size:8px;
+}
+.adminDemo__demoBadge--live{
+  border-color:rgba(52,212,134,.18)!important;
+  color:#78d9a1!important;
+}
+.adminDemo__demoBadge--live span{
+  background:#4ed58a!important;
+}
+.admin70MiniAppointments{
+  display:grid;
+  gap:8px;
+}
+.admin70MiniAppointments>div{
+  min-height:58px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  border:1px solid rgba(255,255,255,.055);
+  border-radius:9px;
+  background:#041321;
+}
+.admin70MiniAppointments span{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.admin70MiniAppointments strong{
+  color:#e8ecf0;
+  font-size:10px;
+}
+.admin70MiniAppointments small{
+  color:#6f7d8d;
+  font-size:8px;
+}
+.admin70MiniAppointments>p{
+  color:#748193;
+  font-size:10px;
+}
+.admin70Appointments{
+  display:grid;
+  gap:18px;
+}
+.admin70Appointments__head{
+  padding:24px 26px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  border:1px solid rgba(218,151,65,.12);
+  border-radius:15px;
+  background:linear-gradient(145deg,#07182a,#04111e);
+}
+.admin70Appointments__head>div>span{
+  color:#d9953d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.admin70Appointments__head h2{
+  margin-top:6px;
+  font:400 30px Georgia,"Times New Roman",serif;
+}
+.admin70Appointments__head p{
+  margin-top:7px;
+  color:#798696;
+  font-size:10px;
+}
+.admin70Appointments__head>button{
+  min-height:39px;
+  padding:0 14px;
+  border:1px solid rgba(218,151,65,.20);
+  border-radius:8px;
+  background:rgba(218,151,65,.04);
+  color:#d9953d;
+  cursor:pointer;
+  font-size:8px;
+}
+.admin70Appointments__list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+}
+.admin70AppointmentCard{
+  padding:21px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:15px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(47,128,237,.04),transparent 30%),
+    linear-gradient(145deg,#07182a,#04111e);
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+.admin70AppointmentCard__top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+}
+.admin70AppointmentCard__top h3{
+  margin-top:8px;
+  font:400 22px Georgia,"Times New Roman",serif;
+}
+.admin70AppointmentCard__top p{
+  margin-top:5px;
+  color:#7b8796;
+  font-size:9px;
+}
+.admin70AppointmentCard__date{
+  text-align:right;
+}
+.admin70AppointmentCard__date strong{
+  display:block;
+  color:#d9953d;
+  font:400 14px Georgia,serif;
+}
+.admin70AppointmentCard__date span{
+  display:block;
+  margin-top:4px;
+  color:#f1ece5;
+  font:400 19px Georgia,serif;
+}
+.admin70Status{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  min-height:24px;
+  padding:0 8px;
+  border-radius:999px;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.05em;
+}
+.admin70Status--pending{
+  border:1px solid rgba(230,172,70,.18);
+  background:rgba(230,172,70,.06);
+  color:#d9a64f;
+}
+.admin70Status--approved{
+  border:1px solid rgba(52,212,134,.18);
+  background:rgba(52,212,134,.055);
+  color:#72d79d;
+}
+.admin70Status--cancelled{
+  border:1px solid rgba(225,92,92,.18);
+  background:rgba(225,92,92,.05);
+  color:#d27f7f;
+}
+.admin70AppointmentCard__details{
+  margin-top:18px;
+  padding-top:16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+.admin70AppointmentCard__details>div{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.admin70AppointmentCard__details small,
+.admin70AppointmentCard__note small{
+  color:#657386;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.admin70AppointmentCard__details a,
+.admin70AppointmentCard__details strong{
+  color:#cdd4dc;
+  font-size:9px;
+  line-height:1.5;
+  word-break:break-word;
+}
+.admin70AppointmentCard__note{
+  margin-top:15px;
+  padding:13px;
+  border:1px solid rgba(218,151,65,.10);
+  border-radius:9px;
+  background:rgba(218,151,65,.025);
+}
+.admin70AppointmentCard__note p{
+  margin-top:7px;
+  color:#909baa;
+  font-size:9px;
+  line-height:1.65;
+  white-space:pre-line;
+}
+.admin70AppointmentCard__actions{
+  margin-top:16px;
+  display:flex;
+  gap:8px;
+}
+.admin70AppointmentCard__actions button{
+  min-height:38px;
+  padding:0 13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:8px;
+  font-weight:800;
+}
+.admin70AppointmentCard__actions .is-approve{
+  border:1px solid rgba(52,212,134,.20);
+  background:rgba(52,212,134,.055);
+  color:#72d79d;
+}
+.admin70AppointmentCard__actions .is-cancel{
+  border:1px solid rgba(225,92,92,.18);
+  background:rgba(225,92,92,.045);
+  color:#d27f7f;
+}
+.admin70AppointmentCard__actions button:disabled{
+  opacity:.38;
+  cursor:not-allowed;
+}
+.admin70Appointments__error{
+  padding:13px 15px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  border:1px solid rgba(225,92,92,.16);
+  border-radius:10px;
+  background:rgba(225,92,92,.04);
+  color:#d27f7f;
+}
+.admin70Appointments__error p{
+  color:#ba8383;
+  font-size:9px;
+}
+.admin70Appointments__empty{
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  border:1px dashed rgba(255,255,255,.08);
+  border-radius:13px;
+  color:#6e7b8b;
+  font-size:10px;
+}
+@media(max-width:1000px){
+  .admin70Appointments__list{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .admin70Login__card{padding:28px 22px}
+  .admin70Appointments__head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .admin70AppointmentCard__details{
+    grid-template-columns:1fr;
+  }
+  .admin70AppointmentCard__actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+/* STEP 72 — ANA SAYFA CMS */
+.admin72Cms{display:grid;gap:16px}
+.admin72Cms__head{padding:25px 27px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.12);border-radius:16px;background:linear-gradient(145deg,#07182a,#04111e)}
+.admin72Cms__head>div>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.15em}
+.admin72Cms__head h2{margin-top:7px;font:400 30px Georgia,"Times New Roman",serif;color:#f0ebe5}
+.admin72Cms__head p{max-width:650px;margin-top:8px;color:#7d8998;font-size:10px;line-height:1.6}
+.admin72Cms__head>button{min-height:40px;padding:0 14px;border:1px solid rgba(218,151,65,.20);border-radius:8px;background:rgba(218,151,65,.04);color:#d9953d;cursor:pointer;font-size:8px}
+.admin72Cms__form{display:grid;gap:13px}
+.admin72Cms__section{padding:24px;border:1px solid rgba(255,255,255,.065);border-radius:15px;background:linear-gradient(145deg,#07182a,#04111e)}
+.admin72Cms__sectionTitle{display:flex;align-items:center;gap:13px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.055)}
+.admin72Cms__sectionTitle>span{width:37px;height:37px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.23);border-radius:50%;color:#d9953d;font-size:8px}
+.admin72Cms__sectionTitle>div{display:flex;flex-direction:column;gap:4px}
+.admin72Cms__sectionTitle strong{color:#ece7e1;font:400 18px Georgia,"Times New Roman",serif}
+.admin72Cms__sectionTitle small{color:#687587;font-size:8px}
+.admin72Cms__fields{margin-top:19px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.admin72Cms__fields label{display:flex;flex-direction:column;gap:7px}
+.admin72Cms__fields label>span{color:#7e8b9a;font-size:8px;font-weight:700;letter-spacing:.05em}
+.admin72Cms__fields input,.admin72Cms__fields textarea{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.075);border-radius:9px;background:#03101d;color:#e8edf1;outline:none;font-size:10px;line-height:1.6}
+.admin72Cms__fields input{min-height:45px}
+.admin72Cms__fields input:focus,.admin72Cms__fields textarea:focus{border-color:rgba(218,151,65,.40)}
+.admin72Cms__full{grid-column:1/-1}
+.admin72Cms__loading{min-height:180px;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.08);border-radius:13px;color:#6f7d8d;font-size:10px}
+.admin72Cms__message{padding:12px 14px;border-radius:9px;font-size:9px}
+.admin72Cms__message.is-success{border:1px solid rgba(52,212,134,.18);background:rgba(52,212,134,.05);color:#72d79d}
+.admin72Cms__message.is-error{border:1px solid rgba(225,92,92,.18);background:rgba(225,92,92,.045);color:#d27f7f}
+.admin72Cms__save{padding:19px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.14);border-radius:13px;background:linear-gradient(90deg,rgba(218,151,65,.035),rgba(47,128,237,.025))}
+.admin72Cms__save>div{display:flex;flex-direction:column;gap:5px}
+.admin72Cms__save strong{color:#ece7e1;font:400 15px Georgia,"Times New Roman",serif}
+.admin72Cms__save span{color:#6e7b8b;font-size:8px}
+.admin72Cms__save button{min-height:43px;padding:0 16px;display:flex;align-items:center;gap:9px;border:1px solid rgba(218,151,65,.30);border-radius:8px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:8px;font-weight:800}
+.admin72Cms__save button:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:760px){.admin72Cms__head,.admin72Cms__save{align-items:flex-start;flex-direction:column}.admin72Cms__fields{grid-template-columns:1fr}.admin72Cms__full{grid-column:auto}.admin72Cms__save button{width:100%;justify-content:center}}
+
+/* STEP 73 — HİZMETLER CMS + YENİ AÇILIR KARTLAR */
+.svc73Grid{max-width:1240px;margin:34px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.svc73Card{overflow:hidden;border:1px solid rgba(128,98,55,.16);border-radius:19px;background:#fffdf9;box-shadow:0 15px 40px rgba(84,64,39,.055)}
+.svc73Card summary{padding:24px;cursor:pointer;list-style:none}
+.svc73Card summary::-webkit-details-marker{display:none}
+.svc73Card__top{display:flex;align-items:center;justify-content:space-between}
+.svc73Card__no{color:#9b7438;font-size:9px;font-weight:800;letter-spacing:.08em}
+.svc73Card__icon{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(155,116,56,.20);border-radius:13px;background:#f1e6d7;color:#9b7438}
+.svc73Card h3{margin-top:20px;color:#25282d;font:400 24px/1.08 Georgia,"Times New Roman",serif}
+.svc73Card summary>p{min-height:58px;margin-top:10px;color:#646b72;font-size:12px;line-height:1.68}
+.svc73Card__action{margin-top:20px;padding-top:16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(128,98,55,.10);color:#9b7438}
+.svc73Card__action span{font-size:9px;font-weight:800;letter-spacing:.06em}
+.svc73Card__action b{font:400 21px Georgia,serif}
+.svc73Card[open] .svc73Card__action b{transform:rotate(45deg)}
+.svc73Card__details{padding:0 24px 24px;border-top:1px solid rgba(128,98,55,.08);background:#faf6ef}
+.svc73Card__details ul{padding:20px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;list-style:none}
+.svc73Card__details li{position:relative;padding-left:16px;color:#3e4449;font-size:11.5px;line-height:1.55}
+.svc73Card__details li:before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;border-radius:50%;background:#a47b3d}
+
+.admin73Cms{display:grid;gap:16px}
+.admin73Cms__head{padding:25px 27px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.12);border-radius:16px;background:linear-gradient(145deg,#07182a,#04111e)}
+.admin73Cms__head>div>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.15em}.admin73Cms__head h2{margin-top:7px;font:400 30px Georgia,"Times New Roman",serif;color:#f0ebe5}.admin73Cms__head p{max-width:650px;margin-top:8px;color:#7d8998;font-size:10px;line-height:1.6}
+.admin73Cms__head>button{min-height:40px;padding:0 14px;border:1px solid rgba(218,151,65,.20);border-radius:8px;background:rgba(218,151,65,.04);color:#d9953d;cursor:pointer;font-size:8px}
+.admin73Cms__form{display:grid;gap:13px}.admin73Cms__section{padding:24px;border:1px solid rgba(255,255,255,.065);border-radius:15px;background:linear-gradient(145deg,#07182a,#04111e)}
+.admin73Cms__sectionTitle{display:flex;align-items:center;gap:13px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.055)}.admin73Cms__sectionTitle>span{width:37px;height:37px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.23);border-radius:50%;color:#d9953d;font-size:8px}.admin73Cms__sectionTitle>div{display:flex;flex-direction:column;gap:4px}.admin73Cms__sectionTitle strong{color:#ece7e1;font:400 18px Georgia,"Times New Roman",serif}.admin73Cms__sectionTitle small{color:#687587;font-size:8px}
+.admin73Cms__fields{margin-top:19px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.admin73Cms__fields label{display:flex;flex-direction:column;gap:7px}.admin73Cms__fields label>span{color:#7e8b9a;font-size:8px;font-weight:700;letter-spacing:.05em}.admin73Cms__fields input,.admin73Cms__fields textarea{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.075);border-radius:9px;background:#03101d;color:#e8edf1;outline:none;font-size:10px;line-height:1.6}.admin73Cms__fields input{min-height:45px}.admin73Cms__fields input:focus,.admin73Cms__fields textarea:focus{border-color:rgba(218,151,65,.40)}.admin73Cms__full{grid-column:1/-1}
+.admin73Cms__loading{min-height:180px;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.08);border-radius:13px;color:#6f7d8d;font-size:10px}.admin73Cms__message{padding:12px 14px;border-radius:9px;font-size:9px}.admin73Cms__message.is-success{border:1px solid rgba(52,212,134,.18);background:rgba(52,212,134,.05);color:#72d79d}.admin73Cms__message.is-error{border:1px solid rgba(225,92,92,.18);background:rgba(225,92,92,.045);color:#d27f7f}
+.admin73Cms__save{padding:19px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.14);border-radius:13px;background:linear-gradient(90deg,rgba(218,151,65,.035),rgba(47,128,237,.025))}.admin73Cms__save>div{display:flex;flex-direction:column;gap:5px}.admin73Cms__save strong{color:#ece7e1;font:400 15px Georgia,"Times New Roman",serif}.admin73Cms__save span{color:#6e7b8b;font-size:8px}.admin73Cms__save button{min-height:43px;padding:0 16px;display:flex;align-items:center;gap:9px;border:1px solid rgba(218,151,65,.30);border-radius:8px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:8px;font-weight:800}
+@media(max-width:760px){.svc73Grid{grid-template-columns:1fr}.svc73Card__details ul{grid-template-columns:1fr}.admin73Cms__head,.admin73Cms__save{align-items:flex-start;flex-direction:column}.admin73Cms__fields{grid-template-columns:1fr}.admin73Cms__full{grid-column:auto}.admin73Cms__save button{width:100%;justify-content:center}}
+
+/* STEP 74 — YOUTUBE & SPOTIFY GERÇEK CMS */
+.cnt74Loading,.cnt74Empty{min-height:170px;display:grid;place-items:center;border:1px dashed rgba(128,98,55,.18);border-radius:15px;background:rgba(255,253,249,.55);color:#777d83;font-size:11px}
+.cnt74Channels{margin-top:30px;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(128,98,55,.16);border-radius:18px;background:#ebe4da}
+.cnt74Channels__copy{display:flex;align-items:center;gap:14px}.cnt74Channels__copy>div:last-child{display:flex;flex-direction:column;gap:5px}.cnt74Channels__copy strong{color:#25282d;font-size:13px}.cnt74Channels__copy p{color:#686f76;font-size:10.5px;line-height:1.55}
+.cnt74Channels__buttons{display:flex;gap:9px;flex-wrap:wrap}.cnt74Channels__buttons a{min-height:42px;padding:0 14px;display:flex;align-items:center;border:1px solid rgba(155,116,56,.28);border-radius:8px;background:#fffaf4;color:#8e6932;font-size:9px;font-weight:800}.cnt74Channels__buttons a.is-spotify{border-color:rgba(47,111,75,.24);background:#edf5ef;color:#3e7554}
+
+.admin74Media{display:grid;gap:15px}.admin74Media__head,.admin74Media__channels,.admin74Media__panel{border:1px solid rgba(255,255,255,.065);border-radius:15px;background:linear-gradient(145deg,#07182a,#04111e)}
+.admin74Media__head{padding:25px 27px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.admin74Media__head>div>span,.admin74Media__panelHead>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.14em}.admin74Media__head h2{margin-top:7px;color:#f0ebe5;font:400 30px Georgia,"Times New Roman",serif}.admin74Media__head p{max-width:650px;margin-top:8px;color:#7d8998;font-size:10px;line-height:1.6}.admin74Media__head>button{min-height:40px;padding:0 14px;border:1px solid rgba(218,151,65,.20);border-radius:8px;background:rgba(218,151,65,.04);color:#d9953d;cursor:pointer;font-size:8px}
+.admin74Media__channels{padding:22px}.admin74Media__channelTitle{display:flex;align-items:center;gap:13px;padding-bottom:17px;border-bottom:1px solid rgba(255,255,255,.055)}.admin74Media__channelTitle>span{width:37px;height:37px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.23);border-radius:50%;color:#d9953d;font-size:8px}.admin74Media__channelTitle>div{display:flex;flex-direction:column;gap:4px}.admin74Media__channelTitle strong{color:#ece7e1;font:400 18px Georgia,"Times New Roman",serif}.admin74Media__channelTitle small{color:#687587;font-size:8px}
+.admin74Media__channelFields{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin74Media__channelFields label,.admin74Media__form label{display:flex;flex-direction:column;gap:7px}.admin74Media__channelFields span,.admin74Media__form label>span{color:#7e8b9a;font-size:8px;font-weight:700}.admin74Media__channelFields input,.admin74Media__form input,.admin74Media__form textarea,.admin74Media__form select{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.075);border-radius:9px;background:#03101d;color:#e8edf1;outline:none;font-size:10px}.admin74Media__channelFields input,.admin74Media__form input,.admin74Media__form select{min-height:45px}.admin74Media__channelSave{min-height:40px;margin-top:13px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid rgba(218,151,65,.25);border-radius:8px;background:rgba(218,151,65,.055);color:#d9953d;cursor:pointer;font-size:8px;font-weight:800}
+.admin74Media__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:15px}.admin74Media__panel{padding:22px}.admin74Media__panelHead{padding-bottom:17px;border-bottom:1px solid rgba(255,255,255,.055)}.admin74Media__panelHead h3{margin-top:6px;color:#ece7e1;font:400 20px Georgia,"Times New Roman",serif}
+.admin74Media__form{margin-top:17px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin74Media__full{grid-column:1/-1}.admin74Media__form>button{grid-column:1/-1;min-height:44px;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(218,151,65,.30);border-radius:8px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:8px;font-weight:800}
+.admin74Media__list{margin-top:16px;display:grid;gap:8px}.admin74Media__item{padding:12px;display:grid;grid-template-columns:38px 1fr auto;gap:11px;align-items:center;border:1px solid rgba(255,255,255,.055);border-radius:10px;background:#03101d}.admin74Media__type{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.15);border-radius:9px;color:#d9953d}.admin74Media__itemCopy{min-width:0;display:flex;flex-direction:column;gap:4px}.admin74Media__itemCopy strong{color:#e7ebef;font-size:10px}.admin74Media__itemCopy span{color:#7d8998;font-size:8px}.admin74Media__itemCopy small{max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#59687a;font-size:7px}
+.admin74Media__itemActions{display:flex;align-items:center;gap:6px}.admin74Media__itemActions b{min-height:24px;padding:0 8px;display:flex;align-items:center;border-radius:999px;background:rgba(230,172,70,.06);color:#d9a64f;font-size:7px}.admin74Media__itemActions b.is-live{background:rgba(52,212,134,.055);color:#72d79d}.admin74Media__itemActions button{min-height:30px;padding:0 8px;border:1px solid rgba(255,255,255,.08);border-radius:7px;background:transparent;color:#8f9aa8;cursor:pointer;font-size:7px}.admin74Media__itemActions button.is-delete{border-color:rgba(225,92,92,.15);color:#d27f7f}.admin74Media__empty{min-height:170px;margin-top:16px;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.08);border-radius:10px;color:#6f7d8d;font-size:9px}.admin74Media__message{padding:12px 14px;border-radius:9px;font-size:9px}.admin74Media__message.is-success{border:1px solid rgba(52,212,134,.18);background:rgba(52,212,134,.05);color:#72d79d}.admin74Media__message.is-error{border:1px solid rgba(225,92,92,.18);background:rgba(225,92,92,.045);color:#d27f7f}
+@media(max-width:1000px){.admin74Media__grid{grid-template-columns:1fr}.cnt74Channels{align-items:flex-start;flex-direction:column}}
+@media(max-width:700px){.admin74Media__head{align-items:flex-start;flex-direction:column}.admin74Media__channelFields,.admin74Media__form{grid-template-columns:1fr}.admin74Media__full{grid-column:auto}.admin74Media__item{grid-template-columns:38px 1fr}.admin74Media__itemActions{grid-column:1/-1;justify-content:flex-end}.cnt74Channels__buttons{width:100%}.cnt74Channels__buttons a{flex:1;justify-content:center}}
+
+/* STEP 75 — SPOTIFY TARZI ÜST PODCAST ŞERİDİ */
+.podcastTopStrip--spotify{
+  min-height:44px!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:170px 1fr 180px!important;
+  align-items:center!important;
+  gap:0!important;
+  position:relative!important;
+  z-index:1200!important;
+  overflow:hidden!important;
+  background:linear-gradient(90deg,#13b957 0%,#19bd5b 48%,#15b557 100%)!important;
+  color:#fff!important;
+  border:0!important;
+  box-shadow:
+    inset 0 -1px 0 rgba(0,0,0,.11),
+    0 2px 12px rgba(20,95,53,.08)!important;
+  text-decoration:none!important;
+}
+.podcastTopStrip__brand{
+  height:44px;
+  padding:0 17px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border-right:1px solid rgba(255,255,255,.22);
+}
+.podcastTopStrip__spotifyIcon{
+  width:22px;
+  height:22px;
+  display:block;
+  flex:0 0 22px;
+  color:#fff;
+}
+.podcastTopStrip__spotifyIcon svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.podcastTopStrip__brand strong{
+  color:#fff!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:.06em!important;
+}
+.podcastTopStrip__center{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  line-height:1.2;
+}
+.podcastTopStrip__mic{
+  font-size:12px;
+}
+.podcastTopStrip__listen{
+  justify-self:center;
+  min-height:27px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border-radius:999px;
+  background:#f8fff9;
+  color:#15964a!important;
+  font-size:9px;
+  font-weight:900;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.podcastTopStrip--spotify:hover .podcastTopStrip__listen{
+  transform:translateY(-1px);
+  box-shadow:0 6px 15px rgba(0,0,0,.12);
+}
+.podcastTopStrip__play{
+  font-size:8px;
+}
+@media(max-width:760px){
+  .podcastTopStrip--spotify{
+    min-height:38px!important;
+    grid-template-columns:auto 1fr auto!important;
+  }
+  .podcastTopStrip__brand{
+    height:38px;
+    padding:0 10px;
+    gap:6px;
+  }
+  .podcastTopStrip__spotifyIcon{
+    width:19px;
+    height:19px;
+    flex-basis:19px;
+  }
+  .podcastTopStrip__brand strong{
+    font-size:8px!important;
+  }
+  .podcastTopStrip__center{
+    padding:0 8px;
+    font-size:9px!important;
+  }
+  .podcastTopStrip__center span:last-child{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .podcastTopStrip__listen{
+    margin-right:8px;
+    min-height:25px;
+    padding:0 10px;
+    font-size:8px;
+  }
+}
+@media(max-width:480px){
+  .podcastTopStrip__center{
+    justify-content:flex-start;
+  }
+  .podcastTopStrip__center span:last-child{
+    max-width:135px;
+  }
+  .podcastTopStrip__listen{
+    padding:0 8px;
+  }
+}
+
+/* STEP 76 — RANDEVU FİLTRE + KALICI SİLME */
+.admin76Filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.admin76Filters button{
+  min-height:37px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:9px;
+  background:#041321;
+  color:#8794a3;
+  cursor:pointer;
+  font-size:8px;
+  transition:border-color .2s ease,background .2s ease,color .2s ease;
+}
+.admin76Filters button b{
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  color:#a9b3bd;
+  font-size:7px;
+}
+.admin76Filters button.is-active{
+  border-color:rgba(218,151,65,.28);
+  background:rgba(218,151,65,.06);
+  color:#d9953d;
+}
+.admin76Filters button.is-active b{
+  background:rgba(218,151,65,.12);
+  color:#e1ad65;
+}
+.admin70AppointmentCard__actions{
+  flex-wrap:wrap;
+}
+.admin70AppointmentCard__actions .is-delete{
+  border:1px solid rgba(225,92,92,.26);
+  background:rgba(225,92,92,.08);
+  color:#ef8e8e;
+}
+.admin70AppointmentCard__actions .is-delete:hover{
+  background:rgba(225,92,92,.14);
+}
+@media(max-width:700px){
+  .admin76Filters{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .admin76Filters button{
+    justify-content:space-between;
+  }
+  .admin70AppointmentCard__actions{
+    grid-template-columns:1fr 1fr!important;
+  }
+  .admin70AppointmentCard__actions .is-delete{
+    grid-column:1/-1;
+  }
+}
+
+/* STEP 77 — ANA SAYFA PREMIUM HAREKET EFEKTLERİ */
+
+/* Hero giriş animasyonları */
+@keyframes homeHeroFadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes homeHeroFadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes homeHeroSlowZoom {
+  from { transform:scale(1.02); }
+  to { transform:scale(1.07); }
+}
+@keyframes homeTrustRise {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* Sağdaki hero görseline çok yavaş sinematik hareket */
+.lightHomeHero__visual img{
+  animation:homeHeroSlowZoom 18s ease-in-out infinite alternate;
+  transform-origin:center center;
+  will-change:transform;
+}
+
+/* Hero metinleri sırayla gelsin */
+.lightHomeHero__eyebrow{
+  opacity:0;
+  animation:homeHeroFadeUp .7s cubic-bezier(.22,.61,.36,1) .08s forwards;
+}
+.lightHomeHero h1{
+  opacity:0;
+  animation:homeHeroFadeUp .85s cubic-bezier(.22,.61,.36,1) .18s forwards;
+}
+.lightHomeHero__content>p{
+  opacity:0;
+  animation:homeHeroFadeUp .82s cubic-bezier(.22,.61,.36,1) .34s forwards;
+}
+.lightHomeHero__actions{
+  opacity:0;
+  animation:homeHeroFadeUp .78s cubic-bezier(.22,.61,.36,1) .48s forwards;
+}
+.lightHomeHero__trust{
+  opacity:0;
+  animation:homeTrustRise .85s cubic-bezier(.22,.61,.36,1) .62s forwards;
+}
+
+/* Butonları daha canlı ama sakin yap */
+.lightHomeHero__primary,
+.lightHomeHero__secondary{
+  position:relative;
+  overflow:hidden;
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease;
+}
+.lightHomeHero__primary:before,
+.lightHomeHero__secondary:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:70%;
+  height:100%;
+  background:linear-gradient(
+    110deg,
+    transparent,
+    rgba(255,255,255,.26),
+    transparent
+  );
+  transform:skewX(-18deg);
+  transition:left .75s ease;
+  pointer-events:none;
+}
+.lightHomeHero__primary:hover:before,
+.lightHomeHero__secondary:hover:before{
+  left:150%;
+}
+.lightHomeHero__primary:hover,
+.lightHomeHero__secondary:hover{
+  transform:translateY(-3px);
+}
+.lightHomeHero__primary:hover{
+  box-shadow:0 18px 38px rgba(132,97,43,.22);
+}
+
+/* Çalışma alanı kartları */
+.homeServiceFeature{
+  transform:translateY(0);
+  transition:
+    transform .32s cubic-bezier(.22,.61,.36,1),
+    box-shadow .32s ease,
+    border-color .32s ease;
+}
+.homeServiceFeature:hover{
+  transform:translateY(-7px) scale(1.01);
+}
+.homeServiceFeature__icon{
+  transition:
+    transform .32s ease,
+    background .32s ease;
+}
+.homeServiceFeature:hover .homeServiceFeature__icon{
+  transform:translateY(-2px) rotate(-3deg) scale(1.05);
+}
+.homeServiceFeature:after{
+  transform:scaleX(.30);
+  transform-origin:left center;
+  transition:transform .38s ease;
+}
+.homeServiceFeature:hover:after{
+  transform:scaleX(1);
+}
+
+/* Hizmet kartlarının link oku mikro hareket */
+.homeServiceFeature a svg,
+.homeServicesShowcase__all svg,
+.homeTrustStatement a svg{
+  transition:transform .25s ease;
+}
+.homeServiceFeature a:hover svg,
+.homeServicesShowcase__all:hover svg,
+.homeTrustStatement a:hover svg{
+  transform:translateX(4px);
+}
+
+/* Güven / yaklaşım bölümü */
+.homeTrustStatement__inner{
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+.homeTrustStatement__inner:hover{
+  transform:translateY(-4px);
+  border-color:rgba(155,116,56,.23);
+  box-shadow:0 30px 76px rgba(84,64,39,.10);
+}
+
+/* İletişim kartları */
+.contactCard{
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+.contactCard:hover{
+  transform:translateY(-6px);
+}
+
+/* Scroll ile zaten reveal sınıfı olan bölümlerde daha akıcı görünüm */
+.reveal{
+  transition:
+    opacity .8s cubic-bezier(.22,.61,.36,1),
+    transform .8s cubic-bezier(.22,.61,.36,1)!important;
+}
+
+/* Erişilebilirlik: kullanıcı animasyonu azaltmak isterse kapat */
+@media (prefers-reduced-motion: reduce){
+  .lightHomeHero__visual img,
+  .lightHomeHero__eyebrow,
+  .lightHomeHero h1,
+  .lightHomeHero__content>p,
+  .lightHomeHero__actions,
+  .lightHomeHero__trust{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .homeServiceFeature,
+  .contactCard,
+  .homeTrustStatement__inner,
+  .reveal{
+    transition:none!important;
+  }
+}
+
+/* Mobilde efektleri daha sakin tut */
+@media(max-width:760px){
+  .lightHomeHero__visual img{
+    animation-duration:24s;
+  }
+  .homeServiceFeature:hover,
+  .contactCard:hover,
+  .homeTrustStatement__inner:hover{
+    transform:none;
+  }
+}
+
+/* STEP 78 — İÇERİK DÜZELTMELERİ + HEADER HİYERARŞİSİ */
+.brandIdentity small{
+  order:1!important;
+  margin:0 0 3px!important;
+  color:#6f6b64!important;
+  font-size:8px!important;
+  font-weight:800!important;
+  letter-spacing:.13em!important;
+}
+.brandIdentity em{
+  order:2!important;
+  margin:0 0 5px!important;
+  color:#9b7438!important;
+  font-size:9px!important;
+  font-style:normal!important;
+  font-weight:800!important;
+  letter-spacing:.12em!important;
+}
+.brandIdentity strong{
+  order:3!important;
+  color:#1f2328!important;
+  font:600 18px/1.05 Georgia,"Times New Roman",serif!important;
+  letter-spacing:.02em!important;
+}
+
+/* Danışmanlığın Odağı: koyu premium zemin + beyaz okunaklı metin */
+.homeServicesShowcase__footer{
+  background:
+    radial-gradient(circle at 14% 25%,rgba(194,151,82,.16),transparent 28%),
+    linear-gradient(135deg,#20252a,#11171c)!important;
+  border-color:rgba(196,151,80,.22)!important;
+  color:#fff!important;
+}
+.homeServicesShowcase__benefit{
+  color:#fff!important;
+}
+.homeServicesShowcase__benefit span{
+  color:#d7a85d!important;
+}
+.homeServicesShowcase__benefit h3,
+.homeServicesShowcase__benefit strong{
+  color:#fff!important;
+}
+.homeServicesShowcase__benefit p{
+  color:#eef1f2!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+}
+.homeServicesShowcase__benefitIcon{
+  color:#e0b56e!important;
+  border-color:rgba(224,181,110,.35)!important;
+  background:rgba(255,255,255,.035)!important;
+}
+.homeServicesShowcase__all{
+  color:#e3b66e!important;
+  border-color:rgba(227,182,110,.35)!important;
+}
+.homeServicesShowcase__all span,
+.homeServicesShowcase__all strong{
+  color:#fff!important;
+}
+
+/* Yeni uzun yaklaşım metninin okunabilirliği */
+.homeTrustStatement p{
+  max-width:900px!important;
+  font-size:14px!important;
+  line-height:1.82!important;
+}
+
+/* Kapsam şeridi */
+.homeScopeStrip p{
+  color:#3f454b!important;
+  font-size:11.5px!important;
+  line-height:1.65!important;
+}
+
+@media(max-width:760px){
+  .brandIdentity small{font-size:6.5px!important}
+  .brandIdentity em{font-size:7px!important}
+  .brandIdentity strong{font-size:14px!important}
+  .homeServicesShowcase__benefit p{font-size:11px!important}
+  .homeTrustStatement p{font-size:12.5px!important}
+}
+
+/* STEP 79 — PERFORMANS / MOBİL AÇILIŞ OPTİMİZASYONU */
+
+/* Tarayıcı ekran dışında kalan ağır bölümleri ilk açılışta çizmek zorunda kalmaz. */
+.homeServicesShowcase,
+.homeTrustStatement,
+.homeTestimonials,
+.homeContact,
+.lightHomeContact,
+.svc52Quick,
+.svc52Trust,
+.cnt57Body,
+.processPage,
+.aboutPage{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 700px;
+}
+
+/* Görsel çizimini daha stabil ve GPU dostu tut. */
+img{
+  max-width:100%;
+}
+.lightHomeHero__visual,
+.lightHomeHero__visual img{
+  backface-visibility:hidden;
+}
+
+/* Masaüstünde premium animasyon korunur; telefonda LCP ve GPU yükünü azalt. */
+@media(max-width:760px){
+  .lightHomeHero__visual img{
+    animation:none!important;
+    transform:none!important;
+  }
+
+  .lightHomeHero__primary:before,
+  .lightHomeHero__secondary:before{
+    display:none!important;
+  }
+
+  .homeServiceFeature,
+  .contactCard,
+  .homeTrustStatement__inner{
+    will-change:auto!important;
+  }
+}
+
+/* Arka plandaki sekmede gereksiz animasyon tüketimini durdurmaya yardımcı olur. */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
 }
 
 `;
