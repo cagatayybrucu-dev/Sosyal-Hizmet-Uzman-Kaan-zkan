@@ -1630,6 +1630,8 @@ function ContentDetailPage() {
 }
 
 function AdminDemoPage() {
+  const ADMIN_SESSION_KEY = "kaan_admin_browser_session";
+  const ADMIN_INACTIVITY_MS = 30 * 60 * 1000;
   const [activeTab, setActiveTab] = useState("dashboard");
   const [session, setSession] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
@@ -1760,14 +1762,32 @@ function AdminDemoPage() {
   useEffect(() => {
     let mounted = true;
 
-    supabase.auth.getSession().then(({ data }) => {
+    const restoreSession = async () => {
+      const { data } = await supabase.auth.getSession();
       if (!mounted) return;
-      setSession(data.session || null);
+
+      const browserSessionActive =
+        window.sessionStorage.getItem(ADMIN_SESSION_KEY) === "active";
+
+      if (data.session && !browserSessionActive) {
+        await supabase.auth.signOut();
+        if (!mounted) return;
+        setSession(null);
+        setAuthError(
+          "Tarayıcı oturumu kapandığı için güvenlik amacıyla yeniden giriş yapmanız gerekiyor."
+        );
+      } else {
+        setSession(data.session || null);
+      }
+
       setAuthLoading(false);
-    });
+    };
+
+    restoreSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, nextSession) => {
+        if (!mounted) return;
         setSession(nextSession);
         setAuthLoading(false);
       }
@@ -1778,6 +1798,48 @@ function AdminDemoPage() {
       listener.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (!session) return;
+
+    let timeoutId;
+
+    const signOutForInactivity = async () => {
+      window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
+      await supabase.auth.signOut();
+      setActiveTab("dashboard");
+      setAuthError(
+        "30 dakika boyunca işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı."
+      );
+    };
+
+    const resetTimer = () => {
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(signOutForInactivity, ADMIN_INACTIVITY_MS);
+    };
+
+    const activityEvents = [
+      "mousedown",
+      "keydown",
+      "touchstart",
+      "scroll",
+      "pointerdown",
+    ];
+
+    activityEvents.forEach((eventName) =>
+      window.addEventListener(eventName, resetTimer, { passive: true })
+    );
+
+    resetTimer();
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      activityEvents.forEach((eventName) =>
+        window.removeEventListener(eventName, resetTimer)
+      );
+    };
+  }, [session]);
+
 
   useEffect(() => {
     if (session) loadAppointments();
@@ -1812,7 +1874,7 @@ function AdminDemoPage() {
     e.preventDefault();
     setAuthError("");
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password,
     });
@@ -1820,12 +1882,22 @@ function AdminDemoPage() {
     if (error) {
       console.error("Admin giriş hatası:", error);
       setAuthError("E-posta veya şifre hatalı.");
+      return;
+    }
+
+    if (data?.session) {
+      window.sessionStorage.setItem(ADMIN_SESSION_KEY, "active");
+      setSession(data.session);
+      setPassword("");
     }
   };
 
   const logout = async () => {
+    window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
     await supabase.auth.signOut();
+    setSession(null);
     setActiveTab("dashboard");
+    setAuthError("");
   };
 
   const updateAppointmentStatus = async (id, status) => {
@@ -2302,6 +2374,11 @@ function AdminDemoPage() {
           <p>
             Randevuları görüntülemek ve yönetmek için yetkili hesabınızla giriş yapın.
           </p>
+
+          <div className="admin93SecurityNote">
+            <Icon name="shield" size={15} />
+            <span>30 dk hareketsizlikte otomatik çıkış · Tarayıcı kapanınca yeniden giriş</span>
+          </div>
 
           <label>
             <span>E-posta</span>
@@ -12192,6 +12269,460 @@ img{
   .admin92Intro__ambient,
   .admin70Login__card{
     animation:none!important;
+  }
+}
+
+/* STEP 93 — ADMIN SESSION SECURITY */
+.admin93SecurityNote{
+  margin:0 auto 18px;
+  max-width:350px;
+  min-height:38px;
+  padding:9px 11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid rgba(167,119,54,.14);
+  border-radius:12px;
+  background:#fbf6ee;
+  color:#8b6a3f;
+  font-size:8px;
+  line-height:1.45;
+  letter-spacing:.02em;
+}
+.admin93SecurityNote svg{
+  flex:0 0 auto;
+  color:#a77736;
+}
+
+/* STEP 94 — ADMIN CMS LIGHT FIX (HİZMETLER + SÜREÇ + KAYIT ALANI) */
+
+/* Hizmetler ve Süreç sekmelerinde kalan koyu eski tema tamamen kaldırılır */
+.admin73Cms{
+  display:grid!important;
+  gap:16px!important;
+  color:#292e33!important;
+}
+
+.admin73Cms__head{
+  padding:24px 26px!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:20px!important;
+  border:1px solid #e6ddd2!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.92)!important;
+  box-shadow:0 14px 34px rgba(82,59,32,.05)!important;
+}
+
+.admin73Cms__head>div>span{
+  color:#a77736!important;
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.15em!important;
+}
+
+.admin73Cms__head h2{
+  margin-top:7px!important;
+  color:#25292e!important;
+  font:500 29px Georgia,"Times New Roman",serif!important;
+}
+
+.admin73Cms__head p{
+  max-width:680px!important;
+  margin-top:8px!important;
+  color:#7e8388!important;
+  font-size:10px!important;
+  line-height:1.65!important;
+}
+
+.admin73Cms__head>button{
+  min-height:41px!important;
+  padding:0 14px!important;
+  border:1px solid #d9c5a9!important;
+  border-radius:11px!important;
+  background:#fffaf3!important;
+  color:#9c6e34!important;
+  cursor:pointer!important;
+  font-size:8.5px!important;
+  font-weight:700!important;
+  box-shadow:0 8px 18px rgba(120,83,38,.06)!important;
+}
+
+.admin73Cms__head>button:hover{
+  background:#f8efe2!important;
+  border-color:#cda76f!important;
+}
+
+.admin73Cms__form{
+  display:grid!important;
+  gap:14px!important;
+}
+
+.admin73Cms__section{
+  padding:23px!important;
+  border:1px solid #e7ded4!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.92)!important;
+  box-shadow:0 14px 34px rgba(82,59,32,.045)!important;
+}
+
+.admin73Cms__sectionTitle{
+  display:flex!important;
+  align-items:center!important;
+  gap:13px!important;
+  padding-bottom:17px!important;
+  border-bottom:1px solid #eee6dd!important;
+}
+
+.admin73Cms__sectionTitle>span{
+  width:38px!important;
+  height:38px!important;
+  display:grid!important;
+  place-items:center!important;
+  flex:0 0 38px!important;
+  border:1px solid #dbc39f!important;
+  border-radius:50%!important;
+  color:#a77736!important;
+  background:#fbf6ee!important;
+  font-size:8px!important;
+  font-weight:800!important;
+}
+
+.admin73Cms__sectionTitle>div{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:4px!important;
+}
+
+.admin73Cms__sectionTitle strong{
+  color:#2b3035!important;
+  font:500 18px Georgia,"Times New Roman",serif!important;
+}
+
+.admin73Cms__sectionTitle small{
+  color:#92979b!important;
+  font-size:8.5px!important;
+  line-height:1.5!important;
+}
+
+.admin73Cms__fields{
+  margin-top:18px!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:13px!important;
+}
+
+.admin73Cms__fields label{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+}
+
+.admin73Cms__fields label>span{
+  color:#777c81!important;
+  font-size:8.5px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+}
+
+.admin73Cms__fields input,
+.admin73Cms__fields textarea{
+  width:100%!important;
+  padding:12px 13px!important;
+  border:1px solid #e0d7cc!important;
+  border-radius:10px!important;
+  background:#fbfaf8!important;
+  color:#252a2f!important;
+  outline:none!important;
+  font-size:10px!important;
+  line-height:1.6!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important;
+}
+
+.admin73Cms__fields input{
+  min-height:45px!important;
+}
+
+.admin73Cms__fields textarea{
+  resize:vertical!important;
+}
+
+.admin73Cms__fields input:focus,
+.admin73Cms__fields textarea:focus{
+  border-color:#b98747!important;
+  box-shadow:0 0 0 3px rgba(185,135,71,.08)!important;
+}
+
+.admin73Cms__full,
+.admin73Cms__fields .is-wide{
+  grid-column:1/-1!important;
+}
+
+.admin73Cms__loading{
+  min-height:180px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px dashed #d9c9b5!important;
+  border-radius:16px!important;
+  background:#fbfaf8!important;
+  color:#7d8388!important;
+  font-size:10px!important;
+}
+
+.admin73Cms__message{
+  padding:12px 14px!important;
+  border-radius:11px!important;
+  font-size:9px!important;
+  border:1px solid #e5ddd4!important;
+  background:#fff!important;
+  color:#6f7479!important;
+}
+
+.admin73Cms__message.is-success{
+  border-color:#c9e6ce!important;
+  background:#edf8ef!important;
+  color:#3f7b49!important;
+}
+
+.admin73Cms__message.is-error{
+  border-color:#efcfca!important;
+  background:#fff1ef!important;
+  color:#a64d47!important;
+}
+
+/* Hizmetler kaydet alanı */
+.admin73Cms__save{
+  padding:18px 20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:20px!important;
+  border:1px solid #e2d4c3!important;
+  border-radius:16px!important;
+  background:linear-gradient(135deg,#fffaf3,#f5eadb)!important;
+  box-shadow:0 12px 28px rgba(111,77,35,.06)!important;
+}
+
+.admin73Cms__save>div{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:5px!important;
+}
+
+.admin73Cms__save strong{
+  color:#2e3338!important;
+  font:500 15px Georgia,"Times New Roman",serif!important;
+}
+
+.admin73Cms__save span{
+  color:#7f8489!important;
+  font-size:8.5px!important;
+}
+
+.admin73Cms__save button{
+  min-height:44px!important;
+  padding:0 17px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+  border:1px solid #9f7036!important;
+  border-radius:11px!important;
+  background:linear-gradient(135deg,#a77736,#bf8a43)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  font-size:8.5px!important;
+  font-weight:800!important;
+  box-shadow:0 12px 24px rgba(139,95,40,.16)!important;
+}
+
+/* Süreç sayfası tekrar eden kartlar */
+.admin81Process__stack{
+  display:grid!important;
+  gap:12px!important;
+  margin-top:18px!important;
+}
+
+.admin81Process__item{
+  padding:16px!important;
+  border:1px solid #e7ded4!important;
+  border-radius:14px!important;
+  background:#fbfaf8!important;
+  display:grid!important;
+  gap:10px!important;
+  box-shadow:0 8px 20px rgba(82,59,32,.035)!important;
+}
+
+.admin81Process__item>b,
+.admin81Process__itemTop>b{
+  color:#a77736!important;
+  font-size:8px!important;
+  font-weight:800!important;
+  letter-spacing:.13em!important;
+}
+
+.admin81Process__item input,
+.admin81Process__item textarea{
+  width:100%!important;
+  border:1px solid #e0d7cc!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#252a2f!important;
+  padding:11px 12px!important;
+  outline:none!important;
+  font:inherit!important;
+  font-size:10px!important;
+  line-height:1.6!important;
+}
+
+.admin81Process__item input:focus,
+.admin81Process__item textarea:focus{
+  border-color:#b98747!important;
+  box-shadow:0 0 0 3px rgba(185,135,71,.08)!important;
+}
+
+.admin81Process__item textarea{
+  resize:vertical!important;
+}
+
+.admin81Process__row{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+}
+
+.admin81Process__testimonialHead,
+.admin81Process__itemTop{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+}
+
+.admin81Process__testimonialHead{
+  margin:21px 0 10px!important;
+  color:#30353a!important;
+}
+
+.admin81Process__testimonialHead strong{
+  font:500 15px Georgia,"Times New Roman",serif!important;
+}
+
+.admin81Process__testimonialHead button{
+  border:1px solid #d8bd96!important;
+  border-radius:10px!important;
+  background:#fff7eb!important;
+  color:#a16e31!important;
+  padding:9px 12px!important;
+  cursor:pointer!important;
+  font-size:8.5px!important;
+  font-weight:700!important;
+}
+
+.admin81Process__itemTop button{
+  border:1px solid #eccbc7!important;
+  border-radius:9px!important;
+  background:#fff2f0!important;
+  color:#b45750!important;
+  padding:7px 10px!important;
+  cursor:pointer!important;
+  font-size:8px!important;
+  font-weight:700!important;
+}
+
+/* Ekran görüntüsündeki bozuk Süreç kayıt bölümü */
+.admin73Cms__savebar{
+  padding:20px 22px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:24px!important;
+  border:1px solid #dfcfbb!important;
+  border-radius:17px!important;
+  background:
+    radial-gradient(circle at 100% 0,rgba(197,150,82,.09),transparent 28%),
+    linear-gradient(135deg,#fffaf3,#f2e5d3)!important;
+  box-shadow:0 15px 34px rgba(103,72,34,.075)!important;
+}
+
+.admin73Cms__savebar>div{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:6px!important;
+}
+
+.admin73Cms__savebar strong{
+  color:#2b3035!important;
+  font:500 17px Georgia,"Times New Roman",serif!important;
+}
+
+.admin73Cms__savebar span{
+  color:#7d8287!important;
+  font-size:9px!important;
+  line-height:1.55!important;
+}
+
+.admin73Cms__savebar button{
+  flex:0 0 auto!important;
+  min-height:47px!important;
+  padding:0 20px!important;
+  border:1px solid #9a6c33!important;
+  border-radius:12px!important;
+  background:linear-gradient(135deg,#9f7135,#bd8842)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  font-size:8.5px!important;
+  font-weight:800!important;
+  letter-spacing:.05em!important;
+  box-shadow:0 13px 28px rgba(131,89,38,.17)!important;
+  transition:transform .2s ease,box-shadow .2s ease!important;
+}
+
+.admin73Cms__savebar button:hover{
+  transform:translateY(-1px)!important;
+  box-shadow:0 17px 32px rgba(131,89,38,.22)!important;
+}
+
+.admin73Cms__savebar button:disabled,
+.admin73Cms__save button:disabled{
+  opacity:.5!important;
+  cursor:not-allowed!important;
+  transform:none!important;
+}
+
+/* Admin içerik alanlarının eski koyu arka planlarını bastır */
+.adminDemo__main .admin73Cms,
+.adminDemo__main .admin81Process{
+  background:transparent!important;
+}
+
+@media(max-width:760px){
+  .admin73Cms__head,
+  .admin73Cms__save,
+  .admin73Cms__savebar{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+  }
+
+  .admin73Cms__fields{
+    grid-template-columns:1fr!important;
+  }
+
+  .admin73Cms__full,
+  .admin73Cms__fields .is-wide{
+    grid-column:auto!important;
+  }
+
+  .admin73Cms__save button,
+  .admin73Cms__savebar button{
+    width:100%!important;
+  }
+
+  .admin81Process__row{
+    grid-template-columns:1fr!important;
   }
 }
 
