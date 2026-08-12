@@ -499,7 +499,7 @@ function App() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -862,7 +862,14 @@ function App() {
             </div>
 
             <div className="premiumFooter__bottom">
-              <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
+              <div className="premiumFooter__copyright">
+                <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
+                <span className="premiumFooter__creator">
+                  Web Tasarım &amp; Geliştirme <strong>CB Labs</strong>
+                  <i>·</i>
+                  Kurucu <strong>Çağatay Burucu</strong>
+                </span>
+              </div>
               <div className="premiumFooter__legal">
                 <a href="#/gizlilik">Gizlilik</a>
                 <span>•</span>
@@ -10878,6 +10885,13 @@ img{
     font-size:10.5px!important;
   }
 }
+
+/* STEP 83 — HOME RETURN FIX + CB LABS CREDIT */
+.premiumFooter__copyright{display:flex;flex-direction:column;gap:7px}
+.premiumFooter__creator{display:flex;align-items:center;flex-wrap:wrap;gap:7px;color:rgba(230,234,239,.48);font-size:9px;letter-spacing:.045em}
+.premiumFooter__creator strong{color:#c59a58;font-weight:700;letter-spacing:.06em}
+.premiumFooter__creator i{color:rgba(197,154,88,.55);font-style:normal}
+@media(max-width:760px){.premiumFooter__creator{justify-content:center;font-size:8.5px}}
 
 `;
 
