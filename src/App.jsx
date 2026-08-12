@@ -152,6 +152,9 @@ function App() {
   const [heroPaused, setHeroPaused] = useState(false);
   const [heroTouchStart, setHeroTouchStart] = useState(null);
   const [homeTextSlide, setHomeTextSlide] = useState(0);
+  const [showSiteIntro, setShowSiteIntro] = useState(
+    () => window.location.hash !== "#/admin"
+  );
 
   const defaultHomeContent = {
     eyebrow: "ÇİFT VE AİLE DANIŞMANI",
@@ -321,6 +324,16 @@ function App() {
   };
 
   const activeHero = heroSlides[heroSlide];
+
+  useEffect(() => {
+    if (!showSiteIntro) return;
+
+    const introTimer = window.setTimeout(() => {
+      setShowSiteIntro(false);
+    }, 1900);
+
+    return () => window.clearTimeout(introTimer);
+  }, [showSiteIntro]);
 
   useEffect(() => {
     if (heroPaused) return;
@@ -573,6 +586,25 @@ function App() {
   return (
     <>
       <style>{styles}</style>
+
+      {showSiteIntro && (
+        <div className="site95Intro" aria-hidden="true">
+          <div className="site95Intro__halo" />
+          <div className="site95Intro__content">
+            <div className="site95Intro__logo">
+              <img src={kaanOzkanEmblem} alt="" />
+            </div>
+
+            <span className="site95Intro__eyebrow">HOŞ GELDİNİZ</span>
+            <strong className="site95Intro__name">KAAN ÖZKAN</strong>
+            <p className="site95Intro__role">
+              Sosyal Hizmet Uzmanı <i>·</i> Aile Danışmanı
+            </p>
+
+            <div className="site95Intro__progress"><span /></div>
+          </div>
+        </div>
+      )}
 
       <div className="pageShell">
         <div
@@ -12723,6 +12755,164 @@ img{
 
   .admin81Process__row{
     grid-template-columns:1fr!important;
+  }
+}
+
+/* STEP95 — PREMIUM PUBLIC SITE OPENING */
+.site95Intro{
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(183,132,64,.12),transparent 26%),
+    linear-gradient(135deg,#fbf8f3 0%,#f4ede3 52%,#faf6f0 100%);
+  animation:site95Exit .48s cubic-bezier(.72,0,.2,1) 1.42s forwards;
+}
+
+.site95Intro__halo{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:430px;
+  height:430px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(191,145,80,.08);
+  filter:blur(65px);
+  animation:site95Halo 1.45s ease both;
+}
+
+.site95Intro__content{
+  position:relative;
+  z-index:2;
+  width:min(90vw,620px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.site95Intro__logo{
+  width:96px;
+  height:96px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid rgba(177,130,67,.18);
+  border-radius:27px;
+  background:rgba(255,255,255,.86);
+  box-shadow:
+    0 22px 52px rgba(94,67,34,.10),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  opacity:0;
+  animation:site95Logo .72s cubic-bezier(.2,.82,.2,1) .06s forwards;
+}
+
+.site95Intro__logo img{
+  width:72%;
+  height:72%;
+  object-fit:contain;
+}
+
+.site95Intro__eyebrow{
+  margin-top:22px;
+  color:#a57538;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.31em;
+  opacity:0;
+  animation:site95Reveal .5s ease .28s forwards;
+}
+
+.site95Intro__name{
+  margin-top:12px;
+  color:#22272c;
+  font:500 clamp(40px,4.5vw,60px)/1 Georgia,"Times New Roman",serif;
+  letter-spacing:.075em;
+  opacity:0;
+  animation:site95Reveal .58s cubic-bezier(.2,.8,.2,1) .38s forwards;
+}
+
+.site95Intro__role{
+  margin:14px 0 0;
+  color:#777d82;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.08em;
+  opacity:0;
+  animation:site95Reveal .5s ease .5s forwards;
+}
+
+.site95Intro__role i{
+  margin:0 5px;
+  color:#b18145;
+  font-style:normal;
+}
+
+.site95Intro__progress{
+  width:150px;
+  height:1px;
+  margin-top:23px;
+  overflow:hidden;
+  background:rgba(165,117,56,.13);
+  opacity:0;
+  animation:site95Reveal .35s ease .58s forwards;
+}
+
+.site95Intro__progress span{
+  display:block;
+  width:55%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,#aa7839,#c39a63);
+  animation:site95Progress 1.05s cubic-bezier(.2,.72,.2,1) .58s both;
+}
+
+@keyframes site95Logo{
+  from{opacity:0;transform:translateY(15px) scale(.87);filter:blur(7px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+
+@keyframes site95Reveal{
+  from{opacity:0;transform:translateY(8px);filter:blur(4px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+
+@keyframes site95Progress{
+  from{transform:translateX(-110%)}
+  to{transform:translateX(185%)}
+}
+
+@keyframes site95Halo{
+  from{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+  to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+
+@keyframes site95Exit{
+  from{opacity:1;visibility:visible}
+  to{opacity:0;visibility:hidden;pointer-events:none}
+}
+
+@media(max-width:640px){
+  .site95Intro__logo{width:84px;height:84px;border-radius:24px}
+  .site95Intro__eyebrow{font-size:8px;margin-top:19px}
+  .site95Intro__name{font-size:39px;letter-spacing:.05em}
+  .site95Intro__role{font-size:8px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .site95Intro{animation-duration:.18s;animation-delay:.55s}
+  .site95Intro__logo,
+  .site95Intro__eyebrow,
+  .site95Intro__name,
+  .site95Intro__role,
+  .site95Intro__progress,
+  .site95Intro__progress span,
+  .site95Intro__halo{
+    animation-duration:.01ms!important;
+    animation-delay:0ms!important;
   }
 }
 
