@@ -6,6 +6,7 @@ import servicesHeroRoom from "./assets/services-hero-room.jpg";
 import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
 import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
+import { supabase } from "./supabase";
 
 const Icon = ({ name, size = 22 }) => {
   const common = {
@@ -651,6 +652,8 @@ function App() {
 function AppointmentDemoPage() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState({
     service: "",
     format: "",
@@ -676,9 +679,56 @@ function AppointmentDemoPage() {
   const can3 = form.date && form.time;
   const canSubmit = form.name.trim() && form.age.trim() && form.phone.trim() && form.email.trim() && form.kvkk;
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    if (canSubmit) setSubmitted(true);
+    if (!canSubmit || submitting) return;
+
+    setSubmitting(true);
+    setSubmitError("");
+
+    const selectedService =
+      services.find((service) => service[0] === form.service)?.[2] || form.service;
+
+    try {
+      const { error } = await supabase
+        .from("appointments")
+        .insert({
+          service: selectedService,
+          format: form.format,
+          appointment_date: form.date,
+          appointment_time: form.time,
+          full_name: form.name.trim(),
+          age: Number(form.age),
+          phone: form.phone.trim(),
+          email: form.email.trim().toLowerCase(),
+          note: form.note.trim() || null,
+          status: "pending",
+        });
+
+      if (error) {
+        if (error.code === "23505") {
+          setSubmitError(
+            "Seçtiğiniz tarih ve saat az önce başka bir randevu için ayrılmış olabilir. Lütfen geri dönüp farklı bir saat seçin."
+          );
+          return;
+        }
+
+        console.error("Randevu kayıt hatası:", error);
+        setSubmitError(
+          "Randevu talebiniz şu anda kaydedilemedi. Lütfen birkaç dakika sonra tekrar deneyin."
+        );
+        return;
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Supabase bağlantı hatası:", error);
+      setSubmitError(
+        "Bağlantı sırasında bir sorun oluştu. İnternet bağlantınızı kontrol edip tekrar deneyin."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -689,8 +739,8 @@ function AppointmentDemoPage() {
           <span>RANDEVU TALEBİ ALINDI</span>
           <h1>Teşekkürler, {form.name.split(" ")[0]}.</h1>
           <p>
-            Bu ekran şu an tasarım demosudur. Gerçek sistem bağlandığında talebiniz
-            güvenli veritabanına kaydedilecek ve onay bilgisi gönderilecektir.
+            Randevu talebiniz başarıyla kaydedildi. Talebiniz incelendikten sonra
+            sizinle telefon veya e-posta üzerinden iletişime geçilecektir.
           </p>
           <div className="apt60Success__summary">
             <div><small>Hizmet</small><strong>{services.find((s) => s[0] === form.service)?.[2]}</strong></div>
@@ -844,9 +894,26 @@ function AppointmentDemoPage() {
 
               <div className="apt60Sensitive"><Icon name="shield" size={20}/><p>Ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi veya gerekli olmayan hassas kişisel bilgilerinizi paylaşmayın.</p></div>
 
+              {submitError && (
+                <div className="apt70SubmitError" role="alert">
+                  <Icon name="info" size={19} />
+                  <p>{submitError}</p>
+                </div>
+              )}
+
               <div className="apt60Actions">
-                <button type="button" className="is-secondary" onClick={()=>setStep(2)}>← Geri</button>
-                <button type="submit" disabled={!canSubmit}>Randevu Talebini Oluştur <Icon name="arrow" size={15}/></button>
+                <button
+                  type="button"
+                  className="is-secondary"
+                  onClick={()=>setStep(2)}
+                  disabled={submitting}
+                >
+                  ← Geri
+                </button>
+                <button type="submit" disabled={!canSubmit || submitting}>
+                  {submitting ? "Randevu Kaydediliyor..." : "Randevu Talebini Oluştur"}
+                  {!submitting && <Icon name="arrow" size={15}/>}
+                </button>
               </div>
             </div>
           )}
@@ -8144,6 +8211,28 @@ section{
 .prc53Testimonials__note{position:relative;z-index:1;max-width:830px;margin:20px auto 0;padding:12px 15px;display:flex;align-items:flex-start;justify-content:center;gap:9px;border:1px solid rgba(128,98,55,.11);border-radius:10px;color:#9b7438;background:rgba(255,253,249,.52)}.prc53Testimonials__note p{color:#777d82;font-size:9.5px;line-height:1.6}
 @media(max-width:1000px){.prc53Testimonials__head{grid-template-columns:1fr;gap:16px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.prc53Testimonials{padding:64px 18px 70px}.prc53Testimonials__head h2{font-size:38px}.prc53Testimonials__head>p{font-size:12px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:1fr}.prc53TestimonialCard{padding:23px 20px 20px;border-radius:16px}.prc53TestimonialCard>p{font-size:13px;line-height:1.75}.prc53Testimonials__actions button{width:100%}}
+
+/* STEP 70 — SUPABASE GERÇEK RANDEVU KAYDI */
+.apt70SubmitError{
+  margin-top:20px;
+  padding:14px 16px;
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  border:1px solid rgba(176,78,58,.22);
+  border-radius:12px;
+  background:rgba(176,78,58,.055);
+  color:#a04d3c;
+}
+.apt70SubmitError p{
+  margin:0;
+  color:#7d4c42;
+  font-size:12px;
+  line-height:1.65;
+}
+.apt60Actions button:disabled{
+  cursor:not-allowed!important;
+}
 
 `;
 
