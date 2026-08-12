@@ -10769,6 +10769,116 @@ img{
 .admin81Process__itemTop button{border:1px solid rgba(225,92,92,.25);border-radius:7px;background:rgba(225,92,92,.08);color:#ef8e8e;padding:7px 10px;cursor:pointer}
 @media(max-width:700px){.admin81Process__row{grid-template-columns:1fr}}
 
+/* STEP 82 — İÇERİKLER + HİZMETLER GÖRSEL FIX */
+
+/* Performans optimizasyonundaki content-visibility,
+   gövdeden yukarı taşan sekmeleri kırpıyordu. İçerikler sayfasında kapatıyoruz. */
+.cnt57Body{
+  content-visibility:visible!important;
+  contain:none!important;
+  overflow:visible!important;
+}
+
+/* Video sayısı 1-2 olduğunda kartın ekranın dörtte biri kadar garip kalmasını engeller.
+   Çok video varsa da düzenli kart genişliğiyle devam eder. */
+.cnt57VideoGrid{
+  grid-template-columns:repeat(auto-fill,minmax(285px,340px))!important;
+  justify-content:start!important;
+  align-items:stretch!important;
+  gap:18px!important;
+}
+.cnt57VideoCard{
+  width:100%!important;
+  min-width:0!important;
+}
+.cnt57VideoCard__thumb{
+  height:auto!important;
+  aspect-ratio:16/9!important;
+}
+
+/* Video / Podcast sekmesi hero ile gövde arasında tam görünsün. */
+.cnt57Tabs{
+  overflow:hidden!important;
+  z-index:20!important;
+  top:-27px!important;
+}
+.cnt57Section{
+  padding-top:25px!important;
+}
+
+/* Hizmetler sayfasında artık tek bir "Gizlilik ve etik yaklaşım" satırı var.
+   Eski 4 kolon CSS'i yazıyı ilk çeyreğe sıkıştırıyordu. */
+.svc52Trust{
+  width:calc(100% - 7.2%)!important;
+  max-width:1240px!important;
+  margin:20px auto 36px!important;
+  padding:22px 28px!important;
+  display:block!important;
+  grid-template-columns:none!important;
+}
+.svc52Trust>div{
+  width:100%!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:48px 1fr!important;
+  align-items:center!important;
+  gap:17px!important;
+  border-right:0!important;
+}
+.svc52Trust>div>svg,
+.svc52Trust>div>div:first-child{
+  flex:0 0 auto;
+}
+.svc52Trust p{
+  width:100%!important;
+  gap:6px!important;
+}
+.svc52Trust strong{
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+.svc52Trust span{
+  max-width:900px!important;
+  font-size:11px!important;
+  line-height:1.65!important;
+}
+
+/* Açık temada barın daha okunaklı ve dengeli görünmesi */
+.svc52Trust{
+  border-color:rgba(155,116,56,.20)!important;
+  background:linear-gradient(90deg,#ebe3d8,#f1ebe3)!important;
+  box-shadow:0 14px 34px rgba(84,64,39,.06)!important;
+}
+.svc52Trust>div{
+  color:#a27839!important;
+}
+.svc52Trust strong{
+  color:#292c30!important;
+}
+.svc52Trust span{
+  color:#626970!important;
+}
+
+@media(max-width:760px){
+  .cnt57VideoGrid{
+    grid-template-columns:1fr!important;
+  }
+  .svc52Trust{
+    width:calc(100% - 36px)!important;
+    padding:19px!important;
+  }
+  .svc52Trust>div{
+    grid-template-columns:38px 1fr!important;
+    gap:13px!important;
+  }
+  .svc52Trust strong{
+    font-size:12px!important;
+  }
+  .svc52Trust span{
+    font-size:10.5px!important;
+  }
+}
+
 `;
 
 export default App;
