@@ -10986,6 +10986,88 @@ img{
   }
 }
 
+/* STEP 87 — HERO TEXT SPACING FIX */
+.lightHomeHero__content{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+
+.lightHomeHero__rotator{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  min-height:350px!important;
+}
+
+.lightHomeHero__rotator .lightHomeHero__eyebrow{
+  margin-bottom:18px!important;
+}
+
+.lightHomeHero__rotator h1{
+  margin:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:2px!important;
+  line-height:.98!important;
+}
+
+.lightHomeHero__rotator h1 strong{
+  display:block!important;
+  margin-top:4px!important;
+  line-height:.96!important;
+}
+
+.lightHomeHero__rotator>p{
+  margin-top:30px!important;
+  max-width:610px!important;
+  line-height:1.72!important;
+}
+
+.lightHomeHero__actions{
+  margin-top:28px!important;
+}
+
+/* Uzun gold başlıklar açıklamaya yaklaşmasın */
+.lightHomeHero__rotator h1 + p{
+  padding-top:2px!important;
+}
+
+/* Her slaytta sabit görsel hiyerarşi */
+@media(min-width:761px){
+  .lightHomeHero__rotator h1{
+    min-height:205px!important;
+    justify-content:flex-start!important;
+  }
+  .lightHomeHero__rotator>p{
+    min-height:52px!important;
+  }
+}
+
+@media(max-width:760px){
+  .lightHomeHero__rotator{
+    min-height:auto!important;
+  }
+  .lightHomeHero__rotator .lightHomeHero__eyebrow{
+    margin-bottom:12px!important;
+  }
+  .lightHomeHero__rotator h1{
+    gap:0!important;
+    line-height:1!important;
+  }
+  .lightHomeHero__rotator h1 strong{
+    margin-top:3px!important;
+    line-height:.98!important;
+  }
+  .lightHomeHero__rotator>p{
+    margin-top:22px!important;
+    line-height:1.65!important;
+  }
+  .lightHomeHero__actions{
+    margin-top:23px!important;
+  }
+}
+
 `;
 
 export default App;
