@@ -214,14 +214,6 @@ function App() {
 
   const activeHomeText = homeHeroTextSlides[homeTextSlide];
 
-  useEffect(() => {
-    if (page !== "home") return;
-    const timer = window.setInterval(() => {
-      setHomeTextSlide((current) => (current + 1) % homeHeroTextSlides.length);
-    }, 5200);
-    return () => window.clearInterval(timer);
-  }, [page]);
-
 
   const defaultServicesContent = {
     heroEyebrow: "HİZMETLER",
@@ -364,6 +356,20 @@ function App() {
       ? "admin"
       : "home"
   );
+
+  useEffect(() => {
+    if (page !== "home") return;
+
+    const timer = window.setInterval(() => {
+      setHomeTextSlide((current) => (current + 1) % homeHeroTextSlides.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, [page]);
+
+  useEffect(() => {
+    if (page === "home") setHomeTextSlide(0);
+  }, [page]);
 
   useEffect(() => {
     let active = true;
