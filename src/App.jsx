@@ -11331,6 +11331,52 @@ img{
   .motionReveal{opacity:1!important}
 }
 
+/* STEP 90 — HERO 3D MOTION SOFTENING */
+/* Sağ görsel artık çok hafif hareket eder; sol içerik ve alt kartlar sabit kalır. */
+.lightHomeHero__visual{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * -2.2px),
+      calc(var(--hero-y) * -1.6px),
+      0
+    )
+    scale(1.008)!important;
+  transition:transform .48s cubic-bezier(.2,.7,.2,1)!important;
+}
+
+.lightHomeHero__visual img{
+  transform:
+    translate3d(
+      calc(var(--hero-x) * 2.8px),
+      calc(var(--hero-y) * 2px),
+      0
+    )
+    scale(1.012)!important;
+  transition:transform .52s cubic-bezier(.2,.7,.2,1)!important;
+}
+
+.lightHomeHero__visualShade{
+  transform:none!important;
+  transition:none!important;
+}
+
+.lightHomeHero__content{
+  transform:none!important;
+  transition:none!important;
+}
+
+.lightHomeHero__trust{
+  transform:none!important;
+  transition:box-shadow .3s ease!important;
+}
+
+@media(max-width:760px){
+  .lightHomeHero__visual,
+  .lightHomeHero__visual img{
+    transform:none!important;
+  }
+}
+
 `;
 
 export default App;
