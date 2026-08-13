@@ -303,6 +303,338 @@ const createBlogSlug = (value = "") =>
     .replace(/^-+|-+$/g, "")
     .slice(0, 90);
 
+const detailedServicePages = {
+  "bireysel-terapi": {
+    no: "01", eyebrow: "BİREYSEL TERAPİ", title: "Bireysel Terapi", accent: "Detaylı Bilgi", icon: "user",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=88",
+    intro: "Kaygıdan sınır koymaya, duygusal iyi oluştan yaşam becerilerine uzanan bireysel çalışma alanları.",
+    paragraphs: [
+  "01. Kaygı ve Yaşam Olaylarına Uyum Güçlüğü",
+  "Kaygı, belirsizlik ve yaşamda meydana gelen önemli değişimler karşısında ortaya çıkabilen doğal bir psikolojik tepkidir. Ancak kaygının yoğunlaşması; kişinin düşüncelerini, duygularını, ilişkilerini ve günlük işlevselliğini belirgin biçimde etkilediğinde profesyonel destek gerektirebilir. Bireysel terapide kaygının hangi yaşam olayları, düşünce örüntüleri ve davranışlarla ilişkili olduğu değerlendirilir; kişinin belirsizlikle baş etme, problem çözme ve psikolojik esnekliğini geliştirmesi desteklenir. Amaç kaygıyı tamamen ortadan kaldırmak değil, kişinin kaygıya rağmen yaşamını daha kontrollü ve işlevsel biçimde sürdürebilmesini sağlamaktır.",
+  "Bilişsel Davranışçı ve Duygu Düzenleme Temelli yaklaşımların kaygı belirtilerinin azaltılmasında etkili olduğu gösterilmektedir. Yaşam olaylarına uyum sürecinde ise bireysel psikolojik özelliklerin yanında sosyal destek, yaşam koşulları ve çevresel kaynakların da değerlendirilmesi önem taşır.",
+  "02. Öfke Yönetimi ve Duygu Düzenleme",
+  "Öfke, tek başına olumsuz veya patolojik bir duygu değildir; çoğu zaman kişinin sınırlarının ihlal edildiğini, ihtiyaçlarının karşılanmadığını veya kendisini tehdit altında hissettiğini gösteren önemli bir duygusal sinyaldir. Sorun, öfkenin yoğunluğu ve kişinin bu duyguyla nasıl başa çıktığıyla ilgilidir. Bireysel terapide öfkeyi yalnızca “kontrol edilmesi gereken” bir tepki olarak değil; düşünceler, bedensel uyarılma, geçmiş deneyimler ve kişilerarası ilişkilerle birlikte değerlendirmek amaçlanır.",
+  "Duygu düzenleme çalışmaları kapsamında kişinin duygusunu fark etmesi, adlandırması, tetikleyicilerini tanıması ve daha işlevsel tepki seçenekleri geliştirmesi üzerinde durulur. Araştırmalar, duygu düzenleme güçlüklerinin depresyon ve anksiyete gibi farklı psikolojik sorunlarla ilişkili olduğunu; duygu düzenleme becerilerini hedefleyen terapötik yaklaşımların ise çeşitli içselleştirici belirtilerde etkili olabildiğini göstermektedir.",
+  "03. Benlik Saygısı ve Özgüven",
+  "Benlik saygısı, kişinin kendisini değerlendirme biçimini; özgüven ise belirli alanlarda başa çıkma ve yeterlilik kapasitesine ilişkin algısını ifade eder. Bu alanlardaki güçlükler çoğu zaman yalnızca “kendine güvenememe” şeklinde ortaya çıkmaz; kişinin sürekli kendisini başkalarıyla kıyaslaması, hata yapmaktan kaçınması, eleştiriyi kişisel değeriyle ilişkilendirmesi veya ilişkilerinde kendi ihtiyaçlarını geri plana atması biçiminde de görülebilir.",
+  "Bireysel terapide kişinin kendisi hakkında geliştirdiği temel inançlar, geçmiş deneyimlerin bugünkü benlik algısına etkisi ve özdeğerini hangi koşullara bağladığı ele alınabilir. Amaç yapay biçimde olumlu düşünmeye çalışmak değil; kişinin güçlü ve gelişime açık yönlerini daha gerçekçi biçimde değerlendirebilmesini, başarısızlık ve eleştiriyi kişisel değersizlikle eşitlememesini ve özdeğerini daha sağlam bir zeminde yapılandırmasını desteklemektir. Psikoterapi araştırmaları da terapi sonrasında benlik saygısında anlamlı iyileşmeler görülebileceğini göstermektedir.",
+  "04. Duygusal İyi Oluş",
+  "Duygusal iyi oluş yalnızca “mutlu hissetmek” anlamına gelmez. Kişinin olumlu ve olumsuz duygularını tanıyabilmesi, yaşamındaki zorluklarla baş edebilmesi, ilişkilerinden anlam ve doyum elde edebilmesi ve yaşadığı duyguları kendisine zarar vermeden yönetebilmesiyle ilişkilidir.",
+  "Bireysel terapide kişinin yaşamındaki stres kaynakları, ihtiyaçları, değerleri, ilişkileri ve günlük işlevselliği birlikte değerlendirilir. Süreç yalnızca psikolojik belirtileri azaltmaya değil, kişinin yaşamıyla kurduğu ilişkiyi güçlendirmeye de odaklanır. Bu nedenle terapide öz bakım, sosyal bağlar, yaşam dengesi, anlam, kişisel hedefler ve baş etme kaynakları da ele alınabilir. Klinik psikoloji açısından belirtilerin azaltılması kadar kişinin sürdürülebilir bir psikolojik işlevsellik geliştirmesi de önemlidir.",
+  "05. Psikososyal Güçlenme ve Dayanıklılık",
+  "Psikolojik dayanıklılık, kişinin hiçbir zaman zorlanmaması veya güçlü görünmesi anlamına gelmez. Dayanıklılık; stres, kayıp, belirsizlik ve yaşamın zorlu koşulları karşısında kişinin yeniden denge kurabilme, kaynaklarını kullanabilme ve yaşamına devam edebilme kapasitesidir. Bu kapasite sabit bir kişilik özelliği olarak değerlendirilmemekte; öğrenilebilen ve geliştirilebilen yönleri bulunduğu kabul edilmektedir.",
+  "Bireysel terapide kişinin güçlü yönleri, baş etme biçimleri, sosyal destek ağı, yaşam kaynakları ve çevresel koşulları birlikte değerlendirilir. Sosyal hizmet yaklaşımının kişi-çevre perspektifi doğrultusunda yalnızca bireyin içsel özelliklerine değil; aile, sosyal çevre, ekonomik koşullar ve mevcut destek sistemlerine de bakılır. Güncel meta-analizler, özellikle bilişsel davranışçı, mindfulness ve bütünleştirici müdahalelerin psikolojik dayanıklılığı artırmada olumlu sonuçlar verebildiğini göstermektedir.",
+  "06. Sınır Koyma ve Sağlıklı İletişim",
+  "Sağlıklı sınırlar, kişinin hem kendi ihtiyaçlarını ve değerlerini koruyabilmesini hem de karşısındaki kişinin sınırlarına saygı gösterebilmesini sağlar. Sınır koymak yalnızca “hayır” diyebilmek değildir; kişinin neye ihtiyaç duyduğunu fark etmesi, bunu uygun biçimde ifade etmesi ve ilişkilerinde karşılıklılığı koruyabilmesidir.",
+  "Terapide kişinin sınır koymakta neden zorlandığı; reddedilme korkusu, suçluluk, onaylanma ihtiyacı, çatışmadan kaçınma, aşırı sorumluluk alma veya geçmiş ilişki deneyimleri üzerinden değerlendirilebilir. İletişim çalışmalarıyla birlikte kişinin kendisini saldırganlaşmadan, pasifleşmeden veya kendisini yok saymadan ifade edebilmesi hedeflenir. Sosyal hizmet perspektifinde ise sağlıklı iletişim yalnızca bireysel bir beceri değil, kişinin ilişkisel çevresi ve yaşam koşulları içinde değerlendirilmesi gereken bir sosyal işlevsellik alanıdır.",
+  "07. Ayrılık, Kayıp ve Yas Süreçleri",
+  "Ayrılık, ilişki kaybı, boşanma, yakın bir kişinin kaybı, iş veya yaşam düzenindeki önemli değişiklikler kişinin alıştığı dünyada ciddi bir kırılma oluşturabilir. Yas tepkileri yalnızca üzüntüden ibaret değildir; özlem, öfke, suçluluk, boşluk, şaşkınlık, kaygı ve geleceğe ilişkin belirsizlik gibi farklı duygular aynı süreçte ortaya çıkabilir. Bu tepkilerin biçimi ve yoğunluğu kişiden kişiye değişebilir.",
+  "Bireysel terapide amaç kişiye “unutmayı” öğretmek veya yaşadığı kaybı hızla geride bırakmasını beklemek değildir. Kayıp deneyiminin anlamlandırılması, duyguların güvenli biçimde işlenmesi, günlük yaşamın yeniden yapılandırılması ve kişinin geleceğe yeniden yatırım yapabilmesi desteklenir. Klinik değerlendirmede doğal yas tepkileri ile işlevselliği belirgin biçimde bozan ve süreklilik kazanan klinik tablolar birbirinden ayrılır. Yas çalışmalarında psikoterapötik yaklaşımların özellikle klinik düzeyde ve uzamış belirtilerde yararlı olabileceğine ilişkin güçlü kanıtlar bulunmaktadır.",
+  "08. Kişisel Farkındalık ve Yaşam Becerileri",
+  "Kişisel farkındalık, kişinin yalnızca kendisi hakkında düşünmesi değil; duygu, düşünce, ihtiyaç, değer, sınır ve davranışları arasındaki ilişkiyi daha açık biçimde görebilmesidir. Bireysel terapide kişinin yaşamında tekrar eden örüntüler, karar verme biçimleri, ilişkilerdeki tutumu, kaçınma davranışları ve geleceğe ilişkin hedefleri birlikte değerlendirilebilir.",
+  "Bu süreçte problem çözme, karar verme, stresle baş etme, zaman ve yaşam düzenini oluşturma, ihtiyaçları ifade etme ve kişisel hedef belirleme gibi yaşam becerileri de güçlendirilebilir. Amaç danışanın terapi sürecine bağımlı hale gelmesi değil; zaman içerisinde kendi yaşamını daha bilinçli değerlendirebilen, seçimlerinin sorumluluğunu üstlenebilen ve karşılaştığı güçlüklerde kullanabileceği psikolojik ve sosyal kaynakları tanıyabilen bir işlevsellik geliştirmesidir. Bu yaklaşım, klinik psikolojinin bireysel işleyişe odaklanan yönüyle sosyal hizmetin güçler ve kişi-çevre perspektifini bir araya getirir."
+]
+  },
+  "cift-terapisi": {
+    no: "02", eyebrow: "ÇİFT TERAPİSİ", title: "Çift Terapisi", accent: "İlişkiyi Birlikte Anlamak", icon: "heart",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=88",
+    intro: "İletişim, güven, çatışma, bağlanma ve ortak yaşam dinamiklerinin bütüncül biçimde ele alındığı çalışma alanı.",
+    paragraphs: [
+  "Çift terapisi; evli, nişanlı, birlikte yaşayan veya romantik ilişkisini sürdüren çiftlerin ilişkilerinde ortaya çıkan iletişim, duygusal yakınlık, güven, çatışma, sınırlar ve ilişkiyi sürdürme gibi güçlüklerin bütüncül biçimde ele alındığı psikoterapötik bir süreçtir.",
+  "Terapi sürecinde yalnızca “sorun nedir?” sorusuna değil, çiftin yaşadığı sorunun nasıl oluştuğuna, nasıl sürdürüldüğüne ve iki partnerin birbirleriyle kurduğu etkileşim döngüsüne de odaklanılır. Bireysel özelliklerin yanı sıra ilişkinin geçmişi, bağlanma örüntüleri, yaşam koşulları, ailelerle ilişkiler, sosyal çevre ve önemli yaşam geçişleri de değerlendirilir.",
+  "Amaç taraflardan birini haklı, diğerini haksız ilan etmek ya da her koşulda ilişkiyi sürdürmek değildir. Temel hedef; çiftin birbirini daha iyi anlamasını, ihtiyaçlarını daha sağlıklı ifade edebilmesini, ilişkisel güveni güçlendirmesini ve birlikte daha işlevsel kararlar alabilmesini desteklemektir. Çift terapilerine ilişkin araştırmalar, özellikle ilişki doyumu ve iletişim üzerinde anlamlı iyileşmeler sağlanabildiğini göstermektedir.",
+  "01. İletişim ve Etkileşim Örüntüleri",
+  "Çiftler arasındaki iletişim sorunları yalnızca konuşma sıklığı veya birbirini dinlememe ile sınırlı değildir. Eleştiri, savunmaya geçme, geri çekilme, yanlış anlaşılmalar, duyguları ifade etmekte zorlanma ve aynı tartışmaların tekrar tekrar yaşanması ilişkinin zaman içerisinde yıpranmasına neden olabilir.",
+  "Çift terapisinde iletişim, iki partnerin birbirleriyle nasıl etkileşim kurduğu ve belirli sorunlar karşısında hangi döngüye girdikleri üzerinden değerlendirilir. Amaç yalnızca daha iyi konuşmayı öğretmek değil; partnerlerin ihtiyaçlarını, duygularını ve beklentilerini daha açık ve güvenli biçimde ifade edebilmelerini desteklemektir. Araştırmalar, iletişim kalitesinin ilişki doyumuyla ilişkili olduğunu ve iletişimin konuya göre değişebildiğini göstermektedir.",
+  "02. Çatışma ve Problem Çözme",
+  "Her yakın ilişkide farklı beklentilerin ve ihtiyaçların bulunması doğaldır. Bu nedenle çatışmanın varlığı tek başına ilişkinin sağlıksız olduğu anlamına gelmez. Daha önemli olan, çiftin anlaşmazlıkları nasıl ele aldığı ve çatışma sonrasında ilişkiyi nasıl yeniden düzenleyebildiğidir.",
+  "Çift terapisinde tekrarlayan tartışmaların altında bulunan ihtiyaçlar, düşünceler ve duygusal etkileşim döngüleri değerlendirilir. Suçlama, küçümseme, savunma veya geri çekilme gibi ilişkiyi zorlaştıran örüntüler fark edilerek daha işlevsel problem çözme, müzakere ve çatışma yönetimi becerileri geliştirilmeye çalışılır.",
+  "Amaç çiftin her konuda aynı düşünmesini sağlamak değil; farklılıkların ilişki içindeki güveni, saygıyı ve iş birliğini bozmayacak şekilde yönetilebilmesini desteklemektir.",
+  "03. Güven, Kırılmalar ve İlişkisel Güvenin Yeniden Yapılandırılması",
+  "Güven, romantik ilişkinin temel yapı taşlarından biridir. Yalan söyleme, gizlilik, sadakatle ilgili kırılmalar, verilen sözlerin tutulmaması, yoğun kıskançlık veya geçmiş deneyimlerin bugünkü ilişkiye taşınması güven duygusunu zedeleyebilir.",
+  "Terapi sürecinde güven sorunu yalnızca yaşanan olay üzerinden değil, olayın partnerler açısından taşıdığı anlam üzerinden değerlendirilir. Kırılmanın ardından ortaya çıkan öfke, korku, değersizlik, kuşku veya geri çekilme gibi tepkiler ele alınarak çiftin güveni yeniden oluşturabilmesi için gerekli ilişkisel koşullar üzerinde çalışılır.",
+  "Burada amaç yaşanan olayı yok saymak veya hızla “affetmek” değildir. Öncelikle güvenin hangi noktada zarar gördüğünü anlamak, sorumlulukları netleştirmek ve ilişkinin yeniden yapılandırılabilmesi için gerçekçi bir zemin oluşturmak hedeflenir.",
+  "04. Bağlanma, Duygusal Yakınlık ve İlişkisel İhtiyaçlar",
+  "Bir çift ilişkisinde insanların yalnızca davranışları değil, güvenli bağ kurma ve duygusal olarak görülme ihtiyaçları da önemlidir. Bazı ilişkilerde bir partner yakınlık ararken diğer partner geri çekilebilir; bazı ilişkilerde ise terk edilme korkusu, aşırı güvence arama veya duygusal uzaklaşma tekrar eden bir döngü oluşturabilir.",
+  "Çift terapisinde partnerlerin birbirlerinden hangi duygusal ihtiyaçları bekledikleri ve bu ihtiyaçların ilişki içinde nasıl ifade edildiği incelenebilir. Bağlanma temelli yaklaşımlar, ilişkinin görünen çatışmasının altında bulunan güven, yakınlık, kabul edilme ve desteklenme ihtiyaçlarının anlaşılmasına yardımcı olabilir.",
+  "Bu yaklaşımda amaç partnerlere değişmez “bağlanma stilleri” etiketi koymak değil; ilişkide tekrar eden örüntüleri fark ederek daha güvenli ve esnek bir ilişki kurabilmelerini desteklemektir. İlişki terapilerinde farklı kuramsal yaklaşımların ilişki doyumu üzerinde olumlu sonuçlar sağlayabildiğine dair kapsamlı kanıtlar bulunmaktadır.",
+  "05. Sınırlar, Bireysellik ve İlişkisel Denge",
+  "Sağlıklı bir çift ilişkisi yalnızca birlikte hareket etmekten değil, iki bireyin kendi sınırlarını ve bireysel alanlarını koruyabilmesinden de oluşur. Ailelerle ilişkiler, arkadaşlıklar, kişisel zaman, ekonomik konular, özel alan ve karar verme süreçleri sınırların önemli olduğu alanlardan bazılarıdır.",
+  "Çift terapisinde sınırların aşırı katı, aşırı geçirgen veya belirsiz hale gelmesinin ilişki üzerindeki etkileri değerlendirilebilir. Bir partnerin sürekli geri planda kalması, diğerinin tüm kararları üstlenmesi veya çiftin kendi sınırlarını geniş aile ya da sosyal çevreden ayırmakta zorlanması gibi durumlar ele alınabilir.",
+  "Amaç bağımsızlık ile yakınlık arasında sağlıklı bir denge kurmak; “ilişkide olmak” ile “kendini kaybetmek” arasındaki farkı görünür hale getirmektir.",
+  "06. İlişki Geçişleri ve Evlilik Öncesi Dönem",
+  "Çift terapisi yalnızca sorunların yoğunlaştığı ilişkiler için değildir. İlişkinin yeni bir döneme geçtiği zamanlarda da profesyonel destek yararlı olabilir.",
+  "Nişanlanma, birlikte yaşamaya başlama, evlilik kararı, farklı bir şehre taşınma, çocuk sahibi olma veya ilişkinin geleceğiyle ilgili önemli kararlar çiftin mevcut dengesini değiştirebilir. Bu geçiş dönemlerinde beklentilerin, değerlerin ve yaşam planlarının konuşulması gelecekte ortaya çıkabilecek çatışmaların daha erken fark edilmesine yardımcı olabilir.",
+  "Evlilik öncesi çift danışmanlığında özellikle iletişim, çatışma çözme, evlilik beklentileri ve ilişkinin güçlü/gelişime açık yönleri ele alınabilir. Sistematik çalışmalar, evlilik ve ilişki programlarının ilişki doyumu ve iletişim gibi alanlarda olumlu sonuçlar sağlayabildiğini göstermektedir.",
+  "07. Ayrılık, İlişkiyi Sürdürme ve İlişkinin Sonlandırılmasına Dair Kararsızlık",
+  "Her çift terapisinin amacı ilişkiyi mutlaka sürdürmek değildir. Bazı çiftler ilişkilerini güçlendirmek isterken bazı çiftler ayrılık konusunda kararsız olabilir veya ilişkinin devam edip etmeyeceğini değerlendirmek isteyebilir.",
+  "Bu tür durumlarda terapi; taraflardan birini ilişkiyi sürdürmeye ya da sona erdirmeye yönlendirmek yerine, ilişkinin mevcut durumunu daha açık değerlendirebilecekleri bir alan oluşturabilir. İlişkinin güçlü ve sorunlu yönleri, tekrar eden çatışmalar, duygusal bağ, beklentiler ve bireysel ihtiyaçlar birlikte ele alınabilir.",
+  "İlişkinin sonlandırılması gündeme geldiğinde ise iletişimin daha sağlıklı biçimde yönetilmesi, duygusal sürecin anlaşılması ve özellikle çocukların bulunduğu ilişkilerde ebeveynlik sorumluluklarının mümkün olduğunca işlevsel biçimde yeniden düzenlenmesi değerlendirilebilir.",
+  "08. Yaşam Değişiklikleri, Ortak Yaşam ve İş Birliği",
+  "Romantik ilişkiler yaşam boyunca değişen koşullardan etkilenir. Ekonomik sorunlar, iş değişiklikleri, taşınma, çocuk sahibi olma, aile büyüklerine yönelik bakım sorumlulukları veya diğer önemli yaşam olayları çiftin ilişki dinamiklerini değiştirebilir.",
+  "Çift terapisinde bu değişikliklerin ilişki üzerindeki etkisi değerlendirilirken yalnızca partnerlerin bireysel özelliklerine değil, içinde bulundukları sosyal ve ekonomik koşullara da bakılır. Sosyal hizmet perspektifinde ilişki, kişinin içinde bulunduğu aile ve sosyal çevreden bağımsız ele alınmaz.",
+  "Amaç çiftin tüm yaşam sorunlarını yalnızca “ilişki problemi” olarak tanımlamak yerine, değişen koşullar karşısında birlikte hareket etme, görev paylaşımı yapma, sosyal kaynaklarını kullanma ve birbirlerine destek olma kapasitesini güçlendirmektir."
+]
+  },
+  "psikososyal-destek": {
+    no: "03", eyebrow: "PSİKOSOSYAL DESTEK", title: "Psikososyal Destek", accent: "Güçlenme ve Uyum", icon: "shield",
+    image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1800&q=88",
+    intro: "Kayıp, yaşam geçişleri, sosyal destek, dayanıklılık ve günlük işlevsellik odağında bütüncül destek.",
+    paragraphs: [
+  "01. Yas ve Kayıp Süreçlerinde Psikososyal Destek",
+  "Kayıp sonrasında ortaya çıkan üzüntü, özlem, öfke, suçluluk ve belirsizlik gibi tepkiler kişinin yaşamını farklı biçimlerde etkileyebilir. Destek sürecinde yasın kişisel ve sosyal boyutları birlikte değerlendirilerek duyguların işlenmesi, günlük yaşamın yeniden yapılandırılması ve sosyal destek kaynaklarının güçlendirilmesi amaçlanır. Yas sürecinde sosyal desteğin önemli bir koruyucu kaynak olduğu araştırmalarda vurgulanmaktadır.",
+  "02. Yaşam Olaylarına ve Yaşam Geçişlerine Uyum",
+  "Taşınma, iş kaybı, boşanma, emeklilik, hastalık, aile yapısındaki değişimler veya diğer önemli yaşam olayları kişinin alışılmış yaşam düzenini etkileyebilir. Psikososyal destek sürecinde bireyin bu değişimleri nasıl anlamlandırdığı, hangi baş etme kaynaklarına sahip olduğu ve yeni yaşam koşullarına nasıl uyum sağlayabileceği değerlendirilir.",
+  "03. Sosyal Destek ve Koruyucu Kaynakların Güçlendirilmesi",
+  "Psikolojik iyi oluş yalnızca bireyin içsel kaynaklarıyla açıklanamaz. Aile, arkadaşlık ilişkileri, topluluk bağları ve profesyonel destek sistemleri kişinin güçlüklerle baş etmesinde önemli kaynaklar oluşturabilir. Bu süreçte kişinin mevcut sosyal destek ağı değerlendirilir, zayıflayan ilişkilerin güçlendirilmesi ve ihtiyaç halinde yeni destek kaynaklarının oluşturulması desteklenir. Sosyo-ekolojik araştırmalar, sosyal desteğin özellikle aile ve topluluk düzeyinde önemli bir koruyucu faktör olduğunu göstermektedir.",
+  "04. Psikososyal Dayanıklılık ve Baş Etme Kapasitesinin Güçlendirilmesi",
+  "Psikososyal dayanıklılık, kişinin hiç zorlanmaması değil; zorlu yaşam koşulları karşısında yeniden denge kurabilme ve mevcut kaynaklarını kullanabilme kapasitesidir. Çalışmalarda dayanıklılığın bireysel özelliklerin yanı sıra aile, sosyal çevre ve daha geniş toplumsal koşullarla ilişkili olduğu gösterilmektedir. Bu nedenle destek sürecinde kişinin güçlü yönleri, baş etme becerileri ve çevresel kaynakları birlikte ele alınır.",
+  "05. Günlük Yaşam İşlevselliğinin Desteklenmesi",
+  "Yoğun stres, kayıp veya kriz dönemlerinde uyku, çalışma, sosyal ilişkiler, öz bakım ve günlük sorumluluklarda bozulmalar görülebilir. Psikososyal destek sürecinde kişinin yaşamını sürdürebilme kapasitesi değerlendirilir ve günlük işlevselliği yeniden yapılandırmaya yönelik pratik ve psikolojik baş etme stratejileri üzerinde çalışılır. Güncel araştırmalar, kriz sonrası iyileşmenin yalnızca belirti azalmasıyla değil, yaşam kalitesi ve işlevselliğin yeniden kazanılmasıyla da değerlendirilmesi gerektiğine dikkat çekmektedir.",
+  "06. Sosyal ve Kurumsal Kaynaklara Yönlendirme",
+  "Bazı psikososyal güçlüklerin çözümü yalnızca bireysel görüşmelerle mümkün olmayabilir. Ekonomik sorunlar, barınma, sosyal haklara erişim, eğitim, sağlık, aile hizmetleri veya hukuki süreçler gibi alanlarda uygun kurum ve hizmetlere erişim gerekebilir. Sosyal hizmet yaklaşımı doğrultusunda kişinin ihtiyaçları belirlenerek uygun sosyal ve kurumsal kaynaklara yönlendirilmesi desteklenir.",
+  "07. Afet ve Kriz Sonrası Psikososyal Destek",
+  "Afetler ve kriz durumları kişinin güvenlik algısını, sosyal çevresini, ekonomik koşullarını ve günlük yaşam düzenini aynı anda etkileyebilir. Bu süreçte amaç herkesi “travma hastası” olarak değerlendirmek değil; kişinin güvenlik, temel ihtiyaçlar, sosyal destek ve psikolojik baş etme kapasitesini değerlendirmek ve ihtiyaç duyduğu desteğe erişimini sağlamaktır. Psikolojik İlk Yardım yaklaşımı da kriz sonrasında kişiye onurunu, kültürel özelliklerini ve mevcut kapasitesini gözeten insani, destekleyici ve pratik yardım sunmayı temel alır.",
+  "08. Göç, Yer Değiştirme ve Yeni Yaşama Uyum",
+  "Göç ve zorunlu yer değiştirme yalnızca fiziksel bir mekân değişikliği değildir; kişinin sosyal bağları, yaşam rolleri, kültürel aidiyeti ve güvenlik algısı üzerinde önemli değişiklikler yaratabilir. Psikososyal destek bu süreçte kişinin kayıplarını anlamlandırmasına, sosyal bağlarını yeniden oluşturmasına ve yeni yaşam çevresine uyumunu güçlendirmesine yardımcı olabilir."
+]
+  },
+  "bosanma-ve-yas-danismanligi": {
+    no: "04", eyebrow: "BOŞANMA VE YAS DANIŞMANLIĞI", title: "Boşanma ve Yas", accent: "Danışmanlığı", icon: "compass",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=88",
+    intro: "Kayıp, değişim, duygusal düzenleme, yeni yaşam düzeni ve psikososyal uyumun birlikte ele alındığı danışmanlık süreci.",
+    paragraphs: [
+  "Boşanma yalnızca hukuki bir ilişkinin sona ermesi değildir. Çoğu zaman kişinin alıştığı yaşam düzeninin, ilişki biçiminin, aile içindeki rolünün, gelecek tasarımının, ekonomik ve sosyal düzeninin yeniden yapılandırılmasını gerektiren çok boyutlu bir yaşam geçişidir. Bu nedenle boşanma süreci; üzüntü, öfke, suçluluk, yalnızlık, belirsizlik, reddedilme, kaygı, özlem, değersizlik ve gelecek hakkında umutsuzluk gibi birbirinden farklı duygusal tepkilerin aynı dönemde yaşanabildiği karmaşık bir psikososyal süreçtir.",
+  "Özellikle uzun süreli ilişkilerde kişi yalnızca eşini değil; birlikte kurduğu yaşamı, aile sistemini, gündelik rutinlerini, sosyal çevresini, ebeveynlik düzenini ve geleceğe ilişkin beklentilerini de yeniden değerlendirmek durumunda kalabilir. Bu nedenle boşanma sonrasında yaşanan güçlüğü yalnızca “ilişkinin bitmesine üzülmek” şeklinde değerlendirmek, sürecin psikolojik ve sosyal boyutlarını yeterince açıklamayabilir.",
+  "Boşanma ve Yas Danışmanlığı kapsamında temel amacım; yaşadığınız kayıp ve değişim deneyimini patolojikleştirmeden anlamlandırmanıza, yoğun duygusal yükünüzü düzenlemenize, işlevselliğinizi yeniden oluşturmanıza ve yaşamınızın bundan sonraki dönemini daha sağlıklı bir psikolojik ve sosyal zeminde yapılandırmanıza destek olmaktır.",
+  "Boşanma sonrasında neler yaşanabilir?",
+  "Boşanma öncesi, boşanma süreci ve boşanma sonrasında ortaya çıkan psikolojik tepkiler kişiden kişiye değişebilir. Bazı kişiler yoğun üzüntü ve özlem yaşarken, bazı kişiler öfke, rahatlama, suçluluk veya boşluk hissedebilir. Bazı kişiler ise uzun süre duygusal olarak donuklaşmış, kararsız veya “ne hissettiğini bilemez” durumda olabilir.",
+  "Klinik açıdan önemli olan, belirli bir duygunun yaşanıp yaşanmaması değil; bu duyguların yoğunluğu, sürekliliği, kişinin günlük yaşamına etkisi, işlevsellik düzeyi, baş etme kaynakları ve beraberinde ortaya çıkan psikolojik belirtilerin niteliğidir.",
+  "Boşanma sonrasında özellikle;",
+  "yoğun üzüntü ve özlem,",
+  "öfke ve kırgınlık,",
+  "suçluluk veya kendini sürekli sorgulama,",
+  "reddedilmişlik veya değersizlik hissi,",
+  "yalnızlık ve sosyal geri çekilme,",
+  "yoğun kaygı ve belirsizlik,",
+  "geleceği yeniden planlamakta zorlanma,",
+  "uyku ve iştah değişiklikleri,",
+  "dikkat ve motivasyon güçlükleri,",
+  "tekrarlayan düşünceler ve geçmişi zihinde sürekli yeniden değerlendirme,",
+  "yeni yaşam düzenine uyum sağlamakta zorlanma,",
+  "çocuklarla ilgili ebeveynlik ve iletişim problemleri",
+  "gibi güçlükler görülebilir.",
+  "Bu belirtilerin ortaya çıkması tek başına psikiyatrik bir bozukluk olduğu anlamına gelmez. Yas, kayıp ve yaşam geçişlerine verilen tepkilerin önemli bir kısmı insanın uyum sürecinin doğal parçalarıdır. Klinik değerlendirmede amaç, normal ve beklenebilir duygusal tepkileri gereksiz biçimde hastalık olarak tanımlamak değil; kişinin işlevselliğini bozan, süreklilik kazanan veya başka klinik sorunlarla birlikte ortaya çıkan durumları uygun biçimde değerlendirmektir.",
+  "Yakın bir kişinin ölümünün ardından gelişen ve belirli tanı ölçütlerini karşılayan bir durumdur. Boşanma sonrası yaşanan kayıp tepkisi doğrudan bu tanı kategorisiyle eşleştirilmemelidir. Bununla birlikte boşanma, klinik değerlendirmede depresif belirtiler, anksiyete, travma sonrası belirtiler veya uyum güçlükleri gibi başka psikolojik sorunların değerlendirilmesini gerektirebilir.",
+  "Boşanma ve Yas Danışmanlığında psikolojik olarak neye odaklanıyoruz?",
+  "Danışmanlık sürecinde yalnızca “boşanmayı atlatmaya” çalışmayız. Daha geniş bir perspektiften hareket ederiz.",
+  "Öncelikle kişinin yaşadığı kaybı ve mevcut psikolojik durumunu anlamaya çalışırız. Ardından boşanmanın kişinin düşünceleri, duyguları, davranışları, sosyal ilişkileri, ebeveynlik rolü ve yaşam koşulları üzerindeki etkilerini birlikte değerlendiririz.",
+  "Süreç içerisinde özellikle şu alanlara odaklanılabilir:",
+  "Kayıp ve yasın anlamlandırılması:\nİlişkinin sona ermesiyle birlikte ortaya çıkan duyguların tanınması, ifade edilmesi ve kişinin yaşadığı kaybın kendi yaşam öyküsü içerisindeki anlamının çalışılması.",
+  "Duygusal düzenleme:\nÖfke, kaygı, suçluluk, yoğun üzüntü, özlem ve belirsizlik gibi duyguların bastırılması yerine tanınması, düzenlenmesi ve daha işlevsel biçimde yönetilmesi.",
+  "Bilişsel süreçlerin ele alınması:\n“Ben nerede hata yaptım?”, “Bir daha kimseye güvenemem”, “Artık hayatım bitti”, “Yeterince iyi değildim” veya “Her şey benim suçum” gibi kişinin psikolojik yükünü artırabilen katı ve işlevsiz düşünce örüntülerinin değerlendirilmesi.",
+  "Kimlik ve benlik algısı:\nÖzellikle uzun süreli ilişkilerden sonra kişinin “eş”, “anne”, “baba” veya “partner” rolünün ötesinde kendi bireysel kimliğini yeniden yapılandırabilmesine destek olmak.",
+  "Yeni yaşam düzenine uyum:\nGündelik yaşamın, sosyal ilişkilerin, kişisel hedeflerin, çalışma hayatının ve geleceğe yönelik planların yeniden oluşturulması.",
+  "İlişki örüntülerinin değerlendirilmesi:\nKişinin geçmiş ilişkisinde tekrar eden iletişim, bağlanma, sınır, çatışma ve kişilerarası örüntülerin fark edilmesi; gelecekte benzer döngülerin tekrarlanma riskinin azaltılması.",
+  "Ebeveynlik ve ortak ebeveynlik:\nÇocuk sahibi olan bireylerde boşanmayı yalnızca eşler arasındaki ilişkinin sona ermesi olarak değil, aynı zamanda yeni bir ebeveynlik ve aile organizasyonu süreci olarak ele almak.",
+  "Araştırmalar, boşanma sonrasında çocukların psikolojik uyumunda yalnızca boşanmanın kendisinden ziyade ebeveynler arasındaki çatışma, iş birliği, destek ve ortak ebeveynlik biçiminin önemli bir rol oynadığını göstermektedir. Sistematik bir incelemede, yüksek düzeyde ebeveynler arası çatışmanın çocuklarda davranışsal sorunlar ile anksiyete, depresif belirtiler ve somatizasyonla ilişkili olduğu; ebeveynler arası destek ve iş birliğinin ise daha olumlu psikososyal sonuçlarla ilişkili olduğu bulunmuştur.",
+  "Bu nedenle çocuklu boşanma süreçlerinde hedef, eski eşlerin yeniden bir araya gelmesini sağlamak değil; mümkün olduğunda çocuğun psikolojik güvenliğini gözeten, daha düşük çatışmalı ve işlevsel bir ebeveynlik sistemi oluşturmaktır.",
+  "Hangi psikoterapi ve danışmanlık yaklaşımlarından yararlanıyorum?",
+  "Danışmanlık sürecinde tek bir terapi modelini bütün danışanlara aynı şekilde uygulamak yerine, kişinin ihtiyaçlarına ve klinik değerlendirmesine göre bütüncül ve uyarlanabilir bir yaklaşım kullanmaktayım.",
+  "Bilişsel Davranışçı Terapi yaklaşımı",
+  "Kabul ve Kararlılık Terapisi (ACT)",
+  "Anlatı ve Anlam Odaklı Yaklaşım",
+  "Sistemik ve Aile Odaklı Yaklaşım",
+  "Çözüm Odaklı yaklaşım",
+  "Sosyal Hizmet ve Ekolojik Yaklaşım",
+  "Danışmanlık süreci nasıl ilerliyor?",
+  "1. Klinik ve Psikososyal Değerlendirme",
+  "İlk aşamada boşanmanın hangi noktada olduğu, ilişkinin geçmişi, mevcut duygusal durum,",
+  "2. Duygusal stabilizasyon ve kriz yönetimi",
+  "3. Kayıp ve yasın çalışılması",
+  "4. Bilişsel ve davranışsal yeniden yapılanma",
+  "5. Kimlik ve yaşamın yeniden yapılandırılması",
+  "6. Çocuklu boşanmalarda ebeveynlik ve ortak ebeveynlik",
+  "7. Yeni yaşam düzeninin oluşturulması ve sürecin sonlandırılması",
+  "Danışmanlıkta temel yaklaşımım",
+  "Boşanma sonrasında amaç size “unutmayı” öğretmek değildir.",
+  "Amaç; yaşadığınız ilişkinin ve kaybın yaşamınızdaki anlamını anlayabilmeniz, geçmişin bütün ağırlığını geleceğe taşımadan ondan öğrendiklerinizi yanınıza alabilmeniz ve kendi yaşamınız üzerinde yeniden söz sahibi olabilmenizdir.",
+  "Çünkü iyileşme her zaman geçmişi geride bırakmak anlamına gelmez.",
+  "Bazen iyileşme;",
+  "“Bunun başıma gelmemiş olmasını isterdim; ancak artık hayatımı bunun etrafında kurmak zorunda değilim.”",
+  "diyebilecek psikolojik esnekliğe ulaşmaktır.",
+  "Boşanma bir hayatın bittiği nokta olabilir; ancak psikolojik olarak çalışıldığında aynı zamanda kişinin kendisiyle, ihtiyaçlarıyla, sınırlarıyla, değerleriyle ve bundan sonraki yaşamıyla yeniden ilişki kurduğu bir geçiş dönemi de olabilir.",
+  "Bu süreçte hedefim; yaşadığınız güçlüğün yalnızca yükünü değil, aynı zamanda sahip olduğunuz güçleri, kaynakları ve değişim kapasitesini de birlikte görünür hale getirmektir.",
+  "Bilimsel Dayanak",
+  "Bu danışmanlık çerçevesi; yas, psikoterapi, boşanma sonrası uyum, aile sistemleri, ortak ebeveynlik ve sosyal/psikolojik işlevsellik üzerine mevcut literatürün sentezine dayanmaktadır.",
+  "Kızıltan ve Ulusoy'un DergiPark'ta yayımlanan doküman analizinde 2001–2021 dönemindeki deneysel çalışmalarda yas müdahalelerinde kullanılan farklı psikolojik yaklaşımlar incelenmiş; yasın bireyler arasında farklılaşan bir süreç olduğu ve profesyonel müdahalenin kişinin gereksinimlerine göre ele alınması gerektiği vurgulanmıştır.",
+  "Yıldız Önal ve Köseoğlu'nun Türkiye'deki psikolojik danışmanlarla yaptığı nitel çalışmada ise yasın yalnızca ölümle sınırlı olmadığı, danışanların farklı yaşam kayıplarıyla da profesyonel destek sürecine başvurabildiği ve kültürel/toplumsal faktörlerin yas deneyiminin anlaşılmasında önemli olduğu belirtilmiştir.",
+  "Boşanma sonrası çocuklara yönelik müdahaleleri değerlendiren meta-analiz, 30 çalışmadan elde edilen 4.344 kişilik veri setinde müdahalelerin özellikle boşanmaya uyum ve benlik saygısı gibi bazı sonuçlarda yarar sağlayabildiğini, ancak çocukların genel ruh sağlığı sonuçlarında bütüncül ve büyük etkiler ortaya koymadığını bildirmiştir. Bu nedenle “tek bir müdahale herkes için etkilidir” yaklaşımı yerine, müdahalenin çocuğun ve ailenin ihtiyaçlarına göre uyarlanması daha bilimsel bir yaklaşımdır.",
+  "Yas psikoterapileri üzerine 2024 tarihli sistematik derleme ve ağ meta-analizi, farklı psikoterapi modellerinin yas belirtileri üzerinde etkili olabildiğini; özellikle bilişsel davranışçı ve üçüncü dalga BDT yaklaşımlarının depresyon, anksiyete ve travma sonrası belirtiler gibi eşlik eden sorunlarda da yararlı olabileceğini göstermiştir.",
+  "Bununla birlikte, yas ve boşanma sonrasında ortaya çıkan her üzüntü klinik bir bozukluk değildir. DSM-5-TR'de yer alan Uzamış Yas Bozukluğu ölüm sonrası kayıpla ilişkilidir ve belirli süre, belirti ve işlev kaybı ölçütlerinin karşılanmasını gerektirir. Bu nedenle boşanma sonrası yaşanan doğal yas tepkilerinin otomatik biçimde psikiyatrik bir bozukluk olarak değerlendirilmesi doğru değildir.",
+  "Önemli etik sınır: Burada belirtilen yaklaşımlar danışanın değerlendirme sonuçlarına, mesleki yetkinlik alanına ve gereksinimlerine göre kullanılabilecek kuramsal çerçevelerdir. Her ekol her danışanda veya her boşanma sürecinde aynı şekilde uygulanmaz. Gerekli durumlarda psikiyatri, klinik psikoloji, hukuk, çocuk ve aile hizmetleri gibi ilgili profesyonel alanlara yönlendirme yapılması sürecin önemli bir parçasıdır."
+]
+  },
+  "bekar-danismanligi": {
+    no: "05", eyebrow: "BEKAR DANIŞMANLIĞI", title: "Bekar", accent: "Danışmanlığı", icon: "users",
+    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1800&q=88",
+    intro: "İlişki durumundan bağımsız psikolojik iyi oluş, özdeğer, ilişki örüntüleri ve sağlıklı sınırlar üzerine çalışma alanı.",
+    paragraphs: [
+  "Bekâr olmak tek başına psikolojik bir sorun, eksiklik veya tedavi edilmesi gereken bir durum değildir.",
+  "Kişinin yaşamında romantik bir ilişkinin bulunmaması; kimi zaman bilinçli ve tercih edilen bir yaşam biçimi, kimi zaman yaşamın belirli bir dönemine ait geçici bir durum, kimi zaman ise kişinin istemediği halde içerisinde bulunduğu ve psikolojik olarak zorlandığı bir deneyim olabilir.",
+  "Bu nedenle Bekar Danışmanlığı, kişiyi “bir ilişkiye sahip olmaya” yönlendiren bir yaklaşım değildir. Temel amaç; kişinin ilişki durumundan bağımsız olarak psikolojik iyi oluşunu güçlendirmesi, kendisini ve ilişki örüntülerini daha iyi tanıması, sağlıklı kişilerarası sınırlar geliştirmesi ve kendi değerleri doğrultusunda daha işlevsel bir yaşam kurabilmesine destek olmaktır.",
+  "Bekârlık deneyiminin kişinin yaşam doyumunu ve psikolojik iyi oluşunu nasıl etkilediği; sosyal destek, kişisel özellikler, ilişki beklentileri, yalnızlık, sosyal bağlar ve kişinin bekârlığı nasıl anlamlandırdığı gibi pek çok faktöre bağlı olarak değişebilmektedir.",
+  "Bu nedenle danışmanlık sürecinde soru yalnızca:",
+  "“Neden bir ilişkiniz yok?”",
+  "değildir.",
+  "Daha kapsamlı sorular sorarız:",
+  "“Bekârlık sizin için ne ifade ediyor?”",
+  "“Yalnızlık ile tek başına olmak arasındaki farkı nasıl yaşıyorsunuz?”",
+  "“Bir ilişkiye ne kadar ihtiyaç duyduğunuzu düşünüyorsunuz ve bu ihtiyacın ne kadarı sizin gerçek ihtiyaçlarınızdan, ne kadarı sosyal beklentilerden kaynaklanıyor?”",
+  "“İlişkilerinizde tekrar eden bir örüntü var mı?”",
+  "“Yakınlaşmak istediğiniz halde geri çekiliyor musunuz, yoksa yakınlık oluştuğunda kaygınız mı artıyor?”",
+  "“Bir ilişki içerisinde kendinizi kaybetme, terk edilme veya reddedilme korkusu yaşıyor musunuz?”",
+  "Bu sorular üzerinden kişinin yalnızca ilişki durumunu değil, benlik algısını, kişilerarası işlevselliğini ve psikolojik ihtiyaçlarını anlamaya çalışırız.",
+  "Bekar Danışmanlığında hangi konular ele alınabilir?",
+  "Bekârlık deneyiminin danışmanlık ihtiyacına dönüşmesi birbirinden oldukça farklı nedenlerle gerçekleşebilir.",
+  "Bazı bireyler uzun süreli yalnızlıktan, sosyal çevrelerinin daralmasından veya yakın ilişki kuramamaktan dolayı zorlanabilir.",
+  "Bazı bireyler geçmiş ilişkilerinde tekrar tekrar benzer sorunları yaşadıklarını fark edebilir.",
+  "Bazı kişiler ise bir ilişki istemelerine rağmen yoğun reddedilme korkusu, sosyal kaygı, özgüven problemleri veya kişilerarası iletişim güçlükleri nedeniyle ilişki başlatmakta zorlanabilir.",
+  "Bazıları ilişki başladığında terk edilme kaygısı yaşayabilir; bazıları ise yakınlık arttıkça geri çekilebilir.",
+  "Bu nedenle danışmanlık sürecinde gerektiğinde;",
+  "yalnızlık ve sosyal izolasyon,",
+  "ilişki kurma ve sürdürme güçlükleri,",
+  "sosyal kaygı,",
+  "reddedilme duyarlılığı,",
+  "düşük özdeğer ve özsaygı,",
+  "kendini başkalarıyla kıyaslama,",
+  "“herkesin hayatında biri var, benim neden yok?” düşünceleri,",
+  "yaş ve evlilik baskısı,",
+  "aile ve sosyal çevrenin ilişki konusunda oluşturduğu baskı,",
+  "geçmiş ilişkilerin etkileri,",
+  "aldatılma veya terk edilme deneyimleri,",
+  "güven problemi,",
+  "duygusal bağımlılık,",
+  "aşırı bağlanma veya ilişkiden kaçınma,",
+  "sınır koyma güçlükleri,",
+  "sağlıklı olmayan ilişkilere yönelme,",
+  "ilişki seçimlerinde tekrar eden örüntüler,",
+  "mükemmeliyetçi partner beklentileri,",
+  "sürekli reddedilme veya beğenilmeme düşünceleri,",
+  "ilişki konusunda umutsuzluk,",
+  "sağlıklı iletişim ve ihtiyaç ifade etme becerileri",
+  "gibi alanlar çalışılabilir.",
+  "Buradaki temel yaklaşım, “sizi mutlaka bir ilişkiye sokmak” değil; neden belirli ilişki örüntülerinin ortaya çıktığını anlamak ve kişinin romantik ilişkilerle kurduğu ilişkiyi daha sağlıklı hale getirmektir.",
+  "Bekârlık ve yalnızlık aynı şey değildir",
+  "Psikolojik açıdan önemli ayrımlardan biri bekârlık ile yalnızlığın birbirine eşit kabul edilmemesidir.",
+  "Bir insan romantik ilişkisi olmadan da güçlü sosyal bağlara, arkadaşlıklara, aile ilişkilerine, mesleki aidiyete ve anlamlı bir yaşam alanına sahip olabilir.",
+  "Bunun tersine kişi romantik bir ilişki içerisinde olduğu halde yoğun yalnızlık yaşayabilir.",
+  "Türkiye'de yayımlanan nitel bir çalışmada 15 bekâr ve 15 evli bireyle yapılan görüşmelerde, bekâr katılımcıların yalnızlığı daha yoğun yaşadıkları ve bazı katılımcıların yalnızlıkla baş etmek için yalnızlığı besleyebilecek olumsuz başa çıkma biçimleri geliştirdikleri bildirilmiştir.",
+  "“Artık birini bulmalıyım” düşüncesi neden önemli?",
+  "Bazı kişiler için bekârlığın yarattığı temel güçlük yalnız kalmak değil, bekâr kalma korkusudur.",
+  "Daha güncel araştırmalarda da ilişkiyi “gerçek mutluluğun zorunlu koşulu” olarak gören düşüncelerin daha yüksek bekâr kalma korkusuyla ilişkili olduğu; bekâr kalma korkusunun ise günlük yaşam doyumunun daha düşük olmasıyla bağlantılı olduğu bulunmuştur.",
+  "Bu nedenle danışmanlık sürecinde bazen asıl çalışılması gereken konu “nasıl sevgili bulabilirim?” sorusu değil;",
+  "“Neden yalnız kalmayı bu kadar tehdit edici algılıyorum?” sorusudur.",
+  "Çünkü kişi yalnız kalmaktan yoğun biçimde korktuğunda;",
+  "kendisine uygun olmayan ilişkilere razı olabilir,",
+  "kırmızı bayrakları görmezden gelebilir,",
+  "sınırlarını korumakta zorlanabilir,",
+  "terk edilme ihtimali karşısında kendi ihtiyaçlarından vazgeçebilir",
+  "veya ilişkinin sona ermesini önlemek için kendisini aşırı biçimde değiştirmeye çalışabilir.",
+  "Bekâr kalmaktan korkan kişilerin eski partnerlerine yönelik özlem ve yeniden ilişki kurma girişimlerinin de daha yüksek olabildiğini gösteren çalışmalar bulunmaktadır.",
+  "Dolayısıyla danışmanlıkta amaç yalnızca ilişki kurma ihtimalini artırmak değil, kişinin ilişki içerisinde kendi psikolojik bütünlüğünü koruyabilmesini sağlamaktır.",
+  "Hangi psikoterapi yaklaşımlarından yararlanıyorum?",
+  "Bekar Danışmanlığı tek bir terapi ekolüne bağlı standart bir protokol olarak uygulanmaz.",
+  "Danışanın yaşadığı güçlük, klinik değerlendirme, hedefleri ve mevcut psikososyal koşulları doğrultusunda farklı kuramsal yaklaşımların kanıta dayalı tekniklerinden yararlanılabilir.",
+  "Şema Odaklı Yaklaşım",
+  "Bazı ilişki problemleri yalnızca bugünkü düşüncelerle açıklanamayabilir.",
+  "Örneğin kişi tekrar tekrar;",
+  "terk edilme korkusu yaşayan,",
+  "kendisini değersiz hisseden,",
+  "duygusal ihtiyaçlarını bastıran,",
+  "partnerlerini idealize eden,",
+  "aşırı fedakârlık yapan,",
+  "hayır diyemeyen,",
+  "yakınlık kurulduğunda geri çekilen",
+  "veya sürekli ulaşılması zor kişilere yönelen bir ilişki örüntüsü gösterebilir.",
+  "Bu durumda erken dönem yaşantıların ve kişinin geliştirdiği temel şemaların bugünkü ilişkilerinde nasıl tekrarlandığı değerlendirilebilir.",
+  "Buradaki amaç çocukluk deneyimlerini suçlayıcı biçimde yorumlamak değil; kişinin bugünkü davranışlarının altında çalışan daha derin ilişki beklentilerini ve ihtiyaçlarını anlamaktır.",
+  "Bağlanma Temelli Yaklaşım",
+  "Yetişkin romantik ilişkilerinde bağlanma örüntüleri; yakınlık, güven, ayrılma, bağımsızlık ve duygusal ihtiyaçların ifade edilmesiyle ilişkili olabilir.",
+  "Bağlanma temelli psikoterapi literatürünün gözden geçirmeleri; yetişkinlerle çalışırken içsel çalışma modellerinin ele alınması, terapötik ilişkinin güvenli bir temel olarak kullanılması, ilişki deneyimlerinin işlenmesi ve farklı bağlanma örüntülerinin anlaşılmasının klinik açıdan yararlı çerçeveler sunduğunu belirtmektedir.",
+  "Geniş kapsamlı bir meta-analizde 224 çalışma ve yaklaşık 79.700 kişinin verileri incelenmiş; daha yüksek bağlanma kaygısı ve kaçınmasının depresyon, anksiyete ve yalnızlık gibi olumsuz ruhsal sonuçlarla ilişkili olduğu, buna karşılık yaşam doyumu ve özsaygıyla daha olumsuz ilişkiler gösterdiği bulunmuştur. Bağlanma kaygısının negatif ruh sağlığı göstergeleriyle ilişkisi kaçınmaya kıyasla daha güçlü bulunmuştur.",
+  "Türkiye'deki çalışmalar da romantik ilişkilerde bağlanma örüntülerinin ilişki deneyimleriyle bağlantısını incelemektedir; ancak bu tür ilişkisel çalışmaların nedensellik kanıtlamadığı ve “bağlanma stilinin kader olmadığı” özellikle dikkate alınmalıdır.",
+  "Bu nedenle danışmanlıkta kişiye “Sen kaygılı bağlanıyorsun” şeklinde sabit bir kimlik vermek yerine, “Yakın ilişkilerde hangi ihtiyaç ve savunma örüntüleri tekrar ediyor?” sorusuna odaklanmak daha klinik olarak uygun bir yaklaşımdır.",
+  "Kabul ve Kararlılık Terapisi",
+  "Kişilerarası Terapi ve Kişilerarası Beceri Çalışmaları",
+  "Bazı danışanların temel güçlüğü “kendilik algısı”ndan çok kişilerarası ilişkilerin kurulması ve sürdürülmesi olabilir.",
+  "Bu durumda;",
+  "iletişim başlatma,",
+  "duygusal ihtiyaç ifade etme,",
+  "çatışma çözme,",
+  "sınır koyma,",
+  "yakınlık kurma,",
+  "sosyal destek geliştirme",
+  "ve kişilerarası rollerle ilişkili güçlükler ele alınmaktadır.",
+  "Özellikle sosyal izolasyon ve kişilerarası işlevsellikte bozulma bulunduğunda danışmanlık yalnızca romantik ilişkiye odaklanmamalıdır.",
+  "Çünkü psikolojik olarak güçlü bir ilişki ağı yalnızca romantik partnerden oluşmaz.",
+  "Çözüm Odaklı ve Güçler Perspektifi",
+  "Sosyal hizmet perspektifinde birey yalnızca sorunlarıyla değil, sahip olduğu kaynaklar ve güçleriyle birlikte değerlendirilir.",
+  "Bu nedenle danışmanlıkta;",
+  "“Hayatınızda şu anda size iyi gelen ilişkiler hangileri?”",
+  "“Daha önce hangi sosyal durumlarda kendinizi yeterli hissettiniz?”",
+  "“Şu an sahip olduğunuz hangi kaynakları daha aktif kullanabilirsiniz?”",
+  "“Nasıl bir yaşam kurmak istiyorsunuz?”",
+  "gibi sorularla kişinin mevcut güçleri görünür hale getirilebilir.",
+  "Bu yaklaşım, kişiyi “ilişki bulması gereken bir problem” olarak değil, kendi yaşamının aktif öznesi olarak ele alır.",
+  "Toplumun evlilik konusundaki beklentileri, aile baskısı, sosyal karşılaştırmalar, ekonomik koşullar, çalışma hayatı, yaş normları, sosyal çevrenin genişliği, yaşam alanı ve sosyal destek sistemleri kişinin bekârlık deneyimini etkileyebilir. Bu nedenle danışmanlık sürecinde yalnızca bireyin iç dünyasına değil, kişi-çevre etkileşimine de bakılır.",
+  "Örneğin kişinin sosyal çevresinin son yıllarda daralması, farklı bir şehre taşınması, çalışma koşullarının sosyal ilişkileri azaltması veya ailesinin yoğun evlilik baskısı oluşturması psikolojik değerlendirmede göz önünde bulundurulabilir.",
+  "Danışmanlık Süreci Nasıl İlerliyor?",
+  "1. Ücretsiz Ön Görüşme",
+  "Ön görüşmelerde kişinin yaşam öyküsü, mevcut sosyal çevresi, ilişki geçmişi, ilişki beklentileri, yalnızlık deneyimi, psikolojik belirtileri ve danışmanlıktan beklentileri değerlendirilir.",
+  "Gerektiğinde standart psikolojik değerlendirme araçlarından yararlanılabilir.",
+  "2. Sorunun Formülasyonu",
+  "Kişinin yaşadığı güçlüğün;",
+  "yalnızlık,",
+  "sosyal kaygı,",
+  "düşük özdeğer,",
+  "geçmiş ilişki deneyimleri,",
+  "bağlanma örüntüleri,",
+  "kaçınma,",
+  "reddedilme hassasiyeti,",
+  "aile baskısı,",
+  "sosyal çevre eksikliği,",
+  "ilişki beklentilerindeki katılık",
+  "gibi hangi faktörlerle bağlantılı olduğu birlikte değerlendirilir.",
+  "Böylece genel bir “ilişki problemi” yerine kişiye özgü bir psikososyal formülasyon oluşturulur.",
+  "3. Duygusal ve Bilişsel Süreçlerin Çalışılması",
+  "Bu aşamada kişinin yalnızlık, değersizlik, kaygı, öfke, kıyaslama veya umutsuzluk gibi duyguları ele alınmaktadır.",
+  "4. İlişki Örüntülerinin İncelenmesi",
+  "5. Özdeğer ve Psikolojik Bağımsızlığın Güçlendirilmesi",
+  "Danışmanlık sürecinin önemli hedeflerinden biri kişinin kendi değerini ilişki durumundan bağımsız biçimde deneyimleyebilmesidir.",
+  "6. Sosyal ve Davranışsal Alanın Güçlendirilmesi",
+  "7. Sağlıklı İlişki Kurma ve Sınır Geliştirme",
+  "8. Sürecin Değerlendirilmesi ve Sürdürülmesi",
+  "Sürecin sonunda kişinin yalnızca danışmanlık sırasında değil, günlük yaşamda kullanabileceği psikolojik beceriler güçlendirilir.",
+  "Hedef danışana sürekli olarak “ne yapması gerektiğini” söylemek değil; kendi kararlarını daha sağlıklı değerlendirebilecek psikolojik kapasiteyi geliştirmesine yardımcı olmaktır.",
+  "Kimler Bekar Danışmanlığından Yararlanabilir?",
+  "Bekâr olduğu için kendisini “problemli” hissedenlerin değil; bekârlık deneyimiyle ilişkili bir konuda psikolojik veya psikososyal destek ihtiyacı hisseden yetişkinlerin başvurabileceği bir çalışma alanıdır.",
+  "Örneğin;",
+  "“İlişki kurmak istiyorum ama neden sürekli aynı döngüye giriyorum?”",
+  "“İnsanlarla yakınlaşmakta zorlanıyorum.”",
+  "“Bir ilişki istiyorum ama reddedilmekten çok korkuyorum.”",
+  "“Yalnız kalmaktan korktuğum için yanlış ilişkilerde kalıyorum.”",
+  "“İlişkim yokken kendimi değersiz hissediyorum.”",
+  "“Ailem sürekli evlilik konusunda baskı yapıyor.”",
+  "“İnsanlarla iletişim kuruyorum ama duygusal yakınlık geliştiremiyorum.”",
+  "“Geçmiş ilişkim bittikten sonra kendimi toparlayamadım.”",
+  "“Sürekli başkalarının ilişkileriyle kendi hayatımı karşılaştırıyorum.”",
+  "gibi meseleler danışmanlık sürecinin çalışma alanına girmektedir.",
+  "Etik Not: ‘’Bekârlığı bir klinik problem gibi sunmak bilimsel değildir.’’"
+]
+  }
+};
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -317,6 +649,10 @@ function App() {
     return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
   });
   const [blogContent, setBlogContent] = useState(defaultBlogContent);
+  const [serviceDetailSlug, setServiceDetailSlug] = useState(() => {
+    const hash = window.location.hash;
+    return hash.startsWith("#/hizmetler/") ? hash.replace("#/hizmetler/", "") : "";
+  });
 
   const defaultHomeContent = {
     eyebrow: "ÇİFT VE AİLE DANIŞMANI",
@@ -512,7 +848,7 @@ function App() {
   const [page, setPage] = useState(
     window.location.hash === "#/hakkimda"
       ? "about"
-      : window.location.hash === "#/hizmetler"
+      : window.location.hash === "#/hizmetler" || window.location.hash.startsWith("#/hizmetler/")
       ? "services"
       : window.location.hash === "#/surec"
       ? "process"
@@ -741,7 +1077,7 @@ function App() {
       const nextPage =
         window.location.hash === "#/hakkimda"
           ? "about"
-          : window.location.hash === "#/hizmetler"
+          : window.location.hash === "#/hizmetler" || window.location.hash.startsWith("#/hizmetler/")
           ? "services"
           : window.location.hash === "#/surec"
           ? "process"
@@ -766,6 +1102,11 @@ function App() {
       setBlogSlug(
         window.location.hash.startsWith("#/blog/")
           ? window.location.hash.replace("#/blog/", "")
+          : ""
+      );
+      setServiceDetailSlug(
+        window.location.hash.startsWith("#/hizmetler/")
+          ? window.location.hash.replace("#/hizmetler/", "")
           : ""
       );
       setMenuOpen(false);
@@ -937,7 +1278,7 @@ function App() {
         {page === "about" ? (
           <AboutDetailPage content={aboutContent} />
         ) : page === "services" ? (
-          <ServicesDetailPage content={servicesContent} />
+          serviceDetailSlug ? <ServiceArticlePage slug={serviceDetailSlug} /> : <ServicesDetailPage content={servicesContent} />
         ) : page === "process" ? (
           <ProcessDetailPage content={processContent} />
         ) : page === "content" ? (
@@ -4463,134 +4804,176 @@ function ProcessDetailPage({ content }) {
 function ServicesDetailPage({ content }) {
   const serviceCards = [
     {
-      no: "01",
-      icon: "user",
-      title: content.individualTitle,
+      no: "01", icon: "user", slug: "bireysel-terapi",
+      title: "Bireysel Terapi",
       short: content.individualShort,
-      items: content.individualItems || [],
-      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=88",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=88",
+      meta: "8 çalışma alanı",
     },
     {
-      no: "02",
-      icon: "users",
-      title: content.familyTitle,
-      short: content.familyShort,
-      items: content.familyItems || [],
-      image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=88",
-    },
-    {
-      no: "03",
-      icon: "heart",
-      title: content.coupleTitle,
+      no: "02", icon: "heart", slug: "cift-terapisi",
+      title: "Çift Terapisi",
       short: content.coupleShort,
-      items: content.coupleItems || [],
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=88",
+      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=88",
+      meta: "8 detaylı başlık",
     },
     {
-      no: "04",
-      icon: "shield",
-      title: content.psychosocialTitle,
+      no: "03", icon: "shield", slug: "psikososyal-destek",
+      title: "Psikososyal Destek",
       short: content.psychosocialShort,
-      items: content.psychosocialItems || [],
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=88",
+      image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1400&q=88",
+      meta: "8 destek alanı",
+    },
+    {
+      no: "04", icon: "compass", slug: "bosanma-ve-yas-danismanligi",
+      title: "Boşanma ve Yas Danışmanlığı",
+      short: "Boşanma, kayıp ve yaşamın yeniden yapılandırıldığı dönemlerde psikolojik ve sosyal uyuma odaklanan bütüncül danışmanlık.",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=88",
+      meta: "Kayıp · uyum · yeniden yapılanma",
+    },
+    {
+      no: "05", icon: "users", slug: "bekar-danismanligi",
+      title: "Bekar Danışmanlığı",
+      short: "İlişki durumundan bağımsız psikolojik iyi oluş, özdeğer, ilişki örüntüleri, sosyal bağlar ve sağlıklı sınırlar üzerine çalışma.",
+      image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1400&q=88",
+      meta: "Özdeğer · ilişkiler · sınırlar",
     },
   ];
 
   return (
-    <main className="svc52">
-      <section className="svc52Hero">
-        <img
-          loading="lazy" decoding="async" className="svc52Hero__image"
-          src={servicesHeroRoom}
-          alt="Sakin ve profesyonel danışmanlık görüşme ortamı"
-        />
-        <div className="svc52Hero__shade" />
-
-        <a className="svc52Back" href="#/">
-          <span>←</span>
-          Ana Sayfaya Dön
-        </a>
-
-        <div className="svc52Hero__copy">
-          <span className="svc52Eyebrow">{content.heroEyebrow}</span>
-          <h1>
-            {content.heroTitle}
-            <br />
-            <strong>{content.heroAccent}</strong>
-          </h1>
-          <i />
+    <main className="svc105">
+      <section className="svc105Hero">
+        <img className="svc105Hero__image" src={servicesHeroRoom} alt="Sakin ve profesyonel danışmanlık görüşme ortamı" />
+        <div className="svc105Hero__shade" />
+        <a className="svc105Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
+        <div className="svc105Hero__copy">
+          <span>{content.heroEyebrow}</span>
+          <h1>{content.heroTitle}<strong>{content.heroAccent}</strong></h1>
           <p>{content.heroDescription}</p>
+          <a href="#svc105Areas">Çalışma alanlarını keşfedin <Icon name="arrow" size={16}/></a>
         </div>
+        <div className="svc105Hero__index"><b>05</b><span>PROFESYONEL<br/>ÇALIŞMA ALANI</span></div>
       </section>
 
-      <section className="svc52Quick">
-        <div className="svc52SectionTitle">
+      <section className="svc105Intro" id="svc105Areas">
+        <div>
           <span>{content.quickTitle}</span>
-          <h2>İhtiyacınıza uygun desteği birlikte belirleyelim.</h2>
-          <p>{content.quickDescription}</p>
+          <h2>Her konu için ayrı,<br/><strong>derinlemesine bir alan.</strong></h2>
         </div>
-
-        <div className="svc73Grid">
-          {serviceCards.map((service) => (
-            <details className="svc73Card" key={service.no}>
-              <summary>
-                <div className="svc103CardVisual">
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src={service.image}
-                    alt=""
-                    aria-hidden="true"
-                    onError={(e)=>{e.currentTarget.style.display="none"}}
-                  />
-                  <span>{service.no}</span>
-                </div>
-
-                <div className="svc73Card__top">
-                  <span className="svc73Card__no">{service.no}</span>
-                  <div className="svc73Card__icon">
-                    <Icon name={service.icon} size={27} />
-                  </div>
-                </div>
-
-                <h3>{service.title}</h3>
-                <p>{service.short}</p>
-
-                <div className="svc73Card__action">
-                  <span>Detaylı Bilgi</span>
-                  <b>+</b>
-                </div>
-              </summary>
-
-              <div className="svc73Card__details">
-                <ul>
-                  {service.items.map((item, index) => (
-                    <li key={`${service.no}-${index}`}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </details>
-          ))}
-        </div>
+        <p>{content.quickDescription} Artık her çalışma alanı kendi detay sayfasında, kapsamlı biçimde incelenebilir.</p>
       </section>
 
-      <section className="svc52Trust">
-        <div><Icon name="shield" size={22} /></div>
-        <p>
-          <strong>Gizlilik ve etik yaklaşım</strong>
-          <span>
-            Görüşmeler mesleki sınırlar, gizlilik ve kişiye özgü değerlendirme
-            ilkeleri çerçevesinde yürütülür.
-          </span>
-        </p>
+      <section className="svc105Grid">
+        {serviceCards.map((service) => (
+          <a className="svc105Card" href={`#/hizmetler/${service.slug}`} key={service.slug}>
+            <div className="svc105Card__visual">
+              <img loading="lazy" decoding="async" src={service.image} alt="" aria-hidden="true" onError={(e)=>{e.currentTarget.style.display="none"}} />
+              <div className="svc105Card__shade" />
+              <span className="svc105Card__no">{service.no}</span>
+              <div className="svc105Card__icon"><Icon name={service.icon} size={22}/></div>
+            </div>
+            <div className="svc105Card__body">
+              <span>{service.meta}</span>
+              <h3>{service.title}</h3>
+              <p>{service.short}</p>
+              <div>Detaylı Bilgi <Icon name="arrow" size={15}/></div>
+            </div>
+          </a>
+        ))}
+      </section>
+
+      <section className="svc105Trust">
+        <div><Icon name="shield" size={24}/></div>
+        <div><span>ETİK & GİZLİLİK</span><h3>Her süreç kişiye özgü değerlendirilir.</h3></div>
+        <p>Görüşmeler mesleki sınırlar, gizlilik ve kişiye özgü değerlendirme ilkeleri çerçevesinde yürütülür.</p>
       </section>
 
       <section className="svc103Next reveal">
-        <div>
-          <span>SONRAKİ ADIM</span>
-          <h2>Danışmanlık sürecinin nasıl ilerlediğini görün.</h2>
-        </div>
+        <div><span>SONRAKİ ADIM</span><h2>Danışmanlık sürecinin nasıl ilerlediğini görün.</h2></div>
         <a href="#/surec">Süreci İnceleyin <Icon name="arrow" size={16}/></a>
+      </section>
+    </main>
+  );
+}
+
+function serviceParagraphKind(text) {
+  if (/^\d{1,2}\.\s/.test(text)) return "numbered";
+  if (/^\d+\.\s/.test(text)) return "numbered";
+  if (text.length < 95 && /[?:]$/.test(text)) return "heading";
+  const exactHeadings = [
+    "Kayıp ve yasın anlamlandırılması:", "Duygusal düzenleme:", "Bilişsel süreçlerin ele alınması:",
+    "Kimlik ve benlik algısı:", "Yeni yaşam düzenine uyum:", "İlişki örüntülerinin değerlendirilmesi:",
+    "Ebeveynlik ve ortak ebeveynlik:", "Bilişsel Davranışçı Terapi yaklaşımı", "Kabul ve Kararlılık Terapisi (ACT)",
+    "Anlatı ve Anlam Odaklı Yaklaşım", "Sistemik ve Aile Odaklı Yaklaşım", "Çözüm Odaklı yaklaşım",
+    "Sosyal Hizmet ve Ekolojik Yaklaşım", "Şema Odaklı Yaklaşım", "Bağlanma Temelli Yaklaşım",
+    "Kabul ve Kararlılık Terapisi", "Kişilerarası Terapi ve Kişilerarası Beceri Çalışmaları",
+    "Çözüm Odaklı ve Güçler Perspektifi"
+  ];
+  if (exactHeadings.includes(text)) return "heading";
+  if (text.length < 82 && !/[.!?]$/.test(text)) return "heading";
+  return "body";
+}
+
+function ServiceArticlePage({ slug }) {
+  const service = detailedServicePages[slug];
+  if (!service) return <ServicesDetailPage content={defaultServicesContent} />;
+
+  const sections = [];
+  let current = { title: "", paragraphs: [] };
+  service.paragraphs.forEach((paragraph) => {
+    const kind = serviceParagraphKind(paragraph);
+    if (kind === "numbered" || kind === "heading") {
+      if (current.title || current.paragraphs.length) sections.push(current);
+      current = { title: paragraph, paragraphs: [] };
+    } else {
+      current.paragraphs.push(paragraph);
+    }
+  });
+  if (current.title || current.paragraphs.length) sections.push(current);
+
+  return (
+    <main className="svc105Article">
+      <section className="svc105ArticleHero">
+        <div className="svc105ArticleHero__image">
+          <img src={service.image} alt="" aria-hidden="true" onError={(e)=>{e.currentTarget.style.display="none"}} />
+          <div />
+        </div>
+        <a className="svc105ArticleBack" href="#/hizmetler">← Hizmetlere Dön</a>
+        <div className="svc105ArticleHero__copy">
+          <span>{service.eyebrow}</span>
+          <h1>{service.title}<strong>{service.accent}</strong></h1>
+          <p>{service.intro}</p>
+        </div>
+        <div className="svc105ArticleHero__no">{service.no}</div>
+      </section>
+
+      <section className="svc105ArticleLayout">
+        <aside className="svc105ArticleNav">
+          <span>BU SAYFADA</span>
+          {sections.slice(0, 10).map((section, index) => (
+            section.title ? <a key={index} href={`#svc105-section-${index}`}><b>{String(index + 1).padStart(2,"0")}</b>{section.title.replace(/^\d{1,2}\.\s*/, "")}</a> : null
+          ))}
+          <a className="svc105ArticleNav__cta" href="#/randevu">Ücretsiz Ön Görüşme <Icon name="arrow" size={14}/></a>
+        </aside>
+
+        <article className="svc105ArticleBody">
+          <div className="svc105ArticleLead">
+            <span>DETAYLI BİLGİ</span>
+            <p>Bu sayfadaki içerik, ilgili çalışma alanının kapsamını ve danışmanlık sürecinde ele alınabilecek konuları ayrıntılı biçimde açıklamaktadır.</p>
+          </div>
+          {sections.map((section, index) => (
+            <section className="svc105ArticleSection" id={`svc105-section-${index}`} key={index}>
+              {section.title && <h2>{section.title}</h2>}
+              {section.paragraphs.map((paragraph, pIndex) => <p key={pIndex}>{paragraph}</p>)}
+            </section>
+          ))}
+          <div className="svc105ArticleEnd">
+            <span>SONRAKİ ADIM</span>
+            <h2>Size uygun süreci birlikte değerlendirelim.</h2>
+            <p>İlk görüşmede ihtiyaçlarınız ve danışmanlık sürecine ilişkin beklentileriniz birlikte ele alınır.</p>
+            <a href="#/randevu">Ücretsiz Ön Görüşme <Icon name="arrow" size={16}/></a>
+          </div>
+        </article>
       </section>
     </main>
   );
@@ -15361,6 +15744,39 @@ img{
   .homeApproachEditorial__principles strong{font-size:16px}
   .homeApproachEditorial__principles p{font-size:9.5px}
 }
+
+/* STEP105 — MAJOR SERVICES REDESIGN + WORD DETAIL PAGES */
+.svc105,.svc105Article{background:#f6f1e9;color:#25282c;min-height:100vh}
+.svc105Hero{height:min(760px,78vh);min-height:620px;position:relative;overflow:hidden;background:#17130f}
+.svc105Hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.62) contrast(.98);transform:scale(1.01)}
+.svc105Hero__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,14,11,.88) 0%,rgba(17,14,11,.64) 42%,rgba(17,14,11,.15) 75%),linear-gradient(0deg,rgba(15,12,9,.4),transparent 50%)}
+.svc105Back,.svc105ArticleBack{position:absolute;top:42px;left:6%;z-index:3;color:#fff;font-size:10px;letter-spacing:.05em;display:flex;gap:10px;align-items:center;opacity:.82}
+.svc105Hero__copy{position:absolute;z-index:2;left:8%;top:50%;transform:translateY(-45%);max-width:720px;color:#fff}
+.svc105Hero__copy>span,.svc105ArticleHero__copy>span{font-size:9px;letter-spacing:.24em;font-weight:800;color:#d6aa6a}
+.svc105Hero__copy h1{margin:17px 0 23px;font:500 clamp(58px,7vw,104px)/.87 Georgia,serif;letter-spacing:-.055em}
+.svc105Hero__copy h1 strong{display:block;color:#d0a064;font-weight:500}
+.svc105Hero__copy p{max-width:590px;font-size:13px;line-height:1.8;color:rgba(255,255,255,.72)}
+.svc105Hero__copy>a{margin-top:27px;display:inline-flex;gap:10px;align-items:center;padding-bottom:6px;border-bottom:1px solid #d0a064;color:#fff;font-size:10px;font-weight:700}
+.svc105Hero__index{position:absolute;right:6%;bottom:42px;z-index:2;color:#fff;display:flex;align-items:center;gap:15px}
+.svc105Hero__index b{font:500 42px Georgia,serif;color:#d0a064}.svc105Hero__index span{font-size:8px;line-height:1.5;letter-spacing:.14em}
+.svc105Intro{width:min(1400px,88%);margin:0 auto;padding:92px 0 62px;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:end;border-bottom:1px solid #ddd1c1}
+.svc105Intro span{font-size:9px;color:#a67536;font-weight:800;letter-spacing:.17em}.svc105Intro h2{margin-top:13px;font:500 clamp(40px,4vw,66px)/.98 Georgia,serif;letter-spacing:-.04em}.svc105Intro h2 strong{color:#b57d37;font-weight:500}.svc105Intro>p{font-size:12px;line-height:1.85;color:#74777b;max-width:520px}
+.svc105Grid{width:min(1400px,88%);margin:48px auto 82px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc105Card{display:grid;grid-template-columns:42% 58%;min-height:350px;background:#fbf8f3;border:1px solid #ded3c5;border-radius:20px;overflow:hidden;box-shadow:0 18px 45px rgba(65,47,29,.055);transition:transform .32s ease,box-shadow .32s ease}
+.svc105Card:hover{transform:translateY(-5px);box-shadow:0 26px 58px rgba(65,47,29,.1)}
+.svc105Card__visual{position:relative;min-height:350px;overflow:hidden;background:#d8cec2}.svc105Card__visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.7);transition:transform .6s ease}.svc105Card:hover img{transform:scale(1.035)}
+.svc105Card__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.04),rgba(10,8,6,.5))}.svc105Card__no{position:absolute;left:18px;bottom:17px;color:#fff;font:500 28px Georgia,serif}.svc105Card__icon{position:absolute;right:16px;top:16px;width:42px;height:42px;display:grid;place-items:center;background:rgba(250,245,237,.92);border-radius:50%;color:#9d6b30}
+.svc105Card__body{padding:38px 34px;display:flex;flex-direction:column;justify-content:center}.svc105Card__body>span{font-size:8px;color:#a67536;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.svc105Card__body h3{margin:13px 0 15px;font:500 30px/1.05 Georgia,serif}.svc105Card__body p{font-size:11px;line-height:1.75;color:#777b80}.svc105Card__body>div{margin-top:26px;display:flex;align-items:center;gap:9px;color:#9c6b31;font-size:9px;font-weight:800;letter-spacing:.04em}
+.svc105Trust{width:min(1400px,88%);margin:0 auto 76px;padding:38px 42px;display:grid;grid-template-columns:55px .8fr 1fr;gap:24px;align-items:center;background:#1c2529;color:#fff;border-radius:18px}.svc105Trust>div:first-child{width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(208,160,100,.5);border-radius:50%;color:#d0a064}.svc105Trust span{font-size:8px;letter-spacing:.16em;color:#d0a064}.svc105Trust h3{font:500 22px Georgia,serif;margin-top:5px}.svc105Trust p{font-size:10px;line-height:1.7;color:#aeb5b8}
+
+.svc105ArticleHero{height:650px;position:relative;overflow:hidden;background:#17130f}.svc105ArticleHero__image{position:absolute;inset:0}.svc105ArticleHero__image img{width:100%;height:100%;object-fit:cover;filter:saturate(.58) contrast(.96)}.svc105ArticleHero__image>div{position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,13,10,.9),rgba(16,13,10,.57) 52%,rgba(16,13,10,.2)),linear-gradient(0deg,rgba(16,13,10,.45),transparent 60%)}
+.svc105ArticleHero__copy{position:absolute;left:8%;top:50%;transform:translateY(-40%);z-index:2;color:#fff;max-width:760px}.svc105ArticleHero__copy h1{margin:15px 0 21px;font:500 clamp(54px,6vw,88px)/.91 Georgia,serif;letter-spacing:-.05em}.svc105ArticleHero__copy h1 strong{display:block;color:#d0a064;font-weight:500}.svc105ArticleHero__copy p{max-width:620px;color:rgba(255,255,255,.73);font-size:12px;line-height:1.8}.svc105ArticleHero__no{position:absolute;right:7%;bottom:35px;z-index:2;font:500 72px Georgia,serif;color:rgba(255,255,255,.22)}
+.svc105ArticleLayout{width:min(1320px,88%);margin:0 auto;display:grid;grid-template-columns:290px minmax(0,820px);gap:90px;align-items:start;padding:80px 0 110px}.svc105ArticleNav{position:sticky;top:110px;display:flex;flex-direction:column;border-top:1px solid #d9cdbd}.svc105ArticleNav>span{padding:17px 0 13px;font-size:8px;font-weight:800;letter-spacing:.18em;color:#a67536}.svc105ArticleNav>a:not(.svc105ArticleNav__cta){display:grid;grid-template-columns:30px 1fr;gap:9px;padding:10px 0;border-top:1px solid #e3d9cc;color:#73777a;font-size:9px;line-height:1.35}.svc105ArticleNav>a b{color:#b27b38;font-size:8px}.svc105ArticleNav__cta{margin-top:22px;padding:14px 16px;background:#aa7938;color:#fff;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:9px;font-weight:800}
+.svc105ArticleBody{min-width:0}.svc105ArticleLead{padding:0 0 34px;border-bottom:1px solid #d9cdbd}.svc105ArticleLead span{font-size:8px;font-weight:800;letter-spacing:.17em;color:#a67536}.svc105ArticleLead p{margin-top:11px;font:500 22px/1.5 Georgia,serif;color:#4c4f52}
+.svc105ArticleSection{padding:38px 0;border-bottom:1px solid #ded3c5;scroll-margin-top:110px}.svc105ArticleSection h2{margin:0 0 19px;font:500 29px/1.2 Georgia,serif;color:#292d30;letter-spacing:-.02em}.svc105ArticleSection p{margin:0 0 15px;color:#666b6f;font-size:12px;line-height:1.9}.svc105ArticleSection p:last-child{margin-bottom:0}
+.svc105ArticleEnd{margin-top:52px;padding:44px;background:#202a2e;color:#fff;border-radius:18px}.svc105ArticleEnd>span{font-size:8px;letter-spacing:.17em;color:#d0a064;font-weight:800}.svc105ArticleEnd h2{margin:10px 0 12px;font:500 34px/1.08 Georgia,serif}.svc105ArticleEnd p{font-size:11px;line-height:1.7;color:#b6bdc0}.svc105ArticleEnd a{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:#b17d3b;padding:13px 17px;border-radius:7px;font-size:9px;font-weight:800}
+@media(max-width:950px){.svc105Grid{grid-template-columns:1fr}.svc105Intro{grid-template-columns:1fr;gap:25px}.svc105ArticleLayout{grid-template-columns:1fr;gap:35px}.svc105ArticleNav{position:relative;top:auto}.svc105Trust{grid-template-columns:55px 1fr}.svc105Trust>p{grid-column:2}.svc105Card{grid-template-columns:40% 60%}}
+@media(max-width:620px){.svc105Hero{height:650px;min-height:650px}.svc105Hero__copy{left:7%;right:7%}.svc105Hero__copy h1{font-size:55px}.svc105Hero__index{display:none}.svc105Back,.svc105ArticleBack{top:25px}.svc105Intro,.svc105Grid,.svc105Trust,.svc105ArticleLayout{width:90%}.svc105Intro{padding:58px 0 38px}.svc105Intro h2{font-size:42px}.svc105Grid{margin-top:28px}.svc105Card{grid-template-columns:1fr;min-height:0}.svc105Card__visual{min-height:245px}.svc105Card__body{padding:27px 24px 30px}.svc105Card__body h3{font-size:27px}.svc105Trust{grid-template-columns:1fr;padding:28px 25px}.svc105Trust>p{grid-column:auto}.svc105ArticleHero{height:590px}.svc105ArticleHero__copy{left:7%;right:7%;top:53%}.svc105ArticleHero__copy h1{font-size:48px}.svc105ArticleHero__no{font-size:50px}.svc105ArticleLayout{padding:50px 0 75px}.svc105ArticleNav{display:none}.svc105ArticleLead p{font-size:19px}.svc105ArticleSection{padding:31px 0}.svc105ArticleSection h2{font-size:25px}.svc105ArticleSection p{font-size:11.5px;line-height:1.85}.svc105ArticleEnd{padding:31px 24px}.svc105ArticleEnd h2{font-size:29px}}
 
 `;
 
