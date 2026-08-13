@@ -15837,6 +15837,16 @@ img{
   .contactBrand{width:90%;padding:15px 16px}
 }
 
+/* STEP107 — Hakkımda yeni profil fotoğrafı */
+.aboutDirectProfile__photo img{
+  object-position:center 30%!important;
+}
+@media(max-width:900px){
+  .aboutDirectProfile__photo img{
+    object-position:center 27%!important;
+  }
+}
+
 `;
 
 export default App;
