@@ -4445,6 +4445,13 @@ function ProcessDetailPage({ content }) {
     { no: "09", title: "Danışan Yorumu", person: "Danışan", text: `Ben 24 Ekim 2025 tarihi ile sizinle seansa başladım. Üniversite öğrencisiyim, bu yüzden aşırı derecede stres, anksiyete ve panik atak problemleri yaşıyordum.\n\nAma seanslara başladıktan sonra stresle başa çıkmayı, kontrol altına almayı öğrendim.\n\nAyrıca hayır diyememe ve sınır koyamama gibi problemlerim de vardı. Artık kendi değerimi biliyor ve sınır koyabiliyorum.\n\nİyi ki sizinle tanışıp seanslara devam ettim. Size çok teşekkür ederim.` },
     { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
   ];
+  const processVisuals = [
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1500&q=88",
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=88",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=88",
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1500&q=88",
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=88",
+  ];
   const steps = content.steps?.length ? content.steps : defaultProcessContent.steps;
   const trustItems = content.trustItems?.length ? content.trustItems : defaultProcessContent.trustItems;
   const testimonials = content.testimonials?.length ? content.testimonials : fallbackTestimonials;
@@ -4475,9 +4482,23 @@ function ProcessDetailPage({ content }) {
               className={`prc53Step ${timelineProgress >= index / Math.max(steps.length - 1, 1) ? "is-timeline-active" : ""}`}
               key={step.no}
             >
-              <div className="prc53Step__number">{step.no}</div>
-              <div className="prc53Step__icon"><Icon name={step.icon} size={34} /></div>
-              <h3>{step.title}</h3><p>{step.text}</p>
+              <div className="prc103StepVisual">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={processVisuals[index % processVisuals.length]}
+                  alt=""
+                  aria-hidden="true"
+                  onError={(e)=>{e.currentTarget.style.display="none"}}
+                />
+                <span>{step.no}</span>
+              </div>
+              <div className="prc103StepContent">
+                <div className="prc53Step__number">{step.no}</div>
+                <div className="prc53Step__icon"><Icon name={step.icon} size={30} /></div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -4488,6 +4509,15 @@ function ProcessDetailPage({ content }) {
               <p><strong>{item.title}</strong><span>{item.text}</span></p>
             </div>
           ))}
+        </div>
+
+        <div className="prc103Appointment reveal">
+          <div>
+            <span>İLK ADIM</span>
+            <h3>Süreci birlikte değerlendirmek ister misiniz?</h3>
+            <p>Size uygun görüşme biçimini ve sürecin çerçevesini ön görüşmede birlikte belirleyebilirsiniz.</p>
+          </div>
+          <a href="#/randevu">Ücretsiz Ön Görüşme <Icon name="arrow" size={16}/></a>
         </div>
       </section>
 
@@ -4527,6 +4557,7 @@ function ServicesDetailPage({ content }) {
       title: content.individualTitle,
       short: content.individualShort,
       items: content.individualItems || [],
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=88",
     },
     {
       no: "02",
@@ -4534,6 +4565,7 @@ function ServicesDetailPage({ content }) {
       title: content.familyTitle,
       short: content.familyShort,
       items: content.familyItems || [],
+      image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=88",
     },
     {
       no: "03",
@@ -4541,6 +4573,7 @@ function ServicesDetailPage({ content }) {
       title: content.coupleTitle,
       short: content.coupleShort,
       items: content.coupleItems || [],
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=88",
     },
     {
       no: "04",
@@ -4548,6 +4581,7 @@ function ServicesDetailPage({ content }) {
       title: content.psychosocialTitle,
       short: content.psychosocialShort,
       items: content.psychosocialItems || [],
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=88",
     },
   ];
 
@@ -4589,6 +4623,18 @@ function ServicesDetailPage({ content }) {
           {serviceCards.map((service) => (
             <details className="svc73Card" key={service.no}>
               <summary>
+                <div className="svc103CardVisual">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={service.image}
+                    alt=""
+                    aria-hidden="true"
+                    onError={(e)=>{e.currentTarget.style.display="none"}}
+                  />
+                  <span>{service.no}</span>
+                </div>
+
                 <div className="svc73Card__top">
                   <span className="svc73Card__no">{service.no}</span>
                   <div className="svc73Card__icon">
@@ -4626,6 +4672,14 @@ function ServicesDetailPage({ content }) {
             ilkeleri çerçevesinde yürütülür.
           </span>
         </p>
+      </section>
+
+      <section className="svc103Next reveal">
+        <div>
+          <span>SONRAKİ ADIM</span>
+          <h2>Danışmanlık sürecinin nasıl ilerlediğini görün.</h2>
+        </div>
+        <a href="#/surec">Süreci İnceleyin <Icon name="arrow" size={16}/></a>
       </section>
     </main>
   );
@@ -14914,6 +14968,353 @@ img{
   .admin100Blog__list article{grid-template-columns:1fr!important}
   .admin100Blog__list article>img{width:100%!important;height:210px!important}
   .admin100Blog__postCopy>strong{font-size:19px!important}
+}
+
+/* STEP103 — SERVICES + PROCESS VISUAL REDESIGN
+   IMPORTANT: Supabase content bindings and admin editors remain untouched. */
+
+/* ---------- SERVICES ---------- */
+.svc52{
+  background:
+    radial-gradient(circle at 90% 14%,rgba(173,126,62,.08),transparent 24%),
+    linear-gradient(180deg,#f7f3ed 0%,#eee7dd 100%)!important;
+  color:#282b2e!important;
+}
+.svc52Hero{
+  height:520px!important;
+  border-bottom:0!important;
+  border-radius:0 0 30px 30px;
+  box-shadow:0 25px 65px rgba(55,39,23,.12);
+}
+.svc52Hero__image{
+  object-position:center!important;
+  filter:saturate(.78) contrast(.96);
+  transform:scale(1.01);
+}
+.svc52Hero__shade{
+  background:
+    linear-gradient(90deg,rgba(16,15,13,.92) 0%,rgba(20,18,15,.78) 38%,rgba(20,18,15,.18) 72%,rgba(20,18,15,.06) 100%)!important;
+}
+.svc52Back{color:rgba(255,255,255,.76)!important;font-size:11px!important}
+.svc52Hero__copy{top:132px!important;width:min(600px,48vw)!important}
+.svc52Eyebrow{color:#e0b169!important;font-size:11px!important;letter-spacing:.18em!important}
+.svc52Hero h1{
+  color:#fff!important;
+  font-size:clamp(49px,4.7vw,74px)!important;
+  line-height:.96!important;
+}
+.svc52Hero h1 strong{color:#e1b36d!important}
+.svc52Hero__copy i{background:#dfad61!important;width:58px!important}
+.svc52Hero__copy p{color:rgba(255,255,255,.79)!important;font-size:13px!important;max-width:560px!important}
+
+.svc52Quick{
+  padding:72px 5% 58px!important;
+  background:transparent!important;
+}
+.svc52SectionTitle{max-width:850px;margin:0 auto 34px!important}
+.svc52SectionTitle span{color:#a77736!important;font-size:10px!important;letter-spacing:.15em!important}
+.svc52SectionTitle span:before,.svc52SectionTitle span:after{background:rgba(167,119,54,.35)!important}
+.svc52SectionTitle h2{
+  margin-top:12px!important;
+  color:#2a2d30!important;
+  font:500 clamp(29px,3vw,43px)/1.08 Georgia,"Times New Roman",serif!important;
+}
+.svc52SectionTitle p{margin:12px auto 0;color:#777a7d!important;font-size:12px!important;line-height:1.7!important;max-width:700px}
+
+.svc73Grid{
+  max-width:1380px!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;
+}
+.svc73Card{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:390px!important;
+  border:1px solid #dfd4c7!important;
+  border-radius:20px!important;
+  background:rgba(255,255,255,.82)!important;
+  box-shadow:0 18px 45px rgba(72,52,31,.065)!important;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important;
+}
+.svc73Card:hover{
+  transform:translateY(-5px)!important;
+  border-color:#cba56f!important;
+  box-shadow:0 27px 58px rgba(72,52,31,.12)!important;
+}
+.svc73Card summary{padding:0 22px 22px!important}
+.svc103CardVisual{
+  position:relative;
+  height:165px;
+  margin:0 -22px 20px;
+  overflow:hidden;
+  background:#ded5ca;
+}
+.svc103CardVisual:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(19,17,14,.55));
+}
+.svc103CardVisual img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.68) contrast(.96);
+  transition:transform .65s cubic-bezier(.2,.72,.2,1),filter .3s ease;
+}
+.svc73Card:hover .svc103CardVisual img{transform:scale(1.04);filter:saturate(.82) contrast(.98)}
+.svc103CardVisual>span{
+  position:absolute;z-index:2;right:16px;bottom:13px;
+  color:rgba(255,255,255,.9);font:500 28px Georgia,"Times New Roman",serif;
+}
+.svc73Card__top{margin-bottom:11px!important}
+.svc73Card__no{color:#b17d39!important;font-size:9px!important}
+.svc73Card__icon{
+  width:43px!important;height:43px!important;
+  border-color:#d8bd96!important;background:#fbf4ea!important;color:#a77736!important;
+}
+.svc73Card h3{color:#292d30!important;font:500 25px/1.08 Georgia,"Times New Roman",serif!important}
+.svc73Card summary>p{color:#73777a!important;font-size:11.5px!important;line-height:1.7!important;min-height:58px}
+.svc73Card__action{
+  margin-top:17px!important;padding-top:15px!important;border-top-color:#e8ded3!important;
+  color:#95672f!important;font-size:10px!important;
+}
+.svc73Card__action b{
+  width:26px!important;height:26px!important;border-radius:50%!important;
+  border:1px solid #d9c2a1!important;background:#faf4ec!important;color:#9e6e34!important;
+}
+.svc73Card__details{
+  padding:0 22px 22px!important;
+  border-top:1px solid #eee6dc!important;
+  background:#fbf8f4!important;
+}
+.svc73Card__details ul{padding-top:16px!important}
+.svc73Card__details li{color:#5f6468!important;font-size:10.5px!important;line-height:1.55!important}
+
+.svc52Trust{
+  width:min(1240px,90%)!important;
+  margin:0 auto 28px!important;
+  padding:25px 30px!important;
+  grid-template-columns:52px 1fr!important;
+  border:1px solid #dfd0bd!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,#fffaf3,#efe2d1)!important;
+  color:#a77736!important;
+  box-shadow:0 16px 38px rgba(84,58,30,.06)!important;
+}
+.svc52Trust p{display:flex!important;flex-direction:column!important;gap:6px!important}
+.svc52Trust strong{color:#2f3337!important;font:500 18px Georgia,"Times New Roman",serif!important}
+.svc52Trust span{color:#777c80!important;font-size:10px!important;line-height:1.6!important}
+.svc103Next{
+  width:min(1240px,90%);
+  margin:0 auto 72px;
+  padding:31px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  border-radius:20px;
+  background:#20201d;
+  color:#fff;
+  box-shadow:0 22px 48px rgba(41,33,24,.12);
+}
+.svc103Next>div>span{color:#d9aa65;font-size:8px;font-weight:800;letter-spacing:.16em}
+.svc103Next h2{margin-top:7px;font:500 27px Georgia,"Times New Roman",serif}
+.svc103Next>a{
+  flex:0 0 auto;min-height:45px;padding:0 17px;
+  display:flex;align-items:center;gap:9px;border-radius:999px;
+  background:#d9aa65;color:#26221c;font-size:8px;font-weight:800;
+}
+
+/* ---------- PROCESS ---------- */
+.prc53{
+  background:
+    radial-gradient(circle at 10% 18%,rgba(169,126,67,.08),transparent 23%),
+    linear-gradient(180deg,#f7f3ed,#eee7dd)!important;
+  color:#292d30!important;
+}
+.prc53Hero{
+  min-height:535px!important;
+  border-radius:0 0 30px 30px;
+  box-shadow:0 24px 60px rgba(58,41,22,.12);
+}
+.prc53Hero__image{filter:saturate(.72) contrast(.95)!important}
+.prc53Hero__shade{
+  background:
+    linear-gradient(90deg,rgba(16,15,13,.92),rgba(19,17,14,.75) 42%,rgba(19,17,14,.13) 76%)!important;
+}
+.prc53Back{color:rgba(255,255,255,.76)!important;font-size:11px!important}
+.prc53Hero__copy{width:min(610px,48vw)!important}
+.prc53Eyebrow{color:#dfae65!important;font-size:10px!important;letter-spacing:.18em!important}
+.prc53Hero h1{color:#fff!important;font-size:clamp(49px,4.8vw,75px)!important;line-height:.96!important}
+.prc53Hero h1 strong{color:#e2b36c!important}
+.prc53Hero__copy i{background:#dfae65!important;width:58px!important}
+.prc53Hero__copy p{color:rgba(255,255,255,.79)!important;font-size:13px!important;line-height:1.75!important}
+
+.prc53Flow{padding:75px 5% 68px!important;background:transparent!important}
+.prc53SectionTitle{max-width:820px;margin:0 auto 42px!important;text-align:center}
+.prc53SectionTitle span{color:#a77736!important;font-size:10px!important;letter-spacing:.16em!important}
+.prc53SectionTitle h2{margin-top:11px!important;color:#292d30!important;font:500 clamp(30px,3vw,43px)/1.1 Georgia,"Times New Roman",serif!important}
+
+.prc53Steps{
+  max-width:1280px!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:19px!important;
+  position:relative!important;
+}
+.prc53TimelineTrack{
+  position:absolute!important;
+  left:43px!important;
+  top:55px!important;
+  bottom:55px!important;
+  width:2px!important;
+  height:auto!important;
+  background:#ddd0bf!important;
+  border-radius:999px!important;
+  overflow:hidden!important;
+}
+.prc53TimelineTrack span{
+  display:block!important;
+  width:100%!important;
+  height:calc(var(--timeline-progress) * 100%)!important;
+  background:linear-gradient(180deg,#d4a459,#9f7135)!important;
+  transition:height .18s linear!important;
+}
+.prc53Step{
+  min-height:250px!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:36% minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:0!important;
+  overflow:hidden!important;
+  border:1px solid #e0d5c8!important;
+  border-radius:20px!important;
+  background:rgba(255,255,255,.84)!important;
+  box-shadow:0 16px 42px rgba(72,52,31,.055)!important;
+  opacity:.66!important;
+  transform:translateY(8px) scale(.992)!important;
+  transition:.35s ease!important;
+}
+.prc53Step:hover,.prc53Step.is-timeline-active{
+  opacity:1!important;
+  transform:translateY(0) scale(1)!important;
+  border-color:#cbaa79!important;
+  box-shadow:0 24px 55px rgba(72,52,31,.11)!important;
+}
+.prc53Step:before,.prc53Step:not(:last-child):after{display:none!important}
+.prc103StepVisual{position:relative;min-height:250px;overflow:hidden;background:#ddd3c7}
+.prc103StepVisual:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(17,15,12,.58));
+}
+.prc103StepVisual img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.68) contrast(.97);
+  transition:transform .65s cubic-bezier(.2,.72,.2,1),filter .3s ease;
+}
+.prc53Step:hover .prc103StepVisual img,.prc53Step.is-timeline-active .prc103StepVisual img{
+  transform:scale(1.035);filter:saturate(.82) contrast(.98);
+}
+.prc103StepVisual>span{
+  position:absolute;z-index:2;left:18px;bottom:15px;
+  color:#fff;font:500 31px Georgia,"Times New Roman",serif;
+}
+.prc103StepContent{
+  position:relative;
+  padding:31px 34px 28px 52px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+}
+.prc53Step__number{
+  position:absolute!important;
+  left:15px!important;
+  top:24px!important;
+  width:24px!important;height:24px!important;
+  display:grid!important;place-items:center!important;
+  border:1px solid #d6b98e!important;border-radius:50%!important;
+  background:#fbf5ec!important;color:#a77736!important;
+  font-size:7px!important;
+}
+.prc53Step__icon{
+  width:47px!important;height:47px!important;
+  margin-bottom:14px!important;
+  border:1px solid #d8bd96!important;border-radius:14px!important;
+  background:#fbf4ea!important;color:#a77736!important;
+}
+.prc53Step h3{color:#2c3034!important;font:500 27px/1.05 Georgia,"Times New Roman",serif!important}
+.prc53Step p{margin-top:11px!important;color:#74787c!important;font-size:11.5px!important;line-height:1.75!important;max-width:650px!important}
+
+.prc53Trust{
+  max-width:1280px!important;
+  margin:30px auto 0!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  overflow:hidden!important;
+  border:1px solid #dfd3c5!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.74)!important;
+  box-shadow:0 14px 36px rgba(72,52,31,.045)!important;
+}
+.prc53Trust>div{
+  min-height:145px!important;
+  padding:24px!important;
+  border-right:1px solid #e7ddd2!important;
+  background:transparent!important;
+}
+.prc53Trust__icon{
+  width:41px!important;height:41px!important;border-radius:12px!important;
+  background:#fbf3e7!important;color:#a77736!important;border:1px solid #dcc39f!important;
+}
+.prc53Trust strong{color:#303438!important;font-size:12px!important}
+.prc53Trust span{color:#85898c!important;font-size:9.5px!important;line-height:1.55!important}
+
+.prc103Appointment{
+  max-width:1280px;
+  margin:22px auto 0;
+  padding:28px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  border-radius:19px;
+  background:#20201d;
+  color:#fff;
+  box-shadow:0 20px 48px rgba(44,34,24,.11);
+}
+.prc103Appointment>div>span{color:#d9aa65;font-size:8px;font-weight:800;letter-spacing:.16em}
+.prc103Appointment h3{margin:7px 0 5px;font:500 24px Georgia,"Times New Roman",serif}
+.prc103Appointment p{color:#bbb5ad;font-size:9px;line-height:1.55}
+.prc103Appointment>a{
+  min-height:45px;padding:0 17px;flex:0 0 auto;
+  display:flex;align-items:center;gap:9px;border-radius:999px;
+  background:#d9aa65;color:#26221c;font-size:8px;font-weight:800;
+}
+
+@media(max-width:950px){
+  .svc73Grid{grid-template-columns:1fr!important}
+  .svc73Card{min-height:auto!important}
+  .prc53Step{grid-template-columns:38% minmax(0,1fr)!important}
+  .prc53Trust{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .prc53Trust>div:nth-child(2){border-right:0!important}
+}
+@media(max-width:650px){
+  .svc52Hero,.prc53Hero{min-height:570px!important;height:570px!important;border-radius:0 0 22px 22px}
+  .svc52Hero__copy,.prc53Hero__copy{left:6%!important;right:6%!important;top:145px!important;width:auto!important}
+  .svc52Quick,.prc53Flow{padding-left:5%!important;padding-right:5%!important}
+  .svc103CardVisual{height:190px}
+  .svc103Next,.prc103Appointment{align-items:flex-start;flex-direction:column;padding:24px}
+  .svc103Next>a,.prc103Appointment>a{width:100%;justify-content:center}
+  .prc53TimelineTrack{display:none!important}
+  .prc53Step{grid-template-columns:1fr!important;opacity:1!important;transform:none!important}
+  .prc103StepVisual{min-height:215px}
+  .prc103StepContent{padding:25px 22px 24px!important}
+  .prc53Step__number{position:relative!important;left:auto!important;top:auto!important;margin-bottom:11px}
+  .prc53Trust{grid-template-columns:1fr!important}
+  .prc53Trust>div{border-right:0!important;border-bottom:1px solid #e7ddd2!important}
 }
 
 `;
