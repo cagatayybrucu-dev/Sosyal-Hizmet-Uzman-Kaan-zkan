@@ -4977,11 +4977,19 @@ function ServiceArticlePage({ slug }) {
         </div>
         <a className="svc105ArticleBack" href="#/hizmetler">← Hizmetlere Dön</a>
         <div className="svc105ArticleHero__copy">
-          <span>{service.eyebrow}</span>
+          <div className="svc108HeroIdentity">
+            <b>{service.no}</b>
+            <i />
+            <span>{service.eyebrow}</span>
+          </div>
           <h1>{service.title}<strong>{service.accent}</strong></h1>
           <p>{service.intro}</p>
+          <div className="svc108HeroMeta">
+            <span>DETAYLI ÇALIŞMA ALANI</span>
+            <span>KAAN ÖZKAN</span>
+          </div>
         </div>
-        <div className="svc105ArticleHero__no">{service.no}</div>
+        <div className="svc105ArticleHero__no" aria-hidden="true">{service.no}</div>
       </section>
 
       <section className="svc105ArticleLayout">
@@ -5039,6 +5047,11 @@ function AboutDetailPage({ content = defaultAboutContent }) {
         <aside className="aboutDirectProfile">
           <div className="aboutDirectProfile__photo">
             <img loading="eager" decoding="async" fetchPriority="high" src={aboutPhoto} alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`} />
+            <div className="about108Signature">
+              <span>KAAN ÖZKAN</span>
+              <i />
+              <small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small>
+            </div>
           </div>
           <div className="aboutDirectProfile__body">
             <span>{content.profileEyebrow}</span>
@@ -15844,6 +15857,348 @@ img{
 @media(max-width:900px){
   .aboutDirectProfile__photo img{
     object-position:center 27%!important;
+  }
+}
+
+/* =========================================================
+   STEP108 — PREMIUM FINAL POLISH
+   Hizmet hero serisi + Hakkımda imza + standart mikro hareketler
+   ========================================================= */
+
+/* ---------- HİZMET DETAY HERO SERİ KİMLİĞİ ---------- */
+.svc105ArticleHero{
+  min-height:600px!important;
+  isolation:isolate;
+}
+.svc105ArticleHero__image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(14,13,11,.93) 0%,rgba(18,16,13,.81) 37%,rgba(20,17,13,.30) 69%,rgba(18,15,12,.10) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.34));
+}
+.svc105ArticleHero__image>div{
+  z-index:2!important;
+  opacity:.34!important;
+}
+.svc105ArticleHero__copy{
+  z-index:4!important;
+  width:min(720px,57vw)!important;
+}
+.svc108HeroIdentity{
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#e0b16b;
+}
+.svc108HeroIdentity b{
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  flex:0 0 39px;
+  border:1px solid rgba(225,178,105,.72);
+  border-radius:50%;
+  color:#e5b76f;
+  font:700 9px/1 Arial,sans-serif;
+  letter-spacing:.04em;
+}
+.svc108HeroIdentity i{
+  width:42px;
+  height:1px;
+  display:block;
+  background:linear-gradient(90deg,#d9a75f,rgba(217,167,95,.1));
+}
+.svc108HeroIdentity span{
+  color:#e0b16b!important;
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.18em!important;
+}
+.svc105ArticleHero__copy h1{
+  max-width:700px!important;
+  color:#fff!important;
+  font-size:clamp(48px,5vw,78px)!important;
+  line-height:.95!important;
+  letter-spacing:-.035em!important;
+}
+.svc105ArticleHero__copy h1 strong{
+  color:#e2b46e!important;
+  font-weight:500!important;
+}
+.svc105ArticleHero__copy>p{
+  max-width:610px!important;
+  margin-top:22px!important;
+  color:rgba(255,255,255,.78)!important;
+  font-size:12px!important;
+  line-height:1.82!important;
+}
+.svc108HeroMeta{
+  margin-top:25px;
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  gap:21px;
+  border-top:1px solid rgba(255,255,255,.17);
+}
+.svc108HeroMeta span{
+  position:relative;
+  color:rgba(255,255,255,.55)!important;
+  font-size:7px!important;
+  font-weight:800!important;
+  letter-spacing:.13em!important;
+}
+.svc108HeroMeta span+span:before{
+  content:"";
+  position:absolute;
+  left:-11px;
+  top:50%;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#d9aa65;
+}
+.svc105ArticleHero__no{
+  z-index:3!important;
+  color:rgba(225,177,104,.13)!important;
+  font-size:clamp(130px,16vw,255px)!important;
+  font-weight:500!important;
+  letter-spacing:-.08em!important;
+  text-shadow:none!important;
+}
+.svc105ArticleBack{
+  z-index:5!important;
+  transition:color .22s ease,transform .22s ease!important;
+}
+.svc105ArticleBack:hover{
+  color:#e3b46c!important;
+  transform:translateX(-3px);
+}
+
+/* ---------- HAKKIMDA FOTOĞRAF KİMLİK/İMZA ---------- */
+.aboutDirectProfile__photo{
+  position:relative!important;
+}
+.about108Signature{
+  position:absolute;
+  z-index:3;
+  left:15px;
+  right:15px;
+  bottom:15px;
+  min-height:50px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:12px;
+  background:rgba(24,21,17,.68);
+  -webkit-backdrop-filter:blur(11px);
+  backdrop-filter:blur(11px);
+  box-shadow:0 12px 28px rgba(20,16,12,.14);
+}
+.about108Signature span{
+  flex:0 0 auto;
+  color:#e4b46c;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.about108Signature i{
+  width:1px;
+  height:18px;
+  background:rgba(255,255,255,.23);
+}
+.about108Signature small{
+  color:rgba(255,255,255,.82);
+  font-size:8px;
+  font-weight:500;
+  letter-spacing:.02em;
+}
+
+/* ---------- GLOBAL MİKRO MOTION STANDARDI ---------- */
+
+/* Butonlarda küçük lift; sallanma/parallax yok */
+.heroCta,
+.heroGhost,
+.navAppointment,
+.contactCard,
+.contact80Card,
+.svc103Next>a,
+.prc103Appointment>a,
+.svc105ArticleNav__cta,
+.svc105ArticleEnd>a,
+.blog98Hero__copy>a,
+.blog98Featured__copy>a,
+.blog99Body aside>a,
+.admin100Blog__goldButton,
+.admin100Blog__publishBar button{
+  transition:
+    transform .22s cubic-bezier(.2,.7,.2,1),
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background-color .22s ease,
+    color .22s ease!important;
+}
+.heroCta:hover,
+.navAppointment:hover,
+.svc103Next>a:hover,
+.prc103Appointment>a:hover,
+.svc105ArticleNav__cta:hover,
+.svc105ArticleEnd>a:hover,
+.blog98Hero__copy>a:hover,
+.blog98Featured__copy>a:hover,
+.blog99Body aside>a:hover{
+  transform:translateY(-2px)!important;
+}
+
+/* Gold çizgi / underline hareketi */
+.homeApproachEditorial__cta,
+.blog98Card__footer>a,
+.svc73Card__action,
+.footerLinks a,
+.footerLegal a{
+  position:relative;
+}
+.homeApproachEditorial__cta:after,
+.blog98Card__footer>a:after,
+.svc73Card__action:after,
+.footerLinks a:after,
+.footerLegal a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:100%;
+  height:1px;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:linear-gradient(90deg,#a77736,#d4aa6a);
+  transition:transform .28s cubic-bezier(.2,.7,.2,1);
+}
+.homeApproachEditorial__cta:hover:after,
+.blog98Card__footer>a:hover:after,
+.svc73Card__action:hover:after,
+.footerLinks a:hover:after,
+.footerLegal a:hover:after{
+  transform:scaleX(1);
+}
+
+/* Tüm ana editorial görsellerde sadece %1.8 zoom */
+.homeApproachEditorial__visual>img,
+.svc103CardVisual img,
+.prc103StepVisual img,
+.blog98Card__image img,
+.blog98Featured__image img,
+.svc105ArticleHero__image>img,
+.aboutDirectProfile__photo>img{
+  transition:
+    transform .65s cubic-bezier(.2,.72,.2,1),
+    filter .3s ease!important;
+}
+.homeApproachEditorial:hover .homeApproachEditorial__visual>img,
+.svc73Card:hover .svc103CardVisual img,
+.prc53Step:hover .prc103StepVisual img,
+.prc53Step.is-timeline-active .prc103StepVisual img,
+.blog98Card:hover .blog98Card__image img,
+.blog98Featured:hover .blog98Featured__image img{
+  transform:scale(1.018)!important;
+}
+
+/* Service detail hero görseli sabit; yalnız sayfa açılışında ultra hafif settle */
+.svc105ArticleHero__image>img{
+  animation:svc108HeroSettle 1.2s cubic-bezier(.2,.72,.2,1) both;
+}
+@keyframes svc108HeroSettle{
+  from{transform:scale(1.025);filter:saturate(.74) brightness(.93)}
+  to{transform:scale(1);filter:saturate(.82) brightness(.96)}
+}
+
+/* Kartlarda kontrollü border feedback */
+.svc73Card,
+.blog98Card,
+.prc53Step,
+.contactCard,
+.contact80Card{
+  transition:
+    transform .25s cubic-bezier(.2,.7,.2,1),
+    border-color .25s ease,
+    box-shadow .25s ease!important;
+}
+.contactCard:hover,
+.contact80Card:hover{
+  transform:translateY(-3px)!important;
+  border-color:rgba(167,119,54,.42)!important;
+}
+
+/* Mobil: hover kaynaklı hareketleri kaldır, hız hissini koru */
+@media(max-width:900px){
+  .svc105ArticleHero{
+    min-height:570px!important;
+  }
+  .svc105ArticleHero__copy{
+    width:auto!important;
+    left:6%!important;
+    right:6%!important;
+  }
+  .svc108HeroIdentity{
+    margin-bottom:15px;
+    gap:9px;
+  }
+  .svc108HeroIdentity b{
+    width:34px;height:34px;flex-basis:34px;
+  }
+  .svc108HeroIdentity i{width:26px}
+  .svc105ArticleHero__copy h1{
+    font-size:clamp(42px,12vw,57px)!important;
+  }
+  .svc108HeroMeta{
+    margin-top:18px;
+    gap:17px;
+  }
+  .svc105ArticleHero__no{
+    font-size:120px!important;
+    opacity:.55;
+  }
+  .about108Signature{
+    left:11px;right:11px;bottom:11px;
+    padding:9px 11px;
+  }
+  .about108Signature small{
+    font-size:7px;
+  }
+
+  .heroCta:hover,
+  .navAppointment:hover,
+  .svc103Next>a:hover,
+  .prc103Appointment>a:hover,
+  .svc105ArticleNav__cta:hover,
+  .svc105ArticleEnd>a:hover,
+  .blog98Hero__copy>a:hover,
+  .blog98Featured__copy>a:hover,
+  .blog99Body aside>a:hover,
+  .contactCard:hover,
+  .contact80Card:hover{
+    transform:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .svc105ArticleHero__image>img{
+    animation:none!important;
+  }
+  .homeApproachEditorial__visual>img,
+  .svc103CardVisual img,
+  .prc103StepVisual img,
+  .blog98Card__image img,
+  .blog98Featured__image img,
+  .svc105ArticleHero__image>img,
+  .aboutDirectProfile__photo>img{
+    transition:none!important;
   }
 }
 
