@@ -177,6 +177,100 @@ const defaultAboutContent = {
   profileItem3: "İnsan odaklı destek",
 };
 
+
+const blogPosts = [
+  {
+    slug: "aile-icinde-saglikli-iletisim",
+    category: "AİLE & İLİŞKİLER",
+    date: "12 Mayıs 2026",
+    readTime: "5 dk okuma",
+    title: "Aile İçinde Sağlıklı İletişim Nasıl Kurulur?",
+    excerpt:
+      "Aile ilişkilerinde iletişim, anlayış ve empati temelinde güçlü bağlar kurmanın yolları.",
+    image:
+      "https://images.unsplash.com/photo-1504151932400-72d4384f04b3?auto=format&fit=crop&w=1600&q=88",
+    body: [
+      "Aile içindeki iletişim yalnızca konuşmak değil; karşımızdaki kişiyi anlamaya çalışmak, duyulduğunu hissettirmek ve güvenli bir ilişki alanı oluşturabilmektir. Sağlıklı iletişim, çatışmaların hiç yaşanmadığı bir ortam değil; anlaşmazlıkların saygılı ve yapıcı biçimde ele alınabildiği bir ilişkisel yapıdır.",
+      "Günlük yaşamın yoğunluğu, ekonomik sorumluluklar, ebeveynlik rolleri ve bireysel ihtiyaçlar aile üyelerinin birbirini gerçekten dinlemesini zorlaştırabilir. Bu nedenle iletişimde kullanılan dil kadar zamanlama, beden dili ve duyguların nasıl ifade edildiği de önemlidir.",
+      "Aile üyelerinin birbirlerinin sınırlarına saygı göstermesi, eleştiri yerine ihtiyaçlarını ifade etmesi ve sorun karşısında kişiyi değil davranışı konuşması iletişimi güçlendiren temel adımlardandır.",
+    ],
+  },
+  {
+    slug: "zor-duygularla-bas-etme",
+    category: "KİŞİSEL GELİŞİM",
+    date: "09 Mayıs 2026",
+    readTime: "6 dk okuma",
+    title: "Zor Duygularla Baş Etmenin 7 Yolu",
+    excerpt:
+      "Kaygı, stres ve üzüntü gibi duygularla daha sağlıklı bir ilişki kurabilmek için uygulanabilir öneriler.",
+    image:
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=88",
+    body: [
+      "Zor duygular çoğu zaman ortadan kaldırılması gereken bir problem gibi görülür. Oysa duygular, yaşamımızdaki ihtiyaçları, sınırları ve değişimleri fark etmemize yardımcı olan önemli sinyallerdir.",
+      "Duyguyu bastırmak yerine adlandırmak, bedendeki etkisini fark etmek ve yaşanan olayı daha geniş bir çerçevede değerlendirmek baş etme kapasitesini güçlendirebilir.",
+      "Uyku, hareket, sosyal destek, günlük rutin ve sınır koyma becerileri psikososyal dayanıklılığın önemli parçalarıdır. Gerektiğinde profesyonel destek almak da sürecin sağlıklı biçimde ele alınmasına yardımcı olabilir.",
+    ],
+  },
+  {
+    slug: "kayip-sonrasi-psikososyal-destek",
+    category: "PSİKOSOSYAL DESTEK",
+    date: "05 Mayıs 2026",
+    readTime: "7 dk okuma",
+    title: "Kayıp Sonrası Psikososyal Destek",
+    excerpt:
+      "Kayıp yaşayan bireylerin duygusal sürecini anlamak ve bu süreçte desteklenmenin önemini ele alan bir rehber.",
+    image:
+      "https://images.unsplash.com/photo-1476820865390-c52aeebb9891?auto=format&fit=crop&w=1600&q=88",
+    body: [
+      "Kayıp sonrası yas süreci kişiden kişiye farklı ilerler. Her bireyin kayba verdiği anlam, yaşam öyküsü, sosyal çevresi ve mevcut kaynakları bu deneyimin biçimini etkileyebilir.",
+      "Bu dönemde duyguların doğrusal bir sırayla ilerlemesi beklenmemelidir. Bazı günler daha güçlü hissedilirken bazı günler kayıp yeniden yoğun biçimde hissedilebilir.",
+      "Sosyal destek kaynaklarının güçlendirilmesi, günlük yaşam işlevselliğinin korunması ve bireyin kendi temposuna saygı gösterilmesi psikososyal destek sürecinin önemli parçalarıdır.",
+    ],
+  },
+  {
+    slug: "sosyal-hizmet-nedir",
+    category: "SOSYAL HİZMET",
+    date: "02 Mayıs 2026",
+    readTime: "4 dk okuma",
+    title: "Sosyal Hizmet Nedir, Nasıl Fayda Sağlar?",
+    excerpt:
+      "Sosyal hizmetin birey, aile ve toplum için sunduğu destek mekanizmalarını daha yakından tanıyın.",
+    image:
+      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1600&q=88",
+    body: [
+      "Sosyal hizmet; bireylerin, ailelerin ve toplumların yaşam koşullarını güçlendirmeyi, sosyal işlevselliği desteklemeyi ve uygun kaynaklara erişimi kolaylaştırmayı amaçlayan profesyonel bir disiplindir.",
+      "Sosyal hizmet uygulamalarında birey yalnızca yaşadığı sorun üzerinden değerlendirilmez. Aile ilişkileri, ekonomik koşullar, sosyal çevre, yaşam deneyimleri ve mevcut destek kaynakları birlikte ele alınır.",
+      "Amaç, bireyin güçlü yönlerini görünür hale getirerek kendi yaşamı üzerindeki etkisini artırmak ve ihtiyaç duyduğu sosyal destek mekanizmalarına erişimini kolaylaştırmaktır.",
+    ],
+  },
+  {
+    slug: "goc-ve-yer-degistirme-sonrasi-uyum",
+    category: "ÖNE ÇIKAN YAZI",
+    date: "28 Nisan 2026",
+    readTime: "10 dk okuma",
+    title: "Göç ve Yer Değiştirme Sonrası Uyum Süreci",
+    excerpt:
+      "Yeni bir yere uyum sağlamak zaman alabilir. Bu süreçte yaşanabilecek duygular, zorluklar ve baş etme yolları üzerine kapsamlı bir rehber.",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90",
+    body: [
+      "Göç ve yer değiştirme yalnızca fiziksel bir değişiklik değildir. Bireyin sosyal çevresi, rutinleri, aidiyet duygusu, destek kaynakları ve günlük yaşam alışkanlıkları aynı anda değişebilir.",
+      "Yeni bir çevreye uyum sağlama sürecinde özlem, belirsizlik, yalnızlık ve yabancılık hissi görülebilir. Bu duygular çoğu zaman uyum sürecinin doğal bir parçasıdır.",
+      "Yeni sosyal bağlar kurmak, günlük rutinleri yeniden oluşturmak, ulaşılabilir hedefler belirlemek ve geçmişte işe yarayan baş etme kaynaklarını hatırlamak uyumu destekleyebilir.",
+      "Uyum sürecinin kişiye özgü olduğu unutulmamalıdır. Bireyin yaşam öyküsü, yaşadığı değişimin niteliği ve sosyal destek ağı sürecin hızını ve biçimini etkiler.",
+    ],
+  },
+];
+
+const blogCategories = [
+  "Tümü",
+  "Aile & İlişkiler",
+  "Psikososyal Destek",
+  "Kişisel Gelişim",
+  "Sosyal Hizmet",
+  "Çocuk & Ergen",
+];
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -186,6 +280,10 @@ function App() {
   const [showSiteIntro, setShowSiteIntro] = useState(
     () => window.location.hash !== "#/admin"
   );
+  const [blogSlug, setBlogSlug] = useState(() => {
+    const hash = window.location.hash;
+    return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
+  });
 
   const defaultHomeContent = {
     eyebrow: "ÇİFT VE AİLE DANIŞMANI",
@@ -387,6 +485,8 @@ function App() {
       ? "process"
       : window.location.hash === "#/icerikler"
       ? "content"
+      : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
+      ? "blog"
       : window.location.hash === "#/iletisim"
       ? "contact"
       : window.location.hash === "#/randevu"
@@ -522,6 +622,7 @@ function App() {
       about: ["Hakkımda | Kaan Özkan", "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan'ın mesleki yolculuğu, saha deneyimi ve danışmanlık yaklaşımı."],
       services: ["Çalışma Alanları | Kaan Özkan", "Bireysel danışmanlık, çift ve aile danışmanlığı, yas, boşanma ve farklı psikososyal güçlüklerde profesyonel çalışma alanlarını inceleyin."],
       process: ["Danışmanlık Süreci | Kaan Özkan", "Danışmanlık sürecinin nasıl ilerlediğini inceleyin."],
+      blog: ["Blog | Kaan Özkan", "Aile, ilişkiler, psikososyal destek, kişisel gelişim ve sosyal hizmet alanlarında bilgilendirici yazıları keşfedin."],
       contact: ["İletişim | Kaan Özkan", "Kaan Özkan ile telefon veya e-posta üzerinden iletişime geçin ve randevu süreci hakkında bilgi alın."],
       privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
       disclosure: ["KVKK Aydınlatma Metni | Kaan Özkan", "Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni."],
@@ -583,6 +684,8 @@ function App() {
           ? "process"
           : window.location.hash === "#/icerikler"
           ? "content"
+          : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
+          ? "blog"
           : window.location.hash === "#/iletisim"
           ? "contact"
           : window.location.hash === "#/randevu"
@@ -597,6 +700,11 @@ function App() {
           ? "admin"
           : "home";
       setPage(nextPage);
+      setBlogSlug(
+        window.location.hash.startsWith("#/blog/")
+          ? window.location.hash.replace("#/blog/", "")
+          : ""
+      );
       setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -736,6 +844,14 @@ function App() {
             </a>
 
             <a
+              href="#/blog"
+              className={page === "blog" ? "is-active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              Blog
+            </a>
+
+            <a
               href="#/iletisim"
               className={page === "contact" ? "is-active" : ""}
               onClick={() => setMenuOpen(false)}
@@ -763,6 +879,8 @@ function App() {
           <ProcessDetailPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
+        ) : page === "blog" ? (
+          blogSlug ? <BlogArticlePage slug={blogSlug} /> : <BlogPage />
         ) : page === "contact" ? (
           <ContactDetailPage />
         ) : page === "appointment" ? (
@@ -991,6 +1109,7 @@ function App() {
                 <a href="#/hakkimda">Hakkımda</a>
                 <a href="#/surec">Süreç</a>
                 <a href="#/icerikler">İçerikler</a>
+                <a href="#/blog">Blog</a>
                 <a href="#/iletisim">İletişim</a>
               </div>
 
@@ -1040,6 +1159,247 @@ function App() {
 
 
 
+
+
+function BlogPage() {
+  const [category, setCategory] = useState("Tümü");
+  const [query, setQuery] = useState("");
+
+  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+  const posts = blogPosts.slice(0, 4).filter((post) => {
+    const categoryMatch =
+      category === "Tümü" ||
+      post.category.toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
+    const queryMatch =
+      !normalizedQuery ||
+      `${post.title} ${post.excerpt} ${post.category}`
+        .toLocaleLowerCase("tr-TR")
+        .includes(normalizedQuery);
+    return categoryMatch && queryMatch;
+  });
+
+  const featured = blogPosts[4];
+
+  return (
+    <main className="blog98Page">
+      <section className="blog98Hero">
+        <div className="blog98Hero__image" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=2000&q=90"
+            alt=""
+            onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
+          />
+        </div>
+        <div className="blog98Hero__shade" />
+
+        <div className="blog98Hero__copy">
+          <span>BLOG</span>
+          <h1>
+            Bilgi, farkındalık
+            <strong>ve güçlü yarınlar.</strong>
+          </h1>
+          <p>
+            Sosyal hizmet, psikososyal destek ve yaşamın farklı alanlarına dair
+            güncel yazılar, rehberler ve içerikler.
+          </p>
+          <a href="#blog98Yazilar">
+            TÜM YAZILARI KEŞFET
+            <Icon name="arrow" size={16}/>
+          </a>
+        </div>
+      </section>
+
+      <section className="blog98Content" id="blog98Yazilar">
+        <div className="blog98Toolbar">
+          <div className="blog98Categories">
+            {blogCategories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={category === item ? "is-active" : ""}
+                onClick={() => setCategory(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+
+          <label className="blog98Search">
+            <Icon name="search" size={18}/>
+            <input
+              value={query}
+              onChange={(e)=>setQuery(e.target.value)}
+              placeholder="Ara..."
+            />
+          </label>
+        </div>
+
+        <div className="blog98Grid">
+          {posts.map((post) => (
+            <article className="blog98Card" key={post.slug}>
+              <a className="blog98Card__image" href={`#/blog/${post.slug}`}>
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
+                />
+              </a>
+
+              <div className="blog98Card__body">
+                <div className="blog98Card__meta">
+                  <span>{post.category}</span>
+                  <time>{post.date}</time>
+                </div>
+
+                <h2>
+                  <a href={`#/blog/${post.slug}`}>{post.title}</a>
+                </h2>
+                <p>{post.excerpt}</p>
+
+                <div className="blog98Card__footer">
+                  <small>
+                    <Icon name="clock" size={15}/>
+                    {post.readTime}
+                  </small>
+                  <a href={`#/blog/${post.slug}`}>
+                    Devamını Oku
+                    <Icon name="arrow" size={14}/>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {posts.length === 0 && (
+          <div className="blog98Empty">
+            Aramanızla eşleşen bir yazı bulunamadı.
+          </div>
+        )}
+
+        <button className="blog98More" type="button">
+          DAHA FAZLA YAZI YÜKLE
+          <span>↻</span>
+        </button>
+
+        <article className="blog98Featured">
+          <div className="blog98Featured__copy">
+            <span>ÖNE ÇIKAN YAZI</span>
+            <h2>{featured.title}</h2>
+            <p>{featured.excerpt}</p>
+            <a href={`#/blog/${featured.slug}`}>
+              YAZININ TAMAMINI OKU
+              <Icon name="arrow" size={16}/>
+            </a>
+
+            <div className="blog98Featured__meta">
+              <small><Icon name="clock" size={14}/>{featured.readTime}</small>
+              <small><Icon name="calendar" size={14}/>{featured.date}</small>
+            </div>
+          </div>
+
+          <a className="blog98Featured__image" href={`#/blog/${featured.slug}`}>
+            <img
+              src={featured.image}
+              alt={featured.title}
+              loading="lazy"
+              decoding="async"
+              onError={(e)=>{e.currentTarget.src=processHeroDesk}}
+            />
+          </a>
+        </article>
+      </section>
+    </main>
+  );
+}
+
+function BlogArticlePage({ slug }) {
+  const post = blogPosts.find((item) => item.slug === slug) || blogPosts[0];
+  const related = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+
+  return (
+    <main className="blog99Article">
+      <section className="blog99Hero">
+        <a href="#/blog" className="blog99Back">← Blog'a Dön</a>
+        <div className="blog99Hero__image">
+          <img
+            src={post.image}
+            alt={post.title}
+            onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
+          />
+        </div>
+        <div className="blog99Hero__shade" />
+        <div className="blog99Hero__copy">
+          <span>{post.category}</span>
+          <h1>{post.title}</h1>
+          <p>{post.excerpt}</p>
+          <div>
+            <small><Icon name="calendar" size={15}/>{post.date}</small>
+            <small><Icon name="clock" size={15}/>{post.readTime}</small>
+          </div>
+        </div>
+      </section>
+
+      <section className="blog99Body">
+        <article>
+          <div className="blog99Lead">
+            <span>KAAN ÖZKAN</span>
+            <strong>Sosyal Hizmet Uzmanı · Aile Danışmanı</strong>
+          </div>
+
+          {post.body.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+
+          <blockquote>
+            “Her bireyin yaşam öyküsü, ihtiyaçları ve güçlü yönleri kendine özgüdür.
+            Değişim süreci de bu özgünlüğe saygı duyan bir yaklaşımla ele alınmalıdır.”
+          </blockquote>
+
+          <p>
+            Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel
+            ihtiyaçların değerlendirilmesi ve uygun destek sürecinin belirlenmesi
+            için profesyonel görüşme gerekebilir.
+          </p>
+        </article>
+
+        <aside>
+          <div className="blog99Aside__brand">
+            <img src={kaanOzkanEmblem} alt="" />
+            <span>
+              <strong>Kaan Özkan</strong>
+              <small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small>
+            </span>
+          </div>
+          <p>Danışmanlık süreci hakkında bilgi almak veya ön görüşme oluşturmak için iletişime geçebilirsiniz.</p>
+          <a href="#/randevu">
+            Ücretsiz Ön Görüşme
+            <Icon name="arrow" size={15}/>
+          </a>
+        </aside>
+      </section>
+
+      <section className="blog99Related">
+        <div className="blog99Related__head">
+          <span>DİĞER YAZILAR</span>
+          <h2>Okumaya devam edin.</h2>
+        </div>
+        <div className="blog99Related__grid">
+          {related.map((item) => (
+            <a href={`#/blog/${item.slug}`} key={item.slug}>
+              <img src={item.image} alt="" loading="lazy" onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}/>
+              <span>{item.category}</span>
+              <strong>{item.title}</strong>
+              <small>{item.readTime}</small>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
 
 
 function ContactDetailPage() {
@@ -13041,6 +13401,568 @@ img{
     animation-duration:.01ms!important;
     animation-delay:0ms!important;
   }
+}
+
+/* STEP98 — PREMIUM EDITORIAL BLOG */
+.blog98Page{
+  background:#f6f1ea;
+  color:#222427;
+}
+.blog98Hero{
+  position:relative;
+  min-height:520px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:70px 7%;
+}
+.blog98Hero__image{
+  position:absolute;
+  inset:0;
+}
+.blog98Hero__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.blog98Hero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(15,14,12,.92) 0%,rgba(20,18,15,.78) 36%,rgba(18,16,13,.2) 70%,rgba(18,16,13,.08) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.28));
+}
+.blog98Hero__copy{
+  position:relative;
+  z-index:2;
+  width:min(620px,94%);
+  color:#fff;
+}
+.blog98Hero__copy>span{
+  display:block;
+  margin-bottom:22px;
+  color:#d9ab68;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.blog98Hero__copy h1{
+  margin:0;
+  max-width:600px;
+  font:500 clamp(48px,5vw,78px)/.96 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.blog98Hero__copy h1 strong{
+  display:block;
+  margin-top:4px;
+  color:#e2b66f;
+  font-weight:500;
+}
+.blog98Hero__copy p{
+  max-width:520px;
+  margin:28px 0 30px;
+  color:rgba(255,255,255,.78);
+  font-size:13px;
+  line-height:1.85;
+}
+.blog98Hero__copy>a{
+  width:max-content;
+  min-height:48px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:999px;
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  transition:.25s ease;
+}
+.blog98Hero__copy>a:hover{
+  color:#1d1b18;
+  background:#fff;
+  transform:translateY(-2px);
+}
+.blog98Content{
+  padding:22px 7% 78px;
+}
+.blog98Toolbar{
+  margin-bottom:25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.blog98Categories{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  flex-wrap:wrap;
+}
+.blog98Categories button{
+  min-height:38px;
+  padding:0 17px;
+  border:1px solid #ded4c7;
+  border-radius:999px;
+  background:rgba(255,255,255,.56);
+  color:#59544d;
+  cursor:pointer;
+  font-size:8px;
+  font-weight:650;
+  transition:.2s ease;
+}
+.blog98Categories button:hover,
+.blog98Categories button.is-active{
+  border-color:#20201e;
+  color:#fff;
+  background:#20201e;
+}
+.blog98Search{
+  width:185px;
+  min-height:40px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid #dcd2c5;
+  border-radius:999px;
+  background:rgba(255,255,255,.6);
+}
+.blog98Search input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#282725;
+  font-size:9px;
+}
+.blog98Grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+.blog98Card{
+  overflow:hidden;
+  border:1px solid #ded4c7;
+  border-radius:10px;
+  background:rgba(255,255,255,.6);
+  box-shadow:0 14px 34px rgba(76,57,36,.045);
+  transition:.28s ease;
+}
+.blog98Card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 22px 45px rgba(76,57,36,.09);
+}
+.blog98Card__image{
+  height:230px;
+  display:block;
+  overflow:hidden;
+}
+.blog98Card__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.blog98Card:hover .blog98Card__image img{transform:scale(1.045)}
+.blog98Card__body{
+  min-height:310px;
+  padding:18px 17px 15px;
+  display:flex;
+  flex-direction:column;
+}
+.blog98Card__meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.blog98Card__meta span{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#eee5dc;
+  color:#765b3d;
+  font-size:6.7px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.blog98Card__meta time{
+  color:#999087;
+  font-size:7px;
+}
+.blog98Card h2{
+  margin:18px 0 11px;
+  color:#252522;
+  font:500 23px/1.07 Georgia,"Times New Roman",serif;
+}
+.blog98Card h2 a{transition:color .2s ease}
+.blog98Card h2 a:hover{color:#a6773d}
+.blog98Card__body>p{
+  color:#77716b;
+  font-size:9px;
+  line-height:1.7;
+}
+.blog98Card__footer{
+  margin-top:auto;
+  padding-top:19px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.blog98Card__footer small,
+.blog98Card__footer>a{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#77716a;
+  font-size:7.5px;
+}
+.blog98Card__footer>a{
+  color:#292824;
+  font-weight:800;
+}
+.blog98Empty{
+  padding:60px 20px;
+  text-align:center;
+  color:#8a8278;
+  border:1px dashed #d9ccbd;
+  border-radius:15px;
+}
+.blog98More{
+  min-height:45px;
+  margin:30px auto 35px;
+  padding:0 26px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  border:1px solid #cfc2b3;
+  border-radius:999px;
+  background:rgba(255,255,255,.52);
+  color:#4e4b46;
+  cursor:pointer;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.05em;
+}
+.blog98More span{font-size:17px}
+.blog98Featured{
+  min-height:400px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:34% 66%;
+  border-radius:12px;
+  background:#181816;
+  box-shadow:0 20px 55px rgba(49,38,25,.11);
+}
+.blog98Featured__copy{
+  padding:48px 42px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:#fff;
+}
+.blog98Featured__copy>span{
+  color:#d7a65f;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.blog98Featured__copy h2{
+  margin:18px 0;
+  font:500 37px/1.02 Georgia,"Times New Roman",serif;
+}
+.blog98Featured__copy p{
+  color:#c7c1b8;
+  font-size:10px;
+  line-height:1.75;
+}
+.blog98Featured__copy>a{
+  width:max-content;
+  min-height:44px;
+  margin-top:24px;
+  padding:0 17px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-radius:999px;
+  background:#dfb068;
+  color:#27231d;
+  font-size:8px;
+  font-weight:800;
+}
+.blog98Featured__meta{
+  margin-top:27px;
+  display:flex;
+  gap:20px;
+}
+.blog98Featured__meta small{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#bdb5ab;
+  font-size:7px;
+}
+.blog98Featured__image{
+  display:block;
+  min-height:400px;
+  overflow:hidden;
+}
+.blog98Featured__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s ease;
+}
+.blog98Featured:hover .blog98Featured__image img{transform:scale(1.025)}
+
+/* ARTICLE */
+.blog99Article{
+  background:#f7f2eb;
+  color:#242522;
+}
+.blog99Hero{
+  position:relative;
+  min-height:570px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:60px 8%;
+  color:#fff;
+}
+.blog99Back{
+  position:absolute;
+  z-index:4;
+  left:5%;
+  top:34px;
+  font-size:8px;
+  letter-spacing:.05em;
+  color:rgba(255,255,255,.85);
+}
+.blog99Hero__image,
+.blog99Hero__shade{
+  position:absolute;
+  inset:0;
+}
+.blog99Hero__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.blog99Hero__shade{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.76)),
+    linear-gradient(90deg,rgba(17,15,12,.45),transparent);
+}
+.blog99Hero__copy{
+  position:relative;
+  z-index:3;
+  max-width:840px;
+}
+.blog99Hero__copy>span{
+  color:#e0b36c;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.blog99Hero__copy h1{
+  margin:15px 0;
+  font:500 clamp(44px,5vw,72px)/1 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.blog99Hero__copy>p{
+  max-width:680px;
+  color:rgba(255,255,255,.82);
+  font-size:12px;
+  line-height:1.75;
+}
+.blog99Hero__copy>div{
+  margin-top:22px;
+  display:flex;
+  gap:20px;
+}
+.blog99Hero__copy small{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:rgba(255,255,255,.72);
+  font-size:8px;
+}
+.blog99Body{
+  width:min(1160px,90%);
+  margin:0 auto;
+  padding:68px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:70px;
+  align-items:start;
+}
+.blog99Body>article{
+  color:#494943;
+  font:400 17px/1.95 Georgia,"Times New Roman",serif;
+}
+.blog99Lead{
+  margin-bottom:30px;
+  padding-bottom:22px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  border-bottom:1px solid #dfd5c8;
+}
+.blog99Lead span{
+  color:#a57942;
+  font:800 8px/1 Arial,sans-serif;
+  letter-spacing:.16em;
+}
+.blog99Lead strong{
+  color:#343431;
+  font:600 10px/1.3 Arial,sans-serif;
+}
+.blog99Body>article p{margin-bottom:25px}
+.blog99Body blockquote{
+  margin:42px 0;
+  padding:30px 34px;
+  border-left:3px solid #b4864e;
+  background:#efe5d8;
+  color:#3d3933;
+  font:500 26px/1.45 Georgia,"Times New Roman",serif;
+}
+.blog99Body aside{
+  position:sticky;
+  top:120px;
+  padding:24px;
+  border:1px solid #dfd4c6;
+  border-radius:16px;
+  background:#fffaf4;
+  box-shadow:0 18px 40px rgba(71,52,31,.06);
+}
+.blog99Aside__brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.blog99Aside__brand img{
+  width:46px;
+  height:46px;
+  object-fit:contain;
+}
+.blog99Aside__brand span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.blog99Aside__brand strong{
+  color:#2e2f2d;
+  font:600 15px Georgia,"Times New Roman",serif;
+}
+.blog99Aside__brand small{
+  color:#928a80;
+  font-size:7px;
+}
+.blog99Body aside>p{
+  margin:20px 0;
+  color:#777068;
+  font-size:9px;
+  line-height:1.7;
+}
+.blog99Body aside>a{
+  min-height:42px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-radius:10px;
+  background:#a8793d;
+  color:#fff;
+  font-size:8px;
+  font-weight:800;
+}
+.blog99Related{
+  padding:58px 7% 80px;
+  border-top:1px solid #e1d7ca;
+}
+.blog99Related__head span{
+  color:#a87a40;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.blog99Related__head h2{
+  margin:8px 0 25px;
+  font:500 35px Georgia,"Times New Roman",serif;
+}
+.blog99Related__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.blog99Related__grid>a{
+  display:grid;
+  grid-template-columns:125px 1fr;
+  grid-template-rows:auto auto auto;
+  gap:5px 15px;
+  padding:12px;
+  border:1px solid #ded4c7;
+  border-radius:12px;
+  background:rgba(255,255,255,.58);
+}
+.blog99Related__grid img{
+  grid-row:1/4;
+  width:125px;
+  height:105px;
+  object-fit:cover;
+  border-radius:8px;
+}
+.blog99Related__grid span{
+  color:#a27743;
+  font-size:7px;
+  font-weight:800;
+}
+.blog99Related__grid strong{
+  color:#34332f;
+  font:500 17px/1.15 Georgia,"Times New Roman",serif;
+}
+.blog99Related__grid small{
+  color:#90877e;
+  font-size:7px;
+}
+
+@media(max-width:1100px){
+  .blog98Grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .blog98Featured{grid-template-columns:42% 58%}
+  .blog99Body{grid-template-columns:minmax(0,1fr) 260px;gap:40px}
+}
+@media(max-width:760px){
+  .blog98Hero{min-height:540px;padding:60px 7%}
+  .blog98Hero__shade{background:linear-gradient(90deg,rgba(15,14,12,.9),rgba(15,14,12,.48))}
+  .blog98Hero__copy h1{font-size:48px}
+  .blog98Toolbar{align-items:flex-start;flex-direction:column}
+  .blog98Categories{width:100%;overflow:auto;flex-wrap:nowrap;padding-bottom:3px}
+  .blog98Categories button{flex:0 0 auto}
+  .blog98Search{width:100%}
+  .blog98Grid{grid-template-columns:1fr}
+  .blog98Card__image{height:260px}
+  .blog98Featured{grid-template-columns:1fr}
+  .blog98Featured__copy{padding:36px 28px}
+  .blog98Featured__image{min-height:310px}
+  .blog99Hero{min-height:600px;padding:60px 6% 48px}
+  .blog99Hero__copy h1{font-size:45px}
+  .blog99Body{grid-template-columns:1fr;width:min(90%,760px);gap:35px}
+  .blog99Body aside{position:relative;top:auto}
+  .blog99Related__grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .blog98Content{padding-left:5%;padding-right:5%}
+  .blog98Hero__copy h1{font-size:42px}
+  .blog98Card__body{min-height:285px}
+  .blog98Featured__copy h2{font-size:31px}
+  .blog99Hero__copy h1{font-size:39px}
+  .blog99Body>article{font-size:16px}
+  .blog99Body blockquote{font-size:22px;padding:25px}
+  .blog99Related__grid>a{grid-template-columns:100px 1fr}
+  .blog99Related__grid img{width:100px;height:95px}
 }
 
 `;
