@@ -146,6 +146,37 @@ const defaultProcessContent = {
   testimonials: []
 };
 
+const defaultAboutContent = {
+  eyebrow: "HAKKIMDA",
+  firstName: "Kaan",
+  lastName: "ÖZKAN",
+  role: "Sosyal Hizmet Uzmanı & Aile Danışmanı",
+  storyLabel: "BENİM HİKÂYEM • TAM METİN",
+  paragraphs: [
+    "Merhabalar, ben Kaan ÖZKAN. Sosyal Hizmet Uzmanı ve Aile Danışmanıyım. Meslek hayatımı yalnızca bireylerin yaşadığı sorunları çözmeye değil; onların yaşam öykülerini anlamaya, güçlü yönlerini ortaya çıkarmaya ve sürdürülebilir bir değişim sürecine eşlik etmeye adadım. İnsan davranışını yalnızca bireysel özellikler üzerinden değil; aile, çevre, sosyal sistemler ve yaşam deneyimleriyle birlikte değerlendiren bütüncül bir bakış açısını benimsiyorum.",
+    "İstanbul Aydın Üniversitesi Sağlık Bilimleri Fakültesi Sosyal Hizmet Bölümü'nden mezun olduktan sonra mesleki gelişimimi yalnızca üniversite eğitimiyle sınırlandırmadım. Eğitim hayatım boyunca farklı yaş grupları ve farklı yaşam deneyimlerine sahip bireylerle çalışabilmek amacıyla gönüllü projelerde, uygulamalı stajlarda ve saha araştırmalarında aktif olarak yer aldım. Böylece sosyal hizmetin teorik yönünü gerçek yaşam deneyimleriyle birleştirme fırsatı elde ettim.",
+    "Üniversite yıllarında çocuk koruma sistemi, yaşlı bakım hizmetleri, rehabilitasyon merkezleri, sivil toplum kuruluşları ve sosyal hizmet kurumlarında görev alarak sosyal hizmet disiplininin farklı uygulama alanlarını yakından tanıdım. Sulukule Gönüllüleri Derneği, Toplum Gönüllüleri Vakfı (TOG), Florya Çocuk Destek Merkezi (ÇODEM), Kırşehir Aile ve Sosyal Hizmetler İl Müdürlüğü ile palyatif bakım hizmeti sunan Asudem Yaşam ve Sağlık Merkezi gibi kurumlarda yürüttüğüm gönüllülük ve staj çalışmaları; çocuk koruma, sosyal destek mekanizmaları, dezavantajlı gruplarla çalışma, yaşlı refahı ve psikososyal değerlendirme alanlarında önemli saha deneyimleri kazanmamı sağladı.",
+    "Meslek hayatıma Kırşehir Belediyesi bünyesinde Sosyal Yardım Merkezi'nde Sosyal Çalışmacı olarak başladım. Bu görev sürecinde yüzlerce müracaatçıyla birebir görüşmeler gerçekleştirdim; sosyal inceleme raporlarının hazırlanması, yerinde ev ziyaretleri, psikososyal değerlendirme süreçleri, sosyal yardım mekanizmalarının planlanması ve vaka yönetimi çalışmalarında aktif sorumluluk üstlendim. Her müracaatçının yaşam öyküsünün birbirinden farklı olduğunu, etkili bir sosyal hizmet müdahalesinin ise ancak bireyin sosyal çevresi, aile yapısı, ekonomik koşulları ve psikolojik ihtiyaçları birlikte değerlendirildiğinde mümkün olabileceğini bu süreçte daha derinden deneyimledim.",
+    "Daha sonra Kırşehir Belediyesi Engelsiz Yaşam Merkezi, BEGEM (Beceri ve Meslek Edindirme Merkezi) ve Bağbaşı Aile Yaşam Merkezi'nde Sosyal Çalışmacı ve Aile Danışmanı olarak görev aldım. Çocuklar, ergenler, yetişkinler, çiftler, aileler ve engelli bireylerle yürüttüğüm danışmanlık süreçlerinde yalnızca mevcut problemleri çözmeye odaklanmak yerine; bireylerin kendi potansiyellerini fark etmelerini, sağlıklı ilişki becerileri geliştirmelerini ve yaşam kalitelerini artırmalarını hedefleyen koruyucu, önleyici ve güçlendirici müdahaleler geliştirdim.",
+    "Aile danışmanlığı, sosyal hizmet uygulamaları, psikososyal müdahale, travma, kriz yönetimi, çocuk koruma, iletişim becerileri ve mesleki gelişim alanlarında çok sayıda eğitim programına katılarak kendimi sürekli geliştirmeye devam ettim. Çünkü insan davranışını anlamanın ve etkili bir danışmanlık hizmeti sunmanın, yaşam boyu öğrenmeyi benimsemekten geçtiğine inanıyorum.",
+    "Meslek yaşamım boyunca sosyal hizmetin temel değerleri olan insan hakları, sosyal adalet, eşitlik, etik sorumluluk, gizlilik ve insan onuruna saygı ilkelerini çalışmalarımın merkezine yerleştirdim. Danışmanlık sürecini yalnızca öneriler sunulan bir görüşme olarak değil; danışanın kendisini güven içerisinde ifade edebildiği, yargılanmadan dinlendiği ve değişim için cesaretlendirildiği profesyonel bir iş birliği süreci olarak görüyorum.",
+    "Çalışmalarımda ağırlıklı olarak bireysel danışmanlık, aile danışmanlığı ve çift danışmanlığı alanlarında hizmet vermekteyim. İletişim problemleri, evlilik ve ilişki çatışmaları, boşanma süreci, güven sorunları, öfke yönetimi, kaygı, yaşam olaylarına uyum güçlüğü, ebeveynlik becerileri, aile içi roller, sınır koyma, benlik saygısı, duygusal dayanıklılık ve psikososyal güçlenme gibi birçok konuda danışanlarıma profesyonel destek sunuyorum.",
+    "Mesleki uygulamalarımda sosyal hizmetin güç odaklı yaklaşımı, ekolojik sistem yaklaşımı, çözüm odaklı görüşme teknikleri ve aile danışmanlığı ilkelerinden yararlanıyor; her danışanın yaşam öyküsünü kendine özgü bir bütün olarak değerlendiriyorum. Benim için hiçbir danışan yalnızca yaşadığı problemden ibaret değildir. Her bireyin geçmişi, yaşam deneyimleri, güçlü yönleri ve değişim kapasitesi vardır. Danışmanlık sürecindeki temel hedefim, bu potansiyelin ortaya çıkmasına rehberlik etmektir.",
+    "Akademik gelişimime ve mesleki üretkenliğime de büyük önem veriyorum. Üniversite yıllarında İstanbul Aydın Üniversitesi Sosyal Hizmet Kulübü'nde önce Genel Sekreter, ardından Kulüp Başkanı olarak görev aldım. Bu süreçte çok sayıda bilimsel etkinlik, sosyal sorumluluk projesi, seminer ve öğrenci organizasyonunun planlanması ve yürütülmesinde aktif rol üstlendim. Ayrıca ulusal kongreler, sempozyumlar ve akademik toplantılara katılarak sosyal hizmet alanındaki güncel gelişmeleri yakından takip etmeyi sürdürdüm.",
+    "Sahadaki çalışmalarımın yanı sıra, bilgi ve deneyimlerimi daha geniş kitlelere ulaştırmayı mesleki sorumluluğumun bir parçası olarak görüyorum. Bu doğrultuda dijital platformlarda sosyal hizmet, aile danışmanlığı, psikososyal güçlenme, sağlıklı ilişkiler, ebeveynlik ve kişisel gelişim konularında bilimsel temelli içerikler üretiyor; toplumun ruh sağlığı okuryazarlığını artırmaya katkı sunmayı amaçlıyorum.",
+    "Benim için başarılı bir danışmanlık süreci; danışanın yalnızca sorunlarını konuştuğu değil, kendisini yeniden keşfettiği, yaşamına farklı bir bakış açısıyla yön verebildiği ve geleceğe daha güçlü adımlarla ilerleyebildiği bir gelişim yolculuğudur.",
+    "Her bireyin yaşamında zaman zaman desteğe ihtiyaç duyabileceğine inanıyorum. Doğru zamanda alınan profesyonel destek; yalnızca mevcut sorunların çözümüne değil, daha sağlıklı ilişkiler kurmaya, psikolojik dayanıklılığı artırmaya ve yaşam kalitesini yükseltmeye de önemli katkılar sağlar.",
+    "Eğer siz de yaşamınızın herhangi bir döneminde profesyonel bir bakış açısına ihtiyaç duyuyor, kendinizi daha iyi anlamak, ilişkilerinizi güçlendirmek veya yaşadığınız güçlüklerle daha sağlıklı başa çıkabilmek için güvenilir bir danışmanlık süreci arıyorsanız, bu yolculukta size bilimsel, etik ve insan odaklı bir yaklaşımla eşlik etmekten memnuniyet duyarım.",
+    "Boşanma Danışmanlığı ve Yas Danışmanlığı başta olmak üzere yaşamın farklı dönemlerinde ortaya çıkan psikososyal güçlükler üzerine yoğunlaşmaktayım. Danışanlarımla yürüttüğüm profesyonel süreçlerde, her bireyin yaşam öyküsünü, aile dinamiklerini, sosyal çevresini ve kişisel kaynaklarını birlikte değerlendirerek bilimsel temelli, etik ilkelere bağlı ve kişiye özgü bir danışmanlık yaklaşımı benimsiyorum."
+  ],
+  profileEyebrow: "AİLE DANIŞMANI",
+  profileName: "Kaan Özkan",
+  profileRole: "Sosyal Hizmet Uzmanı",
+  profileItem1: "Etik yaklaşım",
+  profileItem2: "Gizlilik",
+  profileItem3: "İnsan odaklı destek",
+};
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -289,6 +320,7 @@ function App() {
 
   const [servicesContent, setServicesContent] = useState(defaultServicesContent);
   const [processContent, setProcessContent] = useState(defaultProcessContent);
+  const [aboutContent, setAboutContent] = useState(defaultAboutContent);
 
   const heroSlides = [
     {
@@ -469,6 +501,18 @@ function App() {
     };
 
     loadProcessContent();
+    return () => { active = false; };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    const loadAboutContent = async () => {
+      const { data, error } = await supabase.from("site_content").select("content").eq("id", "about").maybeSingle();
+      if (!active) return;
+      if (error) { console.error("Hakkımda içeriği yüklenemedi:", error); return; }
+      if (data?.content) setAboutContent((current) => ({ ...current, ...data.content }));
+    };
+    loadAboutContent();
     return () => { active = false; };
   }, []);
 
@@ -712,7 +756,7 @@ function App() {
         </header>
 
         {page === "about" ? (
-          <AboutDetailPage />
+          <AboutDetailPage content={aboutContent} />
         ) : page === "services" ? (
           <ServicesDetailPage content={servicesContent} />
         ) : page === "process" ? (
@@ -1740,6 +1784,10 @@ function AdminDemoPage() {
   const [processEditorLoading, setProcessEditorLoading] = useState(false);
   const [processEditorSaving, setProcessEditorSaving] = useState(false);
   const [processEditorMessage, setProcessEditorMessage] = useState("");
+  const [aboutEditor, setAboutEditor] = useState(defaultAboutContent);
+  const [aboutEditorLoading, setAboutEditorLoading] = useState(false);
+  const [aboutEditorSaving, setAboutEditorSaving] = useState(false);
+  const [aboutEditorMessage, setAboutEditorMessage] = useState("");
 
 
   const [mediaItems, setMediaItems] = useState([]);
@@ -1891,6 +1939,10 @@ function AdminDemoPage() {
   }, [session, activeTab]);
 
   useEffect(() => {
+    if (session && activeTab === "about") loadAboutEditor();
+  }, [session, activeTab]);
+
+  useEffect(() => {
     if (session && activeTab === "content") {
       loadMediaAdmin();
     }
@@ -1989,6 +2041,43 @@ function AdminDemoPage() {
       .split("\n")
       .map((item) => item.trim())
       .filter(Boolean);
+
+  const loadAboutEditor = async () => {
+    setAboutEditorLoading(true);
+    setAboutEditorMessage("");
+    const { data, error } = await supabase.from("site_content").select("content").eq("id", "about").maybeSingle();
+    if (error) {
+      console.error("Hakkımda içeriği yüklenemedi:", error);
+      setAboutEditorMessage("Hakkımda içeriği yüklenemedi.");
+    } else {
+      setAboutEditor({ ...defaultAboutContent, ...(data?.content || {}) });
+    }
+    setAboutEditorLoading(false);
+  };
+
+  const saveAboutEditor = async (e) => {
+    e.preventDefault();
+    setAboutEditorSaving(true);
+    setAboutEditorMessage("");
+    const payload = {
+      ...aboutEditor,
+      paragraphs: Array.isArray(aboutEditor.paragraphs)
+        ? aboutEditor.paragraphs
+        : aboutEditor.paragraphs.split(/\n\s*\n/).map((item) => item.trim()).filter(Boolean),
+    };
+    const { error } = await supabase.from("site_content").upsert(
+      { id: "about", content: payload, updated_at: new Date().toISOString() },
+      { onConflict: "id" }
+    );
+    if (error) {
+      console.error("Hakkımda kaydedilemedi:", error);
+      setAboutEditorMessage("Kaydetme başarısız. Yetki ayarlarını kontrol edin.");
+    } else {
+      setAboutEditor(payload);
+      setAboutEditorMessage("Hakkımda sayfası başarıyla güncellendi.");
+    }
+    setAboutEditorSaving(false);
+  };
 
   const loadServicesEditor = async () => {
     setServicesEditorLoading(true);
@@ -2473,6 +2562,7 @@ function AdminDemoPage() {
           {[
             ["dashboard", "grid", "Dashboard"],
             ["homepage", "edit", "Ana Sayfa"],
+            ["about", "user", "Hakkımda"],
             ["services", "grid", "Hizmetler"],
             ["process", "chart", "Süreç"],
             ["appointments", "calendar", "Randevular"],
@@ -2526,6 +2616,8 @@ function AdminDemoPage() {
                 ? "Genel Bakış"
                 : activeTab === "homepage"
                 ? "Ana Sayfa"
+                : activeTab === "about"
+                ? "Hakkımda"
                 : activeTab === "services"
                 ? "Hizmetler"
                 : activeTab === "process"
@@ -2730,6 +2822,61 @@ function AdminDemoPage() {
                     {homeEditorSaving ? "Kaydediliyor..." : "Ana Sayfayı Kaydet"}
                     {!homeEditorSaving && <Icon name="check" size={16}/>}
                   </button>
+                </div>
+              </form>
+            )}
+          </section>
+        )}
+
+        {activeTab === "about" && (
+          <section className="admin73Cms">
+            <div className="admin73Cms__head">
+              <div>
+                <span>SİTE İÇERİKLERİ / HAKKIMDA</span>
+                <h2>Hakkımda sayfasını düzenleyin.</h2>
+                <p>Sayfadaki tanıtım yazısını ve profil kartındaki bilgileri kod açmadan değiştirebilirsiniz.</p>
+              </div>
+              <button type="button" onClick={loadAboutEditor} disabled={aboutEditorLoading}>
+                {aboutEditorLoading ? "Yükleniyor..." : "İçeriği Yenile"}
+              </button>
+            </div>
+            {aboutEditorLoading ? (
+              <div className="admin73Cms__loading">Hakkımda içeriği yükleniyor...</div>
+            ) : (
+              <form className="admin73Cms__form" onSubmit={saveAboutEditor}>
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>01</span><div><strong>Sayfa Üst Alanı</strong><small>Başlık ve mesleki unvan.</small></div></div>
+                  <div className="admin73Cms__fields">
+                    <label><span>Üst Etiket</span><input value={aboutEditor.eyebrow} onChange={(e)=>setAboutEditor({...aboutEditor,eyebrow:e.target.value})}/></label>
+                    <label><span>Ad</span><input value={aboutEditor.firstName} onChange={(e)=>setAboutEditor({...aboutEditor,firstName:e.target.value})}/></label>
+                    <label><span>Soyad</span><input value={aboutEditor.lastName} onChange={(e)=>setAboutEditor({...aboutEditor,lastName:e.target.value})}/></label>
+                    <label><span>Mesleki Unvan</span><input value={aboutEditor.role} onChange={(e)=>setAboutEditor({...aboutEditor,role:e.target.value})}/></label>
+                    <label className="admin73Cms__full"><span>Metin Bölümü Etiketi</span><input value={aboutEditor.storyLabel} onChange={(e)=>setAboutEditor({...aboutEditor,storyLabel:e.target.value})}/></label>
+                  </div>
+                </div>
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>02</span><div><strong>Hakkımda Metni</strong><small>Paragraflar arasında bir boş satır bırakın.</small></div></div>
+                  <div className="admin73Cms__fields">
+                    <label className="admin73Cms__full"><span>Tam Hakkımda Yazısı</span>
+                      <textarea rows="28" value={Array.isArray(aboutEditor.paragraphs) ? aboutEditor.paragraphs.join("\n\n") : aboutEditor.paragraphs || ""} onChange={(e)=>setAboutEditor({...aboutEditor,paragraphs:e.target.value})}/>
+                    </label>
+                  </div>
+                </div>
+                <div className="admin73Cms__section">
+                  <div className="admin73Cms__sectionTitle"><span>03</span><div><strong>Profil Kartı</strong><small>Sağdaki fotoğraf kartının yazıları.</small></div></div>
+                  <div className="admin73Cms__fields">
+                    <label><span>Üst Unvan</span><input value={aboutEditor.profileEyebrow} onChange={(e)=>setAboutEditor({...aboutEditor,profileEyebrow:e.target.value})}/></label>
+                    <label><span>Ad Soyad</span><input value={aboutEditor.profileName} onChange={(e)=>setAboutEditor({...aboutEditor,profileName:e.target.value})}/></label>
+                    <label><span>Alt Unvan</span><input value={aboutEditor.profileRole} onChange={(e)=>setAboutEditor({...aboutEditor,profileRole:e.target.value})}/></label>
+                    <label><span>1. Özellik</span><input value={aboutEditor.profileItem1} onChange={(e)=>setAboutEditor({...aboutEditor,profileItem1:e.target.value})}/></label>
+                    <label><span>2. Özellik</span><input value={aboutEditor.profileItem2} onChange={(e)=>setAboutEditor({...aboutEditor,profileItem2:e.target.value})}/></label>
+                    <label><span>3. Özellik</span><input value={aboutEditor.profileItem3} onChange={(e)=>setAboutEditor({...aboutEditor,profileItem3:e.target.value})}/></label>
+                  </div>
+                </div>
+                {aboutEditorMessage && <div className={`admin73Cms__message ${aboutEditorMessage.includes("başarıyla") ? "is-success" : "is-error"}`}>{aboutEditorMessage}</div>}
+                <div className="admin73Cms__savebar">
+                  <div><strong>Hakkımda sayfasını yayınla</strong><span>Değişiklikler canlı sayfada kullanılacaktır.</span></div>
+                  <button type="submit" disabled={aboutEditorSaving}>{aboutEditorSaving ? "Kaydediliyor..." : "Hakkımda Sayfasını Kaydet"}</button>
                 </div>
               </form>
             )}
@@ -3529,59 +3676,39 @@ function ServicesDetailPage({ content }) {
   );
 }
 
-function AboutDetailPage() {
+function AboutDetailPage({ content = defaultAboutContent }) {
+  const paragraphs = Array.isArray(content.paragraphs)
+    ? content.paragraphs
+    : String(content.paragraphs || "").split(/\n\s*\n/).map((item) => item.trim()).filter(Boolean);
+
   return (
     <main className="aboutDirectPage">
       <section className="aboutDirectHeader">
         <a href="#/" className="aboutDirectBack">← Ana Sayfaya Dön</a>
-
         <div className="aboutDirectHeader__title">
-          <span>HAKKIMDA</span>
-          <h1>Kaan <strong>ÖZKAN</strong></h1>
-          <p>Sosyal Hizmet Uzmanı & Aile Danışmanı</p>
+          <span>{content.eyebrow}</span>
+          <h1>{content.firstName} <strong>{content.lastName}</strong></h1>
+          <p>{content.role}</p>
         </div>
       </section>
-
       <section className="aboutDirectLayout">
         <article className="aboutDirectArticle">
-          <div className="aboutDirectArticle__topline">
-            <span>BENİM HİKÂYEM • TAM METİN</span>
-            <div />
-          </div>
-
-              <p>Merhabalar, ben Kaan ÖZKAN. Sosyal Hizmet Uzmanı ve Aile Danışmanıyım. Meslek hayatımı yalnızca bireylerin yaşadığı sorunları çözmeye değil; onların yaşam öykülerini anlamaya, güçlü yönlerini ortaya çıkarmaya ve sürdürülebilir bir değişim sürecine eşlik etmeye adadım. İnsan davranışını yalnızca bireysel özellikler üzerinden değil; aile, çevre, sosyal sistemler ve yaşam deneyimleriyle birlikte değerlendiren bütüncül bir bakış açısını benimsiyorum.</p>
-              <p>İstanbul Aydın Üniversitesi Sağlık Bilimleri Fakültesi Sosyal Hizmet Bölümü'nden mezun olduktan sonra mesleki gelişimimi yalnızca üniversite eğitimiyle sınırlandırmadım. Eğitim hayatım boyunca farklı yaş grupları ve farklı yaşam deneyimlerine sahip bireylerle çalışabilmek amacıyla gönüllü projelerde, uygulamalı stajlarda ve saha araştırmalarında aktif olarak yer aldım. Böylece sosyal hizmetin teorik yönünü gerçek yaşam deneyimleriyle birleştirme fırsatı elde ettim.</p>
-              <p>Üniversite yıllarında çocuk koruma sistemi, yaşlı bakım hizmetleri, rehabilitasyon merkezleri, sivil toplum kuruluşları ve sosyal hizmet kurumlarında görev alarak sosyal hizmet disiplininin farklı uygulama alanlarını yakından tanıdım. Sulukule Gönüllüleri Derneği, Toplum Gönüllüleri Vakfı (TOG), Florya Çocuk Destek Merkezi (ÇODEM), Kırşehir Aile ve Sosyal Hizmetler İl Müdürlüğü ile palyatif bakım hizmeti sunan Asudem Yaşam ve Sağlık Merkezi gibi kurumlarda yürüttüğüm gönüllülük ve staj çalışmaları; çocuk koruma, sosyal destek mekanizmaları, dezavantajlı gruplarla çalışma, yaşlı refahı ve psikososyal değerlendirme alanlarında önemli saha deneyimleri kazanmamı sağladı.</p>
-              <p>Meslek hayatıma Kırşehir Belediyesi bünyesinde Sosyal Yardım Merkezi'nde Sosyal Çalışmacı olarak başladım. Bu görev sürecinde yüzlerce müracaatçıyla birebir görüşmeler gerçekleştirdim; sosyal inceleme raporlarının hazırlanması, yerinde ev ziyaretleri, psikososyal değerlendirme süreçleri, sosyal yardım mekanizmalarının planlanması ve vaka yönetimi çalışmalarında aktif sorumluluk üstlendim. Her müracaatçının yaşam öyküsünün birbirinden farklı olduğunu, etkili bir sosyal hizmet müdahalesinin ise ancak bireyin sosyal çevresi, aile yapısı, ekonomik koşulları ve psikolojik ihtiyaçları birlikte değerlendirildiğinde mümkün olabileceğini bu süreçte daha derinden deneyimledim.</p>
-              <p>Daha sonra Kırşehir Belediyesi Engelsiz Yaşam Merkezi, BEGEM (Beceri ve Meslek Edindirme Merkezi) ve Bağbaşı Aile Yaşam Merkezi'nde Sosyal Çalışmacı ve Aile Danışmanı olarak görev aldım. Çocuklar, ergenler, yetişkinler, çiftler, aileler ve engelli bireylerle yürüttüğüm danışmanlık süreçlerinde yalnızca mevcut problemleri çözmeye odaklanmak yerine; bireylerin kendi potansiyellerini fark etmelerini, sağlıklı ilişki becerileri geliştirmelerini ve yaşam kalitelerini artırmalarını hedefleyen koruyucu, önleyici ve güçlendirici müdahaleler geliştirdim.</p>
-              <p>Aile danışmanlığı, sosyal hizmet uygulamaları, psikososyal müdahale, travma, kriz yönetimi, çocuk koruma, iletişim becerileri ve mesleki gelişim alanlarında çok sayıda eğitim programına katılarak kendimi sürekli geliştirmeye devam ettim. Çünkü insan davranışını anlamanın ve etkili bir danışmanlık hizmeti sunmanın, yaşam boyu öğrenmeyi benimsemekten geçtiğine inanıyorum.</p>
-              <p>Meslek yaşamım boyunca sosyal hizmetin temel değerleri olan insan hakları, sosyal adalet, eşitlik, etik sorumluluk, gizlilik ve insan onuruna saygı ilkelerini çalışmalarımın merkezine yerleştirdim. Danışmanlık sürecini yalnızca öneriler sunulan bir görüşme olarak değil; danışanın kendisini güven içerisinde ifade edebildiği, yargılanmadan dinlendiği ve değişim için cesaretlendirildiği profesyonel bir iş birliği süreci olarak görüyorum.</p>
-              <p>Çalışmalarımda ağırlıklı olarak bireysel danışmanlık, aile danışmanlığı ve çift danışmanlığı alanlarında hizmet vermekteyim. İletişim problemleri, evlilik ve ilişki çatışmaları, boşanma süreci, güven sorunları, öfke yönetimi, kaygı, yaşam olaylarına uyum güçlüğü, ebeveynlik becerileri, aile içi roller, sınır koyma, benlik saygısı, duygusal dayanıklılık ve psikososyal güçlenme gibi birçok konuda danışanlarıma profesyonel destek sunuyorum.</p>
-              <p>Mesleki uygulamalarımda sosyal hizmetin güç odaklı yaklaşımı, ekolojik sistem yaklaşımı, çözüm odaklı görüşme teknikleri ve aile danışmanlığı ilkelerinden yararlanıyor; her danışanın yaşam öyküsünü kendine özgü bir bütün olarak değerlendiriyorum. Benim için hiçbir danışan yalnızca yaşadığı problemden ibaret değildir. Her bireyin geçmişi, yaşam deneyimleri, güçlü yönleri ve değişim kapasitesi vardır. Danışmanlık sürecindeki temel hedefim, bu potansiyelin ortaya çıkmasına rehberlik etmektir.</p>
-              <p>Akademik gelişimime ve mesleki üretkenliğime de büyük önem veriyorum. Üniversite yıllarında İstanbul Aydın Üniversitesi Sosyal Hizmet Kulübü'nde önce Genel Sekreter, ardından Kulüp Başkanı olarak görev aldım. Bu süreçte çok sayıda bilimsel etkinlik, sosyal sorumluluk projesi, seminer ve öğrenci organizasyonunun planlanması ve yürütülmesinde aktif rol üstlendim. Ayrıca ulusal kongreler, sempozyumlar ve akademik toplantılara katılarak sosyal hizmet alanındaki güncel gelişmeleri yakından takip etmeyi sürdürdüm.</p>
-              <p>Sahadaki çalışmalarımın yanı sıra, bilgi ve deneyimlerimi daha geniş kitlelere ulaştırmayı mesleki sorumluluğumun bir parçası olarak görüyorum. Bu doğrultuda dijital platformlarda sosyal hizmet, aile danışmanlığı, psikososyal güçlenme, sağlıklı ilişkiler, ebeveynlik ve kişisel gelişim konularında bilimsel temelli içerikler üretiyor; toplumun ruh sağlığı okuryazarlığını artırmaya katkı sunmayı amaçlıyorum.</p>
-              <p>Benim için başarılı bir danışmanlık süreci; danışanın yalnızca sorunlarını konuştuğu değil, kendisini yeniden keşfettiği, yaşamına farklı bir bakış açısıyla yön verebildiği ve geleceğe daha güçlü adımlarla ilerleyebildiği bir gelişim yolculuğudur.</p>
-              <p>Her bireyin yaşamında zaman zaman desteğe ihtiyaç duyabileceğine inanıyorum. Doğru zamanda alınan profesyonel destek; yalnızca mevcut sorunların çözümüne değil, daha sağlıklı ilişkiler kurmaya, psikolojik dayanıklılığı artırmaya ve yaşam kalitesini yükseltmeye de önemli katkılar sağlar.</p>
-              <p>Eğer siz de yaşamınızın herhangi bir döneminde profesyonel bir bakış açısına ihtiyaç duyuyor, kendinizi daha iyi anlamak, ilişkilerinizi güçlendirmek veya yaşadığınız güçlüklerle daha sağlıklı başa çıkabilmek için güvenilir bir danışmanlık süreci arıyorsanız, bu yolculukta size bilimsel, etik ve insan odaklı bir yaklaşımla eşlik etmekten memnuniyet duyarım.</p>
-              <p>Boşanma Danışmanlığı ve Yas Danışmanlığı başta olmak üzere yaşamın farklı dönemlerinde ortaya çıkan psikososyal güçlükler üzerine yoğunlaşmaktayım. Danışanlarımla yürüttüğüm profesyonel süreçlerde, her bireyin yaşam öyküsünü, aile dinamiklerini, sosyal çevresini ve kişisel kaynaklarını birlikte değerlendirerek bilimsel temelli, etik ilkelere bağlı ve kişiye özgü bir danışmanlık yaklaşımı benimsiyorum.</p>
+          <div className="aboutDirectArticle__topline"><span>{content.storyLabel}</span><div /></div>
+          {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         </article>
-
         <aside className="aboutDirectProfile">
           <div className="aboutDirectProfile__photo">
-            <img loading="lazy" decoding="async" src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
+            <img loading="lazy" decoding="async" src={aboutPhoto} alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`} />
           </div>
-
           <div className="aboutDirectProfile__body">
-            <span>AİLE DANIŞMANI</span>
-            <h2>Kaan Özkan</h2>
-            <p>Sosyal Hizmet Uzmanı</p>
-
+            <span>{content.profileEyebrow}</span>
+            <h2>{content.profileName}</h2>
+            <p>{content.profileRole}</p>
             <div className="aboutDirectProfile__line" />
-
             <div className="aboutDirectProfile__items">
-              <div><Icon name="shield" size={18} /><span>Etik yaklaşım</span></div>
-              <div><Icon name="lock" size={18} /><span>Gizlilik</span></div>
-              <div><Icon name="heart" size={18} /><span>İnsan odaklı destek</span></div>
+              <div><Icon name="shield" size={18} /><span>{content.profileItem1}</span></div>
+              <div><Icon name="lock" size={18} /><span>{content.profileItem2}</span></div>
+              <div><Icon name="heart" size={18} /><span>{content.profileItem3}</span></div>
             </div>
           </div>
         </aside>
