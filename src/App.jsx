@@ -6,6 +6,10 @@ import servicesHeroRoom from "./assets/services-hero-room.jpg";
 import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
 import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
+import serviceIndividualImage from "./assets/service-individual-therapy.jpg";
+import serviceCoupleImage from "./assets/service-couple-therapy.jpg";
+import servicePsychosocialImage from "./assets/service-psychosocial.jpg";
+import serviceDivorceGriefImage from "./assets/service-divorce-grief.jpg";
 import { supabase } from "./supabase";
 
 const Icon = ({ name, size = 22 }) => {
@@ -1445,17 +1449,33 @@ function App() {
               <p>Görüşme ve randevu hakkında bilgi almak için telefon veya e-posta üzerinden iletişime geçebilirsiniz.</p>
             </div>
 
-            <div className="contactGrid">
-              <a href="tel:+905376319371" className="contactCard reveal">
+            <div className="contactBrand reveal">
+              <span className="brandEmblemWrap">
+                <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanEmblem} alt="Kaan Özkan logosu" />
+              </span>
+              <div>
+                <strong>KAAN ÖZKAN</strong>
+                <small>SOSYAL HİZMET UZMANI · AİLE DANIŞMANI</small>
+              </div>
+            </div>
+
+            <div className="contactGrid contactGrid--three">
+              <a href="tel:+905376319317" className="contactCard reveal">
                 <div className="contactIcon"><Icon name="phone" size={22} /></div>
                 <strong>Telefon</strong>
-                <span>+90 537 631 93 71</span>
+                <span>+90 537 631 93 17</span>
               </a>
 
               <a href="mailto:ailedanismanikaanozkan@gmail.com" className="contactCard reveal">
                 <div className="contactIcon"><Icon name="mail" size={22} /></div>
                 <strong>E-posta</strong>
                 <span>ailedanismanikaanozkan@gmail.com</span>
+              </a>
+
+              <a href="https://www.instagram.com/ailedanismanikaanozkan/" target="_blank" rel="noreferrer" className="contactCard reveal">
+                <div className="contactIcon contactInstagramIcon">◎</div>
+                <strong>Instagram</strong>
+                <span>@ailedanismanikaanozkan</span>
               </a>
             </div>
           </section>
@@ -1483,9 +1503,9 @@ function App() {
               </div>
 
               <div className="premiumFooter__contact">
-                <a href="tel:+905376319371">
+                <a href="tel:+905376319317">
                   <small>Telefon</small>
-                  <strong>+90 537 631 93 71</strong>
+                  <strong>+90 537 631 93 17</strong>
                 </a>
                 <a href="mailto:ailedanismanikaanozkan@gmail.com">
                   <small>E-posta</small>
@@ -1825,18 +1845,18 @@ function ContactDetailPage() {
           <span>DOĞRUDAN İLETİŞİM</span>
           <h2>Size uygun kanaldan ulaşabilirsiniz.</h2>
           <p>
-            Mesajlaşma uygulamaları ve konum bilgisi yerine, iletişim yalnızca
-            telefon ve e-posta üzerinden yürütülmektedir.
+            Görüşme ve randevu iletişimi telefon ve e-posta üzerinden yürütülür;
+            güncel paylaşımlar için Instagram hesabını da ziyaret edebilirsiniz.
           </p>
         </div>
 
         <div className="contact80Grid">
-          <a className="contact80Card" href="tel:+905376319371">
+          <a className="contact80Card" href="tel:+905376319317">
             <div className="contact80Card__icon">
               <Icon name="phone" size={26} />
             </div>
             <span>TELEFON</span>
-            <strong>+90 537 631 93 71</strong>
+            <strong>+90 537 631 93 17</strong>
             <p>Görüşme ve randevu hakkında bilgi almak için arayabilirsiniz.</p>
             <b>
               Ara <Icon name="arrow" size={15} />
@@ -1857,6 +1877,23 @@ function ContactDetailPage() {
             </p>
             <b>
               E-posta Gönder <Icon name="arrow" size={15} />
+            </b>
+          </a>
+
+          <a
+            className="contact80Card"
+            href="https://www.instagram.com/ailedanismanikaanozkan/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="contact80Card__icon contact80Instagram">◎</div>
+            <span>INSTAGRAM</span>
+            <strong>@ailedanismanikaanozkan</strong>
+            <p>
+              Güncel paylaşımlar ve bilgilendirici içerikler için Instagram hesabını takip edebilirsiniz.
+            </p>
+            <b>
+              Profili Aç <Icon name="arrow" size={15} />
             </b>
           </a>
         </div>
@@ -4807,28 +4844,28 @@ function ServicesDetailPage({ content }) {
       no: "01", icon: "user", slug: "bireysel-terapi",
       title: "Bireysel Terapi",
       short: content.individualShort,
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=88",
+      image: serviceIndividualImage,
       meta: "8 çalışma alanı",
     },
     {
       no: "02", icon: "heart", slug: "cift-terapisi",
       title: "Çift Terapisi",
       short: content.coupleShort,
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=88",
+      image: serviceCoupleImage,
       meta: "8 detaylı başlık",
     },
     {
       no: "03", icon: "shield", slug: "psikososyal-destek",
       title: "Psikososyal Destek",
       short: content.psychosocialShort,
-      image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1400&q=88",
+      image: servicePsychosocialImage,
       meta: "8 destek alanı",
     },
     {
       no: "04", icon: "compass", slug: "bosanma-ve-yas-danismanligi",
       title: "Boşanma ve Yas Danışmanlığı",
       short: "Boşanma, kayıp ve yaşamın yeniden yapılandırıldığı dönemlerde psikolojik ve sosyal uyuma odaklanan bütüncül danışmanlık.",
-      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=88",
+      image: serviceDivorceGriefImage,
       meta: "Kayıp · uyum · yeniden yapılanma",
     },
     {
@@ -15777,6 +15814,28 @@ img{
 .svc105ArticleEnd{margin-top:52px;padding:44px;background:#202a2e;color:#fff;border-radius:18px}.svc105ArticleEnd>span{font-size:8px;letter-spacing:.17em;color:#d0a064;font-weight:800}.svc105ArticleEnd h2{margin:10px 0 12px;font:500 34px/1.08 Georgia,serif}.svc105ArticleEnd p{font-size:11px;line-height:1.7;color:#b6bdc0}.svc105ArticleEnd a{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:#b17d3b;padding:13px 17px;border-radius:7px;font-size:9px;font-weight:800}
 @media(max-width:950px){.svc105Grid{grid-template-columns:1fr}.svc105Intro{grid-template-columns:1fr;gap:25px}.svc105ArticleLayout{grid-template-columns:1fr;gap:35px}.svc105ArticleNav{position:relative;top:auto}.svc105Trust{grid-template-columns:55px 1fr}.svc105Trust>p{grid-column:2}.svc105Card{grid-template-columns:40% 60%}}
 @media(max-width:620px){.svc105Hero{height:650px;min-height:650px}.svc105Hero__copy{left:7%;right:7%}.svc105Hero__copy h1{font-size:55px}.svc105Hero__index{display:none}.svc105Back,.svc105ArticleBack{top:25px}.svc105Intro,.svc105Grid,.svc105Trust,.svc105ArticleLayout{width:90%}.svc105Intro{padding:58px 0 38px}.svc105Intro h2{font-size:42px}.svc105Grid{margin-top:28px}.svc105Card{grid-template-columns:1fr;min-height:0}.svc105Card__visual{min-height:245px}.svc105Card__body{padding:27px 24px 30px}.svc105Card__body h3{font-size:27px}.svc105Trust{grid-template-columns:1fr;padding:28px 25px}.svc105Trust>p{grid-column:auto}.svc105ArticleHero{height:590px}.svc105ArticleHero__copy{left:7%;right:7%;top:53%}.svc105ArticleHero__copy h1{font-size:48px}.svc105ArticleHero__no{font-size:50px}.svc105ArticleLayout{padding:50px 0 75px}.svc105ArticleNav{display:none}.svc105ArticleLead p{font-size:19px}.svc105ArticleSection{padding:31px 0}.svc105ArticleSection h2{font-size:25px}.svc105ArticleSection p{font-size:11.5px;line-height:1.85}.svc105ArticleEnd{padding:31px 24px}.svc105ArticleEnd h2{font-size:29px}}
+
+/* STEP106 — kullanıcı görselleri + iletişim/Instagram */
+.contactBrand{
+  width:min(1180px,88%); margin:24px auto 18px; padding:18px 20px;
+  display:flex; align-items:center; gap:14px;
+  border:1px solid rgba(166,119,54,.18); border-radius:18px;
+  background:rgba(255,252,247,.72);
+}
+.contactBrand .brandEmblemWrap{width:54px;height:54px;flex:0 0 54px}
+.contactBrand .brandEmblem{width:100%;height:100%;object-fit:contain}
+.contactBrand>div{display:flex;flex-direction:column;gap:3px}
+.contactBrand strong{font:600 18px Georgia,"Times New Roman",serif;letter-spacing:.04em}
+.contactBrand small{font-size:9px;letter-spacing:.12em;color:#8a8177}
+.contactGrid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.contactInstagramIcon,.contact80Instagram{
+  font-family:Arial,sans-serif;font-weight:500;font-size:27px;line-height:1;
+}
+.contact80Grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){
+  .contactGrid--three,.contact80Grid{grid-template-columns:1fr}
+  .contactBrand{width:90%;padding:15px 16px}
+}
 
 `;
 
