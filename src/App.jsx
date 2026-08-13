@@ -973,7 +973,7 @@ function App() {
                 <span className="premiumFooter__creator">
                   Web Tasarım &amp; Geliştirme <strong>CB Labs</strong>
                   <i>·</i>
-                  Kurucu <strong>Çağatay Burucu</strong>
+                  
                 </span>
               </div>
               <div className="premiumFooter__legal">
