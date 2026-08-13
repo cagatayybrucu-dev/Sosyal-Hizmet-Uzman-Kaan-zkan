@@ -178,7 +178,7 @@ const defaultAboutContent = {
 };
 
 
-const blogPosts = [
+const defaultBlogPosts = [
   {
     slug: "aile-icinde-saglikli-iletisim",
     category: "AİLE & İLİŞKİLER",
@@ -271,6 +271,38 @@ const blogCategories = [
   "Çocuk & Ergen",
 ];
 
+
+const defaultBlogContent = {
+  heroEyebrow: "BLOG",
+  heroTitle: "Bilgi, farkındalık",
+  heroAccent: "ve güçlü yarınlar.",
+  heroDescription:
+    "Sosyal hizmet, psikososyal destek ve yaşamın farklı alanlarına dair güncel yazılar, rehberler ve içerikler.",
+  heroImage:
+    "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=2000&q=90",
+  categories: blogCategories,
+  posts: defaultBlogPosts.map((post, index) => ({
+    ...post,
+    id: post.slug,
+    status: "published",
+    featured: index === defaultBlogPosts.length - 1,
+    sortOrder: index + 1,
+  })),
+};
+
+const createBlogSlug = (value = "") =>
+  value
+    .toLocaleLowerCase("tr-TR")
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 90);
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -284,6 +316,7 @@ function App() {
     const hash = window.location.hash;
     return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
   });
+  const [blogContent, setBlogContent] = useState(defaultBlogContent);
 
   const defaultHomeContent = {
     eyebrow: "ÇİFT VE AİLE DANIŞMANI",
@@ -617,6 +650,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    let active = true;
+
+    const loadBlogContent = async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("content")
+        .eq("id", "blog")
+        .maybeSingle();
+
+      if (!active) return;
+      if (error) {
+        console.error("Blog içeriği yüklenemedi:", error);
+        return;
+      }
+
+      if (data?.content) {
+        setBlogContent((current) => ({
+          ...current,
+          ...data.content,
+          posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
+          categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
+        }));
+      }
+    };
+
+    loadBlogContent();
+    return () => { active = false; };
+  }, []);
+
+  useEffect(() => {
     const seo = {
       home: ["Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", "Kaan Özkan ile bireysel, çift ve aile danışmanlığı; psikososyal destek ve profesyonel danışmanlık hizmetleri hakkında bilgi alın."],
       about: ["Hakkımda | Kaan Özkan", "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan'ın mesleki yolculuğu, saha deneyimi ve danışmanlık yaklaşımı."],
@@ -880,7 +943,7 @@ function App() {
         ) : page === "content" ? (
           <ContentDetailPage />
         ) : page === "blog" ? (
-          blogSlug ? <BlogArticlePage slug={blogSlug} /> : <BlogPage />
+          blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} /> : <BlogPage content={blogContent} />
         ) : page === "contact" ? (
           <ContactDetailPage />
         ) : page === "appointment" ? (
@@ -1161,31 +1224,47 @@ function App() {
 
 
 
-function BlogPage() {
+function BlogPage({ content = defaultBlogContent }) {
   const [category, setCategory] = useState("Tümü");
   const [query, setQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const categories = Array.isArray(content.categories) && content.categories.length
+    ? content.categories
+    : blogCategories;
+
+  const publishedPosts = (Array.isArray(content.posts) ? content.posts : [])
+    .filter((post) => post.status !== "draft")
+    .sort((a, b) => Number(a.sortOrder || 999) - Number(b.sortOrder || 999));
 
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
-  const posts = blogPosts.slice(0, 4).filter((post) => {
+  const filteredPosts = publishedPosts.filter((post) => {
     const categoryMatch =
       category === "Tümü" ||
-      post.category.toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
+      String(post.category || "").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
     const queryMatch =
       !normalizedQuery ||
-      `${post.title} ${post.excerpt} ${post.category}`
+      `${post.title || ""} ${post.excerpt || ""} ${post.category || ""}`
         .toLocaleLowerCase("tr-TR")
         .includes(normalizedQuery);
     return categoryMatch && queryMatch;
   });
 
-  const featured = blogPosts[4];
+  const featured =
+    publishedPosts.find((post) => post.featured) ||
+    publishedPosts[publishedPosts.length - 1];
+
+  const featuredId = featured?.id || featured?.slug;
+  const cardPosts = filteredPosts
+    .filter((post) => (post.id || post.slug) !== featuredId)
+    .slice(0, visibleCount);
 
   return (
     <main className="blog98Page">
       <section className="blog98Hero">
         <div className="blog98Hero__image" aria-hidden="true">
           <img
-            src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=2000&q=90"
+            src={content.heroImage || defaultBlogContent.heroImage}
             alt=""
             onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
           />
@@ -1193,15 +1272,12 @@ function BlogPage() {
         <div className="blog98Hero__shade" />
 
         <div className="blog98Hero__copy">
-          <span>BLOG</span>
+          <span>{content.heroEyebrow || "BLOG"}</span>
           <h1>
-            Bilgi, farkındalık
-            <strong>ve güçlü yarınlar.</strong>
+            {content.heroTitle || "Bilgi, farkındalık"}
+            <strong>{content.heroAccent || "ve güçlü yarınlar."}</strong>
           </h1>
-          <p>
-            Sosyal hizmet, psikososyal destek ve yaşamın farklı alanlarına dair
-            güncel yazılar, rehberler ve içerikler.
-          </p>
+          <p>{content.heroDescription || defaultBlogContent.heroDescription}</p>
           <a href="#blog98Yazilar">
             TÜM YAZILARI KEŞFET
             <Icon name="arrow" size={16}/>
@@ -1212,12 +1288,12 @@ function BlogPage() {
       <section className="blog98Content" id="blog98Yazilar">
         <div className="blog98Toolbar">
           <div className="blog98Categories">
-            {blogCategories.map((item) => (
+            {categories.map((item) => (
               <button
                 key={item}
                 type="button"
                 className={category === item ? "is-active" : ""}
-                onClick={() => setCategory(item)}
+                onClick={() => { setCategory(item); setVisibleCount(4); }}
               >
                 {item}
               </button>
@@ -1228,15 +1304,15 @@ function BlogPage() {
             <Icon name="search" size={18}/>
             <input
               value={query}
-              onChange={(e)=>setQuery(e.target.value)}
+              onChange={(e)=>{setQuery(e.target.value);setVisibleCount(4);}}
               placeholder="Ara..."
             />
           </label>
         </div>
 
         <div className="blog98Grid">
-          {posts.map((post) => (
-            <article className="blog98Card" key={post.slug}>
+          {cardPosts.map((post) => (
+            <article className="blog98Card" key={post.id || post.slug}>
               <a className="blog98Card__image" href={`#/blog/${post.slug}`}>
                 <img
                   src={post.image}
@@ -1253,16 +1329,11 @@ function BlogPage() {
                   <time>{post.date}</time>
                 </div>
 
-                <h2>
-                  <a href={`#/blog/${post.slug}`}>{post.title}</a>
-                </h2>
+                <h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2>
                 <p>{post.excerpt}</p>
 
                 <div className="blog98Card__footer">
-                  <small>
-                    <Icon name="clock" size={15}/>
-                    {post.readTime}
-                  </small>
+                  <small><Icon name="clock" size={15}/>{post.readTime}</small>
                   <a href={`#/blog/${post.slug}`}>
                     Devamını Oku
                     <Icon name="arrow" size={14}/>
@@ -1273,62 +1344,81 @@ function BlogPage() {
           ))}
         </div>
 
-        {posts.length === 0 && (
-          <div className="blog98Empty">
-            Aramanızla eşleşen bir yazı bulunamadı.
-          </div>
+        {cardPosts.length === 0 && (
+          <div className="blog98Empty">Aramanızla eşleşen bir yazı bulunamadı.</div>
         )}
 
-        <button className="blog98More" type="button">
-          DAHA FAZLA YAZI YÜKLE
-          <span>↻</span>
-        </button>
+        {visibleCount < filteredPosts.filter((post)=>(post.id || post.slug)!==featuredId).length && (
+          <button
+            className="blog98More"
+            type="button"
+            onClick={()=>setVisibleCount((current)=>current+4)}
+          >
+            DAHA FAZLA YAZI YÜKLE
+            <span>↻</span>
+          </button>
+        )}
 
-        <article className="blog98Featured">
-          <div className="blog98Featured__copy">
-            <span>ÖNE ÇIKAN YAZI</span>
-            <h2>{featured.title}</h2>
-            <p>{featured.excerpt}</p>
-            <a href={`#/blog/${featured.slug}`}>
-              YAZININ TAMAMINI OKU
-              <Icon name="arrow" size={16}/>
-            </a>
+        {featured && (
+          <article className="blog98Featured">
+            <div className="blog98Featured__copy">
+              <span>ÖNE ÇIKAN YAZI</span>
+              <h2>{featured.title}</h2>
+              <p>{featured.excerpt}</p>
+              <a href={`#/blog/${featured.slug}`}>
+                YAZININ TAMAMINI OKU
+                <Icon name="arrow" size={16}/>
+              </a>
 
-            <div className="blog98Featured__meta">
-              <small><Icon name="clock" size={14}/>{featured.readTime}</small>
-              <small><Icon name="calendar" size={14}/>{featured.date}</small>
+              <div className="blog98Featured__meta">
+                <small><Icon name="clock" size={14}/>{featured.readTime}</small>
+                <small><Icon name="calendar" size={14}/>{featured.date}</small>
+              </div>
             </div>
-          </div>
 
-          <a className="blog98Featured__image" href={`#/blog/${featured.slug}`}>
-            <img
-              src={featured.image}
-              alt={featured.title}
-              loading="lazy"
-              decoding="async"
-              onError={(e)=>{e.currentTarget.src=processHeroDesk}}
-            />
-          </a>
-        </article>
+            <a className="blog98Featured__image" href={`#/blog/${featured.slug}`}>
+              <img
+                src={featured.image}
+                alt={featured.title}
+                loading="lazy"
+                decoding="async"
+                onError={(e)=>{e.currentTarget.src=processHeroDesk}}
+              />
+            </a>
+          </article>
+        )}
       </section>
     </main>
   );
 }
 
-function BlogArticlePage({ slug }) {
-  const post = blogPosts.find((item) => item.slug === slug) || blogPosts[0];
-  const related = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+function BlogArticlePage({ slug, content = defaultBlogContent }) {
+  const posts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft");
+  const post = posts.find((item) => item.slug === slug);
+
+  if (!post) {
+    return (
+      <main className="blog99NotFound">
+        <img src={kaanOzkanEmblem} alt="" />
+        <span>BLOG</span>
+        <h1>Bu yazı bulunamadı.</h1>
+        <p>Yazı kaldırılmış veya bağlantısı değiştirilmiş olabilir.</p>
+        <a href="#/blog">Blog'a Dön</a>
+      </main>
+    );
+  }
+
+  const related = posts.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const paragraphs = Array.isArray(post.body)
+    ? post.body
+    : String(post.body || "").split(/\n\s*\n/).map((item)=>item.trim()).filter(Boolean);
 
   return (
     <main className="blog99Article">
       <section className="blog99Hero">
         <a href="#/blog" className="blog99Back">← Blog'a Dön</a>
         <div className="blog99Hero__image">
-          <img
-            src={post.image}
-            alt={post.title}
-            onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
-          />
+          <img src={post.image} alt={post.title} onError={(e)=>{e.currentTarget.src=servicesHeroRoom}} />
         </div>
         <div className="blog99Hero__shade" />
         <div className="blog99Hero__copy">
@@ -1349,14 +1439,9 @@ function BlogArticlePage({ slug }) {
             <strong>Sosyal Hizmet Uzmanı · Aile Danışmanı</strong>
           </div>
 
-          {post.body.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
 
-          <blockquote>
-            “Her bireyin yaşam öyküsü, ihtiyaçları ve güçlü yönleri kendine özgüdür.
-            Değişim süreci de bu özgünlüğe saygı duyan bir yaklaşımla ele alınmalıdır.”
-          </blockquote>
+          {post.quote && <blockquote>“{post.quote}”</blockquote>}
 
           <p>
             Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel
@@ -1368,16 +1453,10 @@ function BlogArticlePage({ slug }) {
         <aside>
           <div className="blog99Aside__brand">
             <img src={kaanOzkanEmblem} alt="" />
-            <span>
-              <strong>Kaan Özkan</strong>
-              <small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small>
-            </span>
+            <span><strong>Kaan Özkan</strong><small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small></span>
           </div>
           <p>Danışmanlık süreci hakkında bilgi almak veya ön görüşme oluşturmak için iletişime geçebilirsiniz.</p>
-          <a href="#/randevu">
-            Ücretsiz Ön Görüşme
-            <Icon name="arrow" size={15}/>
-          </a>
+          <a href="#/randevu">Ücretsiz Ön Görüşme<Icon name="arrow" size={15}/></a>
         </aside>
       </section>
 
@@ -1388,7 +1467,7 @@ function BlogArticlePage({ slug }) {
         </div>
         <div className="blog99Related__grid">
           {related.map((item) => (
-            <a href={`#/blog/${item.slug}`} key={item.slug}>
+            <a href={`#/blog/${item.slug}`} key={item.id || item.slug}>
               <img src={item.image} alt="" loading="lazy" onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}/>
               <span>{item.category}</span>
               <strong>{item.title}</strong>
@@ -2148,6 +2227,26 @@ function AdminDemoPage() {
   const [aboutEditorLoading, setAboutEditorLoading] = useState(false);
   const [aboutEditorSaving, setAboutEditorSaving] = useState(false);
   const [aboutEditorMessage, setAboutEditorMessage] = useState("");
+  const [blogEditor, setBlogEditor] = useState(defaultBlogContent);
+  const [blogEditorLoading, setBlogEditorLoading] = useState(false);
+  const [blogEditorSaving, setBlogEditorSaving] = useState(false);
+  const [blogEditorMessage, setBlogEditorMessage] = useState("");
+  const [blogImageUploading, setBlogImageUploading] = useState(false);
+  const [editingBlogId, setEditingBlogId] = useState(null);
+  const [blogForm, setBlogForm] = useState({
+    title: "",
+    slug: "",
+    category: "AİLE & İLİŞKİLER",
+    date: new Date().toLocaleDateString("tr-TR", { day: "2-digit", month: "long", year: "numeric" }),
+    readTime: "5 dk okuma",
+    excerpt: "",
+    image: "",
+    body: "",
+    quote: "",
+    status: "published",
+    featured: false,
+    sortOrder: 100,
+  });
 
 
   const [mediaItems, setMediaItems] = useState([]);
@@ -2305,6 +2404,12 @@ function AdminDemoPage() {
   useEffect(() => {
     if (session && activeTab === "content") {
       loadMediaAdmin();
+    }
+  }, [session, activeTab]);
+
+  useEffect(() => {
+    if (session && activeTab === "blog") {
+      loadBlogEditor();
     }
   }, [session, activeTab]);
 
@@ -2624,6 +2729,222 @@ function AdminDemoPage() {
     setHomeEditorSaving(false);
   };
 
+
+  const resetBlogForm = () => {
+    setEditingBlogId(null);
+    setBlogForm({
+      title: "",
+      slug: "",
+      category: "AİLE & İLİŞKİLER",
+      date: new Date().toLocaleDateString("tr-TR", { day: "2-digit", month: "long", year: "numeric" }),
+      readTime: "5 dk okuma",
+      excerpt: "",
+      image: "",
+      body: "",
+      quote: "",
+      status: "published",
+      featured: false,
+      sortOrder: (blogEditor.posts?.length || 0) + 1,
+    });
+  };
+
+  const loadBlogEditor = async () => {
+    setBlogEditorLoading(true);
+    setBlogEditorMessage("");
+
+    const { data, error } = await supabase
+      .from("site_content")
+      .select("content")
+      .eq("id", "blog")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Blog içeriği yüklenemedi:", error);
+      setBlogEditorMessage("Blog içeriği yüklenemedi.");
+    } else {
+      const next = {
+        ...defaultBlogContent,
+        ...(data?.content || {}),
+        posts: Array.isArray(data?.content?.posts) ? data.content.posts : defaultBlogContent.posts,
+        categories: Array.isArray(data?.content?.categories) ? data.content.categories : defaultBlogContent.categories,
+      };
+      setBlogEditor(next);
+    }
+
+    setBlogEditorLoading(false);
+  };
+
+  const persistBlogEditor = async (nextContent, successMessage = "Blog başarıyla güncellendi.") => {
+    setBlogEditorSaving(true);
+    setBlogEditorMessage("");
+
+    const { error } = await supabase
+      .from("site_content")
+      .upsert(
+        {
+          id: "blog",
+          content: nextContent,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
+    if (error) {
+      console.error("Blog kaydedilemedi:", error);
+      setBlogEditorMessage("Blog kaydedilemedi. Supabase yetkilerini kontrol edin.");
+      setBlogEditorSaving(false);
+      return false;
+    }
+
+    setBlogEditor(nextContent);
+    setBlogEditorMessage(successMessage);
+    setBlogEditorSaving(false);
+    return true;
+  };
+
+  const saveBlogSettings = async (e) => {
+    e.preventDefault();
+    await persistBlogEditor(blogEditor, "Blog üst alanı başarıyla güncellendi.");
+  };
+
+  const saveBlogPost = async (e) => {
+    e.preventDefault();
+
+    if (!blogForm.title.trim() || !blogForm.excerpt.trim() || !blogForm.body.trim() || !blogForm.image.trim()) {
+      setBlogEditorMessage("Başlık, kısa açıklama, görsel ve yazı içeriği zorunludur.");
+      return;
+    }
+
+    let slug = createBlogSlug(blogForm.slug || blogForm.title);
+    const duplicate = (blogEditor.posts || []).find(
+      (post) => post.slug === slug && (post.id || post.slug) !== editingBlogId
+    );
+    if (duplicate) slug = `${slug}-${Date.now().toString().slice(-5)}`;
+
+    const id = editingBlogId || `blog-${Date.now()}`;
+    let posts = [...(blogEditor.posts || [])];
+
+    if (blogForm.featured) {
+      posts = posts.map((post) => ({ ...post, featured: false }));
+    }
+
+    const item = {
+      id,
+      slug,
+      title: blogForm.title.trim(),
+      category: blogForm.category.trim() || "GENEL",
+      date: blogForm.date.trim(),
+      readTime: blogForm.readTime.trim() || "5 dk okuma",
+      excerpt: blogForm.excerpt.trim(),
+      image: blogForm.image.trim(),
+      body: blogForm.body.split(/\n\s*\n/).map((p)=>p.trim()).filter(Boolean),
+      quote: blogForm.quote.trim(),
+      status: blogForm.status,
+      featured: Boolean(blogForm.featured),
+      sortOrder: Number(blogForm.sortOrder || 100),
+    };
+
+    const index = posts.findIndex((post) => (post.id || post.slug) === editingBlogId);
+    if (index >= 0) posts[index] = item;
+    else posts.push(item);
+
+    const nextContent = { ...blogEditor, posts };
+    const ok = await persistBlogEditor(
+      nextContent,
+      editingBlogId ? "Blog yazısı başarıyla güncellendi." : "Yeni blog yazısı başarıyla yayınlandı."
+    );
+
+    if (ok) resetBlogForm();
+  };
+
+  const editBlogPost = (post) => {
+    setEditingBlogId(post.id || post.slug);
+    setBlogForm({
+      title: post.title || "",
+      slug: post.slug || "",
+      category: post.category || "GENEL",
+      date: post.date || "",
+      readTime: post.readTime || "5 dk okuma",
+      excerpt: post.excerpt || "",
+      image: post.image || "",
+      body: Array.isArray(post.body) ? post.body.join("\n\n") : post.body || "",
+      quote: post.quote || "",
+      status: post.status || "published",
+      featured: Boolean(post.featured),
+      sortOrder: post.sortOrder ?? 100,
+    });
+    window.setTimeout(() => {
+      document.querySelector(".admin100Blog__editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  const deleteBlogPost = async (post) => {
+    const confirmed = window.confirm(`"${post.title}" yazısını kalıcı olarak silmek istediğinize emin misiniz?`);
+    if (!confirmed) return;
+
+    const posts = (blogEditor.posts || []).filter((item)=>(item.id || item.slug)!==(post.id || post.slug));
+    await persistBlogEditor({ ...blogEditor, posts }, "Blog yazısı silindi.");
+    if (editingBlogId === (post.id || post.slug)) resetBlogForm();
+  };
+
+  const toggleBlogPostStatus = async (post) => {
+    const posts = (blogEditor.posts || []).map((item) =>
+      (item.id || item.slug) === (post.id || post.slug)
+        ? { ...item, status: item.status === "draft" ? "published" : "draft" }
+        : item
+    );
+    await persistBlogEditor({ ...blogEditor, posts }, "Yayın durumu güncellendi.");
+  };
+
+  const featureBlogPost = async (post) => {
+    const posts = (blogEditor.posts || []).map((item) => ({
+      ...item,
+      featured: (item.id || item.slug) === (post.id || post.slug),
+    }));
+    await persistBlogEditor({ ...blogEditor, posts }, "Öne çıkan yazı güncellendi.");
+  };
+
+  const uploadBlogImage = async (file) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setBlogEditorMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
+      return;
+    }
+    if (file.size > 6 * 1024 * 1024) {
+      setBlogEditorMessage("Görsel en fazla 6 MB olabilir.");
+      return;
+    }
+
+    setBlogImageUploading(true);
+    setBlogEditorMessage("");
+
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
+    const filePath = `${Date.now()}-${safeName}.${extension}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type,
+      });
+
+    if (uploadError) {
+      console.error("Blog görsel yükleme hatası:", uploadError);
+      setBlogEditorMessage(
+        "Görsel yüklenemedi. Supabase Storage içinde blog-images bucket ve yetkilerini kontrol edin."
+      );
+      setBlogImageUploading(false);
+      return;
+    }
+
+    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+    setBlogForm((current) => ({ ...current, image: data.publicUrl }));
+    setBlogEditorMessage("Görsel başarıyla yüklendi. Yazıyı kaydetmeyi unutmayın.");
+    setBlogImageUploading(false);
+  };
+
   const loadMediaAdmin = async () => {
     setMediaLoading(true);
     setMediaMessage("");
@@ -2925,6 +3246,7 @@ function AdminDemoPage() {
             ["about", "user", "Hakkımda"],
             ["services", "grid", "Hizmetler"],
             ["process", "chart", "Süreç"],
+            ["blog", "edit", "Blog"],
             ["appointments", "calendar", "Randevular"],
             ["content", "video", "YouTube & Podcast"],
             ["articles", "edit", "İçerikler"],
@@ -2982,6 +3304,8 @@ function AdminDemoPage() {
                 ? "Hizmetler"
                 : activeTab === "process"
                 ? "Süreç"
+                : activeTab === "blog"
+                ? "Blog Yönetimi"
                 : activeTab === "content"
                 ? "YouTube & Podcast"
                 : activeTab === "articles"
@@ -3348,6 +3672,223 @@ function AdminDemoPage() {
                   </button>
                 </div>
               </form>
+            )}
+          </section>
+        )}
+
+        {activeTab === "blog" && (
+          <section className="admin100Blog">
+            <div className="admin100Blog__head">
+              <div>
+                <span>BLOG YÖNETİMİ</span>
+                <h2>Yazıları kod bilmeden yönetin.</h2>
+                <p>
+                  Yeni yazı ekleyin, görsel yükleyin, mevcut yazıları düzenleyin,
+                  taslağa alın veya öne çıkan yazıyı tek tıkla değiştirin.
+                </p>
+              </div>
+              <button type="button" onClick={loadBlogEditor} disabled={blogEditorLoading}>
+                {blogEditorLoading ? "Yükleniyor..." : "Blogu Yenile"}
+              </button>
+            </div>
+
+            {blogEditorMessage && (
+              <div className={`admin100Blog__message ${blogEditorMessage.includes("başarı") || blogEditorMessage.includes("silindi") || blogEditorMessage.includes("güncellendi") || blogEditorMessage.includes("yüklendi") ? "is-success" : "is-error"}`}>
+                {blogEditorMessage}
+              </div>
+            )}
+
+            {blogEditorLoading ? (
+              <div className="admin100Blog__loading">Blog içeriği yükleniyor...</div>
+            ) : (
+              <>
+                <form className="admin100Blog__settings" onSubmit={saveBlogSettings}>
+                  <div className="admin100Blog__sectionHead">
+                    <span>01</span>
+                    <div>
+                      <strong>Blog Sayfası Üst Alanı</strong>
+                      <small>Blog sayfasının büyük karşılama alanındaki metin ve görsel.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin100Blog__settingsGrid">
+                    <label><span>Üst Etiket</span><input value={blogEditor.heroEyebrow || ""} onChange={(e)=>setBlogEditor({...blogEditor,heroEyebrow:e.target.value})}/></label>
+                    <label><span>Ana Başlık</span><input value={blogEditor.heroTitle || ""} onChange={(e)=>setBlogEditor({...blogEditor,heroTitle:e.target.value})}/></label>
+                    <label><span>Gold Başlık</span><input value={blogEditor.heroAccent || ""} onChange={(e)=>setBlogEditor({...blogEditor,heroAccent:e.target.value})}/></label>
+                    <label className="is-wide"><span>Açıklama</span><textarea rows="3" value={blogEditor.heroDescription || ""} onChange={(e)=>setBlogEditor({...blogEditor,heroDescription:e.target.value})}/></label>
+                    <label className="is-wide"><span>Hero Görsel URL</span><input value={blogEditor.heroImage || ""} onChange={(e)=>setBlogEditor({...blogEditor,heroImage:e.target.value})}/></label>
+                  </div>
+
+                  <button className="admin100Blog__goldButton" type="submit" disabled={blogEditorSaving}>
+                    {blogEditorSaving ? "Kaydediliyor..." : "Blog Üst Alanını Kaydet"}
+                  </button>
+                </form>
+
+                <form className="admin100Blog__editor" onSubmit={saveBlogPost}>
+                  <div className="admin100Blog__sectionHead">
+                    <span>02</span>
+                    <div>
+                      <strong>{editingBlogId ? "Yazıyı Düzenle" : "Yeni Blog Yazısı"}</strong>
+                      <small>Başlık, kapak görseli ve yazı içeriğini tek ekrandan hazırlayın.</small>
+                    </div>
+                    {editingBlogId && <button type="button" className="admin100Blog__cancel" onClick={resetBlogForm}>Düzenlemeyi İptal Et</button>}
+                  </div>
+
+                  <div className="admin100Blog__editorGrid">
+                    <div className="admin100Blog__fields">
+                      <label>
+                        <span>Yazı Başlığı *</span>
+                        <input
+                          value={blogForm.title}
+                          onChange={(e)=>setBlogForm({...blogForm,title:e.target.value,slug:editingBlogId ? blogForm.slug : createBlogSlug(e.target.value)})}
+                          placeholder="Örn. Aile İçinde Sağlıklı İletişim"
+                        />
+                      </label>
+
+                      <div className="admin100Blog__row">
+                        <label>
+                          <span>Kategori</span>
+                          <input
+                            list="blog-category-options"
+                            value={blogForm.category}
+                            onChange={(e)=>setBlogForm({...blogForm,category:e.target.value})}
+                            placeholder="Kategori"
+                          />
+                          <datalist id="blog-category-options">
+                            {(blogEditor.categories || blogCategories).filter((item)=>item!=="Tümü").map((item)=><option key={item} value={item}/>)}
+                          </datalist>
+                        </label>
+                        <label>
+                          <span>Okuma Süresi</span>
+                          <input value={blogForm.readTime} onChange={(e)=>setBlogForm({...blogForm,readTime:e.target.value})} placeholder="5 dk okuma"/>
+                        </label>
+                      </div>
+
+                      <div className="admin100Blog__row">
+                        <label><span>Tarih</span><input value={blogForm.date} onChange={(e)=>setBlogForm({...blogForm,date:e.target.value})}/></label>
+                        <label><span>Sıralama</span><input type="number" value={blogForm.sortOrder} onChange={(e)=>setBlogForm({...blogForm,sortOrder:e.target.value})}/></label>
+                      </div>
+
+                      <label>
+                        <span>Kısa Açıklama *</span>
+                        <textarea rows="4" value={blogForm.excerpt} onChange={(e)=>setBlogForm({...blogForm,excerpt:e.target.value})} placeholder="Kartta ve yazı girişinde görünecek kısa açıklama..."/>
+                      </label>
+
+                      <label>
+                        <span>Yazının Tamamı *</span>
+                        <textarea
+                          rows="18"
+                          value={blogForm.body}
+                          onChange={(e)=>setBlogForm({...blogForm,body:e.target.value})}
+                          placeholder={"Yazınızı buraya yazın.\n\nYeni paragraf için bir boş satır bırakın.\n\nPanel paragrafları otomatik ayırır."}
+                        />
+                      </label>
+
+                      <label>
+                        <span>Öne Çıkan Alıntı — İsteğe Bağlı</span>
+                        <textarea rows="3" value={blogForm.quote} onChange={(e)=>setBlogForm({...blogForm,quote:e.target.value})} placeholder="Yazının içinde büyük alıntı olarak gösterilecek kısa cümle..."/>
+                      </label>
+
+                      <div className="admin100Blog__row">
+                        <label>
+                          <span>Yayın Durumu</span>
+                          <select value={blogForm.status} onChange={(e)=>setBlogForm({...blogForm,status:e.target.value})}>
+                            <option value="published">Yayında</option>
+                            <option value="draft">Taslak</option>
+                          </select>
+                        </label>
+                        <label className="admin100Blog__check">
+                          <input type="checkbox" checked={blogForm.featured} onChange={(e)=>setBlogForm({...blogForm,featured:e.target.checked})}/>
+                          <span>Bu yazıyı öne çıkar</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <aside className="admin100Blog__imageBox">
+                      <span>KAPAK GÖRSELİ *</span>
+                      <div className="admin100Blog__preview">
+                        {blogForm.image ? (
+                          <img src={blogForm.image} alt="Blog kapak önizleme" onError={(e)=>{e.currentTarget.style.display="none"}}/>
+                        ) : (
+                          <div><Icon name="image" size={30}/><p>Henüz görsel seçilmedi</p></div>
+                        )}
+                      </div>
+
+                      <label className="admin100Blog__upload">
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          onChange={(e)=>uploadBlogImage(e.target.files?.[0])}
+                        />
+                        <Icon name="plus" size={17}/>
+                        {blogImageUploading ? "Görsel Yükleniyor..." : "Bilgisayardan Görsel Seç"}
+                      </label>
+
+                      <small>JPG, PNG veya WebP · Maksimum 6 MB</small>
+
+                      <div className="admin100Blog__or"><span/>veya<span/></div>
+
+                      <label className="admin100Blog__url">
+                        <span>Görsel URL</span>
+                        <input value={blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."/>
+                      </label>
+
+                      <label className="admin100Blog__slug">
+                        <span>Yazı Linki</span>
+                        <div><b>/blog/</b><input value={blogForm.slug} onChange={(e)=>setBlogForm({...blogForm,slug:createBlogSlug(e.target.value)})}/></div>
+                      </label>
+                    </aside>
+                  </div>
+
+                  <div className="admin100Blog__publishBar">
+                    <div>
+                      <strong>{editingBlogId ? "Değişiklikleri kaydet" : "Yazıyı bloga ekle"}</strong>
+                      <span>Kaydedildiğinde blog kartı ve detay sayfası otomatik oluşur.</span>
+                    </div>
+                    <button type="submit" disabled={blogEditorSaving || blogImageUploading}>
+                      {blogEditorSaving ? "Kaydediliyor..." : editingBlogId ? "Yazıyı Güncelle" : "Yazıyı Yayınla"}
+                      {!blogEditorSaving && <Icon name="arrow" size={15}/>}
+                    </button>
+                  </div>
+                </form>
+
+                <section className="admin100Blog__library">
+                  <div className="admin100Blog__sectionHead">
+                    <span>03</span>
+                    <div>
+                      <strong>Blog Yazıları</strong>
+                      <small>{(blogEditor.posts || []).length} kayıt · Düzenleme, yayın ve öne çıkarma kontrolleri.</small>
+                    </div>
+                  </div>
+
+                  <div className="admin100Blog__list">
+                    {(blogEditor.posts || [])
+                      .slice()
+                      .sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999))
+                      .map((post)=>(
+                      <article key={post.id || post.slug}>
+                        <img src={post.image} alt="" onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}/>
+                        <div className="admin100Blog__postCopy">
+                          <div>
+                            <span>{post.category}</span>
+                            {post.featured && <b>ÖNE ÇIKAN</b>}
+                            <em className={post.status === "draft" ? "is-draft" : ""}>{post.status === "draft" ? "TASLAK" : "YAYINDA"}</em>
+                          </div>
+                          <strong>{post.title}</strong>
+                          <small>{post.date} · {post.readTime} · /blog/{post.slug}</small>
+                        </div>
+                        <div className="admin100Blog__actions">
+                          <button type="button" onClick={()=>editBlogPost(post)}>Düzenle</button>
+                          <button type="button" onClick={()=>toggleBlogPostStatus(post)}>{post.status === "draft" ? "Yayınla" : "Taslağa Al"}</button>
+                          {!post.featured && <button type="button" onClick={()=>featureBlogPost(post)}>Öne Çıkar</button>}
+                          <a href={`#/blog/${post.slug}`} target="_blank" rel="noreferrer">Görüntüle</a>
+                          <button type="button" className="is-delete" onClick={()=>deleteBlogPost(post)}>Sil</button>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              </>
             )}
           </section>
         )}
@@ -13963,6 +14504,142 @@ img{
   .blog99Body blockquote{font-size:22px;padding:25px}
   .blog99Related__grid>a{grid-template-columns:100px 1fr}
   .blog99Related__grid img{width:100px;height:95px}
+}
+
+/* STEP100 — NO-CODE BLOG ADMIN */
+.admin100Blog{display:grid;gap:16px}
+.admin100Blog__head,
+.admin100Blog__settings,
+.admin100Blog__editor,
+.admin100Blog__library{
+  border:1px solid #e5dbcf;
+  border-radius:19px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 15px 38px rgba(79,55,29,.05);
+}
+.admin100Blog__head{
+  padding:24px 26px;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+}
+.admin100Blog__head>div>span{color:#a77736;font-size:8px;font-weight:800;letter-spacing:.17em}
+.admin100Blog__head h2{margin:7px 0 5px;color:#272b30;font:500 29px Georgia,"Times New Roman",serif}
+.admin100Blog__head p{max-width:690px;color:#7e8388;font-size:9px;line-height:1.65}
+.admin100Blog__head>button{
+  min-height:40px;padding:0 14px;border:1px solid #dcc8ac;border-radius:11px;
+  background:#fff9f0;color:#9c6e34;cursor:pointer;font-size:8px;font-weight:750;
+}
+.admin100Blog__loading{padding:70px 20px;text-align:center;border:1px dashed #dccdbc;border-radius:18px;background:#fbf8f4;color:#85898d;font-size:9px}
+.admin100Blog__message{padding:12px 15px;border-radius:11px;font-size:8.5px}
+.admin100Blog__message.is-success{border:1px solid #c9e6ce;background:#edf8ef;color:#3f7b49}
+.admin100Blog__message.is-error{border:1px solid #efcfca;background:#fff1ef;color:#a64d47}
+.admin100Blog__settings,.admin100Blog__editor,.admin100Blog__library{padding:23px}
+.admin100Blog__sectionHead{display:flex;align-items:center;gap:13px;padding-bottom:17px;border-bottom:1px solid #eee5da}
+.admin100Blog__sectionHead>span{
+  width:38px;height:38px;display:grid;place-items:center;flex:0 0 38px;
+  border:1px solid #dbc39f;border-radius:50%;background:#fbf6ee;color:#a77736;font-size:8px;font-weight:800;
+}
+.admin100Blog__sectionHead>div{display:flex;flex-direction:column;gap:4px}
+.admin100Blog__sectionHead strong{color:#2b3035;font:500 18px Georgia,"Times New Roman",serif}
+.admin100Blog__sectionHead small{color:#92979b;font-size:8px}
+.admin100Blog__sectionHead .admin100Blog__cancel{margin-left:auto;padding:8px 11px;border:1px solid #e4cfc0;border-radius:9px;background:#fff7f2;color:#a25c3e;cursor:pointer;font-size:7.5px;font-weight:700}
+.admin100Blog__settingsGrid{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.admin100Blog label{display:flex;flex-direction:column;gap:7px}
+.admin100Blog label>span,.admin100Blog__imageBox>span{color:#777c81;font-size:8px;font-weight:750;letter-spacing:.035em}
+.admin100Blog input,.admin100Blog textarea,.admin100Blog select{
+  width:100%;border:1px solid #dfd5ca;border-radius:10px;background:#fbfaf8;color:#282d32;
+  outline:none;padding:11px 12px;font-size:9px;line-height:1.55;
+}
+.admin100Blog input:focus,.admin100Blog textarea:focus,.admin100Blog select:focus{border-color:#b98747;box-shadow:0 0 0 3px rgba(185,135,71,.08)}
+.admin100Blog textarea{resize:vertical}
+.admin100Blog .is-wide{grid-column:1/-1}
+.admin100Blog__goldButton{
+  min-height:43px;margin-top:15px;padding:0 16px;border:1px solid #9d6e34;border-radius:10px;
+  background:linear-gradient(135deg,#a77736,#bd8842);color:#fff;cursor:pointer;font-size:8px;font-weight:800;
+}
+.admin100Blog__editorGrid{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}
+.admin100Blog__fields{display:grid;gap:12px}
+.admin100Blog__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin100Blog__check{
+  min-height:43px;padding:0 12px;flex-direction:row!important;align-items:center!important;
+  border:1px solid #e0d6ca;border-radius:10px;background:#fbfaf8;
+}
+.admin100Blog__check input{width:15px;height:15px;padding:0;accent-color:#a77736}
+.admin100Blog__check span{font-size:8px!important}
+.admin100Blog__imageBox{
+  position:sticky;top:115px;padding:16px;border:1px solid #e2d7ca;border-radius:14px;background:#f8f3ec;
+  display:grid;gap:11px;
+}
+.admin100Blog__preview{height:220px;overflow:hidden;border:1px solid #ded4c8;border-radius:11px;background:#eee7de}
+.admin100Blog__preview img{width:100%;height:100%;object-fit:cover}
+.admin100Blog__preview>div{width:100%;height:100%;display:grid;place-items:center;align-content:center;gap:8px;color:#aa9d8d}
+.admin100Blog__preview p{font-size:8px!important}
+.admin100Blog__upload{
+  min-height:43px;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center;gap:8px!important;
+  border:1px solid #a77736;border-radius:10px;background:#a77736;color:#fff!important;cursor:pointer;font-size:8px;font-weight:800;
+}
+.admin100Blog__upload input{display:none}
+.admin100Blog__imageBox>small{color:#9a9188;font-size:7px;text-align:center}
+.admin100Blog__or{display:flex;align-items:center;gap:9px;color:#a09990;font-size:7px}
+.admin100Blog__or span{height:1px;flex:1;background:#ddd1c3}
+.admin100Blog__slug>div{display:flex;align-items:center;border:1px solid #dfd5ca;border-radius:10px;background:#fff;overflow:hidden}
+.admin100Blog__slug b{padding-left:10px;color:#a77736;font-size:8px}
+.admin100Blog__slug input{border:0!important;box-shadow:none!important;background:transparent}
+.admin100Blog__publishBar{
+  margin-top:20px;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  border:1px solid #dfcfbb;border-radius:15px;background:linear-gradient(135deg,#fffaf3,#f2e5d3);
+}
+.admin100Blog__publishBar>div{display:flex;flex-direction:column;gap:4px}
+.admin100Blog__publishBar strong{color:#2c3135;font:500 15px Georgia,"Times New Roman",serif}
+.admin100Blog__publishBar span{color:#83878b;font-size:8px}
+.admin100Blog__publishBar button{
+  min-height:44px;padding:0 17px;display:flex;align-items:center;gap:9px;border:1px solid #986a32;border-radius:10px;
+  background:linear-gradient(135deg,#9f7135,#bd8842);color:#fff;cursor:pointer;font-size:8px;font-weight:800;
+}
+.admin100Blog__list{margin-top:16px;display:grid;gap:10px}
+.admin100Blog__list article{
+  min-height:105px;padding:10px;display:grid;grid-template-columns:135px minmax(0,1fr) auto;gap:14px;align-items:center;
+  border:1px solid #e6ddd3;border-radius:13px;background:#fbfaf8;
+}
+.admin100Blog__list article>img{width:135px;height:86px;object-fit:cover;border-radius:9px}
+.admin100Blog__postCopy{min-width:0;display:flex;flex-direction:column;gap:7px}
+.admin100Blog__postCopy>div{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.admin100Blog__postCopy>div span,.admin100Blog__postCopy>div b,.admin100Blog__postCopy>div em{
+  padding:4px 7px;border-radius:999px;font-size:6px;font-style:normal;font-weight:800;letter-spacing:.04em;
+}
+.admin100Blog__postCopy>div span{background:#efe6dc;color:#755b3e}
+.admin100Blog__postCopy>div b{background:#fff0d6;color:#9b651e}
+.admin100Blog__postCopy>div em{background:#eaf5ec;color:#3e7d48}
+.admin100Blog__postCopy>div em.is-draft{background:#f0f0ef;color:#777}
+.admin100Blog__postCopy>strong{overflow:hidden;text-overflow:ellipsis;color:#303439;font:500 15px Georgia,"Times New Roman",serif}
+.admin100Blog__postCopy>small{color:#95918c;font-size:7px}
+.admin100Blog__actions{display:flex;flex-direction:column;gap:5px;min-width:92px}
+.admin100Blog__actions button,.admin100Blog__actions a{
+  min-height:27px;padding:0 8px;display:flex;align-items:center;justify-content:center;border:1px solid #ded2c4;border-radius:7px;
+  background:#fff;color:#625b53;cursor:pointer;font-size:6.8px;font-weight:700;
+}
+.admin100Blog__actions .is-delete{border-color:#eccbc7;background:#fff2f0;color:#b45750}
+.blog99NotFound{
+  min-height:70vh;display:grid;place-items:center;align-content:center;gap:10px;padding:50px 20px;text-align:center;background:#f7f2eb;color:#2a2d30;
+}
+.blog99NotFound img{width:72px;height:72px;object-fit:contain}
+.blog99NotFound>span{color:#a77736;font-size:8px;font-weight:800;letter-spacing:.17em}
+.blog99NotFound h1{font:500 38px Georgia,"Times New Roman",serif}
+.blog99NotFound p{color:#858078;font-size:10px}
+.blog99NotFound a{margin-top:8px;padding:12px 18px;border-radius:999px;background:#a77736;color:#fff;font-size:8px;font-weight:800}
+@media(max-width:950px){
+  .admin100Blog__editorGrid{grid-template-columns:1fr}
+  .admin100Blog__imageBox{position:relative;top:auto}
+  .admin100Blog__list article{grid-template-columns:110px minmax(0,1fr)}
+  .admin100Blog__list article>img{width:110px}
+  .admin100Blog__actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:650px){
+  .admin100Blog__head,.admin100Blog__publishBar{align-items:flex-start;flex-direction:column}
+  .admin100Blog__settingsGrid,.admin100Blog__row{grid-template-columns:1fr}
+  .admin100Blog .is-wide{grid-column:auto}
+  .admin100Blog__publishBar button,.admin100Blog__head>button{width:100%;justify-content:center}
+  .admin100Blog__list article{grid-template-columns:1fr}
+  .admin100Blog__list article>img{width:100%;height:180px}
 }
 
 `;
