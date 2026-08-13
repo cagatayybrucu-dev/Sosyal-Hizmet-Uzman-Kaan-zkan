@@ -1109,32 +1109,64 @@ function App() {
             </div>
           </section>
 
-
-          
-
-          <section className="homeEditorialVisuals reveal" aria-label="Kaan Özkan ve danışmanlık yaklaşımı">
-            <div className="homeEditorialVisuals__portrait">
-              <img loading="lazy" decoding="async" src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
-              <div className="homeEditorialVisuals__caption">
-                <span>KAAN ÖZKAN</span>
-                <strong>İnsan odaklı, etik ve kişiye özgü yaklaşım.</strong>
-                <a href="#/hakkimda">Hakkımda <Icon name="arrow" size={14}/></a>
+          <section className="homeEditorialVisuals reveal" aria-label="Profesyonel danışmanlık yaklaşımı">
+            <article className="homeEditorialVisuals__feature">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.squarespace-cdn.com/content/v1/5f0ed3c935f9b17329c9fbad/1674134176151-QQUZP6UL239LNH2MYT2H/Stories%2BSarphati-18-min.jpg"
+                alt="Profesyonel danışmanlık ortamı"
+              />
+              <div className="homeEditorialVisuals__featureCopy">
+                <span>PROFESYONEL DANIŞMANLIK</span>
+                <h2>Her sürecin merkezinde <strong>kişiye özgü değerlendirme.</strong></h2>
+                <p>
+                  Yaşam öyküsü, ihtiyaçlar, ilişkiler ve mevcut kaynaklar birlikte ele alınarak
+                  daha anlaşılır ve sürdürülebilir bir yol haritası oluşturulur.
+                </p>
+                <a href="#/surec">
+                  Süreci İnceleyin
+                  <Icon name="arrow" size={14}/>
+                </a>
               </div>
-            </div>
+            </article>
 
             <div className="homeEditorialVisuals__side">
               <article>
-                <img loading="lazy" decoding="async" src={processHeroDesk} alt="Profesyonel danışmanlık süreci" />
-                <div><span>01</span><strong>Profesyonel Süreç</strong></div>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src="https://images.squarespace-cdn.com/content/v1/678e59c85fafc9753f45e5e1/7878ab18-021e-424c-a755-4ad720e062cb/Image%2BMar%2B29%2C%2B2026%2C%2B10_50_14%2BPM.png"
+                  alt="Profesyonel değerlendirme ve planlama alanı"
+                />
+                <div>
+                  <span>01</span>
+                  <section>
+                    <small>SİSTEMATİK DEĞERLENDİRME</small>
+                    <strong>İhtiyacı doğru anlamak.</strong>
+                  </section>
+                </div>
               </article>
+
               <article>
-                <img loading="lazy" decoding="async" src={heroSlide2} alt="Psikososyal destek ve danışmanlık" />
-                <div><span>02</span><strong>Güvenli Görüşme Alanı</strong></div>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src="https://static.wixstatic.com/media/5fdef5_78f6b6b43fb5403690c6411318dd3cd4~mv2.png/v1/fill/w_980%2Ch_560%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/5fdef5_78f6b6b43fb5403690c6411318dd3cd4~mv2.png"
+                  alt="Planlı ve profesyonel danışmanlık çalışması"
+                />
+                <div>
+                  <span>02</span>
+                  <section>
+                    <small>PLANLI & ETİK SÜREÇ</small>
+                    <strong>Değişimi sürdürülebilir kılmak.</strong>
+                  </section>
+                </div>
               </article>
             </div>
           </section>
 
-          <section className="homeScopeStrip reveal">
+<section className="homeScopeStrip reveal">
             <div><Icon name="shield" size={20} /></div>
             <p>
               Danışmanlık hizmetleri sosyal hizmet müdahale yaklaşımları ve aile danışmanlığı kapsamında sunulur.
@@ -14664,56 +14696,161 @@ img{
   .admin100Blog__list article>img{width:100%;height:180px}
 }
 
-/* STEP101 FIXED — HOMEPAGE VISUAL RHYTHM + BLOG ADMIN READABILITY */
+/* STEP102 — NEW PROFESSIONAL HOMEPAGE EDITORIAL VISUALS */
 .homeEditorialVisuals{
   width:min(1380px,90%);
-  margin:42px auto 24px;
+  margin:46px auto 28px;
   display:grid;
-  grid-template-columns:1.45fr .9fr;
+  grid-template-columns:1.48fr .92fr;
   gap:16px;
 }
-.homeEditorialVisuals__portrait,
+.homeEditorialVisuals__feature,
 .homeEditorialVisuals__side article{
   position:relative;
   overflow:hidden;
-  border-radius:18px;
+  border-radius:20px;
   background:#e9e0d5;
-  box-shadow:0 18px 48px rgba(83,59,31,.08);
+  box-shadow:0 18px 48px rgba(83,59,31,.075);
+  isolation:isolate;
 }
-.homeEditorialVisuals__portrait{min-height:410px}
-.homeEditorialVisuals__portrait>img,
+.homeEditorialVisuals__feature{
+  min-height:440px;
+}
+.homeEditorialVisuals__feature>img,
 .homeEditorialVisuals__side article>img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .65s cubic-bezier(.2,.72,.2,1);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .7s cubic-bezier(.2,.72,.2,1);
 }
-.homeEditorialVisuals__portrait:hover>img,
-.homeEditorialVisuals__side article:hover>img{transform:scale(1.025)}
-.homeEditorialVisuals__portrait:after,
+.homeEditorialVisuals__feature:hover>img,
+.homeEditorialVisuals__side article:hover>img{
+  transform:scale(1.025);
+}
+.homeEditorialVisuals__feature:after,
 .homeEditorialVisuals__side article:after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 45%,rgba(17,15,12,.72) 100%);
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
 }
-.homeEditorialVisuals__caption{
-  position:absolute;z-index:2;left:28px;right:28px;bottom:26px;
-  display:grid;gap:8px;color:#fff;
+.homeEditorialVisuals__feature:after{
+  background:
+    linear-gradient(90deg,rgba(18,16,13,.82) 0%,rgba(18,16,13,.54) 46%,rgba(18,16,13,.08) 78%),
+    linear-gradient(180deg,transparent 45%,rgba(18,16,13,.2));
 }
-.homeEditorialVisuals__caption>span{font-size:9px;font-weight:800;letter-spacing:.17em;color:#e3b66f}
-.homeEditorialVisuals__caption>strong{max-width:520px;font:500 29px/1.08 Georgia,"Times New Roman",serif}
-.homeEditorialVisuals__caption>a{
-  width:max-content;margin-top:4px;display:flex;align-items:center;gap:8px;
-  color:#fff;font-size:9px;font-weight:750;
+.homeEditorialVisuals__side article:after{
+  background:linear-gradient(180deg,transparent 38%,rgba(17,15,12,.76) 100%);
 }
-.homeEditorialVisuals__side{display:grid;grid-template-rows:1fr 1fr;gap:16px}
-.homeEditorialVisuals__side article{min-height:197px}
+.homeEditorialVisuals__featureCopy{
+  position:absolute;
+  z-index:2;
+  left:34px;
+  bottom:34px;
+  width:min(520px,70%);
+  color:#fff;
+}
+.homeEditorialVisuals__featureCopy>span{
+  display:block;
+  margin-bottom:11px;
+  color:#e3b66f;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.homeEditorialVisuals__featureCopy h2{
+  margin:0;
+  max-width:500px;
+  font:500 34px/1.03 Georgia,"Times New Roman",serif;
+  letter-spacing:-.02em;
+}
+.homeEditorialVisuals__featureCopy h2 strong{
+  display:block;
+  color:#e4b971;
+  font-weight:500;
+}
+.homeEditorialVisuals__featureCopy p{
+  max-width:470px;
+  margin:16px 0 18px;
+  color:rgba(255,255,255,.78);
+  font-size:10px;
+  line-height:1.75;
+}
+.homeEditorialVisuals__featureCopy>a{
+  width:max-content;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding-bottom:4px;
+  border-bottom:1px solid rgba(255,255,255,.45);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+}
+.homeEditorialVisuals__side{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:16px;
+}
+.homeEditorialVisuals__side article{
+  min-height:212px;
+}
 .homeEditorialVisuals__side article>div{
-  position:absolute;z-index:2;left:20px;right:20px;bottom:18px;
-  display:flex;align-items:center;gap:10px;color:#fff;
+  position:absolute;
+  z-index:2;
+  left:20px;
+  right:20px;
+  bottom:18px;
+  display:flex;
+  align-items:flex-end;
+  gap:11px;
+  color:#fff;
 }
-.homeEditorialVisuals__side article>div span{
-  width:29px;height:29px;display:grid;place-items:center;border-radius:50%;
-  border:1px solid rgba(255,255,255,.55);font-size:7px;font-weight:800;
+.homeEditorialVisuals__side article>div>span{
+  width:31px;
+  height:31px;
+  flex:0 0 31px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:50%;
+  font-size:7px;
+  font-weight:800;
 }
-.homeEditorialVisuals__side article>div strong{font:500 18px Georgia,"Times New Roman",serif}
+.homeEditorialVisuals__side article>div>section{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.homeEditorialVisuals__side article small{
+  color:#e2b36c;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.homeEditorialVisuals__side article strong{
+  font:500 19px/1.08 Georgia,"Times New Roman",serif;
+}
+
+@media(max-width:950px){
+  .homeEditorialVisuals{grid-template-columns:1fr}
+  .homeEditorialVisuals__feature{min-height:430px}
+  .homeEditorialVisuals__side{grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .homeEditorialVisuals__side article{min-height:230px}
+}
+@media(max-width:650px){
+  .homeEditorialVisuals{width:90%;margin-top:30px}
+  .homeEditorialVisuals__feature{min-height:470px}
+  .homeEditorialVisuals__featureCopy{
+    left:22px;right:22px;bottom:24px;width:auto;
+  }
+  .homeEditorialVisuals__featureCopy h2{font-size:29px}
+  .homeEditorialVisuals__featureCopy p{font-size:10px}
+  .homeEditorialVisuals__side{grid-template-columns:1fr}
+  .homeEditorialVisuals__side article{min-height:235px}
+}
 
 /* Blog admin — readable scale. This overrides only typography/spacing. */
 .admin100Blog__head>div>span{font-size:11px!important}
