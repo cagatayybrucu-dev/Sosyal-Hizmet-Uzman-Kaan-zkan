@@ -1022,151 +1022,62 @@ function App() {
             </div>
           </section>
 
-          <section className="homeServicesShowcase">
-            <div className="homeServicesShowcase__head reveal">
-              <div>
-                <span className="homeServicesShowcase__eyebrow">{homeContent.servicesEyebrow}</span>
-                <h2>
-                  {homeContent.servicesTitle}
-                  <strong>{homeContent.servicesTitleAccent}</strong>
-                </h2>
-              </div>
-
-              <p>{homeContent.servicesDescription}</p>
-            </div>
-
-            <div className="homeServicesShowcase__grid">
-              <article className="homeServiceFeature reveal">
-                <div className="homeServiceFeature__icon">
-                  <Icon name="heart" size={25} />
-                </div>
+          <section className="homeApproachEditorial reveal" aria-label="Danışmanlık yaklaşımı">
+            <div className="homeApproachEditorial__visual">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg"
+                alt="Profesyonel danışmanlık sürecinde not alma ve değerlendirme"
+                onError={(e)=>{e.currentTarget.style.display="none"}}
+              />
+              <div className="homeApproachEditorial__visualShade" />
+              <div className="homeApproachEditorial__visualTag">
                 <span>01</span>
-                <h3>{homeContent.service1Title}</h3>
-                <ul>
-                  <li>{homeContent.service1Item1}</li>
-                  <li>{homeContent.service1Item2}</li>
-                </ul>
-                <a href="#/hizmetler">
-                  Detaylı Bilgi
-                  <Icon name="arrow" size={15} />
-                </a>
-              </article>
-
-              <article className="homeServiceFeature reveal">
-                <div className="homeServiceFeature__icon">
-                  <Icon name="users" size={25} />
-                </div>
-                <span>02</span>
-                <h3>{homeContent.service2Title}</h3>
-                <ul>
-                  <li>{homeContent.service2Item1}</li>
-                  <li>{homeContent.service2Item2}</li>
-                </ul>
-                <a href="#/hizmetler">
-                  Detaylı Bilgi
-                  <Icon name="arrow" size={15} />
-                </a>
-              </article>
-
-              <article className="homeServiceFeature reveal">
-                <div className="homeServiceFeature__icon">
-                  <Icon name="shield" size={25} />
-                </div>
-                <span>03</span>
-                <h3>{homeContent.service3Title}</h3>
-                <ul>
-                  <li>{homeContent.service3Item1}</li>
-                  <li>{homeContent.service3Item2}</li>
-                </ul>
-                <a href="#/hizmetler">
-                  Detaylı Bilgi
-                  <Icon name="arrow" size={15} />
-                </a>
-              </article>
+                <p>YAKLAŞIM</p>
+              </div>
             </div>
 
-            <div className="homeServicesShowcase__footer reveal">
-              <div className="homeServicesShowcase__benefit">
-                <div className="homeServicesShowcase__benefitIcon">
-                  <Icon name="compass" size={31} />
-                </div>
-                <div>
-                  <span>DANIŞMANLIĞIN ODAĞI</span>
-                  <h3>Güçlü yönlerinizi görünür hale getiren, kişiye özgü bir yol haritası.</h3>
-                  <p>
-                    Amaç yalnızca sorunlar karşısında baş etme kapasitenizi arttırmak değil;
-                    konfor alanınızın kalitesini, ilişkilerinizdeki çatışmayı ve bireysel iyilik
-                    halinizi pozitif davranışçı bakış açısıyla güçlendirmektir.
-                  </p>
-                </div>
+            <div className="homeApproachEditorial__content">
+              <span className="homeApproachEditorial__eyebrow">{homeContent.servicesEyebrow}</span>
+              <h2>
+                {homeContent.servicesTitle}
+                <strong>{homeContent.servicesTitleAccent}</strong>
+              </h2>
+              <p className="homeApproachEditorial__lead">{homeContent.servicesDescription}</p>
+
+              <div className="homeApproachEditorial__principles">
+                <article>
+                  <span>01</span>
+                  <div>
+                    <strong>{homeContent.service1Title}</strong>
+                    <p>{homeContent.service1Item1}</p>
+                  </div>
+                </article>
+                <article>
+                  <span>02</span>
+                  <div>
+                    <strong>{homeContent.service2Title}</strong>
+                    <p>{homeContent.service2Item1}</p>
+                  </div>
+                </article>
+                <article>
+                  <span>03</span>
+                  <div>
+                    <strong>{homeContent.service3Title}</strong>
+                    <p>{homeContent.service3Item1}</p>
+                  </div>
+                </article>
               </div>
 
-              <a className="homeServicesShowcase__all" href="#/hizmetler">
-                <span>TÜM</span>
-                <strong>HİZMETLER</strong>
-                <Icon name="arrow" size={22} />
+              <a className="homeApproachEditorial__cta" href="#/hizmetler">
+                Tüm Çalışma Alanlarını İnceleyin
+                <Icon name="arrow" size={16}/>
               </a>
             </div>
           </section>
 
-          <section className="homeEditorialVisuals reveal" aria-label="Profesyonel danışmanlık yaklaşımı">
-            <article className="homeEditorialVisuals__feature">
-              <img
-                loading="lazy"
-                decoding="async"
-                src="https://images.squarespace-cdn.com/content/v1/5f0ed3c935f9b17329c9fbad/1674134176151-QQUZP6UL239LNH2MYT2H/Stories%2BSarphati-18-min.jpg"
-                alt="Profesyonel danışmanlık ortamı"
-              />
-              <div className="homeEditorialVisuals__featureCopy">
-                <span>PROFESYONEL DANIŞMANLIK</span>
-                <h2>Her sürecin merkezinde <strong>kişiye özgü değerlendirme.</strong></h2>
-                <p>
-                  Yaşam öyküsü, ihtiyaçlar, ilişkiler ve mevcut kaynaklar birlikte ele alınarak
-                  daha anlaşılır ve sürdürülebilir bir yol haritası oluşturulur.
-                </p>
-                <a href="#/surec">
-                  Süreci İnceleyin
-                  <Icon name="arrow" size={14}/>
-                </a>
-              </div>
-            </article>
-
-            <div className="homeEditorialVisuals__side">
-              <article>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src="https://images.squarespace-cdn.com/content/v1/678e59c85fafc9753f45e5e1/7878ab18-021e-424c-a755-4ad720e062cb/Image%2BMar%2B29%2C%2B2026%2C%2B10_50_14%2BPM.png"
-                  alt="Profesyonel değerlendirme ve planlama alanı"
-                />
-                <div>
-                  <span>01</span>
-                  <section>
-                    <small>SİSTEMATİK DEĞERLENDİRME</small>
-                    <strong>İhtiyacı doğru anlamak.</strong>
-                  </section>
-                </div>
-              </article>
-
-              <article>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src="https://static.wixstatic.com/media/5fdef5_78f6b6b43fb5403690c6411318dd3cd4~mv2.png/v1/fill/w_980%2Ch_560%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/5fdef5_78f6b6b43fb5403690c6411318dd3cd4~mv2.png"
-                  alt="Planlı ve profesyonel danışmanlık çalışması"
-                />
-                <div>
-                  <span>02</span>
-                  <section>
-                    <small>PLANLI & ETİK SÜREÇ</small>
-                    <strong>Değişimi sürdürülebilir kılmak.</strong>
-                  </section>
-                </div>
-              </article>
-            </div>
-          </section>
-
-<section className="homeScopeStrip reveal">
+          <section className="homeScopeStrip reveal">
             <div><Icon name="shield" size={20} /></div>
             <p>
               Danışmanlık hizmetleri sosyal hizmet müdahale yaklaşımları ve aile danışmanlığı kapsamında sunulur.
@@ -4446,11 +4357,11 @@ function ProcessDetailPage({ content }) {
     { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
   ];
   const processVisuals = [
-    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1500&q=88",
-    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=88",
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=88",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1500&q=88",
-    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=88",
+    "https://images.squarespace-cdn.com/content/v1/67d3643b4d24072a397dfcd7/ba6faf85-b38c-4c51-8325-0009baa0eeb6/lada-balakireva-dupe%2B%283%29.jpeg",
+    "https://images.squarespace-cdn.com/content/v1/647f152fd676295dfd86b082/b2b96b95-d762-41f2-b4c5-edaa23b276f5/Cooper-Williams-Lawyers_FDR_Family-Law_Newcastle.jpg?format=2500w",
+    "https://i.insider.com/67a392a97bb3f854015bd487?format=jpeg&width=1200",
+    "https://www.ubs.com/us/en/wealth-management/our-solutions/companies-organizations/workplace-wealth-solutions-thought-leadership/articles/private-investments-in-401k-plans/_jcr_content/root/pagehead/opengraphimage.coreimg.jpg/1923859011/private-investments.jpg",
+    "https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg",
   ];
   const steps = content.steps?.length ? content.steps : defaultProcessContent.steps;
   const trustItems = content.trustItems?.length ? content.trustItems : defaultProcessContent.trustItems;
@@ -4707,7 +4618,7 @@ function AboutDetailPage({ content = defaultAboutContent }) {
         </article>
         <aside className="aboutDirectProfile">
           <div className="aboutDirectProfile__photo">
-            <img loading="lazy" decoding="async" src={aboutPhoto} alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`} />
+            <img loading="eager" decoding="async" fetchPriority="high" src={aboutPhoto} alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`} />
           </div>
           <div className="aboutDirectProfile__body">
             <span>{content.profileEyebrow}</span>
@@ -15315,6 +15226,140 @@ img{
   .prc53Step__number{position:relative!important;left:auto!important;top:auto!important;margin-bottom:11px}
   .prc53Trust{grid-template-columns:1fr!important}
   .prc53Trust>div{border-right:0!important;border-bottom:1px solid #e7ddd2!important}
+}
+
+/* STEP104 — HOMEPAGE APPROACH + ABOUT MOBILE FAST PAINT + RELEVANT PROCESS VISUALS */
+.homeApproachEditorial{
+  width:min(1400px,90%);
+  margin:68px auto 44px;
+  display:grid;
+  grid-template-columns:1.04fr .96fr;
+  gap:0;
+  overflow:hidden;
+  border:1px solid #ded3c6;
+  border-radius:24px;
+  background:#f8f4ee;
+  box-shadow:0 24px 60px rgba(75,54,32,.08);
+}
+.homeApproachEditorial__visual{
+  position:relative;
+  min-height:590px;
+  overflow:hidden;
+  background:#ded4c8;
+}
+.homeApproachEditorial__visual>img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.72) contrast(.97);
+  transition:transform .75s cubic-bezier(.2,.72,.2,1),filter .35s ease;
+}
+.homeApproachEditorial:hover .homeApproachEditorial__visual>img{
+  transform:scale(1.02);filter:saturate(.82) contrast(.99);
+}
+.homeApproachEditorial__visualShade{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(16,14,11,.02) 35%,rgba(18,15,11,.55) 100%);
+  pointer-events:none;
+}
+.homeApproachEditorial__visualTag{
+  position:absolute;left:24px;bottom:22px;z-index:2;
+  display:flex;align-items:center;gap:11px;color:#fff;
+}
+.homeApproachEditorial__visualTag>span{
+  width:34px;height:34px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.55);border-radius:50%;
+  font-size:8px;font-weight:800;
+}
+.homeApproachEditorial__visualTag p{
+  margin:0;color:#fff;font-size:8px;font-weight:800;letter-spacing:.18em;
+}
+.homeApproachEditorial__content{
+  padding:58px 56px 50px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.homeApproachEditorial__eyebrow{
+  color:#a77736;font-size:9px;font-weight:800;letter-spacing:.17em;
+}
+.homeApproachEditorial__content h2{
+  margin:15px 0 0;
+  color:#262a2e;
+  font:500 clamp(40px,4vw,63px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.homeApproachEditorial__content h2 strong{
+  display:block;color:#b17d39;font-weight:500;
+}
+.homeApproachEditorial__lead{
+  max-width:610px;margin:24px 0 27px;
+  color:#74787c;font-size:12px;line-height:1.8;
+}
+.homeApproachEditorial__principles{
+  display:grid;border-top:1px solid #e1d7cb;
+}
+.homeApproachEditorial__principles article{
+  min-height:93px;padding:17px 0;
+  display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:center;
+  border-bottom:1px solid #e1d7cb;
+  transition:padding-left .24s ease,background .24s ease;
+}
+.homeApproachEditorial__principles article:hover{padding-left:8px}
+.homeApproachEditorial__principles article>span{
+  width:33px;height:33px;display:grid;place-items:center;
+  border:1px solid #d7bc95;border-radius:50%;
+  color:#a77736;font-size:8px;font-weight:800;background:#fbf4ea;
+}
+.homeApproachEditorial__principles article>div{display:flex;flex-direction:column;gap:5px}
+.homeApproachEditorial__principles strong{
+  color:#303438;font:500 18px Georgia,"Times New Roman",serif;
+}
+.homeApproachEditorial__principles p{
+  margin:0;color:#85898c;font-size:10px;line-height:1.55;
+}
+.homeApproachEditorial__cta{
+  width:max-content;margin-top:28px;padding-bottom:5px;
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid #b78a52;color:#91622e;
+  font-size:9px;font-weight:800;letter-spacing:.04em;
+}
+
+/* Süreç görselleri yeni içerikte biraz daha editorial crop */
+.prc103StepVisual img{object-position:center!important;filter:saturate(.76) contrast(.98) brightness(.96)!important}
+.prc53Step:nth-child(1) .prc103StepVisual img{object-position:center 55%!important}
+.prc53Step:nth-child(2) .prc103StepVisual img{object-position:center 48%!important}
+.prc53Step:nth-child(3) .prc103StepVisual img{object-position:center 52%!important}
+.prc53Step:nth-child(4) .prc103StepVisual img{object-position:center 50%!important}
+.prc53Step:nth-child(5) .prc103StepVisual img{object-position:center 48%!important}
+
+/* Hakkımda mobil: fotoğrafın hemen gelip metnin 1-2 sn beklemesini önler.
+   Desktop motion korunur, mobilde Hakkımda metni ilk paint'te görünür. */
+@media(max-width:900px){
+  .aboutDirectHeader__title.motionReveal,
+  .aboutDirectArticle.motionReveal,
+  .aboutDirectProfile.motionReveal{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+    will-change:auto!important;
+  }
+  .aboutDirectArticle{
+    content-visibility:visible!important;
+  }
+}
+
+@media(max-width:900px){
+  .homeApproachEditorial{grid-template-columns:1fr;margin-top:48px}
+  .homeApproachEditorial__visual{min-height:430px}
+  .homeApproachEditorial__content{padding:42px 34px 38px}
+}
+@media(max-width:600px){
+  .homeApproachEditorial{width:90%;margin:34px auto 30px;border-radius:20px}
+  .homeApproachEditorial__visual{min-height:360px}
+  .homeApproachEditorial__content{padding:31px 22px 28px}
+  .homeApproachEditorial__content h2{font-size:38px}
+  .homeApproachEditorial__lead{font-size:11px;margin:20px 0 22px}
+  .homeApproachEditorial__principles article{grid-template-columns:38px 1fr;min-height:88px;padding:15px 0}
+  .homeApproachEditorial__principles strong{font-size:16px}
+  .homeApproachEditorial__principles p{font-size:9.5px}
 }
 
 `;
