@@ -1112,6 +1112,28 @@ function App() {
 
           
 
+          <section className="homeEditorialVisuals reveal" aria-label="Kaan Özkan ve danışmanlık yaklaşımı">
+            <div className="homeEditorialVisuals__portrait">
+              <img loading="lazy" decoding="async" src={aboutPhoto} alt="Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan" />
+              <div className="homeEditorialVisuals__caption">
+                <span>KAAN ÖZKAN</span>
+                <strong>İnsan odaklı, etik ve kişiye özgü yaklaşım.</strong>
+                <a href="#/hakkimda">Hakkımda <Icon name="arrow" size={14}/></a>
+              </div>
+            </div>
+
+            <div className="homeEditorialVisuals__side">
+              <article>
+                <img loading="lazy" decoding="async" src={processHeroDesk} alt="Profesyonel danışmanlık süreci" />
+                <div><span>01</span><strong>Profesyonel Süreç</strong></div>
+              </article>
+              <article>
+                <img loading="lazy" decoding="async" src={heroSlide2} alt="Psikososyal destek ve danışmanlık" />
+                <div><span>02</span><strong>Güvenli Görüşme Alanı</strong></div>
+              </article>
+            </div>
+          </section>
+
           <section className="homeScopeStrip reveal">
             <div><Icon name="shield" size={20} /></div>
             <p>
@@ -14640,6 +14662,121 @@ img{
   .admin100Blog__publishBar button,.admin100Blog__head>button{width:100%;justify-content:center}
   .admin100Blog__list article{grid-template-columns:1fr}
   .admin100Blog__list article>img{width:100%;height:180px}
+}
+
+/* STEP101 FIXED — HOMEPAGE VISUAL RHYTHM + BLOG ADMIN READABILITY */
+.homeEditorialVisuals{
+  width:min(1380px,90%);
+  margin:42px auto 24px;
+  display:grid;
+  grid-template-columns:1.45fr .9fr;
+  gap:16px;
+}
+.homeEditorialVisuals__portrait,
+.homeEditorialVisuals__side article{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  background:#e9e0d5;
+  box-shadow:0 18px 48px rgba(83,59,31,.08);
+}
+.homeEditorialVisuals__portrait{min-height:410px}
+.homeEditorialVisuals__portrait>img,
+.homeEditorialVisuals__side article>img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .65s cubic-bezier(.2,.72,.2,1);
+}
+.homeEditorialVisuals__portrait:hover>img,
+.homeEditorialVisuals__side article:hover>img{transform:scale(1.025)}
+.homeEditorialVisuals__portrait:after,
+.homeEditorialVisuals__side article:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 45%,rgba(17,15,12,.72) 100%);
+}
+.homeEditorialVisuals__caption{
+  position:absolute;z-index:2;left:28px;right:28px;bottom:26px;
+  display:grid;gap:8px;color:#fff;
+}
+.homeEditorialVisuals__caption>span{font-size:9px;font-weight:800;letter-spacing:.17em;color:#e3b66f}
+.homeEditorialVisuals__caption>strong{max-width:520px;font:500 29px/1.08 Georgia,"Times New Roman",serif}
+.homeEditorialVisuals__caption>a{
+  width:max-content;margin-top:4px;display:flex;align-items:center;gap:8px;
+  color:#fff;font-size:9px;font-weight:750;
+}
+.homeEditorialVisuals__side{display:grid;grid-template-rows:1fr 1fr;gap:16px}
+.homeEditorialVisuals__side article{min-height:197px}
+.homeEditorialVisuals__side article>div{
+  position:absolute;z-index:2;left:20px;right:20px;bottom:18px;
+  display:flex;align-items:center;gap:10px;color:#fff;
+}
+.homeEditorialVisuals__side article>div span{
+  width:29px;height:29px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid rgba(255,255,255,.55);font-size:7px;font-weight:800;
+}
+.homeEditorialVisuals__side article>div strong{font:500 18px Georgia,"Times New Roman",serif}
+
+/* Blog admin — readable scale. This overrides only typography/spacing. */
+.admin100Blog__head>div>span{font-size:11px!important}
+.admin100Blog__head h2{font-size:34px!important}
+.admin100Blog__head p{font-size:13px!important;line-height:1.65!important}
+.admin100Blog__head>button{font-size:11px!important;min-height:44px!important;padding:0 17px!important}
+.admin100Blog__message{font-size:12px!important;padding:14px 16px!important}
+.admin100Blog__loading{font-size:13px!important}
+.admin100Blog__sectionHead>span{font-size:10px!important;width:42px!important;height:42px!important;flex-basis:42px!important}
+.admin100Blog__sectionHead strong{font-size:22px!important}
+.admin100Blog__sectionHead small{font-size:11px!important;line-height:1.5!important}
+.admin100Blog__sectionHead .admin100Blog__cancel{font-size:10px!important;padding:9px 12px!important}
+.admin100Blog label>span,.admin100Blog__imageBox>span{font-size:11px!important;line-height:1.4!important}
+.admin100Blog input,.admin100Blog textarea,.admin100Blog select{
+  font-size:13px!important;line-height:1.6!important;padding:12px 13px!important;
+}
+.admin100Blog input,.admin100Blog select{min-height:45px!important}
+.admin100Blog__goldButton{font-size:11px!important;min-height:46px!important}
+.admin100Blog__check span{font-size:11px!important}
+.admin100Blog__preview p{font-size:11px!important}
+.admin100Blog__upload{font-size:11px!important;min-height:46px!important}
+.admin100Blog__imageBox>small{font-size:10px!important;line-height:1.4!important}
+.admin100Blog__or{font-size:10px!important}
+.admin100Blog__slug b{font-size:11px!important}
+.admin100Blog__publishBar strong{font-size:19px!important}
+.admin100Blog__publishBar span{font-size:11px!important;line-height:1.45!important}
+.admin100Blog__publishBar button{font-size:11px!important;min-height:47px!important;padding:0 19px!important}
+.admin100Blog__list{gap:12px!important}
+.admin100Blog__list article{
+  min-height:132px!important;padding:14px!important;
+  grid-template-columns:150px minmax(0,1fr) 118px!important;gap:18px!important;
+}
+.admin100Blog__list article>img{width:150px!important;height:102px!important}
+.admin100Blog__postCopy{gap:9px!important}
+.admin100Blog__postCopy>div span,
+.admin100Blog__postCopy>div b,
+.admin100Blog__postCopy>div em{font-size:9px!important;padding:5px 8px!important}
+.admin100Blog__postCopy>strong{font-size:20px!important;line-height:1.15!important}
+.admin100Blog__postCopy>small{font-size:10px!important;line-height:1.45!important}
+.admin100Blog__actions{min-width:118px!important;gap:7px!important}
+.admin100Blog__actions button,.admin100Blog__actions a{
+  min-height:32px!important;padding:0 10px!important;font-size:9px!important;border-radius:8px!important;
+}
+
+@media(max-width:950px){
+  .homeEditorialVisuals{grid-template-columns:1fr}
+  .homeEditorialVisuals__side{grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .admin100Blog__list article{grid-template-columns:125px minmax(0,1fr)!important}
+  .admin100Blog__list article>img{width:125px!important;height:95px!important}
+  .admin100Blog__actions{grid-column:1/-1!important;flex-direction:row!important;flex-wrap:wrap!important}
+}
+@media(max-width:650px){
+  .homeEditorialVisuals{width:90%;margin-top:28px}
+  .homeEditorialVisuals__portrait{min-height:420px}
+  .homeEditorialVisuals__side{grid-template-columns:1fr}
+  .homeEditorialVisuals__side article{min-height:220px}
+  .homeEditorialVisuals__caption{left:20px;right:20px;bottom:20px}
+  .homeEditorialVisuals__caption>strong{font-size:25px}
+  .admin100Blog__head h2{font-size:29px!important}
+  .admin100Blog__settings,.admin100Blog__editor,.admin100Blog__library{padding:18px!important}
+  .admin100Blog__list article{grid-template-columns:1fr!important}
+  .admin100Blog__list article>img{width:100%!important;height:210px!important}
+  .admin100Blog__postCopy>strong{font-size:19px!important}
 }
 
 `;
