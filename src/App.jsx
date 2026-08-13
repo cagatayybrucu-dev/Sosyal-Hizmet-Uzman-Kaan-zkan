@@ -16244,6 +16244,62 @@ img{
   stroke:none;
 }
 
+/* STEP110 — Contact email overflow/readability fix */
+.contactGrid--three .contactCard{
+  min-width:0;
+  overflow:hidden;
+}
+.contactGrid--three .contactCard span{
+  width:100%;
+  min-width:0;
+  display:block;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  line-height:1.45!important;
+  text-align:center;
+}
+.contactGrid--three .contactCard[href^="mailto:"] span{
+  font-size:clamp(8.5px,.82vw,11px)!important;
+  letter-spacing:-.01em!important;
+}
+
+.contact80Grid{
+  align-items:stretch;
+}
+.contact80Card{
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.contact80Card>strong{
+  width:100%;
+  min-width:0;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.contact80Card[href^="mailto:"]>strong{
+  font-size:clamp(12px,1.12vw,17px)!important;
+  line-height:1.35!important;
+  letter-spacing:-.025em!important;
+}
+
+@media(max-width:1100px) and (min-width:901px){
+  .contact80Grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .contact80Card[href^="mailto:"]{
+    grid-column:span 2;
+  }
+}
+
+@media(max-width:900px){
+  .contactGrid--three .contactCard[href^="mailto:"] span{
+    font-size:11px!important;
+  }
+  .contact80Card[href^="mailto:"]>strong{
+    font-size:15px!important;
+  }
+}
+
 `;
 
 export default App;
