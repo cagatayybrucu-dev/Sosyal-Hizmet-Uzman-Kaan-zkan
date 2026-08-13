@@ -1473,7 +1473,13 @@ function App() {
               </a>
 
               <a href="https://www.instagram.com/ailedanismanikaanozkan/" target="_blank" rel="noreferrer" className="contactCard reveal">
-                <div className="contactIcon contactInstagramIcon">◎</div>
+                <div className="contactIcon contactInstagramIcon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4.2" />
+                    <circle cx="17.4" cy="6.7" r="1.1" className="instagramDot" />
+                  </svg>
+                </div>
                 <strong>Instagram</strong>
                 <span>@ailedanismanikaanozkan</span>
               </a>
@@ -1886,7 +1892,13 @@ function ContactDetailPage() {
             target="_blank"
             rel="noreferrer"
           >
-            <div className="contact80Card__icon contact80Instagram">◎</div>
+            <div className="contact80Card__icon contact80Instagram" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.4" cy="6.7" r="1.1" className="instagramDot" />
+              </svg>
+            </div>
             <span>INSTAGRAM</span>
             <strong>@ailedanismanikaanozkan</strong>
             <p>
@@ -16200,6 +16212,36 @@ img{
   .aboutDirectProfile__photo>img{
     transition:none!important;
   }
+}
+
+/* STEP109 — Instagram icon fix */
+.contactInstagramIcon,
+.contact80Instagram{
+  display:grid!important;
+  place-items:center!important;
+  font-size:0!important;
+  line-height:1!important;
+}
+.contactInstagramIcon svg,
+.contact80Instagram svg{
+  width:25px;
+  height:25px;
+  display:block;
+  overflow:visible;
+}
+.contactInstagramIcon svg rect,
+.contactInstagramIcon svg circle,
+.contact80Instagram svg rect,
+.contact80Instagram svg circle{
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  vector-effect:non-scaling-stroke;
+}
+.contactInstagramIcon svg .instagramDot,
+.contact80Instagram svg .instagramDot{
+  fill:currentColor;
+  stroke:none;
 }
 
 `;
