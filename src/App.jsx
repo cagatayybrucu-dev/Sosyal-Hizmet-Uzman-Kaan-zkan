@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import heroSlide1 from "./assets/hero-slide-1.jpg";
 import heroSlide2 from "./assets/hero-slide-2.jpg";
 import aboutPhoto from "./assets/kaan-about.jpg";
@@ -1546,6 +1547,7 @@ function App() {
         </main>
         )}
       </div>
+          <Analytics />
     </>
   );
 }
