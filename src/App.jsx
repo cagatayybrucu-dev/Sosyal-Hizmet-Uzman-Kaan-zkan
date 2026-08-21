@@ -277,6 +277,8 @@ const blogCategories = [
 ];
 
 
+const defaultBlogAuthors = [];
+
 const defaultBlogContent = {
   heroEyebrow: "BLOG",
   heroTitle: "Bilgi, farkındalık",
@@ -286,9 +288,11 @@ const defaultBlogContent = {
   heroImage:
     "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=2000&q=90",
   categories: blogCategories,
+  authors: defaultBlogAuthors,
   posts: defaultBlogPosts.map((post, index) => ({
     ...post,
     id: post.slug,
+    authorSlug: "",
     status: "published",
     featured: index === defaultBlogPosts.length - 1,
     sortOrder: index + 1,
@@ -654,6 +658,10 @@ function App() {
     return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
   });
   const [blogContent, setBlogContent] = useState(defaultBlogContent);
+  const [authorSlug, setAuthorSlug] = useState(() => {
+    const hash = window.location.hash;
+    return hash.startsWith("#/yazarlar/") ? hash.replace("#/yazarlar/", "") : "";
+  });
   const [serviceDetailSlug, setServiceDetailSlug] = useState(() => {
     const hash = window.location.hash;
     return hash.startsWith("#/hizmetler/") ? hash.replace("#/hizmetler/", "") : "";
@@ -664,7 +672,7 @@ function App() {
     titleLine: "Profesyonel",
     titleAccent: "Aile Danışmanlığı",
     description:
-      "Danışan odaklı yaklaşım ile güvenilir, etik ve çözüm odaklı sosyal hizmet ve aile danışmanlığı desteği.",
+      "Her danışanın yaşam öyküsünü ve ihtiyaçlarını merkeze alan, güvenilir, etik ve profesyonel danışmanlık desteği.",
     primaryCta: "Ücretsiz Ön Görüşme",
     secondaryCta: "Çalışma Alanları",
     trust1Title: "Güvenli & Gizli",
@@ -834,7 +842,7 @@ function App() {
 
     const introTimer = window.setTimeout(() => {
       setShowSiteIntro(false);
-    }, 2100);
+    }, 3400);
 
     return () => window.clearTimeout(introTimer);
   }, [showSiteIntro]);
@@ -861,6 +869,8 @@ function App() {
       ? "content"
       : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
       ? "blog"
+      : window.location.hash === "#/yazarlar" || window.location.hash.startsWith("#/yazarlar/")
+      ? "authors"
       : window.location.hash === "#/iletisim"
       ? "contact"
       : window.location.hash === "#/randevu"
@@ -1012,6 +1022,7 @@ function App() {
           ...data.content,
           posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
           categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
+          authors: Array.isArray(data.content.authors) && data.content.authors.length ? data.content.authors : current.authors,
         }));
       }
     };
@@ -1045,12 +1056,53 @@ function App() {
       el.content = value;
     };
     meta("description", seo[1]);
+    meta("robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
     meta("og:title", seo[0], true);
     meta("og:description", seo[1], true);
     meta("og:type", "website", true);
+    meta("og:locale", "tr_TR", true);
+    meta("og:site_name", "Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", true);
     meta("twitter:card", "summary_large_image");
     meta("twitter:title", seo[0]);
     meta("twitter:description", seo[1]);
+
+    // STEP123 — Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
+    // Eski Vercel canonical etiketleri index.html'de kalsa bile temizlenir.
+    const canonicalUrl = "https://www.ailedanismanikaanozkan.com/";
+    document.head.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = canonicalUrl;
+    document.head.appendChild(canonical);
+    meta("og:url", canonicalUrl, true);
+
+    // Temel yapılandırılmış veri: Google'a site ve kişi ilişkisini daha net anlatır.
+    const schemaId = "kaan-ozkan-seo-schema";
+    document.getElementById(schemaId)?.remove();
+    const schema = document.createElement("script");
+    schema.id = schemaId;
+    schema.type = "application/ld+json";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": `${canonicalUrl}#website`,
+          url: canonicalUrl,
+          name: "Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı",
+          inLanguage: "tr-TR"
+        },
+        {
+          "@type": "Person",
+          "@id": `${canonicalUrl}#kaan-ozkan`,
+          name: "Kaan Özkan",
+          url: canonicalUrl,
+          jobTitle: "Sosyal Hizmet Uzmanı ve Aile Danışmanı",
+          sameAs: ["https://www.instagram.com/ailedanismanikaanozkan/"]
+        }
+      ]
+    });
+    document.head.appendChild(schema);
   }, [page]);
 
   useEffect(() => {
@@ -1090,6 +1142,8 @@ function App() {
           ? "content"
           : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
           ? "blog"
+          : window.location.hash === "#/yazarlar" || window.location.hash.startsWith("#/yazarlar/")
+          ? "authors"
           : window.location.hash === "#/iletisim"
           ? "contact"
           : window.location.hash === "#/randevu"
@@ -1107,6 +1161,11 @@ function App() {
       setBlogSlug(
         window.location.hash.startsWith("#/blog/")
           ? window.location.hash.replace("#/blog/", "")
+          : ""
+      );
+      setAuthorSlug(
+        window.location.hash.startsWith("#/yazarlar/")
+          ? window.location.hash.replace("#/yazarlar/", "")
           : ""
       );
       setServiceDetailSlug(
@@ -1150,19 +1209,49 @@ function App() {
 
       {showSiteIntro && (
         <div className="site95Intro" aria-hidden="true">
-          <div className="site95Intro__halo" />
-          <div className="site95Intro__content">
-            <div className="site95Intro__logo">
-              <img src={kaanOzkanEmblem} alt="" />
+          <div className="site95Intro__grain" />
+          <div className="site95Intro__vignette" />
+          <div className="site95Intro__beam site95Intro__beam--one" />
+          <div className="site95Intro__beam site95Intro__beam--two" />
+          <div className="site95Intro__orb site95Intro__orb--left" />
+          <div className="site95Intro__orb site95Intro__orb--right" />
+
+          <div className="site95Intro__stage">
+            <div className="site95Intro__rings">
+              <i /><i /><i />
             </div>
 
-            <span className="site95Intro__eyebrow">HOŞ GELDİNİZ</span>
-            <strong className="site95Intro__name">KAAN ÖZKAN</strong>
-            <p className="site95Intro__role">
-              Sosyal Hizmet Uzmanı <i>·</i> Aile Danışmanı
-            </p>
+            <div className="site95Intro__monolith">
+              <div className="site95Intro__edge site95Intro__edge--top" />
+              <div className="site95Intro__edge site95Intro__edge--bottom" />
+              <div className="site95Intro__logo3d">
+                <span className="site95Intro__logoGhost site95Intro__logoGhost--back">
+                  <img src={kaanOzkanEmblem} alt="" />
+                </span>
+                <span className="site95Intro__logoGhost site95Intro__logoGhost--mid">
+                  <img src={kaanOzkanEmblem} alt="" />
+                </span>
+                <span className="site95Intro__logoFace">
+                  <img src={kaanOzkanEmblem} alt="" />
+                </span>
+                <span className="site95Intro__scan" />
+              </div>
+            </div>
 
-            <div className="site95Intro__progress"><span /></div>
+            <div className="site95Intro__copy">
+              <span className="site95Intro__eyebrow">PROFESYONEL DANIŞMANLIK</span>
+              <strong className="site95Intro__name">KAAN ÖZKAN</strong>
+              <p className="site95Intro__role">
+                Sosyal Hizmet Uzmanı <i>·</i> Aile Danışmanı
+              </p>
+            </div>
+
+            <div className="site95Intro__timeline">
+              <span />
+              <b>01</b>
+              <em>GÜVEN · ETİK · İNSAN ODAKLI</em>
+              <b>03</b>
+            </div>
           </div>
         </div>
       )}
@@ -1190,17 +1279,17 @@ function App() {
                 />
               </svg>
             </span>
-            <strong>PODCAST</strong>
+            <strong>İÇERİKLER</strong>
           </span>
 
           <span className="podcastTopStrip__center">
             <span className="podcastTopStrip__mic">🎙️</span>
-            <span>Yeni bölümler ve içerikler burada</span>
+            <span>Yeni podcast, video ve yazılar</span>
           </span>
 
           <span className="podcastTopStrip__listen">
             <span className="podcastTopStrip__play">▶</span>
-            Şimdi Dinle
+            Keşfet
           </span>
         </a>
       )}
@@ -1244,21 +1333,38 @@ function App() {
             >
               Süreç
             </a>
-            <a
-              href="#/icerikler"
-              className={page === "content" ? "is-active" : ""}
-              onClick={() => setMenuOpen(false)}
-            >
-              İçerikler
-            </a>
-
-            <a
-              href="#/blog"
-              className={page === "blog" ? "is-active" : ""}
-              onClick={() => setMenuOpen(false)}
-            >
-              Blog
-            </a>
+            <details className={`navContentMenu ${["content","blog","authors"].includes(page) ? "is-active" : ""}`}>
+              <summary>
+                İçerikler
+                <span className="navContentMenu__chevron" aria-hidden="true">⌄</span>
+              </summary>
+              <div className="navContentMenu__panel">
+                <a
+                  href="#/blog"
+                  className={page === "blog" ? "is-active" : ""}
+                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
+                >
+                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
+                  <span><strong>Blog</strong><small>Yazılar ve rehberler</small></span>
+                </a>
+                <a
+                  href="#/yazarlar"
+                  className={page === "authors" ? "is-active" : ""}
+                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
+                >
+                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
+                  <span><strong>Yazarlarımız</strong></span>
+                </a>
+                <a
+                  href="#/icerikler"
+                  className={page === "content" ? "is-active" : ""}
+                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
+                >
+                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
+                  <span><strong>Podcast & Video</strong><small>Dinle ve izle</small></span>
+                </a>
+              </div>
+            </details>
 
             <a
               href="#/iletisim"
@@ -1290,6 +1396,8 @@ function App() {
           <ContentDetailPage />
         ) : page === "blog" ? (
           blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} /> : <BlogPage content={blogContent} />
+        ) : page === "authors" ? (
+          authorSlug ? <AuthorProfilePage slug={authorSlug} content={blogContent} /> : <AuthorsPage content={blogContent} />
         ) : page === "contact" ? (
           <ContactDetailPage />
         ) : page === "appointment" ? (
@@ -1561,259 +1669,127 @@ function App() {
 function BlogPage({ content = defaultBlogContent }) {
   const [category, setCategory] = useState("Tümü");
   const [query, setQuery] = useState("");
-  const [visibleCount, setVisibleCount] = useState(4);
-
-  const categories = Array.isArray(content.categories) && content.categories.length
-    ? content.categories
-    : blogCategories;
-
-  const publishedPosts = (Array.isArray(content.posts) ? content.posts : [])
-    .filter((post) => post.status !== "draft")
-    .sort((a, b) => Number(a.sortOrder || 999) - Number(b.sortOrder || 999));
-
+  const [visibleCount, setVisibleCount] = useState(8);
+  const categories = Array.isArray(content.categories) && content.categories.length ? content.categories : blogCategories;
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author.slug !== "kaan-ozkan");
+  const authorFor = (post) => authors.find((author)=>author.slug === post.authorSlug) || null;
+  const publishedPosts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft").sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
-  const filteredPosts = publishedPosts.filter((post) => {
-    const categoryMatch =
-      category === "Tümü" ||
-      String(post.category || "").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
-    const queryMatch =
-      !normalizedQuery ||
-      `${post.title || ""} ${post.excerpt || ""} ${post.category || ""}`
-        .toLocaleLowerCase("tr-TR")
-        .includes(normalizedQuery);
+  const filteredPosts = publishedPosts.filter((post)=>{
+    const categoryMatch = category === "Tümü" || String(post.category||"").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
+    const queryMatch = !normalizedQuery || `${post.title||""} ${post.excerpt||""} ${post.category||""}`.toLocaleLowerCase("tr-TR").includes(normalizedQuery);
     return categoryMatch && queryMatch;
   });
+  return (
+    <main className="editorialBlog">
+      <section className="editorialBlog__hero">
+        <div className="editorialBlog__heroCopy">
+          <span>KAAN ÖZKAN · BLOG</span>
+          <h1>Blog & <em>İçerikler</em></h1>
+          <p>Aile, ilişkiler, kişisel gelişim ve psikososyal yaşama dair güncel yazılar; düşünmeye, anlamaya ve farkındalık kazanmaya alan açan içerikler.</p>
+        </div>
+        <div className="editorialBlog__heroVisual"><img src={content.heroImage || defaultBlogContent.heroImage} alt="Blog ve içerikler"/></div>
+      </section>
+      <section className="editorialBlog__workspace">
+        <div className="editorialBlog__main">
+          <div className="editorialBlog__tools">
+            <label><Icon name="search" size={18}/><input value={query} onChange={(e)=>setQuery(e.target.value)} placeholder="Yazı ara..."/></label>
+            <div>{categories.map(item=><button key={item} className={category===item?"is-active":""} onClick={()=>setCategory(item)}>{item}</button>)}</div>
+          </div>
+          <div className="editorialBlog__grid">
+            {filteredPosts.slice(0,visibleCount).map((post,index)=>{
+              const author = authorFor(post);
+              return <article className={`editorialPostCard ${index===0?"is-lead":""}`} key={post.id||post.slug}>
+                <a className="editorialPostCard__image" href={`#/blog/${post.slug}`}><img src={post.image} alt={post.title} loading="lazy"/><span>{post.category}</span></a>
+                <div className="editorialPostCard__body"><div className="editorialPostCard__meta"><time>{post.date}</time><small>{post.readTime}</small></div><h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2><p>{post.excerpt}</p>{author ? <div className="editorialPostCard__author"><a className="editorialPostCard__avatar" href={`#/yazarlar/${author.slug}`} aria-label={`${author.name} profilini gör`}><img src={author.image} alt={author.name}/></a><span><b>{author.name}</b><small>{author.role || "Yazar"}</small></span><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div>}</div>
+              </article>;
+            })}
+          </div>
+          {visibleCount<filteredPosts.length&&<button className="editorialBlog__more" onClick={()=>setVisibleCount(v=>v+4)}>DAHA FAZLA YAZI GÖSTER ↓</button>}
+        </div>
+        {authors.length > 0 && <aside className="editorialAuthors">
+          <div className="editorialAuthors__head"><h2>Yazarlarımız</h2><p>Yazarlarımızı tanıyın ve yazılarını keşfedin.</p></div>
+          {authors.map(author=><a href={`#/yazarlar/${author.slug}`} className="editorialAuthorCard" key={author.slug}><img src={author.image} alt={author.name}/><div><strong>{author.name}</strong><small>{author.role}</small><p>{author.shortBio}</p><span>Profili Gör →</span></div></a>)}
+          <a className="editorialAuthors__all" href="#/yazarlar">TÜM YAZARLAR →</a>
+        </aside>}
+      </section>
+    </main>
+  );
+}
 
-  const featured =
-    publishedPosts.find((post) => post.featured) ||
-    publishedPosts[publishedPosts.length - 1];
+function AuthorsPage({ content = defaultBlogContent }) {
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author.slug !== "kaan-ozkan");
+  return <main className="authors101">
+    <section className="authors101__hero"><span>YAZARLARIMIZ</span><h1>Yazarlarımız</h1><p>İçeriklerimize bilgi, deneyim ve farklı uzmanlık alanlarıyla katkı sunan yazarlarımızı yakından tanıyın.</p></section>
+    <section className="authors101__grid">{authors.length ? authors.map((author)=><a href={`#/yazarlar/${author.slug}`} className="authors101__card" key={author.slug}><div className="authors101__photo"><img src={author.image} alt={author.name}/><span className="authors101__seal">YAZAR</span></div><div><span>YAZAR PROFİLİ</span><h2>{author.name}</h2><small>{author.role}</small><p>{author.shortBio}</p><strong>Profili İncele <Icon name="arrow" size={14}/></strong></div></a>) : <div className="authors101__empty">Henüz yazar eklenmedi.</div>}</section>
+  </main>;
+}
 
-  const featuredId = featured?.id || featured?.slug;
-  const cardPosts = filteredPosts
-    .filter((post) => (post.id || post.slug) !== featuredId)
-    .slice(0, visibleCount);
+function AuthorProfilePage({ slug, content = defaultBlogContent }) {
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item.slug !== "kaan-ozkan");
+  const author = authors.find(item=>item.slug===slug);
+
+  if (!author) {
+    return <main className="blog99NotFound"><img src={kaanOzkanEmblem} alt=""/><span>YAZARLAR</span><h1>Bu yazar bulunamadı.</h1><a href="#/yazarlar">Yazarlara Dön</a></main>;
+  }
 
   return (
-    <main className="blog98Page">
-      <section className="blog98Hero">
-        <div className="blog98Hero__image" aria-hidden="true">
-          <img
-            src={content.heroImage || defaultBlogContent.heroImage}
-            alt=""
-            onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
-          />
-        </div>
-        <div className="blog98Hero__shade" />
+    <main className="author126">
+      <section className="author126__shell">
+        <a className="author126__back" href="#/yazarlar">← Yazarlarımıza Dön</a>
 
-        <div className="blog98Hero__copy">
-          <span>{content.heroEyebrow || "BLOG"}</span>
-          <h1>
-            {content.heroTitle || "Bilgi, farkındalık"}
-            <strong>{content.heroAccent || "ve güçlü yarınlar."}</strong>
-          </h1>
-          <p>{content.heroDescription || defaultBlogContent.heroDescription}</p>
-          <a href="#blog98Yazilar">
-            TÜM YAZILARI KEŞFET
-            <Icon name="arrow" size={16}/>
-          </a>
-        </div>
-      </section>
-
-      <section className="blog98Content" id="blog98Yazilar">
-        <div className="blog98Toolbar">
-          <div className="blog98Categories">
-            {categories.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className={category === item ? "is-active" : ""}
-                onClick={() => { setCategory(item); setVisibleCount(4); }}
-              >
-                {item}
-              </button>
-            ))}
+        <div className="author126__card">
+          <div className="author126__portrait">
+            <img src={author.image} alt={author.name} />
+            <span>YAZAR</span>
           </div>
 
-          <label className="blog98Search">
-            <Icon name="search" size={18}/>
-            <input
-              value={query}
-              onChange={(e)=>{setQuery(e.target.value);setVisibleCount(4);}}
-              placeholder="Ara..."
-            />
-          </label>
-        </div>
-
-        <div className="blog98Grid">
-          {cardPosts.map((post) => (
-            <article className="blog98Card" key={post.id || post.slug}>
-              <a className="blog98Card__image" href={`#/blog/${post.slug}`}>
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}
-                />
-              </a>
-
-              <div className="blog98Card__body">
-                <div className="blog98Card__meta">
-                  <span>{post.category}</span>
-                  <time>{post.date}</time>
-                </div>
-
-                <h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2>
-                <p>{post.excerpt}</p>
-
-                <div className="blog98Card__footer">
-                  <small><Icon name="clock" size={15}/>{post.readTime}</small>
-                  <a href={`#/blog/${post.slug}`}>
-                    Devamını Oku
-                    <Icon name="arrow" size={14}/>
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {cardPosts.length === 0 && (
-          <div className="blog98Empty">Aramanızla eşleşen bir yazı bulunamadı.</div>
-        )}
-
-        {visibleCount < filteredPosts.filter((post)=>(post.id || post.slug)!==featuredId).length && (
-          <button
-            className="blog98More"
-            type="button"
-            onClick={()=>setVisibleCount((current)=>current+4)}
-          >
-            DAHA FAZLA YAZI YÜKLE
-            <span>↻</span>
-          </button>
-        )}
-
-        {featured && (
-          <article className="blog98Featured">
-            <div className="blog98Featured__copy">
-              <span>ÖNE ÇIKAN YAZI</span>
-              <h2>{featured.title}</h2>
-              <p>{featured.excerpt}</p>
-              <a href={`#/blog/${featured.slug}`}>
-                YAZININ TAMAMINI OKU
-                <Icon name="arrow" size={16}/>
-              </a>
-
-              <div className="blog98Featured__meta">
-                <small><Icon name="clock" size={14}/>{featured.readTime}</small>
-                <small><Icon name="calendar" size={14}/>{featured.date}</small>
-              </div>
+          <div className="author126__content">
+            <div className="author126__kicker">
+              <i />
+              <span>YAZAR PROFİLİ</span>
             </div>
 
-            <a className="blog98Featured__image" href={`#/blog/${featured.slug}`}>
-              <img
-                src={featured.image}
-                alt={featured.title}
-                loading="lazy"
-                decoding="async"
-                onError={(e)=>{e.currentTarget.src=processHeroDesk}}
-              />
-            </a>
-          </article>
-        )}
+            <h1>{author.name}</h1>
+            <p className="author126__role">{author.role}</p>
+
+            {author.shortBio && (
+              <p className="author126__lead">{author.shortBio}</p>
+            )}
+
+            <div className="author126__divider"><span /></div>
+
+            <div className="author126__bio">
+              <span>BİYOGRAFİ</span>
+              <p>{author.bio || author.shortBio}</p>
+            </div>
+
+            <div className="author126__footer">
+              <a href="#/blog">Blog Yazılarını Keşfet <Icon name="arrow" size={15}/></a>
+              <small>Bilgi · Deneyim · Perspektif</small>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
 }
 
 function BlogArticlePage({ slug, content = defaultBlogContent }) {
-  const posts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft");
-  const post = posts.find((item) => item.slug === slug);
-
-  if (!post) {
-    return (
-      <main className="blog99NotFound">
-        <img src={kaanOzkanEmblem} alt="" />
-        <span>BLOG</span>
-        <h1>Bu yazı bulunamadı.</h1>
-        <p>Yazı kaldırılmış veya bağlantısı değiştirilmiş olabilir.</p>
-        <a href="#/blog">Blog'a Dön</a>
-      </main>
-    );
-  }
-
-  const related = posts.filter((item) => item.slug !== post.slug).slice(0, 3);
-  const paragraphs = Array.isArray(post.body)
-    ? post.body
-    : String(post.body || "").split(/\n\s*\n/).map((item)=>item.trim()).filter(Boolean);
-
-  return (
-    <main className="blog99Article">
-      <section className="blog99Hero">
-        <a href="#/blog" className="blog99Back">← Blog'a Dön</a>
-        <div className="blog99Hero__image">
-          <img src={post.image} alt={post.title} onError={(e)=>{e.currentTarget.src=servicesHeroRoom}} />
-        </div>
-        <div className="blog99Hero__shade" />
-        <div className="blog99Hero__copy">
-          <span>{post.category}</span>
-          <h1>{post.title}</h1>
-          <p>{post.excerpt}</p>
-          <div>
-            <small><Icon name="calendar" size={15}/>{post.date}</small>
-            <small><Icon name="clock" size={15}/>{post.readTime}</small>
-          </div>
-        </div>
-      </section>
-
-      <section className="blog99Body">
-        <article>
-          <div className="blog99Lead">
-            <span>KAAN ÖZKAN</span>
-            <strong>Sosyal Hizmet Uzmanı · Aile Danışmanı</strong>
-          </div>
-
-          {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-
-          {post.quote && <blockquote>“{post.quote}”</blockquote>}
-
-          <p>
-            Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel
-            ihtiyaçların değerlendirilmesi ve uygun destek sürecinin belirlenmesi
-            için profesyonel görüşme gerekebilir.
-          </p>
-        </article>
-
-        <aside>
-          <div className="blog99Aside__brand">
-            <img src={kaanOzkanEmblem} alt="" />
-            <span><strong>Kaan Özkan</strong><small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small></span>
-          </div>
-          <p>Danışmanlık süreci hakkında bilgi almak veya ön görüşme oluşturmak için iletişime geçebilirsiniz.</p>
-          <a href="#/randevu">Ücretsiz Ön Görüşme<Icon name="arrow" size={15}/></a>
-        </aside>
-      </section>
-
-      <section className="blog99Related">
-        <div className="blog99Related__head">
-          <span>DİĞER YAZILAR</span>
-          <h2>Okumaya devam edin.</h2>
-        </div>
-        <div className="blog99Related__grid">
-          {related.map((item) => (
-            <a href={`#/blog/${item.slug}`} key={item.id || item.slug}>
-              <img src={item.image} alt="" loading="lazy" onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}/>
-              <span>{item.category}</span>
-              <strong>{item.title}</strong>
-              <small>{item.readTime}</small>
-            </a>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
+  const posts=(Array.isArray(content.posts)?content.posts:[]).filter(post=>post.status!=="draft");
+  const post=posts.find(item=>item.slug===slug);
+  if(!post) return <main className="blog99NotFound"><img src={kaanOzkanEmblem} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
+  const paragraphs=Array.isArray(post.body)?post.body:String(post.body||"").split(/\n\s*\n/).filter(Boolean);
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item.slug !== "kaan-ozkan");
+  const author = authors.find((item)=>item.slug === post.authorSlug) || null;
+  const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
+  return <main className="article103">
+    <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
+    <div className="article103__cover"><img src={post.image} alt={post.title}/></div>
+    <section className="article103__layout"><article>{paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}{post.quote&&<blockquote>“{post.quote}”</blockquote>}<div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div></article><aside><div className="article103__toc"><span>BU YAZIDA</span><b>Okuma Rehberi</b><p>{post.category}</p><p>{post.readTime}</p></div>{author && <a className="article103__author" href={`#/yazarlar/${author.slug}`}><img src={author.image} alt={author.name}/><span><small>YAZAR</small><b>{author.name}</b><em>Profili Gör →</em></span></a>}</aside></section>
+    <section className="article103__related"><span>OKUMAYA DEVAM EDİN</span><h2>Diğer yazılar</h2><div>{related.map(item=><a href={`#/blog/${item.slug}`} key={item.slug}><img src={item.image} alt=""/><small>{item.category}</small><h3>{item.title}</h3></a>)}</div></section>
+  </main>;
 }
-
 
 function ContactDetailPage() {
   return (
@@ -2603,6 +2579,17 @@ function AdminDemoPage() {
     status: "published",
     featured: false,
     sortOrder: 100,
+    authorSlug: "",
+  });
+  const [editingAuthorSlug, setEditingAuthorSlug] = useState(null);
+  const [authorImageUploading, setAuthorImageUploading] = useState(false);
+  const [authorForm, setAuthorForm] = useState({
+    name: "",
+    slug: "",
+    role: "",
+    image: "",
+    shortBio: "",
+    bio: "",
   });
 
 
@@ -3102,6 +3089,7 @@ function AdminDemoPage() {
       status: "published",
       featured: false,
       sortOrder: (blogEditor.posts?.length || 0) + 1,
+      authorSlug: (blogEditor.authors?.find((author)=>author?.slug && author.slug !== "kaan-ozkan")?.slug || ""),
     });
   };
 
@@ -3124,6 +3112,7 @@ function AdminDemoPage() {
         ...(data?.content || {}),
         posts: Array.isArray(data?.content?.posts) ? data.content.posts : defaultBlogContent.posts,
         categories: Array.isArray(data?.content?.categories) ? data.content.categories : defaultBlogContent.categories,
+        authors: (Array.isArray(data?.content?.authors) ? data.content.authors : defaultBlogContent.authors).filter((author)=>author?.slug && author.slug !== "kaan-ozkan"),
       };
       setBlogEditor(next);
     }
@@ -3199,6 +3188,7 @@ function AdminDemoPage() {
       status: blogForm.status,
       featured: Boolean(blogForm.featured),
       sortOrder: Number(blogForm.sortOrder || 100),
+      authorSlug: blogForm.authorSlug || "",
     };
 
     const index = posts.findIndex((post) => (post.id || post.slug) === editingBlogId);
@@ -3229,6 +3219,7 @@ function AdminDemoPage() {
       status: post.status || "published",
       featured: Boolean(post.featured),
       sortOrder: post.sortOrder ?? 100,
+      authorSlug: post.authorSlug === "kaan-ozkan" ? "" : (post.authorSlug || ""),
     });
     window.setTimeout(() => {
       document.querySelector(".admin100Blog__editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -3300,6 +3291,85 @@ function AdminDemoPage() {
     setBlogForm((current) => ({ ...current, image: data.publicUrl }));
     setBlogEditorMessage("Görsel başarıyla yüklendi. Yazıyı kaydetmeyi unutmayın.");
     setBlogImageUploading(false);
+  };
+
+  const resetAuthorForm = () => {
+    setEditingAuthorSlug(null);
+    setAuthorForm({ name: "", slug: "", role: "", image: "", shortBio: "", bio: "" });
+  };
+
+  const uploadAuthorImage = async (file) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) { setBlogEditorMessage("Lütfen JPG, PNG veya WebP yazar fotoğrafı seçin."); return; }
+    if (file.size > 6 * 1024 * 1024) { setBlogEditorMessage("Yazar fotoğrafı en fazla 6 MB olabilir."); return; }
+    setAuthorImageUploading(true);
+    setBlogEditorMessage("");
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazar";
+    const filePath = `authors/${Date.now()}-${safeName}.${extension}`;
+    const { error } = await supabase.storage.from("blog-images").upload(filePath, file, { cacheControl: "3600", upsert: false, contentType: file.type });
+    if (error) {
+      console.error("Yazar fotoğrafı yükleme hatası:", error);
+      setBlogEditorMessage("Yazar fotoğrafı yüklenemedi. blog-images bucket yetkilerini kontrol edin.");
+    } else {
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+      setAuthorForm((current)=>({ ...current, image: data.publicUrl }));
+      setBlogEditorMessage("Yazar fotoğrafı başarıyla yüklendi. Yazarı kaydetmeyi unutmayın.");
+    }
+    setAuthorImageUploading(false);
+  };
+
+  const saveAuthor = async (e) => {
+    e.preventDefault();
+    if (!authorForm.name.trim() || !authorForm.role.trim() || !authorForm.image.trim() || !authorForm.bio.trim()) {
+      setBlogEditorMessage("Yazar adı, unvanı, fotoğrafı ve biyografisi zorunludur.");
+      return;
+    }
+    let slug = createBlogSlug(authorForm.slug || authorForm.name);
+    if (!slug) slug = `yazar-${Date.now()}`;
+    const authors = [...(blogEditor.authors || defaultBlogAuthors)];
+    const duplicate = authors.find((author)=>author.slug===slug && author.slug!==editingAuthorSlug);
+    if (duplicate) slug = `${slug}-${Date.now().toString().slice(-4)}`;
+    const item = {
+      slug,
+      name: authorForm.name.trim(),
+      role: authorForm.role.trim(),
+      image: authorForm.image.trim(),
+      shortBio: authorForm.shortBio.trim() || authorForm.bio.trim().slice(0,180),
+      bio: authorForm.bio.trim(),
+    };
+    const index = authors.findIndex((author)=>author.slug===editingAuthorSlug);
+    if (index >= 0) authors[index] = item; else authors.push(item);
+    let posts = [...(blogEditor.posts || [])];
+    if (editingAuthorSlug && editingAuthorSlug !== slug) posts = posts.map((post)=>post.authorSlug===editingAuthorSlug ? {...post,authorSlug:slug} : post);
+    const ok = await persistBlogEditor({ ...blogEditor, authors, posts }, editingAuthorSlug ? "Yazar başarıyla güncellendi." : "Yeni yazar başarıyla eklendi.");
+    if (ok) resetAuthorForm();
+  };
+
+  const editAuthor = (author) => {
+    setEditingAuthorSlug(author.slug);
+    setAuthorForm({ name: author.name || "", slug: author.slug || "", role: author.role || "", image: author.image || "", shortBio: author.shortBio || "", bio: author.bio || "" });
+    window.setTimeout(()=>document.querySelector(".admin125Authors__form")?.scrollIntoView({behavior:"smooth",block:"start"}),50);
+  };
+
+  const deleteAuthor = async (author) => {
+    const authors = Array.isArray(blogEditor.authors) ? blogEditor.authors : [];
+    if (!window.confirm(`${author.name} yazar profilini silmek istediğinize emin misiniz?`)) return;
+
+    const nextAuthors = authors.filter((item) => item.slug !== author.slug);
+    const nextPosts = (blogEditor.posts || []).map((post) =>
+      post.authorSlug === author.slug ? { ...post, authorSlug: "" } : post
+    );
+
+    const ok = await persistBlogEditor(
+      { ...blogEditor, authors: nextAuthors, posts: nextPosts },
+      "Yazar profili silindi."
+    );
+
+    if (ok && editingAuthorSlug === author.slug) resetAuthorForm();
+    if (ok && blogForm.authorSlug === author.slug) {
+      setBlogForm((current) => ({ ...current, authorSlug: "" }));
+    }
   };
 
   const loadMediaAdmin = async () => {
@@ -4081,9 +4151,41 @@ function AdminDemoPage() {
                   </button>
                 </form>
 
-                <form className="admin100Blog__editor" onSubmit={saveBlogPost}>
+                <section className="admin125Authors">
                   <div className="admin100Blog__sectionHead">
                     <span>02</span>
+                    <div><strong>Yazarlarımız</strong><small>Yeni yazar ekleyin, fotoğraf ve biyografi yönetin.</small></div>
+                  </div>
+                  <div className="admin125Authors__layout">
+                    <form className="admin125Authors__form" onSubmit={saveAuthor}>
+                      <div className="admin125Authors__fields">
+                        <label><span>Ad Soyad *</span><input value={authorForm.name} onChange={(e)=>setAuthorForm({...authorForm,name:e.target.value,slug:editingAuthorSlug?authorForm.slug:createBlogSlug(e.target.value)})} placeholder="Yazarın adı soyadı"/></label>
+                        <label><span>Unvan *</span><input value={authorForm.role} onChange={(e)=>setAuthorForm({...authorForm,role:e.target.value})} placeholder="Örn. Sosyal Hizmet Uzmanı"/></label>
+                        <label className="is-wide"><span>Kısa Biyografi</span><textarea rows="3" value={authorForm.shortBio} onChange={(e)=>setAuthorForm({...authorForm,shortBio:e.target.value})} placeholder="Yazar kartında görünecek kısa tanıtım..."/></label>
+                        <label className="is-wide"><span>Biyografi *</span><textarea rows="7" value={authorForm.bio} onChange={(e)=>setAuthorForm({...authorForm,bio:e.target.value})} placeholder="Yazarın eğitimi, çalışma alanları, yaklaşımı ve deneyimi..."/></label>
+                        <label className="is-wide"><span>Profil Linki</span><div className="admin125Authors__slug"><b>/yazarlar/</b><input value={authorForm.slug} onChange={(e)=>setAuthorForm({...authorForm,slug:createBlogSlug(e.target.value)})}/></div></label>
+                      </div>
+                      <aside className="admin125Authors__photo">
+                        <span>YAZAR FOTOĞRAFI *</span>
+                        <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
+                        <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>uploadAuthorImage(e.target.files?.[0])}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
+                        <small>JPG, PNG veya WebP · Maksimum 6 MB</small>
+                        <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
+                      </aside>
+                      <div className="admin125Authors__actions">
+                        {editingAuthorSlug&&<button type="button" className="is-secondary" onClick={resetAuthorForm}>İptal</button>}
+                        <button type="submit" disabled={blogEditorSaving||authorImageUploading}>{blogEditorSaving?"Kaydediliyor...":editingAuthorSlug?"Yazarı Güncelle":"Yeni Yazar Ekle"}</button>
+                      </div>
+                    </form>
+                    <div className="admin125Authors__list">
+                      {(blogEditor.authors || defaultBlogAuthors).map((author)=><article key={author.slug}><img src={author.image} alt={author.name}/><div><strong>{author.name}</strong><small>{author.role}</small><p>{author.shortBio}</p></div><div className="admin125Authors__itemActions"><button type="button" onClick={()=>editAuthor(author)}>Düzenle</button><button type="button" className="is-delete" onClick={()=>deleteAuthor(author)}>Sil</button></div></article>)}
+                    </div>
+                  </div>
+                </section>
+
+                <form className="admin100Blog__editor" onSubmit={saveBlogPost}>
+                  <div className="admin100Blog__sectionHead">
+                    <span>03</span>
                     <div>
                       <strong>{editingBlogId ? "Yazıyı Düzenle" : "Yeni Blog Yazısı"}</strong>
                       <small>Başlık, kapak görseli ve yazı içeriğini tek ekrandan hazırlayın.</small>
@@ -4103,6 +4205,13 @@ function AdminDemoPage() {
                       </label>
 
                       <div className="admin100Blog__row">
+                        <label>
+                          <span>Yazar</span>
+                          <select value={blogForm.authorSlug} onChange={(e)=>setBlogForm({...blogForm,authorSlug:e.target.value})}>
+                            {(blogEditor.authors || defaultBlogAuthors).map((author)=><option key={author.slug} value={author.slug}>{author.name}</option>)}
+                          </select>
+                        </label>
+
                         <label>
                           <span>Kategori</span>
                           <input
@@ -4211,7 +4320,7 @@ function AdminDemoPage() {
 
                 <section className="admin100Blog__library">
                   <div className="admin100Blog__sectionHead">
-                    <span>03</span>
+                    <span>04</span>
                     <div>
                       <strong>Blog Yazıları</strong>
                       <small>{(blogEditor.posts || []).length} kayıt · Düzenleme, yayın ve öne çıkarma kontrolleri.</small>
@@ -14252,162 +14361,417 @@ img{
   }
 }
 
-/* STEP95 — PREMIUM PUBLIC SITE OPENING */
+/* STEP129 — FULLSCREEN 3D CINEMATIC OPENING */
 .site95Intro{
   position:fixed;
   inset:0;
   z-index:999999;
+  overflow:hidden;
   display:grid;
   place-items:center;
-  overflow:hidden;
+  perspective:1400px;
   background:
-    radial-gradient(circle at 50% 48%,rgba(183,132,64,.12),transparent 26%),
-    linear-gradient(135deg,#fbf8f3 0%,#f4ede3 52%,#faf6f0 100%);
-  animation:site95Exit .48s cubic-bezier(.72,0,.2,1) 1.62s forwards;
+    radial-gradient(circle at 50% 44%,rgba(193,151,86,.10),transparent 22%),
+    radial-gradient(circle at 12% 35%,rgba(170,122,59,.08),transparent 26%),
+    linear-gradient(145deg,#090b0a 0%,#10130f 46%,#070807 100%);
+  animation:site129Exit .72s cubic-bezier(.72,0,.15,1) 2.68s forwards;
 }
-
-.site95Intro__halo{
+.site95Intro:before{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  background:
+    linear-gradient(115deg,transparent 36%,rgba(213,173,108,.055) 48%,transparent 58%);
+  transform:translate3d(-18%,0,0) rotate(-4deg);
+  animation:site129Sweep 3.2s cubic-bezier(.2,.72,.2,1) both;
+}
+.site95Intro__grain{
+  position:absolute;
+  inset:0;
+  opacity:.13;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  mix-blend-mode:soft-light;
+  animation:site129Grain .24s steps(2) infinite;
+}
+.site95Intro__vignette{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,transparent 30%,rgba(0,0,0,.23) 67%,rgba(0,0,0,.72) 100%);
+}
+.site95Intro__beam{
+  position:absolute;
+  width:1px;
+  height:120vh;
+  top:-10vh;
+  background:linear-gradient(to bottom,transparent,rgba(213,172,103,.58),transparent);
+  filter:blur(.2px);
+  opacity:0;
+}
+.site95Intro__beam--one{left:23%;transform:rotate(17deg);animation:site129Beam 1.5s ease .35s both}
+.site95Intro__beam--two{right:20%;transform:rotate(-13deg);animation:site129Beam 1.6s ease .58s both}
+.site95Intro__orb{
+  position:absolute;
+  width:44vw;height:44vw;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.12;
+}
+.site95Intro__orb--left{left:-24vw;top:8vh;background:#b18145;animation:site129Orb 3s ease both}
+.site95Intro__orb--right{right:-23vw;bottom:-20vw;background:#c59c62;animation:site129Orb 3s ease .3s both}
+.site95Intro__stage{
+  position:relative;
+  z-index:3;
+  width:min(94vw,1050px);
+  height:min(86vh,760px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transform-style:preserve-3d;
+  animation:site129Camera 3.1s cubic-bezier(.18,.78,.18,1) both;
+}
+.site95Intro__rings{
+  position:absolute;
+  inset:50% auto auto 50%;
+  width:min(62vw,610px);
+  aspect-ratio:1;
+  transform:translate(-50%,-52%) rotateX(71deg);
+  transform-style:preserve-3d;
+}
+.site95Intro__rings i{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid rgba(208,167,101,.19);
+  box-shadow:0 0 44px rgba(194,149,78,.025);
+  animation:site129Ring 2.4s cubic-bezier(.2,.78,.2,1) both;
+}
+.site95Intro__rings i:nth-child(2){inset:12%;animation-delay:.12s;border-color:rgba(230,191,124,.14)}
+.site95Intro__rings i:nth-child(3){inset:25%;animation-delay:.22s;border-color:rgba(235,204,149,.11)}
+.site95Intro__monolith{
+  position:relative;
+  width:clamp(190px,20vw,280px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  transform-style:preserve-3d;
+  transform:rotateX(2deg) rotateY(-5deg) translateZ(55px);
+  opacity:0;
+  animation:site129Monolith 1.22s cubic-bezier(.16,.9,.18,1) .14s forwards;
+}
+.site95Intro__monolith:before{
+  content:"";
+  position:absolute;
+  inset:8%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(218,178,108,.14),rgba(161,116,55,.025) 52%,transparent 72%);
+  filter:blur(18px);
+  transform:translateZ(-65px);
+}
+.site95Intro__logo3d{
+  position:relative;
+  width:72%;
+  height:72%;
+  display:grid;
+  place-items:center;
+  transform-style:preserve-3d;
+  filter:drop-shadow(0 34px 44px rgba(0,0,0,.45));
+}
+.site95Intro__logoFace,
+.site95Intro__logoGhost{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+}
+.site95Intro__logoFace{transform:translateZ(34px)}
+.site95Intro__logoGhost--mid{transform:translateZ(16px);opacity:.26;filter:brightness(.72) sepia(.7)}
+.site95Intro__logoGhost--back{transform:translateZ(-3px);opacity:.12;filter:brightness(.45) sepia(1)}
+.site95Intro__logo3d img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:contrast(1.05) saturate(.92) brightness(1.06);
+}
+.site95Intro__logoFace:after{
+  content:"";
+  position:absolute;
+  inset:1%;
+  background:linear-gradient(118deg,transparent 25%,rgba(255,239,204,.42) 48%,transparent 58%);
+  mix-blend-mode:screen;
+  transform:translateX(-130%);
+  animation:site129LogoSheen 1.35s cubic-bezier(.25,.72,.2,1) .92s forwards;
+  pointer-events:none;
+}
+.site95Intro__scan{
+  position:absolute;
+  left:-35%;
+  right:-35%;
+  top:50%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(224,184,113,.9),transparent);
+  box-shadow:0 0 18px rgba(211,168,97,.7);
+  opacity:0;
+  animation:site129Scan 1.2s ease .52s both;
+}
+.site95Intro__edge{
   position:absolute;
   left:50%;
-  top:50%;
-  width:430px;
-  height:430px;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:rgba(191,145,80,.08);
-  filter:blur(65px);
-  animation:site95Halo 1.45s ease both;
+  width:84px;height:1px;
+  background:linear-gradient(90deg,transparent,#c69c5d,transparent);
+  opacity:0;
 }
-
-.site95Intro__content{
+.site95Intro__edge--top{top:-8px;animation:site129Edge 1.1s ease .8s both}
+.site95Intro__edge--bottom{bottom:-8px;animation:site129Edge 1.1s ease 1s both}
+.site95Intro__copy{
   position:relative;
-  z-index:2;
-  width:min(90vw,620px);
+  margin-top:13px;
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
+  transform:translateZ(30px);
 }
-
-.site95Intro__logo{
-  width:96px;
-  height:96px;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  border:1px solid rgba(177,130,67,.18);
-  border-radius:27px;
-  background:rgba(255,255,255,.86);
-  box-shadow:
-    0 22px 52px rgba(94,67,34,.10),
-    inset 0 1px 0 rgba(255,255,255,.95);
-  opacity:0;
-  animation:site95Logo .72s cubic-bezier(.2,.82,.2,1) .06s forwards;
-}
-
-.site95Intro__logo img{
-  width:72%;
-  height:72%;
-  object-fit:contain;
-}
-
 .site95Intro__eyebrow{
-  margin-top:22px;
-  color:#a57538;
+  color:#c8a267;
   font-size:9px;
   font-weight:800;
-  letter-spacing:.31em;
+  letter-spacing:.38em;
   opacity:0;
-  animation:site95Reveal .5s ease .28s forwards;
+  animation:site129Text .58s ease 1.03s forwards;
 }
-
 .site95Intro__name{
-  margin-top:12px;
-  color:#22272c;
-  font:500 clamp(40px,4.5vw,60px)/1 Georgia,"Times New Roman",serif;
-  letter-spacing:.075em;
+  margin-top:10px;
+  color:#f5f0e7;
+  font:500 clamp(43px,5vw,72px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:.085em;
+  text-shadow:0 14px 36px rgba(0,0,0,.48);
   opacity:0;
-  animation:site95Reveal .58s cubic-bezier(.2,.8,.2,1) .38s forwards;
+  animation:site129Text .68s cubic-bezier(.16,.82,.18,1) 1.15s forwards;
 }
-
 .site95Intro__role{
-  margin:14px 0 0;
-  color:#777d82;
+  margin:13px 0 0;
+  color:rgba(231,225,215,.62);
   font-size:9px;
-  font-weight:500;
-  letter-spacing:.08em;
+  font-weight:600;
+  letter-spacing:.11em;
   opacity:0;
-  animation:site95Reveal .5s ease .5s forwards;
+  animation:site129Text .52s ease 1.34s forwards;
 }
-
-.site95Intro__role i{
-  margin:0 5px;
-  color:#b18145;
-  font-style:normal;
+.site95Intro__role i{margin:0 7px;color:#c59959;font-style:normal}
+.site95Intro__timeline{
+  position:absolute;
+  left:50%;
+  bottom:4.5%;
+  width:min(84vw,780px);
+  transform:translateX(-50%);
+  display:grid;
+  grid-template-columns:auto 1fr auto 1fr auto;
+  align-items:center;
+  gap:12px;
+  color:rgba(238,230,217,.45);
+  opacity:0;
+  animation:site129Text .45s ease 1.62s forwards;
 }
-
-.site95Intro__progress{
-  width:150px;
+.site95Intro__timeline:before,
+.site95Intro__timeline span{
+  content:"";
   height:1px;
-  margin-top:23px;
-  overflow:hidden;
-  background:rgba(165,117,56,.13);
-  opacity:0;
-  animation:site95Reveal .35s ease .58s forwards;
+  background:linear-gradient(90deg,transparent,rgba(198,156,93,.25));
 }
-
-.site95Intro__progress span{
-  display:block;
-  width:55%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,#aa7839,#c39a63);
-  animation:site95Progress 1.05s cubic-bezier(.2,.72,.2,1) .58s both;
+.site95Intro__timeline span{display:block}
+.site95Intro__timeline b{
+  font:500 9px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.14em;color:#b58a50;
 }
-
-@keyframes site95Logo{
-  from{opacity:0;transform:translateY(15px) scale(.87);filter:blur(7px)}
-  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.site95Intro__timeline em{
+  font-style:normal;
+  font-size:8px;
+  letter-spacing:.25em;
+  text-align:center;
+  white-space:nowrap;
 }
-
-@keyframes site95Reveal{
-  from{opacity:0;transform:translateY(8px);filter:blur(4px)}
+@keyframes site129Camera{
+  0%{transform:translateZ(-130px) scale(.92)}
+  58%{transform:translateZ(5px) scale(1)}
+  100%{transform:translateZ(48px) scale(1.025)}
+}
+@keyframes site129Monolith{
+  from{opacity:0;transform:rotateX(12deg) rotateY(-24deg) translateY(20px) translateZ(-90px) scale(.75);filter:blur(10px)}
+  to{opacity:1;transform:rotateX(2deg) rotateY(-5deg) translateY(0) translateZ(55px) scale(1);filter:blur(0)}
+}
+@keyframes site129Ring{
+  from{opacity:0;transform:scale(.45) rotateZ(-24deg)}
+  55%{opacity:.9}
+  to{opacity:.28;transform:scale(1) rotateZ(5deg)}
+}
+@keyframes site129LogoSheen{to{transform:translateX(135%)}}
+@keyframes site129Scan{
+  0%{opacity:0;transform:translateY(-105px) scaleX(.5)}
+  20%{opacity:.9}
+  100%{opacity:0;transform:translateY(112px) scaleX(1.15)}
+}
+@keyframes site129Edge{
+  from{opacity:0;transform:translateX(-50%) scaleX(.1)}
+  to{opacity:.65;transform:translateX(-50%) scaleX(1)}
+}
+@keyframes site129Text{
+  from{opacity:0;transform:translateY(11px);filter:blur(6px)}
   to{opacity:1;transform:translateY(0);filter:blur(0)}
 }
-
-@keyframes site95Progress{
-  from{transform:translateX(-110%)}
-  to{transform:translateX(185%)}
+@keyframes site129Beam{
+  0%{opacity:0;transform:rotate(17deg) scaleY(.35)}
+  35%{opacity:.55}
+  100%{opacity:.08}
 }
-
-@keyframes site95Halo{
-  from{opacity:0;transform:translate(-50%,-50%) scale(.7)}
-  to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@keyframes site129Orb{
+  from{opacity:0;transform:scale(.6)}
+  to{opacity:.12;transform:scale(1)}
 }
-
-@keyframes site95Exit{
-  from{opacity:1;visibility:visible}
-  to{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes site129Sweep{
+  from{transform:translate3d(-30%,0,0) rotate(-4deg)}
+  to{transform:translate3d(36%,0,0) rotate(-4deg)}
 }
-
+@keyframes site129Grain{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-1.5%,1%)}
+  50%{transform:translate(1%,-1.4%)}
+  75%{transform:translate(.7%,1.1%)}
+  100%{transform:translate(-.8%,-.6%)}
+}
+@keyframes site129Exit{
+  0%{opacity:1;visibility:visible;transform:scale(1)}
+  100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.035);filter:blur(6px)}
+}
 @media(max-width:640px){
-  .site95Intro__logo{width:84px;height:84px;border-radius:24px}
-  .site95Intro__eyebrow{font-size:8px;margin-top:19px}
-  .site95Intro__name{font-size:39px;letter-spacing:.05em}
-  .site95Intro__role{font-size:8px}
+  .site95Intro__stage{height:82vh}
+  .site95Intro__monolith{width:185px}
+  .site95Intro__rings{width:390px}
+  .site95Intro__eyebrow{font-size:7px;letter-spacing:.3em}
+  .site95Intro__name{font-size:42px;letter-spacing:.055em}
+  .site95Intro__role{font-size:8px;letter-spacing:.06em}
+  .site95Intro__timeline{bottom:1.5%;width:90vw;gap:8px}
+  .site95Intro__timeline em{font-size:6px;letter-spacing:.14em}
+}
+@media(prefers-reduced-motion:reduce){
+  .site95Intro{animation-duration:.15s!important;animation-delay:.8s!important}
+  .site95Intro *{animation-duration:.01ms!important;animation-delay:0ms!important}
 }
 
-@media(prefers-reduced-motion:reduce){
-  .site95Intro{animation-duration:.18s;animation-delay:.55s}
-  .site95Intro__logo,
-  .site95Intro__eyebrow,
-  .site95Intro__name,
-  .site95Intro__role,
-  .site95Intro__progress,
-  .site95Intro__progress span,
-  .site95Intro__halo{
-    animation-duration:.01ms!important;
-    animation-delay:0ms!important;
-  }
+/* STEP129 — COMPACT PREMIUM AUTHOR BIO */
+.author126{
+  min-height:calc(100vh - 120px);
+  background:
+    radial-gradient(circle at 12% 16%,rgba(183,139,74,.08),transparent 24%),
+    #f5f1e9;
+  color:#23251f;
+  padding:54px 5vw 90px;
+}
+.author126__shell{max-width:1180px;margin:0 auto}
+.author126__back{
+  display:inline-flex;
+  align-items:center;
+  color:#7f673d;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.1em;
+  margin-bottom:24px;
+}
+.author126__card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(230px,330px) minmax(0,1fr);
+  gap:clamp(38px,5vw,74px);
+  align-items:center;
+  padding:clamp(28px,4.2vw,60px);
+  overflow:hidden;
+  border:1px solid rgba(116,89,45,.12);
+  border-radius:34px;
+  background:rgba(255,253,249,.88);
+  box-shadow:0 30px 90px rgba(61,48,27,.09);
+}
+.author126__card:before{
+  content:"";
+  position:absolute;
+  width:320px;height:320px;
+  right:-130px;top:-140px;
+  border:1px solid rgba(165,126,64,.13);
+  border-radius:50%;
+  box-shadow:0 0 0 42px rgba(165,126,64,.025),0 0 0 84px rgba(165,126,64,.018);
+}
+.author126__portrait{
+  position:relative;
+  height:360px;
+  overflow:hidden;
+  border-radius:25px;
+  background:#d9d1c4;
+  box-shadow:0 22px 54px rgba(34,30,24,.13);
+}
+.author126__portrait:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(17,18,15,.26),transparent 40%);
+  pointer-events:none;
+}
+.author126__portrait img{width:100%;height:100%;object-fit:cover}
+.author126__portrait>span{
+  position:absolute;
+  z-index:2;
+  left:18px;bottom:17px;
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(27,28,24,.42);
+  backdrop-filter:blur(9px);
+  font-size:8px;font-weight:800;letter-spacing:.2em;
+}
+.author126__content{position:relative;z-index:2}
+.author126__kicker{display:flex;align-items:center;gap:10px;color:#9a773a}
+.author126__kicker i{width:24px;height:1px;background:#b58a48}
+.author126__kicker span{font-size:9px;font-weight:800;letter-spacing:.24em}
+.author126__content h1{
+  margin:12px 0 8px;
+  font:500 clamp(44px,5vw,72px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+}
+.author126__role{margin:0;color:#9b7738;font-size:12px;font-weight:700;letter-spacing:.04em}
+.author126__lead{
+  max-width:690px;
+  margin:21px 0 0;
+  color:#4e5049;
+  font:500 clamp(17px,1.6vw,21px)/1.65 Georgia,serif;
+}
+.author126__divider{height:1px;background:#e2dbce;margin:25px 0;position:relative}
+.author126__divider span{position:absolute;left:0;top:0;width:72px;height:1px;background:#a98042}
+.author126__bio>span{display:block;color:#9a773a;font-size:8px;font-weight:800;letter-spacing:.22em;margin-bottom:9px}
+.author126__bio p{max-width:760px;margin:0;color:#696a63;font-size:13px;line-height:1.85;white-space:pre-line}
+.author126__footer{
+  margin-top:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.author126__footer a{
+  display:inline-flex;align-items:center;gap:9px;
+  border-radius:999px;
+  padding:12px 17px;
+  background:#272821;color:#fff;text-decoration:none;
+  font-size:10px;font-weight:800;letter-spacing:.05em;
+  transition:.3s ease;
+}
+.author126__footer a:hover{transform:translateY(-2px);background:#9a773a}
+.author126__footer small{color:#9a9890;font-size:8px;letter-spacing:.15em}
+@media(max-width:760px){
+  .author126{padding:30px 18px 70px}
+  .author126__card{grid-template-columns:1fr;gap:29px;padding:22px;border-radius:26px}
+  .author126__portrait{height:min(430px,105vw)}
+  .author126__content h1{font-size:43px}
+  .author126__footer{align-items:flex-start;flex-direction:column}
 }
 
 /* STEP98 — PREMIUM EDITORIAL BLOG */
@@ -16302,6 +16666,261 @@ img{
   }
 }
 
+/* STEP101 — EDITORIAL BLOG + AUTHORS */
+.editorialBlog,.authors101,.author102,.article103{background:#f7f4ee;color:#1f211f;font-family:Inter,system-ui,sans-serif}.editorialBlog__hero{min-height:410px;display:grid;grid-template-columns:1.05fr .95fr;background:#f1ece3;overflow:hidden}.editorialBlog__heroCopy{padding:78px 7vw;display:flex;flex-direction:column;justify-content:center}.editorialBlog__heroCopy>span,.authors101__hero>span,.author102__intro>span,.author102__title>span,.article103__top>span,.article103__related>span{font-size:11px;letter-spacing:.22em;font-weight:800;color:#9a7a37}.editorialBlog__heroCopy h1{font-family:Georgia,serif;font-size:clamp(48px,5.5vw,88px);line-height:.95;margin:14px 0 22px;font-weight:500}.editorialBlog__heroCopy h1 em{display:block;color:#9a7a37;font-style:normal}.editorialBlog__heroCopy p{max-width:640px;font-size:17px;line-height:1.75;color:#5e605c}.editorialBlog__heroVisual{min-height:410px;position:relative}.editorialBlog__heroVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f1ece3 0%,transparent 28%)}.editorialBlog__heroVisual img{width:100%;height:100%;object-fit:cover}.editorialBlog__workspace{max-width:1500px;margin:auto;padding:55px 4vw 90px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:42px}.editorialBlog__tools{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:28px}.editorialBlog__tools label{height:48px;min-width:260px;border:1px solid #ded8cc;border-radius:999px;background:#fff;display:flex;align-items:center;gap:10px;padding:0 18px}.editorialBlog__tools input{border:0;outline:0;background:transparent;width:100%;font-size:14px}.editorialBlog__tools>div{display:flex;gap:8px;flex-wrap:wrap}.editorialBlog__tools button{border:1px solid #e1dbcf;background:#fff;border-radius:999px;padding:11px 15px;font-size:11px;cursor:pointer}.editorialBlog__tools button.is-active{background:#9a7a37;color:#fff;border-color:#9a7a37}.editorialBlog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.editorialPostCard{background:#fff;border:1px solid #e9e3d8;border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(42,35,23,.06);transition:.35s}.editorialPostCard:hover{transform:translateY(-5px);box-shadow:0 24px 65px rgba(42,35,23,.12)}.editorialPostCard__image{height:260px;display:block;position:relative;overflow:hidden}.editorialPostCard__image img{width:100%;height:100%;object-fit:cover;transition:.55s}.editorialPostCard:hover .editorialPostCard__image img{transform:scale(1.04)}.editorialPostCard__image>span{position:absolute;left:18px;top:18px;background:rgba(24,25,22,.82);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:8px 12px;font-size:10px;letter-spacing:.08em}.editorialPostCard__body{padding:24px}.editorialPostCard__meta{display:flex;justify-content:space-between;color:#8a8a84;font-size:11px}.editorialPostCard h2{font-family:Georgia,serif;font-size:27px;line-height:1.12;margin:14px 0 12px}.editorialPostCard h2 a{color:inherit;text-decoration:none}.editorialPostCard__body>p{font-size:13px;line-height:1.7;color:#6d6d67;min-height:45px}.editorialPostCard__author{border-top:1px solid #eee8dd;margin-top:20px;padding-top:17px;display:flex;align-items:center;gap:10px}.editorialPostCard__author img{width:38px;height:38px;border-radius:50%;object-fit:cover}.editorialPostCard__author span{display:flex;flex-direction:column}.editorialPostCard__author b{font-size:11px}.editorialPostCard__author small{font-size:9px;color:#999}.editorialPostCard__author>a{margin-left:auto;color:#8a6b2f;font-size:11px;font-weight:800;text-decoration:none}.editorialBlog__more{display:block;margin:34px auto 0;border:1px solid #bca778;background:transparent;border-radius:999px;padding:13px 24px;color:#735b2c}.editorialAuthors{position:sticky;top:120px;align-self:start;background:#ede8de;border-radius:26px;padding:28px}.editorialAuthors__head h2{font-family:Georgia,serif;font-size:35px;margin:5px 0}.editorialAuthors__head>span{font-size:9px;letter-spacing:.2em;color:#98752f;font-weight:800}.editorialAuthors__head p{font-size:12px;line-height:1.6;color:#74746d}.editorialAuthorCard{display:grid;grid-template-columns:74px 1fr;gap:15px;background:#fff;border-radius:18px;padding:14px;margin-top:15px;text-decoration:none;color:inherit;transition:.3s}.editorialAuthorCard:hover{transform:translateX(-4px)}.editorialAuthorCard>img{width:74px;height:92px;border-radius:14px;object-fit:cover}.editorialAuthorCard strong{display:block;font-family:Georgia,serif;font-size:18px}.editorialAuthorCard small{display:block;font-size:9px;color:#8c8c85;margin:3px 0 7px}.editorialAuthorCard p{font-size:10px;line-height:1.45;color:#666;margin:0}.editorialAuthorCard span{font-size:9px;color:#96752f;font-weight:800}.editorialAuthors__all{display:block;text-align:center;margin-top:20px;border:1px solid #b7a273;border-radius:999px;padding:12px;text-decoration:none;color:#80652f;font-size:10px;font-weight:800}.authors101__hero{padding:95px 8vw 70px;background:#22231f;color:#fff}.authors101__hero h1{font:500 clamp(50px,6vw,90px)/.98 Georgia,serif;margin:14px 0 20px}.authors101__hero h1 em{color:#c9ae70;font-style:normal}.authors101__hero p{max-width:700px;color:#c8c6be;line-height:1.8}.authors101__grid{max-width:1350px;margin:auto;padding:70px 5vw 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.authors101__card{text-decoration:none;color:inherit;background:#fff;border-radius:28px;overflow:hidden;border:1px solid #e8e0d4}.authors101__photo{height:390px;position:relative;overflow:hidden}.authors101__photo img{width:100%;height:100%;object-fit:cover;transition:.5s}.authors101__card:hover img{transform:scale(1.035)}.authors101__photo b{position:absolute;right:18px;bottom:15px;font:500 44px Georgia,serif;color:#fff}.authors101__card>div:last-child{padding:28px}.authors101__card span{font-size:9px;letter-spacing:.18em;color:#a17e38}.authors101__card h2{font:500 31px Georgia,serif;margin:8px 0 3px}.authors101__card small{color:#8a8983}.authors101__card p{color:#696963;line-height:1.7;font-size:13px}.authors101__card strong{font-size:10px;color:#8d6d31}.author102__hero{min-height:650px;display:grid;grid-template-columns:.9fr 1.1fr;position:relative;background:#252620;color:#fff;padding:80px 8vw;gap:70px;align-items:center}.author102__hero>a{position:absolute;left:8vw;top:35px;color:#d1c8b6;text-decoration:none;font-size:11px}.author102__portrait{height:520px;border-radius:28px;overflow:hidden}.author102__portrait img{width:100%;height:100%;object-fit:cover}.author102__intro h1{font:500 clamp(52px,6vw,86px)/1 Georgia,serif;margin:12px 0}.author102__intro h2{font-size:15px;color:#c7aa69;font-weight:500}.author102__intro p{max-width:650px;color:#c8c6be;line-height:1.85}.author102__intro>div{margin-top:28px;display:flex;align-items:end;gap:10px}.author102__intro>div b{font:500 45px Georgia,serif}.author102__intro>div small{padding-bottom:7px;color:#aaa}.author102__posts{padding:80px 6vw;max-width:1400px;margin:auto}.author102__title h2{font:500 42px Georgia,serif;max-width:650px}.author102__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.author102__grid a{text-decoration:none;color:inherit;background:#fff;border-radius:20px;padding-bottom:22px;overflow:hidden}.author102__grid img{width:100%;height:220px;object-fit:cover}.author102__grid span,.author102__grid h3,.author102__grid small{display:block;margin-left:20px;margin-right:20px}.author102__grid span{font-size:9px;color:#99752e;margin-top:16px}.author102__grid h3{font:500 23px Georgia,serif;margin-top:8px;margin-bottom:10px}.author102__grid small{color:#999}.article103__top{max-width:1050px;margin:auto;text-align:center;padding:80px 25px 45px}.article103__top>a{display:inline-block;margin-bottom:35px;text-decoration:none;color:#7b6740;font-size:11px}.article103__top h1{font:500 clamp(46px,6vw,82px)/1.02 Georgia,serif;margin:15px auto 20px;max-width:950px}.article103__top>p{max-width:720px;margin:auto;color:#686862;line-height:1.7}.article103__by{margin:30px auto 0;display:flex;align-items:center;justify-content:center;gap:12px}.article103__by img{width:45px;height:45px;border-radius:50%;object-fit:cover}.article103__by span{display:flex;flex-direction:column;text-align:left}.article103__by b{font-size:11px}.article103__by small,.article103__by time{font-size:9px;color:#92918b}.article103__by time{margin-left:15px}.article103__cover{max-width:1280px;height:620px;margin:auto;border-radius:30px;overflow:hidden}.article103__cover img{width:100%;height:100%;object-fit:cover}.article103__layout{max-width:1120px;margin:65px auto;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:70px;padding:0 25px}.article103__layout article>p{font:400 18px/1.95 Georgia,serif;color:#373832;margin:0 0 28px}.article103__layout blockquote{font:italic 31px/1.4 Georgia,serif;border-left:3px solid #aa8845;padding:20px 30px;margin:45px 0;background:#f0ebe1}.article103__note{padding:20px;border-radius:16px;background:#ece7dc;font-size:11px;line-height:1.6;color:#6e6b63}.article103__layout aside{position:sticky;top:120px;align-self:start}.article103__toc{border:1px solid #ddd5c8;border-radius:20px;padding:22px;background:#fff}.article103__toc span{font-size:9px;color:#98732d}.article103__toc b{display:block;font:500 22px Georgia,serif;margin:8px 0 15px}.article103__toc p{font-size:11px;color:#777;border-top:1px solid #eee;padding-top:10px}.article103__author{display:flex;gap:12px;align-items:center;margin-top:15px;background:#272821;color:#fff;border-radius:20px;padding:14px;text-decoration:none}.article103__author img{width:62px;height:70px;border-radius:14px;object-fit:cover}.article103__author span{display:flex;flex-direction:column}.article103__author small{font-size:8px;color:#c3a866}.article103__author b{font:500 17px Georgia,serif}.article103__author em{font-size:9px;color:#c3bdaF;font-style:normal;margin-top:5px}.article103__related{background:#24251f;color:#fff;padding:70px 6vw}.article103__related h2{font:500 42px Georgia,serif}.article103__related>div{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.article103__related a{color:#fff;text-decoration:none}.article103__related img{width:100%;height:220px;object-fit:cover;border-radius:18px}.article103__related small{display:block;color:#c7a65f;margin-top:12px}.article103__related h3{font:500 23px Georgia,serif;margin-top:6px}
+@media(max-width:1050px){.editorialBlog__workspace{grid-template-columns:1fr}.editorialAuthors{position:static}.editorialBlog__hero{grid-template-columns:1fr}.editorialBlog__heroVisual{height:300px}.editorialBlog__heroVisual:after{background:linear-gradient(#f1ece3,transparent 35%)}.authors101__grid{grid-template-columns:repeat(2,1fr)}.author102__hero{grid-template-columns:1fr}.author102__portrait{max-width:600px}.article103__layout{grid-template-columns:1fr}.article103__layout aside{position:static}.article103__related>div{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.editorialBlog__heroCopy{padding:55px 22px}.editorialBlog__heroCopy h1{font-size:49px}.editorialBlog__workspace{padding:30px 16px 70px}.editorialBlog__tools{align-items:stretch;flex-direction:column}.editorialBlog__tools label{min-width:0;width:100%}.editorialBlog__grid{grid-template-columns:1fr}.editorialPostCard__image{height:230px}.editorialAuthors{padding:20px}.authors101__hero{padding:70px 22px 55px}.authors101__grid{grid-template-columns:1fr;padding:35px 16px 70px}.authors101__photo{height:360px}.author102__hero{padding:75px 22px 45px;gap:30px}.author102__hero>a{left:22px}.author102__portrait{height:420px}.author102__posts{padding:55px 16px}.author102__grid{grid-template-columns:1fr}.article103__top{padding-top:55px}.article103__top h1{font-size:43px}.article103__cover{height:330px;border-radius:0}.article103__layout{margin:40px auto;padding:0 18px}.article103__layout article>p{font-size:17px}.article103__related{padding:50px 18px}.article103__related>div{grid-template-columns:1fr}.article103__by time{display:none}}
+
+
+/* STEP 124 — PREMIUM HOME UX POLISH */
+/* İnce, marka paletine uyumlu içerik şeridi */
+.podcastTopStrip--spotify{
+  min-height:34px!important;
+  padding:0 4.8%!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr auto!important;
+  gap:18px!important;
+  border-bottom:1px solid rgba(139,103,47,.14)!important;
+  background:linear-gradient(90deg,#26231f 0%,#322b22 52%,#26231f 100%)!important;
+  color:#f7f1e8!important;
+  box-shadow:none!important;
+}
+.podcastTopStrip__brand{gap:8px!important}
+.podcastTopStrip__brand strong{
+  font-size:8.5px!important;
+  letter-spacing:.16em!important;
+  color:#d7b373!important;
+}
+.podcastTopStrip__spotifyIcon{
+  width:18px!important;
+  height:18px!important;
+  color:#d7b373!important;
+}
+.podcastTopStrip__spotifyIcon svg path{fill:#26231f!important}
+.podcastTopStrip__center{
+  justify-self:center!important;
+  gap:8px!important;
+  color:#d9d1c6!important;
+  font-size:9px!important;
+  font-weight:600!important;
+  letter-spacing:.02em!important;
+}
+.podcastTopStrip__mic{font-size:10px!important;opacity:.72}
+.podcastTopStrip__listen{
+  min-height:24px!important;
+  padding:0 12px!important;
+  gap:7px!important;
+  border:1px solid rgba(215,179,115,.42)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.035)!important;
+  color:#f1dfbd!important;
+  font-size:8.5px!important;
+  font-weight:800!important;
+  letter-spacing:.05em!important;
+}
+.podcastTopStrip__play{color:#d7b373!important}
+.podcastTopStrip--spotify:hover .podcastTopStrip__listen{
+  background:#d0a75f!important;
+  color:#211c16!important;
+  border-color:#d0a75f!important;
+}
+
+/* Daha ferah masaüstü navbar + içerik dropdown */
+.topbar--light{padding-left:4.6%!important;padding-right:4.6%!important}
+.topbar--light .nav{gap:2px!important}
+.topbar--light .nav>a{padding-left:15px!important;padding-right:15px!important}
+.navContentMenu{position:relative;align-self:stretch;display:flex;align-items:center}
+.navContentMenu summary{
+  list-style:none;
+  min-height:49px;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#20242a;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  user-select:none;
+}
+.navContentMenu summary::-webkit-details-marker{display:none}
+.navContentMenu summary:hover,.navContentMenu.is-active>summary{color:#8e6b34}
+.navContentMenu__chevron{font-size:13px;transition:transform .24s ease}
+.navContentMenu[open] .navContentMenu__chevron{transform:rotate(180deg)}
+.navContentMenu__panel{
+  position:absolute;
+  z-index:80;
+  top:calc(100% - 4px);
+  left:50%;
+  width:310px;
+  padding:10px;
+  border:1px solid rgba(139,107,57,.14);
+  border-radius:14px;
+  background:rgba(252,250,246,.98);
+  box-shadow:0 24px 60px rgba(71,53,31,.14);
+  backdrop-filter:blur(18px);
+  transform:translateX(-50%);
+}
+.navContentMenu__panel>a{
+  min-height:64px!important;
+  padding:10px 12px!important;
+  display:grid!important;
+  grid-template-columns:34px 1fr!important;
+  gap:10px!important;
+  align-items:center!important;
+  border-radius:10px!important;
+  color:#292923!important;
+}
+.navContentMenu__panel>a:hover,.navContentMenu__panel>a.is-active{background:#f3ede3!important;color:#8e6b34!important}
+.navContentMenu__mark{
+  width:30px;height:30px;display:grid;place-items:center;
+  border:1px solid rgba(155,116,56,.16);border-radius:50%;
+  color:#9b7438;background:linear-gradient(145deg,#fffaf1,#efe6d7);font-size:9px;
+  box-shadow:0 5px 16px rgba(72,53,25,.06);transition:transform .25s ease,background .25s ease;
+}
+.navContentMenu__panel>a:hover .navContentMenu__mark{transform:rotate(18deg) scale(1.05);background:#fff;}
+.navContentMenu__panel strong{display:block;font-size:11px!important;font-weight:800!important}
+.navContentMenu__panel small{display:block;margin-top:3px;color:#777268;font-size:8.5px!important;font-weight:500!important}
+
+/* Hero görseli: daha iyi kadraj + daha organik fade */
+.lightHomeHero__visual{width:50%!important}
+.lightHomeHero__visual img{
+  object-position:57% 52%!important;
+  filter:saturate(.96) brightness(1.08) contrast(.94)!important;
+}
+.lightHomeHero__visualShade{
+  background:
+    linear-gradient(90deg,#f5f3ef 0%,rgba(245,243,239,.97) 7%,rgba(245,243,239,.80) 18%,rgba(245,243,239,.38) 32%,rgba(245,243,239,.10) 46%,transparent 62%),
+    linear-gradient(180deg,rgba(255,255,255,.03),rgba(112,82,42,.05))!important;
+}
+.lightHomeHero__content{width:min(760px,55%)!important}
+.lightHomeHero__actions{gap:22px!important}
+.lightHomeHero__primary{min-width:194px}
+.lightHomeHero__secondary{min-width:175px}
+
+/* Güven unsurları: kart hissi var, ağır gölge yok */
+.lightHomeHero__trust{
+  left:8.3%!important;
+  right:auto!important;
+  width:min(780px,47%)!important;
+  bottom:28px!important;
+  gap:10px!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.lightHomeHero__trust article{
+  min-height:116px!important;
+  padding:19px 17px!important;
+  gap:13px!important;
+  border:1px solid rgba(139,107,57,.13)!important;
+  border-radius:13px!important;
+  background:rgba(255,253,249,.88)!important;
+  box-shadow:0 12px 34px rgba(92,69,42,.055)!important;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease!important;
+}
+.lightHomeHero__trust article:hover{
+  transform:translateY(-3px);
+  border-color:rgba(155,116,56,.28)!important;
+  box-shadow:0 18px 38px rgba(92,69,42,.09)!important;
+}
+.lightHomeHero__trust article>div{
+  flex:0 0 42px!important;
+  width:42px!important;
+  height:42px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(155,116,56,.22)!important;
+  border-radius:50%!important;
+  background:#fbf7ef!important;
+  color:#a1783b!important;
+}
+.lightHomeHero__trust strong{font-size:12px!important;line-height:1.35!important}
+.lightHomeHero__trust p{margin-top:6px!important;font-size:9px!important;line-height:1.55!important;color:#767168!important}
+
+@media(max-width:1180px){
+  .topbar--light .nav>a,.navContentMenu summary{padding-left:10px!important;padding-right:10px!important;font-size:12px!important}
+  .lightHomeHero__trust{width:min(820px,52%)!important;left:5%!important}
+}
+
+@media(max-width:980px){
+  .navContentMenu{width:100%;display:block}
+  .navContentMenu summary{width:100%;justify-content:space-between;padding:0!important}
+  .navContentMenu__panel{
+    position:static;width:100%;padding:7px 0 4px;border:0;border-radius:0;
+    background:transparent;box-shadow:none;backdrop-filter:none;transform:none;
+  }
+  .navContentMenu__panel>a{padding:8px 10px!important;border-radius:9px!important}
+  .lightHomeHero__visual{width:52%!important}
+  .lightHomeHero__trust{width:90%!important;left:5%!important}
+}
+
+@media(max-width:760px){
+  .podcastTopStrip--spotify{
+    min-height:31px!important;grid-template-columns:auto 1fr!important;padding:0 16px!important;gap:10px!important;
+  }
+  .podcastTopStrip__center{justify-self:end!important;font-size:8px!important}
+  .podcastTopStrip__listen{display:none!important}
+  .lightHomeHero__visual{width:100%!important;height:46%!important;top:auto!important;bottom:0!important}
+  .lightHomeHero__visual img{object-position:58% 56%!important}
+  .lightHomeHero__visualShade{
+    background:linear-gradient(180deg,#f5f3ef 0%,rgba(245,243,239,.90) 18%,rgba(245,243,239,.40) 42%,rgba(245,243,239,.08) 68%,transparent 100%)!important;
+  }
+  .lightHomeHero__content{width:100%!important;padding-bottom:430px!important}
+  .lightHomeHero__actions{gap:12px!important}
+  .lightHomeHero__trust{position:relative!important;left:auto!important;bottom:auto!important;width:auto!important;margin:-370px 16px 26px!important;grid-template-columns:1fr!important}
+  .lightHomeHero__trust article{min-height:92px!important}
+}
+
+
+/* STEP125 — PREMIUM AUTHORS + ADMIN AUTHOR MANAGEMENT */
+.authors101__hero{padding:92px 8vw 68px!important;background:radial-gradient(circle at 78% 20%,rgba(194,160,92,.13),transparent 28%),linear-gradient(135deg,#20211d,#2b2c25)!important;}
+.authors101__hero h1{max-width:900px!important;margin-top:12px!important;}
+.authors101__grid{gap:30px!important;}
+.authors101__card{position:relative;box-shadow:0 18px 55px rgba(42,34,22,.06);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;}
+.authors101__card:hover{transform:translateY(-7px);box-shadow:0 28px 75px rgba(42,34,22,.12);border-color:rgba(165,126,57,.28);}
+.authors101__photo:after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,rgba(25,25,22,.36));pointer-events:none;}
+.authors101__seal{position:absolute!important;right:18px!important;bottom:17px!important;z-index:2!important;width:auto!important;padding:7px 11px!important;border-radius:999px!important;background:rgba(250,247,240,.92)!important;backdrop-filter:blur(9px);color:#725726!important;font-size:8px!important;letter-spacing:.18em!important;font-family:Inter,system-ui,sans-serif!important;border:1px solid rgba(255,255,255,.6);}
+.authors101__card>div:last-child>strong{display:inline-flex;align-items:center;gap:8px;margin-top:5px;}
+.editorialPostCard__avatar{display:block;flex:0 0 auto;border-radius:50%;box-shadow:0 0 0 3px #f7f3eb,0 0 0 4px rgba(157,121,53,.16);}
+.editorialPostCard__avatar img{display:block;width:38px;height:38px;border-radius:50%;object-fit:cover;}
+
+.admin125Authors{margin:26px 0 34px;padding:28px;border:1px solid #e6dfd3;border-radius:24px;background:linear-gradient(145deg,#fff,#faf8f3);}
+.admin125Authors__layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:24px;margin-top:20px;}
+.admin125Authors__form{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;padding:22px;border:1px solid #ebe5da;border-radius:20px;background:#fff;}
+.admin125Authors__fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.admin125Authors__fields label{display:flex;flex-direction:column;gap:7px;}
+.admin125Authors__fields label.is-wide{grid-column:1/-1;}
+.admin125Authors__fields span,.admin125Authors__photo>span{font-size:9px;font-weight:800;letter-spacing:.12em;color:#8c713f;}
+.admin125Authors__fields input,.admin125Authors__fields textarea,.admin125Authors__photo>input{width:100%;border:1px solid #ded8cc;border-radius:11px;padding:11px 12px;background:#fbfaf7;outline:none;font:inherit;color:#24251f;box-sizing:border-box;}
+.admin125Authors__fields textarea{resize:vertical;line-height:1.55;}
+.admin125Authors__slug{display:flex;align-items:center;border:1px solid #ded8cc;border-radius:11px;background:#fbfaf7;overflow:hidden;}
+.admin125Authors__slug b{padding-left:11px;color:#9c7a3e;font-size:11px;white-space:nowrap;}
+.admin125Authors__slug input{border:0!important;background:transparent!important;}
+.admin125Authors__photo{display:flex;flex-direction:column;gap:10px;}
+.admin125Authors__photo>div{height:210px;border-radius:16px;overflow:hidden;background:#f0ece4;border:1px solid #e3ddd1;}
+.admin125Authors__photo>div>img{width:100%;height:100%;object-fit:cover;}
+.admin125Authors__placeholder{height:100%;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#a2998c;}
+.admin125Authors__photo>label{height:40px;border-radius:10px;background:#272821;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;font-weight:800;cursor:pointer;}
+.admin125Authors__photo>label input{display:none;}
+.admin125Authors__photo>small{font-size:9px;color:#999;}
+.admin125Authors__actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid #eee8df;padding-top:17px;}
+.admin125Authors__actions button{border:0;border-radius:11px;padding:11px 18px;background:#9a7738;color:#fff;font-size:10px;font-weight:800;cursor:pointer;}
+.admin125Authors__actions button.is-secondary{background:#eee9df;color:#5b554c;}
+.admin125Authors__list{display:flex;flex-direction:column;gap:12px;}
+.admin125Authors__list article{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:16px;background:#fff;border:1px solid #e9e3d8;}
+.admin125Authors__list article>img{width:58px;height:64px;border-radius:12px;object-fit:cover;}
+.admin125Authors__list strong{display:block;font:500 16px Georgia,serif;}
+.admin125Authors__list small{display:block;font-size:9px;color:#997b45;margin-top:2px;}
+.admin125Authors__list p{font-size:9px;line-height:1.45;color:#777;margin:5px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.admin125Authors__itemActions{display:flex;flex-direction:column;gap:6px;}
+.admin125Authors__itemActions button{border:1px solid #ddd5c9;background:#faf8f3;border-radius:8px;padding:7px 9px;font-size:8px;cursor:pointer;}
+.admin125Authors__itemActions button.is-delete{color:#a34d45;border-color:#ead1ce;background:#fff7f6;}
+@media(max-width:980px){.admin125Authors__layout{grid-template-columns:1fr}.admin125Authors__form{grid-template-columns:1fr}.admin125Authors__photo{max-width:360px}.authors101__grid{grid-template-columns:repeat(2,1fr)!important;}}
+@media(max-width:650px){.admin125Authors{padding:18px}.admin125Authors__fields{grid-template-columns:1fr}.admin125Authors__fields label.is-wide{grid-column:auto}.authors101__grid{grid-template-columns:1fr!important}.authors101__photo{height:360px!important}.editorialPostCard__author{align-items:center!important}.editorialPostCard__author>a:last-child{font-size:9px!important;}}
+
 `;
 
 export default App;
+
