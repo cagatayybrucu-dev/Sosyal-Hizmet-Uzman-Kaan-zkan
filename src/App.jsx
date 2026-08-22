@@ -6,6 +6,7 @@ import aboutPhoto from "./assets/kaan-about.jpg";
 import servicesHeroRoom from "./assets/services-hero-room.jpg";
 import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
+import kaanOzkanLogo2026 from "./assets/kaan-ozkan-logo-2026.jpeg";
 import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
 import serviceIndividualImage from "./assets/service-individual-therapy.jpg";
 import serviceCoupleImage from "./assets/service-couple-therapy.jpg";
@@ -1226,23 +1227,23 @@ function App() {
               <div className="site95Intro__edge site95Intro__edge--bottom" />
               <div className="site95Intro__logo3d">
                 <span className="site95Intro__logoGhost site95Intro__logoGhost--back">
-                  <img src={kaanOzkanEmblem} alt="" />
+                  <img src={kaanOzkanLogo2026} alt="" />
                 </span>
                 <span className="site95Intro__logoGhost site95Intro__logoGhost--mid">
-                  <img src={kaanOzkanEmblem} alt="" />
+                  <img src={kaanOzkanLogo2026} alt="" />
                 </span>
                 <span className="site95Intro__logoFace">
-                  <img src={kaanOzkanEmblem} alt="" />
+                  <img src={kaanOzkanLogo2026} alt="" />
                 </span>
                 <span className="site95Intro__scan" />
               </div>
             </div>
 
             <div className="site95Intro__copy">
-              <span className="site95Intro__eyebrow">PROFESYONEL DANIŞMANLIK</span>
-              <strong className="site95Intro__name">KAAN ÖZKAN</strong>
+              <span className="site95Intro__eyebrow">SOSYAL HİZMET · AİLE DANIŞMANLIĞI</span>
+              <strong className="site95Intro__name">Güvenle başlayan bir süreç.</strong>
               <p className="site95Intro__role">
-                Sosyal Hizmet Uzmanı <i>·</i> Aile Danışmanı
+                Kaan Özkan <i>·</i> Profesyonel Danışmanlık
               </p>
             </div>
 
@@ -1294,19 +1295,22 @@ function App() {
         </a>
       )}
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"}>
-          <a href="#anasayfa" className="brand brand--newLogo" onClick={() => setMenuOpen(false)}>
-            <span className="brandEmblemWrap">
-              <img
-                loading="lazy" decoding="async" className="brandEmblem"
-                src={kaanOzkanEmblem}
-                alt=""
-                aria-hidden="true"
-              />
+          <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
+            <span className="brandLogoArtwork" aria-hidden="true">
+              <img src={kaanOzkanEmblem} alt="" decoding="async" />
             </span>
-            <span className="brandIdentity">
-              <small>SOSYAL HİZMET UZMANI</small>
-              <em>AİLE DANIŞMANI</em>
+            <span className="brandLogoCopy">
+              <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
               <strong>KAAN ÖZKAN</strong>
+              <span className="brandLogoOrnament" aria-hidden="true">
+                <svg viewBox="0 0 52 18" focusable="false">
+                  <path d="M3 9h15M34 9h15" />
+                  <path d="M18 9c5-1 8-4 10-8-5 1-8 4-10 8Z" />
+                  <path d="M26 9c4-3 8-4 12-3-3 4-7 5-12 3Z" />
+                  <path d="M24 10c-3 3-5 5-6 8 4-1 7-3 8-7" />
+                  <path d="M28 10c3 2 6 4 9 4-2-4-5-5-9-4Z" />
+                </svg>
+              </span>
             </span>
           </a>
 
@@ -1560,7 +1564,7 @@ function App() {
 
             <div className="contactBrand reveal">
               <span className="brandEmblemWrap">
-                <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanEmblem} alt="Kaan Özkan logosu" />
+                <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanLogo2026} alt="Kaan Özkan logosu" />
               </span>
               <div>
                 <strong>KAAN ÖZKAN</strong>
@@ -1599,7 +1603,7 @@ function App() {
             <div className="premiumFooter__top">
               <a href="#/anasayfa" className="premiumFooter__brand">
                 <span className="brandEmblemWrap">
-                  <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
+                  <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanLogo2026} alt="" aria-hidden="true" />
                 </span>
                 <span>
                   <strong>KAAN ÖZKAN</strong>
@@ -1730,7 +1734,7 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
   const author = authors.find(item=>item.slug===slug);
 
   if (!author) {
-    return <main className="blog99NotFound"><img src={kaanOzkanEmblem} alt=""/><span>YAZARLAR</span><h1>Bu yazar bulunamadı.</h1><a href="#/yazarlar">Yazarlara Dön</a></main>;
+    return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>YAZARLAR</span><h1>Bu yazar bulunamadı.</h1><a href="#/yazarlar">Yazarlara Dön</a></main>;
   }
 
   return (
@@ -1778,7 +1782,7 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
 function BlogArticlePage({ slug, content = defaultBlogContent }) {
   const posts=(Array.isArray(content.posts)?content.posts:[]).filter(post=>post.status!=="draft");
   const post=posts.find(item=>item.slug===slug);
-  if(!post) return <main className="blog99NotFound"><img src={kaanOzkanEmblem} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
+  if(!post) return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
   const paragraphs=Array.isArray(post.body)?post.body:String(post.body||"").split(/\n\s*\n/).filter(Boolean);
   const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item.slug !== "kaan-ozkan");
   const author = authors.find((item)=>item.slug === post.authorSlug) || null;
@@ -1814,7 +1818,7 @@ function ContactDetailPage() {
 
         <div className="contact80Hero__mark">
           <div className="brandEmblemWrap">
-            <img className="brandEmblem" src={kaanOzkanEmblem} alt="" aria-hidden="true" />
+            <img className="brandEmblem" src={kaanOzkanLogo2026} alt="" aria-hidden="true" />
           </div>
           <div>
             <small>SOSYAL HİZMET UZMANI</small>
@@ -3555,7 +3559,7 @@ function AdminDemoPage() {
 
         <div className="admin92Intro__center">
           <div className="admin92Intro__emblem">
-            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+            <img src={kaanOzkanLogo2026} alt="Kaan Özkan" />
           </div>
           <span className="admin92Intro__eyebrow">YÖNETİM SİSTEMİ</span>
           <h1>KAAN ÖZKAN</h1>
@@ -3581,7 +3585,7 @@ function AdminDemoPage() {
       <main className="admin70Login">
         <div className="admin70Login__card">
           <div className="admin70Login__logo admin70Login__logo--image">
-            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+            <img src={kaanOzkanLogo2026} alt="Kaan Özkan" />
           </div>
           <span>YÖNETİM PANELİ</span>
           <h1>Panel hazırlanıyor...</h1>
@@ -3596,7 +3600,7 @@ function AdminDemoPage() {
         <div className="admin70Login__glow" />
         <form className="admin70Login__card" onSubmit={login}>
           <div className="admin70Login__logo admin70Login__logo--image">
-            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+            <img src={kaanOzkanLogo2026} alt="Kaan Özkan" />
           </div>
           <span>GÜVENLİ YÖNETİM PANELİ</span>
           <h1>Yönetici Girişi</h1>
@@ -3658,7 +3662,7 @@ function AdminDemoPage() {
       <aside className="adminDemo__sidebar">
         <div className="adminDemo__brand">
           <div className="adminDemo__mark adminDemo__mark--image">
-            <img src={kaanOzkanEmblem} alt="Kaan Özkan" />
+            <img src={kaanOzkanLogo2026} alt="Kaan Özkan" />
           </div>
           <div>
             <strong>KAAN ÖZKAN</strong>
@@ -14361,303 +14365,54 @@ img{
   }
 }
 
-/* STEP129 — FULLSCREEN 3D CINEMATIC OPENING */
+/* STEP130 — WARM LUXURY 3D CINEMATIC OPENING */
 .site95Intro{
-  position:fixed;
-  inset:0;
-  z-index:999999;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-  perspective:1400px;
+  position:fixed;inset:0;z-index:999999;overflow:hidden;display:grid;place-items:center;
+  perspective:1500px;
   background:
-    radial-gradient(circle at 50% 44%,rgba(193,151,86,.10),transparent 22%),
-    radial-gradient(circle at 12% 35%,rgba(170,122,59,.08),transparent 26%),
-    linear-gradient(145deg,#090b0a 0%,#10130f 46%,#070807 100%);
-  animation:site129Exit .72s cubic-bezier(.72,0,.15,1) 2.68s forwards;
+    radial-gradient(circle at 50% 38%,rgba(255,255,255,.96) 0 15%,rgba(247,240,229,.74) 36%,transparent 62%),
+    radial-gradient(circle at 16% 20%,rgba(204,170,111,.22),transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(183,151,94,.18),transparent 28%),
+    linear-gradient(135deg,#f7f2e9 0%,#eee5d8 46%,#f8f4ed 100%);
+  animation:site130Exit .72s cubic-bezier(.72,0,.15,1) 2.72s forwards;
 }
-.site95Intro:before{
-  content:"";
-  position:absolute;
-  inset:-18%;
-  background:
-    linear-gradient(115deg,transparent 36%,rgba(213,173,108,.055) 48%,transparent 58%);
-  transform:translate3d(-18%,0,0) rotate(-4deg);
-  animation:site129Sweep 3.2s cubic-bezier(.2,.72,.2,1) both;
-}
-.site95Intro__grain{
-  position:absolute;
-  inset:0;
-  opacity:.13;
-  pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
-  mix-blend-mode:soft-light;
-  animation:site129Grain .24s steps(2) infinite;
-}
-.site95Intro__vignette{
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center,transparent 30%,rgba(0,0,0,.23) 67%,rgba(0,0,0,.72) 100%);
-}
-.site95Intro__beam{
-  position:absolute;
-  width:1px;
-  height:120vh;
-  top:-10vh;
-  background:linear-gradient(to bottom,transparent,rgba(213,172,103,.58),transparent);
-  filter:blur(.2px);
-  opacity:0;
-}
-.site95Intro__beam--one{left:23%;transform:rotate(17deg);animation:site129Beam 1.5s ease .35s both}
-.site95Intro__beam--two{right:20%;transform:rotate(-13deg);animation:site129Beam 1.6s ease .58s both}
-.site95Intro__orb{
-  position:absolute;
-  width:44vw;height:44vw;
-  border-radius:50%;
-  filter:blur(100px);
-  opacity:.12;
-}
-.site95Intro__orb--left{left:-24vw;top:8vh;background:#b18145;animation:site129Orb 3s ease both}
-.site95Intro__orb--right{right:-23vw;bottom:-20vw;background:#c59c62;animation:site129Orb 3s ease .3s both}
-.site95Intro__stage{
-  position:relative;
-  z-index:3;
-  width:min(94vw,1050px);
-  height:min(86vh,760px);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transform-style:preserve-3d;
-  animation:site129Camera 3.1s cubic-bezier(.18,.78,.18,1) both;
-}
-.site95Intro__rings{
-  position:absolute;
-  inset:50% auto auto 50%;
-  width:min(62vw,610px);
-  aspect-ratio:1;
-  transform:translate(-50%,-52%) rotateX(71deg);
-  transform-style:preserve-3d;
-}
-.site95Intro__rings i{
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  border:1px solid rgba(208,167,101,.19);
-  box-shadow:0 0 44px rgba(194,149,78,.025);
-  animation:site129Ring 2.4s cubic-bezier(.2,.78,.2,1) both;
-}
-.site95Intro__rings i:nth-child(2){inset:12%;animation-delay:.12s;border-color:rgba(230,191,124,.14)}
-.site95Intro__rings i:nth-child(3){inset:25%;animation-delay:.22s;border-color:rgba(235,204,149,.11)}
-.site95Intro__monolith{
-  position:relative;
-  width:clamp(190px,20vw,280px);
-  aspect-ratio:1;
-  display:grid;
-  place-items:center;
-  transform-style:preserve-3d;
-  transform:rotateX(2deg) rotateY(-5deg) translateZ(55px);
-  opacity:0;
-  animation:site129Monolith 1.22s cubic-bezier(.16,.9,.18,1) .14s forwards;
-}
-.site95Intro__monolith:before{
-  content:"";
-  position:absolute;
-  inset:8%;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(218,178,108,.14),rgba(161,116,55,.025) 52%,transparent 72%);
-  filter:blur(18px);
-  transform:translateZ(-65px);
-}
-.site95Intro__logo3d{
-  position:relative;
-  width:72%;
-  height:72%;
-  display:grid;
-  place-items:center;
-  transform-style:preserve-3d;
-  filter:drop-shadow(0 34px 44px rgba(0,0,0,.45));
-}
-.site95Intro__logoFace,
-.site95Intro__logoGhost{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-}
-.site95Intro__logoFace{transform:translateZ(34px)}
-.site95Intro__logoGhost--mid{transform:translateZ(16px);opacity:.26;filter:brightness(.72) sepia(.7)}
-.site95Intro__logoGhost--back{transform:translateZ(-3px);opacity:.12;filter:brightness(.45) sepia(1)}
-.site95Intro__logo3d img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  filter:contrast(1.05) saturate(.92) brightness(1.06);
-}
-.site95Intro__logoFace:after{
-  content:"";
-  position:absolute;
-  inset:1%;
-  background:linear-gradient(118deg,transparent 25%,rgba(255,239,204,.42) 48%,transparent 58%);
-  mix-blend-mode:screen;
-  transform:translateX(-130%);
-  animation:site129LogoSheen 1.35s cubic-bezier(.25,.72,.2,1) .92s forwards;
-  pointer-events:none;
-}
-.site95Intro__scan{
-  position:absolute;
-  left:-35%;
-  right:-35%;
-  top:50%;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(224,184,113,.9),transparent);
-  box-shadow:0 0 18px rgba(211,168,97,.7);
-  opacity:0;
-  animation:site129Scan 1.2s ease .52s both;
-}
-.site95Intro__edge{
-  position:absolute;
-  left:50%;
-  width:84px;height:1px;
-  background:linear-gradient(90deg,transparent,#c69c5d,transparent);
-  opacity:0;
-}
-.site95Intro__edge--top{top:-8px;animation:site129Edge 1.1s ease .8s both}
-.site95Intro__edge--bottom{bottom:-8px;animation:site129Edge 1.1s ease 1s both}
-.site95Intro__copy{
-  position:relative;
-  margin-top:13px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  transform:translateZ(30px);
-}
-.site95Intro__eyebrow{
-  color:#c8a267;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.38em;
-  opacity:0;
-  animation:site129Text .58s ease 1.03s forwards;
-}
-.site95Intro__name{
-  margin-top:10px;
-  color:#f5f0e7;
-  font:500 clamp(43px,5vw,72px)/.98 Georgia,"Times New Roman",serif;
-  letter-spacing:.085em;
-  text-shadow:0 14px 36px rgba(0,0,0,.48);
-  opacity:0;
-  animation:site129Text .68s cubic-bezier(.16,.82,.18,1) 1.15s forwards;
-}
-.site95Intro__role{
-  margin:13px 0 0;
-  color:rgba(231,225,215,.62);
-  font-size:9px;
-  font-weight:600;
-  letter-spacing:.11em;
-  opacity:0;
-  animation:site129Text .52s ease 1.34s forwards;
-}
-.site95Intro__role i{margin:0 7px;color:#c59959;font-style:normal}
-.site95Intro__timeline{
-  position:absolute;
-  left:50%;
-  bottom:4.5%;
-  width:min(84vw,780px);
-  transform:translateX(-50%);
-  display:grid;
-  grid-template-columns:auto 1fr auto 1fr auto;
-  align-items:center;
-  gap:12px;
-  color:rgba(238,230,217,.45);
-  opacity:0;
-  animation:site129Text .45s ease 1.62s forwards;
-}
-.site95Intro__timeline:before,
-.site95Intro__timeline span{
-  content:"";
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(198,156,93,.25));
-}
-.site95Intro__timeline span{display:block}
-.site95Intro__timeline b{
-  font:500 9px/1 Inter,system-ui,sans-serif;
-  letter-spacing:.14em;color:#b58a50;
-}
-.site95Intro__timeline em{
-  font-style:normal;
-  font-size:8px;
-  letter-spacing:.25em;
-  text-align:center;
-  white-space:nowrap;
-}
-@keyframes site129Camera{
-  0%{transform:translateZ(-130px) scale(.92)}
-  58%{transform:translateZ(5px) scale(1)}
-  100%{transform:translateZ(48px) scale(1.025)}
-}
-@keyframes site129Monolith{
-  from{opacity:0;transform:rotateX(12deg) rotateY(-24deg) translateY(20px) translateZ(-90px) scale(.75);filter:blur(10px)}
-  to{opacity:1;transform:rotateX(2deg) rotateY(-5deg) translateY(0) translateZ(55px) scale(1);filter:blur(0)}
-}
-@keyframes site129Ring{
-  from{opacity:0;transform:scale(.45) rotateZ(-24deg)}
-  55%{opacity:.9}
-  to{opacity:.28;transform:scale(1) rotateZ(5deg)}
-}
-@keyframes site129LogoSheen{to{transform:translateX(135%)}}
-@keyframes site129Scan{
-  0%{opacity:0;transform:translateY(-105px) scaleX(.5)}
-  20%{opacity:.9}
-  100%{opacity:0;transform:translateY(112px) scaleX(1.15)}
-}
-@keyframes site129Edge{
-  from{opacity:0;transform:translateX(-50%) scaleX(.1)}
-  to{opacity:.65;transform:translateX(-50%) scaleX(1)}
-}
-@keyframes site129Text{
-  from{opacity:0;transform:translateY(11px);filter:blur(6px)}
-  to{opacity:1;transform:translateY(0);filter:blur(0)}
-}
-@keyframes site129Beam{
-  0%{opacity:0;transform:rotate(17deg) scaleY(.35)}
-  35%{opacity:.55}
-  100%{opacity:.08}
-}
-@keyframes site129Orb{
-  from{opacity:0;transform:scale(.6)}
-  to{opacity:.12;transform:scale(1)}
-}
-@keyframes site129Sweep{
-  from{transform:translate3d(-30%,0,0) rotate(-4deg)}
-  to{transform:translate3d(36%,0,0) rotate(-4deg)}
-}
-@keyframes site129Grain{
-  0%{transform:translate(0,0)}
-  25%{transform:translate(-1.5%,1%)}
-  50%{transform:translate(1%,-1.4%)}
-  75%{transform:translate(.7%,1.1%)}
-  100%{transform:translate(-.8%,-.6%)}
-}
-@keyframes site129Exit{
-  0%{opacity:1;visibility:visible;transform:scale(1)}
-  100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.035);filter:blur(6px)}
-}
-@media(max-width:640px){
-  .site95Intro__stage{height:82vh}
-  .site95Intro__monolith{width:185px}
-  .site95Intro__rings{width:390px}
-  .site95Intro__eyebrow{font-size:7px;letter-spacing:.3em}
-  .site95Intro__name{font-size:42px;letter-spacing:.055em}
-  .site95Intro__role{font-size:8px;letter-spacing:.06em}
-  .site95Intro__timeline{bottom:1.5%;width:90vw;gap:8px}
-  .site95Intro__timeline em{font-size:6px;letter-spacing:.14em}
-}
-@media(prefers-reduced-motion:reduce){
-  .site95Intro{animation-duration:.15s!important;animation-delay:.8s!important}
-  .site95Intro *{animation-duration:.01ms!important;animation-delay:0ms!important}
-}
+.site95Intro:before{content:"";position:absolute;inset:-28%;background:linear-gradient(112deg,transparent 38%,rgba(255,255,255,.78) 48%,rgba(201,165,103,.12) 52%,transparent 61%);transform:translate3d(-28%,0,0) rotate(-7deg);animation:site130Sweep 3.15s cubic-bezier(.18,.75,.18,1) both}
+.site95Intro:after{content:"";position:absolute;left:8%;right:8%;bottom:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(145,112,64,.24),transparent);opacity:.75}
+.site95Intro__grain{position:absolute;inset:0;opacity:.045;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.83' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:multiply;animation:site130Grain .28s steps(2) infinite}
+.site95Intro__vignette{position:absolute;inset:0;background:radial-gradient(circle at center,transparent 46%,rgba(116,91,55,.035) 70%,rgba(88,66,38,.10) 100%)}
+.site95Intro__beam{position:absolute;width:1px;height:130vh;top:-15vh;background:linear-gradient(to bottom,transparent,rgba(175,137,74,.36),rgba(255,255,255,.8),transparent);filter:blur(.3px);opacity:0}
+.site95Intro__beam--one{left:24%;transform:rotate(16deg);animation:site130Beam 1.55s ease .28s both}.site95Intro__beam--two{right:21%;transform:rotate(-12deg);animation:site130Beam 1.7s ease .48s both}
+.site95Intro__orb{position:absolute;width:45vw;height:45vw;border-radius:50%;filter:blur(105px);opacity:.16}.site95Intro__orb--left{left:-23vw;top:-4vh;background:#d1b07a;animation:site130Orb 3s ease both}.site95Intro__orb--right{right:-22vw;bottom:-21vw;background:#c9a86d;animation:site130Orb 3s ease .25s both}
+.site95Intro__stage{position:relative;z-index:3;width:min(95vw,1120px);height:min(88vh,790px);display:flex;flex-direction:column;align-items:center;justify-content:center;transform-style:preserve-3d;animation:site130Camera 3.1s cubic-bezier(.18,.78,.18,1) both}
+.site95Intro__rings{position:absolute;inset:48% auto auto 50%;width:min(65vw,650px);aspect-ratio:1;transform:translate(-50%,-52%) rotateX(72deg);transform-style:preserve-3d}
+.site95Intro__rings i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(152,116,61,.16);box-shadow:0 0 65px rgba(159,121,61,.035);animation:site130Ring 2.45s cubic-bezier(.2,.78,.2,1) both}.site95Intro__rings i:nth-child(2){inset:12%;animation-delay:.12s;border-color:rgba(177,138,75,.13)}.site95Intro__rings i:nth-child(3){inset:25%;animation-delay:.22s;border-color:rgba(198,161,99,.11)}
+.site95Intro__monolith{position:relative;width:clamp(235px,27vw,385px);aspect-ratio:1;display:grid;place-items:center;transform-style:preserve-3d;transform:rotateX(2deg) rotateY(-5deg) translateZ(55px);opacity:0;animation:site130Monolith 1.25s cubic-bezier(.16,.9,.18,1) .12s forwards}
+.site95Intro__monolith:before{content:"";position:absolute;inset:4%;border-radius:46%;background:radial-gradient(circle,rgba(255,255,255,.96),rgba(219,197,161,.15) 48%,transparent 72%);filter:blur(22px);transform:translateZ(-65px)}
+.site95Intro__logo3d{position:relative;width:88%;height:88%;display:grid;place-items:center;transform-style:preserve-3d;filter:drop-shadow(0 28px 32px rgba(84,65,38,.18))}
+.site95Intro__logoFace,.site95Intro__logoGhost{position:absolute;inset:0;display:grid;place-items:center;border-radius:24px;overflow:hidden}.site95Intro__logoFace{transform:translateZ(34px);box-shadow:0 26px 70px rgba(86,67,39,.13)}.site95Intro__logoGhost--mid{transform:translateZ(16px) translate(3px,4px);opacity:.18;filter:sepia(.25) contrast(.92)}.site95Intro__logoGhost--back{transform:translateZ(-3px) translate(7px,8px);opacity:.09;filter:sepia(.5)}
+.site95Intro__logo3d img{width:100%;height:100%;object-fit:cover;border-radius:24px;filter:contrast(1.02) saturate(.94) brightness(1.03)}
+.site95Intro__logoFace:after{content:"";position:absolute;inset:-10%;background:linear-gradient(118deg,transparent 30%,rgba(255,255,255,.86) 47%,rgba(213,181,127,.22) 52%,transparent 62%);mix-blend-mode:screen;transform:translateX(-135%);animation:site130LogoSheen 1.45s cubic-bezier(.25,.72,.2,1) .86s forwards;pointer-events:none}
+.site95Intro__scan{position:absolute;left:-28%;right:-28%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(173,131,63,.62),rgba(255,255,255,.95),transparent);box-shadow:0 0 16px rgba(180,139,73,.30);opacity:0;animation:site130Scan 1.18s ease .48s both}
+.site95Intro__edge{position:absolute;left:50%;width:100px;height:1px;background:linear-gradient(90deg,transparent,#ae8140,transparent);opacity:0}.site95Intro__edge--top{top:-10px;animation:site130Edge 1.1s ease .76s both}.site95Intro__edge--bottom{bottom:-10px;animation:site130Edge 1.1s ease .96s both}
+.site95Intro__copy{position:relative;margin-top:18px;display:flex;flex-direction:column;align-items:center;text-align:center;transform:translateZ(30px)}
+.site95Intro__eyebrow{color:#9a733a;font-size:9px;font-weight:800;letter-spacing:.32em;opacity:0;animation:site130Text .58s ease 1.02s forwards}
+.site95Intro__name{margin-top:10px;color:#2f302c;font:500 clamp(28px,3.3vw,46px)/1.04 Georgia,"Times New Roman",serif;letter-spacing:-.025em;text-shadow:0 10px 30px rgba(105,82,48,.08);opacity:0;animation:site130Text .68s cubic-bezier(.16,.82,.18,1) 1.15s forwards}
+.site95Intro__role{margin:12px 0 0;color:rgba(61,61,56,.62);font-size:9px;font-weight:700;letter-spacing:.10em;opacity:0;animation:site130Text .52s ease 1.34s forwards}.site95Intro__role i{margin:0 7px;color:#a77b3e;font-style:normal}
+.site95Intro__timeline{position:absolute;left:50%;bottom:3.5%;width:min(84vw,780px);transform:translateX(-50%);display:grid;grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:12px;color:rgba(79,69,55,.46);opacity:0;animation:site130Text .45s ease 1.62s forwards}.site95Intro__timeline:before,.site95Intro__timeline span{content:"";height:1px;background:linear-gradient(90deg,transparent,rgba(154,116,58,.25))}.site95Intro__timeline span{display:block}.site95Intro__timeline b{font:600 9px/1 Inter,system-ui,sans-serif;letter-spacing:.14em;color:#9a733a}.site95Intro__timeline em{font-style:normal;font-size:8px;letter-spacing:.24em;text-align:center;white-space:nowrap}
+@keyframes site130Camera{0%{transform:translateZ(-145px) scale(.91)}58%{transform:translateZ(6px) scale(1)}100%{transform:translateZ(48px) scale(1.022)}}
+@keyframes site130Monolith{from{opacity:0;transform:rotateX(11deg) rotateY(-22deg) translateY(18px) translateZ(-88px) scale(.76);filter:blur(10px)}to{opacity:1;transform:rotateX(2deg) rotateY(-5deg) translateY(0) translateZ(55px) scale(1);filter:blur(0)}}
+@keyframes site130Ring{from{opacity:0;transform:scale(.44) rotateZ(-24deg)}55%{opacity:.8}to{opacity:.30;transform:scale(1) rotateZ(5deg)}}
+@keyframes site130LogoSheen{to{transform:translateX(135%)}}
+@keyframes site130Scan{0%{opacity:0;transform:translateY(-118px) scaleX(.5)}20%{opacity:.75}100%{opacity:0;transform:translateY(118px) scaleX(1.12)}}
+@keyframes site130Edge{from{opacity:0;transform:translateX(-50%) scaleX(.1)}to{opacity:.52;transform:translateX(-50%) scaleX(1)}}
+@keyframes site130Text{from{opacity:0;transform:translateY(10px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes site130Beam{0%{opacity:0}35%{opacity:.46}100%{opacity:.07}}
+@keyframes site130Orb{from{opacity:0;transform:scale(.6)}to{opacity:.16;transform:scale(1)}}
+@keyframes site130Sweep{from{transform:translate3d(-32%,0,0) rotate(-7deg)}to{transform:translate3d(38%,0,0) rotate(-7deg)}}
+@keyframes site130Grain{0%{transform:translate(0,0)}25%{transform:translate(-1%,.7%)}50%{transform:translate(.8%,-1%)}75%{transform:translate(.6%,.8%)}100%{transform:translate(-.7%,-.5%)}}
+@keyframes site130Exit{0%{opacity:1;visibility:visible;transform:scale(1)}100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.026);filter:blur(5px)}}
+@media(max-width:640px){.site95Intro__stage{height:84vh}.site95Intro__monolith{width:255px}.site95Intro__rings{width:420px}.site95Intro__eyebrow{font-size:7px;letter-spacing:.22em}.site95Intro__name{font-size:30px;max-width:88vw}.site95Intro__role{font-size:8px;letter-spacing:.055em}.site95Intro__timeline{bottom:1%;width:90vw;gap:8px}.site95Intro__timeline em{font-size:6px;letter-spacing:.13em}}
+@media(prefers-reduced-motion:reduce){.site95Intro{animation-duration:.15s!important;animation-delay:.8s!important}.site95Intro *{animation-duration:.01ms!important;animation-delay:0ms!important}}
 
 /* STEP129 — COMPACT PREMIUM AUTHOR BIO */
 .author126{
@@ -16919,6 +16674,290 @@ img{
 .admin125Authors__itemActions button.is-delete{color:#a34d45;border-color:#ead1ce;background:#fff7f6;}
 @media(max-width:980px){.admin125Authors__layout{grid-template-columns:1fr}.admin125Authors__form{grid-template-columns:1fr}.admin125Authors__photo{max-width:360px}.authors101__grid{grid-template-columns:repeat(2,1fr)!important;}}
 @media(max-width:650px){.admin125Authors{padding:18px}.admin125Authors__fields{grid-template-columns:1fr}.admin125Authors__fields label.is-wide{grid-column:auto}.authors101__grid{grid-template-columns:1fr!important}.authors101__photo{height:360px!important}.editorialPostCard__author{align-items:center!important}.editorialPostCard__author>a:last-child{font-size:9px!important;}}
+
+
+/* STEP130 — COMPLETE IMAGE LOGO HEADER */
+.brand--imageLogo{min-width:0!important;width:265px!important;height:74px!important;display:flex!important;align-items:center!important;padding:0!important;overflow:hidden!important;background:transparent!important}
+.brandFullLogo{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 62%!important;border-radius:0!important;mix-blend-mode:multiply!important;filter:contrast(1.03) saturate(.92)!important;transform:scale(1.05)!important}
+@media(max-width:1100px){.brand--imageLogo{width:225px!important;height:64px!important}}
+@media(max-width:760px){.brand--imageLogo{width:175px!important;height:52px!important}.brandFullLogo{transform:scale(1.03)!important}}
+
+
+/* STEP133 — HEADER LOGO PREMIUM FIT */
+.brand--imageLogo{
+  width:auto!important;
+  min-width:350px!important;
+  height:92px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  padding:0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  text-decoration:none!important;
+}
+.brandLogoArtwork{
+  position:relative!important;
+  width:86px!important;
+  height:82px!important;
+  flex:0 0 86px!important;
+  display:block!important;
+  overflow:hidden!important;
+  border-radius:18px!important;
+  background:linear-gradient(145deg,#f4efe7,#e9e0d3)!important;
+  box-shadow:0 9px 22px rgba(77,57,31,.12),inset 0 0 0 1px rgba(159,119,57,.10)!important;
+}
+.brandLogoArtwork img{
+  position:absolute!important;
+  width:116px!important;
+  height:116px!important;
+  max-width:none!important;
+  left:50%!important;
+  top:43%!important;
+  transform:translate(-50%,-43%)!important;
+  object-fit:cover!important;
+  object-position:center 22%!important;
+  filter:contrast(1.02) saturate(.90)!important;
+  mix-blend-mode:multiply!important;
+}
+.brandLogoCopy{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  color:#20201e!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.brandLogoCopy small{
+  display:block!important;
+  margin:0 0 7px!important;
+  color:#5e594f!important;
+  font:700 8px/1.15 Arial,sans-serif!important;
+  letter-spacing:.105em!important;
+}
+.brandLogoCopy strong{
+  display:block!important;
+  color:#262522!important;
+  font:500 29px/.94 Georgia,'Times New Roman',serif!important;
+  letter-spacing:.08em!important;
+}
+.brandLogoOrnament{
+  width:100%!important;
+  margin-top:8px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  color:#9d783a!important;
+  font-size:6px!important;
+}
+.brandLogoOrnament:before,.brandLogoOrnament:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(157,120,58,.72))}
+.brandLogoOrnament:after{background:linear-gradient(90deg,rgba(157,120,58,.72),transparent)}
+@media(max-width:1180px){
+  .brand--imageLogo{min-width:290px!important;height:82px!important;gap:11px!important}
+  .brandLogoArtwork{width:72px!important;height:70px!important;flex-basis:72px!important}
+  .brandLogoArtwork img{width:98px!important;height:98px!important}
+  .brandLogoCopy small{font-size:7px!important;letter-spacing:.07em!important}
+  .brandLogoCopy strong{font-size:24px!important}
+}
+@media(max-width:760px){
+  .brand--imageLogo{min-width:0!important;width:auto!important;height:66px!important;gap:8px!important}
+  .brandLogoArtwork{width:52px!important;height:52px!important;flex-basis:52px!important;border-radius:13px!important}
+  .brandLogoArtwork img{width:74px!important;height:74px!important}
+  .brandLogoCopy small{font-size:5.6px!important;margin-bottom:4px!important;letter-spacing:.035em!important}
+  .brandLogoCopy strong{font-size:17px!important;letter-spacing:.055em!important}
+  .brandLogoOrnament{margin-top:5px!important}
+}
+
+/* STEP138 — Exact supplied logo: full cinematic + isolated in-site emblem */
+.brand--imageLogo{
+  min-width:430px!important;
+  width:auto!important;
+  height:108px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:20px!important;
+  padding:0!important;
+  overflow:visible!important;
+  background:transparent!important;
+}
+
+.brandLogoArtwork{
+  width:118px!important;
+  height:102px!important;
+  flex:0 0 118px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+.brandLogoArtwork img{
+  position:static!important;
+  width:112px!important;
+  height:98px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 6px 8px rgba(59,46,29,.13))!important;
+}
+
+.brandLogoCopy{
+  width:292px!important;
+  min-width:292px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  color:#24221f!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+
+.brandLogoCopy small{
+  display:block!important;
+  margin:0 0 8px!important;
+  color:#403c35!important;
+  font:700 8px/1.2 Arial,sans-serif!important;
+  letter-spacing:.16em!important;
+}
+
+.brandLogoCopy strong{
+  display:block!important;
+  color:#24221f!important;
+  font:500 31px/.95 Georgia,'Times New Roman',serif!important;
+  letter-spacing:.075em!important;
+}
+
+.brandLogoOrnament{
+  width:100%!important;
+  height:18px!important;
+  margin-top:8px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:#9f7939!important;
+}
+
+.brandLogoOrnament:before,
+.brandLogoOrnament:after{
+  display:none!important;
+  content:none!important;
+}
+
+.brandLogoOrnament svg{
+  display:block!important;
+  width:100%!important;
+  height:18px!important;
+  overflow:visible!important;
+  fill:none!important;
+  stroke:#a47b37!important;
+  stroke-width:1.15!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+
+.brandLogoOrnament svg path:nth-child(n+3){
+  fill:#a47b37!important;
+  stroke:#a47b37!important;
+  stroke-width:.55!important;
+}
+
+/* Opening cinematic stays on the user's complete original logo. */
+.site95Intro__logoFace img,
+.site95Intro__logoGhost img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+
+/* Responsive header */
+@media(max-width:1180px){
+  .brand--imageLogo{min-width:340px!important;height:92px!important;gap:14px!important}
+  .brandLogoArtwork{width:92px!important;height:84px!important;flex-basis:92px!important}
+  .brandLogoArtwork img{width:88px!important;height:80px!important}
+  .brandLogoCopy{width:230px!important;min-width:230px!important}
+  .brandLogoCopy small{font-size:6.5px!important;letter-spacing:.11em!important;margin-bottom:6px!important}
+  .brandLogoCopy strong{font-size:24px!important}
+  .brandLogoOrnament,.brandLogoOrnament svg{height:14px!important}
+}
+
+@media(max-width:760px){
+  .brand--imageLogo{min-width:0!important;width:auto!important;height:66px!important;gap:8px!important}
+  .brandLogoArtwork{width:60px!important;height:58px!important;flex-basis:60px!important}
+  .brandLogoArtwork img{width:58px!important;height:56px!important}
+  .brandLogoCopy{width:165px!important;min-width:165px!important}
+  .brandLogoCopy small{font-size:5.2px!important;letter-spacing:.05em!important;margin-bottom:4px!important}
+  .brandLogoCopy strong{font-size:17px!important;letter-spacing:.055em!important}
+  .brandLogoOrnament,.brandLogoOrnament svg{height:10px!important;margin-top:4px!important}
+}
+
+/* STEP139 — cleaner emblem cut + slightly smaller header logo */
+.brand--imageLogo{
+  min-width:400px!important;
+  height:98px!important;
+  gap:17px!important;
+}
+.brandLogoArtwork{
+  width:102px!important;
+  height:90px!important;
+  flex:0 0 102px!important;
+}
+.brandLogoArtwork img{
+  width:96px!important;
+  height:86px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 4px 5px rgba(55,44,31,.10))!important;
+}
+.brandLogoCopy{
+  width:280px!important;
+  min-width:280px!important;
+}
+.brandLogoCopy strong{
+  font-size:29px!important;
+}
+.brandLogoCopy small{
+  font-size:7.6px!important;
+}
+.brandLogoOrnament{
+  margin-top:7px!important;
+  height:16px!important;
+}
+.brandLogoOrnament svg{
+  height:16px!important;
+}
+
+@media(max-width:1180px){
+  .brand--imageLogo{min-width:318px!important;height:84px!important;gap:12px!important}
+  .brandLogoArtwork{width:82px!important;height:76px!important;flex-basis:82px!important}
+  .brandLogoArtwork img{width:78px!important;height:72px!important}
+  .brandLogoCopy{width:220px!important;min-width:220px!important}
+  .brandLogoCopy strong{font-size:22px!important}
+  .brandLogoCopy small{font-size:6.2px!important}
+}
+@media(max-width:760px){
+  .brand--imageLogo{height:62px!important;gap:7px!important}
+  .brandLogoArtwork{width:54px!important;height:52px!important;flex-basis:54px!important}
+  .brandLogoArtwork img{width:52px!important;height:50px!important}
+  .brandLogoCopy{width:156px!important;min-width:156px!important}
+  .brandLogoCopy strong{font-size:16px!important}
+  .brandLogoCopy small{font-size:5px!important}
+}
 
 `;
 
