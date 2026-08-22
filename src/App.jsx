@@ -323,23 +323,23 @@ const detailedServicePages = {
   "Kaygı, belirsizlik ve yaşamda meydana gelen önemli değişimler karşısında ortaya çıkabilen doğal bir psikolojik tepkidir. Ancak kaygının yoğunlaşması; kişinin düşüncelerini, duygularını, ilişkilerini ve günlük işlevselliğini belirgin biçimde etkilediğinde profesyonel destek gerektirebilir. Bireysel terapide kaygının hangi yaşam olayları, düşünce örüntüleri ve davranışlarla ilişkili olduğu değerlendirilir; kişinin belirsizlikle baş etme, problem çözme ve psikolojik esnekliğini geliştirmesi desteklenir. Amaç kaygıyı tamamen ortadan kaldırmak değil, kişinin kaygıya rağmen yaşamını daha kontrollü ve işlevsel biçimde sürdürebilmesini sağlamaktır.",
   "Bilişsel Davranışçı ve Duygu Düzenleme Temelli yaklaşımların kaygı belirtilerinin azaltılmasında etkili olduğu gösterilmektedir. Yaşam olaylarına uyum sürecinde ise bireysel psikolojik özelliklerin yanında sosyal destek, yaşam koşulları ve çevresel kaynakların da değerlendirilmesi önem taşır.",
   "02. Öfke Yönetimi ve Duygu Düzenleme",
-  "Öfke, tek başına olumsuz veya patolojik bir duygu değildir; çoğu zaman kişinin sınırlarının ihlal edildiğini, ihtiyaçlarının karşılanmadığını veya kendisini tehdit altında hissettiğini gösteren önemli bir duygusal sinyaldir. Sorun, öfkenin yoğunluğu ve kişinin bu duyguyla nasıl başa çıktığıyla ilgilidir. Bireysel terapide öfkeyi yalnızca “kontrol edilmesi gereken” bir tepki olarak değil; düşünceler, bedensel uyarılma, geçmiş deneyimler ve kişilerarası ilişkilerle birlikte değerlendirmek amaçlanır.",
+  `Öfke, tek başına olumsuz veya patolojik bir duygu değildir; çoğu zaman kişinin sınırlarının ihlal edildiğini, ihtiyaçlarının karşılanmadığını veya kendisini tehdit altında hissettiğini gösteren önemli bir duygusal sinyaldir. Sorun, öfkenin yoğunluğu ve kişinin bu duyguyla nasıl başa çıktığıyla ilgilidir. Bireysel terapide öfkeyi yalnızca "kontrol edilmesi gereken" bir tepki olarak değil; düşünceler, bedensel uyarılma, geçmiş deneyimler ve kişilerarası ilişkilerle birlikte değerlendirmek amaçlanır.`,
   "Duygu düzenleme çalışmaları kapsamında kişinin duygusunu fark etmesi, adlandırması, tetikleyicilerini tanıması ve daha işlevsel tepki seçenekleri geliştirmesi üzerinde durulur. Araştırmalar, duygu düzenleme güçlüklerinin depresyon ve anksiyete gibi farklı psikolojik sorunlarla ilişkili olduğunu; duygu düzenleme becerilerini hedefleyen terapötik yaklaşımların ise çeşitli içselleştirici belirtilerde etkili olabildiğini göstermektedir.",
   "03. Benlik Saygısı ve Özgüven",
-  "Benlik saygısı, kişinin kendisini değerlendirme biçimini; özgüven ise belirli alanlarda başa çıkma ve yeterlilik kapasitesine ilişkin algısını ifade eder. Bu alanlardaki güçlükler çoğu zaman yalnızca “kendine güvenememe” şeklinde ortaya çıkmaz; kişinin sürekli kendisini başkalarıyla kıyaslaması, hata yapmaktan kaçınması, eleştiriyi kişisel değeriyle ilişkilendirmesi veya ilişkilerinde kendi ihtiyaçlarını geri plana atması biçiminde de görülebilir.",
+  `Benlik saygısı, kişinin kendisini değerlendirme biçimini; özgüven ise belirli alanlarda başa çıkma ve yeterlilik kapasitesine ilişkin algısını ifade eder. Bu alanlardaki güçlükler çoğu zaman yalnızca "kendine güvenememe" şeklinde ortaya çıkmaz; kişinin sürekli kendisini başkalarıyla kıyaslaması, hata yapmaktan kaçınması, eleştiriyi kişisel değeriyle ilişkilendirmesi veya ilişkilerinde kendi ihtiyaçlarını geri plana atması biçiminde de görülebilir.`,
   "Bireysel terapide kişinin kendisi hakkında geliştirdiği temel inançlar, geçmiş deneyimlerin bugünkü benlik algısına etkisi ve özdeğerini hangi koşullara bağladığı ele alınabilir. Amaç yapay biçimde olumlu düşünmeye çalışmak değil; kişinin güçlü ve gelişime açık yönlerini daha gerçekçi biçimde değerlendirebilmesini, başarısızlık ve eleştiriyi kişisel değersizlikle eşitlememesini ve özdeğerini daha sağlam bir zeminde yapılandırmasını desteklemektir. Psikoterapi araştırmaları da terapi sonrasında benlik saygısında anlamlı iyileşmeler görülebileceğini göstermektedir.",
   "04. Duygusal İyi Oluş",
-  "Duygusal iyi oluş yalnızca “mutlu hissetmek” anlamına gelmez. Kişinin olumlu ve olumsuz duygularını tanıyabilmesi, yaşamındaki zorluklarla baş edebilmesi, ilişkilerinden anlam ve doyum elde edebilmesi ve yaşadığı duyguları kendisine zarar vermeden yönetebilmesiyle ilişkilidir.",
+  `Duygusal iyi oluş yalnızca "mutlu hissetmek" anlamına gelmez. Kişinin olumlu ve olumsuz duygularını tanıyabilmesi, yaşamındaki zorluklarla baş edebilmesi, ilişkilerinden anlam ve doyum elde edebilmesi ve yaşadığı duyguları kendisine zarar vermeden yönetebilmesiyle ilişkilidir.`,
   "Bireysel terapide kişinin yaşamındaki stres kaynakları, ihtiyaçları, değerleri, ilişkileri ve günlük işlevselliği birlikte değerlendirilir. Süreç yalnızca psikolojik belirtileri azaltmaya değil, kişinin yaşamıyla kurduğu ilişkiyi güçlendirmeye de odaklanır. Bu nedenle terapide öz bakım, sosyal bağlar, yaşam dengesi, anlam, kişisel hedefler ve baş etme kaynakları da ele alınabilir. Klinik psikoloji açısından belirtilerin azaltılması kadar kişinin sürdürülebilir bir psikolojik işlevsellik geliştirmesi de önemlidir.",
   "05. Psikososyal Güçlenme ve Dayanıklılık",
   "Psikolojik dayanıklılık, kişinin hiçbir zaman zorlanmaması veya güçlü görünmesi anlamına gelmez. Dayanıklılık; stres, kayıp, belirsizlik ve yaşamın zorlu koşulları karşısında kişinin yeniden denge kurabilme, kaynaklarını kullanabilme ve yaşamına devam edebilme kapasitesidir. Bu kapasite sabit bir kişilik özelliği olarak değerlendirilmemekte; öğrenilebilen ve geliştirilebilen yönleri bulunduğu kabul edilmektedir.",
   "Bireysel terapide kişinin güçlü yönleri, baş etme biçimleri, sosyal destek ağı, yaşam kaynakları ve çevresel koşulları birlikte değerlendirilir. Sosyal hizmet yaklaşımının kişi-çevre perspektifi doğrultusunda yalnızca bireyin içsel özelliklerine değil; aile, sosyal çevre, ekonomik koşullar ve mevcut destek sistemlerine de bakılır. Güncel meta-analizler, özellikle bilişsel davranışçı, mindfulness ve bütünleştirici müdahalelerin psikolojik dayanıklılığı artırmada olumlu sonuçlar verebildiğini göstermektedir.",
   "06. Sınır Koyma ve Sağlıklı İletişim",
-  "Sağlıklı sınırlar, kişinin hem kendi ihtiyaçlarını ve değerlerini koruyabilmesini hem de karşısındaki kişinin sınırlarına saygı gösterebilmesini sağlar. Sınır koymak yalnızca “hayır” diyebilmek değildir; kişinin neye ihtiyaç duyduğunu fark etmesi, bunu uygun biçimde ifade etmesi ve ilişkilerinde karşılıklılığı koruyabilmesidir.",
+  `Sağlıklı sınırlar, kişinin hem kendi ihtiyaçlarını ve değerlerini koruyabilmesini hem de karşısındaki kişinin sınırlarına saygı gösterebilmesini sağlar. Sınır koymak yalnızca "hayır" diyebilmek değildir; kişinin neye ihtiyaç duyduğunu fark etmesi, bunu uygun biçimde ifade etmesi ve ilişkilerinde karşılıklılığı koruyabilmesidir.`,
   "Terapide kişinin sınır koymakta neden zorlandığı; reddedilme korkusu, suçluluk, onaylanma ihtiyacı, çatışmadan kaçınma, aşırı sorumluluk alma veya geçmiş ilişki deneyimleri üzerinden değerlendirilebilir. İletişim çalışmalarıyla birlikte kişinin kendisini saldırganlaşmadan, pasifleşmeden veya kendisini yok saymadan ifade edebilmesi hedeflenir. Sosyal hizmet perspektifinde ise sağlıklı iletişim yalnızca bireysel bir beceri değil, kişinin ilişkisel çevresi ve yaşam koşulları içinde değerlendirilmesi gereken bir sosyal işlevsellik alanıdır.",
   "07. Ayrılık, Kayıp ve Yas Süreçleri",
   "Ayrılık, ilişki kaybı, boşanma, yakın bir kişinin kaybı, iş veya yaşam düzenindeki önemli değişiklikler kişinin alıştığı dünyada ciddi bir kırılma oluşturabilir. Yas tepkileri yalnızca üzüntüden ibaret değildir; özlem, öfke, suçluluk, boşluk, şaşkınlık, kaygı ve geleceğe ilişkin belirsizlik gibi farklı duygular aynı süreçte ortaya çıkabilir. Bu tepkilerin biçimi ve yoğunluğu kişiden kişiye değişebilir.",
-  "Bireysel terapide amaç kişiye “unutmayı” öğretmek veya yaşadığı kaybı hızla geride bırakmasını beklemek değildir. Kayıp deneyiminin anlamlandırılması, duyguların güvenli biçimde işlenmesi, günlük yaşamın yeniden yapılandırılması ve kişinin geleceğe yeniden yatırım yapabilmesi desteklenir. Klinik değerlendirmede doğal yas tepkileri ile işlevselliği belirgin biçimde bozan ve süreklilik kazanan klinik tablolar birbirinden ayrılır. Yas çalışmalarında psikoterapötik yaklaşımların özellikle klinik düzeyde ve uzamış belirtilerde yararlı olabileceğine ilişkin güçlü kanıtlar bulunmaktadır.",
+  `Bireysel terapide amaç kişiye "unutmayı" öğretmek veya yaşadığı kaybı hızla geride bırakmasını beklemek değildir. Kayıp deneyiminin anlamlandırılması, duyguların güvenli biçimde işlenmesi, günlük yaşamın yeniden yapılandırılması ve kişinin geleceğe yeniden yatırım yapabilmesi desteklenir. Klinik değerlendirmede doğal yas tepkileri ile işlevselliği belirgin biçimde bozan ve süreklilik kazanan klinik tablolar birbirinden ayrılır. Yas çalışmalarında psikoterapötik yaklaşımların özellikle klinik düzeyde ve uzamış belirtilerde yararlı olabileceğine ilişkin güçlü kanıtlar bulunmaktadır.`,
   "08. Kişisel Farkındalık ve Yaşam Becerileri",
   "Kişisel farkındalık, kişinin yalnızca kendisi hakkında düşünmesi değil; duygu, düşünce, ihtiyaç, değer, sınır ve davranışları arasındaki ilişkiyi daha açık biçimde görebilmesidir. Bireysel terapide kişinin yaşamında tekrar eden örüntüler, karar verme biçimleri, ilişkilerdeki tutumu, kaçınma davranışları ve geleceğe ilişkin hedefleri birlikte değerlendirilebilir.",
   "Bu süreçte problem çözme, karar verme, stresle baş etme, zaman ve yaşam düzenini oluşturma, ihtiyaçları ifade etme ve kişisel hedef belirleme gibi yaşam becerileri de güçlendirilebilir. Amaç danışanın terapi sürecine bağımlı hale gelmesi değil; zaman içerisinde kendi yaşamını daha bilinçli değerlendirebilen, seçimlerinin sorumluluğunu üstlenebilen ve karşılaştığı güçlüklerde kullanabileceği psikolojik ve sosyal kaynakları tanıyabilen bir işlevsellik geliştirmesidir. Bu yaklaşım, klinik psikolojinin bireysel işleyişe odaklanan yönüyle sosyal hizmetin güçler ve kişi-çevre perspektifini bir araya getirir."
@@ -351,7 +351,7 @@ const detailedServicePages = {
     intro: "İletişim, güven, çatışma, bağlanma ve ortak yaşam dinamiklerinin bütüncül biçimde ele alındığı çalışma alanı.",
     paragraphs: [
   "Çift terapisi; evli, nişanlı, birlikte yaşayan veya romantik ilişkisini sürdüren çiftlerin ilişkilerinde ortaya çıkan iletişim, duygusal yakınlık, güven, çatışma, sınırlar ve ilişkiyi sürdürme gibi güçlüklerin bütüncül biçimde ele alındığı psikoterapötik bir süreçtir.",
-  "Terapi sürecinde yalnızca “sorun nedir?” sorusuna değil, çiftin yaşadığı sorunun nasıl oluştuğuna, nasıl sürdürüldüğüne ve iki partnerin birbirleriyle kurduğu etkileşim döngüsüne de odaklanılır. Bireysel özelliklerin yanı sıra ilişkinin geçmişi, bağlanma örüntüleri, yaşam koşulları, ailelerle ilişkiler, sosyal çevre ve önemli yaşam geçişleri de değerlendirilir.",
+  `Terapi sürecinde yalnızca "sorun nedir?" sorusuna değil, çiftin yaşadığı sorunun nasıl oluştuğuna, nasıl sürdürüldüğüne ve iki partnerin birbirleriyle kurduğu etkileşim döngüsüne de odaklanılır. Bireysel özelliklerin yanı sıra ilişkinin geçmişi, bağlanma örüntüleri, yaşam koşulları, ailelerle ilişkiler, sosyal çevre ve önemli yaşam geçişleri de değerlendirilir.`,
   "Amaç taraflardan birini haklı, diğerini haksız ilan etmek ya da her koşulda ilişkiyi sürdürmek değildir. Temel hedef; çiftin birbirini daha iyi anlamasını, ihtiyaçlarını daha sağlıklı ifade edebilmesini, ilişkisel güveni güçlendirmesini ve birlikte daha işlevsel kararlar alabilmesini desteklemektir. Çift terapilerine ilişkin araştırmalar, özellikle ilişki doyumu ve iletişim üzerinde anlamlı iyileşmeler sağlanabildiğini göstermektedir.",
   "01. İletişim ve Etkileşim Örüntüleri",
   "Çiftler arasındaki iletişim sorunları yalnızca konuşma sıklığı veya birbirini dinlememe ile sınırlı değildir. Eleştiri, savunmaya geçme, geri çekilme, yanlış anlaşılmalar, duyguları ifade etmekte zorlanma ve aynı tartışmaların tekrar tekrar yaşanması ilişkinin zaman içerisinde yıpranmasına neden olabilir.",
@@ -363,15 +363,15 @@ const detailedServicePages = {
   "03. Güven, Kırılmalar ve İlişkisel Güvenin Yeniden Yapılandırılması",
   "Güven, romantik ilişkinin temel yapı taşlarından biridir. Yalan söyleme, gizlilik, sadakatle ilgili kırılmalar, verilen sözlerin tutulmaması, yoğun kıskançlık veya geçmiş deneyimlerin bugünkü ilişkiye taşınması güven duygusunu zedeleyebilir.",
   "Terapi sürecinde güven sorunu yalnızca yaşanan olay üzerinden değil, olayın partnerler açısından taşıdığı anlam üzerinden değerlendirilir. Kırılmanın ardından ortaya çıkan öfke, korku, değersizlik, kuşku veya geri çekilme gibi tepkiler ele alınarak çiftin güveni yeniden oluşturabilmesi için gerekli ilişkisel koşullar üzerinde çalışılır.",
-  "Burada amaç yaşanan olayı yok saymak veya hızla “affetmek” değildir. Öncelikle güvenin hangi noktada zarar gördüğünü anlamak, sorumlulukları netleştirmek ve ilişkinin yeniden yapılandırılabilmesi için gerçekçi bir zemin oluşturmak hedeflenir.",
+  `Burada amaç yaşanan olayı yok saymak veya hızla "affetmek" değildir. Öncelikle güvenin hangi noktada zarar gördüğünü anlamak, sorumlulukları netleştirmek ve ilişkinin yeniden yapılandırılabilmesi için gerçekçi bir zemin oluşturmak hedeflenir.`,
   "04. Bağlanma, Duygusal Yakınlık ve İlişkisel İhtiyaçlar",
   "Bir çift ilişkisinde insanların yalnızca davranışları değil, güvenli bağ kurma ve duygusal olarak görülme ihtiyaçları da önemlidir. Bazı ilişkilerde bir partner yakınlık ararken diğer partner geri çekilebilir; bazı ilişkilerde ise terk edilme korkusu, aşırı güvence arama veya duygusal uzaklaşma tekrar eden bir döngü oluşturabilir.",
   "Çift terapisinde partnerlerin birbirlerinden hangi duygusal ihtiyaçları bekledikleri ve bu ihtiyaçların ilişki içinde nasıl ifade edildiği incelenebilir. Bağlanma temelli yaklaşımlar, ilişkinin görünen çatışmasının altında bulunan güven, yakınlık, kabul edilme ve desteklenme ihtiyaçlarının anlaşılmasına yardımcı olabilir.",
-  "Bu yaklaşımda amaç partnerlere değişmez “bağlanma stilleri” etiketi koymak değil; ilişkide tekrar eden örüntüleri fark ederek daha güvenli ve esnek bir ilişki kurabilmelerini desteklemektir. İlişki terapilerinde farklı kuramsal yaklaşımların ilişki doyumu üzerinde olumlu sonuçlar sağlayabildiğine dair kapsamlı kanıtlar bulunmaktadır.",
+  `Bu yaklaşımda amaç partnerlere değişmez "bağlanma stilleri" etiketi koymak değil; ilişkide tekrar eden örüntüleri fark ederek daha güvenli ve esnek bir ilişki kurabilmelerini desteklemektir. İlişki terapilerinde farklı kuramsal yaklaşımların ilişki doyumu üzerinde olumlu sonuçlar sağlayabildiğine dair kapsamlı kanıtlar bulunmaktadır.`,
   "05. Sınırlar, Bireysellik ve İlişkisel Denge",
   "Sağlıklı bir çift ilişkisi yalnızca birlikte hareket etmekten değil, iki bireyin kendi sınırlarını ve bireysel alanlarını koruyabilmesinden de oluşur. Ailelerle ilişkiler, arkadaşlıklar, kişisel zaman, ekonomik konular, özel alan ve karar verme süreçleri sınırların önemli olduğu alanlardan bazılarıdır.",
   "Çift terapisinde sınırların aşırı katı, aşırı geçirgen veya belirsiz hale gelmesinin ilişki üzerindeki etkileri değerlendirilebilir. Bir partnerin sürekli geri planda kalması, diğerinin tüm kararları üstlenmesi veya çiftin kendi sınırlarını geniş aile ya da sosyal çevreden ayırmakta zorlanması gibi durumlar ele alınabilir.",
-  "Amaç bağımsızlık ile yakınlık arasında sağlıklı bir denge kurmak; “ilişkide olmak” ile “kendini kaybetmek” arasındaki farkı görünür hale getirmektir.",
+  `Amaç bağımsızlık ile yakınlık arasında sağlıklı bir denge kurmak; "ilişkide olmak" ile "kendini kaybetmek" arasındaki farkı görünür hale getirmektir.`,
   "06. İlişki Geçişleri ve Evlilik Öncesi Dönem",
   "Çift terapisi yalnızca sorunların yoğunlaştığı ilişkiler için değildir. İlişkinin yeni bir döneme geçtiği zamanlarda da profesyonel destek yararlı olabilir.",
   "Nişanlanma, birlikte yaşamaya başlama, evlilik kararı, farklı bir şehre taşınma, çocuk sahibi olma veya ilişkinin geleceğiyle ilgili önemli kararlar çiftin mevcut dengesini değiştirebilir. Bu geçiş dönemlerinde beklentilerin, değerlerin ve yaşam planlarının konuşulması gelecekte ortaya çıkabilecek çatışmaların daha erken fark edilmesine yardımcı olabilir.",
@@ -383,7 +383,7 @@ const detailedServicePages = {
   "08. Yaşam Değişiklikleri, Ortak Yaşam ve İş Birliği",
   "Romantik ilişkiler yaşam boyunca değişen koşullardan etkilenir. Ekonomik sorunlar, iş değişiklikleri, taşınma, çocuk sahibi olma, aile büyüklerine yönelik bakım sorumlulukları veya diğer önemli yaşam olayları çiftin ilişki dinamiklerini değiştirebilir.",
   "Çift terapisinde bu değişikliklerin ilişki üzerindeki etkisi değerlendirilirken yalnızca partnerlerin bireysel özelliklerine değil, içinde bulundukları sosyal ve ekonomik koşullara da bakılır. Sosyal hizmet perspektifinde ilişki, kişinin içinde bulunduğu aile ve sosyal çevreden bağımsız ele alınmaz.",
-  "Amaç çiftin tüm yaşam sorunlarını yalnızca “ilişki problemi” olarak tanımlamak yerine, değişen koşullar karşısında birlikte hareket etme, görev paylaşımı yapma, sosyal kaynaklarını kullanma ve birbirlerine destek olma kapasitesini güçlendirmektir."
+  `Amaç çiftin tüm yaşam sorunlarını yalnızca "ilişki problemi" olarak tanımlamak yerine, değişen koşullar karşısında birlikte hareket etme, görev paylaşımı yapma, sosyal kaynaklarını kullanma ve birbirlerine destek olma kapasitesini güçlendirmektir.`
 ]
   },
   "psikososyal-destek": {
@@ -404,7 +404,7 @@ const detailedServicePages = {
   "06. Sosyal ve Kurumsal Kaynaklara Yönlendirme",
   "Bazı psikososyal güçlüklerin çözümü yalnızca bireysel görüşmelerle mümkün olmayabilir. Ekonomik sorunlar, barınma, sosyal haklara erişim, eğitim, sağlık, aile hizmetleri veya hukuki süreçler gibi alanlarda uygun kurum ve hizmetlere erişim gerekebilir. Sosyal hizmet yaklaşımı doğrultusunda kişinin ihtiyaçları belirlenerek uygun sosyal ve kurumsal kaynaklara yönlendirilmesi desteklenir.",
   "07. Afet ve Kriz Sonrası Psikososyal Destek",
-  "Afetler ve kriz durumları kişinin güvenlik algısını, sosyal çevresini, ekonomik koşullarını ve günlük yaşam düzenini aynı anda etkileyebilir. Bu süreçte amaç herkesi “travma hastası” olarak değerlendirmek değil; kişinin güvenlik, temel ihtiyaçlar, sosyal destek ve psikolojik baş etme kapasitesini değerlendirmek ve ihtiyaç duyduğu desteğe erişimini sağlamaktır. Psikolojik İlk Yardım yaklaşımı da kriz sonrasında kişiye onurunu, kültürel özelliklerini ve mevcut kapasitesini gözeten insani, destekleyici ve pratik yardım sunmayı temel alır.",
+  `Afetler ve kriz durumları kişinin güvenlik algısını, sosyal çevresini, ekonomik koşullarını ve günlük yaşam düzenini aynı anda etkileyebilir. Bu süreçte amaç herkesi "travma hastası" olarak değerlendirmek değil; kişinin güvenlik, temel ihtiyaçlar, sosyal destek ve psikolojik baş etme kapasitesini değerlendirmek ve ihtiyaç duyduğu desteğe erişimini sağlamaktır. Psikolojik İlk Yardım yaklaşımı da kriz sonrasında kişiye onurunu, kültürel özelliklerini ve mevcut kapasitesini gözeten insani, destekleyici ve pratik yardım sunmayı temel alır.`,
   "08. Göç, Yer Değiştirme ve Yeni Yaşama Uyum",
   "Göç ve zorunlu yer değiştirme yalnızca fiziksel bir mekân değişikliği değildir; kişinin sosyal bağları, yaşam rolleri, kültürel aidiyeti ve güvenlik algısı üzerinde önemli değişiklikler yaratabilir. Psikososyal destek bu süreçte kişinin kayıplarını anlamlandırmasına, sosyal bağlarını yeniden oluşturmasına ve yeni yaşam çevresine uyumunu güçlendirmesine yardımcı olabilir."
 ]
@@ -415,10 +415,10 @@ const detailedServicePages = {
     intro: "Kayıp, değişim, duygusal düzenleme, yeni yaşam düzeni ve psikososyal uyumun birlikte ele alındığı danışmanlık süreci.",
     paragraphs: [
   "Boşanma yalnızca hukuki bir ilişkinin sona ermesi değildir. Çoğu zaman kişinin alıştığı yaşam düzeninin, ilişki biçiminin, aile içindeki rolünün, gelecek tasarımının, ekonomik ve sosyal düzeninin yeniden yapılandırılmasını gerektiren çok boyutlu bir yaşam geçişidir. Bu nedenle boşanma süreci; üzüntü, öfke, suçluluk, yalnızlık, belirsizlik, reddedilme, kaygı, özlem, değersizlik ve gelecek hakkında umutsuzluk gibi birbirinden farklı duygusal tepkilerin aynı dönemde yaşanabildiği karmaşık bir psikososyal süreçtir.",
-  "Özellikle uzun süreli ilişkilerde kişi yalnızca eşini değil; birlikte kurduğu yaşamı, aile sistemini, gündelik rutinlerini, sosyal çevresini, ebeveynlik düzenini ve geleceğe ilişkin beklentilerini de yeniden değerlendirmek durumunda kalabilir. Bu nedenle boşanma sonrasında yaşanan güçlüğü yalnızca “ilişkinin bitmesine üzülmek” şeklinde değerlendirmek, sürecin psikolojik ve sosyal boyutlarını yeterince açıklamayabilir.",
+  `Özellikle uzun süreli ilişkilerde kişi yalnızca eşini değil; birlikte kurduğu yaşamı, aile sistemini, gündelik rutinlerini, sosyal çevresini, ebeveynlik düzenini ve geleceğe ilişkin beklentilerini de yeniden değerlendirmek durumunda kalabilir. Bu nedenle boşanma sonrasında yaşanan güçlüğü yalnızca "ilişkinin bitmesine üzülmek" şeklinde değerlendirmek, sürecin psikolojik ve sosyal boyutlarını yeterince açıklamayabilir.`,
   "Boşanma ve Yas Danışmanlığı kapsamında temel amacım; yaşadığınız kayıp ve değişim deneyimini patolojikleştirmeden anlamlandırmanıza, yoğun duygusal yükünüzü düzenlemenize, işlevselliğinizi yeniden oluşturmanıza ve yaşamınızın bundan sonraki dönemini daha sağlıklı bir psikolojik ve sosyal zeminde yapılandırmanıza destek olmaktır.",
   "Boşanma sonrasında neler yaşanabilir?",
-  "Boşanma öncesi, boşanma süreci ve boşanma sonrasında ortaya çıkan psikolojik tepkiler kişiden kişiye değişebilir. Bazı kişiler yoğun üzüntü ve özlem yaşarken, bazı kişiler öfke, rahatlama, suçluluk veya boşluk hissedebilir. Bazı kişiler ise uzun süre duygusal olarak donuklaşmış, kararsız veya “ne hissettiğini bilemez” durumda olabilir.",
+  `Boşanma öncesi, boşanma süreci ve boşanma sonrasında ortaya çıkan psikolojik tepkiler kişiden kişiye değişebilir. Bazı kişiler yoğun üzüntü ve özlem yaşarken, bazı kişiler öfke, rahatlama, suçluluk veya boşluk hissedebilir. Bazı kişiler ise uzun süre duygusal olarak donuklaşmış, kararsız veya "ne hissettiğini bilemez" durumda olabilir.`,
   "Klinik açıdan önemli olan, belirli bir duygunun yaşanıp yaşanmaması değil; bu duyguların yoğunluğu, sürekliliği, kişinin günlük yaşamına etkisi, işlevsellik düzeyi, baş etme kaynakları ve beraberinde ortaya çıkan psikolojik belirtilerin niteliğidir.",
   "Boşanma sonrasında özellikle;",
   "yoğun üzüntü ve özlem,",
@@ -437,13 +437,13 @@ const detailedServicePages = {
   "Bu belirtilerin ortaya çıkması tek başına psikiyatrik bir bozukluk olduğu anlamına gelmez. Yas, kayıp ve yaşam geçişlerine verilen tepkilerin önemli bir kısmı insanın uyum sürecinin doğal parçalarıdır. Klinik değerlendirmede amaç, normal ve beklenebilir duygusal tepkileri gereksiz biçimde hastalık olarak tanımlamak değil; kişinin işlevselliğini bozan, süreklilik kazanan veya başka klinik sorunlarla birlikte ortaya çıkan durumları uygun biçimde değerlendirmektir.",
   "Yakın bir kişinin ölümünün ardından gelişen ve belirli tanı ölçütlerini karşılayan bir durumdur. Boşanma sonrası yaşanan kayıp tepkisi doğrudan bu tanı kategorisiyle eşleştirilmemelidir. Bununla birlikte boşanma, klinik değerlendirmede depresif belirtiler, anksiyete, travma sonrası belirtiler veya uyum güçlükleri gibi başka psikolojik sorunların değerlendirilmesini gerektirebilir.",
   "Boşanma ve Yas Danışmanlığında psikolojik olarak neye odaklanıyoruz?",
-  "Danışmanlık sürecinde yalnızca “boşanmayı atlatmaya” çalışmayız. Daha geniş bir perspektiften hareket ederiz.",
+  `Danışmanlık sürecinde yalnızca "boşanmayı atlatmaya" çalışmayız. Daha geniş bir perspektiften hareket ederiz.`,
   "Öncelikle kişinin yaşadığı kaybı ve mevcut psikolojik durumunu anlamaya çalışırız. Ardından boşanmanın kişinin düşünceleri, duyguları, davranışları, sosyal ilişkileri, ebeveynlik rolü ve yaşam koşulları üzerindeki etkilerini birlikte değerlendiririz.",
   "Süreç içerisinde özellikle şu alanlara odaklanılabilir:",
   "Kayıp ve yasın anlamlandırılması:\nİlişkinin sona ermesiyle birlikte ortaya çıkan duyguların tanınması, ifade edilmesi ve kişinin yaşadığı kaybın kendi yaşam öyküsü içerisindeki anlamının çalışılması.",
   "Duygusal düzenleme:\nÖfke, kaygı, suçluluk, yoğun üzüntü, özlem ve belirsizlik gibi duyguların bastırılması yerine tanınması, düzenlenmesi ve daha işlevsel biçimde yönetilmesi.",
-  "Bilişsel süreçlerin ele alınması:\n“Ben nerede hata yaptım?”, “Bir daha kimseye güvenemem”, “Artık hayatım bitti”, “Yeterince iyi değildim” veya “Her şey benim suçum” gibi kişinin psikolojik yükünü artırabilen katı ve işlevsiz düşünce örüntülerinin değerlendirilmesi.",
-  "Kimlik ve benlik algısı:\nÖzellikle uzun süreli ilişkilerden sonra kişinin “eş”, “anne”, “baba” veya “partner” rolünün ötesinde kendi bireysel kimliğini yeniden yapılandırabilmesine destek olmak.",
+  `Bilişsel süreçlerin ele alınması:\n"Ben nerede hata yaptım?", "Bir daha kimseye güvenemem", "Artık hayatım bitti", "Yeterince iyi değildim" veya "Her şey benim suçum" gibi kişinin psikolojik yükünü artırabilen katı ve işlevsiz düşünce örüntülerinin değerlendirilmesi.`,
+  `Kimlik ve benlik algısı:\nÖzellikle uzun süreli ilişkilerden sonra kişinin "eş", "anne", "baba" veya "partner" rolünün ötesinde kendi bireysel kimliğini yeniden yapılandırabilmesine destek olmak.`,
   "Yeni yaşam düzenine uyum:\nGündelik yaşamın, sosyal ilişkilerin, kişisel hedeflerin, çalışma hayatının ve geleceğe yönelik planların yeniden oluşturulması.",
   "İlişki örüntülerinin değerlendirilmesi:\nKişinin geçmiş ilişkisinde tekrar eden iletişim, bağlanma, sınır, çatışma ve kişilerarası örüntülerin fark edilmesi; gelecekte benzer döngülerin tekrarlanma riskinin azaltılması.",
   "Ebeveynlik ve ortak ebeveynlik:\nÇocuk sahibi olan bireylerde boşanmayı yalnızca eşler arasındaki ilişkinin sona ermesi olarak değil, aynı zamanda yeni bir ebeveynlik ve aile organizasyonu süreci olarak ele almak.",
@@ -467,19 +467,19 @@ const detailedServicePages = {
   "6. Çocuklu boşanmalarda ebeveynlik ve ortak ebeveynlik",
   "7. Yeni yaşam düzeninin oluşturulması ve sürecin sonlandırılması",
   "Danışmanlıkta temel yaklaşımım",
-  "Boşanma sonrasında amaç size “unutmayı” öğretmek değildir.",
+  `Boşanma sonrasında amaç size "unutmayı" öğretmek değildir.`,
   "Amaç; yaşadığınız ilişkinin ve kaybın yaşamınızdaki anlamını anlayabilmeniz, geçmişin bütün ağırlığını geleceğe taşımadan ondan öğrendiklerinizi yanınıza alabilmeniz ve kendi yaşamınız üzerinde yeniden söz sahibi olabilmenizdir.",
   "Çünkü iyileşme her zaman geçmişi geride bırakmak anlamına gelmez.",
   "Bazen iyileşme;",
-  "“Bunun başıma gelmemiş olmasını isterdim; ancak artık hayatımı bunun etrafında kurmak zorunda değilim.”",
+  `"Bunun başıma gelmemiş olmasını isterdim; ancak artık hayatımı bunun etrafında kurmak zorunda değilim."`,
   "diyebilecek psikolojik esnekliğe ulaşmaktır.",
   "Boşanma bir hayatın bittiği nokta olabilir; ancak psikolojik olarak çalışıldığında aynı zamanda kişinin kendisiyle, ihtiyaçlarıyla, sınırlarıyla, değerleriyle ve bundan sonraki yaşamıyla yeniden ilişki kurduğu bir geçiş dönemi de olabilir.",
   "Bu süreçte hedefim; yaşadığınız güçlüğün yalnızca yükünü değil, aynı zamanda sahip olduğunuz güçleri, kaynakları ve değişim kapasitesini de birlikte görünür hale getirmektir.",
   "Bilimsel Dayanak",
   "Bu danışmanlık çerçevesi; yas, psikoterapi, boşanma sonrası uyum, aile sistemleri, ortak ebeveynlik ve sosyal/psikolojik işlevsellik üzerine mevcut literatürün sentezine dayanmaktadır.",
-  "Kızıltan ve Ulusoy'un DergiPark'ta yayımlanan doküman analizinde 2001–2021 dönemindeki deneysel çalışmalarda yas müdahalelerinde kullanılan farklı psikolojik yaklaşımlar incelenmiş; yasın bireyler arasında farklılaşan bir süreç olduğu ve profesyonel müdahalenin kişinin gereksinimlerine göre ele alınması gerektiği vurgulanmıştır.",
+  `Kızıltan ve Ulusoy'un DergiPark'ta yayımlanan doküman analizinde 2001-"2021 dönemindeki deneysel çalışmalarda yas müdahalelerinde kullanılan farklı psikolojik yaklaşımlar incelenmiş; yasın bireyler arasında farklılaşan bir süreç olduğu ve profesyonel müdahalenin kişinin gereksinimlerine göre ele alınması gerektiği vurgulanmıştır.`,
   "Yıldız Önal ve Köseoğlu'nun Türkiye'deki psikolojik danışmanlarla yaptığı nitel çalışmada ise yasın yalnızca ölümle sınırlı olmadığı, danışanların farklı yaşam kayıplarıyla da profesyonel destek sürecine başvurabildiği ve kültürel/toplumsal faktörlerin yas deneyiminin anlaşılmasında önemli olduğu belirtilmiştir.",
-  "Boşanma sonrası çocuklara yönelik müdahaleleri değerlendiren meta-analiz, 30 çalışmadan elde edilen 4.344 kişilik veri setinde müdahalelerin özellikle boşanmaya uyum ve benlik saygısı gibi bazı sonuçlarda yarar sağlayabildiğini, ancak çocukların genel ruh sağlığı sonuçlarında bütüncül ve büyük etkiler ortaya koymadığını bildirmiştir. Bu nedenle “tek bir müdahale herkes için etkilidir” yaklaşımı yerine, müdahalenin çocuğun ve ailenin ihtiyaçlarına göre uyarlanması daha bilimsel bir yaklaşımdır.",
+  `Boşanma sonrası çocuklara yönelik müdahaleleri değerlendiren meta-analiz, 30 çalışmadan elde edilen 4.344 kişilik veri setinde müdahalelerin özellikle boşanmaya uyum ve benlik saygısı gibi bazı sonuçlarda yarar sağlayabildiğini, ancak çocukların genel ruh sağlığı sonuçlarında bütüncül ve büyük etkiler ortaya koymadığını bildirmiştir. Bu nedenle "tek bir müdahale herkes için etkilidir" yaklaşımı yerine, müdahalenin çocuğun ve ailenin ihtiyaçlarına göre uyarlanması daha bilimsel bir yaklaşımdır.`,
   "Yas psikoterapileri üzerine 2024 tarihli sistematik derleme ve ağ meta-analizi, farklı psikoterapi modellerinin yas belirtileri üzerinde etkili olabildiğini; özellikle bilişsel davranışçı ve üçüncü dalga BDT yaklaşımlarının depresyon, anksiyete ve travma sonrası belirtiler gibi eşlik eden sorunlarda da yararlı olabileceğini göstermiştir.",
   "Bununla birlikte, yas ve boşanma sonrasında ortaya çıkan her üzüntü klinik bir bozukluk değildir. DSM-5-TR'de yer alan Uzamış Yas Bozukluğu ölüm sonrası kayıpla ilişkilidir ve belirli süre, belirti ve işlev kaybı ölçütlerinin karşılanmasını gerektirir. Bu nedenle boşanma sonrası yaşanan doğal yas tepkilerinin otomatik biçimde psikiyatrik bir bozukluk olarak değerlendirilmesi doğru değildir.",
   "Önemli etik sınır: Burada belirtilen yaklaşımlar danışanın değerlendirme sonuçlarına, mesleki yetkinlik alanına ve gereksinimlerine göre kullanılabilecek kuramsal çerçevelerdir. Her ekol her danışanda veya her boşanma sürecinde aynı şekilde uygulanmaz. Gerekli durumlarda psikiyatri, klinik psikoloji, hukuk, çocuk ve aile hizmetleri gibi ilgili profesyonel alanlara yönlendirme yapılması sürecin önemli bir parçasıdır."
@@ -492,18 +492,18 @@ const detailedServicePages = {
     paragraphs: [
   "Bekâr olmak tek başına psikolojik bir sorun, eksiklik veya tedavi edilmesi gereken bir durum değildir.",
   "Kişinin yaşamında romantik bir ilişkinin bulunmaması; kimi zaman bilinçli ve tercih edilen bir yaşam biçimi, kimi zaman yaşamın belirli bir dönemine ait geçici bir durum, kimi zaman ise kişinin istemediği halde içerisinde bulunduğu ve psikolojik olarak zorlandığı bir deneyim olabilir.",
-  "Bu nedenle Bekar Danışmanlığı, kişiyi “bir ilişkiye sahip olmaya” yönlendiren bir yaklaşım değildir. Temel amaç; kişinin ilişki durumundan bağımsız olarak psikolojik iyi oluşunu güçlendirmesi, kendisini ve ilişki örüntülerini daha iyi tanıması, sağlıklı kişilerarası sınırlar geliştirmesi ve kendi değerleri doğrultusunda daha işlevsel bir yaşam kurabilmesine destek olmaktır.",
+  `Bu nedenle Bekar Danışmanlığı, kişiyi "bir ilişkiye sahip olmaya" yönlendiren bir yaklaşım değildir. Temel amaç; kişinin ilişki durumundan bağımsız olarak psikolojik iyi oluşunu güçlendirmesi, kendisini ve ilişki örüntülerini daha iyi tanıması, sağlıklı kişilerarası sınırlar geliştirmesi ve kendi değerleri doğrultusunda daha işlevsel bir yaşam kurabilmesine destek olmaktır.`,
   "Bekârlık deneyiminin kişinin yaşam doyumunu ve psikolojik iyi oluşunu nasıl etkilediği; sosyal destek, kişisel özellikler, ilişki beklentileri, yalnızlık, sosyal bağlar ve kişinin bekârlığı nasıl anlamlandırdığı gibi pek çok faktöre bağlı olarak değişebilmektedir.",
   "Bu nedenle danışmanlık sürecinde soru yalnızca:",
-  "“Neden bir ilişkiniz yok?”",
+  `"Neden bir ilişkiniz yok?"`,
   "değildir.",
   "Daha kapsamlı sorular sorarız:",
-  "“Bekârlık sizin için ne ifade ediyor?”",
-  "“Yalnızlık ile tek başına olmak arasındaki farkı nasıl yaşıyorsunuz?”",
-  "“Bir ilişkiye ne kadar ihtiyaç duyduğunuzu düşünüyorsunuz ve bu ihtiyacın ne kadarı sizin gerçek ihtiyaçlarınızdan, ne kadarı sosyal beklentilerden kaynaklanıyor?”",
-  "“İlişkilerinizde tekrar eden bir örüntü var mı?”",
-  "“Yakınlaşmak istediğiniz halde geri çekiliyor musunuz, yoksa yakınlık oluştuğunda kaygınız mı artıyor?”",
-  "“Bir ilişki içerisinde kendinizi kaybetme, terk edilme veya reddedilme korkusu yaşıyor musunuz?”",
+  `"Bekârlık sizin için ne ifade ediyor?"`,
+  `"Yalnızlık ile tek başına olmak arasındaki farkı nasıl yaşıyorsunuz?"`,
+  `"Bir ilişkiye ne kadar ihtiyaç duyduğunuzu düşünüyorsunuz ve bu ihtiyacın ne kadarı sizin gerçek ihtiyaçlarınızdan, ne kadarı sosyal beklentilerden kaynaklanıyor?"`,
+  `"İlişkilerinizde tekrar eden bir örüntü var mı?"`,
+  `"Yakınlaşmak istediğiniz halde geri çekiliyor musunuz, yoksa yakınlık oluştuğunda kaygınız mı artıyor?"`,
+  `"Bir ilişki içerisinde kendinizi kaybetme, terk edilme veya reddedilme korkusu yaşıyor musunuz?"`,
   "Bu sorular üzerinden kişinin yalnızca ilişki durumunu değil, benlik algısını, kişilerarası işlevselliğini ve psikolojik ihtiyaçlarını anlamaya çalışırız.",
   "Bekar Danışmanlığında hangi konular ele alınabilir?",
   "Bekârlık deneyiminin danışmanlık ihtiyacına dönüşmesi birbirinden oldukça farklı nedenlerle gerçekleşebilir.",
@@ -518,7 +518,7 @@ const detailedServicePages = {
   "reddedilme duyarlılığı,",
   "düşük özdeğer ve özsaygı,",
   "kendini başkalarıyla kıyaslama,",
-  "“herkesin hayatında biri var, benim neden yok?” düşünceleri,",
+  `"herkesin hayatında biri var, benim neden yok?" düşünceleri,`,
   "yaş ve evlilik baskısı,",
   "aile ve sosyal çevrenin ilişki konusunda oluşturduğu baskı,",
   "geçmiş ilişkilerin etkileri,",
@@ -534,17 +534,17 @@ const detailedServicePages = {
   "ilişki konusunda umutsuzluk,",
   "sağlıklı iletişim ve ihtiyaç ifade etme becerileri",
   "gibi alanlar çalışılabilir.",
-  "Buradaki temel yaklaşım, “sizi mutlaka bir ilişkiye sokmak” değil; neden belirli ilişki örüntülerinin ortaya çıktığını anlamak ve kişinin romantik ilişkilerle kurduğu ilişkiyi daha sağlıklı hale getirmektir.",
+  `Buradaki temel yaklaşım, "sizi mutlaka bir ilişkiye sokmak" değil; neden belirli ilişki örüntülerinin ortaya çıktığını anlamak ve kişinin romantik ilişkilerle kurduğu ilişkiyi daha sağlıklı hale getirmektir.`,
   "Bekârlık ve yalnızlık aynı şey değildir",
   "Psikolojik açıdan önemli ayrımlardan biri bekârlık ile yalnızlığın birbirine eşit kabul edilmemesidir.",
   "Bir insan romantik ilişkisi olmadan da güçlü sosyal bağlara, arkadaşlıklara, aile ilişkilerine, mesleki aidiyete ve anlamlı bir yaşam alanına sahip olabilir.",
   "Bunun tersine kişi romantik bir ilişki içerisinde olduğu halde yoğun yalnızlık yaşayabilir.",
   "Türkiye'de yayımlanan nitel bir çalışmada 15 bekâr ve 15 evli bireyle yapılan görüşmelerde, bekâr katılımcıların yalnızlığı daha yoğun yaşadıkları ve bazı katılımcıların yalnızlıkla baş etmek için yalnızlığı besleyebilecek olumsuz başa çıkma biçimleri geliştirdikleri bildirilmiştir.",
-  "“Artık birini bulmalıyım” düşüncesi neden önemli?",
+  `"Artık birini bulmalıyım" düşüncesi neden önemli?`,
   "Bazı kişiler için bekârlığın yarattığı temel güçlük yalnız kalmak değil, bekâr kalma korkusudur.",
-  "Daha güncel araştırmalarda da ilişkiyi “gerçek mutluluğun zorunlu koşulu” olarak gören düşüncelerin daha yüksek bekâr kalma korkusuyla ilişkili olduğu; bekâr kalma korkusunun ise günlük yaşam doyumunun daha düşük olmasıyla bağlantılı olduğu bulunmuştur.",
-  "Bu nedenle danışmanlık sürecinde bazen asıl çalışılması gereken konu “nasıl sevgili bulabilirim?” sorusu değil;",
-  "“Neden yalnız kalmayı bu kadar tehdit edici algılıyorum?” sorusudur.",
+  `Daha güncel araştırmalarda da ilişkiyi "gerçek mutluluğun zorunlu koşulu" olarak gören düşüncelerin daha yüksek bekâr kalma korkusuyla ilişkili olduğu; bekâr kalma korkusunun ise günlük yaşam doyumunun daha düşük olmasıyla bağlantılı olduğu bulunmuştur.`,
+  `Bu nedenle danışmanlık sürecinde bazen asıl çalışılması gereken konu "nasıl sevgili bulabilirim?" sorusu değil;`,
+  `"Neden yalnız kalmayı bu kadar tehdit edici algılıyorum?" sorusudur.`,
   "Çünkü kişi yalnız kalmaktan yoğun biçimde korktuğunda;",
   "kendisine uygun olmayan ilişkilere razı olabilir,",
   "kırmızı bayrakları görmezden gelebilir,",
@@ -573,11 +573,11 @@ const detailedServicePages = {
   "Yetişkin romantik ilişkilerinde bağlanma örüntüleri; yakınlık, güven, ayrılma, bağımsızlık ve duygusal ihtiyaçların ifade edilmesiyle ilişkili olabilir.",
   "Bağlanma temelli psikoterapi literatürünün gözden geçirmeleri; yetişkinlerle çalışırken içsel çalışma modellerinin ele alınması, terapötik ilişkinin güvenli bir temel olarak kullanılması, ilişki deneyimlerinin işlenmesi ve farklı bağlanma örüntülerinin anlaşılmasının klinik açıdan yararlı çerçeveler sunduğunu belirtmektedir.",
   "Geniş kapsamlı bir meta-analizde 224 çalışma ve yaklaşık 79.700 kişinin verileri incelenmiş; daha yüksek bağlanma kaygısı ve kaçınmasının depresyon, anksiyete ve yalnızlık gibi olumsuz ruhsal sonuçlarla ilişkili olduğu, buna karşılık yaşam doyumu ve özsaygıyla daha olumsuz ilişkiler gösterdiği bulunmuştur. Bağlanma kaygısının negatif ruh sağlığı göstergeleriyle ilişkisi kaçınmaya kıyasla daha güçlü bulunmuştur.",
-  "Türkiye'deki çalışmalar da romantik ilişkilerde bağlanma örüntülerinin ilişki deneyimleriyle bağlantısını incelemektedir; ancak bu tür ilişkisel çalışmaların nedensellik kanıtlamadığı ve “bağlanma stilinin kader olmadığı” özellikle dikkate alınmalıdır.",
-  "Bu nedenle danışmanlıkta kişiye “Sen kaygılı bağlanıyorsun” şeklinde sabit bir kimlik vermek yerine, “Yakın ilişkilerde hangi ihtiyaç ve savunma örüntüleri tekrar ediyor?” sorusuna odaklanmak daha klinik olarak uygun bir yaklaşımdır.",
+  `Türkiye'deki çalışmalar da romantik ilişkilerde bağlanma örüntülerinin ilişki deneyimleriyle bağlantısını incelemektedir; ancak bu tür ilişkisel çalışmaların nedensellik kanıtlamadığı ve "bağlanma stilinin kader olmadığı" özellikle dikkate alınmalıdır.`,
+  `Bu nedenle danışmanlıkta kişiye "Sen kaygılı bağlanıyorsun" şeklinde sabit bir kimlik vermek yerine, "Yakın ilişkilerde hangi ihtiyaç ve savunma örüntüleri tekrar ediyor?" sorusuna odaklanmak daha klinik olarak uygun bir yaklaşımdır.`,
   "Kabul ve Kararlılık Terapisi",
   "Kişilerarası Terapi ve Kişilerarası Beceri Çalışmaları",
-  "Bazı danışanların temel güçlüğü “kendilik algısı”ndan çok kişilerarası ilişkilerin kurulması ve sürdürülmesi olabilir.",
+  `Bazı danışanların temel güçlüğü "kendilik algısı"ndan çok kişilerarası ilişkilerin kurulması ve sürdürülmesi olabilir.`,
   "Bu durumda;",
   "iletişim başlatma,",
   "duygusal ihtiyaç ifade etme,",
@@ -591,12 +591,12 @@ const detailedServicePages = {
   "Çözüm Odaklı ve Güçler Perspektifi",
   "Sosyal hizmet perspektifinde birey yalnızca sorunlarıyla değil, sahip olduğu kaynaklar ve güçleriyle birlikte değerlendirilir.",
   "Bu nedenle danışmanlıkta;",
-  "“Hayatınızda şu anda size iyi gelen ilişkiler hangileri?”",
-  "“Daha önce hangi sosyal durumlarda kendinizi yeterli hissettiniz?”",
-  "“Şu an sahip olduğunuz hangi kaynakları daha aktif kullanabilirsiniz?”",
-  "“Nasıl bir yaşam kurmak istiyorsunuz?”",
+  `"Hayatınızda şu anda size iyi gelen ilişkiler hangileri?"`,
+  `"Daha önce hangi sosyal durumlarda kendinizi yeterli hissettiniz?"`,
+  `"Şu an sahip olduğunuz hangi kaynakları daha aktif kullanabilirsiniz?"`,
+  `"Nasıl bir yaşam kurmak istiyorsunuz?"`,
   "gibi sorularla kişinin mevcut güçleri görünür hale getirilebilir.",
-  "Bu yaklaşım, kişiyi “ilişki bulması gereken bir problem” olarak değil, kendi yaşamının aktif öznesi olarak ele alır.",
+  `Bu yaklaşım, kişiyi "ilişki bulması gereken bir problem" olarak değil, kendi yaşamının aktif öznesi olarak ele alır.`,
   "Toplumun evlilik konusundaki beklentileri, aile baskısı, sosyal karşılaştırmalar, ekonomik koşullar, çalışma hayatı, yaş normları, sosyal çevrenin genişliği, yaşam alanı ve sosyal destek sistemleri kişinin bekârlık deneyimini etkileyebilir. Bu nedenle danışmanlık sürecinde yalnızca bireyin iç dünyasına değil, kişi-çevre etkileşimine de bakılır.",
   "Örneğin kişinin sosyal çevresinin son yıllarda daralması, farklı bir şehre taşınması, çalışma koşullarının sosyal ilişkileri azaltması veya ailesinin yoğun evlilik baskısı oluşturması psikolojik değerlendirmede göz önünde bulundurulabilir.",
   "Danışmanlık Süreci Nasıl İlerliyor?",
@@ -616,7 +616,7 @@ const detailedServicePages = {
   "sosyal çevre eksikliği,",
   "ilişki beklentilerindeki katılık",
   "gibi hangi faktörlerle bağlantılı olduğu birlikte değerlendirilir.",
-  "Böylece genel bir “ilişki problemi” yerine kişiye özgü bir psikososyal formülasyon oluşturulur.",
+  `Böylece genel bir "ilişki problemi" yerine kişiye özgü bir psikososyal formülasyon oluşturulur.`,
   "3. Duygusal ve Bilişsel Süreçlerin Çalışılması",
   "Bu aşamada kişinin yalnızlık, değersizlik, kaygı, öfke, kıyaslama veya umutsuzluk gibi duyguları ele alınmaktadır.",
   "4. İlişki Örüntülerinin İncelenmesi",
@@ -626,21 +626,21 @@ const detailedServicePages = {
   "7. Sağlıklı İlişki Kurma ve Sınır Geliştirme",
   "8. Sürecin Değerlendirilmesi ve Sürdürülmesi",
   "Sürecin sonunda kişinin yalnızca danışmanlık sırasında değil, günlük yaşamda kullanabileceği psikolojik beceriler güçlendirilir.",
-  "Hedef danışana sürekli olarak “ne yapması gerektiğini” söylemek değil; kendi kararlarını daha sağlıklı değerlendirebilecek psikolojik kapasiteyi geliştirmesine yardımcı olmaktır.",
+  `Hedef danışana sürekli olarak "ne yapması gerektiğini" söylemek değil; kendi kararlarını daha sağlıklı değerlendirebilecek psikolojik kapasiteyi geliştirmesine yardımcı olmaktır.`,
   "Kimler Bekar Danışmanlığından Yararlanabilir?",
-  "Bekâr olduğu için kendisini “problemli” hissedenlerin değil; bekârlık deneyimiyle ilişkili bir konuda psikolojik veya psikososyal destek ihtiyacı hisseden yetişkinlerin başvurabileceği bir çalışma alanıdır.",
+  `Bekâr olduğu için kendisini "problemli" hissedenlerin değil; bekârlık deneyimiyle ilişkili bir konuda psikolojik veya psikososyal destek ihtiyacı hisseden yetişkinlerin başvurabileceği bir çalışma alanıdır.`,
   "Örneğin;",
-  "“İlişki kurmak istiyorum ama neden sürekli aynı döngüye giriyorum?”",
-  "“İnsanlarla yakınlaşmakta zorlanıyorum.”",
-  "“Bir ilişki istiyorum ama reddedilmekten çok korkuyorum.”",
-  "“Yalnız kalmaktan korktuğum için yanlış ilişkilerde kalıyorum.”",
-  "“İlişkim yokken kendimi değersiz hissediyorum.”",
-  "“Ailem sürekli evlilik konusunda baskı yapıyor.”",
-  "“İnsanlarla iletişim kuruyorum ama duygusal yakınlık geliştiremiyorum.”",
-  "“Geçmiş ilişkim bittikten sonra kendimi toparlayamadım.”",
-  "“Sürekli başkalarının ilişkileriyle kendi hayatımı karşılaştırıyorum.”",
+  `"İlişki kurmak istiyorum ama neden sürekli aynı döngüye giriyorum?"`,
+  `"İnsanlarla yakınlaşmakta zorlanıyorum."`,
+  `"Bir ilişki istiyorum ama reddedilmekten çok korkuyorum."`,
+  `"Yalnız kalmaktan korktuğum için yanlış ilişkilerde kalıyorum."`,
+  `"İlişkim yokken kendimi değersiz hissediyorum."`,
+  `"Ailem sürekli evlilik konusunda baskı yapıyor."`,
+  `"İnsanlarla iletişim kuruyorum ama duygusal yakınlık geliştiremiyorum."`,
+  `"Geçmiş ilişkim bittikten sonra kendimi toparlayamadım."`,
+  `"Sürekli başkalarının ilişkileriyle kendi hayatımı karşılaştırıyorum."`,
   "gibi meseleler danışmanlık sürecinin çalışma alanına girmektedir.",
-  "Etik Not: ‘’Bekârlığı bir klinik problem gibi sunmak bilimsel değildir.’’"
+  "Etik Not: ''Bekârlığı bir klinik problem gibi sunmak bilimsel değildir.''"
 ]
   }
 };
@@ -843,7 +843,7 @@ function App() {
 
     const introTimer = window.setTimeout(() => {
       setShowSiteIntro(false);
-    }, 3400);
+    }, 3900);
 
     return () => window.clearTimeout(introTimer);
   }, [showSiteIntro]);
@@ -1067,7 +1067,7 @@ function App() {
     meta("twitter:title", seo[0]);
     meta("twitter:description", seo[1]);
 
-    // STEP123 — Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
+    // STEP123 -" Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
     // Eski Vercel canonical etiketleri index.html'de kalsa bile temizlenir.
     const canonicalUrl = "https://www.ailedanismanikaanozkan.com/";
     document.head.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
@@ -1126,9 +1126,44 @@ function App() {
       observer.observe(el);
     });
 
+    /* 3D scroll geçiş sistemi */
+    const cin3dObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("cin3d--visible");
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    document.querySelectorAll(".cin3d").forEach((el) => {
+      cin3dObserver.observe(el);
+    });
+
+    /* Parallax scroll efekti */
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(max > 0 ? window.scrollY / max : 0);
+
+      const sy = window.scrollY;
+
+      /* Hero parallax */
+      const heroBg = document.querySelector(".cinHero__bgImg");
+      if (heroBg) {
+        heroBg.style.transform = `scale(1.06) translateY(${sy * 0.28}px)`;
+      }
+
+      /* Her .cin3dParallax elementine derinlik efekti */
+      document.querySelectorAll(".cin3dParallax").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const vh = window.innerHeight;
+        const progress = (vh / 2 - center) / vh;
+        const depth = parseFloat(el.dataset.depth || "0.15");
+        el.style.transform = `translateY(${progress * depth * 120}px)`;
+      });
     };
 
     const onHashChange = () => {
@@ -1209,51 +1244,84 @@ function App() {
       <style>{styles}</style>
 
       {showSiteIntro && (
-        <div className="site95Intro" aria-hidden="true">
-          <div className="site95Intro__grain" />
-          <div className="site95Intro__vignette" />
-          <div className="site95Intro__beam site95Intro__beam--one" />
-          <div className="site95Intro__beam site95Intro__beam--two" />
-          <div className="site95Intro__orb site95Intro__orb--left" />
-          <div className="site95Intro__orb site95Intro__orb--right" />
+        <div className="prm__wrap" aria-hidden="true">
+          {/* Sinematik letterbox */}
+          <div className="prm__bar prm__bar--t" />
+          <div className="prm__bar prm__bar--b" />
 
-          <div className="site95Intro__stage">
-            <div className="site95Intro__rings">
-              <i /><i /><i />
-            </div>
+          {/* Arka plan sahne */}
+          <div className="prm__scene">
+            <img className="prm__bg" src={heroSlide1} alt="" />
+            <div className="prm__fog prm__fog--a" />
+            <div className="prm__fog prm__fog--b" />
+            <div className="prm__fog prm__fog--c" />
+            <div className="prm__shade" />
+            <div className="prm__vignette" />
+            <div className="prm__grain" />
+          </div>
 
-            <div className="site95Intro__monolith">
-              <div className="site95Intro__edge site95Intro__edge--top" />
-              <div className="site95Intro__edge site95Intro__edge--bottom" />
-              <div className="site95Intro__logo3d">
-                <span className="site95Intro__logoGhost site95Intro__logoGhost--back">
-                  <img src={kaanOzkanLogo2026} alt="" />
-                </span>
-                <span className="site95Intro__logoGhost site95Intro__logoGhost--mid">
-                  <img src={kaanOzkanLogo2026} alt="" />
-                </span>
-                <span className="site95Intro__logoFace">
-                  <img src={kaanOzkanLogo2026} alt="" />
-                </span>
-                <span className="site95Intro__scan" />
+          {/* Işık efektleri */}
+          <div className="prm__rays">
+            <div className="prm__ray prm__ray--1" />
+            <div className="prm__ray prm__ray--2" />
+            <div className="prm__ray prm__ray--3" />
+          </div>
+
+          {/* Çerçeve köşeleri */}
+          <div className="prm__frame">
+            <span className="prm__corner prm__corner--tl" />
+            <span className="prm__corner prm__corner--tr" />
+            <span className="prm__corner prm__corner--bl" />
+            <span className="prm__corner prm__corner--br" />
+            <span className="prm__hline prm__hline--t" />
+            <span className="prm__hline prm__hline--b" />
+            <span className="prm__vline prm__vline--l" />
+            <span className="prm__vline prm__vline--r" />
+          </div>
+
+          {/* Ana içerik */}
+          <div className="prm__stage">
+
+            {/* 3D emblem */}
+            <div className="prm__emblemWrap">
+              <div className="prm__ring prm__ring--1" />
+              <div className="prm__ring prm__ring--2" />
+              <div className="prm__ring prm__ring--3" />
+              <div className="prm__ring prm__ring--4" />
+              <div className="prm__particles">
+                <span /><span /><span /><span /><span /><span /><span /><span />
               </div>
+              <div className="prm__emblemGlow" />
+              <div className="prm__emblemBack"><img src={kaanOzkanEmblem} alt="" /></div>
+              <div className="prm__emblemMid"><img src={kaanOzkanEmblem} alt="" /></div>
+              <div className="prm__emblemFront"><img src={kaanOzkanEmblem} alt="" /></div>
+              <div className="prm__sheen" />
             </div>
 
-            <div className="site95Intro__copy">
-              <span className="site95Intro__eyebrow">SOSYAL HİZMET · AİLE DANIŞMANLIĞI</span>
-              <strong className="site95Intro__name">Güvenle başlayan bir süreç.</strong>
-              <p className="site95Intro__role">
-                Kaan Özkan <i>·</i> Profesyonel Danışmanlık
-              </p>
+            {/* Metin */}
+            <div className="prm__text">
+              <span className="prm__badge">SOSYAL HİZMET UZMANI · AİLE DANIŞMANI</span>
+              <h1 className="prm__title">KAAN <em>ÖZKAN</em></h1>
+              <div className="prm__divider"><span /><i /><span /></div>
+              <p className="prm__sub">Güven, etik ve insan odaklı profesyonel danışmanlık.</p>
             </div>
 
-            <div className="site95Intro__timeline">
-              <span />
-              <b>01</b>
-              <em>GÜVEN · ETİK · İNSAN ODAKLI</em>
-              <b>03</b>
+            {/* Alt bilgi çubuğu */}
+            <div className="prm__footer">
+              <span className="prm__footLine" />
+              <span className="prm__footLabel">EST. 2024</span>
+              <span className="prm__footDot" />
+              <span className="prm__footLabel">İSTANBUL</span>
+              <span className="prm__footDot" />
+              <span className="prm__footLabel">TÜRKİYE</span>
+              <span className="prm__footLine" />
             </div>
           </div>
+
+          {/* Kapanış perdesi */}
+          <div className="prm__curtain prm__curtain--l" />
+          <div className="prm__curtain prm__curtain--r" />
+          <div className="prm__flash" />
         </div>
       )}
 
@@ -1294,6 +1362,7 @@ function App() {
           </span>
         </a>
       )}
+      <div className={`step145Site ${showSiteIntro ? "step145Site--waiting" : "step145Site--ready"}`}>
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
@@ -1415,96 +1484,174 @@ function App() {
         ) : page === "admin" ? (
           <AdminDemoPage />
         ) : (
-        <main>
+        <main className="lux155">
           <section
-              className="lightHomeHero"
-              id="anasayfa"
-              onMouseMove={handleHomeHeroPointer}
-              onMouseLeave={resetHomeHeroPointer}
-            >
-            <div className="lightHomeHero__visual">
+            className="lux155Hero"
+            id="anasayfa"
+            onMouseMove={handleHomeHeroPointer}
+            onMouseLeave={resetHomeHeroPointer}
+          >
+            <div className="lux155Hero__media">
               <img
-                loading="lazy" decoding="async" src={servicesHeroRoom}
-                alt="Sıcak ve sakin bir danışmanlık görüşme ortamı"
+                className="lux155Hero__image"
+                loading="eager"
+                decoding="async"
+                src={servicesHeroRoom}
+                alt=""
               />
-              <div className="lightHomeHero__visualShade" />
+              <div className="lux155Hero__veil" />
+              <div className="lux155Hero__light lux155Hero__light--a" />
+              <div className="lux155Hero__light lux155Hero__light--b" />
+              <div className="lux155Hero__noise" />
             </div>
 
-            <div className="lightHomeHero__content">
-              <div className="lightHomeHero__rotator" key={homeTextSlide}>
-                <span className="lightHomeHero__eyebrow">{activeHomeText.eyebrow}</span>
+            <div className="lux155Hero__frame" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+
+            <div className="lux155Hero__content">
+              <div className="lux155Hero__copy" key={homeTextSlide}>
+                <p className="lux155Hero__eyebrow">
+                  {activeHomeText.eyebrow}
+                </p>
 
                 <h1>
-                  {activeHomeText.titleLine}
+                  <span>{activeHomeText.titleLine}</span>
                   <strong>{activeHomeText.titleAccent}</strong>
                 </h1>
 
-                <p>{activeHomeText.description}</p>
+                <p className="lux155Hero__desc">
+                  {activeHomeText.description}
+                </p>
+
+                <div className="lux155Hero__actions">
+                  <a href="#/randevu" className="lux155Hero__primary">
+                    <span>{homeContent.primaryCta}</span>
+                    <i>↗</i>
+                  </a>
+                  <a href="#/hizmetler" className="lux155Hero__secondary">
+                    <span>{homeContent.secondaryCta}</span>
+                    <i>→</i>
+                  </a>
+                </div>
               </div>
 
-              <div className="lightHomeHero__actions">
-                <a href="#/randevu" className="lightHomeHero__primary">
-                  {homeContent.primaryCta}
-                </a>
-
-                <a href="#/hizmetler" className="lightHomeHero__secondary">
-                  {homeContent.secondaryCta}
-                </a>
+              <div className="lux155Hero__signature">
+                <div className="lux155Hero__signatureLine" />
+                <span>
+                  <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
+                  <strong>Güvenle başlayan, kişiye özel bir süreç.</strong>
+                </span>
               </div>
             </div>
 
-            <div className="lightHomeHero__trust">
+            <div className="lux155Hero__rail">
+              <div className="lux155Hero__railCard">
+                <span>GÜVENLİ &amp; GİZLİ</span>
+                <b>01</b>
+              </div>
+              <div className="lux155Hero__railCard">
+                <span>PROFESYONEL DESTEK</span>
+                <b>02</b>
+              </div>
+              <div className="lux155Hero__railCard">
+                <span>KİŞİYE ÖZEL SÜREÇ</span>
+                <b>03</b>
+              </div>
+            </div>
+
+            <div className="lux155Hero__scroll" aria-hidden="true">
+              <span />
+              <small>KEŞFET</small>
+            </div>
+          </section>
+
+          <section className="lux155Manifest">
+            <div className="lux155Manifest__top">
+              <span>DANIŞMANLIK SÜRECİ</span>
+              <p>Bir danışmanlık sürecinin en güçlü tarafı, kendinizi gerçekten anlaşılmış hissettiğiniz yerde başlar.</p>
+            </div>
+
+            <div className="lux155Manifest__grid">
+              <article className="lux155Manifest__lead">
+                <small>01 / İNSAN ODAKLI</small>
+                <h2>Hikâyenizi yalnızca bir sorun olarak değil, <em>bir bütün olarak</em> ele alıyorum.</h2>
+                <p>
+                  Yaşam öykünüzü, ilişkilerinizi, sosyal çevrenizi ve güçlü yönlerinizi birlikte değerlendirerek
+                  size özel, sürdürülebilir ve gerçekçi bir çalışma süreci oluşturmayı amaçlıyorum.
+                </p>
+                <a href="#/hakkimda">Hakkımda Daha Fazla <span>→</span></a>
+              </article>
+
+              <div className="lux155Manifest__visual">
+                <img src={heroSlide2} alt="Profesyonel danışmanlık ortamı" loading="lazy" decoding="async" />
+                <div className="lux155Manifest__visualShade" />
+                <div className="lux155Manifest__stamp">
+                  <img src={kaanOzkanEmblem} alt="" />
+                  <span>KAAN ÖZKAN</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lux155Manifest__values">
               <article>
-                <div><Icon name="shield" size={25} /></div>
-                <span>
-                  <strong>{homeContent.trust1Title}</strong>
+                <span>01</span>
+                <div>
+                  <b>{homeContent.trust1Title}</b>
                   <p>{homeContent.trust1Text}</p>
-                </span>
+                </div>
               </article>
-
               <article>
-                <div><Icon name="check" size={25} /></div>
-                <span>
-                  <strong>{homeContent.trust2Title}</strong>
+                <span>02</span>
+                <div>
+                  <b>{homeContent.trust2Title}</b>
                   <p>{homeContent.trust2Text}</p>
-                </span>
+                </div>
               </article>
-
               <article>
-                <div><Icon name="user" size={25} /></div>
-                <span>
-                  <strong>{homeContent.trust3Title}</strong>
+                <span>03</span>
+                <div>
+                  <b>{homeContent.trust3Title}</b>
                   <p>{homeContent.trust3Text}</p>
-                </span>
+                </div>
               </article>
             </div>
           </section>
 
-          <section className="homeApproachEditorial reveal" aria-label="Danışmanlık yaklaşımı">
-            <div className="homeApproachEditorial__visual">
-              <img
-                loading="lazy"
-                decoding="async"
-                src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg"
-                alt="Profesyonel danışmanlık sürecinde not alma ve değerlendirme"
-                onError={(e)=>{e.currentTarget.style.display="none"}}
-              />
-              <div className="homeApproachEditorial__visualShade" />
-              <div className="homeApproachEditorial__visualTag">
-                <span>01</span>
-                <p>YAKLAŞIM</p>
+          <section className="cin3d cin3d--approach" aria-label="Danismanlik yaklasimi">
+            <div className="cin3d__scene">
+              <div className="cin3d__sceneImg cin3dParallax" data-depth="0.12">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg"
+                  alt="Profesyonel danışmanlık sürecinde not alma ve değerlendirme"
+                  onError={(e)=>{e.currentTarget.style.display="none"}}
+                />
+                <div className="cin3d__sceneShade" />
+                <div className="cin3d__sceneTag">
+                  <span>01</span>
+                  <p>ÇALIŞMA BİÇİMİ</p>
+                </div>
+              </div>
+
+              <div className="cin3d__decoLines" aria-hidden="true">
+                <span /><span /><span />
               </div>
             </div>
 
-            <div className="homeApproachEditorial__content">
-              <span className="homeApproachEditorial__eyebrow">{homeContent.servicesEyebrow}</span>
-              <h2>
+            <div className="cin3d__content">
+              <span className="cin3d__eyebrow">{homeContent.servicesEyebrow}</span>
+              <h2 className="cin3d__heading">
                 {homeContent.servicesTitle}
                 <strong>{homeContent.servicesTitleAccent}</strong>
               </h2>
-              <p className="homeApproachEditorial__lead">{homeContent.servicesDescription}</p>
+              <p className="cin3d__lead">{homeContent.servicesDescription}</p>
 
-              <div className="homeApproachEditorial__principles">
+              <div className="cin3d__principles">
                 <article>
                   <span>01</span>
                   <div>
@@ -1528,31 +1675,41 @@ function App() {
                 </article>
               </div>
 
-              <a className="homeApproachEditorial__cta" href="#/hizmetler">
+              <a className="cin3d__cta" href="#/hizmetler">
                 Tüm Çalışma Alanlarını İnceleyin
                 <Icon name="arrow" size={16}/>
               </a>
             </div>
           </section>
 
-          <section className="homeScopeStrip reveal">
-            <div><Icon name="shield" size={20} /></div>
-            <p>
-              Danışmanlık hizmetleri sosyal hizmet müdahale yaklaşımları ve aile danışmanlığı kapsamında sunulur.
-            </p>
+          <section className="cin3d cin3d--scope">
+            <div className="cin3d__scopeInner">
+              <div className="cin3d__scopeIcon"><Icon name="shield" size={22} /></div>
+              <p>
+                Danışmanlık hizmetleri sosyal hizmet ve aile danışmanlığı mesleki çerçevesinde sunulur.
+              </p>
+            </div>
           </section>
 
-          <section className="homeTrustStatement reveal">
-            <div className="homeTrustStatement__mark">“</div>
-            <div>
-              <span>{homeContent.trustStatementEyebrow}</span>
-              <h2>{homeContent.trustStatementTitle}</h2>
-              <p>{homeContent.trustStatementText}</p>
+          <section className="cin3d cin3d--trust">
+            <div className="cin3d__trustBg" aria-hidden="true">
+              <div className="cin3d__trustBgImg cin3dParallax" data-depth="0.18">
+                <img loading="lazy" decoding="async" src={heroSlide2} alt="" />
+                <div className="cin3d__trustBgShade" />
+              </div>
+              <div className="cin3d__trustDecoRing" />
+              <div className="cin3d__trustDecoRing cin3d__trustDecoRing--2" />
             </div>
-            <a href="#/hakkimda">
-              YAKLAŞIMIMI TANIYIN
-              <Icon name="arrow" size={16} />
-            </a>
+            <div className="cin3d__trustContent">
+              <div className="cin3d__trustMark">"</div>
+              <span className="cin3d__eyebrow">{homeContent.trustStatementEyebrow}</span>
+              <h2 className="cin3d__trustTitle">{homeContent.trustStatementTitle}</h2>
+              <p className="cin3d__trustText">{homeContent.trustStatementText}</p>
+              <a className="cin3d__trustCta" href="#/hakkimda">
+                BENİ YAKINDAN TANIYIN
+                <Icon name="arrow" size={16} />
+              </a>
+            </div>
           </section>
 
           <section className="section contactSection" id="iletisim">
@@ -1562,14 +1719,23 @@ function App() {
               <p>Görüşme ve randevu hakkında bilgi almak için telefon veya e-posta üzerinden iletişime geçebilirsiniz.</p>
             </div>
 
-            <div className="contactBrand reveal">
-              <span className="brandEmblemWrap">
-                <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanLogo2026} alt="Kaan Özkan logosu" />
+            <div className="contactBrand contactBrand--headerLogo reveal">
+              <span className="brandLogoArtwork" aria-hidden="true">
+                <img loading="lazy" decoding="async" src={kaanOzkanEmblem} alt="" />
               </span>
-              <div>
+              <span className="brandLogoCopy">
+                <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
                 <strong>KAAN ÖZKAN</strong>
-                <small>SOSYAL HİZMET UZMANI · AİLE DANIŞMANI</small>
-              </div>
+                <span className="brandLogoOrnament" aria-hidden="true">
+                  <svg viewBox="0 0 52 18" focusable="false">
+                    <path d="M3 9h15M34 9h15" />
+                    <path d="M18 9c5-1 8-4 10-8-5 1-8 4-10 8Z" />
+                    <path d="M26 9c4-3 8-4 12-3-3 4-7 5-12 3Z" />
+                    <path d="M24 10c-3 3-5 5-6 8 4-1 7-3 8-7" />
+                    <path d="M28 10c3 2 6 4 9 4-2-4-5-5-9-4Z" />
+                  </svg>
+                </span>
+              </span>
             </div>
 
             <div className="contactGrid contactGrid--three">
@@ -1601,13 +1767,22 @@ function App() {
 
           <footer className="premiumFooter">
             <div className="premiumFooter__top">
-              <a href="#/anasayfa" className="premiumFooter__brand">
-                <span className="brandEmblemWrap">
-                  <img loading="lazy" decoding="async" className="brandEmblem" src={kaanOzkanLogo2026} alt="" aria-hidden="true" />
+              <a href="#/anasayfa" className="premiumFooter__brand premiumFooter__brand--headerLogo">
+                <span className="brandLogoArtwork" aria-hidden="true">
+                  <img loading="lazy" decoding="async" src={kaanOzkanEmblem} alt="" />
                 </span>
-                <span>
+                <span className="brandLogoCopy">
+                  <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
                   <strong>KAAN ÖZKAN</strong>
-                  <small>SOSYAL HİZMET UZMANI · AİLE DANIŞMANI</small>
+                  <span className="brandLogoOrnament" aria-hidden="true">
+                  <svg viewBox="0 0 52 18" focusable="false">
+                    <path d="M3 9h15M34 9h15" />
+                    <path d="M18 9c5-1 8-4 10-8-5 1-8 4-10 8Z" />
+                    <path d="M26 9c4-3 8-4 12-3-3 4-7 5-12 3Z" />
+                    <path d="M24 10c-3 3-5 5-6 8 4-1 7-3 8-7" />
+                    <path d="M28 10c3 2 6 4 9 4-2-4-5-5-9-4Z" />
+                  </svg>
+                </span>
                 </span>
               </a>
 
@@ -1640,7 +1815,7 @@ function App() {
 
             <div className="premiumFooter__bottom">
               <div className="premiumFooter__copyright">
-                <span>© 2026 Kaan Özkan — Tüm hakları saklıdır.</span>
+                <span>© 2026 Kaan Özkan -" Tüm hakları saklıdır.</span>
                 <span className="premiumFooter__creator">
                   Web Tasarım &amp; Geliştirme <strong>CB Labs</strong>
                   <i>·</i>
@@ -1660,6 +1835,7 @@ function App() {
         )}
       </div>
           <Analytics />
+      </div>
     </>
   );
 }
@@ -1689,7 +1865,7 @@ function BlogPage({ content = defaultBlogContent }) {
         shortBio: "",
       };
     }
-    return null;
+    return authors[0] || null;
   };
   const publishedPosts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft").sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
@@ -1731,17 +1907,17 @@ function BlogPage({ content = defaultBlogContent }) {
                     {author.image ? <img src={author.image} alt={author.name}/> : <span className="editorialPostCard__avatarFallback">{author.name?.charAt(0)}</span>}
                   </a>
                   <span className="editorialPostCard__authorInfo"><b>{author.name}</b><small>{author.role || "Yazar"}</small></span>
-                  <a className="editorialPostCard__readLink" href={`#/blog/${post.slug}`}>Yazıyı Oku →</a>
-                </div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div>}</div>
+                  <a className="editorialPostCard__readLink" href={`#/blog/${post.slug}`}>Yazıyı Oku -'</a>
+                </div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku -'</a></div>}</div>
               </article>;
             })}
           </div>
-          {visibleCount<filteredPosts.length&&<button className="editorialBlog__more" onClick={()=>setVisibleCount(v=>v+4)}>DAHA FAZLA YAZI GÖSTER ↓</button>}
+          {visibleCount<filteredPosts.length&&<button className="editorialBlog__more" onClick={()=>setVisibleCount(v=>v+4)}>DAHA FAZLA YAZI GÖSTER -"</button>}
         </div>
         {authors.length > 0 && <aside className="editorialAuthors">
           <div className="editorialAuthors__head"><h2>Yazarlarımız</h2><p>Yazarlarımızı tanıyın ve yazılarını keşfedin.</p></div>
-          {authors.map(author=><a href={`#/yazarlar/${author.slug}`} className="editorialAuthorCard" key={author.slug}><img src={author.image} alt={author.name}/><div><strong>{author.name}</strong><small>{author.role}</small><p>{author.shortBio}</p><span>Profili Gör →</span></div></a>)}
-          <a className="editorialAuthors__all" href="#/yazarlar">TÜM YAZARLAR →</a>
+          {authors.map(author=><a href={`#/yazarlar/${author.slug}`} className="editorialAuthorCard" key={author.slug}><img src={author.image} alt={author.name}/><div><strong>{author.name}</strong><small>{author.role}</small><p>{author.shortBio}</p><span>Profili Gör -'</span></div></a>)}
+          <a className="editorialAuthors__all" href="#/yazarlar">TÜM YAZARLAR -'</a>
         </aside>}
       </section>
     </main>
@@ -1820,7 +1996,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
     image: post.authorImage || "",
     shortBio: "",
     bio: "",
-  } : null);
+  } : (authors[0] || null));
   const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
   return <main className="article103">
     <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
@@ -1837,7 +2013,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
     <section className="article103__layout article103__layout--premium">
       <article>
         {paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}
-        {post.quote&&<blockquote>“{post.quote}”</blockquote>}
+        {post.quote&&<blockquote>"{post.quote}"</blockquote>}
         <div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div>
       </article>
       <aside className="article103__guide">
@@ -1857,7 +2033,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
               <b>{author.name}</b>
               <span>{author.role || "Yazar"}</span>
             </div>
-            <em>→</em>
+            <em>-'</em>
           </a>}
         </div>
       </aside>
@@ -1887,15 +2063,23 @@ function ContactDetailPage() {
           </p>
         </div>
 
-        <div className="contact80Hero__mark">
-          <div className="brandEmblemWrap">
-            <img className="brandEmblem" src={kaanOzkanLogo2026} alt="" aria-hidden="true" />
-          </div>
-          <div>
-            <small>SOSYAL HİZMET UZMANI</small>
-            <span>AİLE DANIŞMANI</span>
+        <div className="contact80Hero__mark contact80Hero__mark--headerLogo">
+          <span className="brandLogoArtwork" aria-hidden="true">
+            <img src={kaanOzkanEmblem} alt="" />
+          </span>
+          <span className="brandLogoCopy">
+            <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
             <strong>KAAN ÖZKAN</strong>
-          </div>
+            <span className="brandLogoOrnament" aria-hidden="true">
+                  <svg viewBox="0 0 52 18" focusable="false">
+                    <path d="M3 9h15M34 9h15" />
+                    <path d="M18 9c5-1 8-4 10-8-5 1-8 4-10 8Z" />
+                    <path d="M26 9c4-3 8-4 12-3-3 4-7 5-12 3Z" />
+                    <path d="M24 10c-3 3-5 5-6 8 4-1 7-3 8-7" />
+                    <path d="M28 10c3 2 6 4 9 4-2-4-5-5-9-4Z" />
+                  </svg>
+                </span>
+          </span>
         </div>
       </section>
 
@@ -2137,7 +2321,7 @@ function AppointmentDemoPage() {
               <div className="apt60Step__head">
                 <span>01 / HİZMET SEÇİMİ</span>
                 <h2>Hangi konuda görüşmek istersiniz?</h2>
-                <p>Kararsızsanız “Ön Görüşme” seçeneğini tercih edebilirsiniz.</p>
+                <p>Kararsızsanız "Ön Görüşme" seçeneğini tercih edebilirsiniz.</p>
               </div>
 
               <div className="apt60Services">
@@ -2362,9 +2546,9 @@ function ContentDetailPage() {
         </div>
 
         <blockquote className="cnt57Quote">
-          <b>“</b>
+          <b>"</b>
           <p>Bilgi, dönüştürür.<br/>Farkındalık, özgürleştirir.<br/>Paylaştıkça çoğalır.</p>
-          <b>”</b>
+          <b>"</b>
         </blockquote>
       </section>
 
@@ -2519,7 +2703,7 @@ function ContentDetailPage() {
 
         <div className="cnt74Channels">
           <div className="cnt74Channels__copy">
-            <div className="cnt57Subscribe__icon">🔔</div>
+            <div className="cnt57Subscribe__icon">-""</div>
             <div>
               <strong>Yeni içeriklerden haberdar olun.</strong>
               <p>
@@ -2639,6 +2823,7 @@ function AdminDemoPage() {
   const [blogEditorLoading, setBlogEditorLoading] = useState(false);
   const [blogEditorSaving, setBlogEditorSaving] = useState(false);
   const [blogEditorMessage, setBlogEditorMessage] = useState("");
+  const [newBlogCategory, setNewBlogCategory] = useState("");
   const [blogImageUploading, setBlogImageUploading] = useState(false);
   const [editingBlogId, setEditingBlogId] = useState(null);
   const [blogForm, setBlogForm] = useState({
@@ -3182,50 +3367,190 @@ function AdminDemoPage() {
       console.error("Blog içeriği yüklenemedi:", error);
       setBlogEditorMessage("Blog içeriği yüklenemedi.");
     } else {
+      const remote = data?.content || {};
       const next = {
         ...defaultBlogContent,
-        ...(data?.content || {}),
-        posts: Array.isArray(data?.content?.posts) ? data.content.posts : defaultBlogContent.posts,
-        categories: Array.isArray(data?.content?.categories) ? data.content.categories : defaultBlogContent.categories,
-        authors: (Array.isArray(data?.content?.authors) ? data.content.authors : defaultBlogContent.authors).filter((author)=>author?.slug && author?.name),
+        ...remote,
+        posts: Array.isArray(remote.posts) ? remote.posts : [],
+        categories: Array.isArray(remote.categories) ? remote.categories : blogCategories,
+        authors: Array.isArray(remote.authors)
+          ? remote.authors.filter((author) => author?.slug && author?.name)
+          : [],
       };
       setBlogEditor(next);
+      setBlogEditorMessage(
+        `Blog verisi yüklendi · ${next.posts.length} yazı · ${next.authors.length} yazar`
+      );
     }
 
     setBlogEditorLoading(false);
   };
 
-  const persistBlogEditor = async (nextContent, successMessage = "Blog başarıyla güncellendi.") => {
+  const readLatestBlogEditor = async () => {
+    const { data, error } = await supabase
+      .from("site_content")
+      .select("content, updated_at")
+      .eq("id", "blog")
+      .maybeSingle();
+
+    if (error) throw error;
+
+    const remote = data?.content || {};
+    return {
+      ...defaultBlogContent,
+      ...remote,
+      posts: Array.isArray(remote.posts) ? remote.posts : defaultBlogContent.posts,
+      categories: Array.isArray(remote.categories) ? remote.categories : defaultBlogContent.categories,
+      authors: Array.isArray(remote.authors)
+        ? remote.authors.filter((author) => author?.slug && author?.name)
+        : defaultBlogContent.authors,
+    };
+  };
+
+  const persistBlogEditor = async (
+    nextContent,
+    successMessage = "Blog başarıyla güncellendi.",
+    verify = null
+  ) => {
     setBlogEditorSaving(true);
     setBlogEditorMessage("");
 
-    const { error } = await supabase
-      .from("site_content")
-      .upsert(
-        {
-          id: "blog",
-          content: nextContent,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "id" }
-      );
+    const write = async (contentToSave) => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .upsert(
+          {
+            id: "blog",
+            content: contentToSave,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "id" }
+        )
+        .select("content")
+        .single();
 
-    if (error) {
-      console.error("Blog kaydedilemedi:", error);
-      setBlogEditorMessage("Blog kaydedilemedi. Supabase yetkilerini kontrol edin.");
+      if (error) throw error;
+      return data?.content || contentToSave;
+    };
+
+    try {
+      let savedContent = await write(nextContent);
+
+      // Supabase'den tekrar okuyup gerçekten kalıcı olup olmadığını doğrula.
+      await new Promise((resolve) => window.setTimeout(resolve, 220));
+      let verifiedContent = await readLatestBlogEditor();
+
+      // Aynı anda başka eski bir sekme/veri yazdıysa bir kez daha güncel veri üzerinden düzelt.
+      if (typeof verify === "function" && !verify(verifiedContent)) {
+        const repairedContent = {
+          ...verifiedContent,
+          ...nextContent,
+          posts: Array.isArray(nextContent.posts) ? nextContent.posts : verifiedContent.posts,
+          authors: Array.isArray(nextContent.authors) ? nextContent.authors : verifiedContent.authors,
+          categories: Array.isArray(nextContent.categories) ? nextContent.categories : verifiedContent.categories,
+        };
+
+        savedContent = await write(repairedContent);
+        await new Promise((resolve) => window.setTimeout(resolve, 220));
+        verifiedContent = await readLatestBlogEditor();
+
+        if (!verify(verifiedContent)) {
+          throw new Error("Kaydedilen blog verisi doğrulama sırasında bulunamadı.");
+        }
+      }
+
+      const finalContent = {
+        ...defaultBlogContent,
+        ...savedContent,
+        ...verifiedContent,
+        posts: Array.isArray(verifiedContent.posts) ? verifiedContent.posts : [],
+        authors: Array.isArray(verifiedContent.authors)
+          ? verifiedContent.authors.filter((author) => author?.slug && author?.name)
+          : [],
+        categories: Array.isArray(verifiedContent.categories)
+          ? verifiedContent.categories
+          : blogCategories,
+      };
+
+      setBlogEditor(finalContent);
+      setBlogEditorMessage(successMessage);
+      setBlogEditorSaving(false);
+      return finalContent;
+    } catch (error) {
+      console.error("Blog kalıcı kayıt hatası:", error);
+      setBlogEditorMessage(
+        `Kayıt kalıcı olarak doğrulanamadı: ${error?.message || "Supabase yetkilerini ve bağlantıyı kontrol edin."}`
+      );
       setBlogEditorSaving(false);
       return false;
     }
-
-    setBlogEditor(nextContent);
-    setBlogEditorMessage(successMessage);
-    setBlogEditorSaving(false);
-    return true;
   };
 
   const saveBlogSettings = async (e) => {
     e.preventDefault();
     await persistBlogEditor(blogEditor, "Blog üst alanı başarıyla güncellendi.");
+  };
+
+  const addBlogCategory = async (e) => {
+    e.preventDefault();
+    const clean = String(newBlogCategory || "").trim();
+    if (!clean) {
+      setBlogEditorMessage("Kategori adı boş bırakılamaz.");
+      return;
+    }
+
+    const current = Array.isArray(blogEditor.categories) && blogEditor.categories.length
+      ? blogEditor.categories
+      : blogCategories;
+
+    const exists = current.some(
+      (item) => String(item || "").trim().toLocaleLowerCase("tr-TR") === clean.toLocaleLowerCase("tr-TR")
+    );
+
+    if (exists) {
+      setBlogEditorMessage("Bu kategori zaten mevcut.");
+      return;
+    }
+
+    const nextCategories = [
+      "Tümü",
+      ...current.filter((item) => item && item !== "Tümü"),
+      clean,
+    ].filter((item, index, arr) => arr.indexOf(item) === index);
+
+    const ok = await persistBlogEditor(
+      { ...blogEditor, categories: nextCategories },
+      `"${clean}" kategorisi eklendi.`
+    );
+
+    if (ok) {
+      setNewBlogCategory("");
+      setBlogForm((currentForm) => ({ ...currentForm, category: clean }));
+    }
+  };
+
+  const deleteBlogCategory = async (categoryName) => {
+    if (!categoryName || categoryName === "Tümü") return;
+
+    const usedBy = (blogEditor.posts || []).filter(
+      (post) => String(post.category || "").trim().toLocaleLowerCase("tr-TR") === String(categoryName).trim().toLocaleLowerCase("tr-TR")
+    );
+
+    if (usedBy.length) {
+      setBlogEditorMessage(`"${categoryName}" kategorisi ${usedBy.length} yazıda kullanılıyor. Önce bu yazıların kategorisini değiştirin.`);
+      return;
+    }
+
+    if (!window.confirm(`"${categoryName}" kategorisini silmek istediğinize emin misiniz?`)) return;
+
+    const nextCategories = (blogEditor.categories || blogCategories).filter(
+      (item) => item !== categoryName
+    );
+
+    await persistBlogEditor(
+      { ...blogEditor, categories: nextCategories },
+      `"${categoryName}" kategorisi silindi.`
+    );
   };
 
   const saveBlogPost = async (e) => {
@@ -3236,54 +3561,99 @@ function AdminDemoPage() {
       return;
     }
 
-    let slug = createBlogSlug(blogForm.slug || blogForm.title);
-    const duplicate = (blogEditor.posts || []).find(
-      (post) => post.slug === slug && (post.id || post.slug) !== editingBlogId
-    );
-    if (duplicate) slug = `${slug}-${Date.now().toString().slice(-5)}`;
+    setBlogEditorSaving(true);
+    setBlogEditorMessage("");
 
-    const id = editingBlogId || `blog-${Date.now()}`;
-    let posts = [...(blogEditor.posts || [])];
+    try {
+      // ÖNEMLİ: Form kaydedilirken önce Supabase'deki EN GÜNCEL blog verisini al.
+      // Böylece eski admin state'i, yeni eklenen yazarları veya yazıları geri silemez.
+      const latest = await readLatestBlogEditor();
 
-    if (blogForm.featured) {
-      posts = posts.map((post) => ({ ...post, featured: false }));
+      let slug = createBlogSlug(blogForm.slug || blogForm.title);
+      const duplicate = (latest.posts || []).find(
+        (post) => post.slug === slug && (post.id || post.slug) !== editingBlogId
+      );
+      if (duplicate) slug = `${slug}-${Date.now().toString().slice(-5)}`;
+
+      const id = editingBlogId || `blog-${Date.now()}`;
+      let posts = [...(latest.posts || [])];
+
+      if (blogForm.featured) {
+        posts = posts.map((post) => ({ ...post, featured: false }));
+      }
+
+      const availableAuthors = (latest.authors || []).filter((author) => author?.slug && author?.name);
+      const selectedAuthor =
+        availableAuthors.find(
+          (author) => String(author.slug || "").trim() === String(blogForm.authorSlug || "").trim()
+        ) ||
+        (blogForm.authorName
+          ? {
+              slug: blogForm.authorSlug || createBlogSlug(blogForm.authorName),
+              name: blogForm.authorName,
+              role: blogForm.authorRole || "Yazar",
+              image: blogForm.authorImage || "",
+            }
+          : null);
+
+      const item = {
+        id,
+        slug,
+        title: blogForm.title.trim(),
+        category: blogForm.category.trim() || "GENEL",
+        date: blogForm.date.trim(),
+        readTime: blogForm.readTime.trim() || "5 dk okuma",
+        excerpt: blogForm.excerpt.trim(),
+        image: blogForm.image.trim(),
+        body: blogForm.body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+        quote: blogForm.quote.trim(),
+        status: blogForm.status,
+        featured: Boolean(blogForm.featured),
+        sortOrder: Number(blogForm.sortOrder || 100),
+        authorSlug: selectedAuthor?.slug || "",
+        authorName: selectedAuthor?.name || "",
+        authorRole: selectedAuthor?.role || "",
+        authorImage: selectedAuthor?.image || "",
+      };
+
+      const index = posts.findIndex((post) => (post.id || post.slug) === editingBlogId);
+      if (index >= 0) posts[index] = item;
+      else posts.push(item);
+
+      const categoryName = item.category.trim();
+      const existingCategories = Array.isArray(latest.categories) && latest.categories.length
+        ? latest.categories
+        : blogCategories;
+
+      const categories = existingCategories.some(
+        (categoryItem) =>
+          String(categoryItem || "").trim().toLocaleLowerCase("tr-TR") ===
+          categoryName.toLocaleLowerCase("tr-TR")
+      )
+        ? existingCategories
+        : ["Tümü", ...existingCategories.filter((categoryItem) => categoryItem !== "Tümü"), categoryName];
+
+      const nextContent = {
+        ...latest,
+        posts,
+        categories,
+        authors: latest.authors || [],
+      };
+
+      const saved = await persistBlogEditor(
+        nextContent,
+        editingBlogId ? "Blog yazısı kalıcı olarak güncellendi." : "Yeni blog yazısı kalıcı olarak yayınlandı.",
+        (content) =>
+          Array.isArray(content?.posts) &&
+          content.posts.some((post) => (post.id || post.slug) === id && post.slug === slug)
+      );
+
+      if (saved) resetBlogForm();
+    } catch (error) {
+      console.error("Blog yazısı kayıt hazırlama hatası:", error);
+      setBlogEditorMessage(`Blog yazısı kaydedilemedi: ${error?.message || "Bilinmeyen hata"}`);
+      setBlogEditorSaving(false);
     }
-
-    const selectedAuthor = (blogEditor.authors || []).find(
-      (author) => String(author.slug || "").trim() === String(blogForm.authorSlug || "").trim()
-    ) || null;
-
-    const item = {
-      id,
-      slug,
-      title: blogForm.title.trim(),
-      category: blogForm.category.trim() || "GENEL",
-      date: blogForm.date.trim(),
-      readTime: blogForm.readTime.trim() || "5 dk okuma",
-      excerpt: blogForm.excerpt.trim(),
-      image: blogForm.image.trim(),
-      body: blogForm.body.split(/\n\s*\n/).map((p)=>p.trim()).filter(Boolean),
-      quote: blogForm.quote.trim(),
-      status: blogForm.status,
-      featured: Boolean(blogForm.featured),
-      sortOrder: Number(blogForm.sortOrder || 100),
-      authorSlug: blogForm.authorSlug || "",
-      authorName: selectedAuthor?.name || "",
-      authorRole: selectedAuthor?.role || "",
-      authorImage: selectedAuthor?.image || "",
-    };
-
-    const index = posts.findIndex((post) => (post.id || post.slug) === editingBlogId);
-    if (index >= 0) posts[index] = item;
-    else posts.push(item);
-
-    const nextContent = { ...blogEditor, posts };
-    const ok = await persistBlogEditor(
-      nextContent,
-      editingBlogId ? "Blog yazısı başarıyla güncellendi." : "Yeni blog yazısı başarıyla yayınlandı."
-    );
-
-    if (ok) resetBlogForm();
   };
 
   const editBlogPost = (post) => {
@@ -3301,7 +3671,7 @@ function AdminDemoPage() {
       status: post.status || "published",
       featured: Boolean(post.featured),
       sortOrder: post.sortOrder ?? 100,
-      authorSlug: post.authorSlug || "",
+      authorSlug: post.authorSlug || (blogEditor.authors?.find((author)=>author?.slug && author?.name)?.slug || ""),
     });
     window.setTimeout(() => {
       document.querySelector(".admin100Blog__editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -3403,39 +3773,88 @@ function AdminDemoPage() {
 
   const saveAuthor = async (e) => {
     e.preventDefault();
+
     if (!authorForm.name.trim() || !authorForm.role.trim() || !authorForm.image.trim() || !authorForm.bio.trim()) {
       setBlogEditorMessage("Yazar adı, unvanı, fotoğrafı ve biyografisi zorunludur.");
       return;
     }
-    let slug = createBlogSlug(authorForm.slug || authorForm.name);
-    if (!slug) slug = `yazar-${Date.now()}`;
-    const authors = [...(blogEditor.authors || defaultBlogAuthors)];
-    const duplicate = authors.find((author)=>author.slug===slug && author.slug!==editingAuthorSlug);
-    if (duplicate) slug = `${slug}-${Date.now().toString().slice(-4)}`;
-    const item = {
-      slug,
-      name: authorForm.name.trim(),
-      role: authorForm.role.trim(),
-      image: authorForm.image.trim(),
-      shortBio: authorForm.shortBio.trim() || authorForm.bio.trim().slice(0,180),
-      bio: authorForm.bio.trim(),
-    };
-    const index = authors.findIndex((author)=>author.slug===editingAuthorSlug);
-    if (index >= 0) authors[index] = item; else authors.push(item);
-    let posts = [...(blogEditor.posts || [])];
-    posts = posts.map((post) => {
-      const linkedSlug = editingAuthorSlug || slug;
-      if (post.authorSlug !== linkedSlug) return post;
-      return {
-        ...post,
-        authorSlug: slug,
-        authorName: item.name,
-        authorRole: item.role,
-        authorImage: item.image,
+
+    setBlogEditorSaving(true);
+    setBlogEditorMessage("");
+
+    try {
+      // Her kayıtta önce sunucudaki güncel blog JSON'unu al.
+      // Böylece eski state ile kayıt yapıp mevcut yazarları/yazıları silme problemi oluşmaz.
+      const latest = await readLatestBlogEditor();
+
+      let slug = createBlogSlug(authorForm.slug || authorForm.name);
+      if (!slug) slug = `yazar-${Date.now()}`;
+
+      const authors = [...(latest.authors || [])];
+      const duplicate = authors.find(
+        (author) => author.slug === slug && author.slug !== editingAuthorSlug
+      );
+      if (duplicate) slug = `${slug}-${Date.now().toString().slice(-4)}`;
+
+      const item = {
+        slug,
+        name: authorForm.name.trim(),
+        role: authorForm.role.trim(),
+        image: authorForm.image.trim(),
+        shortBio: authorForm.shortBio.trim() || authorForm.bio.trim().slice(0, 180),
+        bio: authorForm.bio.trim(),
       };
-    });
-    const ok = await persistBlogEditor({ ...blogEditor, authors, posts }, editingAuthorSlug ? "Yazar başarıyla güncellendi." : "Yeni yazar başarıyla eklendi.");
-    if (ok) resetAuthorForm();
+
+      const index = authors.findIndex((author) => author.slug === editingAuthorSlug);
+      if (index >= 0) authors[index] = item;
+      else authors.push(item);
+
+      const posts = (latest.posts || []).map((post) => {
+        if (!editingAuthorSlug || post.authorSlug !== editingAuthorSlug) return post;
+        return {
+          ...post,
+          authorSlug: slug,
+          authorName: item.name,
+          authorRole: item.role,
+          authorImage: item.image,
+        };
+      });
+
+      const nextContent = {
+        ...latest,
+        authors,
+        posts,
+      };
+
+      const saved = await persistBlogEditor(
+        nextContent,
+        editingAuthorSlug
+          ? "Yazar kalıcı olarak güncellendi."
+          : "Yeni yazar kalıcı olarak eklendi.",
+        (content) =>
+          Array.isArray(content?.authors) &&
+          content.authors.some(
+            (author) =>
+              author.slug === slug &&
+              author.name === item.name &&
+              author.image === item.image
+          )
+      );
+
+      if (saved) {
+        resetAuthorForm();
+
+        // Yeni yazar, yeni blog yazısında anında seçilebilir olsun.
+        setBlogForm((current) => ({
+          ...current,
+          authorSlug: current.authorSlug || slug,
+        }));
+      }
+    } catch (error) {
+      console.error("Yazar kayıt hazırlama hatası:", error);
+      setBlogEditorMessage(`Yazar kaydedilemedi: ${error?.message || "Bilinmeyen hata"}`);
+      setBlogEditorSaving(false);
+    }
   };
 
   const editAuthor = (author) => {
@@ -3811,7 +4230,7 @@ function AdminDemoPage() {
         <header className="adminDemo__topbar">
           <div className="admin92TopbarCopy">
             <span>YÖNETİM PANELİ</span>
-            {activeTab === "dashboard" && <p>Hoş geldiniz, Kaan Özkan 👋</p>}
+            {activeTab === "dashboard" && <p>Hoş geldiniz, Kaan Özkan -'-</p>}
             <h1>
               {activeTab === "dashboard"
                 ? "Genel Bakış"
@@ -4159,7 +4578,7 @@ function AdminDemoPage() {
                       </label>
 
                       <label className="admin73Cms__full">
-                        <span>Detay Maddeleri — Her satıra bir madde yazın</span>
+                        <span>Detay Maddeleri -" Her satıra bir madde yazın</span>
                         <textarea
                           rows="9"
                           value={
@@ -4243,9 +4662,52 @@ function AdminDemoPage() {
                   </button>
                 </form>
 
-                <section className="admin125Authors">
+                <section className="admin142Categories">
                   <div className="admin100Blog__sectionHead">
                     <span>02</span>
+                    <div>
+                      <strong>Blog Kategorileri</strong>
+                      <small>Kendi kategorilerinizi oluşturun; yeni yazı hazırlarken listeden seçin.</small>
+                    </div>
+                  </div>
+
+                  <form className="admin142Categories__create" onSubmit={addBlogCategory}>
+                    <label>
+                      <span>Yeni Kategori</span>
+                      <input
+                        value={newBlogCategory}
+                        onChange={(e)=>setNewBlogCategory(e.target.value)}
+                        placeholder="Örn. Ebeveynlik, İlişkiler, Çocuk & Ergen..."
+                      />
+                    </label>
+                    <button type="submit" disabled={blogEditorSaving}>
+                      {blogEditorSaving ? "Kaydediliyor..." : "Kategori Ekle"}
+                    </button>
+                  </form>
+
+                  <div className="admin142Categories__list">
+                    {(blogEditor.categories || blogCategories)
+                      .filter((item)=>item && item!=="Tümü")
+                      .map((item)=>{
+                        const count = (blogEditor.posts || []).filter(
+                          (post)=>String(post.category||"").trim().toLocaleLowerCase("tr-TR")===String(item).trim().toLocaleLowerCase("tr-TR")
+                        ).length;
+                        return <div className="admin142Categories__item" key={item}>
+                          <div>
+                            <strong>{item}</strong>
+                            <small>{count ? `${count} yazıda kullanılıyor` : "Henüz kullanılmıyor"}</small>
+                          </div>
+                          <button type="button" onClick={()=>deleteBlogCategory(item)} disabled={blogEditorSaving || count>0}>
+                            {count>0 ? "Kullanımda" : "Sil"}
+                          </button>
+                        </div>;
+                      })}
+                  </div>
+                </section>
+
+                <section className="admin125Authors">
+                  <div className="admin100Blog__sectionHead">
+                    <span>03</span>
                     <div><strong>Yazarlarımız</strong><small>Yeni yazar ekleyin, fotoğraf ve biyografi yönetin.</small></div>
                   </div>
                   <div className="admin125Authors__layout">
@@ -4277,7 +4739,7 @@ function AdminDemoPage() {
 
                 <form className="admin100Blog__editor" onSubmit={saveBlogPost}>
                   <div className="admin100Blog__sectionHead">
-                    <span>03</span>
+                    <span>04</span>
                     <div>
                       <strong>{editingBlogId ? "Yazıyı Düzenle" : "Yeni Blog Yazısı"}</strong>
                       <small>Başlık, kapak görseli ve yazı içeriğini tek ekrandan hazırlayın.</small>
@@ -4307,15 +4769,12 @@ function AdminDemoPage() {
 
                         <label>
                           <span>Kategori</span>
-                          <input
-                            list="blog-category-options"
-                            value={blogForm.category}
-                            onChange={(e)=>setBlogForm({...blogForm,category:e.target.value})}
-                            placeholder="Kategori"
-                          />
-                          <datalist id="blog-category-options">
-                            {(blogEditor.categories || blogCategories).filter((item)=>item!=="Tümü").map((item)=><option key={item} value={item}/>)}
-                          </datalist>
+                          <select value={blogForm.category} onChange={(e)=>setBlogForm({...blogForm,category:e.target.value})}>
+                            <option value="">Kategori seçin</option>
+                            {(blogEditor.categories || blogCategories)
+                              .filter((item)=>item && item!=="Tümü")
+                              .map((item)=><option key={item} value={item}>{item}</option>)}
+                          </select>
                         </label>
                         <label>
                           <span>Okuma Süresi</span>
@@ -4344,7 +4803,7 @@ function AdminDemoPage() {
                       </label>
 
                       <label>
-                        <span>Öne Çıkan Alıntı — İsteğe Bağlı</span>
+                        <span>Öne Çıkan Alıntı -" İsteğe Bağlı</span>
                         <textarea rows="3" value={blogForm.quote} onChange={(e)=>setBlogForm({...blogForm,quote:e.target.value})} placeholder="Yazının içinde büyük alıntı olarak gösterilecek kısa cümle..."/>
                       </label>
 
@@ -4940,13 +5399,13 @@ function ProcessDetailPage({ content }) {
 
   const fallbackTestimonials = [
     { no: "01", title: "Danışan Yorumu", person: "Danışan", text: `Sevgili Kaan Hocam, o kadar iyi geldiniz ki.. Yıllardır üstesinden gelemediğim ailevi problemlerime, eşimle olan sıkıntılarıma ve aile huzurumuza seanslarınızla ne kadar iyi geldiğinizi anlatamam size.\n\nSeanslarınız oldukça içten, özverili, hassas ve güven veriyor olması benim için çok önemliydi. Bu önyargılarımı ve ailevi problemlerimizi sizlerle aştım. Ne kadar teşekkür etsem azdır.\n\nEmeğinize sağlık 🙏🏻` },
-    { no: "02", title: "Danışan Yorumu", person: "Danışan", text: `Kaan Bey ile 3 Kasım 2024 tarihinde online olarak terapiye başladık ve hayatımın en doğru kararı olduğunu söyleyebilirim.\n\nBenim majör depresyon ve OKB problemim vardı. Tırnak eti yolma, sürekli sayı sayma, güvensizlik, kaygı problemleri ve en önemlisi de öz saygım yoktu.\n\nTerapiler sonucu bunların geçmişten gelen travmalara bağlı olduğunu çözdük ve onara onara devam ettik. Kendisinin içten ve samimi konuşmaları beni çok rahatlatıyor, terapi günü gelsin istiyordum. Terapiden sonra çok mutlu olmaya başladım. Kendime olan özgüvenim yavaş yavaş yerine gelmeye ve depresyon halinden çıkmaya başladım.\n\nKaan Bey’in verdiği ödevleri, stres anında yapmam gerekenleri yaptım. Sayı saymaktan kurtuldum, tırnak eti yolma durumunu aştım. Sınır koymayı, hayır demeyi, kendim için bir şeyler yapmayı çok sevdim…\n\nKaan Bey’i iyi ki tanıdım, iyi ki bu mesleği seçmiş ve bizim gibi bazı problemleri olan insanların hayatlarına küçük dokunuşlarla yeniden gelmesini sağlıyor.\n\nHer şey için çok teşekkür ediyorum. Başarılarınızın devamını diliyorum…` },
+    { no: "02", title: "Danışan Yorumu", person: "Danışan", text: `Kaan Bey ile 3 Kasım 2024 tarihinde online olarak terapiye başladık ve hayatımın en doğru kararı olduğunu söyleyebilirim.\n\nBenim majör depresyon ve OKB problemim vardı. Tırnak eti yolma, sürekli sayı sayma, güvensizlik, kaygı problemleri ve en önemlisi de öz saygım yoktu.\n\nTerapiler sonucu bunların geçmişten gelen travmalara bağlı olduğunu çözdük ve onara onara devam ettik. Kendisinin içten ve samimi konuşmaları beni çok rahatlatıyor, terapi günü gelsin istiyordum. Terapiden sonra çok mutlu olmaya başladım. Kendime olan özgüvenim yavaş yavaş yerine gelmeye ve depresyon halinden çıkmaya başladım.\n\nKaan Bey'in verdiği ödevleri, stres anında yapmam gerekenleri yaptım. Sayı saymaktan kurtuldum, tırnak eti yolma durumunu aştım. Sınır koymayı, hayır demeyi, kendim için bir şeyler yapmayı çok sevdim…\n\nKaan Bey'i iyi ki tanıdım, iyi ki bu mesleği seçmiş ve bizim gibi bazı problemleri olan insanların hayatlarına küçük dokunuşlarla yeniden gelmesini sağlıyor.\n\nHer şey için çok teşekkür ediyorum. Başarılarınızın devamını diliyorum…` },
     { no: "03", title: "Çift Danışan Yorumu", person: "Çift Danışan", text: `Seansa başlamadan önce birbirimize karşı vakit ayıramıyorduk, şimdi ise daha çok zaman geçiriyoruz, birbirimizi anlıyoruz, daha çok dinliyoruz.\n\nSeansdan önce öfkeli ve kıskançlık vardı ama şu anda onların hepsi bitti ve daha çok sevgi ve dinlemeye başladık. Tek değil de bir olduğumuzu anladık.\n\nBu konuda senin de katkın var, çok teşekkür ediyoruz.` },
-    { no: "04", title: "Danışan Yorumu", person: "S.K.", text: `Yoğun ve yüksek düzeyde stres, anksiyete ve kaygı bozukluğu yaşıyordum. Uzun zamandır süren bu rahatsız olduğum konuları Kaan Hoca ile pürüzsüz şekilde sabırla aştık.\n\nAlanında oldukça uzman ve işini layıkıyla yapan birisi. Toplu taşımalara binme, akşam dışarı çıkamama gibi korkularım vardı. Hepsini aştık. OKB’den kurtulduğuma inanamıyorum.` },
-    { no: "05", title: "Danışan Yorumu", person: "C.A.", text: `Ekonomik özgürlüğüm yoktu, çıkış yolum yoktu, her türlü şiddeti kabul etmiştim, kendimi insan haricinde her türlü nesne gibi sıradan, basit ve değersiz görüyordum.\n\nKaan Hocamızdan zamanında destek alan bir arkadaşımızın tavsiyesi ile benim de kendisiyle yolum kesişti. Bu kadar değişeceğime hiç ümidim yoktu.\n\nÖn görüşmeden itibaren o kadar işini bilerek yaptığını hissettirdi ki… Terapist unvanından ziyade “yol gösterici, arabulucu, destek verici” nitelikleri ve beni her koşulda inanarak desteklemesi beni yeniden ayağa kaldırdı.\n\nFlört şiddetimi artık rızamla, sesimi çıkararak ve haklarımı arayarak bitirmeme yardımcı oldu.\n\nKadınların; her şeyi kabul edici, ses çıkarmayan, sorgusuz onaylayan değil, tam tersine şiddet karşısında haklarını arayan, sesini çıkaran, erkek şiddetinin karşısında dimdik durması gerektiğinin özgüvenini bana aşıladı.\n\nTeşekkür ediyorum.` },
+    { no: "04", title: "Danışan Yorumu", person: "S.K.", text: `Yoğun ve yüksek düzeyde stres, anksiyete ve kaygı bozukluğu yaşıyordum. Uzun zamandır süren bu rahatsız olduğum konuları Kaan Hoca ile pürüzsüz şekilde sabırla aştık.\n\nAlanında oldukça uzman ve işini layıkıyla yapan birisi. Toplu taşımalara binme, akşam dışarı çıkamama gibi korkularım vardı. Hepsini aştık. OKB'den kurtulduğuma inanamıyorum.` },
+    { no: "05", title: "Danışan Yorumu", person: "C.A.", text: `Ekonomik özgürlüğüm yoktu, çıkış yolum yoktu, her türlü şiddeti kabul etmiştim, kendimi insan haricinde her türlü nesne gibi sıradan, basit ve değersiz görüyordum.\n\nKaan Hocamızdan zamanında destek alan bir arkadaşımızın tavsiyesi ile benim de kendisiyle yolum kesişti. Bu kadar değişeceğime hiç ümidim yoktu.\n\nÖn görüşmeden itibaren o kadar işini bilerek yaptığını hissettirdi ki… Terapist unvanından ziyade "yol gösterici, arabulucu, destek verici" nitelikleri ve beni her koşulda inanarak desteklemesi beni yeniden ayağa kaldırdı.\n\nFlört şiddetimi artık rızamla, sesimi çıkararak ve haklarımı arayarak bitirmeme yardımcı oldu.\n\nKadınların; her şeyi kabul edici, ses çıkarmayan, sorgusuz onaylayan değil, tam tersine şiddet karşısında haklarını arayan, sesini çıkaran, erkek şiddetinin karşısında dimdik durması gerektiğinin özgüvenini bana aşıladı.\n\nTeşekkür ediyorum.` },
     { no: "06", title: "Danışan Yorumu", person: "E.Y.", text: `Eşimle 13 yıllık evlilik birlikteliğimiz vardı. Yıllarca evlilik içerisinde sevgi ve saygı olmadan rutine getirdiğimizi Kaan Bey ile keşfettik.\n\nBirbirimize söylemeye cesaret edemediğimiz, yıllarca içimizde biriktirdiğimiz her şeyi çift terapisi ile ilk kez saygı çerçevesinde konuşabildik.\n\nAile danışmanlığını sürekli yuva kuran bir yer olarak düşünüyordum. Ama bir kadın olarak boşanmanın da evlilik kadar normal bir şey olduğunu anladık.\n\nBoşanma sürecinde yardımları için çok teşekkür ederim. Yıpranmadık, sağlıklı yas sürecine girdik ve atlattık.` },
-    { no: "07", title: "Çift Danışan Yorumu", person: "Y.K. – B.A.", text: `Biz evlilik yolunda sürekli inişli-çıkışlı ilişkiye sahip toksik bir çifttik. Baskılar, psikolojik şiddet karşılıklı ve sürekliydi.\n\nTavsiye üzerine Kaan Bey’i keşfettik. Evliliğe dair anlatılan “korkunç” hikâyeleri uzmanından sağlıklı bir şekilde dinleyerek kendimize ve davranışlarımıza dair ders çıkardık.\n\nİlişkideki birbirimize olan bağımlılığımızı ciddi oranda aştık.\n\nMeğerse çift olmak hayatı birbirine zindan etmek değil, herkes için devam eden hayatta birbirini gerçekten anlamak ve destek olmak demekmiş.\n\nKendisini herkese tavsiye ediyoruz.` },
-    { no: "08", title: "Danışan Yorumu", person: "Danışan", text: `Kaan hocam iyi akşamlar. Bugün sizinle online olarak yaptığımız sürecin sonuna gelmenin heyecanı ile size teşekkür etmek için yazmak istedim.\n\nÖncelikle benim hayallerimin önünü sonsuza kadar açtığınız için, bana yeni bakış açıları kazandırdığınız için, hiç bilmediğim şeyleri öğrettiğiniz için minnettarım. 🙏🏻\n\nBoşanmadan önce ve boşanma sürecinde korkularımla yüzleşip özgürleştirdiğiniz için teşekkür borçluyum size.\n\nŞu an sınırlarım yok ve “elalem ne der” zerre umurumda değil.\n\nSayenizde güçlüyüm, güçlendim ve bütün kadınlara güçlerinin ne olduğunu hep anlatacağım. 💪🏻🙂` },
+    { no: "07", title: "Çift Danışan Yorumu", person: "Y.K. - B.A.", text: `Biz evlilik yolunda sürekli inişli-çıkışlı ilişkiye sahip toksik bir çifttik. Baskılar, psikolojik şiddet karşılıklı ve sürekliydi.\n\nTavsiye üzerine Kaan Bey'i keşfettik. Evliliğe dair anlatılan "korkunç" hikâyeleri uzmanından sağlıklı bir şekilde dinleyerek kendimize ve davranışlarımıza dair ders çıkardık.\n\nİlişkideki birbirimize olan bağımlılığımızı ciddi oranda aştık.\n\nMeğerse çift olmak hayatı birbirine zindan etmek değil, herkes için devam eden hayatta birbirini gerçekten anlamak ve destek olmak demekmiş.\n\nKendisini herkese tavsiye ediyoruz.` },
+    { no: "08", title: "Danışan Yorumu", person: "Danışan", text: `Kaan hocam iyi akşamlar. Bugün sizinle online olarak yaptığımız sürecin sonuna gelmenin heyecanı ile size teşekkür etmek için yazmak istedim.\n\nÖncelikle benim hayallerimin önünü sonsuza kadar açtığınız için, bana yeni bakış açıları kazandırdığınız için, hiç bilmediğim şeyleri öğrettiğiniz için minnettarım. 🙏🏻\n\nBoşanmadan önce ve boşanma sürecinde korkularımla yüzleşip özgürleştirdiğiniz için teşekkür borçluyum size.\n\nŞu an sınırlarım yok ve "elalem ne der" zerre umurumda değil.\n\nSayenizde güçlüyüm, güçlendim ve bütün kadınlara güçlerinin ne olduğunu hep anlatacağım. -'-🏻🙂` },
     { no: "09", title: "Danışan Yorumu", person: "Danışan", text: `Ben 24 Ekim 2025 tarihi ile sizinle seansa başladım. Üniversite öğrencisiyim, bu yüzden aşırı derecede stres, anksiyete ve panik atak problemleri yaşıyordum.\n\nAma seanslara başladıktan sonra stresle başa çıkmayı, kontrol altına almayı öğrendim.\n\nAyrıca hayır diyememe ve sınır koyamama gibi problemlerim de vardı. Artık kendi değerimi biliyor ve sınır koyabiliyorum.\n\nİyi ki sizinle tanışıp seanslara devam ettim. Size çok teşekkür ederim.` },
     { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
   ];
@@ -5034,7 +5493,7 @@ function ProcessDetailPage({ content }) {
         <div className={`prc53Testimonials__grid ${showAllTestimonials ? "is-expanded" : ""}`}>
           {visibleTestimonials.map((item) => (
             <article className="prc53TestimonialCard" key={item.no}>
-              <div className="prc53TestimonialCard__top"><span className="prc53TestimonialCard__quote">“</span><small>{item.no}</small></div>
+              <div className="prc53TestimonialCard__top"><span className="prc53TestimonialCard__quote">"</span><small>{item.no}</small></div>
               <p>{item.text}</p>
               <div className="prc53TestimonialCard__footer">
                 <div><strong>{item.person}</strong><span>{item.title}</span></div>
@@ -5154,12 +5613,12 @@ function serviceParagraphKind(text) {
   if (/^\d+\.\s/.test(text)) return "numbered";
   if (text.length < 95 && /[?:]$/.test(text)) return "heading";
   const exactHeadings = [
-    "Kayıp ve yasın anlamlandırılması:", "Duygusal düzenleme:", "Bilişsel süreçlerin ele alınması:",
-    "Kimlik ve benlik algısı:", "Yeni yaşam düzenine uyum:", "İlişki örüntülerinin değerlendirilmesi:",
-    "Ebeveynlik ve ortak ebeveynlik:", "Bilişsel Davranışçı Terapi yaklaşımı", "Kabul ve Kararlılık Terapisi (ACT)",
-    "Anlatı ve Anlam Odaklı Yaklaşım", "Sistemik ve Aile Odaklı Yaklaşım", "Çözüm Odaklı yaklaşım",
-    "Sosyal Hizmet ve Ekolojik Yaklaşım", "Şema Odaklı Yaklaşım", "Bağlanma Temelli Yaklaşım",
-    "Kabul ve Kararlılık Terapisi", "Kişilerarası Terapi ve Kişilerarası Beceri Çalışmaları",
+    `Kayıp ve yasın anlamlandırılması:", "Duygusal düzenleme:", "Bilişsel süreçlerin ele alınması:`,
+    `Kimlik ve benlik algısı:", "Yeni yaşam düzenine uyum:", "İlişki örüntülerinin değerlendirilmesi:`,
+    `Ebeveynlik ve ortak ebeveynlik:", "Bilişsel Davranışçı Terapi yaklaşımı", "Kabul ve Kararlılık Terapisi (ACT)`,
+    `Anlatı ve Anlam Odaklı Yaklaşım", "Sistemik ve Aile Odaklı Yaklaşım", "Çözüm Odaklı yaklaşım`,
+    `Sosyal Hizmet ve Ekolojik Yaklaşım", "Şema Odaklı Yaklaşım", "Bağlanma Temelli Yaklaşım`,
+    `Kabul ve Kararlılık Terapisi", "Kişilerarası Terapi ve Kişilerarası Beceri Çalışmaları`,
     "Çözüm Odaklı ve Güçler Perspektifi"
   ];
   if (exactHeadings.includes(text)) return "heading";
@@ -5246,41 +5705,179 @@ function AboutDetailPage({ content = defaultAboutContent }) {
     : String(content.paragraphs || "").split(/\n\s*\n/).map((item) => item.trim()).filter(Boolean);
 
   return (
-    <main className="aboutDirectPage">
-      <section className="aboutDirectHeader">
-        <a href="#/" className="aboutDirectBack">← Ana Sayfaya Dön</a>
-        <div className="aboutDirectHeader__title">
-          <span>{content.eyebrow}</span>
-          <h1>{content.firstName} <strong>{content.lastName}</strong></h1>
-          <p>{content.role}</p>
+    <main className="about158">
+      <section className="about158Hero">
+        <a href="#/" className="about158Back">
+          <span>←</span>
+          <small>ANA SAYFAYA DÖN</small>
+        </a>
+
+        <div className="about158Hero__shell">
+          <div className="about158Hero__copy about159Hero__copy">
+            <div className="about159Cine" aria-hidden="true">
+              <span className="about159Cine__beam about159Cine__beam--1" />
+              <span className="about159Cine__beam about159Cine__beam--2" />
+              <span className="about159Cine__line about159Cine__line--1" />
+              <span className="about159Cine__line about159Cine__line--2" />
+              <span className="about159Cine__glow" />
+            </div>
+
+            <div className="about158Eyebrow">
+              <span>02</span>
+              <i />
+              <small>{content.eyebrow}</small>
+            </div>
+
+            <h1>
+              İnsanı anlamak,
+              <strong>değişime eşlik etmektir.</strong>
+            </h1>
+
+            <p className="about158Hero__lead">
+              Sosyal hizmetin bütüncül bakışını aile danışmanlığıyla bir araya getiriyor;
+              bireyin yaşam öyküsünü, ilişkilerini ve güçlü yönlerini birlikte değerlendiriyorum.
+            </p>
+
+            <div className="about158Hero__identity">
+              <span>
+                <small>{content.profileEyebrow}</small>
+                <b>{content.profileName}</b>
+                <em>{content.role}</em>
+              </span>
+              <i />
+            </div>
+
+            <div className="about158Hero__actions">
+              <a href="#/randevu" className="about158Hero__primary">
+                Ücretsiz Ön Görüşme <span>↗</span>
+              </a>
+              <a href="#about158Story" className="about158Hero__secondary">
+                Hikâyemi Oku <span>↓</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="about158PhotoWrap">
+            <div className="about158Photo">
+              <img
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                src={aboutPhoto}
+                alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`}
+              />
+              <div className="about158Photo__shade" />
+              <div className="about158Photo__light" />
+              <div className="about158Photo__caption about159Photo__captionMinimal">
+                <em>01 / 03</em>
+              </div>
+            </div>
+
+            <div className="about158PhotoMeta">
+              <span>GÜVEN</span>
+              <i />
+              <span>ETİK</span>
+              <i />
+              <span>İNSAN ODAKLI</span>
+            </div>
+          </div>
         </div>
       </section>
-      <section className="aboutDirectLayout">
-        <article className="aboutDirectArticle">
-          <div className="aboutDirectArticle__topline"><span>{content.storyLabel}</span><div /></div>
-          {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        </article>
-        <aside className="aboutDirectProfile">
-          <div className="aboutDirectProfile__photo">
-            <img loading="eager" decoding="async" fetchPriority="high" src={aboutPhoto} alt={`Sosyal Hizmet Uzmanı ve Aile Danışmanı ${content.profileName}`} />
-            <div className="about108Signature">
-              <span>KAAN ÖZKAN</span>
-              <i />
-              <small>Sosyal Hizmet Uzmanı · Aile Danışmanı</small>
+
+      <section className="about158Story" id="about158Story">
+        <div className="about158Story__intro">
+          <span>{content.storyLabel}</span>
+          <h2>Mesleki yolculuğum ve yaklaşımım.</h2>
+          <p>
+            Her danışanın yaşam öyküsü kendine özgüdür. Bu nedenle hazır kalıplar yerine
+            kişinin ihtiyaçlarını, çevresini ve mevcut kaynaklarını birlikte değerlendiren
+            bir çalışma anlayışını benimsiyorum.
+          </p>
+        </div>
+
+        <div className="about158Story__layout">
+          <aside className="about158Facts">
+            <div className="about158Facts__item">
+              <span>01</span>
+              <div>
+                <small>EĞİTİM</small>
+                <b>İstanbul Aydın Üniversitesi</b>
+                <p>Sağlık Bilimleri Fakültesi · Sosyal Hizmet</p>
+              </div>
             </div>
-          </div>
-          <div className="aboutDirectProfile__body">
-            <span>{content.profileEyebrow}</span>
-            <h2>{content.profileName}</h2>
-            <p>{content.profileRole}</p>
-            <div className="aboutDirectProfile__line" />
-            <div className="aboutDirectProfile__items">
-              <div><Icon name="shield" size={18} /><span>{content.profileItem1}</span></div>
-              <div><Icon name="lock" size={18} /><span>{content.profileItem2}</span></div>
-              <div><Icon name="heart" size={18} /><span>{content.profileItem3}</span></div>
+
+            <div className="about158Facts__item">
+              <span>02</span>
+              <div>
+                <small>DENEYİM</small>
+                <b>Saha ve danışmanlık çalışmaları</b>
+                <p>Gönüllü projeler, uygulamalı stajlar ve sosyal hizmet kurumları.</p>
+              </div>
             </div>
-          </div>
-        </aside>
+
+            <div className="about158Facts__item">
+              <span>03</span>
+              <div>
+                <small>YAKLAŞIM</small>
+                <b>Bütüncül ve güç odaklı</b>
+                <p>Birey, aile, sosyal çevre ve yaşam deneyimlerini birlikte ele alan yaklaşım.</p>
+              </div>
+            </div>
+          </aside>
+
+          <article className="about158Article">
+            {paragraphs.map((paragraph, index) => (
+              <p className={index === 0 ? "about158Article__lead" : ""} key={index}>
+                {paragraph}
+              </p>
+            ))}
+
+            <blockquote className="about158Quote">
+              <span>“</span>
+              <p>Her bireyin geçmişi, güçlü yönleri ve değişim kapasitesi vardır. Danışmanlık sürecindeki temel hedefim, bu potansiyelin ortaya çıkmasına eşlik etmektir.</p>
+            </blockquote>
+          </article>
+        </div>
+      </section>
+
+      <section className="about158Principles">
+        <div className="about158Principles__head">
+          <span>ÇALIŞMA PRENSİPLERİ</span>
+          <h2>Profesyonel ilişkinin temelinde güven vardır.</h2>
+        </div>
+
+        <div className="about158Principles__grid">
+          <article>
+            <span>01</span>
+            <Icon name="shield" size={22} />
+            <h3>{content.profileItem1}</h3>
+            <p>Mesleki sınırlar, saygı ve profesyonel sorumluluk çerçevesinde ilerleyen süreç.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <Icon name="lock" size={22} />
+            <h3>{content.profileItem2}</h3>
+            <p>Görüşmelerde mahremiyeti ve etik ilkeleri merkeze alan güvenli çalışma alanı.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <Icon name="heart" size={22} />
+            <h3>{content.profileItem3}</h3>
+            <p>Kişinin yaşam öyküsüne, ihtiyaçlarına ve güçlü yönlerine göre şekillenen destek.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="about158Cta">
+        <div>
+          <span>İLK ADIM</span>
+          <h2>Tanışmak ve süreci birlikte değerlendirmek için.</h2>
+          <p>İlk görüşmede ihtiyaçlarınızı ve size uygun çalışma biçimini birlikte değerlendirebiliriz.</p>
+        </div>
+        <a href="#/randevu">
+          <span>Ücretsiz Ön Görüşme</span>
+          <i>↗</i>
+        </a>
       </section>
     </main>
   );
@@ -5612,7 +6209,7 @@ button{font:inherit}
   .contactGrid{grid-template-columns:1fr 1fr}.contactCard--cta{grid-column:1/-1}
 }
 
-/* STEP 29 — PREMIUM PROFESSIONAL SERVICES */
+/* STEP 29 -" PREMIUM PROFESSIONAL SERVICES */
 .premiumServicesSection{
   position:relative;
   padding-top:100px;
@@ -5817,7 +6414,7 @@ button{font:inherit}
   .premiumServicesNote a{grid-column:2}
 }
 
-/* STEP 30 — DEDICATED PREMIUM SERVICES PAGE */
+/* STEP 30 -" DEDICATED PREMIUM SERVICES PAGE */
 .servicesDetailPage{
   min-height:100vh;
   color:#f5f1eb;
@@ -5979,7 +6576,7 @@ button{font:inherit}
   .servicesDetailNote>a{grid-column:2}
 }
 
-/* STEP 31 — DEDICATED PREMIUM PROCESS PAGE */
+/* STEP 31 -" DEDICATED PREMIUM PROCESS PAGE */
 .processDetailPage{
   min-height:100vh;
   color:#f5f1eb;
@@ -6187,7 +6784,7 @@ button{font:inherit}
   .processFinalCta>a{width:100%}
 }
 
-/* STEP 32 — FLAGSHIP PREMIUM HOME */
+/* STEP 32 -" FLAGSHIP PREMIUM HOME */
 .hero{
   min-height:calc(100vh - 98px);
   padding-top:92px;
@@ -6442,7 +7039,7 @@ button{font:inherit}
   .homeTrustStatement>a{grid-column:1;width:100%}
 }
 
-/* STEP 33 — HOME HERO READABILITY + PREMIUM RIGHT CARD */
+/* STEP 33 -" HOME HERO READABILITY + PREMIUM RIGHT CARD */
 .valueItem strong{
   font-size:9px;
   letter-spacing:.11em;
@@ -6567,7 +7164,7 @@ button{font:inherit}
   .heroPanel__quote p{font-size:12px}
 }
 
-/* STEP 34 — HOME SERVICES SHOWCASE */
+/* STEP 34 -" HOME SERVICES SHOWCASE */
 .homeServicesShowcase{
   position:relative;
   padding:96px 5.2% 100px;
@@ -6820,7 +7417,7 @@ button{font:inherit}
   .homeServicesShowcase__all{min-height:110px}
 }
 
-/* STEP 35 — PREMIUM COUCH SLIDER HERO */
+/* STEP 35 -" PREMIUM COUCH SLIDER HERO */
 .premiumSliderHero{
   position:relative;
   min-height:calc(100vh - 98px);
@@ -7150,7 +7747,7 @@ button{font:inherit}
   .premiumSliderHero__features>div:first-child{border-top:0}
 }
 
-/* STEP 36 — REAL 2-SLIDE HERO */
+/* STEP 36 -" REAL 2-SLIDE HERO */
 .premiumSliderHero__bg img{
   position:absolute;
   inset:0;
@@ -7212,7 +7809,7 @@ button{font:inherit}
   background:rgba(3,10,19,.72);
 }
 
-/* STEP 37 — TOK / PREMIUM "ÜCRETSİZ ÖN GÖRÜŞME" TYPOGRAPHY */
+/* STEP 37 -" TOK / PREMIUM "ÜCRETSİZ ÖN GÖRÜŞME" TYPOGRAPHY */
 .premiumSliderHero__script{
   margin-top:22px;
   display:inline-block;
@@ -7244,7 +7841,7 @@ button{font:inherit}
   }
 }
 
-/* STEP 39 — AUTOPLAY + HOVER PAUSE + MOBILE SWIPE */
+/* STEP 39 -" AUTOPLAY + HOVER PAUSE + MOBILE SWIPE */
 .premiumSliderHero{
   touch-action:pan-y;
 }
@@ -7279,7 +7876,7 @@ button{font:inherit}
   .premiumSliderHero__timer{width:38px}
 }
 
-/* STEP 41 — ROUTE-AWARE PREMIUM ACTIVE NAV */
+/* STEP 41 -" ROUTE-AWARE PREMIUM ACTIVE NAV */
 .nav a:first-child{
   color:#a9b4c3;
   border-color:transparent;
@@ -7335,7 +7932,7 @@ button{font:inherit}
   }
 }
 
-/* STEP 42 — PREMIUM FOOTER */
+/* STEP 42 -" PREMIUM FOOTER */
 .premiumFooter{
   position:relative;
   overflow:hidden;
@@ -7583,7 +8180,7 @@ button{font:inherit}
   }
 }
 
-/* STEP 43 — GLOBAL TYPOGRAPHY HIERARCHY / READABILITY */
+/* STEP 43 -" GLOBAL TYPOGRAPHY HIERARCHY / READABILITY */
 
 /* Header navigation */
 .nav a{
@@ -7812,7 +8409,7 @@ button{font:inherit}
   }
 }
 
-/* STEP 45 — DIRECT ABOUT PAGE */
+/* STEP 45 -" DIRECT ABOUT PAGE */
 .aboutDirectPage{
   min-height:100vh;
   background:
@@ -7988,7 +8585,7 @@ button{font:inherit}
   .aboutDirectProfile__photo{height:320px}
 }
 
-/* STEP 47 — PREMIUM LEGAL PAGES */
+/* STEP 47 -" PREMIUM LEGAL PAGES */
 .legalPage{
   min-height:100vh;
   background:
@@ -8133,12 +8730,12 @@ button{font:inherit}
   .legalArticle__section p{font-size:14px;line-height:1.82}
 }
 
-/* STEP 48 — UST PANEL OKUNABILIRLIK */
+/* STEP 48 -" UST PANEL OKUNABILIRLIK */
 .nav a{font-size:13px;font-weight:600;letter-spacing:.015em}
 .headerCta{font-size:12px;font-weight:700}
 @media(max-width:900px){.nav a{font-size:14px}.headerCta{font-size:12px}}
 
-/* STEP 49 — KVKK clarity/readability */
+/* STEP 49 -" KVKK clarity/readability */
 .legalArticle__section:nth-of-type(4){
   padding:26px 28px;
   border:1px solid rgba(217,149,61,.18);
@@ -8149,7 +8746,7 @@ button{font:inherit}
   color:#e4a24b;
 }
 
-/* STEP 50 — ACCESSIBILITY + PROFESSIONAL DETAILS */
+/* STEP 50 -" ACCESSIBILITY + PROFESSIONAL DETAILS */
 html{
   scroll-behavior:smooth;
   scroll-padding-top:110px;
@@ -8194,7 +8791,7 @@ img{
   }
 }
 
-/* STEP 51 — FINAL CONTENT / PROFESSIONAL SCOPE */
+/* STEP 51 -" FINAL CONTENT / PROFESSIONAL SCOPE */
 .homeScopeStrip{
   margin:0;
   padding:18px 5.2%;
@@ -8257,7 +8854,7 @@ img{
   .servicesScopeNote h3{font-size:20px}
 }
 
-/* STEP 52 — APPROVED VISUAL STYLE / SERVICES */
+/* STEP 52 -" APPROVED VISUAL STYLE / SERVICES */
 .svc52{background:#03101f;color:#f6f2eb;min-height:100vh}
 .svc52Hero{position:relative;height:430px;overflow:hidden;border-bottom:1px solid rgba(218,151,65,.35)}
 .svc52Hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center}
@@ -8316,7 +8913,7 @@ img{
  .svc52Scope__mark{width:58px;height:58px}
 }
 
-/* STEP 53 — PROCESS PAGE / APPROVED MATCHING DESIGN */
+/* STEP 53 -" PROCESS PAGE / APPROVED MATCHING DESIGN */
 .prc53{
   min-height:100vh;
   color:#f5f0e9;
@@ -8626,7 +9223,7 @@ img{
   }
 }
 
-/* STEP 54 — PROCESS HERO IMAGE FIT FIX */
+/* STEP 54 -" PROCESS HERO IMAGE FIT FIX */
 .prc53Hero__image{
   object-fit:cover;
   object-position:66% 50%;
@@ -8643,7 +9240,7 @@ img{
   }
 }
 
-/* STEP 55 — PREMIUM ADMIN PANEL DEMO */
+/* STEP 55 -" PREMIUM ADMIN PANEL DEMO */
 .adminDemo{
   min-height:100vh;
   display:grid;
@@ -9124,7 +9721,7 @@ img{
   }
 }
 
-/* STEP 57 — PREMIUM CONTENT / VIDEO & PODCAST PAGE */
+/* STEP 57 -" PREMIUM CONTENT / VIDEO & PODCAST PAGE */
 .cnt57{
   min-height:100vh;
   background:#03101f;
@@ -9589,7 +10186,7 @@ img{
   }
 }
 
-/* STEP 58 — CLEAN CONTENT HERO / NO DUPLICATE TEXT / SHARPER IMAGE */
+/* STEP 58 -" CLEAN CONTENT HERO / NO DUPLICATE TEXT / SHARPER IMAGE */
 .cnt57Hero{
   height:420px;
   background:#03101f;
@@ -9642,12 +10239,12 @@ img{
   }
 }
 
-/* STEP 60 — PREMIUM RANDEVU */
+/* STEP 60 -" PREMIUM RANDEVU */
 .apt60{min-height:100vh;background:#020914;color:#f4efe8}.apt60Hero{position:relative;min-height:560px;padding:110px 6% 72px;display:grid;grid-template-columns:1.08fr .72fr;gap:7vw;align-items:center;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.055);background:radial-gradient(circle at 80% 25%,rgba(47,128,237,.08),transparent 28%),radial-gradient(circle at 10% 75%,rgba(218,151,65,.035),transparent 22%),#020914}.apt60Hero__grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 93%)}.apt60Back{position:absolute;top:30px;left:6%;z-index:3;display:flex;gap:9px;align-items:center;color:#8c97a4;font-size:10px}.apt60Back span{color:#d9953d;font-size:17px}.apt60Hero__copy,.apt60Hero__aside{position:relative;z-index:2}.apt60Hero__copy>span,.apt60Step__head>span{color:#d9953d;font-size:10px;font-weight:800;letter-spacing:.18em}.apt60Hero h1{margin-top:15px;font:400 clamp(54px,6vw,92px)/.92 Georgia,serif;letter-spacing:-.05em}.apt60Hero h1 strong{color:#d9953d;font-weight:400}.apt60Hero__copy>p{max-width:720px;margin-top:25px;color:#abb3bd;font-size:15px;line-height:1.85}.apt60Hero__trust{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.apt60Hero__trust>div{min-height:77px;padding:14px;display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:center;border:1px solid rgba(218,151,65,.13);border-radius:12px;background:rgba(7,22,39,.6)}.apt60Hero__trust svg{color:#d9953d}.apt60Hero__trust span,.apt60Hero__aside p{display:flex;flex-direction:column;gap:4px}.apt60Hero__trust strong,.apt60Hero__aside strong{font-size:10px}.apt60Hero__trust small,.apt60Hero__aside small{color:#738090;font-size:8px;line-height:1.4}.apt60Hero__aside{padding:28px;border:1px solid rgba(218,151,65,.2);border-radius:20px;background:linear-gradient(145deg,#08192c,#04111f);box-shadow:0 34px 80px rgba(0,0,0,.25)}.apt60Hero__aside>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.17em}.apt60Hero__aside>div{min-height:76px;display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:center;border-bottom:1px solid rgba(255,255,255,.05)}.apt60Hero__aside>div:last-child{border-bottom:0}.apt60Hero__aside b{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.22);border-radius:50%;color:#d9953d;font:400 11px Georgia,serif}.apt60FormArea{padding:65px 5% 100px;background:#03101f}.apt60Progress{width:min(620px,94vw);margin:0 auto 28px;display:grid;grid-template-columns:repeat(3,1fr);position:relative}.apt60Progress:before{content:"";position:absolute;left:16%;right:16%;top:18px;height:1px;background:rgba(218,151,65,.2)}.apt60Progress>div{position:relative;z-index:1;text-align:center;color:#5f6d7d}.apt60Progress span{width:37px;height:37px;margin:auto;display:grid;place-items:center;border:1px solid rgba(255,255,255,.09);border-radius:50%;background:#04111f;font-size:10px}.apt60Progress p{margin-top:7px;font-size:8px;font-weight:700}.apt60Progress>div.is-active{color:#d9953d}.apt60Progress>div.is-active span{border-color:rgba(218,151,65,.55);background:rgba(218,151,65,.08)}.apt60Card{max-width:1100px;margin:auto;border:1px solid rgba(218,151,65,.16);border-radius:20px;background:linear-gradient(145deg,#07182a,#04111e);box-shadow:0 28px 75px rgba(0,0,0,.2)}.apt60Step{padding:34px}.apt60Step__head h2{margin-top:7px;font:400 clamp(29px,3vw,42px)/1.05 Georgia,serif}.apt60Step__head p{margin-top:9px;color:#7f8b99;font-size:11px}.apt60Services{margin-top:27px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.apt60Services button{position:relative;min-height:145px;padding:20px;text-align:left;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:#041321;color:#f2eee8;cursor:pointer}.apt60Services button:hover,.apt60Services button.is-selected{border-color:rgba(218,151,65,.45);background:linear-gradient(145deg,rgba(174,101,27,.09),#041321)}.apt60Services button>div{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(218,151,65,.18);border-radius:10px;color:#d9953d}.apt60Services strong{display:block;margin-top:14px;font:400 19px Georgia,serif}.apt60Services p{max-width:85%;margin-top:7px;color:#7d8997;font-size:9.5px;line-height:1.6}.apt60Services button>span{position:absolute;right:17px;bottom:16px;color:#d9953d}.apt60Format{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05)}.apt60Format>span,.apt60DateGrid label>span,.apt60Times>span,.apt60Fields label>span{color:#8793a1;font-size:9px}.apt60Format>div{margin-top:11px;display:grid;grid-template-columns:1fr 1fr;gap:11px}.apt60Format button,.apt60Times button{min-height:52px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:#03101d;color:#8f9aa8;cursor:pointer}.apt60Format button{display:flex;align-items:center;justify-content:center;gap:10px}.apt60Format button svg{color:#d9953d}.apt60Format button.is-selected,.apt60Times button.is-selected{border-color:rgba(218,151,65,.55);background:rgba(218,151,65,.08);color:#e3a14c}.apt60Actions{margin-top:29px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.05)}.apt60Actions button{min-height:48px;padding:0 18px;display:flex;align-items:center;gap:10px;border:1px solid rgba(218,151,65,.27);border-radius:9px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:9px;font-weight:700}.apt60Actions button:disabled{opacity:.32;cursor:not-allowed}.apt60Actions button.is-secondary{background:transparent;border-color:rgba(255,255,255,.08);color:#8895a4}.apt60DateGrid{margin-top:27px;display:grid;grid-template-columns:.75fr 1.25fr;gap:28px}.apt60DateGrid label,.apt60Times,.apt60Fields label{display:flex;flex-direction:column;gap:8px}.apt60DateGrid input,.apt60Fields input,.apt60Fields textarea{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:#03101d;color:#eef0f2}.apt60DateGrid input{min-height:53px;color-scheme:dark}.apt60Times>div{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.apt60Notice,.apt60Sensitive{margin-top:24px;padding:14px 16px;display:flex;gap:11px;border:1px solid rgba(218,151,65,.13);border-radius:10px;background:rgba(218,151,65,.025);color:#d9953d}.apt60Notice p,.apt60Sensitive p{color:#7d8997;font-size:9.5px;line-height:1.6}.apt60Fields{margin-top:27px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.apt60Fields input{min-height:48px}.apt60Fields__full{grid-column:1/-1}.apt60Kvkk{margin-top:22px;padding:16px;display:grid;grid-template-columns:27px 1fr;gap:12px;border:1px solid rgba(255,255,255,.06);border-radius:10px;background:#03101d}.apt60Kvkk>button{width:25px;height:25px;border:1px solid rgba(218,151,65,.35);border-radius:6px;background:transparent;color:#d9953d;cursor:pointer}.apt60Kvkk p{color:#7f8b99;font-size:9px;line-height:1.65}.apt60Kvkk a{color:#d9953d;text-decoration:underline}.apt60Success{min-height:100vh;padding:30px 18px;display:grid;place-items:center;background:#020914;color:#f4efe8}.apt60Success__card{width:min(660px,100%);padding:42px;text-align:center;border:1px solid rgba(218,151,65,.2);border-radius:22px;background:linear-gradient(145deg,#08192c,#04111e)}.apt60Success__icon{width:72px;height:72px;margin:auto;display:grid;place-items:center;border:1px solid rgba(52,212,134,.25);border-radius:50%;color:#67d99a}.apt60Success__card>span{display:block;margin-top:24px;color:#d9953d;font-size:9px;font-weight:800}.apt60Success h1{margin-top:9px;font:400 42px Georgia,serif}.apt60Success__card>p{margin:14px auto 0;max-width:540px;color:#8995a3;font-size:11px;line-height:1.7}.apt60Success__summary{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left}.apt60Success__summary>div{padding:13px;border:1px solid rgba(255,255,255,.06);border-radius:9px;background:#03101d}.apt60Success__summary small{display:block;color:#637184;font-size:8px}.apt60Success__summary strong{display:block;margin-top:4px;font-size:10px}.apt60Success__card>a{width:100%;min-height:48px;margin-top:22px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(218,151,65,.25);border-radius:9px;color:#d9953d}
 @media(max-width:900px){.apt60Hero{grid-template-columns:1fr;padding:100px 20px 65px}.apt60Back{left:20px}.apt60DateGrid{grid-template-columns:1fr}}
 @media(max-width:650px){.apt60Hero h1{font-size:52px}.apt60Hero__copy>p{font-size:13px}.apt60Hero__trust{grid-template-columns:1fr}.apt60FormArea{padding:55px 16px 80px}.apt60Step{padding:24px 18px}.apt60Services,.apt60Format>div,.apt60Fields{grid-template-columns:1fr}.apt60Times>div{grid-template-columns:repeat(3,1fr)}.apt60Fields__full{grid-column:auto}.apt60Success__card{padding:31px 20px}.apt60Success__summary{grid-template-columns:1fr}}
 
-/* STEP 61 — RANDEVU FORMU OKUNABİLİRLİK */
+/* STEP 61 -" RANDEVU FORMU OKUNABİLİRLİK */
 .apt60Fields label>span{
   color:#b7c0cb;
   font-size:13px;
@@ -9702,7 +10299,7 @@ img{
   .apt60Kvkk p,.apt60Sensitive p,.apt60Notice p{font-size:12px}
 }
 
-/* STEP 62 — AÇIK / SICAK ANA SAYFA DENEMESİ */
+/* STEP 62 -" AÇIK / SICAK ANA SAYFA DENEMESİ */
 .topbar--light{
   min-height:112px;
   padding:0 5.1%;
@@ -9786,155 +10383,601 @@ img{
   background:#252a30;
 }
 
-.lightHomeHero{
+.cinHero{
   position:relative;
-  min-height:790px;
+  min-height:100vh;
   overflow:hidden;
-  color:#202329;
-  background:
-    radial-gradient(circle at 25% 10%,rgba(255,255,255,.96),transparent 42%),
-    linear-gradient(100deg,#f8f7f4 0%,#f4f2ee 56%,#e8dfd3 100%);
-  border-bottom:1px solid rgba(139,107,57,.10);
+  color:#fff;
+  background:#0a0c09;
+  perspective:1400px;
+  display:flex;
+  align-items:center;
 }
-.lightHomeHero__visual{
-  position:absolute;
-  z-index:0;
-  top:0;
-  right:0;
-  width:48%;
-  height:100%;
-  overflow:hidden;
-}
-.lightHomeHero__visual img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:52% center;
-  filter:saturate(.88) brightness(1.15) contrast(.88);
-}
-.lightHomeHero__visualShade{
+
+/* Arka plan */
+.cinHero__bg{
   position:absolute;
   inset:0;
+  z-index:0;
+  transform-style:preserve-3d;
+}
+.cinHero__bgImg{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 40%;
+  filter:saturate(.84) contrast(1.04) brightness(.67);
+  transform:scale(1.06) translate3d(calc(var(--hero-x,0)*-14px),calc(var(--hero-y,0)*-8px),0);
+  transition:transform .12s ease-out;
+  will-change:transform;
+}
+.cinHero__bgOverlay{
+  position:absolute;inset:0;
   background:
-    linear-gradient(90deg,#f4f2ee 0%,rgba(244,242,238,.88) 11%,rgba(244,242,238,.22) 37%,rgba(244,242,238,0) 66%),
-    linear-gradient(180deg,rgba(255,255,255,.08),rgba(112,82,42,.05));
+    linear-gradient(105deg,rgba(7,8,5,.70) 0%,rgba(10,11,7,.47) 35%,rgba(16,15,10,.12) 63%,rgba(7,8,5,.25) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.16) 0%,transparent 30%,transparent 67%,rgba(0,0,0,.40) 100%),
+    radial-gradient(circle at 72% 36%,rgba(211,174,105,.12),transparent 34%);
 }
-.lightHomeHero__content{
-  position:relative;
-  z-index:2;
-  width:min(740px,53%);
-  padding:118px 0 230px 9.2%;
+.cinHero__bgGrain{
+  position:absolute;inset:0;
+  opacity:.06;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:cinGrain .2s steps(2) infinite;
 }
-.lightHomeHero__eyebrow{
-  display:block;
-  margin-bottom:23px;
-  color:#2d3035;
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.10em;
+.cinHero__bgVignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 96% 94% at 52% 48%,transparent 48%,rgba(0,0,0,.46) 100%);
 }
-.lightHomeHero h1{
-  margin:0;
-  color:#181b20;
-  font:400 clamp(55px,5vw,82px)/.98 Georgia,"Times New Roman",serif;
-  letter-spacing:-.045em;
+
+/* Dekoratif 3D elementler */
+.cinHero__deco{
+  position:absolute;inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
 }
-.lightHomeHero h1 strong{
-  display:block;
-  margin-top:9px;
-  color:#9a743a;
-  font-weight:400;
+.cinHero__decoRing{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(180,148,80,.12);
+  transform:translate(-50%,-50%) rotateX(70deg);
+  animation:cinRingSpin 20s linear infinite;
 }
-.lightHomeHero__content>p{
-  max-width:600px;
-  margin-top:28px;
-  color:#3f454c;
-  font-size:17px;
-  line-height:1.72;
+.cinHero__decoRing--1{
+  width:700px;height:700px;
+  top:50%;left:72%;
+  border-color:rgba(180,148,80,.10);
+  animation-duration:25s;
 }
-.lightHomeHero__actions{
-  margin-top:32px;
+.cinHero__decoRing--2{
+  width:480px;height:480px;
+  top:50%;left:72%;
+  border-color:rgba(180,148,80,.16);
+  animation-duration:18s;
+  animation-direction:reverse;
+}
+.cinHero__decoRing--3{
+  width:280px;height:280px;
+  top:50%;left:72%;
+  border-color:rgba(180,148,80,.22);
+  animation-duration:12s;
+}
+.cinHero__decoLine{
+  position:absolute;
+  background:linear-gradient(90deg,transparent,rgba(180,148,80,.18),transparent);
+  height:1px;
+  animation:cinLineDrift 8s ease-in-out infinite alternate;
+}
+.cinHero__decoLine--1{
+  width:40%;top:28%;left:5%;
+  animation-delay:0s;
+}
+.cinHero__decoLine--2{
+  width:25%;top:68%;left:8%;
+  animation-delay:1.5s;
+}
+.cinHero__decoOrb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  animation:cinOrbFloat 10s ease-in-out infinite alternate;
+}
+.cinHero__decoOrb--1{
+  width:400px;height:400px;
+  top:-10%;right:-5%;
+  background:radial-gradient(circle,rgba(160,120,50,.18),transparent 70%);
+  animation-duration:12s;
+}
+.cinHero__decoOrb--2{
+  width:300px;height:300px;
+  bottom:5%;left:40%;
+  background:radial-gradient(circle,rgba(100,140,160,.12),transparent 70%);
+  animation-duration:9s;
+  animation-delay:2s;
+}
+.cinHero__particles{
+  position:absolute;inset:0;
+}
+.cinHero__particles span{
+  position:absolute;
+  width:2px;height:2px;
+  border-radius:50%;
+  background:rgba(210,178,100,.6);
+  box-shadow:0 0 6px rgba(210,178,100,.4);
+  animation:cinParticleFloat linear infinite;
+}
+.cinHero__particles span:nth-child(1){left:12%;top:80%;animation-duration:12s;animation-delay:0s}
+.cinHero__particles span:nth-child(2){left:25%;top:90%;animation-duration:15s;animation-delay:1s}
+.cinHero__particles span:nth-child(3){left:38%;top:85%;animation-duration:11s;animation-delay:2s}
+.cinHero__particles span:nth-child(4){left:55%;top:92%;animation-duration:14s;animation-delay:.5s}
+.cinHero__particles span:nth-child(5){left:68%;top:88%;animation-duration:13s;animation-delay:3s}
+.cinHero__particles span:nth-child(6){left:8%;top:60%;animation-duration:16s;animation-delay:1.5s}
+.cinHero__particles span:nth-child(7){left:80%;top:75%;animation-duration:10s;animation-delay:2.5s}
+.cinHero__particles span:nth-child(8){left:42%;top:70%;animation-duration:17s;animation-delay:4s}
+.cinHero__particles span:nth-child(9){left:90%;top:82%;animation-duration:12s;animation-delay:1s;width:3px;height:3px}
+.cinHero__particles span:nth-child(10){left:18%;top:95%;animation-duration:14s;animation-delay:3.5s}
+
+/* 3D rozet */
+.cinHero__badge3d{
+  position:absolute;
+  top:clamp(100px,14vh,140px);
+  right:clamp(18px,4vw,48px);
+  z-index:8;
+  transform:perspective(600px) rotateX(8deg) rotateY(-12deg);
+  animation:cinBadgeFloat 6s ease-in-out infinite alternate;
+}
+.cinHero__badge3dInner{
   display:flex;
-  gap:17px;
-  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:16px 20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(210,178,100,.25);
+  border-radius:12px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(210,178,100,.08),inset 0 1px 0 rgba(255,255,255,.08);
 }
-.lightHomeHero__actions a{
+.cinHero__badge3dInner img{
+  width:56px;height:56px;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 12px rgba(210,178,100,.3));
+}
+.cinHero__badge3dInner span{
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.22em;
+  color:rgba(210,178,100,.8);
+  white-space:nowrap;
+}
+
+/* Ana içerik */
+.cinHero__content{
+  position:relative;
+  z-index:5;
+  width:min(790px,62%);
+  padding:clamp(120px,16vh,160px) 0 clamp(160px,22vh,200px) clamp(32px,7vw,96px);
+  transform:translate3d(calc(var(--hero-x,0)*6px),calc(var(--hero-y,0)*4px),0);
+  transition:transform .18s ease-out;
+}
+.cinHero__rotator{
+  animation:cinContentIn .9s cubic-bezier(.16,.88,.2,1) both;
+}
+.cinHero__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+  color:rgba(210,178,100,.85);
+  font-size:clamp(10px,1.1vw,13px);
+  font-weight:700;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+}
+.cinHero__eyebrowLine{
+  flex:0 0 32px;
+  height:1px;
+  background:rgba(210,178,100,.5);
+}
+.cinHero__title{
+  margin:0 0 22px;
+  color:#fff;
+  font:400 clamp(48px,5.2vw,82px)/.96 Georgia,"Times New Roman",serif;
+  letter-spacing:-.02em;
+  text-shadow:0 4px 40px rgba(0,0,0,.4);
+}
+.cinHero__title strong{
+  display:block;
+  margin-top:6px;
+  color:#c8a55a;
+  font-weight:400;
+  text-shadow:0 0 80px rgba(200,165,90,.35),0 4px 40px rgba(0,0,0,.4);
+}
+.cinHero__desc{
+  max-width:540px;
+  margin:0 0 32px;
+  color:rgba(255,255,255,.68);
+  font-size:clamp(14px,1.4vw,17px);
+  line-height:1.75;
+}
+.cinHero__actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.cinHero__primary{
+  position:relative;
   min-height:56px;
-  padding:0 29px;
+  min-width:220px;
+  padding:0 32px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:6px;
   font-size:14px;
-  font-weight:600;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#fff;
+  background:linear-gradient(135deg,#b8893e,#9a6f2c);
+  border:1px solid rgba(200,160,70,.4);
+  box-shadow:0 16px 40px rgba(140,100,30,.35),0 0 0 1px rgba(200,160,70,.15),inset 0 1px 0 rgba(255,255,255,.12);
+  overflow:hidden;
   transition:transform .25s ease,box-shadow .25s ease;
 }
-.lightHomeHero__actions a:hover{
-  transform:translateY(-2px);
+.cinHero__primary:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 24px 55px rgba(140,100,30,.45),0 0 40px rgba(200,160,70,.20);
 }
-.lightHomeHero__primary{
-  min-width:225px;
-  border:1px solid #9b7539;
-  background:linear-gradient(135deg,#aa8241,#92703a);
-  color:#fff;
-  box-shadow:0 12px 30px rgba(132,97,43,.17);
-}
-.lightHomeHero__secondary{
-  min-width:190px;
-  border:1px solid rgba(132,101,54,.72);
-  background:rgba(255,255,255,.42);
-  color:#7a6038;
-}
-.lightHomeHero__trust{
+.cinHero__btnGlow{
   position:absolute;
-  z-index:4;
-  left:9.2%;
-  bottom:32px;
-  width:min(820px,66%);
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border:1px solid rgba(122,102,75,.12);
-  border-radius:8px;
-  overflow:hidden;
-  background:rgba(248,247,244,.82);
-  box-shadow:0 18px 45px rgba(72,58,39,.08);
-  backdrop-filter:blur(15px);
+  inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 65%);
+  transform:translateX(-100%);
+  transition:transform .5s ease;
 }
-.lightHomeHero__trust article{
-  min-height:137px;
-  padding:23px 20px;
-  display:grid;
-  grid-template-columns:40px 1fr;
-  gap:13px;
-  align-items:start;
-  border-right:1px solid rgba(122,102,75,.10);
+.cinHero__primary:hover .cinHero__btnGlow{
+  transform:translateX(100%);
 }
-.lightHomeHero__trust article:last-child{
-  border-right:0;
+.cinHero__secondary{
+  min-height:56px;
+  min-width:180px;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:6px;
+  font-size:14px;
+  font-weight:600;
+  color:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+  transition:transform .25s ease,background .25s ease,border-color .25s ease;
 }
-.lightHomeHero__trust article>div{
-  color:#9b763a;
-}
-.lightHomeHero__trust span{
-  display:block;
-}
-.lightHomeHero__trust strong{
-  display:block;
-  color:#23272c;
-  font-size:13px;
-  font-weight:700;
-}
-.lightHomeHero__trust p{
-  margin-top:9px;
-  color:#5e646c;
-  font-size:11px;
-  line-height:1.65;
+.cinHero__secondary:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.28);
 }
 
-/* ana sayfanın bir sonraki bölümüne geçişi daha doğal yap */
-.lightHomeHero + .homeServicesShowcase{
-  border-top:0;
-  box-shadow:inset 0 35px 70px rgba(0,0,0,.025);
+/* İstatistikler */
+.cinHero__stats{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  animation:cinFadeUp .7s ease .3s both;
+}
+.cinHero__stat{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.cinHero__stat strong{
+  font-size:clamp(22px,2.4vw,32px);
+  font-weight:800;
+  color:#c8a55a;
+  line-height:1;
+  font-family:Georgia,serif;
+}
+.cinHero__stat span{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.14em;
+  color:rgba(255,255,255,.45);
+  text-transform:uppercase;
+}
+.cinHero__statDiv{
+  width:1px;
+  height:36px;
+  background:rgba(255,255,255,.14);
+}
+
+/* Sağ 3D kart */
+.cinHero__visual3d{
+  position:absolute;
+  right:clamp(24px,6vw,80px);
+  top:50%;
+  transform:translateY(-50%) translate3d(calc(var(--hero-x,0)*-10px),calc(var(--hero-y,0)*-7px),0);
+  transition:transform .18s ease-out;
+  z-index:6;
+  width:clamp(280px,32vw,440px);
+}
+.cinHero__card3d{
+  position:relative;
+  transform-style:preserve-3d;
+  transform:perspective(1000px) rotateY(-8deg) rotateX(4deg);
+  border-radius:16px;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.6),
+    0 0 0 1px rgba(210,178,100,.12),
+    -20px 20px 60px rgba(0,0,0,.4);
+  transition:transform .3s ease;
+  animation:cinCardFloat 8s ease-in-out infinite alternate;
+}
+.cinHero__card3d:hover{
+  transform:perspective(1000px) rotateY(-4deg) rotateX(2deg) scale(1.02);
+}
+.cinHero__card3dFace--front{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:4/5;
+}
+.cinHero__card3dFace--front img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+  filter:saturate(.85) contrast(1.05) brightness(.9);
+}
+.cinHero__card3dShade{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.1),transparent 40%,transparent 55%,rgba(0,0,0,.6) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.15),transparent 50%);
+}
+.cinHero__card3dTag{
+  position:absolute;
+  bottom:18px;left:18px;right:18px;
+  padding:10px 16px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(210,178,100,.20);
+  border-radius:8px;
+}
+.cinHero__card3dTag span{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.24em;
+  color:rgba(210,178,100,.85);
+}
+.cinHero__card3dSide{
+  position:absolute;
+  top:8px;bottom:-8px;right:-14px;
+  width:14px;
+  background:linear-gradient(90deg,rgba(180,140,60,.25),rgba(100,80,30,.15));
+  border-radius:0 8px 8px 0;
+  transform:rotateY(90deg);
+  transform-origin:left;
+}
+.cinHero__card3dBottom{
+  position:absolute;
+  bottom:-12px;left:8px;right:8px;
+  height:12px;
+  background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.1));
+  border-radius:0 0 16px 16px;
+  transform:rotateX(-90deg);
+  transform-origin:top;
+}
+.cinHero__cardGlow{
+  position:absolute;
+  inset:-20px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(180,140,60,.18),transparent 65%);
+  filter:blur(30px);
+  z-index:-1;
+  animation:cinGlowPulse 4s ease-in-out infinite alternate;
+}
+
+/* Yüzen profil kartı */
+.cinHero__cardFloat{
+  position:absolute;
+  bottom:-24px;
+  left:-24px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 16px;
+  background:rgba(12,14,10,.75);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(210,178,100,.20);
+  border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  animation:cinFloatCard 5s ease-in-out infinite alternate;
+}
+.cinHero__cardFloat img{
+  width:42px;height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:top;
+  border:2px solid rgba(210,178,100,.35);
+}
+.cinHero__cardFloatInfo{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.cinHero__cardFloatInfo strong{
+  font-size:13px;
+  font-weight:700;
+  color:#fff;
+}
+.cinHero__cardFloatInfo span{
+  font-size:10px;
+  color:rgba(210,178,100,.7);
+  letter-spacing:.08em;
+}
+
+/* Trust bar */
+.cinHero__trust{
+  position:absolute;
+  z-index:7;
+  left:clamp(24px,7vw,96px);
+  bottom:clamp(20px,4vh,40px);
+  width:min(780px,56%);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  overflow:hidden;
+  background:rgba(8,10,6,.55);
+  backdrop-filter:blur(20px);
+  box-shadow:0 20px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.cinHero__trust article{
+  min-height:120px;
+  padding:20px 18px;
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:12px;
+  align-items:start;
+  border-right:1px solid rgba(255,255,255,.07);
+  transition:background .3s ease;
+}
+.cinHero__trust article:hover{
+  background:rgba(210,178,100,.06);
+}
+.cinHero__trust article:last-child{border-right:0}
+.cinHero__trustIcon{color:rgba(210,178,100,.8)}
+.cinHero__trust strong{
+  display:block;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.cinHero__trust p{
+  margin:0;
+  color:rgba(255,255,255,.48);
+  font-size:11px;
+  line-height:1.6;
+}
+
+/* Scroll göstergesi */
+.cinHero__scroll{
+  position:absolute;
+  right:clamp(18px,3vw,36px);
+  bottom:clamp(20px,4vh,44px);
+  z-index:8;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  animation:cinFadeIn 1s ease 1s both;
+}
+.cinHero__scrollLine{
+  width:1px;
+  height:48px;
+  background:linear-gradient(180deg,transparent,rgba(210,178,100,.6));
+  animation:cinScrollLine 2s ease-in-out infinite;
+}
+.cinHero__scrollLabel{
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.28em;
+  color:rgba(210,178,100,.5);
+  writing-mode:vertical-lr;
+}
+
+/* KEYFRAMES */
+@keyframes cinGrain{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-.8%,.7%)}
+  50%{transform:translate(.7%,-.8%)}
+  75%{transform:translate(.5%,.6%)}
+  100%{transform:translate(-.6%,-.5%)}
+}
+@keyframes cinRingSpin{
+  from{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(0deg)}
+  to{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(360deg)}
+}
+@keyframes cinLineDrift{
+  from{opacity:.4;transform:translateX(0)}
+  to{opacity:.8;transform:translateX(8px)}
+}
+@keyframes cinOrbFloat{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(-20px,15px) scale(1.1)}
+}
+@keyframes cinParticleFloat{
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  10%{opacity:.8}
+  90%{opacity:.4}
+  100%{opacity:0;transform:translateY(-120px) scale(0)}
+}
+@keyframes cinBadgeFloat{
+  from{transform:perspective(600px) rotateX(8deg) rotateY(-12deg) translateY(0)}
+  to{transform:perspective(600px) rotateX(6deg) rotateY(-10deg) translateY(-10px)}
+}
+@keyframes cinContentIn{
+  from{opacity:0;transform:translateY(24px);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes cinFadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes cinFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes cinCardFloat{
+  from{transform:perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0)}
+  to{transform:perspective(1000px) rotateY(-6deg) rotateX(3deg) translateY(-12px)}
+}
+@keyframes cinGlowPulse{
+  from{opacity:.6;transform:scale(1)}
+  to{opacity:1;transform:scale(1.1)}
+}
+@keyframes cinFloatCard{
+  from{transform:translateY(0) rotate(-.5deg)}
+  to{transform:translateY(-8px) rotate(.5deg)}
+}
+@keyframes cinScrollLine{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* Mobil */
+@media(max-width:900px){
+  .cinHero{min-height:100dvh;align-items:flex-start}
+  .cinHero__content{
+    width:100%;
+    padding:clamp(100px,14vh,130px) 24px clamp(220px,32vh,280px);
+  }
+  .cinHero__visual3d{display:none}
+  .cinHero__badge3d{display:none}
+  .cinHero__trust{
+    left:16px;right:16px;
+    width:auto;
+    bottom:16px;
+    grid-template-columns:1fr;
+  }
+  .cinHero__trust article{min-height:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .cinHero__trust article:last-child{border-bottom:0}
+  .cinHero__decoRing{display:none}
+  .cinHero__scroll{display:none}
+  .cinHero__stats{gap:14px}
+}
+@media(max-width:600px){
+  .cinHero__title{font-size:clamp(38px,10vw,56px)}
+  .cinHero__actions{flex-direction:column}
+  .cinHero__primary,.cinHero__secondary{width:100%;min-width:0}
 }
 
 @media(max-width:1050px){
@@ -10034,7 +11077,7 @@ img{
 }
 
 /* =========================================================
-   STEP 63 — TÜM KAMUSAL SİTE / AÇIK SICAK PREMIUM TEMA
+   STEP 63 -" TÜM KAMUSAL SİTE / AÇIK SICAK PREMIUM TEMA
    Admin paneli bilerek koyu bırakılmıştır.
    ========================================================= */
 :root{
@@ -10897,7 +11940,7 @@ img{
 }
 
 /* =========================================================
-   STEP 64 — AÇIK TEMA / GERÇEK NATIVE PREMIUM POLISH
+   STEP 64 -" AÇIK TEMA / GERÇEK NATIVE PREMIUM POLISH
    Sadece renk açmak yerine bölüm, kart ve tipografi dili
    açık tasarıma göre yeniden rafine edildi.
    ========================================================= */
@@ -10938,7 +11981,7 @@ section{
   margin-right:auto;
 }
 
-/* hizmet kartlarını “dark card recolor” hissinden çıkar */
+/* hizmet kartlarını "dark card recolor" hissinden çıkar */
 .homeServiceFeature{
   position:relative;
   overflow:hidden;
@@ -11307,7 +12350,7 @@ section{
   }
 }
 
-/* STEP 67 — FINAL LOGO HEADER FIX */
+/* STEP 67 -" FINAL LOGO HEADER FIX */
 .brand--newLogo{
   display:flex!important;
   align-items:center!important;
@@ -11399,7 +12442,7 @@ section{
 .svc68CategoryDetails{padding:80px 6%;border-top:1px solid rgba(128,98,55,.12);background:#f3eee7}.svc68CategoryDetails__head{max-width:850px;margin:0 auto 34px;text-align:center}.svc68CategoryDetails__head>span{color:#9b7438;font-size:10px;font-weight:800;letter-spacing:.16em}.svc68CategoryDetails__head h2{margin:10px 0 12px;color:#24272b;font:400 clamp(32px,3.4vw,48px)/1.05 Georgia,"Times New Roman",serif}.svc68CategoryDetails__grid{max-width:1120px;margin:0 auto;display:grid;gap:14px}.svc68Detail{overflow:hidden;border:1px solid rgba(128,98,55,.16);border-radius:17px;background:#fffdf9}.svc68Detail summary{min-height:84px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;list-style:none}.svc68Detail summary::-webkit-details-marker{display:none}.svc68Detail summary>span{display:flex;align-items:center;gap:16px}.svc68Detail summary small{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(155,116,56,.28);border-radius:50%;color:#9b7438;font-size:9px}.svc68Detail summary strong{color:#25282d;font:400 20px/1.1 Georgia,"Times New Roman",serif}.svc68Detail summary b{color:#9b7438;font-size:10px}.svc68Detail[open] summary{border-bottom:1px solid rgba(128,98,55,.10);background:#faf5ed}.svc68Detail__body{padding:25px 30px 30px 78px}.svc68Detail__body ul{margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px;list-style:none}.svc68Detail__body li{position:relative;padding-left:18px;color:#34383d;font-size:12px;line-height:1.55}.svc68Detail__body li:before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;border-radius:50%;background:#a47b3d}
 @media(max-width:760px){.podcastTopStrip{min-height:32px;padding:7px 12px;font-size:9px}.podcastTopStrip__copy{display:none}.podcastTopStrip b{font-size:9px}.svc68CategoryDetails{padding:58px 18px}.svc68Detail summary{padding:15px}.svc68Detail summary strong{font-size:17px}.svc68Detail__body{padding:20px 18px 24px}.svc68Detail__body ul{grid-template-columns:1fr}}
 
-/* STEP 69 — CURRENT FILE REPAIR + REQUESTED SERVICE DETAILS */
+/* STEP 69 -" CURRENT FILE REPAIR + REQUESTED SERVICE DETAILS */
 .apt60Hero__trust{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 .apt60Hero__trust strong{font-size:15px!important;line-height:1.35!important}
 .apt60Hero__trust small{font-size:12px!important;line-height:1.55!important}
@@ -11417,7 +12460,7 @@ section{
 @media(max-width:1100px){.svc52QuickGrid--four{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:700px){.apt60Hero__trust{grid-template-columns:1fr!important}.svc52QuickGrid--four{grid-template-columns:1fr!important}.svc69DetailList{grid-template-columns:1fr!important}.svc69DetailSection{scroll-margin-top:115px}}
 
-/* STEP 69 — SÜREÇ / DANIŞAN DENEYİMLERİ */
+/* STEP 69 -" SÜREÇ / DANIŞAN DENEYİMLERİ */
 .prc53Testimonials{position:relative;padding:86px 6% 92px;overflow:hidden;border-top:1px solid rgba(128,98,55,.13);background:radial-gradient(circle at 88% 0,rgba(155,116,56,.09),transparent 25%),radial-gradient(circle at 4% 80%,rgba(114,145,116,.07),transparent 24%),linear-gradient(180deg,#f7f3ed 0%,#eee7dd 100%)}
 .prc53Testimonials:before{content:"";position:absolute;width:360px;height:360px;right:-190px;top:120px;border:1px solid rgba(155,116,56,.11);border-radius:50%;box-shadow:0 0 0 40px rgba(155,116,56,.025),0 0 0 82px rgba(155,116,56,.018);pointer-events:none}
 .prc53Testimonials__head{position:relative;z-index:1;max-width:1400px;margin:0 auto 34px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end}
@@ -11431,7 +12474,7 @@ section{
 @media(max-width:1000px){.prc53Testimonials__head{grid-template-columns:1fr;gap:16px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.prc53Testimonials{padding:64px 18px 70px}.prc53Testimonials__head h2{font-size:38px}.prc53Testimonials__head>p{font-size:12px}.prc53Testimonials__grid,.prc53Testimonials__grid.is-expanded{grid-template-columns:1fr}.prc53TestimonialCard{padding:23px 20px 20px;border-radius:16px}.prc53TestimonialCard>p{font-size:13px;line-height:1.75}.prc53Testimonials__actions button{width:100%}}
 
-/* STEP 70 — SUPABASE GERÇEK RANDEVU KAYDI */
+/* STEP 70 -" SUPABASE GERÇEK RANDEVU KAYDI */
 .apt70SubmitError{
   margin-top:20px;
   padding:14px 16px;
@@ -11453,7 +12496,7 @@ section{
   cursor:not-allowed!important;
 }
 
-/* STEP 71 — GERÇEK ADMIN RANDEVU YÖNETİMİ */
+/* STEP 71 -" GERÇEK ADMIN RANDEVU YÖNETİMİ */
 .admin70Login{
   min-height:100vh;
   padding:30px 18px;
@@ -11834,7 +12877,7 @@ section{
   }
 }
 
-/* STEP 72 — ANA SAYFA CMS */
+/* STEP 72 -" ANA SAYFA CMS */
 .admin72Cms{display:grid;gap:16px}
 .admin72Cms__head{padding:25px 27px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.12);border-radius:16px;background:linear-gradient(145deg,#07182a,#04111e)}
 .admin72Cms__head>div>span{color:#d9953d;font-size:9px;font-weight:800;letter-spacing:.15em}
@@ -11867,7 +12910,7 @@ section{
 .admin72Cms__save button:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:760px){.admin72Cms__head,.admin72Cms__save{align-items:flex-start;flex-direction:column}.admin72Cms__fields{grid-template-columns:1fr}.admin72Cms__full{grid-column:auto}.admin72Cms__save button{width:100%;justify-content:center}}
 
-/* STEP 73 — HİZMETLER CMS + YENİ AÇILIR KARTLAR */
+/* STEP 73 -" HİZMETLER CMS + YENİ AÇILIR KARTLAR */
 .svc73Grid{max-width:1240px;margin:34px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .svc73Card{overflow:hidden;border:1px solid rgba(128,98,55,.16);border-radius:19px;background:#fffdf9;box-shadow:0 15px 40px rgba(84,64,39,.055)}
 .svc73Card summary{padding:24px;cursor:pointer;list-style:none}
@@ -11897,7 +12940,7 @@ section{
 .admin73Cms__save{padding:19px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(218,151,65,.14);border-radius:13px;background:linear-gradient(90deg,rgba(218,151,65,.035),rgba(47,128,237,.025))}.admin73Cms__save>div{display:flex;flex-direction:column;gap:5px}.admin73Cms__save strong{color:#ece7e1;font:400 15px Georgia,"Times New Roman",serif}.admin73Cms__save span{color:#6e7b8b;font-size:8px}.admin73Cms__save button{min-height:43px;padding:0 16px;display:flex;align-items:center;gap:9px;border:1px solid rgba(218,151,65,.30);border-radius:8px;background:linear-gradient(135deg,#a85e20,#d8963f);color:#fff;cursor:pointer;font-size:8px;font-weight:800}
 @media(max-width:760px){.svc73Grid{grid-template-columns:1fr}.svc73Card__details ul{grid-template-columns:1fr}.admin73Cms__head,.admin73Cms__save{align-items:flex-start;flex-direction:column}.admin73Cms__fields{grid-template-columns:1fr}.admin73Cms__full{grid-column:auto}.admin73Cms__save button{width:100%;justify-content:center}}
 
-/* STEP 74 — YOUTUBE & SPOTIFY GERÇEK CMS */
+/* STEP 74 -" YOUTUBE & SPOTIFY GERÇEK CMS */
 .cnt74Loading,.cnt74Empty{min-height:170px;display:grid;place-items:center;border:1px dashed rgba(128,98,55,.18);border-radius:15px;background:rgba(255,253,249,.55);color:#777d83;font-size:11px}
 .cnt74Channels{margin-top:30px;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(128,98,55,.16);border-radius:18px;background:#ebe4da}
 .cnt74Channels__copy{display:flex;align-items:center;gap:14px}.cnt74Channels__copy>div:last-child{display:flex;flex-direction:column;gap:5px}.cnt74Channels__copy strong{color:#25282d;font-size:13px}.cnt74Channels__copy p{color:#686f76;font-size:10.5px;line-height:1.55}
@@ -11914,7 +12957,7 @@ section{
 @media(max-width:1000px){.admin74Media__grid{grid-template-columns:1fr}.cnt74Channels{align-items:flex-start;flex-direction:column}}
 @media(max-width:700px){.admin74Media__head{align-items:flex-start;flex-direction:column}.admin74Media__channelFields,.admin74Media__form{grid-template-columns:1fr}.admin74Media__full{grid-column:auto}.admin74Media__item{grid-template-columns:38px 1fr}.admin74Media__itemActions{grid-column:1/-1;justify-content:flex-end}.cnt74Channels__buttons{width:100%}.cnt74Channels__buttons a{flex:1;justify-content:center}}
 
-/* STEP 75 — SPOTIFY TARZI ÜST PODCAST ŞERİDİ */
+/* STEP 75 -" SPOTIFY TARZI ÜST PODCAST ŞERİDİ */
 .podcastTopStrip--spotify{
   min-height:44px!important;
   padding:0!important;
@@ -12043,7 +13086,7 @@ section{
   }
 }
 
-/* STEP 76 — RANDEVU FİLTRE + KALICI SİLME */
+/* STEP 76 -" RANDEVU FİLTRE + KALICI SİLME */
 .admin76Filters{
   display:flex;
   flex-wrap:wrap;
@@ -12110,7 +13153,7 @@ section{
   }
 }
 
-/* STEP 77 — ANA SAYFA PREMIUM HAREKET EFEKTLERİ */
+/* STEP 77 -" ANA SAYFA PREMIUM HAREKET EFEKTLERİ */
 
 /* Hero giriş animasyonları */
 @keyframes homeHeroFadeUp {
@@ -12302,7 +13345,7 @@ section{
   }
 }
 
-/* STEP 78 — İÇERİK DÜZELTMELERİ + HEADER HİYERARŞİSİ */
+/* STEP 78 -" İÇERİK DÜZELTMELERİ + HEADER HİYERARŞİSİ */
 .brandIdentity small{
   order:1!important;
   margin:0 0 3px!important;
@@ -12386,7 +13429,7 @@ section{
   .homeTrustStatement p{font-size:12.5px!important}
 }
 
-/* STEP 79 — PERFORMANS / MOBİL AÇILIŞ OPTİMİZASYONU */
+/* STEP 79 -" PERFORMANS / MOBİL AÇILIŞ OPTİMİZASYONU */
 
 /* Tarayıcı ekran dışında kalan ağır bölümleri ilk açılışta çizmek zorunda kalmaz. */
 .homeServicesShowcase,
@@ -12443,7 +13486,7 @@ img{
   }
 }
 
-/* STEP 80 — AYRI İLETİŞİM SAYFASI */
+/* STEP 80 -" AYRI İLETİŞİM SAYFASI */
 .contact80Page{
   min-height:100vh;
   color:#202329;
@@ -12725,7 +13768,7 @@ img{
   }
 }
 
-/* STEP 81 — SÜREÇ CMS */
+/* STEP 81 -" SÜREÇ CMS */
 .admin81Process__stack{display:grid;gap:12px}
 .admin81Process__item{padding:16px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:#061522;display:grid;gap:10px}
 .admin81Process__item>b{color:#d69a4c;font-size:8px;letter-spacing:.13em}
@@ -12738,7 +13781,7 @@ img{
 .admin81Process__itemTop button{border:1px solid rgba(225,92,92,.25);border-radius:7px;background:rgba(225,92,92,.08);color:#ef8e8e;padding:7px 10px;cursor:pointer}
 @media(max-width:700px){.admin81Process__row{grid-template-columns:1fr}}
 
-/* STEP 82 — İÇERİKLER + HİZMETLER GÖRSEL FIX */
+/* STEP 82 -" İÇERİKLER + HİZMETLER GÖRSEL FIX */
 
 /* Performans optimizasyonundaki content-visibility,
    gövdeden yukarı taşan sekmeleri kırpıyordu. İçerikler sayfasında kapatıyoruz. */
@@ -12848,14 +13891,14 @@ img{
   }
 }
 
-/* STEP 83 — HOME RETURN FIX + CB LABS CREDIT */
+/* STEP 83 -" HOME RETURN FIX + CB LABS CREDIT */
 .premiumFooter__copyright{display:flex;flex-direction:column;gap:7px}
 .premiumFooter__creator{display:flex;align-items:center;flex-wrap:wrap;gap:7px;color:rgba(230,234,239,.48);font-size:9px;letter-spacing:.045em}
 .premiumFooter__creator strong{color:#c59a58;font-weight:700;letter-spacing:.06em}
 .premiumFooter__creator i{color:rgba(197,154,88,.55);font-style:normal}
 @media(max-width:760px){.premiumFooter__creator{justify-content:center;font-size:8.5px}}
 
-/* STEP 85 — AUTO HERO TEXT ROTATOR */
+/* STEP 85 -" AUTO HERO TEXT ROTATOR */
 .lightHomeHero__rotator{
   will-change:transform,opacity,filter;
   animation:homeHeroTextIn .78s cubic-bezier(.16,.8,.2,1) both;
@@ -12902,7 +13945,7 @@ img{
   }
 }
 
-/* STEP 87 — HERO TEXT SPACING FIX */
+/* STEP 87 -" HERO TEXT SPACING FIX */
 .lightHomeHero__content{
   display:flex!important;
   flex-direction:column!important;
@@ -12984,7 +14027,7 @@ img{
   }
 }
 
-/* STEP 89 — PREMIUM GLOBAL MOTION + HERO 3D + PROCESS TIMELINE */
+/* STEP 89 -" PREMIUM GLOBAL MOTION + HERO 3D + PROCESS TIMELINE */
 
 /* Smooth route entrance */
 .pageShell main{
@@ -13012,7 +14055,7 @@ img{
   filter:none;
 }
 
-/* Home hero — subtle mouse parallax */
+/* Home hero -" subtle mouse parallax */
 .lightHomeHero{
   --hero-x:0;
   --hero-y:0;
@@ -13069,7 +14112,7 @@ img{
   transform-origin:left center;
 }
 
-/* Process timeline — scroll controlled gold progress */
+/* Process timeline -" scroll controlled gold progress */
 .prc53Steps{
   --timeline-progress:0;
 }
@@ -13191,7 +14234,7 @@ img{
   .motionReveal{opacity:1!important}
 }
 
-/* STEP 90 — HERO 3D MOTION SOFTENING */
+/* STEP 90 -" HERO 3D MOTION SOFTENING */
 /* Sağ görsel artık çok hafif hareket eder; sol içerik ve alt kartlar sabit kalır. */
 .lightHomeHero__visual{
   transform:
@@ -13237,7 +14280,7 @@ img{
   }
 }
 
-/* STEP 91 — PREMIUM FOOTER REDESIGN */
+/* STEP 91 -" PREMIUM FOOTER REDESIGN */
 .premiumFooter{
   position:relative;
   overflow:hidden;
@@ -13539,7 +14582,7 @@ img{
   }
 }
 
-/* STEP 92 — LIGHT PREMIUM ADMIN + CB LABS OPENING */
+/* STEP 92 -" LIGHT PREMIUM ADMIN + CB LABS OPENING */
 
 /* --- Opening sequence --- */
 .admin92Intro{
@@ -14000,7 +15043,7 @@ img{
   }
 }
 
-/* STEP 93 — ADMIN SESSION SECURITY */
+/* STEP 93 -" ADMIN SESSION SECURITY */
 .admin93SecurityNote{
   margin:0 auto 18px;
   max-width:350px;
@@ -14023,7 +15066,7 @@ img{
   color:#a77736;
 }
 
-/* STEP 94 — ADMIN CMS LIGHT FIX (HİZMETLER + SÜREÇ + KAYIT ALANI) */
+/* STEP 94 -" ADMIN CMS LIGHT FIX (HİZMETLER + SÜREÇ + KAYIT ALANI) */
 
 /* Hizmetler ve Süreç sekmelerinde kalan koyu eski tema tamamen kaldırılır */
 .admin73Cms{
@@ -14454,7 +15497,7 @@ img{
   }
 }
 
-/* STEP130 — WARM LUXURY 3D CINEMATIC OPENING */
+/* STEP130 -" WARM LUXURY 3D CINEMATIC OPENING */
 .site95Intro{
   position:fixed;inset:0;z-index:999999;overflow:hidden;display:grid;place-items:center;
   perspective:1500px;
@@ -14503,7 +15546,7 @@ img{
 @media(max-width:640px){.site95Intro__stage{height:84vh}.site95Intro__monolith{width:255px}.site95Intro__rings{width:420px}.site95Intro__eyebrow{font-size:7px;letter-spacing:.22em}.site95Intro__name{font-size:30px;max-width:88vw}.site95Intro__role{font-size:8px;letter-spacing:.055em}.site95Intro__timeline{bottom:1%;width:90vw;gap:8px}.site95Intro__timeline em{font-size:6px;letter-spacing:.13em}}
 @media(prefers-reduced-motion:reduce){.site95Intro{animation-duration:.15s!important;animation-delay:.8s!important}.site95Intro *{animation-duration:.01ms!important;animation-delay:0ms!important}}
 
-/* STEP129 — COMPACT PREMIUM AUTHOR BIO */
+/* STEP129 -" COMPACT PREMIUM AUTHOR BIO */
 .author126{
   min-height:calc(100vh - 120px);
   background:
@@ -14618,7 +15661,7 @@ img{
   .author126__footer{align-items:flex-start;flex-direction:column}
 }
 
-/* STEP98 — PREMIUM EDITORIAL BLOG */
+/* STEP98 -" PREMIUM EDITORIAL BLOG */
 .blog98Page{
   background:#f6f1ea;
   color:#222427;
@@ -15180,7 +16223,7 @@ img{
   .blog99Related__grid img{width:100px;height:95px}
 }
 
-/* STEP100 — NO-CODE BLOG ADMIN */
+/* STEP100 -" NO-CODE BLOG ADMIN */
 .admin100Blog{display:grid;gap:16px}
 .admin100Blog__head,
 .admin100Blog__settings,
@@ -15316,7 +16359,7 @@ img{
   .admin100Blog__list article>img{width:100%;height:180px}
 }
 
-/* STEP102 — NEW PROFESSIONAL HOMEPAGE EDITORIAL VISUALS */
+/* STEP102 -" NEW PROFESSIONAL HOMEPAGE EDITORIAL VISUALS */
 .homeEditorialVisuals{
   width:min(1380px,90%);
   margin:46px auto 28px;
@@ -15472,7 +16515,7 @@ img{
   .homeEditorialVisuals__side article{min-height:235px}
 }
 
-/* Blog admin — readable scale. This overrides only typography/spacing. */
+/* Blog admin -" readable scale. This overrides only typography/spacing. */
 .admin100Blog__head>div>span{font-size:11px!important}
 .admin100Blog__head h2{font-size:34px!important}
 .admin100Blog__head p{font-size:13px!important;line-height:1.65!important}
@@ -15536,7 +16579,7 @@ img{
   .admin100Blog__postCopy>strong{font-size:19px!important}
 }
 
-/* STEP103 — SERVICES + PROCESS VISUAL REDESIGN
+/* STEP103 -" SERVICES + PROCESS VISUAL REDESIGN
    IMPORTANT: Supabase content bindings and admin editors remain untouched. */
 
 /* ---------- SERVICES ---------- */
@@ -15883,7 +16926,168 @@ img{
   .prc53Trust>div{border-right:0!important;border-bottom:1px solid #e7ddd2!important}
 }
 
-/* STEP104 — HOMEPAGE APPROACH + ABOUT MOBILE FAST PAINT + RELEVANT PROCESS VISUALS */
+/* STEP104 -" HOMEPAGE APPROACH + ABOUT MOBILE FAST PAINT + RELEVANT PROCESS VISUALS */
+/* ============================================
+   CIN3D -" SCROLL-BASED 3D CİNEMATİC SECTIONS
+   ============================================ */
+
+.cin3d{
+  position:relative;
+  overflow:hidden;
+  opacity:0;
+  transform:perspective(1200px) translateY(60px) rotateX(6deg) scale(.98);
+  filter:blur(4px);
+  transition:
+    opacity .9s cubic-bezier(.16,.88,.2,1),
+    transform .9s cubic-bezier(.16,.88,.2,1),
+    filter .9s cubic-bezier(.16,.88,.2,1);
+  will-change:transform,opacity,filter;
+}
+.cin3d--visible{
+  opacity:1;
+  transform:perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+  filter:blur(0);
+}
+.cin3d--approach{
+  width:min(1400px,92%);
+  margin:80px auto 0;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(210,178,100,.15);
+  background:linear-gradient(135deg,#0e100d,#141610);
+  box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(210,178,100,.08),inset 0 1px 0 rgba(255,255,255,.04);
+  transition-delay:.05s;
+}
+.cin3d__scene{position:relative;min-height:580px;overflow:hidden}
+.cin3d__sceneImg{position:absolute;inset:0;will-change:transform}
+.cin3d__sceneImg img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(1.06) brightness(.75);display:block}
+.cin3d__sceneShade{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,transparent 55%,rgba(14,16,13,.85) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.15),transparent 35%,transparent 60%,rgba(0,0,0,.55) 100%);
+}
+.cin3d__sceneTag{position:absolute;left:24px;bottom:24px;z-index:2;display:flex;align-items:center;gap:12px}
+.cin3d__sceneTag span{
+  width:36px;height:36px;display:grid;place-items:center;
+  border:1px solid rgba(210,178,100,.5);border-radius:50%;
+  color:rgba(210,178,100,.9);font-size:8px;font-weight:800;
+}
+.cin3d__sceneTag p{margin:0;color:rgba(255,255,255,.75);font-size:8px;font-weight:800;letter-spacing:.22em}
+.cin3d__decoLines{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.cin3d__decoLines span{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(210,178,100,.12),transparent 60%)}
+.cin3d__decoLines span:nth-child(1){top:25%}
+.cin3d__decoLines span:nth-child(2){top:50%}
+.cin3d__decoLines span:nth-child(3){top:75%}
+.cin3d__content{
+  padding:clamp(40px,5vh,64px) clamp(32px,4vw,56px);
+  display:flex;flex-direction:column;justify-content:center;color:#fff;
+}
+.cin3d__eyebrow{color:rgba(210,178,100,.8);font-size:9px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:16px;display:block}
+.cin3d__heading{margin:0 0 20px;color:#fff;font:400 clamp(36px,3.6vw,58px)/.96 Georgia,"Times New Roman",serif;letter-spacing:-.02em}
+.cin3d__heading strong{display:block;color:#c8a55a;font-weight:400;margin-top:4px}
+.cin3d__lead{max-width:520px;margin:0 0 28px;color:rgba(255,255,255,.55);font-size:12px;line-height:1.8}
+.cin3d__principles{display:grid;border-top:1px solid rgba(210,178,100,.12)}
+.cin3d__principles article{
+  min-height:88px;padding:16px 0;
+  display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:center;
+  border-bottom:1px solid rgba(210,178,100,.10);
+  transition:padding-left .24s ease,background .24s ease;
+}
+.cin3d__principles article:hover{padding-left:8px;background:rgba(210,178,100,.04)}
+.cin3d__principles article>span{
+  width:33px;height:33px;display:grid;place-items:center;
+  border:1px solid rgba(210,178,100,.30);border-radius:50%;
+  color:rgba(210,178,100,.8);font-size:8px;font-weight:800;
+}
+.cin3d__principles article>div{display:flex;flex-direction:column;gap:5px}
+.cin3d__principles strong{color:#fff;font:400 17px Georgia,"Times New Roman",serif}
+.cin3d__principles p{margin:0;color:rgba(255,255,255,.45);font-size:10px;line-height:1.55}
+.cin3d__cta{
+  width:max-content;margin-top:28px;padding:12px 24px;
+  display:flex;align-items:center;gap:10px;
+  border:1px solid rgba(210,178,100,.30);border-radius:6px;
+  color:rgba(210,178,100,.85);font-size:9px;font-weight:800;letter-spacing:.08em;
+  background:rgba(210,178,100,.06);
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+.cin3d__cta:hover{background:rgba(210,178,100,.12);border-color:rgba(210,178,100,.5);transform:translateX(4px)}
+
+.cin3d--scope{
+  margin:0;
+  background:linear-gradient(90deg,#0a0c09,#101209);
+  border-top:1px solid rgba(210,178,100,.08);
+  border-bottom:1px solid rgba(210,178,100,.08);
+  transition-delay:.1s;
+}
+.cin3d__scopeInner{
+  width:min(900px,88%);margin:0 auto;padding:28px 0;
+  display:flex;align-items:center;gap:18px;
+}
+.cin3d__scopeIcon{color:rgba(210,178,100,.6)}
+.cin3d--scope p{margin:0;color:rgba(255,255,255,.40);font-size:11px;line-height:1.7;letter-spacing:.02em}
+
+.cin3d--trust{
+  position:relative;
+  min-height:560px;
+  display:flex;align-items:center;justify-content:center;
+  transition-delay:.15s;
+}
+.cin3d__trustBg{position:absolute;inset:0;overflow:hidden}
+.cin3d__trustBgImg{position:absolute;inset:-10%;will-change:transform}
+.cin3d__trustBgImg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) contrast(1.1) brightness(.28)}
+.cin3d__trustBgShade{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,.3),rgba(0,0,0,.72) 100%),
+    linear-gradient(180deg,rgba(10,12,9,.6),transparent 30%,transparent 70%,rgba(10,12,9,.8));
+}
+.cin3d__trustDecoRing{
+  position:absolute;top:50%;left:50%;
+  width:600px;height:600px;border-radius:50%;
+  border:1px solid rgba(210,178,100,.08);
+  transform:translate(-50%,-50%) rotateX(60deg);
+  animation:cin3dRingSpin 20s linear infinite;
+}
+.cin3d__trustDecoRing--2{width:400px;height:400px;border-color:rgba(210,178,100,.12);animation-duration:14s;animation-direction:reverse}
+.cin3d__trustContent{
+  position:relative;z-index:2;text-align:center;
+  padding:80px clamp(24px,8vw,120px);max-width:800px;color:#fff;
+}
+.cin3d__trustMark{font-size:120px;line-height:.6;color:rgba(210,178,100,.20);font-family:Georgia,serif;margin-bottom:24px;display:block}
+.cin3d__trustTitle{
+  margin:12px 0 18px;color:#fff;
+  font:400 clamp(36px,4vw,60px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.02em;text-shadow:0 4px 40px rgba(0,0,0,.4);
+}
+.cin3d__trustText{margin:0 0 32px;color:rgba(255,255,255,.60);font-size:clamp(13px,1.4vw,16px);line-height:1.8;max-width:640px;margin-left:auto;margin-right:auto}
+.cin3d__trustCta{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 32px;
+  border:1px solid rgba(210,178,100,.35);border-radius:6px;
+  color:rgba(210,178,100,.85);font-size:10px;font-weight:800;letter-spacing:.14em;
+  background:rgba(210,178,100,.06);backdrop-filter:blur(10px);
+  transition:background .25s ease,transform .25s ease;
+}
+.cin3d__trustCta:hover{background:rgba(210,178,100,.14);transform:translateY(-2px)}
+
+@keyframes cin3dRingSpin{
+  from{transform:translate(-50%,-50%) rotateX(60deg) rotateZ(0deg)}
+  to{transform:translate(-50%,-50%) rotateX(60deg) rotateZ(360deg)}
+}
+
+@media(max-width:900px){
+  .cin3d--approach{grid-template-columns:1fr;margin:40px 16px 0;width:auto}
+  .cin3d__scene{min-height:300px}
+  .cin3d__content{padding:32px 24px 40px}
+  .cin3d__trustDecoRing{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .cin3d{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+}
+
+/* ---- LEGACY homeApproachEditorial (korunuyor) ---- */
 .homeApproachEditorial{
   width:min(1400px,90%);
   margin:68px auto 44px;
@@ -16017,7 +17221,7 @@ img{
   .homeApproachEditorial__principles p{font-size:9.5px}
 }
 
-/* STEP105 — MAJOR SERVICES REDESIGN + WORD DETAIL PAGES */
+/* STEP105 -" MAJOR SERVICES REDESIGN + WORD DETAIL PAGES */
 .svc105,.svc105Article{background:#f6f1e9;color:#25282c;min-height:100vh}
 .svc105Hero{height:min(760px,78vh);min-height:620px;position:relative;overflow:hidden;background:#17130f}
 .svc105Hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.62) contrast(.98);transform:scale(1.01)}
@@ -16050,7 +17254,7 @@ img{
 @media(max-width:950px){.svc105Grid{grid-template-columns:1fr}.svc105Intro{grid-template-columns:1fr;gap:25px}.svc105ArticleLayout{grid-template-columns:1fr;gap:35px}.svc105ArticleNav{position:relative;top:auto}.svc105Trust{grid-template-columns:55px 1fr}.svc105Trust>p{grid-column:2}.svc105Card{grid-template-columns:40% 60%}}
 @media(max-width:620px){.svc105Hero{height:650px;min-height:650px}.svc105Hero__copy{left:7%;right:7%}.svc105Hero__copy h1{font-size:55px}.svc105Hero__index{display:none}.svc105Back,.svc105ArticleBack{top:25px}.svc105Intro,.svc105Grid,.svc105Trust,.svc105ArticleLayout{width:90%}.svc105Intro{padding:58px 0 38px}.svc105Intro h2{font-size:42px}.svc105Grid{margin-top:28px}.svc105Card{grid-template-columns:1fr;min-height:0}.svc105Card__visual{min-height:245px}.svc105Card__body{padding:27px 24px 30px}.svc105Card__body h3{font-size:27px}.svc105Trust{grid-template-columns:1fr;padding:28px 25px}.svc105Trust>p{grid-column:auto}.svc105ArticleHero{height:590px}.svc105ArticleHero__copy{left:7%;right:7%;top:53%}.svc105ArticleHero__copy h1{font-size:48px}.svc105ArticleHero__no{font-size:50px}.svc105ArticleLayout{padding:50px 0 75px}.svc105ArticleNav{display:none}.svc105ArticleLead p{font-size:19px}.svc105ArticleSection{padding:31px 0}.svc105ArticleSection h2{font-size:25px}.svc105ArticleSection p{font-size:11.5px;line-height:1.85}.svc105ArticleEnd{padding:31px 24px}.svc105ArticleEnd h2{font-size:29px}}
 
-/* STEP106 — kullanıcı görselleri + iletişim/Instagram */
+/* STEP106 -" kullanıcı görselleri + iletişim/Instagram */
 .contactBrand{
   width:min(1180px,88%); margin:24px auto 18px; padding:18px 20px;
   display:flex; align-items:center; gap:14px;
@@ -16072,7 +17276,7 @@ img{
   .contactBrand{width:90%;padding:15px 16px}
 }
 
-/* STEP107 — Hakkımda yeni profil fotoğrafı */
+/* STEP107 -" Hakkımda yeni profil fotoğrafı */
 .aboutDirectProfile__photo img{
   object-position:center 30%!important;
 }
@@ -16083,7 +17287,7 @@ img{
 }
 
 /* =========================================================
-   STEP108 — PREMIUM FINAL POLISH
+   STEP108 -" PREMIUM FINAL POLISH
    Hizmet hero serisi + Hakkımda imza + standart mikro hareketler
    ========================================================= */
 
@@ -16424,7 +17628,7 @@ img{
   }
 }
 
-/* STEP109 — Instagram icon fix */
+/* STEP109 -" Instagram icon fix */
 .contactInstagramIcon,
 .contact80Instagram{
   display:grid!important;
@@ -16454,7 +17658,7 @@ img{
   stroke:none;
 }
 
-/* STEP110 — Contact email overflow/readability fix */
+/* STEP110 -" Contact email overflow/readability fix */
 .contactGrid--three .contactCard{
   min-width:0;
   overflow:hidden;
@@ -16510,13 +17714,13 @@ img{
   }
 }
 
-/* STEP101 — EDITORIAL BLOG + AUTHORS */
+/* STEP101 -" EDITORIAL BLOG + AUTHORS */
 .editorialBlog,.authors101,.author102,.article103{background:#f7f4ee;color:#1f211f;font-family:Inter,system-ui,sans-serif}.editorialBlog__hero{min-height:410px;display:grid;grid-template-columns:1.05fr .95fr;background:#f1ece3;overflow:hidden}.editorialBlog__heroCopy{padding:78px 7vw;display:flex;flex-direction:column;justify-content:center}.editorialBlog__heroCopy>span,.authors101__hero>span,.author102__intro>span,.author102__title>span,.article103__top>span,.article103__related>span{font-size:11px;letter-spacing:.22em;font-weight:800;color:#9a7a37}.editorialBlog__heroCopy h1{font-family:Georgia,serif;font-size:clamp(48px,5.5vw,88px);line-height:.95;margin:14px 0 22px;font-weight:500}.editorialBlog__heroCopy h1 em{display:block;color:#9a7a37;font-style:normal}.editorialBlog__heroCopy p{max-width:640px;font-size:17px;line-height:1.75;color:#5e605c}.editorialBlog__heroVisual{min-height:410px;position:relative}.editorialBlog__heroVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f1ece3 0%,transparent 28%)}.editorialBlog__heroVisual img{width:100%;height:100%;object-fit:cover}.editorialBlog__workspace{max-width:1500px;margin:auto;padding:55px 4vw 90px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:42px}.editorialBlog__tools{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:28px}.editorialBlog__tools label{height:48px;min-width:260px;border:1px solid #ded8cc;border-radius:999px;background:#fff;display:flex;align-items:center;gap:10px;padding:0 18px}.editorialBlog__tools input{border:0;outline:0;background:transparent;width:100%;font-size:14px}.editorialBlog__tools>div{display:flex;gap:8px;flex-wrap:wrap}.editorialBlog__tools button{border:1px solid #e1dbcf;background:#fff;border-radius:999px;padding:11px 15px;font-size:11px;cursor:pointer}.editorialBlog__tools button.is-active{background:#9a7a37;color:#fff;border-color:#9a7a37}.editorialBlog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.editorialPostCard{background:#fff;border:1px solid #e9e3d8;border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(42,35,23,.06);transition:.35s}.editorialPostCard:hover{transform:translateY(-5px);box-shadow:0 24px 65px rgba(42,35,23,.12)}.editorialPostCard__image{height:260px;display:block;position:relative;overflow:hidden}.editorialPostCard__image img{width:100%;height:100%;object-fit:cover;transition:.55s}.editorialPostCard:hover .editorialPostCard__image img{transform:scale(1.04)}.editorialPostCard__image>span{position:absolute;left:18px;top:18px;background:rgba(24,25,22,.82);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:8px 12px;font-size:10px;letter-spacing:.08em}.editorialPostCard__body{padding:24px}.editorialPostCard__meta{display:flex;justify-content:space-between;color:#8a8a84;font-size:11px}.editorialPostCard h2{font-family:Georgia,serif;font-size:27px;line-height:1.12;margin:14px 0 12px}.editorialPostCard h2 a{color:inherit;text-decoration:none}.editorialPostCard__body>p{font-size:13px;line-height:1.7;color:#6d6d67;min-height:45px}.editorialPostCard__author{border-top:1px solid #eee8dd;margin-top:20px;padding-top:17px;display:flex;align-items:center;gap:10px}.editorialPostCard__author img{width:38px;height:38px;border-radius:50%;object-fit:cover}.editorialPostCard__author span{display:flex;flex-direction:column}.editorialPostCard__author b{font-size:11px}.editorialPostCard__author small{font-size:9px;color:#999}.editorialPostCard__author>a{margin-left:auto;color:#8a6b2f;font-size:11px;font-weight:800;text-decoration:none}.editorialBlog__more{display:block;margin:34px auto 0;border:1px solid #bca778;background:transparent;border-radius:999px;padding:13px 24px;color:#735b2c}.editorialAuthors{position:sticky;top:120px;align-self:start;background:#ede8de;border-radius:26px;padding:28px}.editorialAuthors__head h2{font-family:Georgia,serif;font-size:35px;margin:5px 0}.editorialAuthors__head>span{font-size:9px;letter-spacing:.2em;color:#98752f;font-weight:800}.editorialAuthors__head p{font-size:12px;line-height:1.6;color:#74746d}.editorialAuthorCard{display:grid;grid-template-columns:74px 1fr;gap:15px;background:#fff;border-radius:18px;padding:14px;margin-top:15px;text-decoration:none;color:inherit;transition:.3s}.editorialAuthorCard:hover{transform:translateX(-4px)}.editorialAuthorCard>img{width:74px;height:92px;border-radius:14px;object-fit:cover}.editorialAuthorCard strong{display:block;font-family:Georgia,serif;font-size:18px}.editorialAuthorCard small{display:block;font-size:9px;color:#8c8c85;margin:3px 0 7px}.editorialAuthorCard p{font-size:10px;line-height:1.45;color:#666;margin:0}.editorialAuthorCard span{font-size:9px;color:#96752f;font-weight:800}.editorialAuthors__all{display:block;text-align:center;margin-top:20px;border:1px solid #b7a273;border-radius:999px;padding:12px;text-decoration:none;color:#80652f;font-size:10px;font-weight:800}.authors101__hero{padding:95px 8vw 70px;background:#22231f;color:#fff}.authors101__hero h1{font:500 clamp(50px,6vw,90px)/.98 Georgia,serif;margin:14px 0 20px}.authors101__hero h1 em{color:#c9ae70;font-style:normal}.authors101__hero p{max-width:700px;color:#c8c6be;line-height:1.8}.authors101__grid{max-width:1350px;margin:auto;padding:70px 5vw 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.authors101__card{text-decoration:none;color:inherit;background:#fff;border-radius:28px;overflow:hidden;border:1px solid #e8e0d4}.authors101__photo{height:390px;position:relative;overflow:hidden}.authors101__photo img{width:100%;height:100%;object-fit:cover;transition:.5s}.authors101__card:hover img{transform:scale(1.035)}.authors101__photo b{position:absolute;right:18px;bottom:15px;font:500 44px Georgia,serif;color:#fff}.authors101__card>div:last-child{padding:28px}.authors101__card span{font-size:9px;letter-spacing:.18em;color:#a17e38}.authors101__card h2{font:500 31px Georgia,serif;margin:8px 0 3px}.authors101__card small{color:#8a8983}.authors101__card p{color:#696963;line-height:1.7;font-size:13px}.authors101__card strong{font-size:10px;color:#8d6d31}.author102__hero{min-height:650px;display:grid;grid-template-columns:.9fr 1.1fr;position:relative;background:#252620;color:#fff;padding:80px 8vw;gap:70px;align-items:center}.author102__hero>a{position:absolute;left:8vw;top:35px;color:#d1c8b6;text-decoration:none;font-size:11px}.author102__portrait{height:520px;border-radius:28px;overflow:hidden}.author102__portrait img{width:100%;height:100%;object-fit:cover}.author102__intro h1{font:500 clamp(52px,6vw,86px)/1 Georgia,serif;margin:12px 0}.author102__intro h2{font-size:15px;color:#c7aa69;font-weight:500}.author102__intro p{max-width:650px;color:#c8c6be;line-height:1.85}.author102__intro>div{margin-top:28px;display:flex;align-items:end;gap:10px}.author102__intro>div b{font:500 45px Georgia,serif}.author102__intro>div small{padding-bottom:7px;color:#aaa}.author102__posts{padding:80px 6vw;max-width:1400px;margin:auto}.author102__title h2{font:500 42px Georgia,serif;max-width:650px}.author102__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.author102__grid a{text-decoration:none;color:inherit;background:#fff;border-radius:20px;padding-bottom:22px;overflow:hidden}.author102__grid img{width:100%;height:220px;object-fit:cover}.author102__grid span,.author102__grid h3,.author102__grid small{display:block;margin-left:20px;margin-right:20px}.author102__grid span{font-size:9px;color:#99752e;margin-top:16px}.author102__grid h3{font:500 23px Georgia,serif;margin-top:8px;margin-bottom:10px}.author102__grid small{color:#999}.article103__top{max-width:1050px;margin:auto;text-align:center;padding:80px 25px 45px}.article103__top>a{display:inline-block;margin-bottom:35px;text-decoration:none;color:#7b6740;font-size:11px}.article103__top h1{font:500 clamp(46px,6vw,82px)/1.02 Georgia,serif;margin:15px auto 20px;max-width:950px}.article103__top>p{max-width:720px;margin:auto;color:#686862;line-height:1.7}.article103__by{margin:30px auto 0;display:flex;align-items:center;justify-content:center;gap:12px}.article103__by img{width:45px;height:45px;border-radius:50%;object-fit:cover}.article103__by span{display:flex;flex-direction:column;text-align:left}.article103__by b{font-size:11px}.article103__by small,.article103__by time{font-size:9px;color:#92918b}.article103__by time{margin-left:15px}.article103__cover{max-width:1280px;height:620px;margin:auto;border-radius:30px;overflow:hidden}.article103__cover img{width:100%;height:100%;object-fit:cover}.article103__layout{max-width:1120px;margin:65px auto;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:70px;padding:0 25px}.article103__layout article>p{font:400 18px/1.95 Georgia,serif;color:#373832;margin:0 0 28px}.article103__layout blockquote{font:italic 31px/1.4 Georgia,serif;border-left:3px solid #aa8845;padding:20px 30px;margin:45px 0;background:#f0ebe1}.article103__note{padding:20px;border-radius:16px;background:#ece7dc;font-size:11px;line-height:1.6;color:#6e6b63}.article103__layout aside{position:sticky;top:120px;align-self:start}.article103__toc{border:1px solid #ddd5c8;border-radius:20px;padding:22px;background:#fff}.article103__toc span{font-size:9px;color:#98732d}.article103__toc b{display:block;font:500 22px Georgia,serif;margin:8px 0 15px}.article103__toc p{font-size:11px;color:#777;border-top:1px solid #eee;padding-top:10px}.article103__author{display:flex;gap:12px;align-items:center;margin-top:15px;background:#272821;color:#fff;border-radius:20px;padding:14px;text-decoration:none}.article103__author img{width:62px;height:70px;border-radius:14px;object-fit:cover}.article103__author span{display:flex;flex-direction:column}.article103__author small{font-size:8px;color:#c3a866}.article103__author b{font:500 17px Georgia,serif}.article103__author em{font-size:9px;color:#c3bdaF;font-style:normal;margin-top:5px}.article103__related{background:#24251f;color:#fff;padding:70px 6vw}.article103__related h2{font:500 42px Georgia,serif}.article103__related>div{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.article103__related a{color:#fff;text-decoration:none}.article103__related img{width:100%;height:220px;object-fit:cover;border-radius:18px}.article103__related small{display:block;color:#c7a65f;margin-top:12px}.article103__related h3{font:500 23px Georgia,serif;margin-top:6px}
 @media(max-width:1050px){.editorialBlog__workspace{grid-template-columns:1fr}.editorialAuthors{position:static}.editorialBlog__hero{grid-template-columns:1fr}.editorialBlog__heroVisual{height:300px}.editorialBlog__heroVisual:after{background:linear-gradient(#f1ece3,transparent 35%)}.authors101__grid{grid-template-columns:repeat(2,1fr)}.author102__hero{grid-template-columns:1fr}.author102__portrait{max-width:600px}.article103__layout{grid-template-columns:1fr}.article103__layout aside{position:static}.article103__related>div{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.editorialBlog__heroCopy{padding:55px 22px}.editorialBlog__heroCopy h1{font-size:49px}.editorialBlog__workspace{padding:30px 16px 70px}.editorialBlog__tools{align-items:stretch;flex-direction:column}.editorialBlog__tools label{min-width:0;width:100%}.editorialBlog__grid{grid-template-columns:1fr}.editorialPostCard__image{height:230px}.editorialAuthors{padding:20px}.authors101__hero{padding:70px 22px 55px}.authors101__grid{grid-template-columns:1fr;padding:35px 16px 70px}.authors101__photo{height:360px}.author102__hero{padding:75px 22px 45px;gap:30px}.author102__hero>a{left:22px}.author102__portrait{height:420px}.author102__posts{padding:55px 16px}.author102__grid{grid-template-columns:1fr}.article103__top{padding-top:55px}.article103__top h1{font-size:43px}.article103__cover{height:330px;border-radius:0}.article103__layout{margin:40px auto;padding:0 18px}.article103__layout article>p{font-size:17px}.article103__related{padding:50px 18px}.article103__related>div{grid-template-columns:1fr}.article103__by time{display:none}}
 
 
-/* STEP 124 — PREMIUM HOME UX POLISH */
+/* STEP 124 -" PREMIUM HOME UX POLISH */
 /* İnce, marka paletine uyumlu içerik şeridi */
 .podcastTopStrip--spotify{
   min-height:34px!important;
@@ -16718,7 +17922,7 @@ img{
 }
 
 
-/* STEP125 — PREMIUM AUTHORS + ADMIN AUTHOR MANAGEMENT */
+/* STEP125 -" PREMIUM AUTHORS + ADMIN AUTHOR MANAGEMENT */
 .authors101__hero{padding:92px 8vw 68px!important;background:radial-gradient(circle at 78% 20%,rgba(194,160,92,.13),transparent 28%),linear-gradient(135deg,#20211d,#2b2c25)!important;}
 .authors101__hero h1{max-width:900px!important;margin-top:12px!important;}
 .authors101__grid{gap:30px!important;}
@@ -16765,14 +17969,14 @@ img{
 @media(max-width:650px){.admin125Authors{padding:18px}.admin125Authors__fields{grid-template-columns:1fr}.admin125Authors__fields label.is-wide{grid-column:auto}.authors101__grid{grid-template-columns:1fr!important}.authors101__photo{height:360px!important}.editorialPostCard__author{align-items:center!important}.editorialPostCard__author>a:last-child{font-size:9px!important;}}
 
 
-/* STEP130 — COMPLETE IMAGE LOGO HEADER */
+/* STEP130 -" COMPLETE IMAGE LOGO HEADER */
 .brand--imageLogo{min-width:0!important;width:265px!important;height:74px!important;display:flex!important;align-items:center!important;padding:0!important;overflow:hidden!important;background:transparent!important}
 .brandFullLogo{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 62%!important;border-radius:0!important;mix-blend-mode:multiply!important;filter:contrast(1.03) saturate(.92)!important;transform:scale(1.05)!important}
 @media(max-width:1100px){.brand--imageLogo{width:225px!important;height:64px!important}}
 @media(max-width:760px){.brand--imageLogo{width:175px!important;height:52px!important}.brandFullLogo{transform:scale(1.03)!important}}
 
 
-/* STEP133 — HEADER LOGO PREMIUM FIT */
+/* STEP133 -" HEADER LOGO PREMIUM FIT */
 .brand--imageLogo{
   width:auto!important;
   min-width:350px!important;
@@ -16859,7 +18063,7 @@ img{
   .brandLogoOrnament{margin-top:5px!important}
 }
 
-/* STEP138 — Exact supplied logo: full cinematic + isolated in-site emblem */
+/* STEP138 -" Exact supplied logo: full cinematic + isolated in-site emblem */
 .brand--imageLogo{
   min-width:430px!important;
   width:auto!important;
@@ -16992,7 +18196,7 @@ img{
   .brandLogoOrnament,.brandLogoOrnament svg{height:10px!important;margin-top:4px!important}
 }
 
-/* STEP139 — cleaner emblem cut + slightly smaller header logo */
+/* STEP139 -" cleaner emblem cut + slightly smaller header logo */
 .brand--imageLogo{
   min-width:400px!important;
   height:98px!important;
@@ -17048,7 +18252,7 @@ img{
   .brandLogoCopy small{font-size:5px!important}
 }
 
-/* STEP140 — AUTHORS / BLOG AUTHOR LINK FIX
+/* STEP140 -" AUTHORS / BLOG AUTHOR LINK FIX
    - Saved writers are never filtered out by a special slug.
    - Blog/authors data refreshes on route changes.
    - Blog cards show the selected writer before opening the article.
@@ -17195,7 +18399,7 @@ img{
   }
 }
 
-/* STEP141 — PREMIUM BLOG ARTICLE + AUTHOR UI */
+/* STEP141 -" PREMIUM BLOG ARTICLE + AUTHOR UI */
 
 /* Blog liste kartında yazar */
 .editorialPostCard__author{
@@ -17455,6 +18659,4245 @@ img{
     padding:0 18px!important;
   }
   .article103__toc--premium{padding:20px!important}
+}
+
+/* STEP142 -" FINAL BLOG AUTHOR VISIBILITY + PREMIUM ARTICLE
+   Exact current App.jsx base. These final rules intentionally override older STEP101/140/141 rules. */
+
+/* --- Blog cards: writer is always visible directly beside "Yazıyı Oku" --- */
+.editorialPostCard__body{
+  display:flex!important;
+  flex-direction:column!important;
+}
+.editorialPostCard__author{
+  width:100%!important;
+  min-height:64px!important;
+  margin-top:20px!important;
+  padding:15px 2px 0!important;
+  border-top:1px solid #ece5d9!important;
+  display:grid!important;
+  grid-template-columns:46px minmax(0,1fr) auto!important;
+  gap:12px!important;
+  align-items:center!important;
+}
+.editorialPostCard__avatar{
+  width:46px!important;
+  height:46px!important;
+  display:block!important;
+  overflow:hidden!important;
+  border-radius:50%!important;
+  background:#eee7da!important;
+  border:2px solid #fff!important;
+  box-shadow:0 0 0 1px #cdbb96,0 7px 16px rgba(44,34,20,.13)!important;
+}
+.editorialPostCard__avatar img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:50%!important;
+  transform:none!important;
+}
+.editorialPostCard__authorInfo{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+.editorialPostCard__authorInfo b{
+  color:#29261f!important;
+  font:600 12px/1.25 Inter,system-ui,sans-serif!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+}
+.editorialPostCard__authorInfo small{
+  margin-top:3px!important;
+  color:#8c887e!important;
+  font-size:9px!important;
+  line-height:1.2!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+}
+.editorialPostCard__readLink{
+  margin:0!important;
+  padding:9px 0 9px 10px!important;
+  color:#88662e!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+.editorialPostCard__readLink:hover{color:#5f451e!important}
+.editorialPostCard__writerChip{display:none!important}
+
+/* --- Article heading: cleaner, less oversized --- */
+.article103__top{
+  max-width:930px!important;
+  padding:62px 24px 34px!important;
+}
+.article103__top h1{
+  max-width:900px!important;
+  margin:12px auto 16px!important;
+  font-size:clamp(38px,4.7vw,66px)!important;
+  line-height:1.04!important;
+}
+.article103__top>p{
+  max-width:700px!important;
+  font-size:14px!important;
+  line-height:1.75!important;
+}
+.article103__by{
+  margin-top:22px!important;
+  padding:8px 14px!important;
+  width:max-content!important;
+  max-width:100%!important;
+  border:1px solid #e4dccd!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.72)!important;
+  box-shadow:0 8px 22px rgba(52,42,27,.06)!important;
+}
+.article103__by img{
+  width:38px!important;
+  height:38px!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+}
+
+/* --- Premium cover: no more giant full-width wall --- */
+.article103__coverShell{
+  max-width:1080px!important;
+  margin:0 auto!important;
+  padding:0 28px!important;
+}
+.article103__cover{
+  width:100%!important;
+  max-width:none!important;
+  height:clamp(300px,37vw,470px)!important;
+  margin:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:28px!important;
+  background:#171714!important;
+  box-shadow:0 28px 70px rgba(42,33,19,.14)!important;
+}
+.article103__cover img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:none!important;
+}
+.article103__cover:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  border-radius:inherit!important;
+}
+.article103__coverShade{
+  position:absolute!important;
+  inset:0!important;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.02) 35%,rgba(15,14,12,.64) 100%)!important;
+}
+.article103__coverCaption{
+  position:absolute!important;
+  left:24px!important;
+  right:24px!important;
+  bottom:21px!important;
+  z-index:4!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+}
+.article103__coverCaption span{
+  padding:8px 12px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.3)!important;
+  background:rgba(24,23,20,.42)!important;
+  backdrop-filter:blur(10px)!important;
+  color:#fff!important;
+  font-size:8px!important;
+  font-weight:800!important;
+  letter-spacing:.13em!important;
+}
+.article103__coverCaption small{
+  color:rgba(255,255,255,.86)!important;
+  font-size:9px!important;
+}
+
+/* --- Article body + right "Okuma Rehberi / Yazar" card --- */
+.article103__layout.article103__layout--premium{
+  width:100%!important;
+  max-width:1050px!important;
+  margin:50px auto 76px!important;
+  padding:0 28px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 285px!important;
+  gap:56px!important;
+  align-items:start!important;
+}
+.article103__layout article>p{
+  font-size:17px!important;
+  line-height:1.9!important;
+}
+.article103__guide{
+  position:sticky!important;
+  top:110px!important;
+  align-self:start!important;
+}
+.article103__toc--premium{
+  overflow:hidden!important;
+  padding:0!important;
+  border:1px solid #ddd3c3!important;
+  border-radius:24px!important;
+  background:#fff!important;
+  box-shadow:0 18px 50px rgba(47,37,22,.08)!important;
+}
+.article103__toc--premium>span{
+  display:block!important;
+  padding:22px 22px 0!important;
+  color:#a17b36!important;
+  font-size:8px!important;
+  font-weight:800!important;
+  letter-spacing:.18em!important;
+}
+.article103__toc--premium>b{
+  display:block!important;
+  margin:7px 22px 18px!important;
+  color:#27251f!important;
+  font:500 24px/1.1 Georgia,serif!important;
+}
+.article103__tocRows{
+  margin:0 22px!important;
+  padding:3px 0 12px!important;
+  border-top:1px solid #eee8dd!important;
+}
+.article103__tocRows p{
+  margin:0!important;
+  padding:10px 0!important;
+  border:0!important;
+}
+.article103__tocRows p+p{border-top:1px solid #f1ece3!important}
+.article103__tocRows small{
+  display:block!important;
+  color:#a09a8f!important;
+  font-size:7px!important;
+  font-weight:800!important;
+  letter-spacing:.12em!important;
+}
+.article103__tocRows strong{
+  display:block!important;
+  margin-top:4px!important;
+  color:#46443e!important;
+  font-size:10px!important;
+  line-height:1.35!important;
+}
+
+/* writer becomes part of the same guide card */
+.article103__guideAuthor{
+  margin:2px 12px 12px!important;
+  padding:12px!important;
+  display:grid!important;
+  grid-template-columns:50px minmax(0,1fr) 16px!important;
+  align-items:center!important;
+  gap:10px!important;
+  border-radius:17px!important;
+  background:linear-gradient(135deg,#292821,#353127)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+  box-shadow:0 12px 26px rgba(28,25,19,.15)!important;
+}
+.article103__guideAvatar{
+  width:50px!important;
+  height:54px!important;
+  overflow:hidden!important;
+  border-radius:13px!important;
+  background:#ad8742!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.article103__guideAvatar img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+.article103__guideAuthor>div:nth-child(2){
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.article103__guideAuthor>div:nth-child(2)>small{
+  color:#d2b36f!important;
+  font-size:7px!important;
+  font-weight:800!important;
+  letter-spacing:.14em!important;
+}
+.article103__guideAuthor>div:nth-child(2)>b{
+  margin-top:3px!important;
+  color:#fff!important;
+  font:500 15px/1.15 Georgia,serif!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.article103__guideAuthor>div:nth-child(2)>span{
+  margin-top:3px!important;
+  color:#bbb6aa!important;
+  font-size:8px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.article103__guideAuthor>em{
+  color:#d1ae63!important;
+  font-size:15px!important;
+  font-style:normal!important;
+}
+
+@media(max-width:900px){
+  .article103__layout.article103__layout--premium{
+    grid-template-columns:1fr!important;
+    gap:30px!important;
+  }
+  .article103__guide{position:static!important}
+}
+@media(max-width:620px){
+  .editorialPostCard__author{
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    gap:9px!important;
+  }
+  .editorialPostCard__avatar{width:40px!important;height:40px!important}
+  .editorialPostCard__readLink{font-size:9px!important;padding-left:4px!important}
+
+  .article103__top{padding:45px 18px 28px!important}
+  .article103__top h1{font-size:38px!important}
+  .article103__coverShell{padding:0!important}
+  .article103__cover{
+    height:270px!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+  .article103__coverCaption{left:17px!important;right:17px!important;bottom:15px!important}
+  .article103__coverCaption small{display:none!important}
+  .article103__layout.article103__layout--premium{
+    margin:34px auto 55px!important;
+    padding:0 18px!important;
+  }
+}
+
+/* STEP143 -" ADMIN BLOG CATEGORY MANAGER */
+.admin142Categories{
+  margin-top:28px;
+  padding:26px;
+  border:1px solid rgba(161,124,55,.18);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(181,143,71,.10),transparent 32%),
+    #fff;
+  box-shadow:0 18px 55px rgba(48,38,22,.055);
+}
+.admin142Categories__create{
+  margin-top:19px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:end;
+  gap:13px;
+}
+.admin142Categories__create label{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.admin142Categories__create label>span{
+  color:#69645a;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.admin142Categories__create input{
+  width:100%;
+  min-height:48px;
+  padding:0 15px;
+  border:1px solid #ddd3c2;
+  border-radius:14px;
+  outline:none;
+  background:#fbfaf7;
+  color:#292721;
+  font-size:13px;
+  transition:.2s ease;
+}
+.admin142Categories__create input:focus{
+  border-color:#ab8640;
+  box-shadow:0 0 0 3px rgba(171,134,64,.10);
+  background:#fff;
+}
+.admin142Categories__create button{
+  min-height:48px;
+  padding:0 20px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#9c7532,#b18a45);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.05em;
+  cursor:pointer;
+  box-shadow:0 11px 25px rgba(142,102,41,.18);
+}
+.admin142Categories__create button:disabled{opacity:.55;cursor:not-allowed}
+.admin142Categories__list{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.admin142Categories__item{
+  min-width:0;
+  padding:13px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border:1px solid #ebe4d9;
+  border-radius:15px;
+  background:#faf8f3;
+}
+.admin142Categories__item>div{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.admin142Categories__item strong{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#302d27;
+  font-size:12px;
+}
+.admin142Categories__item small{
+  color:#999287;
+  font-size:8px;
+}
+.admin142Categories__item button{
+  flex:0 0 auto;
+  min-width:68px;
+  padding:8px 10px;
+  border:1px solid #d9ccba;
+  border-radius:999px;
+  background:#fff;
+  color:#8c6630;
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+.admin142Categories__item button:disabled{
+  color:#aaa49a;
+  border-color:#e8e2d9;
+  background:#f3f0ea;
+  cursor:not-allowed;
+}
+@media(max-width:760px){
+  .admin142Categories{padding:20px 15px}
+  .admin142Categories__create{grid-template-columns:1fr}
+  .admin142Categories__create button{width:100%}
+  .admin142Categories__list{grid-template-columns:1fr}
+}
+
+/* STEP144 -" FULLSCREEN CINEMATIC 3D OPENING
+   Full-bleed counseling scene + depth layers + 3D emblem reveal.
+   No video: CSS animation only for fast Vercel/mobile startup. */
+/* ============================================
+   PRM -" PREMIUM CİNEMATİC OPENING v2
+   ============================================ */
+.prm__wrap{
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  overflow:hidden;
+  background:#080a07;
+  color:#fff;
+  perspective:2200px;
+  transform-style:preserve-3d;
+  animation:prmExit 1s cubic-bezier(.76,0,.18,1) 4.1s forwards;
+}
+
+/* Letterbox bantları */
+.prm__bar{
+  position:absolute;
+  left:0;right:0;
+  z-index:50;
+  background:#000;
+  pointer-events:none;
+}
+.prm__bar--t{
+  top:0;
+  height:clamp(32px,6vh,64px);
+  transform-origin:top;
+  transform:scaleY(0);
+  animation:prmBarIn .6s cubic-bezier(.4,0,.2,1) 0s forwards;
+}
+.prm__bar--b{
+  bottom:0;
+  height:clamp(32px,6vh,64px);
+  transform-origin:bottom;
+  transform:scaleY(0);
+  animation:prmBarIn .6s cubic-bezier(.4,0,.2,1) 0s forwards;
+}
+
+/* Arka plan sahnesi */
+.prm__scene{
+  position:absolute;
+  inset:-8%;
+  transform-style:preserve-3d;
+  animation:prmScene 4.8s cubic-bezier(.08,.72,.14,1) both;
+}
+.prm__bg{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 48%;
+  transform:scale(1.12);
+  filter:saturate(.65) contrast(1.12) brightness(.48) blur(8px);
+  animation:prmBg 4.6s cubic-bezier(.14,.72,.16,1) both;
+}
+
+/* Sis/duman katmanları -" derinlik hissi */
+.prm__fog{
+  position:absolute;
+  pointer-events:none;
+  mix-blend-mode:screen;
+}
+.prm__fog--a{
+  inset:-20%;
+  background:radial-gradient(ellipse 80% 60% at 20% 60%,rgba(180,148,90,.18),transparent 55%);
+  animation:prmFogA 5s ease both;
+}
+.prm__fog--b{
+  inset:-20%;
+  background:radial-gradient(ellipse 60% 80% at 78% 30%,rgba(200,168,110,.14),transparent 55%);
+  animation:prmFogB 5.5s ease .2s both;
+}
+.prm__fog--c{
+  inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,240,200,.10) 46%,transparent 58%);
+  transform:translateX(-60%) rotate(-6deg);
+  animation:prmFogC 3.8s cubic-bezier(.2,.8,.2,1) .3s both;
+}
+.prm__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(4,5,3,.82) 0%,rgba(8,9,6,.42) 30%,rgba(10,10,7,.20) 55%,rgba(4,5,3,.65) 100%),
+    linear-gradient(180deg,rgba(2,3,1,.50),transparent 22%,transparent 58%,rgba(2,3,1,.78));
+}
+.prm__vignette{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 88% 88% at 50% 50%,transparent 48%,rgba(0,0,0,.88) 100%);
+}
+.prm__grain{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  opacity:.11;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:prmGrain .16s steps(2) infinite;
+}
+
+/* Işın demetleri */
+.prm__rays{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  overflow:hidden;
+}
+.prm__ray{
+  position:absolute;
+  top:-10%;
+  width:2px;
+  height:130%;
+  background:linear-gradient(180deg,transparent,rgba(255,235,180,.22),rgba(255,255,255,.14),transparent);
+  filter:blur(14px);
+  opacity:0;
+}
+.prm__ray--1{left:38%;transform:rotate(12deg);animation:prmRay 2.8s ease .4s forwards}
+.prm__ray--2{left:52%;transform:rotate(8deg);animation:prmRay 3.2s ease .6s forwards;filter:blur(20px)}
+.prm__ray--3{left:65%;transform:rotate(15deg);animation:prmRay 2.4s ease .8s forwards;opacity:0}
+
+/* Çerçeve sistemi */
+.prm__frame{
+  position:absolute;
+  inset:clamp(16px,2.8vw,36px);
+  z-index:10;
+  pointer-events:none;
+}
+.prm__corner{
+  position:absolute;
+  width:60px;height:60px;
+  opacity:0;
+  animation:prmCorner .7s cubic-bezier(.2,.9,.2,1) .55s forwards;
+}
+.prm__corner:before,.prm__corner:after{
+  content:"";
+  position:absolute;
+  background:rgba(210,178,100,.75);
+  box-shadow:0 0 8px rgba(210,178,100,.4);
+}
+.prm__corner:before{width:60px;height:1.5px}
+.prm__corner:after{width:1.5px;height:60px}
+.prm__corner--tl{left:0;top:0}
+.prm__corner--tr{right:0;top:0;transform:rotate(90deg)}
+.prm__corner--bl{left:0;bottom:0;transform:rotate(-90deg)}
+.prm__corner--br{right:0;bottom:0;transform:rotate(180deg)}
+.prm__hline{
+  position:absolute;
+  left:70px;right:70px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(210,178,100,.20),transparent);
+  opacity:0;
+  animation:prmFadeIn .8s ease 1s forwards;
+}
+.prm__hline--t{top:0}
+.prm__hline--b{bottom:0}
+.prm__vline{
+  position:absolute;
+  top:70px;bottom:70px;
+  width:1px;
+  background:linear-gradient(180deg,transparent,rgba(210,178,100,.20),transparent);
+  opacity:0;
+  animation:prmFadeIn .8s ease 1s forwards;
+}
+.prm__vline--l{left:0}
+.prm__vline--r{right:0}
+
+/* Ana sahne */
+.prm__stage{
+  position:absolute;
+  inset:0;
+  z-index:15;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(18px,3vh,32px);
+  padding:clamp(48px,8vh,80px) 24px clamp(56px,9vh,96px);
+  transform-style:preserve-3d;
+}
+
+/* 3D Emblem sistemi */
+.prm__emblemWrap{
+  position:relative;
+  width:clamp(140px,15vw,210px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  transform-style:preserve-3d;
+  opacity:0;
+  animation:prmEmblemIn 1.4s cubic-bezier(.1,.9,.14,1) .25s forwards;
+}
+
+/* Dönen halkalar -" farklı eksenler */
+.prm__ring{
+  position:absolute;
+  inset:50%;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  border:1.5px solid rgba(210,178,100,.18);
+}
+.prm__ring--1{
+  width:300%;height:300%;
+  border-color:rgba(210,178,100,.12);
+  transform:translate(-50%,-50%) rotateX(75deg) rotateZ(0deg);
+  animation:prmRingSpin 10s linear .5s infinite;
+}
+.prm__ring--2{
+  width:220%;height:220%;
+  border-color:rgba(210,178,100,.16);
+  transform:translate(-50%,-50%) rotateX(60deg) rotateZ(45deg);
+  animation:prmRingSpin 7s linear .5s infinite reverse;
+}
+.prm__ring--3{
+  width:160%;height:160%;
+  border-color:rgba(210,178,100,.22);
+  box-shadow:0 0 20px rgba(210,178,100,.08),inset 0 0 20px rgba(210,178,100,.04);
+  transform:translate(-50%,-50%) rotateX(55deg) rotateZ(20deg);
+  animation:prmRingSpin 5s linear .5s infinite;
+}
+.prm__ring--4{
+  width:108%;height:108%;
+  border-color:rgba(210,178,100,.35);
+  box-shadow:0 0 30px rgba(210,178,100,.18);
+  transform:translate(-50%,-50%) rotateX(0deg);
+  animation:prmRingPulse 3s ease .8s infinite;
+}
+
+/* Parçacıklar */
+.prm__particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.prm__particles span{
+  position:absolute;
+  width:3px;height:3px;
+  border-radius:50%;
+  background:rgba(210,178,100,.7);
+  box-shadow:0 0 6px rgba(210,178,100,.5);
+  opacity:0;
+}
+.prm__particles span:nth-child(1){top:10%;left:50%;animation:prmParticle 3s ease 1s infinite}
+.prm__particles span:nth-child(2){top:50%;left:90%;animation:prmParticle 3.5s ease 1.2s infinite}
+.prm__particles span:nth-child(3){top:85%;left:60%;animation:prmParticle 2.8s ease 1.4s infinite}
+.prm__particles span:nth-child(4){top:60%;left:10%;animation:prmParticle 3.2s ease 1.6s infinite}
+.prm__particles span:nth-child(5){top:20%;left:80%;animation:prmParticle 2.6s ease 1.8s infinite}
+.prm__particles span:nth-child(6){top:75%;left:25%;animation:prmParticle 3.8s ease 2s infinite}
+.prm__particles span:nth-child(7){top:35%;left:15%;animation:prmParticle 3s ease 2.2s infinite}
+.prm__particles span:nth-child(8){top:15%;left:35%;animation:prmParticle 2.4s ease 2.4s infinite}
+
+.prm__emblemGlow{
+  position:absolute;
+  inset:-40%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(210,178,100,.35) 0%,rgba(180,140,70,.15) 40%,transparent 70%);
+  filter:blur(24px);
+  opacity:0;
+  animation:prmGlowPulse 2.5s ease .6s forwards;
+}
+.prm__emblemBack{
+  position:absolute;
+  inset:0;
+  display:grid;place-items:center;
+  transform:translateZ(-40px) translate(14px,16px) rotateY(-8deg) rotateX(4deg);
+  opacity:.10;
+  filter:blur(2px) sepia(.4);
+}
+.prm__emblemMid{
+  position:absolute;
+  inset:0;
+  display:grid;place-items:center;
+  transform:translateZ(0px) scale(.96);
+  opacity:.4;
+  filter:blur(.5px);
+}
+.prm__emblemFront{
+  position:absolute;
+  inset:0;
+  display:grid;place-items:center;
+  transform:translateZ(60px);
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.5)) drop-shadow(0 0 30px rgba(210,178,100,.25));
+}
+.prm__emblemBack img,.prm__emblemMid img,.prm__emblemFront img{
+  width:100%;height:100%;object-fit:contain;
+}
+.prm__sheen{
+  position:absolute;
+  inset:-20%;
+  transform:translateX(-180%) rotate(10deg) translateZ(72px);
+  background:linear-gradient(106deg,transparent 34%,rgba(255,255,255,.85) 47%,rgba(220,184,110,.35) 51%,transparent 62%);
+  mix-blend-mode:screen;
+  animation:prmSheen 1.8s cubic-bezier(.16,.76,.2,1) .9s forwards;
+}
+
+/* Metin bloğu */
+.prm__text{
+  text-align:center;
+  transform:translateZ(28px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.prm__badge{
+  display:inline-block;
+  color:#c8a55a;
+  font-size:clamp(7px,1.1vw,10px);
+  font-weight:900;
+  letter-spacing:.40em;
+  text-transform:uppercase;
+  padding:5px 16px;
+  border:1px solid rgba(200,165,90,.30);
+  border-radius:2px;
+  background:rgba(200,165,90,.06);
+  opacity:0;
+  animation:prmSlideUp .7s ease .85s forwards;
+}
+.prm__title{
+  margin:0;
+  color:#fff;
+  font:400 clamp(48px,6vw,92px)/.90 Georgia,"Times New Roman",serif;
+  letter-spacing:.10em;
+  text-shadow:
+    0 0 80px rgba(210,178,100,.28),
+    0 20px 60px rgba(0,0,0,.55),
+    0 2px 4px rgba(0,0,0,.35);
+  opacity:0;
+  transform:translateY(20px) scale(.97);
+  animation:prmTitle 1s cubic-bezier(.08,.9,.14,1) .95s forwards;
+}
+.prm__title em{
+  color:#d4b06a;
+  font-style:normal;
+  text-shadow:
+    0 0 60px rgba(212,176,106,.45),
+    0 20px 60px rgba(0,0,0,.55);
+}
+.prm__divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:clamp(160px,20vw,280px);
+  opacity:0;
+  animation:prmFadeIn .6s ease 1.3s forwards;
+}
+.prm__divider span{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(210,178,100,.55));
+}
+.prm__divider span:last-child{
+  background:linear-gradient(90deg,rgba(210,178,100,.55),transparent);
+}
+.prm__divider i{
+  width:5px;height:5px;
+  border-radius:50%;
+  background:rgba(210,178,100,.8);
+  box-shadow:0 0 8px rgba(210,178,100,.5);
+}
+.prm__sub{
+  margin:0;
+  color:rgba(255,255,255,.68);
+  font-size:clamp(9px,1.2vw,12px);
+  font-weight:500;
+  letter-spacing:.12em;
+  opacity:0;
+  animation:prmSlideUp .65s ease 1.45s forwards;
+}
+
+/* Alt bilgi */
+.prm__footer{
+  position:absolute;
+  bottom:clamp(16px,4vh,32px);
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  opacity:0;
+  animation:prmFadeIn .6s ease 1.7s forwards;
+}
+.prm__footLine{
+  width:clamp(40px,6vw,80px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(210,178,100,.40));
+}
+.prm__footLine:last-child{
+  background:linear-gradient(90deg,rgba(210,178,100,.40),transparent);
+}
+.prm__footLabel{
+  color:rgba(210,178,100,.65);
+  font-size:clamp(6px,.8vw,8px);
+  font-weight:800;
+  letter-spacing:.30em;
+}
+.prm__footDot{
+  width:3px;height:3px;
+  border-radius:50%;
+  background:rgba(210,178,100,.45);
+}
+
+/* Kapanış perdesi */
+.prm__curtain{
+  position:absolute;
+  z-index:40;
+  top:0;bottom:0;
+  width:51%;
+  background:#060806;
+  pointer-events:none;
+  transform:scaleX(0);
+}
+.prm__curtain--l{
+  left:0;transform-origin:left;
+  animation:prmCurtainL .9s cubic-bezier(.8,0,.18,1) 3.9s forwards;
+}
+.prm__curtain--r{
+  right:0;transform-origin:right;
+  animation:prmCurtainR .9s cubic-bezier(.8,0,.18,1) 3.9s forwards;
+}
+.prm__flash{
+  position:absolute;
+  inset:0;
+  z-index:35;
+  background:rgba(255,248,230,.06);
+  opacity:0;
+  animation:prmFlash .6s ease 3.2s forwards;
+}
+
+/* ---- KEYFRAMES ---- */
+@keyframes prmBarIn{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
+@keyframes prmScene{
+  0%{transform:translateZ(-160px) rotateX(4deg) scale(.96)}
+  50%{transform:translateZ(8px) rotateX(.8deg) scale(1.005)}
+  100%{transform:translateZ(72px) rotateX(0deg) scale(1.025)}
+}
+@keyframes prmBg{
+  0%{transform:scale(1.18) translate3d(-2.5%,2%,0);filter:saturate(.55) contrast(1.06) brightness(.38) blur(10px)}
+  25%{filter:saturate(.68) contrast(1.08) brightness(.52) blur(2px)}
+  60%{filter:saturate(.72) contrast(1.10) brightness(.58) blur(0)}
+  100%{transform:scale(1.06) translate3d(1%,-.5%,0);filter:saturate(.78) contrast(1.12) brightness(.62) blur(0)}
+}
+@keyframes prmFogA{
+  0%{opacity:0;transform:translate(-8%,4%)}
+  100%{opacity:1;transform:translate(0,0)}
+}
+@keyframes prmFogB{
+  0%{opacity:0;transform:translate(6%,-3%)}
+  100%{opacity:1;transform:translate(0,0)}
+}
+@keyframes prmFogC{
+  from{transform:translateX(-65%) rotate(-6deg);opacity:0}
+  25%{opacity:1}
+  to{transform:translateX(65%) rotate(-6deg);opacity:.08}
+}
+@keyframes prmGrain{
+  0%{transform:translate(0,0)}
+  20%{transform:translate(-.9%,.8%)}
+  40%{transform:translate(.8%,-.9%)}
+  60%{transform:translate(.6%,.7%)}
+  80%{transform:translate(-.7%,-.6%)}
+  100%{transform:translate(.4%,.5%)}
+}
+@keyframes prmRay{
+  0%{opacity:0;transform:rotate(var(--r,12deg)) translateX(-8%)}
+  25%{opacity:.9}
+  100%{opacity:.06;transform:rotate(var(--r,12deg)) translateX(12%)}
+}
+@keyframes prmCorner{
+  0%{opacity:0;transform:scale(.7);filter:blur(4px)}
+  100%{opacity:1;transform:scale(1);filter:blur(0)}
+}
+@keyframes prmFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes prmEmblemIn{
+  0%{opacity:0;transform:translateY(28px) translateZ(-140px) rotateX(22deg) rotateY(-32deg) scale(.55);filter:blur(18px)}
+  55%{opacity:1}
+  100%{opacity:1;transform:translateY(0) translateZ(68px) rotateX(2deg) rotateY(-3deg) scale(1);filter:blur(0)}
+}
+@keyframes prmRingSpin{
+  from{transform:translate(-50%,-50%) rotateX(75deg) rotateZ(0deg)}
+  to{transform:translate(-50%,-50%) rotateX(75deg) rotateZ(360deg)}
+}
+@keyframes prmRingPulse{
+  0%,100%{box-shadow:0 0 20px rgba(210,178,100,.12);opacity:.6}
+  50%{box-shadow:0 0 40px rgba(210,178,100,.28);opacity:1}
+}
+@keyframes prmParticle{
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  20%{opacity:1}
+  100%{opacity:0;transform:translateY(-28px) scale(0)}
+}
+@keyframes prmGlowPulse{
+  0%{opacity:0;transform:scale(.6)}
+  35%{opacity:1}
+  100%{opacity:.35;transform:scale(1.15)}
+}
+@keyframes prmSheen{
+  to{transform:translateX(180%) rotate(10deg) translateZ(72px)}
+}
+@keyframes prmSlideUp{
+  from{opacity:0;transform:translateY(14px);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes prmTitle{
+  from{opacity:0;transform:translateY(20px) scale(.97);filter:blur(8px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes prmCurtainL{
+  0%{transform:scaleX(0)}
+  35%{transform:scaleX(.04)}
+  100%{transform:scaleX(1)}
+}
+@keyframes prmCurtainR{
+  0%{transform:scaleX(0)}
+  35%{transform:scaleX(.04)}
+  100%{transform:scaleX(1)}
+}
+@keyframes prmFlash{
+  0%{opacity:0}
+  40%{opacity:1}
+  100%{opacity:0}
+}
+@keyframes prmExit{
+  0%{opacity:1;visibility:visible}
+  65%{opacity:1}
+  100%{opacity:0;visibility:hidden;pointer-events:none}
+}
+
+/* Mobil */
+@media(max-width:720px){
+  .prm__bar--t,.prm__bar--b{height:clamp(20px,4vh,36px)}
+  .prm__scene{inset:-3%}
+  .prm__ring--1,.prm__ring--2{display:none}
+  .prm__ring--3{width:148%;height:148%}
+  .prm__emblemBack,.prm__emblemMid{display:none}
+  .prm__particles span:nth-child(n+5){display:none}
+  .prm__emblemWrap{width:clamp(110px,30vw,148px)}
+  .prm__title{font-size:clamp(38px,11vw,58px)}
+  .prm__badge{font-size:7px;letter-spacing:.22em}
+  .prm__hline,.prm__vline{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .prm__wrap{animation-delay:.5s!important;animation-duration:.2s!important}
+  .prm__wrap *{animation-duration:.01ms!important;animation-delay:0ms!important}
+}
+
+/* Safari GPU fix */
+@supports(-webkit-touch-callout:none){
+  .prm__wrap,.prm__scene,.prm__bg,.prm__stage{
+    -webkit-transform:translateZ(0);
+    backface-visibility:hidden;
+  }
+  .prm__grain,.prm__particles{display:none!important}
+  .prm__ring--1,.prm__ring--2{display:none!important}
+}
+
+/* LEGACY cin144 CSS -" korunuyor (admin bypass için) */
+.cin144{
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  overflow:hidden;
+  background:#0d0f0b;
+  color:#fff;
+  perspective:1800px;
+  transform-style:preserve-3d;
+  animation:cin144Exit .92s cubic-bezier(.72,0,.18,1) 3.2s forwards;
+}
+/* Letterbox sinematik bantlar */
+.cin144__bar{
+  position:absolute;
+  left:0;right:0;
+  z-index:30;
+  background:#000;
+  pointer-events:none;
+  transform:scaleY(0);
+}
+.cin144__bar--top{
+  top:0;
+  height:clamp(28px,5.2vh,52px);
+  transform-origin:top;
+  animation:cin144BarIn .55s cubic-bezier(.4,0,.2,1) 0s forwards;
+}
+.cin144__bar--bot{
+  bottom:0;
+  height:clamp(28px,5.2vh,52px);
+  transform-origin:bottom;
+  animation:cin144BarIn .55s cubic-bezier(.4,0,.2,1) 0s forwards;
+}
+.cin144__scene{
+  position:absolute;
+  inset:-5%;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  animation:cin144Camera 4s cubic-bezier(.1,.72,.16,1) both;
+}
+.cin144__bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 52%;
+  transform:scale(1.10);
+  filter:saturate(.78) contrast(1.08) brightness(.62);
+  animation:cin144Bg 4s cubic-bezier(.16,.72,.18,1) both;
+}
+.cin144__depth{
+  position:absolute;
+  pointer-events:none;
+  transform-style:preserve-3d;
+}
+.cin144__depth--one{
+  inset:0;
+  background:
+    radial-gradient(ellipse 46% 60% at 18% 52%,rgba(211,177,113,.22),transparent 55%),
+    radial-gradient(ellipse 38% 50% at 80% 20%,rgba(248,233,204,.13),transparent 55%);
+  transform:translateZ(70px) scale(1.03);
+  animation:cin144DepthOne 3.8s ease both;
+}
+.cin144__depth--two{
+  inset:-12%;
+  background:linear-gradient(108deg,transparent 34%,rgba(255,245,221,.20) 47%,transparent 58%);
+  mix-blend-mode:screen;
+  transform:translateX(-42%) rotate(-5deg) translateZ(110px);
+  animation:cin144LightSweep 3.6s cubic-bezier(.2,.78,.18,1) .1s both;
+}
+.cin144__depth--three{
+  inset:0;
+  background:radial-gradient(ellipse 70% 40% at 50% 100%,rgba(0,0,0,.55),transparent 65%);
+  z-index:2;
+}
+.cin144__shade{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:
+    linear-gradient(90deg,rgba(10,12,9,.75) 0%,rgba(14,15,12,.38) 32%,rgba(16,16,13,.18) 56%,rgba(10,12,9,.58) 100%),
+    linear-gradient(180deg,rgba(5,6,4,.40),transparent 25%,transparent 60%,rgba(5,6,4,.72));
+}
+.cin144__vignette{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.72) 100%);
+}
+.cin144__grain{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  opacity:.09;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  animation:cin144Grain .18s steps(2) infinite;
+}
+.cin144__light{
+  position:absolute;
+  width:38vw;
+  height:140vh;
+  left:44%;
+  top:-22vh;
+  z-index:6;
+  transform:rotate(14deg);
+  background:linear-gradient(90deg,transparent,rgba(255,240,205,.10),rgba(255,255,255,.09),transparent);
+  filter:blur(22px);
+  opacity:0;
+  animation:cin144Beam 3s ease .2s forwards;
+}
+.cin144__flare{
+  position:absolute;
+  width:18vw;
+  height:18vw;
+  top:12%;
+  left:62%;
+  z-index:6;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,235,180,.22) 0%,transparent 70%);
+  filter:blur(28px);
+  opacity:0;
+  animation:cin144Flare 2.6s ease .8s forwards;
+}
+.cin144__frame{
+  position:absolute;
+  inset:clamp(14px,2.4vw,28px);
+  z-index:8;
+  pointer-events:none;
+}
+.cin144__corner{
+  position:absolute;
+  width:52px;
+  height:52px;
+  opacity:0;
+  animation:cin144Corner .6s cubic-bezier(.2,.8,.2,1) .68s forwards;
+}
+.cin144__corner:before,
+.cin144__corner:after{
+  content:"";
+  position:absolute;
+  background:rgba(226,193,131,.65);
+  transition:none;
+}
+.cin144__corner:before{width:52px;height:1px}
+.cin144__corner:after{width:1px;height:52px}
+.cin144__corner--tl{left:0;top:0}
+.cin144__corner--tr{right:0;top:0;transform:rotate(90deg)}
+.cin144__corner--bl{left:0;bottom:0;transform:rotate(-90deg)}
+.cin144__corner--br{right:0;bottom:0;transform:rotate(180deg)}
+.cin144__scanline{
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,.03) 3px,
+    rgba(0,0,0,.03) 4px
+  );
+  pointer-events:none;
+  opacity:.5;
+}
+.cin144__content{
+  position:absolute;
+  inset:0;
+  z-index:9;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(28px,5vh,56px) 24px clamp(48px,7vh,72px);
+  transform-style:preserve-3d;
+}
+.cin144__emblemScene{
+  position:relative;
+  width:clamp(122px,13vw,178px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  transform-style:preserve-3d;
+  opacity:0;
+  animation:cin144EmblemIn 1.25s cubic-bezier(.12,.88,.16,1) .3s forwards;
+}
+/* Orbit halkaları -" 3 boyutlu dönen çemberler */
+.cin144__orbit{
+  position:absolute;
+  inset:50%;
+  border-radius:50%;
+  border:1px solid rgba(210,178,115,.22);
+  transform:translate(-50%,-50%);
+}
+.cin144__orbit--one{
+  width:260%;height:260%;
+  transform:translate(-50%,-50%) rotateX(72deg) rotateZ(0deg);
+  animation:cin144OrbitSpin 8s linear .5s infinite;
+}
+.cin144__orbit--two{
+  width:190%;height:190%;
+  border-color:rgba(210,178,115,.14);
+  transform:translate(-50%,-50%) rotateX(60deg) rotateZ(60deg);
+  animation:cin144OrbitSpin 12s linear .5s infinite reverse;
+}
+.cin144__orbit--three{
+  width:130%;height:130%;
+  border-color:rgba(210,178,115,.10);
+  transform:translate(-50%,-50%) rotateX(50deg) rotateZ(30deg);
+  animation:cin144OrbitSpin 6s linear .5s infinite;
+}
+.cin144__halo{
+  position:absolute;
+  inset:50%;
+  border-radius:50%;
+  border:1px solid rgba(222,188,126,.32);
+  transform:translate(-50%,-50%) rotateX(68deg);
+  box-shadow:0 0 60px rgba(204,163,95,.14);
+}
+.cin144__halo--one{
+  width:218%;height:218%;
+  animation:cin144Halo 2.8s ease .4s both;
+}
+.cin144__halo--two{
+  width:158%;height:158%;
+  opacity:.5;
+  animation:cin144Halo 2.4s ease .6s reverse both;
+}
+.cin144__emblem,
+.cin144__emblemBack{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  transform-style:preserve-3d;
+}
+.cin144__emblemBack{
+  transform:translateZ(-28px) translate(9px,10px) rotateY(-6deg) rotateX(3deg);
+  opacity:.14;
+  filter:blur(1.5px) sepia(.3);
+}
+.cin144__emblem{
+  transform:translateZ(48px);
+  filter:drop-shadow(0 28px 36px rgba(0,0,0,.38)) drop-shadow(0 0 22px rgba(210,178,100,.18));
+}
+.cin144__emblem img,
+.cin144__emblemBack img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.cin144__shine{
+  position:absolute;
+  inset:-18%;
+  transform:translateX(-160%) rotate(11deg) translateZ(68px);
+  background:linear-gradient(108deg,transparent 36%,rgba(255,255,255,.78) 48%,rgba(211,174,106,.30) 52%,transparent 62%);
+  mix-blend-mode:screen;
+  animation:cin144EmblemSheen 1.6s cubic-bezier(.18,.76,.2,1) .95s forwards;
+}
+.cin144__glow{
+  position:absolute;
+  inset:-30%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(210,178,100,.28) 0%,transparent 70%);
+  filter:blur(18px);
+  opacity:0;
+  animation:cin144GlowPulse 2s ease .6s forwards;
+}
+.cin144__copy{
+  margin-top:28px;
+  text-align:center;
+  transform:translateZ(32px);
+}
+.cin144__eyebrow{
+  display:block;
+  color:#d6b879;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  opacity:0;
+  animation:cin144Text .65s ease .92s forwards;
+}
+.cin144__copy h1{
+  margin:11px 0 10px;
+  color:#fff;
+  font:500 clamp(44px,5.4vw,80px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:.09em;
+  text-shadow:0 18px 52px rgba(0,0,0,.44),0 2px 8px rgba(0,0,0,.28);
+  opacity:0;
+  transform:translateY(16px);
+  animation:cin144Title .88s cubic-bezier(.1,.88,.16,1) 1.02s forwards;
+}
+.cin144__copy h1 em{
+  color:#d2b273;
+  font-style:normal;
+}
+.cin144__copy p{
+  margin:0;
+  color:rgba(255,255,255,.70);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.10em;
+  opacity:0;
+  animation:cin144Text .6s ease 1.28s forwards;
+}
+.cin144__rule{
+  position:absolute;
+  left:50%;
+  bottom:6%;
+  width:min(760px,80vw);
+  transform:translateX(-50%);
+  display:grid;
+  grid-template-columns:1fr auto 42px auto 42px auto 1fr;
+  gap:10px;
+  align-items:center;
+  color:rgba(255,255,255,.58);
+  opacity:0;
+  animation:cin144Text .52s ease 1.55s forwards;
+}
+.cin144__rule>span{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(214,180,113,.48));
+}
+.cin144__rule>span:last-child{
+  background:linear-gradient(90deg,rgba(214,180,113,.48),transparent);
+}
+.cin144__rule>i{
+  height:1px;
+  background:rgba(214,180,113,.36);
+}
+.cin144__rule b{
+  color:#d2b273;
+  font-size:8px;
+  letter-spacing:.13em;
+}
+.cin144__rule small{
+  color:rgba(255,255,255,.66);
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.26em;
+  white-space:nowrap;
+}
+.cin144__curtain{
+  position:absolute;
+  z-index:25;
+  top:0;
+  bottom:0;
+  width:51%;
+  background:#0d0f0b;
+  pointer-events:none;
+  transform:scaleX(0);
+}
+.cin144__curtain--left{
+  left:0;
+  transform-origin:left;
+  animation:cin144CurtainLeft .82s cubic-bezier(.76,0,.18,1) 3.12s forwards;
+}
+.cin144__curtain--right{
+  right:0;
+  transform-origin:right;
+  animation:cin144CurtainRight .82s cubic-bezier(.76,0,.18,1) 3.12s forwards;
+}
+
+@keyframes cin144BarIn{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
+@keyframes cin144Camera{
+  0%{transform:translateZ(-120px) rotateX(3deg) scale(.97)}
+  55%{transform:translateZ(10px) rotateX(.5deg) scale(1.002)}
+  100%{transform:translateZ(62px) rotateX(0deg) scale(1.022)}
+}
+@keyframes cin144Bg{
+  0%{transform:scale(1.15) translate3d(-2%,1.5%,0);filter:saturate(.62) contrast(1.02) brightness(.48) blur(6px)}
+  30%{filter:saturate(.74) contrast(1.05) brightness(.60) blur(0)}
+  100%{transform:scale(1.058) translate3d(.8%,-.4%,0);filter:saturate(.82) contrast(1.08) brightness(.68) blur(0)}
+}
+@keyframes cin144DepthOne{
+  0%{transform:translateZ(28px) translate3d(-2.5%,1.5%,0) scale(1.01);opacity:0}
+  100%{transform:translateZ(90px) translate3d(1.2%,-.6%,0) scale(1.04);opacity:1}
+}
+@keyframes cin144LightSweep{
+  from{transform:translateX(-45%) rotate(-5deg) translateZ(110px);opacity:0}
+  30%{opacity:1}
+  to{transform:translateX(58%) rotate(-5deg) translateZ(110px);opacity:.12}
+}
+@keyframes cin144Beam{
+  from{opacity:0;transform:translateX(-14%) rotate(14deg)}
+  30%{opacity:.8}
+  to{opacity:.10;transform:translateX(20%) rotate(14deg)}
+}
+@keyframes cin144Flare{
+  0%{opacity:0;transform:scale(.6)}
+  40%{opacity:.7}
+  100%{opacity:.12;transform:scale(1.4)}
+}
+@keyframes cin144Corner{
+  from{opacity:0;filter:blur(4px);transform:scale(.85)}
+  to{opacity:1;filter:blur(0);transform:scale(1)}
+}
+@keyframes cin144OrbitSpin{
+  from{transform:translate(-50%,-50%) rotateX(72deg) rotateZ(0deg)}
+  to{transform:translate(-50%,-50%) rotateX(72deg) rotateZ(360deg)}
+}
+@keyframes cin144EmblemIn{
+  0%{opacity:0;transform:translateY(22px) translateZ(-110px) rotateX(18deg) rotateY(-28deg) scale(.62);filter:blur(14px)}
+  62%{opacity:1}
+  100%{opacity:1;transform:translateY(0) translateZ(62px) rotateX(2deg) rotateY(-3deg) scale(1);filter:blur(0)}
+}
+@keyframes cin144Halo{
+  from{opacity:0;transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-35deg) scale(.5)}
+  to{opacity:.52;transform:translate(-50%,-50%) rotateX(68deg) rotateZ(22deg) scale(1)}
+}
+@keyframes cin144EmblemSheen{
+  to{transform:translateX(160%) rotate(11deg) translateZ(68px)}
+}
+@keyframes cin144GlowPulse{
+  0%{opacity:0;transform:scale(.7)}
+  40%{opacity:.9}
+  100%{opacity:.28;transform:scale(1.1)}
+}
+@keyframes cin144Text{
+  from{opacity:0;transform:translateY(10px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes cin144Title{
+  from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes cin144Grain{
+  0%{transform:translate(0)}
+  25%{transform:translate(-.8%,.7%)}
+  50%{transform:translate(.7%,-.8%)}
+  75%{transform:translate(.5%,.6%)}
+  100%{transform:translate(-.6%,-.5%)}
+}
+@keyframes cin144CurtainLeft{
+  0%{transform:scaleX(0)}
+  40%{transform:scaleX(.06)}
+  100%{transform:scaleX(1)}
+}
+@keyframes cin144CurtainRight{
+  0%{transform:scaleX(0)}
+  40%{transform:scaleX(.06)}
+  100%{transform:scaleX(1)}
+}
+@keyframes cin144Exit{
+  0%{opacity:1;visibility:visible}
+  70%{opacity:1}
+  100%{opacity:0;visibility:hidden;pointer-events:none}
+}
+
+@media(max-width:720px){
+  .cin144__bar--top,.cin144__bar--bot{height:clamp(18px,3.8vh,34px)}
+  .cin144__bg{object-position:62% center}
+  .cin144__frame{inset:12px}
+  .cin144__content{padding:24px 16px 44px}
+  .cin144__emblemScene{width:clamp(100px,28vw,134px)}
+  .cin144__orbit--one{width:240%;height:240%}
+  .cin144__orbit--two{width:170%;height:170%}
+  .cin144__orbit--three{width:120%;height:120%}
+  .cin144__eyebrow{font-size:7px;letter-spacing:.20em}
+  .cin144__copy h1{font-size:clamp(36px,10vw,52px);letter-spacing:.048em}
+  .cin144__copy p{font-size:8px;max-width:78vw;line-height:1.55}
+  .cin144__rule{
+    width:88vw;
+    bottom:4%;
+    grid-template-columns:1fr auto 22px auto 22px auto 1fr;
+    gap:7px;
+  }
+  .cin144__rule small{font-size:5.5px;letter-spacing:.13em}
+}
+@media(prefers-reduced-motion:reduce){
+  .cin144{animation-delay:.75s!important;animation-duration:.18s!important}
+  .cin144 *{animation-duration:.01ms!important;animation-delay:0ms!important}
+}
+
+/* STEP145 -" CINEMATIC FINAL POLISH */
+
+/* Intro arkasındaki gerçek site hazır bekler; perde açıldığında tek sahne gibi görünür. */
+.step145Site{
+  min-height:100vh;
+}
+.step145Site--waiting{
+  opacity:.82;
+  transform:translateY(9px) scale(.997);
+  filter:blur(2px);
+}
+.step145Site--ready{
+  animation:step145SiteReveal .76s cubic-bezier(.18,.82,.2,1) both;
+}
+@keyframes step145SiteReveal{
+  from{opacity:.72;transform:translateY(10px) scale(.997);filter:blur(2px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+
+/* Perde kapanmadan hemen önce çok hafif sıcak ışık geçişi. */
+.cin144:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:19;
+  pointer-events:none;
+  opacity:0;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(242,222,181,.16),transparent 34%),
+    linear-gradient(180deg,transparent,rgba(255,247,230,.035));
+  animation:step145Bridge .78s ease 2.55s forwards;
+}
+@keyframes step145Bridge{
+  0%{opacity:0}
+  45%{opacity:1}
+  100%{opacity:0}
+}
+
+/* Mobilde aynı sinematik görünüm, daha hafif GPU yükü. */
+@media(max-width:720px){
+  .cin144{perspective:none!important}
+  .cin144__scene{
+    inset:-2%!important;
+    animation:step145MobileCamera 3.55s ease-out both!important;
+  }
+  .cin144__bg{
+    animation:step145MobileBg 3.5s ease-out both!important;
+    filter:saturate(.82) contrast(1.04) brightness(.66)!important;
+  }
+  .cin144__depth--one{
+    transform:none!important;
+    opacity:.55!important;
+    animation:none!important;
+  }
+  .cin144__depth--two{display:none!important}
+  .cin144__depth--three{display:none!important}
+  .cin144__light{width:58vw!important;filter:blur(10px)!important}
+  .cin144__flare{display:none!important}
+  .cin144__grain{opacity:.035!important;animation:none!important}
+  .cin144__halo{box-shadow:none!important}
+  .cin144__halo--two{display:none!important}
+  .cin144__orbit--two,.cin144__orbit--three{display:none!important}
+  .cin144__orbit--one{animation-duration:12s!important}
+  .cin144__emblemBack{display:none!important}
+  .cin144__glow{display:none!important}
+  .cin144__emblem{
+    transform:none!important;
+    filter:drop-shadow(0 14px 18px rgba(0,0,0,.24))!important;
+  }
+}
+@keyframes step145MobileCamera{
+  from{transform:scale(1.028)}
+  to{transform:scale(1)}
+}
+@keyframes step145MobileBg{
+  from{transform:scale(1.11);opacity:.80}
+  to{transform:scale(1.055);opacity:1}
+}
+
+/* iPhone / Safari compositing optimizasyonu */
+@supports (-webkit-touch-callout:none){
+  .cin144,
+  .cin144__scene,
+  .cin144__bg,
+  .cin144__content{
+    -webkit-transform:translateZ(0);
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+  }
+  .cin144__grain{display:none!important}
+  .cin144__orbit{display:none!important}
+  .cin144__flare{display:none!important}
+  .cin144__light{filter:blur(8px)!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .step145Site--ready{animation:none!important}
+}
+
+/* STEP154 — SAME HEADER LOGO EVERYWHERE
+   Contact + footer + contact-detail now use the exact clean header emblem/copy system.
+   Old framed/square logo presentation is intentionally overridden. */
+
+.contactBrand--headerLogo,
+.premiumFooter__brand--headerLogo,
+.contact80Hero__mark--headerLogo{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+}
+
+.contactBrand--headerLogo .brandLogoArtwork,
+.premiumFooter__brand--headerLogo .brandLogoArtwork,
+.contact80Hero__mark--headerLogo .brandLogoArtwork{
+  width:72px!important;
+  height:66px!important;
+  flex:0 0 72px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+.contactBrand--headerLogo .brandLogoArtwork img,
+.premiumFooter__brand--headerLogo .brandLogoArtwork img,
+.contact80Hero__mark--headerLogo .brandLogoArtwork img{
+  position:static!important;
+  width:68px!important;
+  height:64px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 4px 6px rgba(55,44,31,.10))!important;
+}
+
+.contactBrand--headerLogo .brandLogoCopy,
+.premiumFooter__brand--headerLogo .brandLogoCopy,
+.contact80Hero__mark--headerLogo .brandLogoCopy{
+  width:auto!important;
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+}
+
+.contactBrand--headerLogo .brandLogoCopy small,
+.premiumFooter__brand--headerLogo .brandLogoCopy small,
+.contact80Hero__mark--headerLogo .brandLogoCopy small{
+  margin:0 0 5px!important;
+  color:#5f5b53!important;
+  font:700 6.5px/1.2 Arial,sans-serif!important;
+  letter-spacing:.11em!important;
+}
+
+.contactBrand--headerLogo .brandLogoCopy strong,
+.premiumFooter__brand--headerLogo .brandLogoCopy strong,
+.contact80Hero__mark--headerLogo .brandLogoCopy strong{
+  color:#262522!important;
+  font:500 23px/.96 Georgia,"Times New Roman",serif!important;
+  letter-spacing:.07em!important;
+}
+
+.contactBrand--headerLogo .brandLogoOrnament,
+.premiumFooter__brand--headerLogo .brandLogoOrnament,
+.contact80Hero__mark--headerLogo .brandLogoOrnament{
+  width:100%!important;
+  height:12px!important;
+  margin-top:5px!important;
+}
+.contactBrand--headerLogo .brandLogoOrnament svg,
+.premiumFooter__brand--headerLogo .brandLogoOrnament svg,
+.contact80Hero__mark--headerLogo .brandLogoOrnament svg{
+  width:100%!important;
+  height:12px!important;
+}
+
+/* Contact block keeps its soft outer card, but logo itself has no ugly frame. */
+.contactBrand--headerLogo{
+  min-height:96px!important;
+  padding:14px 20px!important;
+}
+
+/* Footer identity should float naturally on the footer background. */
+.premiumFooter__brand--headerLogo{
+  align-self:start!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.premiumFooter__brand--headerLogo .brandLogoCopy small{
+  color:#73726d!important;
+}
+
+/* Contact detail hero: clean lockup inside the existing premium card. */
+.contact80Hero__mark--headerLogo{
+  justify-self:end!important;
+  padding:22px 24px!important;
+}
+.contact80Hero__mark--headerLogo .brandLogoCopy{
+  flex:1 1 auto!important;
+}
+
+/* Kill any older framed emblem rules in these three exact locations. */
+.contactBrand--headerLogo .brandEmblemWrap,
+.premiumFooter__brand--headerLogo .brandEmblemWrap,
+.contact80Hero__mark--headerLogo .brandEmblemWrap{
+  display:none!important;
+}
+
+@media(max-width:760px){
+  .contactBrand--headerLogo,
+  .premiumFooter__brand--headerLogo,
+  .contact80Hero__mark--headerLogo{
+    gap:10px!important;
+  }
+  .contactBrand--headerLogo .brandLogoArtwork,
+  .premiumFooter__brand--headerLogo .brandLogoArtwork,
+  .contact80Hero__mark--headerLogo .brandLogoArtwork{
+    width:56px!important;
+    height:52px!important;
+    flex-basis:56px!important;
+  }
+  .contactBrand--headerLogo .brandLogoArtwork img,
+  .premiumFooter__brand--headerLogo .brandLogoArtwork img,
+  .contact80Hero__mark--headerLogo .brandLogoArtwork img{
+    width:54px!important;
+    height:50px!important;
+  }
+  .contactBrand--headerLogo .brandLogoCopy strong,
+  .premiumFooter__brand--headerLogo .brandLogoCopy strong,
+  .contact80Hero__mark--headerLogo .brandLogoCopy strong{
+    font-size:18px!important;
+  }
+  .contactBrand--headerLogo .brandLogoCopy small,
+  .premiumFooter__brand--headerLogo .brandLogoCopy small,
+  .contact80Hero__mark--headerLogo .brandLogoCopy small{
+    font-size:5.5px!important;
+    letter-spacing:.07em!important;
+  }
+  .contactBrand--headerLogo .brandLogoOrnament,
+  .premiumFooter__brand--headerLogo .brandLogoOrnament,
+  .contact80Hero__mark--headerLogo .brandLogoOrnament,
+  .contactBrand--headerLogo .brandLogoOrnament svg,
+  .premiumFooter__brand--headerLogo .brandLogoOrnament svg,
+  .contact80Hero__mark--headerLogo .brandLogoOrnament svg{
+    height:10px!important;
+  }
+}
+
+/* =========================================================
+   STEP155 — BESPOKE EDITORIAL HOMEPAGE
+   Premium art-direction: editorial + cinematic + restrained 3D
+   Existing admin/blog/supabase/routing untouched.
+   ========================================================= */
+
+.lux155{
+  background:#f3eee5;
+  color:#1f211d;
+  overflow:hidden;
+}
+
+/* ---------- HERO ---------- */
+.lux155Hero{
+  --mx:var(--hero-x,0);
+  --my:var(--hero-y,0);
+  position:relative;
+  min-height:calc(100vh - 92px);
+  min-height:calc(100svh - 92px);
+  overflow:hidden;
+  isolation:isolate;
+  background:#171812;
+}
+.lux155Hero__media{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+}
+.lux155Hero__image{
+  position:absolute;
+  inset:-3%;
+  width:106%;
+  height:106%;
+  object-fit:cover;
+  object-position:center 54%;
+  filter:saturate(.84) contrast(1.04) brightness(.79);
+  transform:
+    scale(1.035)
+    translate3d(calc(var(--mx)*-8px),calc(var(--my)*-5px),0);
+  transition:transform .18s ease-out;
+  animation:lux155HeroImage 1.35s cubic-bezier(.18,.82,.2,1) both;
+}
+.lux155Hero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(9,10,7,.82) 0%,rgba(10,11,7,.67) 27%,rgba(14,14,10,.34) 53%,rgba(9,9,7,.10) 76%,rgba(9,9,7,.28) 100%),
+    linear-gradient(180deg,rgba(5,6,4,.14),transparent 48%,rgba(5,6,4,.50));
+}
+.lux155Hero__light{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(80px);
+  mix-blend-mode:screen;
+}
+.lux155Hero__light--a{
+  width:35vw;height:35vw;
+  right:10%;top:-10%;
+  background:rgba(214,180,115,.15);
+  animation:lux155DriftA 8s ease-in-out infinite alternate;
+}
+.lux155Hero__light--b{
+  width:22vw;height:22vw;
+  left:34%;bottom:-13%;
+  background:rgba(255,243,211,.08);
+  animation:lux155DriftB 9s ease-in-out infinite alternate;
+}
+.lux155Hero__noise{
+  position:absolute;
+  inset:0;
+  opacity:.045;
+  mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.lux155Hero__frame{
+  position:absolute;
+  inset:24px;
+  z-index:2;
+  pointer-events:none;
+}
+.lux155Hero__frame span{
+  position:absolute;
+  background:rgba(212,178,112,.35);
+}
+.lux155Hero__frame span:nth-child(1),
+.lux155Hero__frame span:nth-child(2){width:58px;height:1px}
+.lux155Hero__frame span:nth-child(3),
+.lux155Hero__frame span:nth-child(4){width:1px;height:58px}
+.lux155Hero__frame span:nth-child(1){left:0;top:0}
+.lux155Hero__frame span:nth-child(2){right:0;bottom:0}
+.lux155Hero__frame span:nth-child(3){left:0;top:0}
+.lux155Hero__frame span:nth-child(4){right:0;bottom:0}
+
+.lux155Hero__content{
+  position:relative;
+  z-index:4;
+  width:min(1120px,88vw);
+  min-height:calc(100vh - 92px);
+  min-height:calc(100svh - 92px);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:88px 0 122px;
+  transform:translate3d(calc(var(--mx)*4px),calc(var(--my)*3px),0);
+  transition:transform .18s ease-out;
+}
+.lux155Hero__index{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:rgba(255,255,255,.52);
+  margin-bottom:26px;
+  opacity:0;
+  animation:lux155FadeUp .65s ease .12s forwards;
+}
+.lux155Hero__index span{
+  color:#cba75e;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.lux155Hero__index i{
+  width:46px;height:1px;
+  background:rgba(203,167,94,.52);
+}
+.lux155Hero__index small{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+.lux155Hero__copy{
+  width:min(720px,68vw);
+}
+.lux155Hero__eyebrow{
+  margin:0 0 14px;
+  color:#cdaa64;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.27em;
+  text-transform:uppercase;
+  opacity:0;
+  animation:lux155FadeUp .7s ease .20s forwards;
+}
+.lux155Hero__copy h1{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  color:#fff;
+  font:500 clamp(58px,6.4vw,98px)/.88 Georgia,"Times New Roman",serif;
+  letter-spacing:-.052em;
+  text-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+.lux155Hero__copy h1 span,
+.lux155Hero__copy h1 strong{
+  display:block;
+  opacity:0;
+  transform:translateY(26px);
+}
+.lux155Hero__copy h1 span{
+  animation:lux155TitleIn .82s cubic-bezier(.15,.88,.18,1) .28s forwards;
+}
+.lux155Hero__copy h1 strong{
+  color:#caa35a;
+  font-weight:500;
+  animation:lux155TitleIn .82s cubic-bezier(.15,.88,.18,1) .38s forwards;
+}
+.lux155Hero__desc{
+  max-width:620px;
+  margin:26px 0 0;
+  color:rgba(255,255,255,.68);
+  font-size:13px;
+  line-height:1.8;
+  opacity:0;
+  animation:lux155FadeUp .75s ease .52s forwards;
+}
+.lux155Hero__actions{
+  margin-top:31px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  opacity:0;
+  animation:lux155FadeUp .75s ease .64s forwards;
+}
+.lux155Hero__primary,
+.lux155Hero__secondary{
+  min-height:54px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  padding:0 22px;
+  border-radius:2px;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.04em;
+  transition:transform .28s ease,background .28s ease,border-color .28s ease,color .28s ease;
+}
+.lux155Hero__primary{
+  background:#bd9143;
+  color:#fff;
+  box-shadow:0 16px 38px rgba(155,110,43,.18);
+}
+.lux155Hero__primary i{
+  font-style:normal;
+  font-size:14px;
+}
+.lux155Hero__primary:hover{
+  transform:translateY(-3px);
+  background:#cca75e;
+}
+.lux155Hero__secondary{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.20);
+  background:rgba(255,255,255,.035);
+  backdrop-filter:blur(10px);
+}
+.lux155Hero__secondary:hover{
+  transform:translateY(-3px);
+  border-color:rgba(203,167,94,.50);
+  color:#dfc58f;
+}
+
+.lux155Hero__signature{
+  position:absolute;
+  left:0;
+  bottom:34px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  opacity:0;
+  animation:lux155FadeUp .65s ease .82s forwards;
+}
+.lux155Hero__signatureLine{
+  width:70px;height:1px;
+  background:linear-gradient(90deg,#c9a65f,rgba(201,166,95,.12));
+}
+.lux155Hero__signature span{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.lux155Hero__signature small{
+  color:rgba(255,255,255,.42);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.lux155Hero__signature strong{
+  color:rgba(255,255,255,.74);
+  font:500 11px/1.3 Georgia,serif;
+}
+
+.lux155Hero__rail{
+  position:absolute;
+  z-index:5;
+  top:50%;
+  right:36px;
+  transform:translateY(-50%);
+  width:190px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.lux155Hero__railCard{
+  min-height:58px;
+  padding:13px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(18,18,14,.22);
+  backdrop-filter:blur(12px);
+  color:rgba(255,255,255,.72);
+  opacity:0;
+  transform:translateX(18px);
+  animation:lux155RailIn .72s cubic-bezier(.16,.82,.2,1) forwards;
+}
+.lux155Hero__railCard:nth-child(1){animation-delay:.46s}
+.lux155Hero__railCard:nth-child(2){animation-delay:.56s}
+.lux155Hero__railCard:nth-child(3){animation-delay:.66s}
+.lux155Hero__railCard span{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.10em;
+}
+.lux155Hero__railCard b{
+  color:#c9a55e;
+  font-size:8px;
+}
+.lux155Hero__scroll{
+  position:absolute;
+  z-index:6;
+  right:34px;
+  bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  transform:rotate(-90deg);
+  transform-origin:right bottom;
+}
+.lux155Hero__scroll span{
+  width:38px;height:1px;
+  background:rgba(255,255,255,.28);
+}
+.lux155Hero__scroll small{
+  color:rgba(255,255,255,.40);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+
+/* ---------- MANIFESTO ---------- */
+.lux155Manifest{
+  position:relative;
+  padding:clamp(82px,9vw,128px) 6vw clamp(90px,10vw,150px);
+  background:
+    radial-gradient(circle at 82% 15%,rgba(181,137,67,.08),transparent 26%),
+    #f3eee5;
+}
+.lux155Manifest:before{
+  content:"";
+  position:absolute;
+  left:6vw;right:6vw;top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d9caae,transparent);
+}
+.lux155Manifest__top{
+  max-width:1220px;
+  margin:0 auto 58px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:40px;
+  align-items:start;
+}
+.lux155Manifest__top>span{
+  color:#97723a;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+.lux155Manifest__top>p{
+  max-width:790px;
+  margin:0;
+  color:#3b3d37;
+  font:500 clamp(24px,2.6vw,38px)/1.36 Georgia,serif;
+}
+.lux155Manifest__grid{
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(400px,1.08fr);
+  gap:clamp(42px,6vw,88px);
+  align-items:center;
+}
+.lux155Manifest__lead small{
+  color:#9d7b43;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.lux155Manifest__lead h2{
+  max-width:650px;
+  margin:14px 0 22px;
+  color:#252720;
+  font:500 clamp(37px,4vw,62px)/1.02 Georgia,serif;
+  letter-spacing:-.04em;
+}
+.lux155Manifest__lead h2 em{
+  color:#a37a38;
+  font-style:italic;
+  font-weight:500;
+}
+.lux155Manifest__lead p{
+  max-width:590px;
+  margin:0;
+  color:#6b6a62;
+  font-size:12px;
+  line-height:1.9;
+}
+.lux155Manifest__lead a{
+  margin-top:26px;
+  display:inline-flex;
+  align-items:center;
+  gap:20px;
+  color:#262821;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.07em;
+}
+.lux155Manifest__lead a span{
+  color:#a67d3d;
+  font-size:16px;
+  transition:transform .25s ease;
+}
+.lux155Manifest__lead a:hover span{transform:translateX(5px)}
+
+.lux155Manifest__visual{
+  position:relative;
+  height:clamp(460px,52vw,690px);
+  overflow:hidden;
+  border-radius:3px 70px 3px 3px;
+  box-shadow:0 32px 80px rgba(65,49,27,.13);
+}
+.lux155Manifest__visual:before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:18px;
+  border:1px solid rgba(255,255,255,.36);
+  border-radius:2px 54px 2px 2px;
+  pointer-events:none;
+}
+.lux155Manifest__visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .8s cubic-bezier(.18,.75,.18,1);
+}
+.lux155Manifest__visual:hover img{transform:scale(1.025)}
+.lux155Manifest__visualShade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(23,23,18,.42));
+}
+.lux155Manifest__stamp{
+  position:absolute;
+  z-index:4;
+  right:24px;
+  bottom:24px;
+  width:132px;
+  aspect-ratio:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  background:rgba(25,25,20,.28);
+  backdrop-filter:blur(13px);
+  color:#fff;
+}
+.lux155Manifest__stamp img{
+  width:54px;height:54px;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.18));
+}
+.lux155Manifest__stamp span{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+
+.lux155Manifest__values{
+  max-width:1220px;
+  margin:72px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #d8cfbf;
+  border-bottom:1px solid #d8cfbf;
+}
+.lux155Manifest__values article{
+  min-height:145px;
+  padding:26px 30px;
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:15px;
+  align-items:start;
+  border-right:1px solid #d8cfbf;
+}
+.lux155Manifest__values article:last-child{border-right:0}
+.lux155Manifest__values article>span{
+  color:#aa8448;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.lux155Manifest__values b{
+  display:block;
+  color:#2b2c27;
+  font:500 19px/1.15 Georgia,serif;
+}
+.lux155Manifest__values p{
+  margin:8px 0 0;
+  color:#77756d;
+  font-size:10px;
+  line-height:1.65;
+}
+
+/* ---------- MOTION ---------- */
+@keyframes lux155HeroImage{
+  from{transform:scale(1.10);filter:saturate(.65) contrast(1.02) brightness(.58) blur(3px)}
+  to{transform:scale(1.035);filter:saturate(.84) contrast(1.04) brightness(.79) blur(0)}
+}
+@keyframes lux155FadeUp{
+  from{opacity:0;transform:translateY(12px);filter:blur(4px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes lux155TitleIn{
+  from{opacity:0;transform:translateY(26px);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes lux155RailIn{
+  to{opacity:1;transform:translateX(0)}
+}
+@keyframes lux155DriftA{
+  from{transform:translate3d(-2%,0,0) scale(.96)}
+  to{transform:translate3d(5%,4%,0) scale(1.08)}
+}
+@keyframes lux155DriftB{
+  from{transform:translate3d(0,4%,0) scale(.94)}
+  to{transform:translate3d(-5%,-3%,0) scale(1.06)}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1050px){
+  .lux155Hero__rail{display:none}
+  .lux155Hero__copy{width:min(760px,80vw)}
+  .lux155Manifest__grid{
+    grid-template-columns:1fr 1fr;
+    gap:42px;
+  }
+}
+@media(max-width:780px){
+  .lux155Hero{
+    min-height:calc(100svh - 72px);
+  }
+  .lux155Hero__image{
+    object-position:61% center;
+    filter:saturate(.78) contrast(1.04) brightness(.67);
+  }
+  .lux155Hero__veil{
+    background:
+      linear-gradient(90deg,rgba(8,9,6,.85) 0%,rgba(8,9,6,.60) 56%,rgba(8,9,6,.24) 100%),
+      linear-gradient(180deg,rgba(0,0,0,.10),transparent 45%,rgba(0,0,0,.48));
+  }
+  .lux155Hero__content{
+    min-height:calc(100svh - 72px);
+    width:auto;
+    margin:0;
+    padding:96px 22px 118px;
+  }
+  .lux155Hero__copy{width:100%}
+  .lux155Hero__copy h1{
+    font-size:clamp(48px,14vw,70px);
+    line-height:.92;
+  }
+  .lux155Hero__desc{
+    max-width:92%;
+    font-size:11px;
+  }
+  .lux155Hero__signature{
+    left:22px;
+    bottom:25px;
+  }
+  .lux155Hero__signatureLine{width:40px}
+  .lux155Hero__frame{inset:12px}
+  .lux155Hero__scroll{display:none}
+
+  .lux155Manifest{
+    padding:72px 20px 90px;
+  }
+  .lux155Manifest__top{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-bottom:40px;
+  }
+  .lux155Manifest__top>p{
+    font-size:27px;
+  }
+  .lux155Manifest__grid{
+    grid-template-columns:1fr;
+  }
+  .lux155Manifest__visual{
+    height:min(120vw,560px);
+    border-radius:2px 40px 2px 2px;
+  }
+  .lux155Manifest__values{
+    grid-template-columns:1fr;
+    margin-top:52px;
+  }
+  .lux155Manifest__values article{
+    min-height:auto;
+    border-right:0;
+    border-bottom:1px solid #d8cfbf;
+    padding:21px 8px;
+  }
+  .lux155Manifest__values article:last-child{border-bottom:0}
+}
+@media(max-width:520px){
+  .lux155Hero__actions{
+    align-items:stretch;
+    flex-direction:column;
+    max-width:330px;
+  }
+  .lux155Hero__primary,
+  .lux155Hero__secondary{
+    width:100%;
+    justify-content:space-between;
+  }
+  .lux155Hero__signature strong{
+    max-width:230px;
+  }
+  .lux155Manifest__lead h2{
+    font-size:40px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .lux155Hero__image,
+  .lux155Hero__light,
+  .lux155Hero__index,
+  .lux155Hero__eyebrow,
+  .lux155Hero__copy h1 span,
+  .lux155Hero__copy h1 strong,
+  .lux155Hero__desc,
+  .lux155Hero__actions,
+  .lux155Hero__signature,
+  .lux155Hero__railCard{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+/* =========================================================
+   STEP156 — BESPOKE ABOUT PAGE
+   Same art-direction as STEP155 homepage:
+   cinematic photography + editorial typography + restrained 3D
+   ========================================================= */
+
+.abt156{
+  background:#f3eee5;
+  color:#24261f;
+  overflow:hidden;
+}
+
+/* HERO */
+.abt156Hero{
+  position:relative;
+  min-height:calc(100vh - 92px);
+  min-height:calc(100svh - 92px);
+  overflow:hidden;
+  isolation:isolate;
+  background:#171812;
+}
+.abt156Hero__media{
+  position:absolute;
+  inset:0;
+}
+.abt156Hero__media>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 32%;
+  filter:saturate(.82) contrast(1.04) brightness(.73);
+  transform:scale(1.045);
+  animation:abt156Camera 1.55s cubic-bezier(.16,.82,.2,1) both;
+}
+.abt156Hero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(9,10,7,.87) 0%,rgba(10,11,8,.68) 31%,rgba(13,13,9,.35) 54%,rgba(8,8,6,.14) 75%,rgba(7,8,5,.33) 100%),
+    linear-gradient(180deg,rgba(4,5,3,.18),transparent 48%,rgba(4,5,3,.58));
+}
+.abt156Hero__grain{
+  position:absolute;
+  inset:0;
+  opacity:.055;
+  mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.abt156Hero__beam{
+  position:absolute;
+  width:42vw;
+  height:140vh;
+  left:46%;
+  top:-24vh;
+  transform:rotate(17deg);
+  background:linear-gradient(90deg,transparent,rgba(247,225,180,.10),rgba(255,255,255,.08),transparent);
+  filter:blur(20px);
+  mix-blend-mode:screen;
+  animation:abt156Beam 5.5s ease-in-out infinite alternate;
+}
+.abt156Hero__frame{
+  position:absolute;
+  inset:24px;
+  z-index:3;
+  pointer-events:none;
+}
+.abt156Hero__frame i{
+  position:absolute;
+  width:52px;
+  height:52px;
+}
+.abt156Hero__frame i:before,
+.abt156Hero__frame i:after{
+  content:"";
+  position:absolute;
+  background:rgba(205,169,99,.39);
+}
+.abt156Hero__frame i:before{width:52px;height:1px}
+.abt156Hero__frame i:after{width:1px;height:52px}
+.abt156Hero__frame i:nth-child(1){left:0;top:0}
+.abt156Hero__frame i:nth-child(2){right:0;top:0;transform:rotate(90deg)}
+.abt156Hero__frame i:nth-child(3){left:0;bottom:0;transform:rotate(-90deg)}
+.abt156Hero__frame i:nth-child(4){right:0;bottom:0;transform:rotate(180deg)}
+
+.abt156Hero__back{
+  position:absolute;
+  z-index:6;
+  left:6vw;
+  top:38px;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  transition:.25s ease;
+}
+.abt156Hero__back span{
+  color:#caa35d;
+  font-size:16px;
+}
+.abt156Hero__back small{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.21em;
+}
+.abt156Hero__back:hover{
+  color:#fff;
+  transform:translateX(-3px);
+}
+
+.abt156Hero__copy{
+  position:relative;
+  z-index:5;
+  min-height:calc(100vh - 92px);
+  min-height:calc(100svh - 92px);
+  width:min(1160px,88vw);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:108px 0 120px;
+}
+.abt156Hero__index{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:23px;
+  color:rgba(255,255,255,.44);
+  opacity:0;
+  animation:abt156Fade .62s ease .10s forwards;
+}
+.abt156Hero__index span{
+  color:#c9a45d;
+  font-size:8px;
+  font-weight:800;
+}
+.abt156Hero__index i{
+  width:44px;height:1px;
+  background:rgba(201,164,93,.50);
+}
+.abt156Hero__index small{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.23em;
+}
+.abt156Hero__eyebrow{
+  margin:0 0 12px;
+  color:#cdaa65;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  opacity:0;
+  animation:abt156Fade .68s ease .18s forwards;
+}
+.abt156Hero__copy h1{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  color:#fff;
+  font:500 clamp(70px,8vw,124px)/.82 Georgia,"Times New Roman",serif;
+  letter-spacing:-.065em;
+  text-shadow:0 20px 60px rgba(0,0,0,.26);
+}
+.abt156Hero__copy h1 span,
+.abt156Hero__copy h1 strong{
+  font-weight:500;
+  opacity:0;
+  transform:translateY(28px);
+}
+.abt156Hero__copy h1 span{
+  animation:abt156Title .82s cubic-bezier(.15,.88,.18,1) .27s forwards;
+}
+.abt156Hero__copy h1 strong{
+  color:#caa45d;
+  animation:abt156Title .82s cubic-bezier(.15,.88,.18,1) .37s forwards;
+}
+.abt156Hero__role{
+  max-width:620px;
+  margin:24px 0 0;
+  color:rgba(255,255,255,.68);
+  font-size:13px;
+  line-height:1.75;
+  letter-spacing:.035em;
+  opacity:0;
+  animation:abt156Fade .70s ease .52s forwards;
+}
+.abt156Hero__signature{
+  position:absolute;
+  left:0;
+  bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  opacity:0;
+  animation:abt156Fade .7s ease .68s forwards;
+}
+.abt156Hero__signature img{
+  width:54px;
+  height:54px;
+  object-fit:contain;
+  filter:drop-shadow(0 7px 16px rgba(0,0,0,.22));
+}
+.abt156Hero__signature>span{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.abt156Hero__signature small{
+  color:#c9a45d;
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.abt156Hero__signature b{
+  color:rgba(255,255,255,.67);
+  font:500 11px/1.35 Georgia,serif;
+}
+
+.abt156Hero__side{
+  position:absolute;
+  z-index:5;
+  right:34px;
+  top:50%;
+  width:215px;
+  padding:18px 18px 17px;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(16,17,13,.22);
+  backdrop-filter:blur(14px);
+  display:flex;
+  flex-direction:column;
+  opacity:0;
+  animation:abt156Side .75s cubic-bezier(.18,.82,.2,1) .52s forwards;
+}
+.abt156Hero__side>span{
+  color:#caa45e;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+.abt156Hero__side>b{
+  margin-top:7px;
+  color:#fff;
+  font:500 22px/1.05 Georgia,serif;
+}
+.abt156Hero__side>small{
+  margin-top:5px;
+  color:rgba(255,255,255,.55);
+  font-size:8px;
+  line-height:1.45;
+}
+.abt156Hero__side>i{
+  height:1px;
+  margin:14px 0 12px;
+  background:linear-gradient(90deg,#c69d54,transparent);
+}
+.abt156Hero__side>em{
+  color:rgba(255,255,255,.36);
+  font-size:6px;
+  font-weight:800;
+  font-style:normal;
+  letter-spacing:.16em;
+}
+.abt156Hero__scroll{
+  position:absolute;
+  z-index:6;
+  right:33px;
+  bottom:26px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  transform:rotate(-90deg);
+  transform-origin:right bottom;
+}
+.abt156Hero__scroll span{
+  width:38px;height:1px;
+  background:rgba(255,255,255,.28);
+}
+.abt156Hero__scroll small{
+  color:rgba(255,255,255,.40);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+
+/* STORY */
+.abt156Story{
+  padding:clamp(90px,10vw,150px) 6vw;
+  background:
+    radial-gradient(circle at 83% 14%,rgba(177,133,66,.085),transparent 25%),
+    #f3eee5;
+}
+.abt156Story__head{
+  max-width:1220px;
+  margin:0 auto 68px;
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr) minmax(260px,380px);
+  gap:clamp(28px,4vw,60px);
+  align-items:start;
+}
+.abt156Story__head>span{
+  color:#9b763d;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.abt156Story__head h2{
+  margin:0;
+  color:#292a25;
+  font:500 clamp(35px,4vw,60px)/1.04 Georgia,serif;
+  letter-spacing:-.04em;
+}
+.abt156Story__head h2 em{
+  color:#a27a3b;
+  font-weight:500;
+}
+.abt156Story__head>p{
+  margin:4px 0 0;
+  color:#74736c;
+  font-size:11px;
+  line-height:1.85;
+}
+
+.abt156Story__layout{
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(300px,420px) minmax(0,1fr);
+  gap:clamp(48px,7vw,96px);
+  align-items:start;
+}
+.abt156Portrait{
+  position:sticky;
+  top:112px;
+}
+.abt156Portrait__image{
+  position:relative;
+  height:540px;
+  overflow:hidden;
+  border-radius:2px 62px 2px 2px;
+  box-shadow:0 30px 75px rgba(65,49,28,.13);
+}
+.abt156Portrait__image:before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:16px;
+  border:1px solid rgba(255,255,255,.38);
+  border-radius:2px 48px 2px 2px;
+  pointer-events:none;
+}
+.abt156Portrait__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 34%;
+}
+.abt156Portrait__shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 56%,rgba(22,22,17,.47));
+}
+.abt156Portrait__number{
+  position:absolute;
+  z-index:4;
+  left:22px;
+  bottom:20px;
+  color:rgba(255,255,255,.76);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+.abt156Portrait__identity{
+  padding:23px 4px 0;
+}
+.abt156Portrait__identity>span{
+  color:#9d783d;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.21em;
+}
+.abt156Portrait__identity h3{
+  margin:7px 0 4px;
+  color:#272923;
+  font:500 30px/1 Georgia,serif;
+}
+.abt156Portrait__identity p{
+  margin:0;
+  color:#85827a;
+  font-size:10px;
+}
+
+.abt156Article{
+  padding-top:7px;
+}
+.abt156Article__rule{
+  margin-bottom:30px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:16px;
+}
+.abt156Article__rule span,
+.abt156Article__rule b{
+  color:#9d793f;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.abt156Article__rule i{
+  height:1px;
+  background:linear-gradient(90deg,rgba(158,121,62,.55),rgba(158,121,62,.08));
+}
+.abt156Article>p{
+  margin:0 0 27px;
+  color:#62645d;
+  font-size:14px;
+  line-height:1.95;
+}
+.abt156Article__lead{
+  margin-bottom:36px!important;
+  color:#30312b!important;
+  font:500 clamp(20px,2vw,28px)/1.65 Georgia,serif!important;
+}
+.abt156Article__lead:first-letter{
+  float:left;
+  margin:7px 8px 0 0;
+  color:#a47b3c;
+  font:500 62px/.72 Georgia,serif;
+}
+.abt156Article__quote{
+  position:relative;
+  margin-top:46px;
+  padding:32px 38px 34px;
+  border-top:1px solid #d7ccba;
+  border-bottom:1px solid #d7ccba;
+}
+.abt156Article__quote>span{
+  position:absolute;
+  left:0;
+  top:10px;
+  color:rgba(166,126,62,.20);
+  font:500 74px/.7 Georgia,serif;
+}
+.abt156Article__quote p{
+  margin:0;
+  padding-left:34px;
+  color:#41433c;
+  font:italic 500 22px/1.55 Georgia,serif;
+}
+
+/* PRINCIPLES */
+.abt156Principles{
+  padding:clamp(78px,9vw,120px) 6vw;
+  background:#292a24;
+  color:#fff;
+}
+.abt156Principles__head{
+  max-width:1220px;
+  margin:0 auto 48px;
+  display:grid;
+  grid-template-columns:200px minmax(0,680px);
+  gap:40px;
+}
+.abt156Principles__head>span{
+  color:#c8a45e;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.abt156Principles__head h2{
+  margin:0;
+  color:#fff;
+  font:500 clamp(32px,3.4vw,52px)/1.08 Georgia,serif;
+  letter-spacing:-.03em;
+}
+.abt156Principles__grid{
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.abt156Principles__grid article{
+  position:relative;
+  min-height:275px;
+  padding:29px;
+  border-right:1px solid rgba(255,255,255,.12);
+  transition:background .3s ease,transform .3s ease;
+}
+.abt156Principles__grid article:last-child{border-right:0}
+.abt156Principles__grid article:hover{
+  background:rgba(255,255,255,.035);
+  transform:translateY(-4px);
+}
+.abt156Principles__grid article>span{
+  position:absolute;
+  top:26px;
+  right:26px;
+  color:rgba(255,255,255,.24);
+  font-size:8px;
+  font-weight:800;
+}
+.abt156Principles__icon{
+  width:45px;height:45px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(202,164,94,.30);
+  border-radius:50%;
+  color:#caa45e;
+}
+.abt156Principles__grid h3{
+  margin:42px 0 11px;
+  color:#fff;
+  font:500 22px/1.15 Georgia,serif;
+}
+.abt156Principles__grid p{
+  margin:0;
+  color:rgba(255,255,255,.48);
+  font-size:10px;
+  line-height:1.75;
+}
+
+/* CTA */
+.abt156Cta{
+  position:relative;
+  max-width:1220px;
+  margin:0 auto;
+  padding:clamp(62px,7vw,90px) 6vw;
+  display:grid;
+  grid-template-columns:100px minmax(0,1fr) auto;
+  gap:36px;
+  align-items:center;
+  background:#f3eee5;
+}
+.abt156Cta__mark{
+  width:88px;
+  height:88px;
+  display:grid;
+  place-items:center;
+  border:1px solid #d9cdb9;
+  border-radius:50%;
+}
+.abt156Cta__mark img{
+  width:62px;
+  height:62px;
+  object-fit:contain;
+}
+.abt156Cta__copy>span{
+  color:#9f793d;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.abt156Cta__copy h2{
+  max-width:650px;
+  margin:8px 0 9px;
+  color:#2b2d27;
+  font:500 clamp(28px,3vw,44px)/1.08 Georgia,serif;
+}
+.abt156Cta__copy p{
+  max-width:650px;
+  margin:0;
+  color:#76746d;
+  font-size:10px;
+  line-height:1.7;
+}
+.abt156Cta>a{
+  min-width:220px;
+  min-height:58px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  background:#2a2b25;
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  transition:.28s ease;
+}
+.abt156Cta>a i{
+  color:#cba65e;
+  font-size:16px;
+  font-style:normal;
+}
+.abt156Cta>a:hover{
+  transform:translateY(-3px);
+  background:#a47b3d;
+}
+.abt156Cta>a:hover i{color:#fff}
+
+/* MOTION */
+@keyframes abt156Camera{
+  from{transform:scale(1.11);filter:saturate(.65) contrast(1.02) brightness(.56) blur(3px)}
+  to{transform:scale(1.045);filter:saturate(.82) contrast(1.04) brightness(.73) blur(0)}
+}
+@keyframes abt156Fade{
+  from{opacity:0;transform:translateY(12px);filter:blur(4px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes abt156Title{
+  from{opacity:0;transform:translateY(28px);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes abt156Side{
+  from{opacity:0;transform:translateY(-50%) translateX(20px)}
+  to{opacity:1;transform:translateY(-50%) translateX(0)}
+}
+@keyframes abt156Beam{
+  from{opacity:.15;transform:translateX(-10%) rotate(17deg)}
+  to{opacity:.55;transform:translateX(12%) rotate(17deg)}
+}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .abt156Hero__side{display:none}
+  .abt156Story__head{
+    grid-template-columns:140px 1fr;
+  }
+  .abt156Story__head>p{
+    grid-column:2;
+  }
+}
+@media(max-width:820px){
+  .abt156Hero{
+    min-height:calc(100svh - 72px);
+  }
+  .abt156Hero__media>img{
+    object-position:60% 30%;
+  }
+  .abt156Hero__shade{
+    background:
+      linear-gradient(90deg,rgba(8,9,6,.88),rgba(8,9,6,.60) 58%,rgba(8,9,6,.22)),
+      linear-gradient(180deg,transparent 40%,rgba(5,6,4,.56));
+  }
+  .abt156Hero__frame{inset:12px}
+  .abt156Hero__back{left:22px;top:27px}
+  .abt156Hero__copy{
+    min-height:calc(100svh - 72px);
+    width:auto;
+    margin:0;
+    padding:104px 22px 120px;
+  }
+  .abt156Hero__copy h1{
+    font-size:clamp(64px,18vw,92px);
+  }
+  .abt156Hero__signature{
+    left:22px;
+    bottom:24px;
+  }
+  .abt156Hero__scroll{display:none}
+
+  .abt156Story{
+    padding:72px 20px 90px;
+  }
+  .abt156Story__head{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-bottom:44px;
+  }
+  .abt156Story__head>p{grid-column:auto}
+  .abt156Story__layout{
+    grid-template-columns:1fr;
+    gap:46px;
+  }
+  .abt156Portrait{
+    position:static;
+  }
+  .abt156Portrait__image{
+    height:min(125vw,610px);
+    border-radius:2px 42px 2px 2px;
+  }
+
+  .abt156Principles{
+    padding:72px 20px 82px;
+  }
+  .abt156Principles__head{
+    grid-template-columns:1fr;
+    gap:13px;
+  }
+  .abt156Principles__grid{
+    grid-template-columns:1fr;
+  }
+  .abt156Principles__grid article{
+    min-height:auto;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .abt156Principles__grid article:last-child{border-bottom:0}
+
+  .abt156Cta{
+    margin:0;
+    padding:62px 20px 78px;
+    grid-template-columns:72px 1fr;
+    gap:22px;
+  }
+  .abt156Cta__mark{
+    width:68px;height:68px;
+  }
+  .abt156Cta__mark img{
+    width:48px;height:48px;
+  }
+  .abt156Cta>a{
+    grid-column:1/-1;
+    width:100%;
+  }
+}
+@media(max-width:520px){
+  .abt156Hero__copy h1{font-size:62px}
+  .abt156Hero__role{font-size:11px}
+  .abt156Hero__signature img{width:45px;height:45px}
+  .abt156Hero__signature b{max-width:235px;font-size:9px}
+  .abt156Article__quote{padding:28px 12px}
+  .abt156Article__quote p{font-size:19px;padding-left:26px}
+  .abt156Cta{grid-template-columns:1fr}
+  .abt156Cta__mark{display:none}
+  .abt156Cta>a{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .abt156Hero__media>img,
+  .abt156Hero__beam,
+  .abt156Hero__index,
+  .abt156Hero__eyebrow,
+  .abt156Hero__copy h1 span,
+  .abt156Hero__copy h1 strong,
+  .abt156Hero__role,
+  .abt156Hero__signature,
+  .abt156Hero__side{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+/* STEP157 — COMPACT CINEMATIC ABOUT VISUAL
+   Replaces the oversized second portrait with a restrained counseling-room scene. */
+.abt156Story__layout{
+  grid-template-columns:minmax(290px,390px) minmax(0,1fr)!important;
+  gap:clamp(42px,6vw,82px)!important;
+}
+.abt156Portrait__image{
+  height:360px!important;
+  border-radius:3px 42px 3px 3px!important;
+  transform:perspective(1100px) rotateY(1.8deg) rotateX(.7deg);
+  transform-origin:center;
+  box-shadow:0 26px 66px rgba(65,49,28,.12)!important;
+  transition:transform .5s cubic-bezier(.18,.75,.18,1),box-shadow .5s ease!important;
+}
+.abt156Portrait__image:hover{
+  transform:perspective(1100px) rotateY(0deg) rotateX(0deg) translateY(-4px);
+  box-shadow:0 34px 80px rgba(65,49,28,.16)!important;
+}
+.abt156Portrait__image img{
+  object-position:center!important;
+  transform:scale(1.035);
+  animation:abt157SceneDrift 10s ease-in-out infinite alternate;
+}
+.abt156Portrait__shade{
+  background:
+    linear-gradient(180deg,rgba(255,244,219,.04),transparent 42%,rgba(25,23,18,.28))!important;
+}
+.abt157Scene__light{
+  position:absolute;
+  z-index:2;
+  width:62%;
+  height:150%;
+  top:-25%;
+  left:-22%;
+  transform:rotate(14deg);
+  background:linear-gradient(90deg,transparent,rgba(255,238,198,.18),rgba(255,255,255,.09),transparent);
+  filter:blur(14px);
+  mix-blend-mode:screen;
+  animation:abt157SceneLight 7s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+.abt157Scene__orbit{
+  position:absolute;
+  z-index:2;
+  border:1px solid rgba(219,177,99,.23);
+  border-radius:50%;
+  pointer-events:none;
+}
+.abt157Scene__orbit--1{
+  width:230px;height:230px;
+  right:-92px;bottom:-112px;
+  animation:abt157Orbit 13s linear infinite;
+}
+.abt157Scene__orbit--2{
+  width:155px;height:155px;
+  right:-54px;bottom:-72px;
+  border-color:rgba(255,255,255,.20);
+  animation:abt157Orbit 9s linear infinite reverse;
+}
+.abt156Portrait__identity--scene{
+  padding-top:18px!important;
+}
+.abt156Portrait__identity--scene h3{
+  font-size:25px!important;
+}
+.abt156Portrait__identity--scene p{
+  max-width:330px;
+  line-height:1.55;
+}
+@keyframes abt157SceneDrift{
+  from{transform:scale(1.035) translate3d(-.8%,.3%,0)}
+  to{transform:scale(1.075) translate3d(1.1%,-.5%,0)}
+}
+@keyframes abt157SceneLight{
+  from{opacity:.22;transform:translateX(-8%) rotate(14deg)}
+  to{opacity:.68;transform:translateX(24%) rotate(14deg)}
+}
+@keyframes abt157Orbit{
+  from{transform:rotate(0deg) scale(.98)}
+  50%{transform:rotate(180deg) scale(1.03)}
+  to{transform:rotate(360deg) scale(.98)}
+}
+@media(max-width:820px){
+  .abt156Portrait__image{
+    height:320px!important;
+    transform:none!important;
+    border-radius:3px 32px 3px 3px!important;
+  }
+}
+@media(max-width:520px){
+  .abt156Portrait__image{height:270px!important}
+  .abt157Scene__orbit--1{width:180px;height:180px}
+  .abt157Scene__orbit--2{width:120px;height:120px}
+}
+@media(prefers-reduced-motion:reduce){
+  .abt156Portrait__image img,
+  .abt157Scene__light,
+  .abt157Scene__orbit{
+    animation:none!important;
+  }
+}
+
+/* =========================================================
+   STEP158 — FINAL ABOUT PAGE
+   One real Kaan Özkan portrait only.
+   No giant name, no planet/orbit graphics, no counseling-room image.
+   ========================================================= */
+.about158{
+  background:#f5f0e7;
+  color:#252720;
+  overflow:hidden;
+}
+
+.about158Hero{
+  position:relative;
+  min-height:calc(100svh - 92px);
+  padding:82px 6vw 74px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(183,139,69,.10),transparent 24%),
+    linear-gradient(135deg,#f7f3ec 0%,#efe7db 100%);
+}
+.about158Hero:before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(160,120,58,.10);
+  pointer-events:none;
+}
+.about158Back{
+  position:absolute;
+  z-index:5;
+  left:6vw;
+  top:28px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#777167;
+  text-decoration:none;
+  transition:.25s ease;
+}
+.about158Back span{
+  color:#a87d3d;
+  font-size:16px;
+}
+.about158Back small{
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.about158Back:hover{
+  color:#2d2f29;
+  transform:translateX(-3px);
+}
+
+.about158Hero__shell{
+  position:relative;
+  z-index:2;
+  width:min(1220px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,430px);
+  gap:clamp(55px,8vw,120px);
+  align-items:center;
+}
+.about158Eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#9b753b;
+  margin-bottom:23px;
+  opacity:0;
+  animation:about158Fade .6s ease .08s forwards;
+}
+.about158Eyebrow>span{
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.about158Eyebrow i{
+  width:44px;
+  height:1px;
+  background:rgba(158,119,59,.48);
+}
+.about158Eyebrow small{
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+.about158Hero__copy h1{
+  max-width:720px;
+  margin:0;
+  color:#272923;
+  font:500 clamp(50px,5.8vw,84px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.048em;
+}
+.about158Hero__copy h1 strong{
+  display:block;
+  color:#a77d3d;
+  font-weight:500;
+}
+.about158Hero__lead{
+  max-width:640px;
+  margin:28px 0 0;
+  color:#676961;
+  font-size:13px;
+  line-height:1.85;
+}
+.about158Hero__identity{
+  margin-top:30px;
+  display:flex;
+  align-items:flex-end;
+  gap:20px;
+}
+.about158Hero__identity>span{
+  display:flex;
+  flex-direction:column;
+}
+.about158Hero__identity small{
+  color:#a17a3f;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.about158Hero__identity b{
+  margin-top:5px;
+  color:#282a24;
+  font:500 24px/1.05 Georgia,serif;
+}
+.about158Hero__identity em{
+  margin-top:5px;
+  color:#858179;
+  font-size:9px;
+  font-style:normal;
+}
+.about158Hero__identity>i{
+  width:80px;
+  height:1px;
+  margin-bottom:7px;
+  background:linear-gradient(90deg,#a87e3e,transparent);
+}
+.about158Hero__actions{
+  margin-top:31px;
+  display:flex;
+  gap:11px;
+  flex-wrap:wrap;
+}
+.about158Hero__primary,
+.about158Hero__secondary{
+  min-height:50px;
+  padding:0 18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  border:1px solid #cbb994;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  transition:.28s ease;
+}
+.about158Hero__primary{
+  color:#fff;
+  border-color:#a77e3d;
+  background:#a77e3d;
+}
+.about158Hero__secondary{
+  color:#4d4d47;
+  background:rgba(255,255,255,.35);
+}
+.about158Hero__primary:hover,
+.about158Hero__secondary:hover{
+  transform:translateY(-3px);
+}
+.about158Hero__primary:hover{background:#8f682f}
+.about158Hero__secondary:hover{
+  border-color:#a77e3d;
+  color:#8f682f;
+}
+
+.about158PhotoWrap{
+  width:100%;
+  max-width:430px;
+  justify-self:end;
+}
+.about158Photo{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+  border-radius:3px 52px 3px 3px;
+  background:#d8d0c3;
+  box-shadow:0 28px 76px rgba(64,48,27,.16);
+  opacity:0;
+  transform:translateY(16px);
+  animation:about158PhotoIn .85s cubic-bezier(.16,.86,.18,1) .16s forwards;
+}
+.about158Photo:before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  inset:14px;
+  border:1px solid rgba(255,255,255,.46);
+  border-radius:2px 40px 2px 2px;
+  pointer-events:none;
+}
+.about158Photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 22%;
+  transform:scale(1.015);
+  transition:transform 1.1s cubic-bezier(.18,.72,.18,1);
+}
+.about158Photo:hover img{
+  transform:scale(1.045);
+}
+.about158Photo__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,transparent 56%,rgba(24,22,17,.58)),
+    linear-gradient(90deg,rgba(255,244,219,.06),transparent 35%);
+}
+.about158Photo__light{
+  position:absolute;
+  top:-10%;
+  left:-45%;
+  width:55%;
+  height:130%;
+  transform:rotate(13deg);
+  background:linear-gradient(90deg,transparent,rgba(255,242,207,.20),transparent);
+  filter:blur(12px);
+  mix-blend-mode:screen;
+  animation:about158Light 5.8s ease-in-out infinite alternate;
+}
+.about158Photo__caption{
+  position:absolute;
+  z-index:5;
+  left:22px;
+  right:22px;
+  bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  color:#fff;
+}
+.about158Photo__caption>span{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.about158Photo__caption small{
+  color:#d9b66f;
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.about158Photo__caption b{
+  font:500 21px/1 Georgia,serif;
+}
+.about158Photo__caption em{
+  color:rgba(255,255,255,.55);
+  font-size:7px;
+  font-style:normal;
+  letter-spacing:.14em;
+}
+.about158PhotoMeta{
+  padding:16px 2px 0;
+  display:grid;
+  grid-template-columns:auto 1fr auto 1fr auto;
+  align-items:center;
+  gap:10px;
+  color:#868076;
+}
+.about158PhotoMeta span{
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.about158PhotoMeta i{
+  height:1px;
+  background:#d7cbb9;
+}
+
+/* STORY */
+.about158Story{
+  padding:clamp(85px,9vw,132px) 6vw;
+  background:#f7f3ec;
+}
+.about158Story__intro{
+  max-width:1220px;
+  margin:0 auto 60px;
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr) minmax(260px,390px);
+  gap:clamp(25px,4vw,58px);
+  align-items:start;
+}
+.about158Story__intro>span{
+  color:#9c763b;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+.about158Story__intro h2{
+  margin:0;
+  color:#2b2c27;
+  font:500 clamp(36px,4vw,58px)/1.05 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.about158Story__intro>p{
+  margin:3px 0 0;
+  color:#74726b;
+  font-size:11px;
+  line-height:1.8;
+}
+.about158Story__layout{
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:310px minmax(0,1fr);
+  gap:clamp(48px,7vw,96px);
+  align-items:start;
+}
+.about158Facts{
+  position:sticky;
+  top:112px;
+  border-top:1px solid #d8cebe;
+}
+.about158Facts__item{
+  padding:23px 0;
+  display:grid;
+  grid-template-columns:32px 1fr;
+  gap:12px;
+  border-bottom:1px solid #d8cebe;
+}
+.about158Facts__item>span{
+  color:#a37c40;
+  font-size:8px;
+  font-weight:800;
+}
+.about158Facts__item small{
+  display:block;
+  color:#9f7940;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.17em;
+}
+.about158Facts__item b{
+  display:block;
+  margin-top:5px;
+  color:#34362f;
+  font:500 17px/1.2 Georgia,serif;
+}
+.about158Facts__item p{
+  margin:6px 0 0;
+  color:#85827a;
+  font-size:9px;
+  line-height:1.6;
+}
+.about158Article>p{
+  margin:0 0 25px;
+  color:#64665f;
+  font-size:13px;
+  line-height:1.95;
+}
+.about158Article__lead{
+  margin-bottom:34px!important;
+  color:#343630!important;
+  font:500 clamp(19px,1.8vw,25px)/1.65 Georgia,serif!important;
+}
+.about158Article__lead:first-letter{
+  float:left;
+  margin:7px 8px 0 0;
+  color:#a57d3d;
+  font:500 58px/.72 Georgia,serif;
+}
+.about158Quote{
+  position:relative;
+  margin:44px 0 8px;
+  padding:30px 34px 32px 52px;
+  border-top:1px solid #d8cebe;
+  border-bottom:1px solid #d8cebe;
+}
+.about158Quote>span{
+  position:absolute;
+  left:4px;
+  top:14px;
+  color:rgba(162,121,60,.22);
+  font:500 62px/.7 Georgia,serif;
+}
+.about158Quote p{
+  margin:0;
+  color:#40423b;
+  font:italic 500 20px/1.55 Georgia,serif;
+}
+
+/* PRINCIPLES */
+.about158Principles{
+  padding:clamp(72px,8vw,108px) 6vw;
+  background:#292a24;
+  color:#fff;
+}
+.about158Principles__head{
+  max-width:1220px;
+  margin:0 auto 42px;
+  display:grid;
+  grid-template-columns:200px minmax(0,700px);
+  gap:35px;
+}
+.about158Principles__head>span{
+  color:#caa55f;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.21em;
+}
+.about158Principles__head h2{
+  margin:0;
+  font:500 clamp(32px,3.4vw,50px)/1.08 Georgia,serif;
+  letter-spacing:-.03em;
+}
+.about158Principles__grid{
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.about158Principles__grid article{
+  min-height:235px;
+  padding:28px;
+  position:relative;
+  border-right:1px solid rgba(255,255,255,.12);
+  transition:.28s ease;
+}
+.about158Principles__grid article:last-child{border-right:0}
+.about158Principles__grid article:hover{
+  background:rgba(255,255,255,.03);
+  transform:translateY(-3px);
+}
+.about158Principles__grid article>span{
+  position:absolute;
+  top:26px;
+  right:26px;
+  color:rgba(255,255,255,.22);
+  font-size:8px;
+}
+.about158Principles__grid svg{
+  color:#caa55f;
+}
+.about158Principles__grid h3{
+  margin:35px 0 10px;
+  font:500 21px/1.1 Georgia,serif;
+}
+.about158Principles__grid p{
+  margin:0;
+  color:rgba(255,255,255,.48);
+  font-size:10px;
+  line-height:1.7;
+}
+
+/* CTA */
+.about158Cta{
+  max-width:1220px;
+  margin:0 auto;
+  padding:70px 6vw 85px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:42px;
+  align-items:center;
+  background:#f5f0e7;
+}
+.about158Cta>div>span{
+  color:#9f783d;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+.about158Cta h2{
+  max-width:690px;
+  margin:8px 0 9px;
+  color:#2c2e28;
+  font:500 clamp(29px,3vw,43px)/1.08 Georgia,serif;
+}
+.about158Cta p{
+  max-width:650px;
+  margin:0;
+  color:#77746c;
+  font-size:10px;
+  line-height:1.7;
+}
+.about158Cta>a{
+  min-width:220px;
+  min-height:56px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:#fff;
+  background:#292a24;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  transition:.28s ease;
+}
+.about158Cta>a i{
+  color:#cba660;
+  font-size:16px;
+  font-style:normal;
+}
+.about158Cta>a:hover{
+  transform:translateY(-3px);
+  background:#9f773b;
+}
+.about158Cta>a:hover i{color:#fff}
+
+@keyframes about158Fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes about158PhotoIn{
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes about158Light{
+  from{opacity:.10;transform:translateX(-5%) rotate(13deg)}
+  to{opacity:.58;transform:translateX(120%) rotate(13deg)}
+}
+
+@media(max-width:980px){
+  .about158Hero__shell{
+    grid-template-columns:minmax(0,1fr) 350px;
+    gap:45px;
+  }
+  .about158Photo{height:470px}
+  .about158Story__intro{
+    grid-template-columns:150px 1fr;
+  }
+  .about158Story__intro>p{grid-column:2}
+}
+@media(max-width:780px){
+  .about158Hero{
+    padding:86px 20px 64px;
+    min-height:auto;
+  }
+  .about158Hero:before{inset:10px}
+  .about158Back{left:20px;top:25px}
+  .about158Hero__shell{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+  .about158Hero__copy h1{
+    font-size:clamp(46px,13vw,68px);
+  }
+  .about158PhotoWrap{
+    max-width:420px;
+    justify-self:start;
+  }
+  .about158Photo{
+    height:min(118vw,520px);
+  }
+
+  .about158Story{
+    padding:72px 20px 88px;
+  }
+  .about158Story__intro{
+    grid-template-columns:1fr;
+    gap:13px;
+    margin-bottom:42px;
+  }
+  .about158Story__intro>p{grid-column:auto}
+  .about158Story__layout{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .about158Facts{position:static}
+
+  .about158Principles{
+    padding:68px 20px 78px;
+  }
+  .about158Principles__head{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .about158Principles__grid{
+    grid-template-columns:1fr;
+  }
+  .about158Principles__grid article{
+    min-height:auto;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .about158Principles__grid article:last-child{border-bottom:0}
+
+  .about158Cta{
+    padding:60px 20px 75px;
+    grid-template-columns:1fr;
+  }
+  .about158Cta>a{
+    width:100%;
+  }
+}
+@media(max-width:520px){
+  .about158Hero__actions{
+    flex-direction:column;
+  }
+  .about158Hero__primary,
+  .about158Hero__secondary{
+    width:100%;
+    justify-content:space-between;
+  }
+  .about158PhotoMeta{
+    gap:7px;
+  }
+  .about158Quote{
+    padding:27px 14px 28px 42px;
+  }
+  .about158Quote p{
+    font-size:18px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .about158Eyebrow,
+  .about158Photo,
+  .about158Photo__light{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+/* =========================================================
+   STEP159 — ABOUT HERO FINAL POLISH
+   - Removes repeated profession/name text from the portrait
+   - Adds restrained cinematic movement to the text side only
+   ========================================================= */
+
+.about159Photo__captionMinimal{
+  justify-content:flex-end!important;
+}
+.about159Photo__captionMinimal em{
+  margin-left:auto;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(18,18,14,.18);
+  backdrop-filter:blur(8px);
+  border-radius:999px;
+}
+
+/* Text block cinematic staging */
+.about159Hero__copy{
+  position:relative;
+  isolation:isolate;
+}
+.about159Hero__copy > *:not(.about159Cine){
+  position:relative;
+  z-index:2;
+}
+.about159Cine{
+  position:absolute;
+  z-index:0;
+  inset:-34px -52px -36px -40px;
+  overflow:hidden;
+  pointer-events:none;
+  border-radius:28px 3px 28px 3px;
+}
+.about159Cine:before{
+  content:"";
+  position:absolute;
+  inset:8% 5% 12% 0;
+  border-left:1px solid rgba(167,125,61,.18);
+  border-bottom:1px solid rgba(167,125,61,.09);
+}
+.about159Cine__beam{
+  position:absolute;
+  width:34%;
+  height:150%;
+  top:-25%;
+  transform:rotate(15deg);
+  filter:blur(15px);
+  mix-blend-mode:screen;
+  opacity:0;
+}
+.about159Cine__beam--1{
+  left:-28%;
+  background:linear-gradient(90deg,transparent,rgba(216,175,101,.16),rgba(255,247,226,.08),transparent);
+  animation:about159BeamA 5.6s ease-in-out .15s infinite;
+}
+.about159Cine__beam--2{
+  left:-38%;
+  width:20%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent);
+  animation:about159BeamB 7.4s ease-in-out 1.1s infinite;
+}
+.about159Cine__line{
+  position:absolute;
+  left:2%;
+  height:1px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(170,128,63,.42),rgba(170,128,63,.06),transparent);
+}
+.about159Cine__line--1{
+  top:27%;
+  width:78%;
+  animation:about159Line 3.8s cubic-bezier(.16,.82,.2,1) .35s both;
+}
+.about159Cine__line--2{
+  bottom:17%;
+  width:58%;
+  opacity:.6;
+  animation:about159Line 4.6s cubic-bezier(.16,.82,.2,1) .8s both;
+}
+.about159Cine__glow{
+  position:absolute;
+  width:280px;
+  height:280px;
+  left:19%;
+  top:20%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(192,147,75,.10),rgba(192,147,75,.035) 38%,transparent 68%);
+  filter:blur(2px);
+  animation:about159Glow 6.8s ease-in-out infinite alternate;
+}
+
+/* Cinematic entrance for headline and supporting copy */
+.about159Hero__copy .about158Hero__copy h1,
+.about159Hero__copy .about158Hero__lead,
+.about159Hero__copy .about158Hero__identity,
+.about159Hero__copy .about158Hero__actions{
+  will-change:transform,opacity,filter;
+}
+.about159Hero__copy h1{
+  opacity:0;
+  transform:translateY(18px);
+  filter:blur(5px);
+  animation:about159TitleReveal .82s cubic-bezier(.16,.86,.18,1) .18s forwards;
+}
+.about159Hero__copy .about158Hero__lead{
+  opacity:0;
+  transform:translateY(12px);
+  animation:about159FadeUp .68s ease .42s forwards;
+}
+.about159Hero__copy .about158Hero__identity{
+  opacity:0;
+  transform:translateY(10px);
+  animation:about159FadeUp .62s ease .58s forwards;
+}
+.about159Hero__copy .about158Hero__actions{
+  opacity:0;
+  transform:translateY(10px);
+  animation:about159FadeUp .62s ease .72s forwards;
+}
+
+/* Slight filmic contrast on the copy side */
+.about159Hero__copy:after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:-18px -26px -20px -24px;
+  pointer-events:none;
+  border-radius:26px 4px 26px 4px;
+  background:
+    linear-gradient(110deg,rgba(255,255,255,.10),transparent 28%),
+    radial-gradient(circle at 14% 22%,rgba(205,163,91,.08),transparent 30%);
+  opacity:.75;
+}
+
+@keyframes about159BeamA{
+  0%,15%{opacity:0;transform:translateX(-18%) rotate(15deg)}
+  35%{opacity:.58}
+  70%{opacity:.14}
+  100%{opacity:0;transform:translateX(360%) rotate(15deg)}
+}
+@keyframes about159BeamB{
+  0%,20%{opacity:0;transform:translateX(-10%) rotate(15deg)}
+  45%{opacity:.32}
+  100%{opacity:0;transform:translateX(520%) rotate(15deg)}
+}
+@keyframes about159Line{
+  from{transform:scaleX(0);opacity:0}
+  30%{opacity:1}
+  to{transform:scaleX(1);opacity:.7}
+}
+@keyframes about159Glow{
+  from{transform:translate3d(-4%,-2%,0) scale(.92);opacity:.45}
+  to{transform:translate3d(10%,8%,0) scale(1.08);opacity:.85}
+}
+@keyframes about159TitleReveal{
+  from{opacity:0;transform:translateY(18px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes about159FadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:780px){
+  .about159Cine{
+    inset:-22px -16px -24px -16px;
+    border-radius:20px 3px 20px 3px;
+  }
+  .about159Cine__beam--2{display:none}
+  .about159Cine__glow{
+    width:190px;
+    height:190px;
+    left:5%;
+    top:30%;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .about159Cine__beam,
+  .about159Cine__line,
+  .about159Cine__glow,
+  .about159Hero__copy h1,
+  .about159Hero__copy .about158Hero__lead,
+  .about159Hero__copy .about158Hero__identity,
+  .about159Hero__copy .about158Hero__actions{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+/* =========================================================
+   STEP160B — ACTUAL PRM INTRO LIGHT BACKGROUND FIX
+   This targets the REAL opening animation classes: .prm__*
+   Logo, 3D rings, particles, timings and motion remain unchanged.
+   ========================================================= */
+
+/* Overall canvas: warm cream instead of black-green */
+.prm__wrap{
+  background:#e9e0d2!important;
+}
+
+/* Same existing photo, but brighter/softer/warmer */
+.prm__bg{
+  filter:
+    saturate(.76)
+    contrast(.90)
+    brightness(1.18)
+    sepia(.08)
+    blur(3px)!important;
+}
+
+/* Replace the almost-black wash with a warm cinematic cream wash.
+   Keep a very soft center contrast so the existing white/gold logo text stays readable. */
+.prm__shade{
+  background:
+    radial-gradient(
+      ellipse 44% 58% at 50% 49%,
+      rgba(34,31,24,.34) 0%,
+      rgba(43,38,29,.18) 38%,
+      rgba(242,233,217,.06) 66%,
+      rgba(244,237,225,.18) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(239,229,211,.48) 0%,
+      rgba(235,224,205,.24) 28%,
+      rgba(219,202,174,.09) 52%,
+      rgba(239,230,214,.30) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(246,240,231,.30) 0%,
+      rgba(245,238,226,.04) 36%,
+      rgba(224,209,185,.24) 100%
+    )!important;
+}
+
+/* Much softer vignette — no black tunnel around the edges */
+.prm__vignette{
+  background:
+    radial-gradient(
+      ellipse 94% 92% at 50% 50%,
+      transparent 48%,
+      rgba(125,99,59,.06) 75%,
+      rgba(100,77,43,.13) 100%
+    )!important;
+}
+
+/* Fog becomes warm daylight haze */
+.prm__fog--a{
+  background:radial-gradient(
+    ellipse 80% 60% at 20% 60%,
+    rgba(230,205,160,.28),
+    transparent 58%
+  )!important;
+}
+.prm__fog--b{
+  background:radial-gradient(
+    ellipse 60% 80% at 78% 30%,
+    rgba(255,239,207,.24),
+    transparent 58%
+  )!important;
+}
+.prm__fog--c{
+  background:linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,248,230,.20) 46%,
+    transparent 58%
+  )!important;
+}
+
+/* Film grain stays but becomes delicate on the light scene */
+.prm__grain{
+  opacity:.045!important;
+  mix-blend-mode:multiply!important;
+}
+
+/* Keep the existing rays/effects, just make them visible against a light field */
+.prm__ray{
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(177,135,65,.20),
+    rgba(255,255,255,.32),
+    transparent
+  )!important;
+}
+
+/* Letterbox remains cinematic, but no longer pitch black */
+.prm__bar{
+  background:#26231d!important;
+}
+
+/* Closing curtain follows the same warm dark-neutral tone */
+.prm__curtain{
+  background:#25231d!important;
+}
+
+/* Preserve the existing center logo exactly; only strengthen separation
+   from the newly lightened background without changing size or motion. */
+.prm__emblemFront{
+  filter:
+    drop-shadow(0 30px 50px rgba(49,39,24,.30))
+    drop-shadow(0 0 30px rgba(210,178,100,.25))!important;
+}
+.prm__emblemGlow{
+  background:radial-gradient(
+    circle,
+    rgba(255,248,231,.38) 0%,
+    rgba(210,178,100,.18) 38%,
+    transparent 70%
+  )!important;
+}
+
+/* Existing white/gold wording stays unchanged in structure,
+   add only a subtle contrast veil behind the text area. */
+.prm__text:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:min(720px,78vw);
+  height:220px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-48%);
+  border-radius:50%;
+  background:radial-gradient(
+    ellipse,
+    rgba(34,31,24,.26),
+    rgba(34,31,24,.10) 42%,
+    transparent 72%
+  );
+  filter:blur(18px);
+  pointer-events:none;
+}
+.prm__text{
+  position:relative;
+}
+
+@media(max-width:720px){
+  .prm__bg{
+    filter:
+      saturate(.74)
+      contrast(.92)
+      brightness(1.10)
+      sepia(.07)
+      blur(2px)!important;
+  }
+  .prm__shade{
+    background:
+      radial-gradient(
+        ellipse 62% 54% at 50% 48%,
+        rgba(37,33,25,.34) 0%,
+        rgba(43,38,29,.15) 48%,
+        rgba(241,231,213,.10) 76%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(244,237,225,.30),
+        rgba(230,216,193,.14) 52%,
+        rgba(210,191,160,.25)
+      )!important;
+  }
+  .prm__text:before{
+    width:90vw;
+    height:190px;
+  }
+}
+
+/* STEP161 — HOMEPAGE COPY CLEANUP
+   Remove redundant identity label and reduce repeated "yaklaşım" wording. */
+.lux155Hero__copy{
+  margin-top:0!important;
+}
+.lux155Hero__eyebrow{
+  margin-top:0!important;
+}
+
+/* STEP162 — BLOG/AUTHOR DURABLE SAVE */
+.admin100Blog__message.is-success{
+  white-space:normal;
 }
 
 `;
