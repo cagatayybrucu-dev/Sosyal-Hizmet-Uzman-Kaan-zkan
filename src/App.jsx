@@ -1726,7 +1726,13 @@ function BlogPage({ content = defaultBlogContent }) {
                     <b>{author.name}</b>
                   </div>}
                 </a>
-                <div className="editorialPostCard__body"><div className="editorialPostCard__meta"><time>{post.date}</time><small>{post.readTime}</small></div><h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2><p>{post.excerpt}</p>{author ? <div className="editorialPostCard__author"><a className="editorialPostCard__avatar" href={`#/yazarlar/${author.slug}`} aria-label={`${author.name} profilini gör`}><img src={author.image} alt={author.name}/></a><span><b>{author.name}</b><small>{author.role || "Yazar"}</small></span><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div>}</div>
+                <div className="editorialPostCard__body"><div className="editorialPostCard__meta"><time>{post.date}</time><small>{post.readTime}</small></div><h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2><p>{post.excerpt}</p>{author ? <div className="editorialPostCard__author">
+                  <a className="editorialPostCard__avatar" href={`#/yazarlar/${author.slug}`} aria-label={`${author.name} profilini gör`}>
+                    {author.image ? <img src={author.image} alt={author.name}/> : <span className="editorialPostCard__avatarFallback">{author.name?.charAt(0)}</span>}
+                  </a>
+                  <span className="editorialPostCard__authorInfo"><b>{author.name}</b><small>{author.role || "Yazar"}</small></span>
+                  <a className="editorialPostCard__readLink" href={`#/blog/${post.slug}`}>Yazıyı Oku →</a>
+                </div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div>}</div>
               </article>;
             })}
           </div>
@@ -1818,24 +1824,42 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
   const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
   return <main className="article103">
     <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
-    <div className="article103__cover"><img src={post.image} alt={post.title}/></div>
-    <section className={`article103__layout ${author ? "has-author" : ""}`}>
-      {author && <aside className="article103__authorRail">
-        <a className="article103__authorCard" href={`#/yazarlar/${author.slug}`}>
-          {author.image && <img src={author.image} alt={author.name}/>}
-          <span>YAZAR</span>
-          <b>{author.name}</b>
-          <small>{author.role || "Yazar"}</small>
-          <em>Yazar Profilini Gör →</em>
-        </a>
-      </aside>}
+    <div className="article103__coverShell">
+      <div className="article103__cover">
+        <img src={post.image} alt={post.title}/>
+        <div className="article103__coverShade"></div>
+        <div className="article103__coverCaption">
+          <span>{post.category}</span>
+          <small>{post.date} · {post.readTime}</small>
+        </div>
+      </div>
+    </div>
+    <section className="article103__layout article103__layout--premium">
       <article>
         {paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}
         {post.quote&&<blockquote>“{post.quote}”</blockquote>}
         <div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div>
       </article>
       <aside className="article103__guide">
-        <div className="article103__toc"><span>BU YAZIDA</span><b>Okuma Rehberi</b><p>{post.category}</p><p>{post.readTime}</p></div>
+        <div className="article103__toc article103__toc--premium">
+          <span>BU YAZIDA</span>
+          <b>Okuma Rehberi</b>
+          <div className="article103__tocRows">
+            <p><small>KATEGORİ</small><strong>{post.category}</strong></p>
+            <p><small>OKUMA SÜRESİ</small><strong>{post.readTime}</strong></p>
+          </div>
+          {author && <a className="article103__guideAuthor" href={`#/yazarlar/${author.slug}`}>
+            <div className="article103__guideAvatar">
+              {author.image ? <img src={author.image} alt={author.name}/> : <span>{author.name?.charAt(0)}</span>}
+            </div>
+            <div>
+              <small>YAZAR</small>
+              <b>{author.name}</b>
+              <span>{author.role || "Yazar"}</span>
+            </div>
+            <em>→</em>
+          </a>}
+        </div>
       </aside>
     </section>
     <section className="article103__related"><span>OKUMAYA DEVAM EDİN</span><h2>Diğer yazılar</h2><div>{related.map(item=><a href={`#/blog/${item.slug}`} key={item.slug}><img src={item.image} alt=""/><small>{item.category}</small><h3>{item.title}</h3></a>)}</div></section>
@@ -17169,6 +17193,268 @@ img{
     left:13px;
     bottom:13px;
   }
+}
+
+/* STEP141 — PREMIUM BLOG ARTICLE + AUTHOR UI */
+
+/* Blog liste kartında yazar */
+.editorialPostCard__author{
+  min-height:58px!important;
+  border-top:1px solid #eee8dd!important;
+  margin-top:20px!important;
+  padding-top:15px!important;
+  display:grid!important;
+  grid-template-columns:42px minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:11px!important;
+}
+.editorialPostCard__avatar{
+  width:42px!important;
+  height:42px!important;
+  display:block!important;
+  flex:none!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+  border:2px solid #fff!important;
+  box-shadow:0 0 0 1px #d8c9aa,0 5px 14px rgba(46,37,22,.12)!important;
+}
+.editorialPostCard__avatar img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:50%!important;
+}
+.editorialPostCard__avatarFallback{
+  width:100%;height:100%;display:grid;place-items:center;
+  background:#a9843f;color:#fff;font:600 18px Georgia,serif;
+}
+.editorialPostCard__authorInfo{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:2px!important;
+}
+.editorialPostCard__authorInfo b{
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font:600 12px/1.25 Inter,system-ui,sans-serif!important;
+  color:#292821!important;
+}
+.editorialPostCard__authorInfo small{
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:9px!important;color:#8d8a82!important;
+}
+.editorialPostCard__readLink{
+  margin-left:0!important;
+  white-space:nowrap!important;
+  color:#8b692d!important;
+  font-size:10px!important;
+  font-weight:800!important;
+}
+
+/* Kart görselinin üzerinde ikinci yazar etiketi gereksiz; alt bölüm daha premium. */
+.editorialPostCard__writerChip{display:none!important}
+
+/* Makale kapağı: dev, kaba blok yerine kontrollü premium sahne */
+.article103__coverShell{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 28px;
+}
+.article103__cover{
+  max-width:none!important;
+  width:100%!important;
+  height:clamp(360px,48vw,610px)!important;
+  margin:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:32px!important;
+  background:#ddd6c9!important;
+  box-shadow:0 28px 80px rgba(39,31,20,.13)!important;
+}
+.article103__cover:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.38);
+  border-radius:inherit;
+  pointer-events:none;
+}
+.article103__cover img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transition:transform .7s ease!important;
+}
+.article103__cover:hover img{transform:scale(1.018)!important}
+.article103__coverShade{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,transparent 48%,rgba(20,19,16,.68) 100%);
+}
+.article103__coverCaption{
+  position:absolute;
+  z-index:3;
+  left:28px;
+  right:28px;
+  bottom:25px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  color:#fff;
+}
+.article103__coverCaption span{
+  padding:9px 13px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  background:rgba(28,27,23,.36);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.article103__coverCaption small{
+  font-size:10px;
+  color:rgba(255,255,255,.85);
+}
+
+/* Makale içeriği + sağ premium rehber */
+.article103__layout.article103__layout--premium{
+  max-width:1110px!important;
+  margin:58px auto 78px!important;
+  padding:0 28px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 300px!important;
+  gap:64px!important;
+  align-items:start!important;
+}
+.article103__guide{
+  position:sticky!important;
+  top:112px!important;
+  align-self:start!important;
+}
+.article103__toc--premium{
+  padding:25px!important;
+  border:1px solid #ddd4c5!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#fff 0%,#fbf8f2 100%)!important;
+  box-shadow:0 20px 55px rgba(43,34,20,.08)!important;
+}
+.article103__toc--premium>span{
+  display:block!important;
+  color:#a07c37!important;
+  font-size:8px!important;
+  font-weight:800!important;
+  letter-spacing:.2em!important;
+}
+.article103__toc--premium>b{
+  display:block!important;
+  margin:7px 0 19px!important;
+  font:500 25px/1.1 Georgia,serif!important;
+  color:#25251f!important;
+}
+.article103__tocRows{
+  padding:3px 0 13px;
+  border-top:1px solid #ebe5da;
+  border-bottom:1px solid #ebe5da;
+}
+.article103__tocRows p{
+  margin:0!important;
+  padding:11px 0!important;
+  border:0!important;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.article103__tocRows p+p{border-top:1px solid #f0ebe2!important}
+.article103__tocRows small{
+  color:#a19c91;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.article103__tocRows strong{
+  color:#4c4a43;
+  font-size:10px;
+  font-weight:600;
+}
+.article103__guideAuthor{
+  margin-top:16px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) 18px;
+  gap:11px;
+  align-items:center;
+  border-radius:17px;
+  background:#292a24;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 13px 30px rgba(25,24,20,.12);
+  transition:transform .25s ease,background .25s ease;
+}
+.article103__guideAuthor:hover{
+  transform:translateY(-2px);
+  background:#22231e;
+}
+.article103__guideAvatar{
+  width:52px;height:58px;border-radius:13px;overflow:hidden;
+  background:#a9843f;display:grid;place-items:center;
+  color:#fff;font:500 20px Georgia,serif;
+}
+.article103__guideAvatar img{width:100%;height:100%;object-fit:cover}
+.article103__guideAuthor>div:nth-child(2){
+  min-width:0;display:flex;flex-direction:column;
+}
+.article103__guideAuthor>div:nth-child(2)>small{
+  color:#c8aa69;font-size:7px;font-weight:800;letter-spacing:.15em;
+}
+.article103__guideAuthor>div:nth-child(2)>b{
+  margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font:500 15px/1.15 Georgia,serif;
+}
+.article103__guideAuthor>div:nth-child(2)>span{
+  margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:#bbb8ae;font-size:8px;
+}
+.article103__guideAuthor>em{
+  color:#c6a45e;font-size:15px;font-style:normal;
+}
+
+/* STEP140 soldaki büyük yazar rayını tamamen devre dışı bırak */
+.article103__authorRail{display:none!important}
+
+@media(max-width:900px){
+  .article103__layout.article103__layout--premium{
+    grid-template-columns:1fr!important;
+    gap:34px!important;
+  }
+  .article103__guide{position:static!important}
+  .article103__coverShell{padding:0 18px}
+  .article103__cover{height:clamp(300px,62vw,480px)!important;border-radius:24px!important}
+}
+@media(max-width:600px){
+  .editorialPostCard__author{
+    grid-template-columns:38px minmax(0,1fr) auto!important;
+    gap:9px!important;
+  }
+  .editorialPostCard__avatar{width:38px!important;height:38px!important}
+  .editorialPostCard__readLink{font-size:9px!important}
+  .article103__coverShell{padding:0}
+  .article103__cover{
+    height:300px!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+  .article103__coverCaption{left:18px;right:18px;bottom:17px}
+  .article103__coverCaption small{display:none}
+  .article103__layout.article103__layout--premium{
+    margin:36px auto 55px!important;
+    padding:0 18px!important;
+  }
+  .article103__toc--premium{padding:20px!important}
 }
 
 `;
