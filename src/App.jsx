@@ -1023,14 +1023,14 @@ function App() {
           ...data.content,
           posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
           categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
-          authors: Array.isArray(data.content.authors) && data.content.authors.length ? data.content.authors : current.authors,
+          authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
         }));
       }
     };
 
     loadBlogContent();
     return () => { active = false; };
-  }, []);
+  }, [page, blogSlug, authorSlug]);
 
   useEffect(() => {
     const seo = {
@@ -1675,8 +1675,22 @@ function BlogPage({ content = defaultBlogContent }) {
   const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(8);
   const categories = Array.isArray(content.categories) && content.categories.length ? content.categories : blogCategories;
-  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author.slug !== "kaan-ozkan");
-  const authorFor = (post) => authors.find((author)=>author.slug === post.authorSlug) || null;
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author?.name);
+  const authorFor = (post) => {
+    const slug = String(post?.authorSlug || "").trim();
+    const matched = authors.find((author)=>String(author.slug || "").trim() === slug);
+    if (matched) return matched;
+    if (post?.authorName) {
+      return {
+        slug: slug || createBlogSlug(post.authorName),
+        name: post.authorName,
+        role: post.authorRole || "Yazar",
+        image: post.authorImage || "",
+        shortBio: "",
+      };
+    }
+    return null;
+  };
   const publishedPosts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft").sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
   const filteredPosts = publishedPosts.filter((post)=>{
@@ -1704,7 +1718,14 @@ function BlogPage({ content = defaultBlogContent }) {
             {filteredPosts.slice(0,visibleCount).map((post,index)=>{
               const author = authorFor(post);
               return <article className={`editorialPostCard ${index===0?"is-lead":""}`} key={post.id||post.slug}>
-                <a className="editorialPostCard__image" href={`#/blog/${post.slug}`}><img src={post.image} alt={post.title} loading="lazy"/><span>{post.category}</span></a>
+                <a className="editorialPostCard__image" href={`#/blog/${post.slug}`}>
+                  <img src={post.image} alt={post.title} loading="lazy"/>
+                  <span>{post.category}</span>
+                  {author && <div className="editorialPostCard__writerChip">
+                    {author.image && <img src={author.image} alt=""/>}
+                    <b>{author.name}</b>
+                  </div>}
+                </a>
                 <div className="editorialPostCard__body"><div className="editorialPostCard__meta"><time>{post.date}</time><small>{post.readTime}</small></div><h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2><p>{post.excerpt}</p>{author ? <div className="editorialPostCard__author"><a className="editorialPostCard__avatar" href={`#/yazarlar/${author.slug}`} aria-label={`${author.name} profilini gör`}><img src={author.image} alt={author.name}/></a><span><b>{author.name}</b><small>{author.role || "Yazar"}</small></span><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku →</a></div>}</div>
               </article>;
             })}
@@ -1722,7 +1743,7 @@ function BlogPage({ content = defaultBlogContent }) {
 }
 
 function AuthorsPage({ content = defaultBlogContent }) {
-  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author.slug !== "kaan-ozkan");
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author?.name);
   return <main className="authors101">
     <section className="authors101__hero"><span>YAZARLARIMIZ</span><h1>Yazarlarımız</h1><p>İçeriklerimize bilgi, deneyim ve farklı uzmanlık alanlarıyla katkı sunan yazarlarımızı yakından tanıyın.</p></section>
     <section className="authors101__grid">{authors.length ? authors.map((author)=><a href={`#/yazarlar/${author.slug}`} className="authors101__card" key={author.slug}><div className="authors101__photo"><img src={author.image} alt={author.name}/><span className="authors101__seal">YAZAR</span></div><div><span>YAZAR PROFİLİ</span><h2>{author.name}</h2><small>{author.role}</small><p>{author.shortBio}</p><strong>Profili İncele <Icon name="arrow" size={14}/></strong></div></a>) : <div className="authors101__empty">Henüz yazar eklenmedi.</div>}</section>
@@ -1730,7 +1751,7 @@ function AuthorsPage({ content = defaultBlogContent }) {
 }
 
 function AuthorProfilePage({ slug, content = defaultBlogContent }) {
-  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item.slug !== "kaan-ozkan");
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item?.name);
   const author = authors.find(item=>item.slug===slug);
 
   if (!author) {
@@ -1784,13 +1805,39 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
   const post=posts.find(item=>item.slug===slug);
   if(!post) return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
   const paragraphs=Array.isArray(post.body)?post.body:String(post.body||"").split(/\n\s*\n/).filter(Boolean);
-  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item.slug !== "kaan-ozkan");
-  const author = authors.find((item)=>item.slug === post.authorSlug) || null;
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item?.name);
+  const matchedAuthor = authors.find((item)=>String(item.slug || "").trim() === String(post.authorSlug || "").trim());
+  const author = matchedAuthor || (post.authorName ? {
+    slug: post.authorSlug || createBlogSlug(post.authorName),
+    name: post.authorName,
+    role: post.authorRole || "Yazar",
+    image: post.authorImage || "",
+    shortBio: "",
+    bio: "",
+  } : null);
   const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
   return <main className="article103">
     <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
     <div className="article103__cover"><img src={post.image} alt={post.title}/></div>
-    <section className="article103__layout"><article>{paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}{post.quote&&<blockquote>“{post.quote}”</blockquote>}<div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div></article><aside><div className="article103__toc"><span>BU YAZIDA</span><b>Okuma Rehberi</b><p>{post.category}</p><p>{post.readTime}</p></div>{author && <a className="article103__author" href={`#/yazarlar/${author.slug}`}><img src={author.image} alt={author.name}/><span><small>YAZAR</small><b>{author.name}</b><em>Profili Gör →</em></span></a>}</aside></section>
+    <section className={`article103__layout ${author ? "has-author" : ""}`}>
+      {author && <aside className="article103__authorRail">
+        <a className="article103__authorCard" href={`#/yazarlar/${author.slug}`}>
+          {author.image && <img src={author.image} alt={author.name}/>}
+          <span>YAZAR</span>
+          <b>{author.name}</b>
+          <small>{author.role || "Yazar"}</small>
+          <em>Yazar Profilini Gör →</em>
+        </a>
+      </aside>}
+      <article>
+        {paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}
+        {post.quote&&<blockquote>“{post.quote}”</blockquote>}
+        <div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div>
+      </article>
+      <aside className="article103__guide">
+        <div className="article103__toc"><span>BU YAZIDA</span><b>Okuma Rehberi</b><p>{post.category}</p><p>{post.readTime}</p></div>
+      </aside>
+    </section>
     <section className="article103__related"><span>OKUMAYA DEVAM EDİN</span><h2>Diğer yazılar</h2><div>{related.map(item=><a href={`#/blog/${item.slug}`} key={item.slug}><img src={item.image} alt=""/><small>{item.category}</small><h3>{item.title}</h3></a>)}</div></section>
   </main>;
 }
@@ -3093,7 +3140,7 @@ function AdminDemoPage() {
       status: "published",
       featured: false,
       sortOrder: (blogEditor.posts?.length || 0) + 1,
-      authorSlug: (blogEditor.authors?.find((author)=>author?.slug && author.slug !== "kaan-ozkan")?.slug || ""),
+      authorSlug: (blogEditor.authors?.find((author)=>author?.slug && author?.name)?.slug || ""),
     });
   };
 
@@ -3116,7 +3163,7 @@ function AdminDemoPage() {
         ...(data?.content || {}),
         posts: Array.isArray(data?.content?.posts) ? data.content.posts : defaultBlogContent.posts,
         categories: Array.isArray(data?.content?.categories) ? data.content.categories : defaultBlogContent.categories,
-        authors: (Array.isArray(data?.content?.authors) ? data.content.authors : defaultBlogContent.authors).filter((author)=>author?.slug && author.slug !== "kaan-ozkan"),
+        authors: (Array.isArray(data?.content?.authors) ? data.content.authors : defaultBlogContent.authors).filter((author)=>author?.slug && author?.name),
       };
       setBlogEditor(next);
     }
@@ -3178,6 +3225,10 @@ function AdminDemoPage() {
       posts = posts.map((post) => ({ ...post, featured: false }));
     }
 
+    const selectedAuthor = (blogEditor.authors || []).find(
+      (author) => String(author.slug || "").trim() === String(blogForm.authorSlug || "").trim()
+    ) || null;
+
     const item = {
       id,
       slug,
@@ -3193,6 +3244,9 @@ function AdminDemoPage() {
       featured: Boolean(blogForm.featured),
       sortOrder: Number(blogForm.sortOrder || 100),
       authorSlug: blogForm.authorSlug || "",
+      authorName: selectedAuthor?.name || "",
+      authorRole: selectedAuthor?.role || "",
+      authorImage: selectedAuthor?.image || "",
     };
 
     const index = posts.findIndex((post) => (post.id || post.slug) === editingBlogId);
@@ -3223,7 +3277,7 @@ function AdminDemoPage() {
       status: post.status || "published",
       featured: Boolean(post.featured),
       sortOrder: post.sortOrder ?? 100,
-      authorSlug: post.authorSlug === "kaan-ozkan" ? "" : (post.authorSlug || ""),
+      authorSlug: post.authorSlug || "",
     });
     window.setTimeout(() => {
       document.querySelector(".admin100Blog__editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -3345,7 +3399,17 @@ function AdminDemoPage() {
     const index = authors.findIndex((author)=>author.slug===editingAuthorSlug);
     if (index >= 0) authors[index] = item; else authors.push(item);
     let posts = [...(blogEditor.posts || [])];
-    if (editingAuthorSlug && editingAuthorSlug !== slug) posts = posts.map((post)=>post.authorSlug===editingAuthorSlug ? {...post,authorSlug:slug} : post);
+    posts = posts.map((post) => {
+      const linkedSlug = editingAuthorSlug || slug;
+      if (post.authorSlug !== linkedSlug) return post;
+      return {
+        ...post,
+        authorSlug: slug,
+        authorName: item.name,
+        authorRole: item.role,
+        authorImage: item.image,
+      };
+    });
     const ok = await persistBlogEditor({ ...blogEditor, authors, posts }, editingAuthorSlug ? "Yazar başarıyla güncellendi." : "Yeni yazar başarıyla eklendi.");
     if (ok) resetAuthorForm();
   };
@@ -4212,7 +4276,8 @@ function AdminDemoPage() {
                         <label>
                           <span>Yazar</span>
                           <select value={blogForm.authorSlug} onChange={(e)=>setBlogForm({...blogForm,authorSlug:e.target.value})}>
-                            {(blogEditor.authors || defaultBlogAuthors).map((author)=><option key={author.slug} value={author.slug}>{author.name}</option>)}
+                            <option value="">Yazar seçin</option>
+                            {(blogEditor.authors || defaultBlogAuthors).filter((author)=>author?.slug && author?.name).map((author)=><option key={author.slug} value={author.slug}>{author.name}</option>)}
                           </select>
                         </label>
 
@@ -16957,6 +17022,153 @@ img{
   .brandLogoCopy{width:156px!important;min-width:156px!important}
   .brandLogoCopy strong{font-size:16px!important}
   .brandLogoCopy small{font-size:5px!important}
+}
+
+/* STEP140 — AUTHORS / BLOG AUTHOR LINK FIX
+   - Saved writers are never filtered out by a special slug.
+   - Blog/authors data refreshes on route changes.
+   - Blog cards show the selected writer before opening the article.
+   - Article detail shows a dedicated writer card on the left. */
+
+.editorialPostCard__writerChip{
+  position:absolute;
+  left:18px;
+  bottom:16px;
+  z-index:3;
+  max-width:calc(100% - 36px);
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:6px 12px 6px 7px;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  background:rgba(28,27,24,.76);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  color:#fff;
+}
+.editorialPostCard__writerChip img{
+  width:30px!important;
+  height:30px!important;
+  flex:0 0 30px;
+  border-radius:50%;
+  object-fit:cover!important;
+  transform:none!important;
+}
+.editorialPostCard__writerChip b{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font:700 10px/1.2 Inter,system-ui,sans-serif;
+  letter-spacing:.02em;
+}
+
+.article103__layout.has-author{
+  max-width:1380px;
+  grid-template-columns:230px minmax(0,1fr) 280px;
+  gap:42px;
+}
+.article103__authorRail,
+.article103__guide{
+  position:sticky;
+  top:120px;
+  align-self:start;
+}
+.article103__authorCard{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:18px 16px 20px;
+  border:1px solid #ddd5c8;
+  border-radius:22px;
+  background:#fff;
+  color:#24251f;
+  text-decoration:none;
+  box-shadow:0 18px 45px rgba(42,35,23,.07);
+  transition:transform .28s ease,box-shadow .28s ease;
+}
+.article103__authorCard:hover{
+  transform:translateY(-3px);
+  box-shadow:0 24px 58px rgba(42,35,23,.12);
+}
+.article103__authorCard img{
+  width:138px;
+  height:160px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:16px;
+}
+.article103__authorCard>span{
+  color:#9a7837;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.2em;
+}
+.article103__authorCard>b{
+  margin-top:8px;
+  font:500 23px/1.05 Georgia,serif;
+}
+.article103__authorCard>small{
+  margin-top:5px;
+  color:#89877f;
+  font-size:9px;
+  line-height:1.4;
+}
+.article103__authorCard>em{
+  margin-top:15px;
+  color:#8f6e31;
+  font-size:9px;
+  font-weight:800;
+  font-style:normal;
+}
+.article103__guide .article103__toc{
+  margin:0;
+}
+
+@media(max-width:1120px){
+  .article103__layout.has-author{
+    grid-template-columns:190px minmax(0,1fr);
+  }
+  .article103__guide{
+    grid-column:1/-1;
+    position:static;
+  }
+  .article103__authorCard img{
+    width:120px;
+    height:140px;
+  }
+}
+@media(max-width:760px){
+  .article103__layout.has-author{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .article103__authorRail,
+  .article103__guide{
+    position:static;
+  }
+  .article103__authorCard{
+    flex-direction:row;
+    text-align:left;
+    align-items:center;
+    padding:13px;
+  }
+  .article103__authorCard img{
+    width:68px;
+    height:76px;
+    margin:0 13px 0 0;
+  }
+  .article103__authorCard>span{display:none}
+  .article103__authorCard>b{margin:0;font-size:19px}
+  .article103__authorCard>small{margin:3px 0 0}
+  .article103__authorCard>em{margin:5px 0 0 12px}
+  .editorialPostCard__writerChip{
+    left:13px;
+    bottom:13px;
+  }
 }
 
 `;
