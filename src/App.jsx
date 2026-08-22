@@ -2031,7 +2031,6 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
           </a>}
           <div className="article103__tocRows">
             <p><small>KATEGORİ</small><strong>{post.category}</strong></p>
-            <p><small>OKUMA SÜRESİ</small><strong>{post.readTime}</strong></p>
           </div>
         </div>
       </aside>
@@ -21465,10 +21464,10 @@ img{
   font:500 clamp(20px,2vw,28px)/1.65 Georgia,serif!important;
 }
 .abt156Article__lead:first-letter{
-  float:left;
-  margin:7px 8px 0 0;
-  color:#a47b3c;
-  font:500 62px/.72 Georgia,serif;
+  float:none!important;
+  margin:0!important;
+  color:inherit!important;
+  font:inherit!important;
 }
 .abt156Article__quote{
   position:relative;
@@ -22250,10 +22249,10 @@ img{
   font:500 clamp(19px,1.8vw,25px)/1.65 Georgia,serif!important;
 }
 .about158Article__lead:first-letter{
-  float:left;
-  margin:7px 8px 0 0;
-  color:#a57d3d;
-  font:500 58px/.72 Georgia,serif;
+  float:none!important;
+  margin:0!important;
+  color:inherit!important;
+  font:inherit!important;
 }
 .about158Quote{
   position:relative;
