@@ -2018,12 +2018,6 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
       </article>
       <aside className="article103__guide">
         <div className="article103__toc article103__toc--premium">
-          <span>BU YAZIDA</span>
-          <b>Okuma Rehberi</b>
-          <div className="article103__tocRows">
-            <p><small>KATEGORİ</small><strong>{post.category}</strong></p>
-            <p><small>OKUMA SÜRESİ</small><strong>{post.readTime}</strong></p>
-          </div>
           {author && <a className="article103__guideAuthor" href={`#/yazarlar/${author.slug}`}>
             <div className="article103__guideAvatar">
               {author.image ? <img src={author.image} alt={author.name}/> : <span>{author.name?.charAt(0)}</span>}
@@ -2035,6 +2029,10 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
             </div>
             <em>-'</em>
           </a>}
+          <div className="article103__tocRows">
+            <p><small>KATEGORİ</small><strong>{post.category}</strong></p>
+            <p><small>OKUMA SÜRESİ</small><strong>{post.readTime}</strong></p>
+          </div>
         </div>
       </aside>
     </section>
@@ -18898,7 +18896,7 @@ img{
 
 /* writer becomes part of the same guide card */
 .article103__guideAuthor{
-  margin:2px 12px 12px!important;
+  margin:12px 12px 12px!important;
   padding:12px!important;
   display:grid!important;
   grid-template-columns:50px minmax(0,1fr) 16px!important;
