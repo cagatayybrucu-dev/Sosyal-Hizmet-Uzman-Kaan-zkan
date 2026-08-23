@@ -1142,6 +1142,10 @@ function App() {
       cin3dObserver.observe(el);
     });
 
+    document.querySelectorAll(".lcp__panel").forEach((el) => {
+      cin3dObserver.observe(el);
+    });
+
     /* Parallax scroll efekti */
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -1569,116 +1573,122 @@ function App() {
             </div>
           </section>
 
-          <section className="lux155Manifest">
-            <div className="lux155Manifest__top">
-              <span>DANIŞMANLIK SÜRECİ</span>
-              <p>Bir danışmanlık sürecinin en güçlü tarafı, kendinizi gerçekten anlaşılmış hissettiğiniz yerde başlar.</p>
+          <section className="cin3d topCinePanel topCinePanel--story" aria-label="Butuncul danismanlik yaklasimi">
+            <div className="topCinePanel__bg cin3dParallax" data-depth="0.11" aria-hidden="true">
+              <img src={servicesHeroRoom} alt="" loading="lazy" decoding="async" />
+              <div className="topCinePanel__veil" />
+              <div className="topCinePanel__grain" />
             </div>
 
-            <div className="lux155Manifest__grid">
-              <article className="lux155Manifest__lead">
-                <small>01 / İNSAN ODAKLI</small>
-                <h2>Hikâyenizi yalnızca bir sorun olarak değil, <em>bir bütün olarak</em> ele alıyorum.</h2>
+            <div className="topCinePanel__inner">
+              <div className="topCinePanel__copy">
+                <span className="topCinePanel__number">01</span>
+                <span className="topCinePanel__eyebrow">İNSAN ODAKLI DANIŞMANLIK</span>
+
+                <h2>
+                  Hikâyenizi yalnızca bir sorun olarak değil,
+                  <em> bir bütün olarak </em>
+                  ele alıyorum.
+                </h2>
+
                 <p>
                   Yaşam öykünüzü, ilişkilerinizi, sosyal çevrenizi ve güçlü yönlerinizi birlikte değerlendirerek
                   size özel, sürdürülebilir ve gerçekçi bir çalışma süreci oluşturmayı amaçlıyorum.
                 </p>
-                <a href="#/hakkimda">Hakkımda Daha Fazla <span>→</span></a>
-              </article>
 
-              <div className="lux155Manifest__visual">
-                <img src={heroSlide2} alt="Profesyonel danışmanlık ortamı" loading="lazy" decoding="async" />
-                <div className="lux155Manifest__visualShade" />
-                <div className="lux155Manifest__stamp">
-                  <img src={kaanOzkanEmblem} alt="" />
-                  <span>KAAN ÖZKAN</span>
+                <a href="#/hakkimda" className="topCinePanel__cta">
+                  Hakkımda Daha Fazla <span>↗</span>
+                </a>
+              </div>
+
+              <div className="topCinePanel__visualStack" aria-hidden="true">
+                <div className="topCinePanel__floating topCinePanel__floating--one">
+                  <img src={serviceIndividualImage} alt="" loading="lazy" decoding="async" />
+                </div>
+                <div className="topCinePanel__floating topCinePanel__floating--two">
+                  <img src={serviceCoupleImage} alt="" loading="lazy" decoding="async" />
+                </div>
+                <div className="topCinePanel__floating topCinePanel__floating--three">
+                  <img src={servicePsychosocialImage} alt="" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
 
-            <div className="lux155Manifest__values">
-              <article>
-                <span>01</span>
-                <div>
-                  <b>{homeContent.trust1Title}</b>
-                  <p>{homeContent.trust1Text}</p>
-                </div>
-              </article>
-              <article>
-                <span>02</span>
-                <div>
-                  <b>{homeContent.trust2Title}</b>
-                  <p>{homeContent.trust2Text}</p>
-                </div>
-              </article>
-              <article>
-                <span>03</span>
-                <div>
-                  <b>{homeContent.trust3Title}</b>
-                  <p>{homeContent.trust3Text}</p>
-                </div>
-              </article>
+            <div className="topCinePanel__scrollHint" aria-hidden="true">
+              <span />
+              <small>DEVAM ET</small>
             </div>
           </section>
 
-          <section className="cin3d cin3d--approach" aria-label="Danismanlik yaklasimi">
-            <div className="cin3d__scene">
-              <div className="cin3d__sceneImg cin3dParallax" data-depth="0.12">
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg"
-                  alt="Profesyonel danışmanlık sürecinde not alma ve değerlendirme"
-                  onError={(e)=>{e.currentTarget.style.display="none"}}
-                />
-                <div className="cin3d__sceneShade" />
-                <div className="cin3d__sceneTag">
-                  <span>01</span>
-                  <p>ÇALIŞMA BİÇİMİ</p>
-                </div>
-              </div>
+          <section className="cin3d topCinePanel topCinePanel--services" aria-label="Profesyonel calisma alanlari">
+            <div className="topCinePanel__bg cin3dParallax" data-depth="0.14" aria-hidden="true">
+              <img src={processHeroDesk} alt="" loading="lazy" decoding="async" />
+              <div className="topCinePanel__veil topCinePanel__veil--services" />
+              <div className="topCinePanel__grain" />
+            </div>
 
-              <div className="cin3d__decoLines" aria-hidden="true">
-                <span /><span /><span />
+            <div className="topCinePanel__inner topCinePanel__inner--services">
+              <header className="topCineServices__head">
+                <span>{homeContent.servicesEyebrow}</span>
+                <h2>
+                  Size uygun desteği
+                  <strong> birlikte keşfedelim.</strong>
+                </h2>
+                <p>
+                  Yaşadığınız travmatik olayları yalnızca tek bir sorun alanı üzerinden değil; kişilerarası
+                  iletişiminiz, ilişkileriniz, yaşam konforunuz ve “Mikro - Mezzo - Makro” çevrenizle birlikte
+                  değerlendiren bütüncül bir danışmanlık yaklaşımı.
+                </p>
+              </header>
+
+              <div className="topCineServices__grid">
+                <a href="#/hizmetler/bireysel-terapi" className="topCineServices__card">
+                  <div className="topCineServices__cardBg">
+                    <img src={serviceIndividualImage} alt="" loading="lazy" decoding="async" />
+                    <div />
+                  </div>
+                  <span className="topCineServices__index">01</span>
+                  <div className="topCineServices__cardCopy">
+                    <small>BİREYSEL ÇALIŞMA</small>
+                    <h3>Bireysel Terapi</h3>
+                    <p>Anksiyete, Stres ve Duygu Düzenleme Güçlükleri</p>
+                    <b>Detaylı İncele <i>↗</i></b>
+                  </div>
+                </a>
+
+                <a href="#/hizmetler/cift-terapisi" className="topCineServices__card">
+                  <div className="topCineServices__cardBg">
+                    <img src={serviceCoupleImage} alt="" loading="lazy" decoding="async" />
+                    <div />
+                  </div>
+                  <span className="topCineServices__index">02</span>
+                  <div className="topCineServices__cardCopy">
+                    <small>EVLİLİK & İLİŞKİ</small>
+                    <h3>Evlilik Terapisi</h3>
+                    <p>İletişim Sorunları, İlişki Çatışmaları ve Güven Problemleri</p>
+                    <b>Detaylı İncele <i>↗</i></b>
+                  </div>
+                </a>
+
+                <a href="#/hizmetler/psikososyal-destek" className="topCineServices__card">
+                  <div className="topCineServices__cardBg">
+                    <img src={servicePsychosocialImage} alt="" loading="lazy" decoding="async" />
+                    <div />
+                  </div>
+                  <span className="topCineServices__index">03</span>
+                  <div className="topCineServices__cardCopy">
+                    <small>UYUM & DAYANIKLILIK</small>
+                    <h3>Çift Terapisi</h3>
+                    <p>Yas ve Kayıp, Yaşam Olaylarına Uyum Sağlama ve Dayanıklılık</p>
+                    <b>Detaylı İncele <i>↗</i></b>
+                  </div>
+                </a>
               </div>
             </div>
 
-            <div className="cin3d__content">
-              <span className="cin3d__eyebrow">{homeContent.servicesEyebrow}</span>
-              <h2 className="cin3d__heading">
-                {homeContent.servicesTitle}
-                <strong>{homeContent.servicesTitleAccent}</strong>
-              </h2>
-              <p className="cin3d__lead">{homeContent.servicesDescription}</p>
-
-              <div className="cin3d__principles">
-                <article>
-                  <span>01</span>
-                  <div>
-                    <strong>{homeContent.service1Title}</strong>
-                    <p>{homeContent.service1Item1}</p>
-                  </div>
-                </article>
-                <article>
-                  <span>02</span>
-                  <div>
-                    <strong>{homeContent.service2Title}</strong>
-                    <p>{homeContent.service2Item1}</p>
-                  </div>
-                </article>
-                <article>
-                  <span>03</span>
-                  <div>
-                    <strong>{homeContent.service3Title}</strong>
-                    <p>{homeContent.service3Item1}</p>
-                  </div>
-                </article>
-              </div>
-
-              <a className="cin3d__cta" href="#/hizmetler">
-                Tüm Çalışma Alanlarını İnceleyin
-                <Icon name="arrow" size={16}/>
-              </a>
+            <div className="topCinePanel__scrollHint" aria-hidden="true">
+              <span />
+              <small>ÇALIŞMA ALANLARI</small>
             </div>
           </section>
 
@@ -1690,6 +1700,113 @@ function App() {
               </p>
             </div>
           </section>
+
+          <div className="lcp">
+            <section className="lcp__panel lcp__panel--1">
+              <div className="lcp__bg">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=2400&q=95" alt="" loading="lazy" decoding="async" />
+                <div className="lcp__veil" />
+              </div>
+              <div className="lcp__body">
+                <div className="lcp__text">
+                  <span className="lcp__num">01</span>
+                  <span className="lcp__tag">BİREYSEL GÖRÜŞME</span>
+                  <h2 className="lcp__title">Kendinizi yeniden<br /><em>keşfetmek için</em><br />bir alan.</h2>
+                  <p className="lcp__desc">Kaygı, öfke, benlik saygısı, duygusal dayanıklılık ve kişisel farkındalık üzerine bütüncül bireysel çalışma. Her seans, sizin hızınızda ilerler.</p>
+                  <a href="#/hizmetler/bireysel-terapi" className="lcp__cta">Detaylı İncele <span>↗</span></a>
+                </div>
+                <div className="lcp__card">
+                  <div className="lcp__cardImg">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=90" alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="lcp__cardInfo">
+                    <b>Güvenli Alan</b>
+                    <p>Yargılanmadan dinlendiğiniz, kendinizi özgürce ifade edebildiğiniz profesyonel bir süreç.</p>
+                  </div>
+                  <div className="lcp__cardStats">
+                    <span><b>Etik</b><small>Mesleki ilkeler</small></span>
+                    <span><b>Gizli</b><small>Tam güvence</small></span>
+                    <span><b>Özel</b><small>Size uygun</small></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="lcp__panel lcp__panel--2">
+              <div className="lcp__bg">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=2400&q=95" alt="" loading="lazy" decoding="async" />
+                <div className="lcp__veil lcp__veil--r" />
+              </div>
+              <div className="lcp__body lcp__body--flip">
+                <div className="lcp__card">
+                  <div className="lcp__cardImg">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=90" alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="lcp__cardInfo">
+                    <b>İlişki Güçlendirme</b>
+                    <p>Birbirinizi daha derin anlamak ve güvenli bir ilişki zemini inşa etmek için rehberlik.</p>
+                  </div>
+                </div>
+                <div className="lcp__text">
+                  <span className="lcp__num">02</span>
+                  <span className="lcp__tag">ÇİFT & AİLE DANIŞMANLIĞI</span>
+                  <h2 className="lcp__title">İlişkiyi birlikte<br /><em>anlamak,</em><br />birlikte büyümek.</h2>
+                  <p className="lcp__desc">İletişim çatışmaları, güven sorunları, duygusal uzaklaşma ve yaşam geçişlerinde çiftlere ve ailelere özel bütüncül danışmanlık.</p>
+                  <a href="#/hizmetler/cift-terapisi" className="lcp__cta">Detaylı İncele <span>↗</span></a>
+                </div>
+              </div>
+            </section>
+
+            <section className="lcp__panel lcp__panel--3">
+              <div className="lcp__bg">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=95" alt="" loading="lazy" decoding="async" />
+                <div className="lcp__veil lcp__veil--ocean" />
+              </div>
+              <div className="lcp__body">
+                <div className="lcp__text">
+                  <span className="lcp__num">03</span>
+                  <span className="lcp__tag">PSİKOSOSYAL DESTEK</span>
+                  <h2 className="lcp__title">Zor zamanlarda<br /><em>yanınızda,</em><br />güçlü yarınlar için.</h2>
+                  <p className="lcp__desc">Kayıp, yas, göç, kriz ve yaşam geçişlerinde psikososyal güçlendirme. Sosyal destek ağınızı yeniden inşa edelim.</p>
+                  <a href="#/hizmetler/psikososyal-destek" className="lcp__cta">Detaylı İncele <span>↗</span></a>
+                </div>
+                <div className="lcp__card">
+                  <div className="lcp__cardImg">
+                    <img src="https://images.unsplash.com/photo-1476820865390-c52aeebb9891?auto=format&fit=crop&w=1200&q=90" alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="lcp__cardInfo">
+                    <b>Güçlenme Süreci</b>
+                    <p>Zorluklar karşısında yeniden denge kurma ve mevcut kaynaklarınızı keşfetme yolculuğu.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="lcp__panel lcp__panel--4">
+              <div className="lcp__bg">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=95" alt="" loading="lazy" decoding="async" />
+                <div className="lcp__veil lcp__veil--r" />
+              </div>
+              <div className="lcp__body lcp__body--flip">
+                <div className="lcp__card">
+                  <div className="lcp__cardImg">
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=90" alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="lcp__cardInfo">
+                    <b>Yeni Bir Başlangıç</b>
+                    <p>Kayıpları anlamlandırarak, kimliğinizi yeniden yapılandırarak geleceğe güçlü adımlar atın.</p>
+                  </div>
+                </div>
+                <div className="lcp__text">
+                  <span className="lcp__num">04</span>
+                  <span className="lcp__tag">BOŞANMA & YAS DANIŞMANLIĞI</span>
+                  <h2 className="lcp__title">Yeni bir sayfayı<br /><em>birlikte</em><br />açmak için.</h2>
+                  <p className="lcp__desc">Boşanma süreci, ilişki kaybı ve yas — her biri çok boyutlu bir yaşam geçişidir. Duygusal yükünüzü hafifletmek için yanınızdayım.</p>
+                  <a href="#/hizmetler/bosanma-ve-yas-danismanligi" className="lcp__cta">Detaylı İncele <span>↗</span></a>
+                </div>
+              </div>
+            </section>
+          </div>
 
           <section className="cin3d cin3d--trust">
             <div className="cin3d__trustBg" aria-hidden="true">
@@ -1850,12 +1967,15 @@ function BlogPage({ content = defaultBlogContent }) {
   const [category, setCategory] = useState("Tümü");
   const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(8);
+
   const categories = Array.isArray(content.categories) && content.categories.length ? content.categories : blogCategories;
   const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author?.name);
+
   const authorFor = (post) => {
     const slug = String(post?.authorSlug || "").trim();
     const matched = authors.find((author)=>String(author.slug || "").trim() === slug);
     if (matched) return matched;
+
     if (post?.authorName) {
       return {
         slug: slug || createBlogSlug(post.authorName),
@@ -1865,60 +1985,254 @@ function BlogPage({ content = defaultBlogContent }) {
         shortBio: "",
       };
     }
+
     return authors[0] || null;
   };
-  const publishedPosts = (Array.isArray(content.posts) ? content.posts : []).filter((post)=>post.status !== "draft").sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
+
+  /* ORİJİNAL BLOG İÇERİK AKIŞI KORUNDU */
+  const publishedPosts = (Array.isArray(content.posts) ? content.posts : [])
+    .filter((post)=>post.status !== "draft")
+    .sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
+
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+
   const filteredPosts = publishedPosts.filter((post)=>{
-    const categoryMatch = category === "Tümü" || String(post.category||"").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
-    const queryMatch = !normalizedQuery || `${post.title||""} ${post.excerpt||""} ${post.category||""}`.toLocaleLowerCase("tr-TR").includes(normalizedQuery);
+    const categoryMatch =
+      category === "Tümü" ||
+      String(post.category||"").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
+
+    const queryMatch =
+      !normalizedQuery ||
+      `${post.title||""} ${post.excerpt||""} ${post.category||""}`
+        .toLocaleLowerCase("tr-TR")
+        .includes(normalizedQuery);
+
     return categoryMatch && queryMatch;
   });
+
   return (
-    <main className="editorialBlog">
-      <section className="editorialBlog__hero">
-        <div className="editorialBlog__heroCopy">
-          <span>KAAN ÖZKAN · BLOG</span>
-          <h1>Blog & <em>İçerikler</em></h1>
-          <p>Aile, ilişkiler, kişisel gelişim ve psikososyal yaşama dair güncel yazılar; düşünmeye, anlamaya ve farkındalık kazanmaya alan açan içerikler.</p>
+    <main className="blogCinePage blogCinePage--originalContent">
+      <section className="blogCineHero cin3d">
+        <div className="blogCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
+          <img
+            src={content.heroImage || defaultBlogContent.heroImage}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+          />
+          <div className="blogCineHero__veil" />
+          <div className="blogCineHero__grain" />
         </div>
-        <div className="editorialBlog__heroVisual"><img src={content.heroImage || defaultBlogContent.heroImage} alt="Blog ve içerikler"/></div>
+
+        <a className="blogCineHero__back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="blogCineHero__inner">
+          <div className="blogCineHero__copy">
+            <span className="blogCineHero__eyebrow">KAAN ÖZKAN · BLOG</span>
+            <h1>
+              Blog &
+              <strong>İçerikler</strong>
+            </h1>
+            <p>
+              Aile, ilişkiler, kişisel gelişim ve psikososyal yaşama dair güncel yazılar;
+              düşünmeye, anlamaya ve farkındalık kazanmaya alan açan içerikler.
+            </p>
+
+            <a href="#blogOriginalContent" className="blogCineHero__cta">
+              Yazıları Keşfedin
+              <Icon name="arrow" size={16} />
+            </a>
+          </div>
+
+          <div className="blogCineHero__rail" aria-hidden="true">
+            <div><b>{String(publishedPosts.length).padStart(2,"0")}</b><span>YAYINLANMIŞ<br/>YAZI</span></div>
+            <div><b>{String(categories.length).padStart(2,"0")}</b><span>İÇERİK<br/>KATEGORİSİ</span></div>
+            <div><b>{String(authors.length).padStart(2,"0")}</b><span>AKTİF<br/>YAZAR</span></div>
+          </div>
+        </div>
+
+        <div className="blogCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>OKUMAYA BAŞLA</small>
+        </div>
       </section>
-      <section className="editorialBlog__workspace">
-        <div className="editorialBlog__main">
-          <div className="editorialBlog__tools">
-            <label><Icon name="search" size={18}/><input value={query} onChange={(e)=>setQuery(e.target.value)} placeholder="Yazı ara..."/></label>
-            <div>{categories.map(item=><button key={item} className={category===item?"is-active":""} onClick={()=>setCategory(item)}>{item}</button>)}</div>
-          </div>
-          <div className="editorialBlog__grid">
-            {filteredPosts.slice(0,visibleCount).map((post,index)=>{
-              const author = authorFor(post);
-              return <article className={`editorialPostCard ${index===0?"is-lead":""}`} key={post.id||post.slug}>
-                <a className="editorialPostCard__image" href={`#/blog/${post.slug}`}>
-                  <img src={post.image} alt={post.title} loading="lazy"/>
-                  <span>{post.category}</span>
-                  {author && <div className="editorialPostCard__writerChip">
-                    {author.image && <img src={author.image} alt=""/>}
-                    <b>{author.name}</b>
-                  </div>}
-                </a>
-                <div className="editorialPostCard__body"><div className="editorialPostCard__meta"><time>{post.date}</time><small>{post.readTime}</small></div><h2><a href={`#/blog/${post.slug}`}>{post.title}</a></h2><p>{post.excerpt}</p>{author ? <div className="editorialPostCard__author">
-                  <a className="editorialPostCard__avatar" href={`#/yazarlar/${author.slug}`} aria-label={`${author.name} profilini gör`}>
-                    {author.image ? <img src={author.image} alt={author.name}/> : <span className="editorialPostCard__avatarFallback">{author.name?.charAt(0)}</span>}
-                  </a>
-                  <span className="editorialPostCard__authorInfo"><b>{author.name}</b><small>{author.role || "Yazar"}</small></span>
-                  <a className="editorialPostCard__readLink" href={`#/blog/${post.slug}`}>Yazıyı Oku -'</a>
-                </div> : <div className="editorialPostCard__readOnly"><a href={`#/blog/${post.slug}`}>Yazıyı Oku -'</a></div>}</div>
-              </article>;
-            })}
-          </div>
-          {visibleCount<filteredPosts.length&&<button className="editorialBlog__more" onClick={()=>setVisibleCount(v=>v+4)}>DAHA FAZLA YAZI GÖSTER -"</button>}
+
+      {/* ORİJİNAL YAZI LİSTESİ — veri, filtre, yazar ve link yapısı korunmuştur */}
+      <section className="blogOriginalCine" id="blogOriginalContent">
+        <div className="blogOriginalCine__intro">
+          <span>YAZILAR & İÇERİKLER</span>
+          <h2>
+            Bilgiye ulaşın,
+            <strong> merak ettiğinizi keşfedin.</strong>
+          </h2>
+          <p>
+            Tüm yayınlanan içerikler burada yer alır. Yeni yazılar admin panelinden eklendiğinde
+            bu bölümde otomatik olarak görünmeye devam eder.
+          </p>
         </div>
-        {authors.length > 0 && <aside className="editorialAuthors">
-          <div className="editorialAuthors__head"><h2>Yazarlarımız</h2><p>Yazarlarımızı tanıyın ve yazılarını keşfedin.</p></div>
-          {authors.map(author=><a href={`#/yazarlar/${author.slug}`} className="editorialAuthorCard" key={author.slug}><img src={author.image} alt={author.name}/><div><strong>{author.name}</strong><small>{author.role}</small><p>{author.shortBio}</p><span>Profili Gör -'</span></div></a>)}
-          <a className="editorialAuthors__all" href="#/yazarlar">TÜM YAZARLAR -'</a>
-        </aside>}
+
+        <div className="blogOriginalCine__workspace">
+          <div className="blogOriginalCine__main">
+            <div className="blogOriginalCine__tools">
+              <label>
+                <Icon name="search" size={18}/>
+                <input
+                  value={query}
+                  onChange={(e)=>setQuery(e.target.value)}
+                  placeholder="Yazı ara..."
+                />
+              </label>
+
+              <div className="blogOriginalCine__categories">
+                {categories.map((item)=>(
+                  <button
+                    type="button"
+                    key={item}
+                    className={category===item ? "is-active" : ""}
+                    onClick={()=>setCategory(item)}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="blogOriginalCine__grid">
+              {filteredPosts.slice(0,visibleCount).map((post,index)=>{
+                const author = authorFor(post);
+
+                return (
+                  <article
+                    className={`blogOriginalCineCard ${index===0 ? "is-lead" : ""}`}
+                    key={post.id||post.slug}
+                  >
+                    <a className="blogOriginalCineCard__image" href={`#/blog/${post.slug}`}>
+                      <img src={post.image} alt={post.title} loading="lazy" decoding="async" />
+                      <div className="blogOriginalCineCard__shade" />
+
+                      <span className="blogOriginalCineCard__index">
+                        {String(index+1).padStart(2,"0")}
+                      </span>
+
+                      <small className="blogOriginalCineCard__category">
+                        {post.category}
+                      </small>
+
+                      {author && (
+                        <div className="blogOriginalCineCard__writerChip">
+                          {author.image
+                            ? <img src={author.image} alt="" />
+                            : <span>{author.name?.charAt(0)}</span>}
+                          <b>{author.name}</b>
+                        </div>
+                      )}
+                    </a>
+
+                    <div className="blogOriginalCineCard__body">
+                      <div className="blogOriginalCineCard__meta">
+                        <time>{post.date}</time>
+                        {post.readTime && <small>{post.readTime}</small>}
+                      </div>
+
+                      <h2>
+                        <a href={`#/blog/${post.slug}`}>{post.title}</a>
+                      </h2>
+
+                      <p>{post.excerpt}</p>
+
+                      {author ? (
+                        <div className="blogOriginalCineCard__author">
+                          <a
+                            className="blogOriginalCineCard__avatar"
+                            href={`#/yazarlar/${author.slug}`}
+                            aria-label={`${author.name} profilini gör`}
+                          >
+                            {author.image
+                              ? <img src={author.image} alt={author.name}/>
+                              : <span>{author.name?.charAt(0)}</span>}
+                          </a>
+
+                          <span className="blogOriginalCineCard__authorInfo">
+                            <b>{author.name}</b>
+                            <small>{author.role || "Yazar"}</small>
+                          </span>
+
+                          <a
+                            className="blogOriginalCineCard__readLink"
+                            href={`#/blog/${post.slug}`}
+                          >
+                            Yazıyı Oku <span>↗</span>
+                          </a>
+                        </div>
+                      ) : (
+                        <div className="blogOriginalCineCard__readOnly">
+                          <a href={`#/blog/${post.slug}`}>Yazıyı Oku <span>↗</span></a>
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            {filteredPosts.length === 0 && (
+              <div className="blogOriginalCine__empty">
+                <Icon name="search" size={25}/>
+                <h3>Yazı bulunamadı.</h3>
+                <p>Farklı bir kategori veya arama kelimesi deneyebilirsiniz.</p>
+              </div>
+            )}
+
+            {visibleCount < filteredPosts.length && (
+              <button
+                className="blogOriginalCine__more"
+                type="button"
+                onClick={()=>setVisibleCount((value)=>value+4)}
+              >
+                Daha Fazla Yazı Göster
+                <Icon name="arrow" size={16}/>
+              </button>
+            )}
+          </div>
+
+          {authors.length > 0 && (
+            <aside className="blogOriginalCineAuthors">
+              <div className="blogOriginalCineAuthors__head">
+                <span>YAZARLARIMIZ</span>
+                <h2>Yazarlarımız</h2>
+                <p>Yazarlarımızı tanıyın ve yazılarını keşfedin.</p>
+              </div>
+
+              {authors.map((author,index)=>(
+                <a
+                  href={`#/yazarlar/${author.slug}`}
+                  className="blogOriginalCineAuthorCard"
+                  key={author.slug}
+                >
+                  <div className="blogOriginalCineAuthorCard__photo">
+                    <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
+                    <span>{String(index+1).padStart(2,"0")}</span>
+                  </div>
+
+                  <div>
+                    <strong>{author.name}</strong>
+                    <small>{author.role}</small>
+                    <p>{author.shortBio}</p>
+                    <b>Profili Gör <span>↗</span></b>
+                  </div>
+                </a>
+              ))}
+
+              <a className="blogOriginalCineAuthors__all" href="#/yazarlar">
+                Tüm Yazarlar
+                <Icon name="arrow" size={14}/>
+              </a>
+            </aside>
+          )}
+        </div>
       </section>
     </main>
   );
@@ -2041,118 +2355,154 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
 function ContactDetailPage() {
   return (
-    <main className="contact80Page">
-      <section className="contact80Hero">
-        <a className="contact80Back" href="#/">
+    <main className="contactCinePage">
+      <section className="contactCineHero cin3d">
+        <div className="contactCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
+          <img src={processHeroDesk} alt="" fetchPriority="high" decoding="async" />
+          <div className="contactCineHero__veil" />
+          <div className="contactCineHero__grain" />
+        </div>
+
+        <a className="contactCineHero__back" href="#/">
           <span>←</span>
           Ana Sayfaya Dön
         </a>
 
-        <div className="contact80Hero__copy">
-          <span>İLETİŞİM</span>
-          <h1>
-            İletişime
-            <strong>Geçin</strong>
-          </h1>
-          <p>
-            Görüşme ve randevu süreçleri hakkında bilgi almak için telefon veya
-            e-posta üzerinden doğrudan iletişime geçebilirsiniz.
-          </p>
+        <div className="contactCineHero__inner">
+          <div className="contactCineHero__copy">
+            <span className="contactCineHero__eyebrow">İLETİŞİM</span>
+            <h1>
+              İlk adımı
+              <strong>birlikte atalım.</strong>
+            </h1>
+            <p>
+              Görüşme ve randevu süreçleri hakkında bilgi almak için size uygun iletişim
+              kanalını seçebilir, doğrudan ulaşabilirsiniz.
+            </p>
+
+
+          </div>
+
+          <div className="contactCineHero__rail" aria-hidden="true">
+            <div><b>01</b><span>TELEFON<br/>İLETİŞİMİ</span></div>
+            <div><b>02</b><span>E-POSTA<br/>İLETİŞİMİ</span></div>
+            <div><b>03</b><span>INSTAGRAM<br/>İLETİŞİMİ</span></div>
+          </div>
         </div>
 
-        <div className="contact80Hero__mark contact80Hero__mark--headerLogo">
-          <span className="brandLogoArtwork" aria-hidden="true">
-            <img src={kaanOzkanEmblem} alt="" />
-          </span>
-          <span className="brandLogoCopy">
-            <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
-            <strong>KAAN ÖZKAN</strong>
-            <span className="brandLogoOrnament" aria-hidden="true">
-                  <svg viewBox="0 0 52 18" focusable="false">
-                    <path d="M3 9h15M34 9h15" />
-                    <path d="M18 9c5-1 8-4 10-8-5 1-8 4-10 8Z" />
-                    <path d="M26 9c4-3 8-4 12-3-3 4-7 5-12 3Z" />
-                    <path d="M24 10c-3 3-5 5-6 8 4-1 7-3 8-7" />
-                    <path d="M28 10c3 2 6 4 9 4-2-4-5-5-9-4Z" />
-                  </svg>
-                </span>
-          </span>
+        <div className="contactCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>İLETİŞİME GEÇ</small>
         </div>
       </section>
 
-      <section className="contact80Body">
-        <div className="contact80Intro">
+      <section className="contactCineIntro cin3d" id="contactCineChannels">
+        <div className="contactCineIntro__inner">
           <span>DOĞRUDAN İLETİŞİM</span>
-          <h2>Size uygun kanaldan ulaşabilirsiniz.</h2>
+          <h2>
+            Size uygun kanaldan
+            <strong> ulaşabilirsiniz.</strong>
+          </h2>
           <p>
             Görüşme ve randevu iletişimi telefon ve e-posta üzerinden yürütülür;
-            güncel paylaşımlar için Instagram hesabını da ziyaret edebilirsiniz.
+            güncel paylaşımlar ve bilgilendirici içerikler için Instagram hesabını da ziyaret edebilirsiniz.
           </p>
         </div>
+      </section>
 
-        <div className="contact80Grid">
-          <a className="contact80Card" href="tel:+905376319317">
-            <div className="contact80Card__icon">
-              <Icon name="phone" size={26} />
-            </div>
-            <span>TELEFON</span>
-            <strong>+90 537 631 93 17</strong>
-            <p>Görüşme ve randevu hakkında bilgi almak için arayabilirsiniz.</p>
-            <b>
-              Ara <Icon name="arrow" size={15} />
-            </b>
-          </a>
+      <section className="contactCineChannels">
+        <a className="contactCineChannel cin3d" href="tel:+905376319317">
+          <div className="contactCineChannel__bg" aria-hidden="true">
+            <img src={processHeroDesk} alt="" loading="lazy" decoding="async" />
+            <div />
+          </div>
 
-          <a
-            className="contact80Card"
-            href="mailto:ailedanismanikaanozkan@gmail.com"
-          >
-            <div className="contact80Card__icon">
-              <Icon name="mail" size={26} />
+          <div className="contactCineChannel__inner">
+            <span className="contactCineChannel__no">01</span>
+            <div className="contactCineChannel__icon">
+              <Icon name="phone" size={28} />
             </div>
-            <span>E-POSTA</span>
-            <strong>ailedanismanikaanozkan@gmail.com</strong>
+            <span className="contactCineChannel__eyebrow">TELEFON</span>
+            <h2>Doğrudan konuşmak için.</h2>
             <p>
-              Detaylı bilgi ve görüşme talebinizi e-posta üzerinden iletebilirsiniz.
+              Görüşme ve randevu hakkında bilgi almak için telefon üzerinden doğrudan ulaşabilirsiniz.
             </p>
-            <b>
-              E-posta Gönder <Icon name="arrow" size={15} />
-            </b>
-          </a>
+            <strong>+90 537 631 93 17</strong>
+            <b>Şimdi Ara <span>↗</span></b>
+          </div>
+        </a>
 
-          <a
-            className="contact80Card"
-            href="https://www.instagram.com/ailedanismanikaanozkan/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="contact80Card__icon contact80Instagram" aria-hidden="true">
+        <a
+          className="contactCineChannel contactCineChannel--reverse cin3d"
+          href="mailto:ailedanismanikaanozkan@gmail.com"
+        >
+          <div className="contactCineChannel__bg" aria-hidden="true">
+            <img src={servicesHeroRoom} alt="" loading="lazy" decoding="async" />
+            <div />
+          </div>
+
+          <div className="contactCineChannel__inner">
+            <span className="contactCineChannel__no">02</span>
+            <div className="contactCineChannel__icon">
+              <Icon name="mail" size={28} />
+            </div>
+            <span className="contactCineChannel__eyebrow">E-POSTA</span>
+            <h2>Detaylı bilgi almak için.</h2>
+            <p>
+              Görüşme talebinizi ve merak ettiğiniz detayları e-posta üzerinden iletebilirsiniz.
+            </p>
+            <strong>ailedanismanikaanozkan@gmail.com</strong>
+            <b>E-posta Gönder <span>↗</span></b>
+          </div>
+        </a>
+
+        <a
+          className="contactCineChannel cin3d"
+          href="https://www.instagram.com/ailedanismanikaanozkan/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="contactCineChannel__bg" aria-hidden="true">
+            <img src={serviceCoupleImage} alt="" loading="lazy" decoding="async" />
+            <div />
+          </div>
+
+          <div className="contactCineChannel__inner">
+            <span className="contactCineChannel__no">03</span>
+            <div className="contactCineChannel__icon contactCineChannel__instagram" aria-hidden="true">
               <svg viewBox="0 0 24 24" role="img">
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4.2" />
-                <circle cx="17.4" cy="6.7" r="1.1" className="instagramDot" />
+                <circle cx="17.4" cy="6.7" r="1.1" />
               </svg>
             </div>
-            <span>INSTAGRAM</span>
-            <strong>@ailedanismanikaanozkan</strong>
+            <span className="contactCineChannel__eyebrow">INSTAGRAM</span>
+            <h2>Güncel içerikler için.</h2>
             <p>
-              Güncel paylaşımlar ve bilgilendirici içerikler için Instagram hesabını takip edebilirsiniz.
+              Güncel paylaşımlar, bilgilendirici içerikler ve duyurular için Instagram hesabını takip edebilirsiniz.
             </p>
-            <b>
-              Profili Aç <Icon name="arrow" size={15} />
-            </b>
-          </a>
+            <strong>@ailedanismanikaanozkan</strong>
+            <b>Profili Aç <span>↗</span></b>
+          </div>
+        </a>
+      </section>
+
+      <section className="contactCineAppointment cin3d">
+        <div className="contactCineAppointment__bg" aria-hidden="true">
+          <img src={heroSlide2} alt="" loading="lazy" decoding="async" />
+          <div />
         </div>
 
-        <div className="contact80Appointment">
-          <div>
-            <span>RANDEVU</span>
-            <h3>Doğrudan randevu talebi oluşturmak ister misiniz?</h3>
-            <p>
-              Uygun hizmeti, görüşme biçimini ve tarih-saat seçeneğini belirleyerek
-              güvenli randevu formunu kullanabilirsiniz.
-            </p>
-          </div>
+        <div className="contactCineAppointment__inner">
+          <span>RANDEVU</span>
+          <h2>
+            Görüşmeye hazırsanız,
+            <strong>ilk adımı şimdi atabilirsiniz.</strong>
+          </h2>
+          <p>
+            Uygun hizmeti, görüşme biçimini ve tarih-saat seçeneğini belirleyerek
+            güvenli randevu formunu kullanabilirsiniz.
+          </p>
 
           <a href="#/randevu">
             Ücretsiz Ön Görüşme
@@ -2248,191 +2598,403 @@ function AppointmentDemoPage() {
 
   if (submitted) {
     return (
-      <main className="apt60Success">
-        <div className="apt60Success__card">
-          <div className="apt60Success__icon"><Icon name="check" size={36} /></div>
+      <main className="aptCineSuccess">
+        <div className="aptCineSuccess__bg" aria-hidden="true">
+          <img src={servicesHeroRoom} alt="" />
+          <div />
+        </div>
+
+        <div className="aptCineSuccess__card">
+          <div className="aptCineSuccess__icon">
+            <Icon name="check" size={34} />
+          </div>
+
           <span>RANDEVU TALEBİ ALINDI</span>
-          <h1>Teşekkürler, {form.name.split(" ")[0]}.</h1>
+          <h1>
+            Teşekkürler,
+            <strong>{form.name.split(" ")[0]}.</strong>
+          </h1>
+
           <p>
             Randevu talebiniz başarıyla kaydedildi. Talebiniz incelendikten sonra
             sizinle telefon veya e-posta üzerinden iletişime geçilecektir.
           </p>
-          <div className="apt60Success__summary">
-            <div><small>Hizmet</small><strong>{services.find((s) => s[0] === form.service)?.[2]}</strong></div>
-            <div><small>Görüşme</small><strong>{form.format}</strong></div>
-            <div><small>Tarih</small><strong>{form.date}</strong></div>
-            <div><small>Saat</small><strong>{form.time}</strong></div>
+
+          <div className="aptCineSuccess__summary">
+            <div>
+              <small>HİZMET</small>
+              <strong>{services.find((s) => s[0] === form.service)?.[2]}</strong>
+            </div>
+            <div>
+              <small>GÖRÜŞME</small>
+              <strong>{form.format}</strong>
+            </div>
+            <div>
+              <small>TARİH</small>
+              <strong>{form.date}</strong>
+            </div>
+            <div>
+              <small>SAAT</small>
+              <strong>{form.time}</strong>
+            </div>
           </div>
-          <a href="#/">Ana Sayfaya Dön <Icon name="arrow" size={15} /></a>
+
+          <a href="#/">
+            Ana Sayfaya Dön
+            <Icon name="arrow" size={15} />
+          </a>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="apt60">
-      <section className="apt60Hero">
-        <div className="apt60Hero__grid" />
-        <a className="apt60Back" href="#/"><span>←</span> Ana Sayfaya Dön</a>
-
-        <div className="apt60Hero__copy">
-          <span>ÜCRETSİZ ÖN GÖRÜŞME</span>
-          <h1>İlk adımı<br/><strong>birlikte atalım.</strong></h1>
-          <p>
-            İhtiyacınızı kısaca anlayalım, uygun danışmanlık biçimini birlikte
-            belirleyelim ve sürecin sizin için doğru olup olmadığını değerlendirelim.
-          </p>
-
-          <div className="apt60Hero__trust">
-            <div><Icon name="shield" size={20}/><span><strong>Gizlilik</strong><small>Bilgileriniz özenle korunur.</small></span></div>
-            <div><Icon name="clock" size={20}/><span><strong>Ücretsiz Ön Görüşme</strong><small>İhtiyacı netleştirme odaklı.</small></span></div>
-          </div>
+    <main className="aptCinePage">
+      <section className="aptCineHero cin3d">
+        <div className="aptCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
+          <img src={servicesHeroRoom} alt="" fetchPriority="high" decoding="async" />
+          <div className="aptCineHero__veil" />
+          <div className="aptCineHero__grain" />
         </div>
 
-        <aside className="apt60Hero__aside">
+        <a className="aptCineHero__back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="aptCineHero__inner">
+          <div className="aptCineHero__copy">
+            <span className="aptCineHero__eyebrow">ÜCRETSİZ ÖN GÖRÜŞME</span>
+            <h1>
+              İlk adımı
+              <strong>birlikte atalım.</strong>
+            </h1>
+
+            <p>
+              İhtiyacınızı kısaca anlayalım, size uygun danışmanlık biçimini birlikte
+              belirleyelim ve sürecin sizin için doğru olup olmadığını değerlendirelim.
+            </p>
+
+            <div className="aptCineHero__trust">
+              <div>
+                <Icon name="shield" size={19}/>
+                <span><strong>Gizlilik</strong><small>Bilgileriniz özenle korunur.</small></span>
+              </div>
+              <div>
+                <Icon name="clock" size={19}/>
+                <span><strong>Ön Görüşme</strong><small>İhtiyacı netleştirme odaklı.</small></span>
+              </div>
+            </div>
+          </div>
+
+          <aside className="aptCineHero__rail" aria-hidden="true">
+            <div><b>01</b><span>HİZMET<br/>SEÇİMİ</span></div>
+            <div><b>02</b><span>TARİH &<br/>SAAT</span></div>
+            <div><b>03</b><span>İLETİŞİM<br/>BİLGİLERİ</span></div>
+          </aside>
+        </div>
+
+        <div className="aptCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>RANDEVU OLUŞTUR</small>
+        </div>
+      </section>
+
+      <section className="aptCineIntro cin3d">
+        <div className="aptCineIntro__inner">
           <span>NASIL İLERLİYOR?</span>
+
+          <h2>
+            Üç adımda
+            <strong>randevu talebinizi oluşturun.</strong>
+          </h2>
+
+          <p>
+            Hizmet alanını seçin, size uygun tarih ve saati belirleyin,
+            ardından iletişim bilgilerinizi bırakın.
+          </p>
+        </div>
+
+        <div className="aptCineIntro__steps">
           {[
             ["01","Hizmeti seçin","Size en yakın çalışma alanını belirleyin."],
             ["02","Tarih ve saat","Uygun görüşme zamanını seçin."],
             ["03","Bilgilerinizi bırakın","Size ulaşabilmemiz için temel bilgileri girin."],
-            ["04","Onay","Gerçek sistemde talep onay sürecine geçer."],
-          ].map((x) => (
-            <div key={x[0]}><b>{x[0]}</b><p><strong>{x[1]}</strong><small>{x[2]}</small></p></div>
-          ))}
-        </aside>
-      </section>
-
-      <section className="apt60FormArea">
-        <div className="apt60Progress">
-          {[1,2,3].map((n) => (
-            <div key={n} className={step >= n ? "is-active" : ""}>
-              <span>{step > n ? "✓" : n}</span>
-              <p>{n === 1 ? "Hizmet" : n === 2 ? "Zaman" : "Bilgiler"}</p>
-            </div>
+          ].map((item)=>(
+            <article key={item[0]}>
+              <span>{item[0]}</span>
+              <h3>{item[1]}</h3>
+              <p>{item[2]}</p>
+            </article>
           ))}
         </div>
+      </section>
 
-        <form className="apt60Card" onSubmit={submit}>
-          {step === 1 && (
-            <div className="apt60Step">
-              <div className="apt60Step__head">
-                <span>01 / HİZMET SEÇİMİ</span>
-                <h2>Hangi konuda görüşmek istersiniz?</h2>
-                <p>Kararsızsanız "Ön Görüşme" seçeneğini tercih edebilirsiniz.</p>
-              </div>
+      <section className="aptCineForm">
+        <div className="aptCineForm__bg" aria-hidden="true">
+          <img src={processHeroDesk} alt="" loading="lazy" decoding="async" />
+          <div />
+        </div>
 
-              <div className="apt60Services">
-                {services.map((s) => (
-                  <button key={s[0]} type="button" className={form.service === s[0] ? "is-selected" : ""} onClick={() => setForm({...form, service:s[0]})}>
-                    <div><Icon name={s[1]} size={25}/></div>
-                    <strong>{s[2]}</strong>
-                    <p>{s[3]}</p>
-                    <span>{form.service === s[0] ? "✓" : "→"}</span>
-                  </button>
-                ))}
-              </div>
+        <div className="aptCineForm__shell">
+          <aside className="aptCineProgress">
+            <span>RANDEVU SÜRECİ</span>
 
-              <div className="apt60Format">
-                <span>GÖRÜŞME BİÇİMİ</span>
-                <div>
-                  {[
-                    ["Online Görüşme","video"],
-                    ["Yüz Yüze Görüşme","map"],
-                  ].map((x) => (
-                    <button key={x[0]} type="button" className={form.format === x[0] ? "is-selected" : ""} onClick={() => setForm({...form, format:x[0]})}>
-                      <Icon name={x[1]} size={20}/><strong>{x[0]}</strong>
+            {[1,2,3].map((n)=>(
+              <button
+                key={n}
+                type="button"
+                className={step === n ? "is-current" : step > n ? "is-done" : ""}
+                onClick={()=>{
+                  if (n === 1) setStep(1);
+                  if (n === 2 && can2) setStep(2);
+                  if (n === 3 && can2 && can3) setStep(3);
+                }}
+              >
+                <b>{step > n ? "✓" : `0${n}`}</b>
+                <span>
+                  <strong>{n === 1 ? "Hizmet Seçimi" : n === 2 ? "Tarih & Saat" : "İletişim Bilgileri"}</strong>
+                  <small>{n === 1 ? "Çalışma alanı ve görüşme biçimi" : n === 2 ? "Uygun zaman seçimi" : "Randevu için temel bilgiler"}</small>
+                </span>
+              </button>
+            ))}
+
+            <div className="aptCineProgress__note">
+              <Icon name="shield" size={18}/>
+              <p>
+                Randevu formunda yalnızca süreç için gerekli temel bilgiler talep edilir.
+              </p>
+            </div>
+          </aside>
+
+          <form className="aptCineCard" onSubmit={submit}>
+            {step === 1 && (
+              <div className="aptCineStep">
+                <header>
+                  <span>01 / HİZMET SEÇİMİ</span>
+                  <h2>Hangi konuda görüşmek istersiniz?</h2>
+                  <p>Kararsızsanız “Ön Görüşme” seçeneğini tercih edebilirsiniz.</p>
+                </header>
+
+                <div className="aptCineServices">
+                  {services.map((service,index)=>(
+                    <button
+                      type="button"
+                      key={service[0]}
+                      className={form.service === service[0] ? "is-selected" : ""}
+                      onClick={()=>setForm({...form,service:service[0]})}
+                    >
+                      <span className="aptCineServices__no">0{index+1}</span>
+                      <div className="aptCineServices__icon">
+                        <Icon name={service[1]} size={22}/>
+                      </div>
+                      <strong>{service[2]}</strong>
+                      <p>{service[3]}</p>
+                      <b>{form.service === service[0] ? "✓" : "↗"}</b>
                     </button>
                   ))}
                 </div>
-              </div>
 
-              <div className="apt60Actions">
-                <span />
-                <button type="button" disabled={!can2} onClick={() => setStep(2)}>Tarih ve Saat Seç <Icon name="arrow" size={15}/></button>
-              </div>
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="apt60Step">
-              <div className="apt60Step__head">
-                <span>02 / TARİH & SAAT</span>
-                <h2>Size uygun zamanı seçin.</h2>
-                <p>Şimdilik demo saatler gösteriliyor; gerçek müsaitlik takvime bağlanacak.</p>
-              </div>
-
-              <div className="apt60DateGrid">
-                <label>
-                  <span>Görüşme Tarihi</span>
-                  <input type="date" value={form.date} onChange={(e) => setForm({...form, date:e.target.value, time:""})}/>
-                </label>
-                <div className="apt60Times">
-                  <span>Uygun Saat</span>
+                <div className="aptCineFormat">
+                  <span>GÖRÜŞME BİÇİMİ</span>
                   <div>
-                    {times.map((t) => <button key={t} type="button" className={form.time === t ? "is-selected" : ""} onClick={() => setForm({...form,time:t})}>{t}</button>)}
+                    {[
+                      ["Online Görüşme","video"],
+                      ["Yüz Yüze Görüşme","map"],
+                    ].map((item)=>(
+                      <button
+                        key={item[0]}
+                        type="button"
+                        className={form.format === item[0] ? "is-selected" : ""}
+                        onClick={()=>setForm({...form,format:item[0]})}
+                      >
+                        <Icon name={item[1]} size={19}/>
+                        <strong>{item[0]}</strong>
+                        <span>{form.format === item[0] ? "✓" : ""}</span>
+                      </button>
+                    ))}
                   </div>
                 </div>
-              </div>
 
-              <div className="apt60Notice"><Icon name="info" size={19}/><p>Gerçek sistemde dolu saatler otomatik kapanacak ve aynı saate iki kişi randevu oluşturamayacak.</p></div>
-
-              <div className="apt60Actions">
-                <button type="button" className="is-secondary" onClick={() => setStep(1)}>← Geri</button>
-                <button type="button" disabled={!can3} onClick={() => setStep(3)}>Bilgilerime Geç <Icon name="arrow" size={15}/></button>
-              </div>
-            </div>
-          )}
-
-          {step === 3 && (
-            <div className="apt60Step">
-              <div className="apt60Step__head">
-                <span>03 / İLETİŞİM BİLGİLERİ</span>
-                <h2>Size nasıl ulaşabiliriz?</h2>
-                <p>Yalnızca randevu süreci için gerekli temel bilgileri istiyoruz.</p>
-              </div>
-
-              <div className="apt60Fields">
-                <label><span>Ad Soyad *</span><input value={form.name} onChange={(e)=>setForm({...form,name:e.target.value})} placeholder="Adınız ve soyadınız" required/></label>
-                <label><span>Yaş *</span><input type="number" min="1" max="120" value={form.age} onChange={(e)=>setForm({...form,age:e.target.value})} placeholder="Yaşınız" required/></label>
-                <label><span>Telefon *</span><input type="tel" value={form.phone} onChange={(e)=>setForm({...form,phone:e.target.value})} placeholder="+90 5xx xxx xx xx" required/></label>
-                <label><span>E-posta *</span><input type="email" value={form.email} onChange={(e)=>setForm({...form,email:e.target.value})} placeholder="ornek@email.com" required/></label>
-                <label className="apt60Fields__full">
-                  <span>Kısa Not <small>(isteğe bağlı)</small></span>
-                  <textarea rows="5" value={form.note} onChange={(e)=>setForm({...form,note:e.target.value})} placeholder="Görüşme talebinizin genel çerçevesini kısaca yazabilirsiniz. Lütfen gerekli olmayan sağlık veya hassas kişisel bilgileri paylaşmayın."/>
-                </label>
-              </div>
-
-              <div className="apt60Kvkk">
-                <button type="button" className={form.kvkk ? "is-checked" : ""} onClick={()=>setForm({...form,kvkk:!form.kvkk})}>{form.kvkk ? "✓" : ""}</button>
-                <p><a href="#/aydinlatma" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum ve randevu süreci için gerekli kişisel verilerin işlenmesine ilişkin bilgilendirildim.</p>
-              </div>
-
-              <div className="apt60Sensitive"><Icon name="shield" size={20}/><p>Ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi veya gerekli olmayan hassas kişisel bilgilerinizi paylaşmayın.</p></div>
-
-              {submitError && (
-                <div className="apt70SubmitError" role="alert">
-                  <Icon name="info" size={19} />
-                  <p>{submitError}</p>
+                <div className="aptCineActions">
+                  <span />
+                  <button type="button" disabled={!can2} onClick={()=>setStep(2)}>
+                    Tarih ve Saat Seç
+                    <Icon name="arrow" size={15}/>
+                  </button>
                 </div>
-              )}
-
-              <div className="apt60Actions">
-                <button
-                  type="button"
-                  className="is-secondary"
-                  onClick={()=>setStep(2)}
-                  disabled={submitting}
-                >
-                  ← Geri
-                </button>
-                <button type="submit" disabled={!canSubmit || submitting}>
-                  {submitting ? "Randevu Kaydediliyor..." : "Randevu Talebini Oluştur"}
-                  {!submitting && <Icon name="arrow" size={15}/>}
-                </button>
               </div>
-            </div>
-          )}
-        </form>
+            )}
+
+            {step === 2 && (
+              <div className="aptCineStep">
+                <header>
+                  <span>02 / TARİH & SAAT</span>
+                  <h2>Size uygun zamanı seçin.</h2>
+                  <p>Uygun tarih ve saat seçiminizi aşağıdaki alandan yapabilirsiniz.</p>
+                </header>
+
+                <div className="aptCineDate">
+                  <label>
+                    <span>GÖRÜŞME TARİHİ</span>
+                    <input
+                      type="date"
+                      value={form.date}
+                      onChange={(e)=>setForm({...form,date:e.target.value,time:""})}
+                    />
+                  </label>
+
+                  <div className="aptCineTimes">
+                    <span>UYGUN SAAT</span>
+                    <div>
+                      {times.map((time)=>(
+                        <button
+                          type="button"
+                          key={time}
+                          className={form.time === time ? "is-selected" : ""}
+                          onClick={()=>setForm({...form,time})}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="aptCineNotice">
+                  <Icon name="info" size={18}/>
+                  <p>
+                    Seçtiğiniz randevu talebi kaydedildikten sonra uygunluk kontrol edilerek
+                    sizinle iletişime geçilir.
+                  </p>
+                </div>
+
+                <div className="aptCineActions">
+                  <button type="button" className="is-secondary" onClick={()=>setStep(1)}>
+                    ← Geri
+                  </button>
+                  <button type="button" disabled={!can3} onClick={()=>setStep(3)}>
+                    Bilgilerime Geç
+                    <Icon name="arrow" size={15}/>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="aptCineStep">
+                <header>
+                  <span>03 / İLETİŞİM BİLGİLERİ</span>
+                  <h2>Size nasıl ulaşabiliriz?</h2>
+                  <p>Yalnızca randevu süreci için gerekli temel bilgileri istiyoruz.</p>
+                </header>
+
+                <div className="aptCineFields">
+                  <label>
+                    <span>Ad Soyad *</span>
+                    <input
+                      value={form.name}
+                      onChange={(e)=>setForm({...form,name:e.target.value})}
+                      placeholder="Adınız ve soyadınız"
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    <span>Yaş *</span>
+                    <input
+                      type="number"
+                      min="1"
+                      max="120"
+                      value={form.age}
+                      onChange={(e)=>setForm({...form,age:e.target.value})}
+                      placeholder="Yaşınız"
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    <span>Telefon *</span>
+                    <input
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e)=>setForm({...form,phone:e.target.value})}
+                      placeholder="+90 5xx xxx xx xx"
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    <span>E-posta *</span>
+                    <input
+                      type="email"
+                      value={form.email}
+                      onChange={(e)=>setForm({...form,email:e.target.value})}
+                      placeholder="ornek@email.com"
+                      required
+                    />
+                  </label>
+
+                  <label className="aptCineFields__full">
+                    <span>Kısa Not <small>(isteğe bağlı)</small></span>
+                    <textarea
+                      rows="5"
+                      value={form.note}
+                      onChange={(e)=>setForm({...form,note:e.target.value})}
+                      placeholder="Görüşme talebinizin genel çerçevesini kısaca yazabilirsiniz. Lütfen gerekli olmayan sağlık veya hassas kişisel bilgileri paylaşmayın."
+                    />
+                  </label>
+                </div>
+
+                <div className="aptCineKvkk">
+                  <button
+                    type="button"
+                    className={form.kvkk ? "is-checked" : ""}
+                    onClick={()=>setForm({...form,kvkk:!form.kvkk})}
+                  >
+                    {form.kvkk ? "✓" : ""}
+                  </button>
+
+                  <p>
+                    <a href="#/aydinlatma" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum
+                    ve randevu süreci için gerekli kişisel verilerin işlenmesine ilişkin bilgilendirildim.
+                  </p>
+                </div>
+
+                <div className="aptCineSensitive">
+                  <Icon name="shield" size={19}/>
+                  <p>
+                    Ön görüşme formunda tanı, ilaç kullanımı, ayrıntılı sağlık geçmişi veya
+                    gerekli olmayan hassas kişisel bilgilerinizi paylaşmayın.
+                  </p>
+                </div>
+
+                {submitError && (
+                  <div className="aptCineError" role="alert">
+                    <Icon name="info" size={18}/>
+                    <p>{submitError}</p>
+                  </div>
+                )}
+
+                <div className="aptCineActions">
+                  <button
+                    type="button"
+                    className="is-secondary"
+                    onClick={()=>setStep(2)}
+                    disabled={submitting}
+                  >
+                    ← Geri
+                  </button>
+
+                  <button type="submit" disabled={!canSubmit || submitting}>
+                    {submitting ? "Randevu Kaydediliyor..." : "Randevu Talebini Oluştur"}
+                    {!submitting && <Icon name="arrow" size={15}/>}
+                  </button>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
       </section>
     </main>
   );
@@ -2513,217 +3075,216 @@ function ContentDetailPage() {
   };
 
   return (
-    <main className="cnt57">
-      <section className="cnt57Hero">
-        <img
-          loading="lazy" decoding="async" className="cnt57Hero__image"
-          src={contentHeroMic}
-          alt="Profesyonel podcast mikrofonu ve sıcak stüdyo ortamı"
-        />
-        <div className="cnt57Hero__shade" />
+    <main className="mediaCinePage">
+      <section className="mediaCineHero cin3d">
+        <div className="mediaCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
+          <img src={contentHeroMic} alt="" fetchPriority="high" decoding="async" />
+          <div className="mediaCineHero__veil" />
+          <div className="mediaCineHero__grain" />
+        </div>
 
-        <a className="cnt57Back" href="#/">
+        <a className="mediaCineHero__back" href="#/">
           <span>←</span>
           Ana Sayfaya Dön
         </a>
 
-        <div className="cnt57Hero__copy">
-          <span className="cnt57Eyebrow">İÇERİKLER</span>
-          <h1>
-            Videolar &
-            <br />
-            <strong>Podcastler</strong>
-          </h1>
-          <i />
-          <p>
-            İlişkiler, aile yaşamı, bireysel gelişim ve psikososyal güçlenme
-            üzerine hazırlanan video ve podcast içerikleri.
-          </p>
-          <div className="cnt57Signature">Kaan Özkan</div>
+        <div className="mediaCineHero__inner">
+          <div className="mediaCineHero__copy">
+            <span className="mediaCineHero__eyebrow">PODCAST & VİDEO</span>
+            <h1>
+              Dinleyin, izleyin,
+              <strong>farklı bir açıdan düşünün.</strong>
+            </h1>
+            <p>
+              İlişkiler, aile yaşamı, bireysel gelişim ve psikososyal güçlenme üzerine
+              hazırlanan video ve podcast içeriklerini tek bir alanda keşfedin.
+            </p>
+          </div>
+
+          <div className="mediaCineHero__rail" aria-hidden="true">
+            <div><b>{String(videos.length).padStart(2,"0")}</b><span>YOUTUBE<br/>VİDEOSU</span></div>
+            <div><b>{String(podcasts.length).padStart(2,"0")}</b><span>PODCAST<br/>BÖLÜMÜ</span></div>
+            <div><b>{String(mediaItems.length).padStart(2,"0")}</b><span>TOPLAM<br/>İÇERİK</span></div>
+          </div>
         </div>
 
-        <blockquote className="cnt57Quote">
-          <b>"</b>
-          <p>Bilgi, dönüştürür.<br/>Farkındalık, özgürleştirir.<br/>Paylaştıkça çoğalır.</p>
-          <b>"</b>
-        </blockquote>
+        <div className="mediaCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>İÇERİKLERE GÖZ AT</small>
+        </div>
       </section>
 
-      <section className="cnt57Body">
-        <div className="cnt57Tabs">
+      <section className="mediaCineIntro cin3d">
+        <div className="mediaCineIntro__inner">
+          <span>MEDYA KÜTÜPHANESİ</span>
+          <h2>
+            Size uygun içeriği
+            <strong> seçip keşfedin.</strong>
+          </h2>
+          <p>
+            Admin panelinden eklenen YouTube videoları ve Spotify podcast bölümleri
+            burada otomatik olarak görünmeye devam eder.
+          </p>
+        </div>
+
+        <div className="mediaCineTabs">
           <button
             type="button"
             className={tab === "videos" ? "is-active" : ""}
             onClick={() => setTab("videos")}
           >
-            <Icon name="video" size={19} />
-            VİDEOLAR
+            <Icon name="video" size={18}/>
+            Videolar
           </button>
+
           <button
             type="button"
             className={tab === "podcasts" ? "is-active" : ""}
             onClick={() => setTab("podcasts")}
           >
-            <Icon name="mic" size={19} />
-            PODCASTLER
+            <Icon name="mic" size={18}/>
+            Podcastler
           </button>
         </div>
+      </section>
 
-        {mediaLoading ? (
-          <div className="cnt74Loading">İçerikler yükleniyor...</div>
-        ) : (
-          <>
-            {tab === "videos" && (
-              <section className="cnt57Section">
-                <div className="cnt57Section__head">
-                  <div>
-                    <Icon name="video" size={18} />
-                    <span>YOUTUBE VİDEOLARI</span>
-                  </div>
-                  {channelLinks.youtubeChannelUrl && (
-                    <a
-                      href={channelLinks.youtubeChannelUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      YOUTUBE KANALINA GİT <Icon name="arrow" size={14} />
-                    </a>
-                  )}
+      {mediaLoading ? (
+        <section className="mediaCineLoading">
+          <div>İçerikler yükleniyor...</div>
+        </section>
+      ) : (
+        <>
+          {tab === "videos" && (
+            <section className="mediaCineLibrary">
+              <div className="mediaCineLibrary__head">
+                <div>
+                  <span>YOUTUBE VİDEOLARI</span>
+                  <h2>İzleyerek keşfedin.</h2>
                 </div>
-
-                {videos.length === 0 ? (
-                  <div className="cnt74Empty">
-                    Henüz yayınlanmış YouTube videosu bulunmuyor.
-                  </div>
-                ) : (
-                  <div className="cnt57VideoGrid">
-                    {videos.map((video, index) => {
-                      const id = youtubeId(video.url);
-                      return (
-                        <article
-                          className="cnt57VideoCard"
-                          key={video.id}
-                          onClick={() => openUrl(video.url)}
-                        >
-                          <div className="cnt57VideoCard__thumb">
-                            {id ? (
-                              <img
-                                loading="lazy" decoding="async" src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
-                                alt={video.title}
-                              />
-                            ) : (
-                              <div className={"cnt57VideoCard__fallback cnt57VideoCard__fallback--" + ((index % 4) + 1)}>
-                                <span>{video.title}</span>
-                              </div>
-                            )}
-                            <div className="cnt57Play">▶</div>
-                            {video.duration && <small>{video.duration}</small>}
-                          </div>
-
-                          <div className="cnt57VideoCard__body">
-                            <h3>{video.title}</h3>
-                            <p>{video.description}</p>
-                            <div>
-                              <span>YouTube</span>
-                              {video.category && (
-                                <>
-                                  <span>•</span>
-                                  <span>{video.category}</span>
-                                </>
-                              )}
-                              <b><Icon name="arrow" size={14} /></b>
-                            </div>
-                          </div>
-                        </article>
-                      );
-                    })}
-                  </div>
+                {channelLinks.youtubeChannelUrl && (
+                  <a href={channelLinks.youtubeChannelUrl} target="_blank" rel="noreferrer">
+                    YouTube Kanalına Git <Icon name="arrow" size={14}/>
+                  </a>
                 )}
-              </section>
-            )}
+              </div>
 
-            {tab === "podcasts" && (
-              <section className="cnt57Section">
-                <div className="cnt57Section__head">
-                  <div>
-                    <Icon name="mic" size={18} />
-                    <span>PODCASTLER</span>
-                  </div>
-                  {channelLinks.spotifyChannelUrl && (
-                    <a
-                      href={channelLinks.spotifyChannelUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      SPOTIFY'DA AÇ <Icon name="arrow" size={14} />
-                    </a>
-                  )}
-                </div>
-
-                {podcasts.length === 0 ? (
-                  <div className="cnt74Empty">
-                    Henüz yayınlanmış podcast bölümü bulunmuyor.
-                  </div>
-                ) : (
-                  <div className="cnt57PodcastGrid">
-                    {podcasts.map((podcast, index) => (
-                      <article className="cnt57PodcastCard" key={podcast.id}>
-                        <div className="cnt57PodcastArt">
-                          <div className="cnt57PodcastArt__ring">
-                            <Icon name={index % 2 === 0 ? "mic" : "message"} size={34} />
-                          </div>
-                          <span>KAAN ÖZKAN</span>
+              {videos.length === 0 ? (
+                <div className="mediaCineEmpty">Henüz yayınlanmış YouTube videosu bulunmuyor.</div>
+              ) : (
+                <div className="mediaCineVideoGrid">
+                  {videos.map((video,index)=>{
+                    const id = youtubeId(video.url);
+                    return (
+                      <article
+                        className={`mediaCineVideoCard ${index===0 ? "is-featured" : ""}`}
+                        key={video.id}
+                        onClick={()=>openUrl(video.url)}
+                      >
+                        <div className="mediaCineVideoCard__visual">
+                          {id ? (
+                            <img
+                              src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+                              onError={(e)=>{e.currentTarget.src=`https://img.youtube.com/vi/${id}/hqdefault.jpg`}}
+                              alt={video.title}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          ) : (
+                            <img src={serviceCoupleImage} alt="" loading="lazy" decoding="async" />
+                          )}
+                          <div className="mediaCineVideoCard__shade" />
+                          <span className="mediaCineVideoCard__index">{String(index+1).padStart(2,"0")}</span>
+                          <div className="mediaCineVideoCard__play"><span>▶</span></div>
+                          {video.duration && <small>{video.duration}</small>}
                         </div>
 
-                        <div className="cnt57PodcastInfo">
-                          <small>#{String(index + 1).padStart(2, "0")}</small>
-                          <h3>{podcast.title}</h3>
-                          <p>{podcast.description}</p>
-                          <div>
-                            <strong>{podcast.duration || "Podcast"}</strong>
-                            <button
-                              type="button"
-                              onClick={() => openUrl(podcast.url)}
-                            >
-                              ▶ Spotify'da Dinle
-                            </button>
-                          </div>
+                        <div className="mediaCineVideoCard__body">
+                          <span>YOUTUBE · {video.category || "GENEL"}</span>
+                          <h3>{video.title}</h3>
+                          <p>{video.description}</p>
+                          <b>Videoyu İzle <i>↗</i></b>
                         </div>
                       </article>
-                    ))}
-                  </div>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+          )}
+
+          {tab === "podcasts" && (
+            <section className="mediaCineLibrary mediaCineLibrary--podcast">
+              <div className="mediaCineLibrary__head">
+                <div>
+                  <span>PODCASTLER</span>
+                  <h2>Dinleyerek derinleşin.</h2>
+                </div>
+                {channelLinks.spotifyChannelUrl && (
+                  <a href={channelLinks.spotifyChannelUrl} target="_blank" rel="noreferrer">
+                    Spotify'da Aç <Icon name="arrow" size={14}/>
+                  </a>
                 )}
-              </section>
-            )}
-          </>
-        )}
+              </div>
 
-        <div className="cnt74Channels">
-          <div className="cnt74Channels__copy">
-            <div className="cnt57Subscribe__icon">-""</div>
-            <div>
-              <strong>Yeni içeriklerden haberdar olun.</strong>
-              <p>
-                YouTube kanalını ve Spotify podcast yayınlarını doğrudan takip
-                edebilirsiniz.
-              </p>
-            </div>
-          </div>
+              {podcasts.length === 0 ? (
+                <div className="mediaCineEmpty">Henüz yayınlanmış podcast bölümü bulunmuyor.</div>
+              ) : (
+                <div className="mediaCinePodcastGrid">
+                  {podcasts.map((podcast,index)=>(
+                    <article className="mediaCinePodcastCard" key={podcast.id}>
+                      <div className="mediaCinePodcastCard__art">
+                        <img
+                          src={index % 2 === 0 ? servicePsychosocialImage : servicesHeroRoom}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div className="mediaCinePodcastCard__shade" />
+                        <span>{String(index+1).padStart(2,"0")}</span>
+                        <div className="mediaCinePodcastCard__disc"><Icon name="mic" size={30}/></div>
+                      </div>
 
-          <div className="cnt74Channels__buttons">
+                      <div className="mediaCinePodcastCard__body">
+                        <small>{podcast.category || "PODCAST"}</small>
+                        <h3>{podcast.title}</h3>
+                        <p>{podcast.description}</p>
+                        <div>
+                          <strong>{podcast.duration || "Podcast"}</strong>
+                          <button type="button" onClick={()=>openUrl(podcast.url)}>
+                            Spotify'da Dinle <span>↗</span>
+                          </button>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+        </>
+      )}
+
+      <section className="mediaCineOutro cin3d">
+        <div className="mediaCineOutro__bg" aria-hidden="true">
+          <img src={heroSlide2} alt="" loading="lazy" decoding="async" />
+          <div />
+        </div>
+        <div className="mediaCineOutro__inner">
+          <span>YENİ İÇERİKLER</span>
+          <h2>
+            Takipte kalın,
+            <strong>yeni yayınları kaçırmayın.</strong>
+          </h2>
+          <p>YouTube ve Spotify kanallarını takip ederek yeni video ve podcast yayınlarından haberdar olabilirsiniz.</p>
+          <div className="mediaCineOutro__actions">
             {channelLinks.youtubeChannelUrl && (
               <a href={channelLinks.youtubeChannelUrl} target="_blank" rel="noreferrer">
-                ▶ YouTube Kanalı
+                YouTube <Icon name="arrow" size={14}/>
               </a>
             )}
             {channelLinks.spotifyChannelUrl && (
-              <a
-                className="is-spotify"
-                href={channelLinks.spotifyChannelUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                ● Spotify Podcast
+              <a href={channelLinks.spotifyChannelUrl} target="_blank" rel="noreferrer">
+                Spotify <Icon name="arrow" size={14}/>
               </a>
             )}
           </div>
@@ -5371,28 +5932,6 @@ function AdminDemoPage() {
 
 function ProcessDetailPage({ content }) {
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
-  const [timelineProgress, setTimelineProgress] = useState(0);
-
-  useEffect(() => {
-    const updateTimeline = () => {
-      const flow = document.querySelector(".prc53Flow");
-      if (!flow) return;
-      const rect = flow.getBoundingClientRect();
-      const start = window.innerHeight * 0.72;
-      const distance = Math.max(rect.height - window.innerHeight * 0.28, 1);
-      const progress = Math.max(0, Math.min(1, (start - rect.top) / distance));
-      setTimelineProgress(progress);
-    };
-
-    updateTimeline();
-    window.addEventListener("scroll", updateTimeline, { passive: true });
-    window.addEventListener("resize", updateTimeline);
-    return () => {
-      window.removeEventListener("scroll", updateTimeline);
-      window.removeEventListener("resize", updateTimeline);
-    };
-  }, []);
-
 
   const fallbackTestimonials = [
     { no: "01", title: "Danışan Yorumu", person: "Danışan", text: `Sevgili Kaan Hocam, o kadar iyi geldiniz ki.. Yıllardır üstesinden gelemediğim ailevi problemlerime, eşimle olan sıkıntılarıma ve aile huzurumuza seanslarınızla ne kadar iyi geldiğinizi anlatamam size.\n\nSeanslarınız oldukça içten, özverili, hassas ve güven veriyor olması benim için çok önemliydi. Bu önyargılarımı ve ailevi problemlerimizi sizlerle aştım. Ne kadar teşekkür etsem azdır.\n\nEmeğinize sağlık 🙏🏻` },
@@ -5406,105 +5945,208 @@ function ProcessDetailPage({ content }) {
     { no: "09", title: "Danışan Yorumu", person: "Danışan", text: `Ben 24 Ekim 2025 tarihi ile sizinle seansa başladım. Üniversite öğrencisiyim, bu yüzden aşırı derecede stres, anksiyete ve panik atak problemleri yaşıyordum.\n\nAma seanslara başladıktan sonra stresle başa çıkmayı, kontrol altına almayı öğrendim.\n\nAyrıca hayır diyememe ve sınır koyamama gibi problemlerim de vardı. Artık kendi değerimi biliyor ve sınır koyabiliyorum.\n\nİyi ki sizinle tanışıp seanslara devam ettim. Size çok teşekkür ederim.` },
     { no: "10", title: "Danışan Yorumu", person: "Danışan", text: `Terapi sürecine dair tüm çekincelerimle kapınızı çalmıştım. İlk günden itibaren kurduğunuz güvenli alan hayatımda çok anlamlı bir dönüm noktası oldu.\n\nSayenizde artık hayata ve olaylara çok daha sağlam bir pencereden bakıyorum.\n\nProfesyonelliğiniz ve her seanstan yeni bir farkındalıkla ayrılmamı sağladığınız için size gönülden teşekkür ederim.\n\nDesteğiniz, sabrınız ve rehberliğiniz benim için çok değerliydi, bana çok iyi geldiniz.\n\nİyi ki yollarımız kesişmiş. 🙏🏻` },
   ];
-  const processVisuals = [
-    "https://images.squarespace-cdn.com/content/v1/67d3643b4d24072a397dfcd7/ba6faf85-b38c-4c51-8325-0009baa0eeb6/lada-balakireva-dupe%2B%283%29.jpeg",
-    "https://images.squarespace-cdn.com/content/v1/647f152fd676295dfd86b082/b2b96b95-d762-41f2-b4c5-edaa23b276f5/Cooper-Williams-Lawyers_FDR_Family-Law_Newcastle.jpg?format=2500w",
-    "https://i.insider.com/67a392a97bb3f854015bd487?format=jpeg&width=1200",
-    "https://www.ubs.com/us/en/wealth-management/our-solutions/companies-organizations/workplace-wealth-solutions-thought-leadership/articles/private-investments-in-401k-plans/_jcr_content/root/pagehead/opengraphimage.coreimg.jpg/1923859011/private-investments.jpg",
-    "https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA4MDQyMDI1LXRoYTEwLXMtMjA5XzEuanBn.jpg",
-  ];
+
   const steps = content.steps?.length ? content.steps : defaultProcessContent.steps;
   const trustItems = content.trustItems?.length ? content.trustItems : defaultProcessContent.trustItems;
   const testimonials = content.testimonials?.length ? content.testimonials : fallbackTestimonials;
   const visibleTestimonials = showAllTestimonials ? testimonials : testimonials.slice(0, 3);
 
+  const processVisuals = [
+    processHeroDesk,
+    serviceIndividualImage,
+    serviceCoupleImage,
+    servicePsychosocialImage,
+    serviceDivorceGriefImage,
+  ];
+
+  const stepMeta = [
+    "TANIŞMA · İHTİYAÇ · ÇERÇEVE",
+    "ÖNCELİK · HEDEF · YOL HARİTASI",
+    "FARKINDALIK · UYGULAMA · DEĞİŞİM",
+    "İLERLEME · GÖZDEN GEÇİRME · DENGE",
+    "KAZANIM · SÜRDÜRME · DESTEK",
+  ];
+
+  const stepQuote = [
+    "İlk görüşme, yalnızca sorunu anlatmak değil; sürecin nasıl ilerleyeceğini birlikte anlamak için güvenli bir başlangıçtır.",
+    "Her danışanın ihtiyacı farklıdır. Bu nedenle hedefler hazır bir kalıptan değil, sizin yaşamınızdan oluşturulur.",
+    "Değişim yalnızca konuşmakla değil; fark edilen örüntüleri gerçek yaşamda yeni davranışlarla deneyimlemekle güçlenir.",
+    "Süreç boyunca ilerleme birlikte değerlendirilir; ihtiyaç olduğunda çalışma biçimi yeniden şekillendirilir.",
+    "Amaç danışmanlığa bağımlılık değil, kazandığınız farkındalık ve becerileri kendi yaşamınızda sürdürebilmektir.",
+  ];
+
   return (
-    <main className="prc53">
-      <section className="prc53Hero">
-        <img loading="eager" decoding="async" fetchPriority="high" className="prc53Hero__image" src={processHeroDesk} alt="Defter, kalem, dünya küresi ve kum saati bulunan profesyonel çalışma masası" />
-        <div className="prc53Hero__shade" />
-        <a className="prc53Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
-        <div className="prc53Hero__copy">
-          <span className="prc53Eyebrow">{content.heroEyebrow}</span>
-          <h1>{content.heroTitle}<br /><strong>{content.heroAccent}</strong></h1>
-          <i />
-          <p>{content.heroDescription}</p>
+    <main className="processCinePage">
+      <section className="processCineHero cin3d">
+        <div className="processCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
+          <img src={processHeroDesk} alt="" fetchPriority="high" decoding="async" />
+          <div className="processCineHero__veil" />
+          <div className="processCineHero__grain" />
+        </div>
+
+        <a className="processCineHero__back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="processCineHero__inner">
+          <div className="processCineHero__copy">
+            <span className="processCineHero__eyebrow">{content.heroEyebrow}</span>
+            <h1>
+              {content.heroTitle}
+              <strong>{content.heroAccent}</strong>
+            </h1>
+            <p>{content.heroDescription}</p>
+            <a href="#processCineFlow" className="processCineHero__cta">
+              Süreci Keşfedin
+              <Icon name="arrow" size={16} />
+            </a>
+          </div>
+
+          <div className="processCineHero__rail" aria-hidden="true">
+            <div><b>01</b><span>ÖN<br/>GÖRÜŞME</span></div>
+            <div><b>05</b><span>ADIMLIK<br/>SÜREÇ</span></div>
+            <div><b>∞</b><span>KİŞİYE<br/>ÖZEL</span></div>
+          </div>
+        </div>
+
+        <div className="processCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>KEŞFET</small>
         </div>
       </section>
 
-      <section className="prc53Flow">
-        <div className="prc53SectionTitle"><span>{content.sectionEyebrow}</span><h2>{content.sectionTitle}</h2></div>
-        <div className="prc53Steps" style={{ "--timeline-progress": timelineProgress }}>
-          <div className="prc53TimelineTrack" aria-hidden="true">
-            <span />
-          </div>
-          {steps.map((step, index) => (
-            <article
-              className={`prc53Step ${timelineProgress >= index / Math.max(steps.length - 1, 1) ? "is-timeline-active" : ""}`}
-              key={step.no}
-            >
-              <div className="prc103StepVisual">
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src={processVisuals[index % processVisuals.length]}
-                  alt=""
-                  aria-hidden="true"
-                  onError={(e)=>{e.currentTarget.style.display="none"}}
-                />
-                <span>{step.no}</span>
-              </div>
-              <div className="prc103StepContent">
-                <div className="prc53Step__number">{step.no}</div>
-                <div className="prc53Step__icon"><Icon name={step.icon} size={30} /></div>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </div>
-            </article>
-          ))}
+      <section className="processCineIntro cin3d" id="processCineFlow">
+        <div className="processCineIntro__inner">
+          <span>{content.sectionEyebrow}</span>
+          <h2>{content.sectionTitle}</h2>
+          <p>
+            Süreç doğrusal ve katı bir plan değildir. İhtiyaçlarınıza, yaşam koşullarınıza ve
+            ilerlemenize göre birlikte şekillenen esnek bir çalışma alanıdır.
+          </p>
         </div>
-        <div className="prc53Trust">
-          {trustItems.map((item, index) => (
-            <div key={`${item.title}-${index}`}>
-              <div className="prc53Trust__icon"><Icon name={item.icon || "check"} size={27} /></div>
-              <p><strong>{item.title}</strong><span>{item.text}</span></p>
+      </section>
+
+      <div className="processCineSteps">
+        {steps.map((step, index) => (
+          <section
+            className={`processCineStep cin3d ${index % 2 === 1 ? "processCineStep--reverse" : ""}`}
+            key={step.no}
+          >
+            <div className="processCineStep__bg cin3dParallax" data-depth={index % 2 === 0 ? "0.12" : "0.16"} aria-hidden="true">
+              <img
+                src={processVisuals[index % processVisuals.length]}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="processCineStep__veil" />
+              <div className="processCineStep__grain" />
             </div>
-          ))}
+
+            <div className="processCineStep__inner">
+              <article className="processCineStep__copy">
+                <span className="processCineStep__number">{step.no}</span>
+                <span className="processCineStep__eyebrow">SÜREÇ ADIMI {step.no}</span>
+                <h2>{step.title}</h2>
+                <p>{step.text}</p>
+
+                <div className="processCineStep__meta">
+                  <Icon name={step.icon || "check"} size={18} />
+                  <span>{stepMeta[index] || "KİŞİYE ÖZEL · ESNEK · BÜTÜNCÜL"}</span>
+                </div>
+              </article>
+
+              <aside className="processCineStep__glass">
+                <div className="processCineStep__glassImage">
+                  <img
+                    src={processVisuals[(index + 1) % processVisuals.length]}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div />
+                </div>
+                <span>{step.no} / {String(steps.length).padStart(2,"0")}</span>
+                <blockquote>{stepQuote[index] || step.text}</blockquote>
+                <small>KAAN ÖZKAN · DANIŞMANLIK SÜRECİ</small>
+              </aside>
+            </div>
+
+            <div className="processCineStep__edge" aria-hidden="true" />
+          </section>
+        ))}
+      </div>
+
+      <section className="processCineTrust cin3d">
+        <div className="processCineTrust__bg" aria-hidden="true">
+          <img src={heroSlide2} alt="" loading="lazy" decoding="async" />
+          <div />
         </div>
 
-        <div className="prc103Appointment reveal">
-          <div>
-            <span>İLK ADIM</span>
-            <h3>Süreci birlikte değerlendirmek ister misiniz?</h3>
-            <p>Size uygun görüşme biçimini ve sürecin çerçevesini ön görüşmede birlikte belirleyebilirsiniz.</p>
+        <div className="processCineTrust__inner">
+          <header>
+            <span>SÜRECİN TEMELİ</span>
+            <h2>Güvenli, esnek ve kişiye özel.</h2>
+          </header>
+
+          <div className="processCineTrust__grid">
+            {trustItems.map((item, index) => (
+              <article key={`${item.title}-${index}`}>
+                <div><Icon name={item.icon || "check"} size={22} /></div>
+                <span>0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
           </div>
-          <a href="#/randevu">Ücretsiz Ön Görüşme <Icon name="arrow" size={16}/></a>
+
+          <a className="processCineTrust__cta" href="#/randevu">
+            Ücretsiz Ön Görüşme
+            <Icon name="arrow" size={16} />
+          </a>
         </div>
       </section>
 
-      <section className="prc53Testimonials">
-        <div className="prc53Testimonials__head">
-          <div><span>{content.testimonialsEyebrow}</span><h2>{content.testimonialsTitle}</h2></div>
+      <section className="processCineTestimonials cin3d">
+        <div className="processCineTestimonials__head">
+          <div>
+            <span>{content.testimonialsEyebrow}</span>
+            <h2>{content.testimonialsTitle}</h2>
+          </div>
           <p>{content.testimonialsDescription}</p>
         </div>
-        <div className={`prc53Testimonials__grid ${showAllTestimonials ? "is-expanded" : ""}`}>
+
+        <div className={`processCineTestimonials__grid ${showAllTestimonials ? "is-expanded" : ""}`}>
           {visibleTestimonials.map((item) => (
-            <article className="prc53TestimonialCard" key={item.no}>
-              <div className="prc53TestimonialCard__top"><span className="prc53TestimonialCard__quote">"</span><small>{item.no}</small></div>
+            <article className="processCineTestimonial" key={item.no}>
+              <div className="processCineTestimonial__top">
+                <span>"</span>
+                <small>{item.no}</small>
+              </div>
               <p>{item.text}</p>
-              <div className="prc53TestimonialCard__footer">
-                <div><strong>{item.person}</strong><span>{item.title}</span></div>
-                <div className="prc53TestimonialCard__verified"><Icon name="check" size={15} />Mesaj</div>
+              <div className="processCineTestimonial__footer">
+                <div>
+                  <strong>{item.person}</strong>
+                  <span>{item.title}</span>
+                </div>
+                <div><Icon name="check" size={14} /> Mesaj</div>
               </div>
             </article>
           ))}
         </div>
-        <div className="prc53Testimonials__actions">
+
+        <div className="processCineTestimonials__actions">
           <button type="button" onClick={() => setShowAllTestimonials((value) => !value)}>
-            {showAllTestimonials ? "Daha Az Göster" : "Daha Fazla Yorum"}<Icon name="arrow" size={16} />
+            {showAllTestimonials ? "Daha Az Göster" : "Daha Fazla Yorum"}
+            <Icon name="arrow" size={16} />
           </button>
         </div>
-        <div className="prc53Testimonials__note"><Icon name="info" size={17} /><p>{content.testimonialsNote}</p></div>
+
+        <div className="processCineTestimonials__note">
+          <Icon name="info" size={17} />
+          <p>{content.testimonialsNote}</p>
+        </div>
       </section>
     </main>
   );
@@ -5514,92 +6156,171 @@ function ServicesDetailPage({ content }) {
   const serviceCards = [
     {
       no: "01", icon: "user", slug: "bireysel-terapi",
+      eyebrow: "BİREYSEL ÇALIŞMA",
       title: "Bireysel Terapi",
       short: content.individualShort,
       image: serviceIndividualImage,
-      meta: "8 çalışma alanı",
+      meta: "Kaygı · Duygu Düzenleme · Özdeğer",
+      quote: "Kendinizi daha yakından anlamak ve yaşamınızda daha işlevsel bir denge kurmak için.",
     },
     {
       no: "02", icon: "heart", slug: "cift-terapisi",
+      eyebrow: "İLİŞKİ & İLETİŞİM",
       title: "Çift Terapisi",
       short: content.coupleShort,
       image: serviceCoupleImage,
-      meta: "8 detaylı başlık",
+      meta: "İletişim · Güven · Bağlanma",
+      quote: "İlişkinizi yalnızca çatışmalar üzerinden değil, kurduğunuz bağın bütünü üzerinden ele almak için.",
     },
     {
       no: "03", icon: "shield", slug: "psikososyal-destek",
+      eyebrow: "GÜÇLENME & UYUM",
       title: "Psikososyal Destek",
       short: content.psychosocialShort,
       image: servicePsychosocialImage,
-      meta: "8 destek alanı",
+      meta: "Yas · Uyum · Dayanıklılık",
+      quote: "Zorlu yaşam dönemlerinde yalnızca soruna değil, sahip olduğunuz kaynaklara da birlikte bakmak için.",
     },
     {
       no: "04", icon: "compass", slug: "bosanma-ve-yas-danismanligi",
+      eyebrow: "KAYIP & YENİDEN YAPILANMA",
       title: "Boşanma ve Yas Danışmanlığı",
       short: "Boşanma, kayıp ve yaşamın yeniden yapılandırıldığı dönemlerde psikolojik ve sosyal uyuma odaklanan bütüncül danışmanlık.",
       image: serviceDivorceGriefImage,
-      meta: "Kayıp · uyum · yeniden yapılanma",
+      meta: "Kayıp · Uyum · Yeniden Yapılanma",
+      quote: "Bir dönemin sona ermesini, yaşamınızın tamamının sona ermesi gibi yaşamamak için yeni bir alan açmak.",
     },
     {
       no: "05", icon: "users", slug: "bekar-danismanligi",
+      eyebrow: "ÖZDEĞER & İLİŞKİSEL FARKINDALIK",
       title: "Bekar Danışmanlığı",
       short: "İlişki durumundan bağımsız psikolojik iyi oluş, özdeğer, ilişki örüntüleri, sosyal bağlar ve sağlıklı sınırlar üzerine çalışma.",
-      image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1400&q=88",
-      meta: "Özdeğer · ilişkiler · sınırlar",
+      image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1800&q=90",
+      meta: "Özdeğer · İlişkiler · Sınırlar",
+      quote: "Kendinizle kurduğunuz ilişkiyi güçlendirmek, gelecekte kuracağınız ilişkilerin de zeminini güçlendirir.",
     },
   ];
 
   return (
-    <main className="svc105">
-      <section className="svc105Hero">
-        <img className="svc105Hero__image" src={servicesHeroRoom} alt="Sakin ve profesyonel danışmanlık görüşme ortamı" />
-        <div className="svc105Hero__shade" />
-        <a className="svc105Back" href="#/"><span>←</span>Ana Sayfaya Dön</a>
-        <div className="svc105Hero__copy">
-          <span>{content.heroEyebrow}</span>
-          <h1>{content.heroTitle}<strong>{content.heroAccent}</strong></h1>
-          <p>{content.heroDescription}</p>
-          <a href="#svc105Areas">Çalışma alanlarını keşfedin <Icon name="arrow" size={16}/></a>
+    <main className="svcCinePage">
+      <section className="svcCineHero cin3d">
+        <div className="svcCineHero__bg cin3dParallax" data-depth="0.12" aria-hidden="true">
+          <img src={servicesHeroRoom} alt="" />
+          <div className="svcCineHero__veil" />
+          <div className="svcCineHero__grain" />
         </div>
-        <div className="svc105Hero__index"><b>05</b><span>PROFESYONEL<br/>ÇALIŞMA ALANI</span></div>
+
+        <a className="svcCineHero__back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
+
+        <div className="svcCineHero__inner">
+          <div className="svcCineHero__copy">
+            <span className="svcCineHero__eyebrow">{content.heroEyebrow}</span>
+            <h1>
+              {content.heroTitle}
+              <strong>{content.heroAccent}</strong>
+            </h1>
+            <p>{content.heroDescription}</p>
+            <a href="#svcCineAreas" className="svcCineHero__cta">
+              Çalışma Alanlarını Keşfedin
+              <Icon name="arrow" size={16}/>
+            </a>
+          </div>
+
+          <div className="svcCineHero__rail" aria-hidden="true">
+            <div><b>05</b><span>PROFESYONEL<br/>ÇALIŞMA ALANI</span></div>
+            <div><b>01</b><span>KİŞİYE ÖZEL<br/>YAKLAŞIM</span></div>
+            <div><b>∞</b><span>BÜTÜNCÜL<br/>BAKIŞ</span></div>
+          </div>
+        </div>
+
+        <div className="svcCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>KEŞFET</small>
+        </div>
       </section>
 
-      <section className="svc105Intro" id="svc105Areas">
-        <div>
+      <section className="svcCineIntro cin3d" id="svcCineAreas">
+        <div className="svcCineIntro__ambient" aria-hidden="true" />
+        <div className="svcCineIntro__inner">
           <span>{content.quickTitle}</span>
-          <h2>Her konu için ayrı,<br/><strong>derinlemesine bir alan.</strong></h2>
+          <h2>
+            Her konu için ayrı,
+            <strong> derinlemesine bir alan.</strong>
+          </h2>
+          <p>
+            {content.quickDescription} Her çalışma alanı; yaşam öykünüz, ilişkileriniz,
+            sosyal çevreniz ve kişisel kaynaklarınız birlikte değerlendirilerek ele alınır.
+          </p>
         </div>
-        <p>{content.quickDescription} Artık her çalışma alanı kendi detay sayfasında, kapsamlı biçimde incelenebilir.</p>
       </section>
 
-      <section className="svc105Grid">
-        {serviceCards.map((service) => (
-          <a className="svc105Card" href={`#/hizmetler/${service.slug}`} key={service.slug}>
-            <div className="svc105Card__visual">
-              <img loading="lazy" decoding="async" src={service.image} alt="" aria-hidden="true" onError={(e)=>{e.currentTarget.style.display="none"}} />
-              <div className="svc105Card__shade" />
-              <span className="svc105Card__no">{service.no}</span>
-              <div className="svc105Card__icon"><Icon name={service.icon} size={22}/></div>
+      <div className="svcCinePanels">
+        {serviceCards.map((service, index) => (
+          <section
+            className={`svcCinePanel cin3d ${index % 2 === 1 ? "svcCinePanel--reverse" : ""}`}
+            key={service.slug}
+          >
+            <div className="svcCinePanel__bg cin3dParallax" data-depth={index % 2 === 0 ? "0.12" : "0.16"} aria-hidden="true">
+              <img src={service.image} alt="" loading="lazy" decoding="async" onError={(e)=>{e.currentTarget.style.display="none"}} />
+              <div className="svcCinePanel__veil" />
+              <div className="svcCinePanel__grain" />
             </div>
-            <div className="svc105Card__body">
-              <span>{service.meta}</span>
-              <h3>{service.title}</h3>
-              <p>{service.short}</p>
-              <div>Detaylı Bilgi <Icon name="arrow" size={15}/></div>
+
+            <div className="svcCinePanel__inner">
+              <article className="svcCinePanel__copy">
+                <span className="svcCinePanel__no">{service.no}</span>
+                <span className="svcCinePanel__eyebrow">{service.eyebrow}</span>
+                <h2>{service.title}</h2>
+                <p>{service.short}</p>
+
+                <div className="svcCinePanel__meta">
+                  <Icon name={service.icon} size={18}/>
+                  <span>{service.meta}</span>
+                </div>
+
+                <a href={`#/hizmetler/${service.slug}`} className="svcCinePanel__cta">
+                  Detaylı Bilgi
+                  <span>↗</span>
+                </a>
+              </article>
+
+              <aside className="svcCinePanel__glass">
+                <div className="svcCinePanel__glassImage">
+                  <img src={service.image} alt="" loading="lazy" decoding="async" />
+                  <div />
+                </div>
+                <span>{service.no} / 05</span>
+                <blockquote>{service.quote}</blockquote>
+                <small>KAAN ÖZKAN · AİLE DANIŞMANLIĞI</small>
+              </aside>
             </div>
-          </a>
+
+            <div className="svcCinePanel__edge" aria-hidden="true" />
+          </section>
         ))}
-      </section>
+      </div>
 
-      <section className="svc105Trust">
-        <div><Icon name="shield" size={24}/></div>
-        <div><span>ETİK & GİZLİLİK</span><h3>Her süreç kişiye özgü değerlendirilir.</h3></div>
-        <p>Görüşmeler mesleki sınırlar, gizlilik ve kişiye özgü değerlendirme ilkeleri çerçevesinde yürütülür.</p>
-      </section>
-
-      <section className="svc103Next reveal">
-        <div><span>SONRAKİ ADIM</span><h2>Danışmanlık sürecinin nasıl ilerlediğini görün.</h2></div>
-        <a href="#/surec">Süreci İnceleyin <Icon name="arrow" size={16}/></a>
+      <section className="svcCineTrust cin3d">
+        <div className="svcCineTrust__bg" aria-hidden="true">
+          <img src={heroSlide2} alt="" loading="lazy" decoding="async" />
+          <div />
+        </div>
+        <div className="svcCineTrust__content">
+          <div className="svcCineTrust__icon"><Icon name="shield" size={25}/></div>
+          <span>ETİK & GİZLİLİK</span>
+          <h2>Her süreç kişiye özgü değerlendirilir.</h2>
+          <p>
+            Görüşmeler mesleki sınırlar, gizlilik ve kişiye özgü değerlendirme ilkeleri çerçevesinde yürütülür.
+            Danışmanlık sürecinin çerçevesi ihtiyaçlarınıza göre birlikte belirlenir.
+          </p>
+          <a href="#/surec">
+            Süreci İnceleyin
+            <Icon name="arrow" size={16}/>
+          </a>
+        </div>
       </section>
     </main>
   );
@@ -17074,6 +17795,272 @@ img{
   to{transform:translate(-50%,-50%) rotateX(60deg) rotateZ(360deg)}
 }
 
+/* ======== TAM EKRAN SİNEMATİK PANELLER (lcp) ======== */
+.lcp{position:relative}
+
+.lcp__panel{
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* arka plan görseli */
+.lcp__bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+}
+.lcp__bg img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transform:scale(1.10);
+  filter:saturate(.75) brightness(.65);
+  transition:transform 1.8s cubic-bezier(.16,.82,.2,1),filter 1.8s ease;
+  will-change:transform,filter;
+}
+.lcp__panel.cin3d--visible .lcp__bg img{
+  transform:scale(1.0);
+  filter:saturate(.88) brightness(.72);
+}
+
+/* overlay katmanlar */
+.lcp__veil{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(105deg,rgba(8,5,2,.90) 0%,rgba(8,5,2,.65) 42%,rgba(8,5,2,.14) 68%,rgba(8,5,2,.38) 100%),
+    linear-gradient(180deg,rgba(5,3,1,.35) 0%,transparent 32%,transparent 68%,rgba(5,3,1,.55) 100%);
+}
+.lcp__veil--r{
+  background:
+    linear-gradient(255deg,rgba(8,5,2,.90) 0%,rgba(8,5,2,.65) 42%,rgba(8,5,2,.14) 68%,rgba(8,5,2,.38) 100%),
+    linear-gradient(180deg,rgba(5,3,1,.35) 0%,transparent 32%,transparent 68%,rgba(5,3,1,.55) 100%);
+}
+.lcp__veil--ocean{
+  background:
+    linear-gradient(105deg,rgba(2,6,14,.90) 0%,rgba(2,6,14,.65) 42%,rgba(2,6,14,.14) 68%,rgba(2,6,14,.38) 100%),
+    linear-gradient(180deg,rgba(2,4,10,.35) 0%,transparent 32%,transparent 68%,rgba(2,4,10,.55) 100%);
+}
+
+/* içerik grid */
+.lcp__body{
+  position:relative;
+  z-index:2;
+  width:min(1320px,88vw);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(36px,5vw,88px);
+  align-items:center;
+}
+.lcp__body--flip{
+  direction:rtl;
+}
+.lcp__body--flip > *{
+  direction:ltr;
+}
+
+/* metin bloğu — animasyonlar */
+.lcp__text{
+  display:flex;
+  flex-direction:column;
+}
+.lcp__num{
+  display:block;
+  color:rgba(210,178,100,.16);
+  font:800 clamp(80px,11vw,136px)/.82 Georgia,serif;
+  letter-spacing:-.04em;
+  margin-bottom:-10px;
+  opacity:0;
+  transform:translateX(-24px);
+  transition:opacity .9s ease .05s, transform .9s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.lcp__panel.cin3d--visible .lcp__num{opacity:1;transform:translateX(0)}
+
+.lcp__tag{
+  display:inline-block;
+  color:rgba(210,178,100,.80);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .7s ease .22s, transform .7s cubic-bezier(.16,.88,.2,1) .22s;
+}
+.lcp__panel.cin3d--visible .lcp__tag{opacity:1;transform:translateY(0)}
+
+.lcp__title{
+  margin:0 0 20px;
+  color:#fff;
+  font:400 clamp(38px,4.4vw,66px)/1.04 Georgia,"Times New Roman",serif;
+  letter-spacing:-.03em;
+  text-shadow:0 6px 36px rgba(0,0,0,.42);
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .9s ease .36s, transform .9s cubic-bezier(.16,.88,.2,1) .36s;
+}
+.lcp__panel.cin3d--visible .lcp__title{opacity:1;transform:translateY(0)}
+.lcp__title em{color:#d4a84b;font-style:italic}
+
+.lcp__desc{
+  max-width:460px;
+  margin:0 0 30px;
+  color:rgba(255,248,220,.58);
+  font-size:clamp(12px,1.15vw,15px);
+  line-height:1.86;
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .8s ease .50s, transform .8s cubic-bezier(.16,.88,.2,1) .50s;
+}
+.lcp__panel.cin3d--visible .lcp__desc{opacity:1;transform:translateY(0)}
+
+.lcp__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 30px;
+  border:1px solid rgba(210,178,100,.35);
+  border-radius:4px;
+  color:rgba(228,198,120,.90);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-decoration:none;
+  background:rgba(210,178,100,.07);
+  backdrop-filter:blur(10px);
+  width:max-content;
+  opacity:0;
+  transform:translateY(12px);
+  transition:
+    opacity .7s ease .64s,
+    transform .7s cubic-bezier(.16,.88,.2,1) .64s,
+    background .28s ease 0s,
+    border-color .28s ease 0s,
+    gap .28s ease 0s;
+}
+.lcp__panel.cin3d--visible .lcp__cta{opacity:1;transform:translateY(0)}
+.lcp__cta:hover{background:rgba(210,178,100,.16);border-color:rgba(210,178,100,.55);gap:18px}
+.lcp__cta span{font-size:14px;transition:transform .28s ease;display:inline-block}
+.lcp__cta:hover span{transform:translate(3px,-3px)}
+
+/* sağ kart */
+.lcp__card{
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.11);
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 56px rgba(0,0,0,.35);
+  opacity:0;
+  transform:translateX(36px) scale(.97);
+  transition:
+    opacity 1s ease .18s,
+    transform 1s cubic-bezier(.16,.88,.2,1) .18s,
+    box-shadow .45s ease 0s;
+  will-change:transform,opacity;
+}
+.lcp__panel.cin3d--visible .lcp__card{opacity:1;transform:translateX(0) scale(1)}
+.lcp__body--flip .lcp__card{
+  transform:translateX(-36px) scale(.97);
+}
+.lcp__panel.cin3d--visible .lcp__body--flip .lcp__card{
+  transform:translateX(0) scale(1);
+}
+.lcp__card:hover{
+  box-shadow:0 36px 80px rgba(0,0,0,.46);
+  transform:perspective(800px) rotateX(-2deg) rotateY(3deg) translateY(-6px) !important;
+}
+.lcp__cardImg{
+  height:clamp(180px,22vw,310px);
+  overflow:hidden;
+  position:relative;
+}
+.lcp__cardImg img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s cubic-bezier(.18,.88,.2,1),filter .7s ease;
+  filter:saturate(.82);
+}
+.lcp__card:hover .lcp__cardImg img{transform:scale(1.06);filter:saturate(1)}
+.lcp__cardInfo{
+  padding:20px 22px 16px;
+}
+.lcp__cardInfo b{
+  display:block;
+  color:rgba(210,178,100,.85);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  margin-bottom:8px;
+}
+.lcp__cardInfo p{
+  margin:0;
+  color:rgba(255,248,220,.52);
+  font-size:11px;
+  line-height:1.68;
+}
+.lcp__cardStats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:14px 16px;
+  gap:8px;
+}
+.lcp__cardStats span{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.lcp__cardStats b{
+  display:block;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  font-family:Georgia,serif;
+}
+.lcp__cardStats small{
+  color:rgba(255,255,255,.36);
+  font-size:8px;
+  line-height:1.4;
+}
+
+/* panel arası ince çizgi */
+.lcp__panel+.lcp__panel:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  z-index:3;
+  background:linear-gradient(90deg,transparent,rgba(210,178,100,.14),transparent);
+}
+
+/* responsive */
+@media(max-width:860px){
+  .lcp__panel{height:auto;min-height:100svh}
+  .lcp__body{grid-template-columns:1fr;padding:80px 0 70px}
+  .lcp__body--flip{direction:ltr}
+  .lcp__card{display:none}
+  .lcp__num{font-size:clamp(68px,18vw,96px)}
+  .lcp__title{font-size:clamp(34px,9vw,52px)}
+}
+
 @media(max-width:900px){
   .cin3d--approach{grid-template-columns:1fr;margin:40px 16px 0;width:auto}
   .cin3d__scene{min-height:300px}
@@ -22895,6 +23882,4969 @@ img{
 /* STEP162 — BLOG/AUTHOR DURABLE SAVE */
 .admin100Blog__message.is-success{
   white-space:normal;
+}
+
+
+/* =========================================================
+   STEP163 — FULLSCREEN CINEMATIC TOP SECTIONS
+   Only new .topCine* classes. Existing cinematic sections untouched.
+   ========================================================= */
+
+.topCinePanel{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+  display:flex;
+  align-items:center;
+  background:#0b0907;
+  color:#fff;
+}
+.topCinePanel__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.topCinePanel__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.12);
+  filter:saturate(.68) contrast(1.02) brightness(.50);
+  transition:
+    transform 1.9s cubic-bezier(.16,.82,.2,1),
+    filter 1.9s ease;
+}
+.topCinePanel.cin3d--visible .topCinePanel__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.80) contrast(1.00) brightness(.60);
+}
+.topCinePanel__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(8,6,4,.94) 0%,rgba(8,6,4,.80) 40%,rgba(8,6,4,.25) 70%,rgba(8,6,4,.58) 100%),
+    radial-gradient(circle at 78% 36%,rgba(205,158,79,.18),transparent 32%),
+    linear-gradient(180deg,rgba(0,0,0,.38),transparent 30%,transparent 68%,rgba(0,0,0,.60));
+}
+.topCinePanel__veil--services{
+  background:
+    radial-gradient(circle at 20% 24%,rgba(205,158,79,.16),transparent 28%),
+    linear-gradient(180deg,rgba(7,5,3,.86),rgba(7,5,3,.58) 45%,rgba(7,5,3,.90));
+}
+.topCinePanel__grain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.055;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.topCinePanel__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:96px 0 92px;
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(360px,.8fr);
+  gap:clamp(60px,8vw,126px);
+  align-items:center;
+}
+.topCinePanel__copy{
+  max-width:760px;
+}
+.topCinePanel__number{
+  display:block;
+  margin-bottom:-2px;
+  color:rgba(214,169,84,.18);
+  font:700 clamp(74px,8vw,124px)/.8 Georgia,serif;
+  opacity:0;
+  transform:translateX(-26px);
+  transition:opacity .8s ease .05s,transform .8s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.topCinePanel__eyebrow{
+  display:block;
+  margin-bottom:20px;
+  color:#d1a255;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.28em;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .7s ease .18s,transform .7s ease .18s;
+}
+.topCinePanel__copy h2{
+  margin:0 0 28px;
+  max-width:760px;
+  color:#fff;
+  font:400 clamp(44px,5.1vw,78px)/1.01 Georgia,"Times New Roman",serif;
+  letter-spacing:-.038em;
+  text-shadow:0 10px 52px rgba(0,0,0,.44);
+  opacity:0;
+  transform:translateY(32px);
+  filter:blur(6px);
+  transition:
+    opacity .95s ease .30s,
+    transform .95s cubic-bezier(.16,.88,.2,1) .30s,
+    filter .95s ease .30s;
+}
+.topCinePanel__copy h2 em{
+  color:#d5a94f;
+  font-style:italic;
+}
+.topCinePanel__copy p{
+  max-width:650px;
+  margin:0 0 34px;
+  color:rgba(255,248,230,.66);
+  font-size:clamp(13px,1.12vw,16px);
+  line-height:1.9;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .46s,transform .82s cubic-bezier(.16,.88,.2,1) .46s;
+}
+.topCinePanel__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  padding:14px 28px;
+  border:1px solid rgba(212,169,84,.38);
+  border-radius:4px;
+  background:rgba(212,169,84,.07);
+  backdrop-filter:blur(12px);
+  color:#dcb566;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:
+    opacity .7s ease .60s,
+    transform .7s cubic-bezier(.16,.88,.2,1) .60s,
+    background .28s ease,
+    gap .28s ease;
+}
+.topCinePanel__cta:hover{
+  background:rgba(212,169,84,.16);
+  gap:18px;
+}
+.topCinePanel.cin3d--visible .topCinePanel__number,
+.topCinePanel.cin3d--visible .topCinePanel__eyebrow,
+.topCinePanel.cin3d--visible .topCinePanel__copy h2,
+.topCinePanel.cin3d--visible .topCinePanel__copy p,
+.topCinePanel.cin3d--visible .topCinePanel__cta{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+.topCinePanel__visualStack{
+  position:relative;
+  height:640px;
+  opacity:0;
+  transform:translateX(56px) scale(.95);
+  transition:opacity 1s ease .18s,transform 1s cubic-bezier(.16,.88,.2,1) .18s;
+}
+.topCinePanel.cin3d--visible .topCinePanel__visualStack{
+  opacity:1;
+  transform:none;
+}
+.topCinePanel__floating{
+  position:absolute;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.04);
+  box-shadow:0 30px 80px rgba(0,0,0,.42);
+  backdrop-filter:blur(14px);
+}
+.topCinePanel__floating img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.78) brightness(.80);
+  transform:scale(1.04);
+  transition:transform .8s cubic-bezier(.18,.88,.2,1),filter .8s ease;
+}
+.topCinePanel__floating:hover img{
+  transform:scale(1.09);
+  filter:saturate(.90) brightness(.86);
+}
+.topCinePanel__floating--one{
+  width:72%;
+  height:72%;
+  right:0;
+  top:8%;
+  border-radius:8px 86px 8px 8px;
+  transform:perspective(1200px) rotateY(-4deg);
+  animation:topCineFloatOne 8s ease-in-out infinite alternate;
+}
+.topCinePanel__floating--two{
+  width:46%;
+  height:40%;
+  left:0;
+  bottom:4%;
+  border-radius:52px 8px 8px 8px;
+  transform:perspective(1000px) rotateY(5deg);
+  animation:topCineFloatTwo 9s ease-in-out infinite alternate;
+}
+.topCinePanel__floating--three{
+  width:34%;
+  height:30%;
+  right:8%;
+  bottom:-2%;
+  border-radius:8px 8px 56px 8px;
+  opacity:.86;
+  animation:topCineFloatThree 10s ease-in-out infinite alternate;
+}
+
+.topCinePanel__scrollHint{
+  position:absolute;
+  z-index:4;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.topCinePanel__scrollHint span{
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg,transparent,#d2a65b);
+  animation:topCineScroll 1.7s ease-in-out infinite;
+}
+.topCinePanel__scrollHint small{
+  color:rgba(255,255,255,.38);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+
+/* services full screen section */
+.topCinePanel__inner--services{
+  display:block;
+}
+.topCineServices__head{
+  display:grid;
+  grid-template-columns:.6fr 1.22fr 1fr;
+  gap:clamp(28px,5vw,72px);
+  align-items:end;
+  margin-bottom:44px;
+}
+.topCineServices__head>span{
+  align-self:start;
+  color:#d3a356;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.topCineServices__head h2{
+  margin:0;
+  color:#fff;
+  font:400 clamp(42px,4.8vw,72px)/1 Georgia,serif;
+  letter-spacing:-.035em;
+  opacity:0;
+  transform:translateY(26px);
+  filter:blur(5px);
+  transition:opacity .9s ease .18s,transform .9s cubic-bezier(.16,.88,.2,1) .18s,filter .9s ease .18s;
+}
+.topCineServices__head h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.topCineServices__head p{
+  margin:0 0 3px;
+  color:rgba(255,248,230,.62);
+  font-size:clamp(12px,1.05vw,15px);
+  line-height:1.82;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .30s,transform .8s ease .30s;
+}
+.topCinePanel.cin3d--visible .topCineServices__head>span,
+.topCinePanel.cin3d--visible .topCineServices__head h2,
+.topCinePanel.cin3d--visible .topCineServices__head p{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.topCineServices__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.topCineServices__card{
+  position:relative;
+  min-height:480px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 28px 80px rgba(0,0,0,.34);
+  opacity:0;
+  transform:translateY(34px) scale(.98);
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.16,.88,.2,1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+.topCineServices__card:nth-child(1){transition-delay:.34s}
+.topCineServices__card:nth-child(2){transition-delay:.46s}
+.topCineServices__card:nth-child(3){transition-delay:.58s}
+.topCinePanel.cin3d--visible .topCineServices__card{
+  opacity:1;
+  transform:none;
+}
+.topCineServices__card:hover{
+  transform:translateY(-8px)!important;
+  border-color:rgba(214,171,92,.42);
+  box-shadow:0 40px 96px rgba(0,0,0,.48);
+}
+.topCineServices__cardBg{
+  position:absolute;
+  inset:0;
+}
+.topCineServices__cardBg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.72) brightness(.66);
+  transform:scale(1.05);
+  transition:transform .9s cubic-bezier(.18,.88,.2,1),filter .9s ease;
+}
+.topCineServices__card:hover .topCineServices__cardBg img{
+  transform:scale(1.11);
+  filter:saturate(.88) brightness(.72);
+}
+.topCineServices__cardBg div{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(7,5,3,.06) 10%,rgba(7,5,3,.24) 45%,rgba(7,5,3,.94) 100%),
+    linear-gradient(90deg,rgba(6,4,2,.20),transparent 56%);
+}
+.topCineServices__index{
+  position:absolute;
+  z-index:2;
+  top:22px;
+  left:22px;
+  color:rgba(222,181,105,.82);
+  font:500 42px/.9 Georgia,serif;
+}
+.topCineServices__cardCopy{
+  position:absolute;
+  z-index:2;
+  left:24px;
+  right:24px;
+  bottom:24px;
+}
+.topCineServices__cardCopy small{
+  display:block;
+  margin-bottom:8px;
+  color:#d0a154;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.17em;
+}
+.topCineServices__cardCopy h3{
+  margin:0 0 10px;
+  color:#fff;
+  font:500 clamp(25px,2vw,32px)/1.07 Georgia,serif;
+}
+.topCineServices__cardCopy p{
+  min-height:44px;
+  margin:0 0 20px;
+  color:rgba(255,255,255,.62);
+  font-size:11px;
+  line-height:1.72;
+}
+.topCineServices__cardCopy b{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#ddb76b;
+  font-size:9px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.topCineServices__cardCopy i{
+  font-style:normal;
+  font-size:13px;
+  transition:transform .28s ease;
+}
+.topCineServices__card:hover .topCineServices__cardCopy i{
+  transform:translate(3px,-3px);
+}
+
+@keyframes topCineFloatOne{
+  from{transform:perspective(1200px) rotateY(-4deg) translate3d(-4px,4px,0)}
+  to{transform:perspective(1200px) rotateY(-1deg) translate3d(7px,-8px,0)}
+}
+@keyframes topCineFloatTwo{
+  from{transform:perspective(1000px) rotateY(5deg) translate3d(0,4px,0)}
+  to{transform:perspective(1000px) rotateY(2deg) translate3d(-7px,-6px,0)}
+}
+@keyframes topCineFloatThree{
+  from{transform:translate3d(0,4px,0) scale(.98)}
+  to{transform:translate3d(6px,-7px,0) scale(1.02)}
+}
+@keyframes topCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .topCinePanel__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:84px 0 92px;
+  }
+  .topCinePanel__visualStack{
+    height:520px;
+  }
+  .topCineServices__head{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .topCineServices__grid{
+    grid-template-columns:1fr;
+  }
+  .topCineServices__card{
+    min-height:420px;
+  }
+}
+@media(max-width:620px){
+  .topCinePanel__inner{
+    width:calc(100% - 30px);
+  }
+  .topCinePanel__copy h2,
+  .topCineServices__head h2{
+    font-size:clamp(36px,11vw,52px);
+  }
+  .topCinePanel__visualStack{
+    height:430px;
+  }
+  .topCinePanel__floating--one{
+    width:78%;
+    height:68%;
+  }
+  .topCinePanel__floating--two{
+    width:54%;
+    height:36%;
+  }
+  .topCinePanel__floating--three{
+    width:38%;
+    height:28%;
+  }
+  .topCineServices__card{
+    min-height:380px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .topCinePanel__bg>img,
+  .topCinePanel__number,
+  .topCinePanel__eyebrow,
+  .topCinePanel__copy h2,
+  .topCinePanel__copy p,
+  .topCinePanel__cta,
+  .topCinePanel__visualStack,
+  .topCinePanel__floating,
+  .topCineServices__head>span,
+  .topCineServices__head h2,
+  .topCineServices__head p,
+  .topCineServices__card,
+  .topCinePanel__scrollHint span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP164 — HİZMETLER SAYFASI / FULLSCREEN CINEMATIC
+   Existing lower-page cinematic language continued here.
+   ========================================================= */
+
+.svcCinePage{
+  background:#090806;
+  color:#fff;
+}
+.svcCineHero,
+.svcCinePanel,
+.svcCineTrust{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+}
+.svcCineHero{
+  display:flex;
+  align-items:center;
+  background:#0b0907;
+}
+.svcCineHero__bg,
+.svcCinePanel__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.svcCineHero__bg>img,
+.svcCinePanel__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.12);
+  filter:saturate(.66) contrast(1.04) brightness(.48);
+  transition:
+    transform 1.9s cubic-bezier(.16,.82,.2,1),
+    filter 1.9s ease;
+}
+.svcCineHero.cin3d--visible .svcCineHero__bg>img,
+.svcCinePanel.cin3d--visible .svcCinePanel__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.80) contrast(1.01) brightness(.60);
+}
+.svcCineHero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.78) 42%,rgba(7,5,3,.22) 72%,rgba(7,5,3,.56) 100%),
+    radial-gradient(circle at 78% 34%,rgba(206,159,80,.18),transparent 34%),
+    linear-gradient(180deg,rgba(0,0,0,.36),transparent 28%,transparent 70%,rgba(0,0,0,.60));
+}
+.svcCineHero__grain,
+.svcCinePanel__grain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.055;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.svcCineHero__back{
+  position:absolute;
+  z-index:5;
+  top:34px;
+  left:clamp(20px,4vw,64px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  transition:color .25s ease,gap .25s ease;
+}
+.svcCineHero__back:hover{
+  color:#d9ad61;
+  gap:15px;
+}
+.svcCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:110px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:clamp(60px,8vw,120px);
+  align-items:center;
+}
+.svcCineHero__copy{
+  max-width:820px;
+}
+.svcCineHero__eyebrow{
+  display:block;
+  margin-bottom:24px;
+  color:#d4a456;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.svcCineHero__copy h1{
+  margin:0 0 28px;
+  color:#fff;
+  font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 12px 58px rgba(0,0,0,.48);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(7px);
+  transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s;
+}
+.svcCineHero__copy h1 strong{
+  display:block;
+  color:#d3a64e;
+  font-weight:400;
+  font-style:italic;
+}
+.svcCineHero__copy p{
+  max-width:670px;
+  margin:0 0 36px;
+  color:rgba(255,249,232,.67);
+  font-size:clamp(13px,1.18vw,17px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .36s,transform .82s ease .36s;
+}
+.svcCineHero__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 28px;
+  border:1px solid rgba(213,170,88,.40);
+  border-radius:4px;
+  background:rgba(213,170,88,.08);
+  backdrop-filter:blur(12px);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .50s,transform .7s ease .50s,background .28s ease,gap .28s ease;
+}
+.svcCineHero__cta:hover{
+  background:rgba(213,170,88,.16);
+  gap:18px;
+}
+.svcCineHero__rail{
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s;
+}
+.svcCineHero__rail>div{
+  min-height:120px;
+  padding:20px 0 20px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.svcCineHero__rail b{
+  color:rgba(212,166,78,.90);
+  font:500 36px Georgia,serif;
+}
+.svcCineHero__rail span{
+  color:rgba(255,255,255,.48);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.13em;
+  line-height:1.55;
+}
+.svcCineHero.cin3d--visible .svcCineHero__eyebrow,
+.svcCineHero.cin3d--visible .svcCineHero__copy h1,
+.svcCineHero.cin3d--visible .svcCineHero__copy p,
+.svcCineHero.cin3d--visible .svcCineHero__cta,
+.svcCineHero.cin3d--visible .svcCineHero__rail{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.svcCineHero__scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.svcCineHero__scroll span{
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg,transparent,#d4a657);
+  animation:svcCineScroll 1.7s ease-in-out infinite;
+}
+.svcCineHero__scroll small{
+  color:rgba(255,255,255,.36);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+
+/* Intro bridge */
+.svcCineIntro{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(191,144,69,.13),transparent 30%),
+    linear-gradient(180deg,#16120d,#0d0b08);
+  padding:110px 0 100px;
+}
+.svcCineIntro__ambient{
+  position:absolute;
+  width:520px;
+  height:520px;
+  left:-220px;
+  bottom:-260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(208,163,87,.12),transparent 68%);
+  filter:blur(10px);
+}
+.svcCineIntro__inner{
+  position:relative;
+  z-index:2;
+  width:min(1180px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.48fr 1.2fr .9fr;
+  gap:clamp(30px,5vw,70px);
+  align-items:end;
+}
+.svcCineIntro__inner>span{
+  align-self:start;
+  color:#c99b4e;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.svcCineIntro__inner h2{
+  margin:0;
+  color:#fff;
+  font:400 clamp(42px,4.7vw,70px)/1.02 Georgia,serif;
+  letter-spacing:-.035em;
+  opacity:0;
+  transform:translateY(28px);
+  filter:blur(5px);
+  transition:opacity .9s ease .18s,transform .9s cubic-bezier(.16,.88,.2,1) .18s,filter .9s ease .18s;
+}
+.svcCineIntro__inner h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.svcCineIntro__inner p{
+  margin:0;
+  color:rgba(255,249,232,.57);
+  font-size:13px;
+  line-height:1.85;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .30s,transform .8s ease .30s;
+}
+.svcCineIntro.cin3d--visible .svcCineIntro__inner>span,
+.svcCineIntro.cin3d--visible .svcCineIntro__inner h2,
+.svcCineIntro.cin3d--visible .svcCineIntro__inner p{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+/* Fullscreen service panels */
+.svcCinePanel{
+  display:flex;
+  align-items:center;
+  background:#090806;
+}
+.svcCinePanel__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 40%,rgba(6,4,2,.20) 70%,rgba(6,4,2,.55) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.32),transparent 30%,transparent 70%,rgba(0,0,0,.66));
+}
+.svcCinePanel--reverse .svcCinePanel__veil{
+  background:
+    linear-gradient(270deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 40%,rgba(6,4,2,.20) 70%,rgba(6,4,2,.55) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.32),transparent 30%,transparent 70%,rgba(0,0,0,.66));
+}
+.svcCinePanel__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:96px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(340px,.76fr);
+  gap:clamp(70px,9vw,140px);
+  align-items:center;
+}
+.svcCinePanel--reverse .svcCinePanel__inner{
+  direction:rtl;
+}
+.svcCinePanel--reverse .svcCinePanel__copy,
+.svcCinePanel--reverse .svcCinePanel__glass{
+  direction:ltr;
+}
+.svcCinePanel__copy{
+  max-width:720px;
+}
+.svcCinePanel__no{
+  display:block;
+  margin-bottom:-3px;
+  color:rgba(214,169,84,.17);
+  font:700 clamp(80px,10vw,142px)/.78 Georgia,serif;
+  letter-spacing:-.04em;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:opacity .8s ease .05s,transform .8s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.svcCinePanel--reverse .svcCinePanel__no{
+  transform:translateX(30px);
+}
+.svcCinePanel__eyebrow{
+  display:block;
+  margin-bottom:18px;
+  color:#d1a052;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.27em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .18s,transform .7s ease .18s;
+}
+.svcCinePanel__copy h2{
+  margin:0 0 24px;
+  max-width:720px;
+  color:#fff;
+  font:400 clamp(46px,5.4vw,82px)/.98 Georgia,serif;
+  letter-spacing:-.04em;
+  text-shadow:0 10px 48px rgba(0,0,0,.45);
+  opacity:0;
+  transform:translateY(30px);
+  filter:blur(6px);
+  transition:opacity .9s ease .30s,transform .9s cubic-bezier(.16,.88,.2,1) .30s,filter .9s ease .30s;
+}
+.svcCinePanel__copy>p{
+  max-width:620px;
+  margin:0 0 26px;
+  color:rgba(255,249,232,.64);
+  font-size:clamp(13px,1.1vw,16px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .44s,transform .8s ease .44s;
+}
+.svcCinePanel__meta{
+  width:max-content;
+  margin-bottom:32px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid rgba(212,169,87,.22);
+  border-radius:999px;
+  background:rgba(212,169,87,.06);
+  color:#d8ae63;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .54s,transform .7s ease .54s;
+}
+.svcCinePanel__meta span{
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.10em;
+}
+.svcCinePanel__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  padding:14px 28px;
+  border:1px solid rgba(212,169,87,.38);
+  border-radius:4px;
+  background:rgba(212,169,87,.07);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .64s,transform .7s ease .64s,background .28s ease,gap .28s ease;
+}
+.svcCinePanel__cta:hover{
+  background:rgba(212,169,87,.16);
+  gap:20px;
+}
+.svcCinePanel__cta span{
+  font-size:15px;
+}
+.svcCinePanel.cin3d--visible .svcCinePanel__no,
+.svcCinePanel.cin3d--visible .svcCinePanel__eyebrow,
+.svcCinePanel.cin3d--visible .svcCinePanel__copy h2,
+.svcCinePanel.cin3d--visible .svcCinePanel__copy>p,
+.svcCinePanel.cin3d--visible .svcCinePanel__meta,
+.svcCinePanel.cin3d--visible .svcCinePanel__cta{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.svcCinePanel__glass{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  background:rgba(18,15,11,.58);
+  backdrop-filter:blur(22px);
+  box-shadow:0 34px 90px rgba(0,0,0,.42);
+  opacity:0;
+  transform:translateX(42px) scale(.96);
+  transition:opacity 1s ease .20s,transform 1s cubic-bezier(.16,.88,.2,1) .20s,box-shadow .45s ease;
+}
+.svcCinePanel--reverse .svcCinePanel__glass{
+  transform:translateX(-42px) scale(.96);
+}
+.svcCinePanel.cin3d--visible .svcCinePanel__glass{
+  opacity:1;
+  transform:none;
+}
+.svcCinePanel__glass:hover{
+  box-shadow:0 44px 110px rgba(0,0,0,.52);
+}
+.svcCinePanel__glassImage{
+  position:relative;
+  height:clamp(220px,28vw,360px);
+  overflow:hidden;
+}
+.svcCinePanel__glassImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.76) brightness(.78);
+  transform:scale(1.035);
+  transition:transform .85s cubic-bezier(.18,.88,.2,1),filter .85s ease;
+}
+.svcCinePanel__glass:hover .svcCinePanel__glassImage img{
+  transform:scale(1.085);
+  filter:saturate(.88) brightness(.84);
+}
+.svcCinePanel__glassImage div{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 42%,rgba(7,5,3,.66));
+}
+.svcCinePanel__glass>span{
+  display:block;
+  padding:22px 24px 0;
+  color:#c99b4f;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.svcCinePanel__glass blockquote{
+  margin:14px 24px 18px;
+  color:#fff;
+  font:400 clamp(20px,2vw,29px)/1.34 Georgia,serif;
+}
+.svcCinePanel__glass small{
+  display:block;
+  margin:0 24px;
+  padding:18px 0 22px;
+  border-top:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.38);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.svcCinePanel__edge{
+  position:absolute;
+  z-index:4;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,169,87,.18),transparent);
+}
+
+/* Final trust */
+.svcCineTrust{
+  display:grid;
+  place-items:center;
+}
+.svcCineTrust__bg{
+  position:absolute;
+  inset:0;
+}
+.svcCineTrust__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.62) brightness(.42);
+  transform:scale(1.06);
+}
+.svcCineTrust__bg div{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(198,150,72,.12),transparent 32%),
+    linear-gradient(180deg,rgba(8,6,4,.72),rgba(8,6,4,.91));
+}
+.svcCineTrust__content{
+  position:relative;
+  z-index:2;
+  width:min(760px,calc(100% - 38px));
+  text-align:center;
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .9s ease .15s,transform .9s cubic-bezier(.16,.88,.2,1) .15s;
+}
+.svcCineTrust.cin3d--visible .svcCineTrust__content{
+  opacity:1;
+  transform:none;
+}
+.svcCineTrust__icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 22px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(213,170,88,.32);
+  border-radius:50%;
+  background:rgba(213,170,88,.08);
+  color:#d9ad61;
+}
+.svcCineTrust__content>span{
+  color:#c99b4d;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+.svcCineTrust__content h2{
+  margin:16px 0 20px;
+  color:#fff;
+  font:400 clamp(40px,5vw,68px)/1 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.svcCineTrust__content p{
+  margin:0 auto 30px;
+  max-width:650px;
+  color:rgba(255,255,255,.57);
+  font-size:13px;
+  line-height:1.85;
+}
+.svcCineTrust__content a{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 28px;
+  border:1px solid rgba(213,170,88,.34);
+  border-radius:4px;
+  background:rgba(213,170,88,.07);
+  color:#deb568;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+  transition:background .28s ease,gap .28s ease;
+}
+.svcCineTrust__content a:hover{
+  background:rgba(213,170,88,.15);
+  gap:18px;
+}
+
+@keyframes svcCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .svcCineHero__inner,
+  .svcCinePanel__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:46px;
+    padding:90px 0;
+  }
+  .svcCineHero__rail{
+    display:none;
+  }
+  .svcCineIntro__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .svcCinePanel--reverse .svcCinePanel__inner{
+    direction:ltr;
+  }
+  .svcCinePanel__glass{
+    width:min(100%,520px);
+  }
+}
+@media(max-width:620px){
+  .svcCineHero__inner,
+  .svcCinePanel__inner,
+  .svcCineIntro__inner{
+    width:calc(100% - 30px);
+  }
+  .svcCineHero__copy h1{
+    font-size:clamp(48px,15vw,72px);
+  }
+  .svcCinePanel__copy h2,
+  .svcCineTrust__content h2{
+    font-size:clamp(38px,11vw,54px);
+  }
+  .svcCinePanel__glassImage{
+    height:250px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .svcCineHero__bg>img,
+  .svcCineHero__eyebrow,
+  .svcCineHero__copy h1,
+  .svcCineHero__copy p,
+  .svcCineHero__cta,
+  .svcCineHero__rail,
+  .svcCineIntro__inner>span,
+  .svcCineIntro__inner h2,
+  .svcCineIntro__inner p,
+  .svcCinePanel__bg>img,
+  .svcCinePanel__no,
+  .svcCinePanel__eyebrow,
+  .svcCinePanel__copy h2,
+  .svcCinePanel__copy>p,
+  .svcCinePanel__meta,
+  .svcCinePanel__cta,
+  .svcCinePanel__glass,
+  .svcCineTrust__content,
+  .svcCineHero__scroll span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP165 — SÜREÇ SAYFASI / FULLSCREEN CINEMATIC
+   Hizmetler sayfasındaki sinematik dilin devamı.
+   ========================================================= */
+
+.processCinePage{
+  background:#090806;
+  color:#fff;
+}
+.processCineHero,
+.processCineStep,
+.processCineTrust{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+}
+.processCineHero{
+  display:flex;
+  align-items:center;
+  background:#0a0806;
+}
+.processCineHero__bg,
+.processCineStep__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.processCineHero__bg>img,
+.processCineStep__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.12);
+  filter:saturate(.67) contrast(1.03) brightness(.48);
+  transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease;
+}
+.processCineHero.cin3d--visible .processCineHero__bg>img,
+.processCineStep.cin3d--visible .processCineStep__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.80) contrast(1.01) brightness(.60);
+}
+.processCineHero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.79) 42%,rgba(7,5,3,.22) 72%,rgba(7,5,3,.56) 100%),
+    radial-gradient(circle at 76% 34%,rgba(205,158,78,.18),transparent 34%),
+    linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 70%,rgba(0,0,0,.62));
+}
+.processCineHero__grain,
+.processCineStep__grain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.055;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.processCineHero__back{
+  position:absolute;
+  z-index:5;
+  top:34px;
+  left:clamp(20px,4vw,64px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  transition:color .25s ease,gap .25s ease;
+}
+.processCineHero__back:hover{color:#d9ad61;gap:15px}
+.processCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:110px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:clamp(60px,8vw,120px);
+  align-items:center;
+}
+.processCineHero__copy{max-width:820px}
+.processCineHero__eyebrow{
+  display:block;
+  margin-bottom:24px;
+  color:#d4a456;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.processCineHero__copy h1{
+  margin:0 0 28px;
+  color:#fff;
+  font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 12px 58px rgba(0,0,0,.48);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(7px);
+  transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s;
+}
+.processCineHero__copy h1 strong{
+  display:block;
+  color:#d3a64e;
+  font-weight:400;
+  font-style:italic;
+}
+.processCineHero__copy p{
+  max-width:670px;
+  margin:0 0 36px;
+  color:rgba(255,249,232,.67);
+  font-size:clamp(13px,1.18vw,17px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .36s,transform .82s ease .36s;
+}
+.processCineHero__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 28px;
+  border:1px solid rgba(213,170,88,.40);
+  border-radius:4px;
+  background:rgba(213,170,88,.08);
+  backdrop-filter:blur(12px);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .50s,transform .7s ease .50s,background .28s ease,gap .28s ease;
+}
+.processCineHero__cta:hover{background:rgba(213,170,88,.16);gap:18px}
+.processCineHero__rail{
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s;
+}
+.processCineHero__rail>div{
+  min-height:120px;
+  padding:20px 0 20px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.processCineHero__rail b{color:rgba(212,166,78,.90);font:500 36px Georgia,serif}
+.processCineHero__rail span{color:rgba(255,255,255,.48);font-size:8px;font-weight:800;letter-spacing:.13em;line-height:1.55}
+.processCineHero.cin3d--visible .processCineHero__eyebrow,
+.processCineHero.cin3d--visible .processCineHero__copy h1,
+.processCineHero.cin3d--visible .processCineHero__copy p,
+.processCineHero.cin3d--visible .processCineHero__cta,
+.processCineHero.cin3d--visible .processCineHero__rail{
+  opacity:1;transform:none;filter:none;
+}
+.processCineHero__scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.processCineHero__scroll span{
+  width:1px;height:34px;
+  background:linear-gradient(180deg,transparent,#d4a657);
+  animation:processCineScroll 1.7s ease-in-out infinite;
+}
+.processCineHero__scroll small{color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.20em}
+
+/* bridge */
+.processCineIntro{
+  position:relative;
+  overflow:hidden;
+  padding:110px 0 100px;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(191,144,69,.13),transparent 30%),
+    linear-gradient(180deg,#16120d,#0d0b08);
+}
+.processCineIntro__inner{
+  width:min(1180px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.48fr 1.2fr .9fr;
+  gap:clamp(30px,5vw,70px);
+  align-items:end;
+}
+.processCineIntro__inner>span{
+  align-self:start;
+  color:#c99b4e;
+  font-size:9px;font-weight:800;letter-spacing:.25em;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.processCineIntro__inner h2{
+  margin:0;color:#fff;
+  font:400 clamp(42px,4.7vw,70px)/1.02 Georgia,serif;
+  letter-spacing:-.035em;
+  opacity:0;transform:translateY(28px);filter:blur(5px);
+  transition:opacity .9s ease .18s,transform .9s cubic-bezier(.16,.88,.2,1) .18s,filter .9s ease .18s;
+}
+.processCineIntro__inner p{
+  margin:0;color:rgba(255,249,232,.57);font-size:13px;line-height:1.85;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .8s ease .30s,transform .8s ease .30s;
+}
+.processCineIntro.cin3d--visible .processCineIntro__inner>span,
+.processCineIntro.cin3d--visible .processCineIntro__inner h2,
+.processCineIntro.cin3d--visible .processCineIntro__inner p{
+  opacity:1;transform:none;filter:none;
+}
+
+/* fullscreen steps */
+.processCineStep{
+  display:flex;
+  align-items:center;
+  background:#090806;
+}
+.processCineStep__veil{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 40%,rgba(6,4,2,.20) 70%,rgba(6,4,2,.55) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.32),transparent 30%,transparent 70%,rgba(0,0,0,.66));
+}
+.processCineStep--reverse .processCineStep__veil{
+  background:
+    linear-gradient(270deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 40%,rgba(6,4,2,.20) 70%,rgba(6,4,2,.55) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.32),transparent 30%,transparent 70%,rgba(0,0,0,.66));
+}
+.processCineStep__inner{
+  position:relative;z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:96px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(340px,.76fr);
+  gap:clamp(70px,9vw,140px);
+  align-items:center;
+}
+.processCineStep--reverse .processCineStep__inner{direction:rtl}
+.processCineStep--reverse .processCineStep__copy,
+.processCineStep--reverse .processCineStep__glass{direction:ltr}
+.processCineStep__copy{max-width:720px}
+.processCineStep__number{
+  display:block;
+  margin-bottom:-3px;
+  color:rgba(214,169,84,.17);
+  font:700 clamp(80px,10vw,142px)/.78 Georgia,serif;
+  letter-spacing:-.04em;
+  opacity:0;transform:translateX(-30px);
+  transition:opacity .8s ease .05s,transform .8s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.processCineStep--reverse .processCineStep__number{transform:translateX(30px)}
+.processCineStep__eyebrow{
+  display:block;margin-bottom:18px;color:#d1a052;
+  font-size:9px;font-weight:800;letter-spacing:.27em;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .7s ease .18s,transform .7s ease .18s;
+}
+.processCineStep__copy h2{
+  margin:0 0 24px;max-width:720px;color:#fff;
+  font:400 clamp(46px,5.4vw,82px)/.98 Georgia,serif;
+  letter-spacing:-.04em;text-shadow:0 10px 48px rgba(0,0,0,.45);
+  opacity:0;transform:translateY(30px);filter:blur(6px);
+  transition:opacity .9s ease .30s,transform .9s cubic-bezier(.16,.88,.2,1) .30s,filter .9s ease .30s;
+}
+.processCineStep__copy>p{
+  max-width:620px;margin:0 0 26px;
+  color:rgba(255,249,232,.64);
+  font-size:clamp(13px,1.1vw,16px);line-height:1.88;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .8s ease .44s,transform .8s ease .44s;
+}
+.processCineStep__meta{
+  width:max-content;
+  padding:10px 14px;
+  display:flex;align-items:center;gap:9px;
+  border:1px solid rgba(212,169,87,.22);
+  border-radius:999px;
+  background:rgba(212,169,87,.06);
+  color:#d8ae63;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .7s ease .54s,transform .7s ease .54s;
+}
+.processCineStep__meta span{font-size:8px;font-weight:800;letter-spacing:.10em}
+.processCineStep.cin3d--visible .processCineStep__number,
+.processCineStep.cin3d--visible .processCineStep__eyebrow,
+.processCineStep.cin3d--visible .processCineStep__copy h2,
+.processCineStep.cin3d--visible .processCineStep__copy>p,
+.processCineStep.cin3d--visible .processCineStep__meta{
+  opacity:1;transform:none;filter:none;
+}
+.processCineStep__glass{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  background:rgba(18,15,11,.58);
+  backdrop-filter:blur(22px);
+  box-shadow:0 34px 90px rgba(0,0,0,.42);
+  opacity:0;
+  transform:translateX(42px) scale(.96);
+  transition:opacity 1s ease .20s,transform 1s cubic-bezier(.16,.88,.2,1) .20s,box-shadow .45s ease;
+}
+.processCineStep--reverse .processCineStep__glass{transform:translateX(-42px) scale(.96)}
+.processCineStep.cin3d--visible .processCineStep__glass{opacity:1;transform:none}
+.processCineStep__glass:hover{box-shadow:0 44px 110px rgba(0,0,0,.52)}
+.processCineStep__glassImage{position:relative;height:clamp(220px,28vw,360px);overflow:hidden}
+.processCineStep__glassImage img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.76) brightness(.78);
+  transform:scale(1.035);
+  transition:transform .85s cubic-bezier(.18,.88,.2,1),filter .85s ease;
+}
+.processCineStep__glass:hover .processCineStep__glassImage img{
+  transform:scale(1.085);filter:saturate(.88) brightness(.84);
+}
+.processCineStep__glassImage div{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(7,5,3,.66))}
+.processCineStep__glass>span{
+  display:block;padding:22px 24px 0;color:#c99b4f;
+  font-size:8px;font-weight:800;letter-spacing:.16em;
+}
+.processCineStep__glass blockquote{
+  margin:14px 24px 18px;color:#fff;
+  font:400 clamp(20px,2vw,29px)/1.34 Georgia,serif;
+}
+.processCineStep__glass small{
+  display:block;margin:0 24px;padding:18px 0 22px;
+  border-top:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.38);
+  font-size:7px;font-weight:800;letter-spacing:.14em;
+}
+.processCineStep__edge{
+  position:absolute;z-index:4;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,169,87,.18),transparent);
+}
+
+/* trust */
+.processCineTrust{
+  display:flex;
+  align-items:center;
+  background:#090806;
+}
+.processCineTrust__bg{position:absolute;inset:0}
+.processCineTrust__bg img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.58) brightness(.34);
+  transform:scale(1.06);
+}
+.processCineTrust__bg div{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(199,151,72,.13),transparent 30%),
+    linear-gradient(180deg,rgba(7,5,3,.76),rgba(7,5,3,.94));
+}
+.processCineTrust__inner{
+  position:relative;z-index:2;
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto;padding:96px 0;
+}
+.processCineTrust__inner>header{text-align:center;max-width:760px;margin:0 auto 54px}
+.processCineTrust__inner>header span{color:#c99b4d;font-size:8px;font-weight:800;letter-spacing:.24em}
+.processCineTrust__inner>header h2{
+  margin:14px 0 0;color:#fff;
+  font:400 clamp(42px,5vw,70px)/1 Georgia,serif;letter-spacing:-.035em;
+}
+.processCineTrust__grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+}
+.processCineTrust__grid article{
+  min-height:260px;padding:28px 24px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(16px);
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.16,.88,.2,1),background .3s ease,border-color .3s ease;
+}
+.processCineTrust__grid article:nth-child(1){transition-delay:.18s}
+.processCineTrust__grid article:nth-child(2){transition-delay:.28s}
+.processCineTrust__grid article:nth-child(3){transition-delay:.38s}
+.processCineTrust__grid article:nth-child(4){transition-delay:.48s}
+.processCineTrust.cin3d--visible .processCineTrust__grid article{opacity:1;transform:none}
+.processCineTrust__grid article:hover{background:rgba(255,255,255,.075);border-color:rgba(213,170,88,.28)}
+.processCineTrust__grid article>div{
+  width:46px;height:46px;display:grid;place-items:center;
+  border:1px solid rgba(213,170,88,.28);border-radius:50%;
+  color:#d6aa5e;background:rgba(213,170,88,.07);
+}
+.processCineTrust__grid article>span{
+  display:block;margin:22px 0 8px;color:rgba(210,166,83,.36);
+  font:500 28px Georgia,serif;
+}
+.processCineTrust__grid h3{margin:0 0 10px;color:#fff;font:500 21px Georgia,serif}
+.processCineTrust__grid p{margin:0;color:rgba(255,255,255,.52);font-size:11px;line-height:1.72}
+.processCineTrust__cta{
+  width:max-content;margin:38px auto 0;padding:14px 28px;
+  display:flex;align-items:center;gap:12px;
+  border:1px solid rgba(213,170,88,.34);border-radius:4px;
+  background:rgba(213,170,88,.07);color:#deb568;text-decoration:none;
+  font-size:9px;font-weight:800;letter-spacing:.13em;
+  transition:background .28s ease,gap .28s ease;
+}
+.processCineTrust__cta:hover{background:rgba(213,170,88,.15);gap:18px}
+
+/* testimonials */
+.processCineTestimonials{
+  padding:110px 0;
+  background:
+    radial-gradient(circle at 14% 16%,rgba(195,146,70,.11),transparent 26%),
+    linear-gradient(180deg,#13100c,#0a0907);
+}
+.processCineTestimonials__head{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto 42px;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end;
+}
+.processCineTestimonials__head span{color:#c99b4e;font-size:8px;font-weight:800;letter-spacing:.24em}
+.processCineTestimonials__head h2{
+  margin:12px 0 0;color:#fff;
+  font:400 clamp(40px,4.5vw,64px)/1.02 Georgia,serif;letter-spacing:-.035em;
+}
+.processCineTestimonials__head>p{margin:0;color:rgba(255,255,255,.50);font-size:12px;line-height:1.8}
+.processCineTestimonials__grid{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+}
+.processCineTestimonial{
+  padding:26px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(16px);
+  color:#fff;
+}
+.processCineTestimonial__top{display:flex;justify-content:space-between;align-items:flex-start}
+.processCineTestimonial__top>span{color:rgba(210,168,89,.36);font:500 64px/.7 Georgia,serif}
+.processCineTestimonial__top small{color:#b98c47;font-size:8px;font-weight:800}
+.processCineTestimonial>p{
+  max-height:260px;overflow:auto;
+  margin:20px 0 24px;white-space:pre-line;
+  color:rgba(255,255,255,.66);font-size:11px;line-height:1.76;
+}
+.processCineTestimonial__footer{
+  padding-top:18px;border-top:1px solid rgba(255,255,255,.09);
+  display:flex;justify-content:space-between;gap:16px;align-items:center;
+}
+.processCineTestimonial__footer>div:first-child{display:flex;flex-direction:column}
+.processCineTestimonial__footer strong{font-size:10px;color:#fff}
+.processCineTestimonial__footer span{margin-top:3px;color:rgba(255,255,255,.38);font-size:8px}
+.processCineTestimonial__footer>div:last-child{display:flex;align-items:center;gap:5px;color:#c99b4e;font-size:8px}
+.processCineTestimonials__actions{
+  width:min(1240px,calc(100% - 72px));margin:30px auto 0;text-align:center;
+}
+.processCineTestimonials__actions button{
+  padding:13px 25px;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(213,170,88,.30);border-radius:999px;
+  background:rgba(213,170,88,.06);color:#d7ad61;
+  font-size:9px;font-weight:800;letter-spacing:.10em;cursor:pointer;
+}
+.processCineTestimonials__note{
+  width:min(900px,calc(100% - 72px));margin:24px auto 0;
+  display:flex;align-items:flex-start;justify-content:center;gap:9px;
+  color:rgba(255,255,255,.38);
+}
+.processCineTestimonials__note p{margin:0;font-size:9px;line-height:1.65}
+
+@keyframes processCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .processCineHero__inner,
+  .processCineStep__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:46px;padding:90px 0;
+  }
+  .processCineHero__rail{display:none}
+  .processCineIntro__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;gap:18px;
+  }
+  .processCineStep--reverse .processCineStep__inner{direction:ltr}
+  .processCineStep__glass{width:min(100%,520px)}
+  .processCineTrust__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .processCineTestimonials__head{grid-template-columns:1fr}
+  .processCineTestimonials__grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .processCineHero__inner,
+  .processCineStep__inner,
+  .processCineIntro__inner,
+  .processCineTrust__inner,
+  .processCineTestimonials__head,
+  .processCineTestimonials__grid,
+  .processCineTestimonials__actions{
+    width:calc(100% - 30px);
+  }
+  .processCineHero__copy h1{font-size:clamp(48px,15vw,72px)}
+  .processCineStep__copy h2{font-size:clamp(38px,11vw,54px)}
+  .processCineStep__glassImage{height:250px}
+  .processCineTrust__grid{grid-template-columns:1fr}
+  .processCineTestimonials__note{width:calc(100% - 30px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .processCineHero__bg>img,
+  .processCineHero__eyebrow,
+  .processCineHero__copy h1,
+  .processCineHero__copy p,
+  .processCineHero__cta,
+  .processCineHero__rail,
+  .processCineIntro__inner>span,
+  .processCineIntro__inner h2,
+  .processCineIntro__inner p,
+  .processCineStep__bg>img,
+  .processCineStep__number,
+  .processCineStep__eyebrow,
+  .processCineStep__copy h2,
+  .processCineStep__copy>p,
+  .processCineStep__meta,
+  .processCineStep__glass,
+  .processCineTrust__grid article,
+  .processCineHero__scroll span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP166 — BLOG / CINEMATIC EDITORIAL REDESIGN
+   Admin, upload, author and article data flows are untouched.
+   ========================================================= */
+
+.blogCinePage{
+  background:#090806;
+  color:#fff;
+}
+.blogCineHero,
+.blogCineFeatured{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+}
+.blogCineHero{
+  display:flex;
+  align-items:center;
+  background:#0a0806;
+}
+.blogCineHero__bg,
+.blogCineFeatured__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.blogCineHero__bg>img,
+.blogCineFeatured__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.12);
+  filter:saturate(.68) contrast(1.03) brightness(.47);
+  transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease;
+}
+.blogCineHero.cin3d--visible .blogCineHero__bg>img,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.82) contrast(1.01) brightness(.59);
+}
+.blogCineHero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.79) 42%,rgba(7,5,3,.22) 72%,rgba(7,5,3,.58) 100%),
+    radial-gradient(circle at 76% 34%,rgba(204,157,78,.18),transparent 34%),
+    linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 70%,rgba(0,0,0,.62));
+}
+.blogCineHero__grain,
+.blogCineFeatured__grain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.055;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.blogCineHero__back{
+  position:absolute;
+  z-index:5;
+  top:34px;
+  left:clamp(20px,4vw,64px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  transition:color .25s ease,gap .25s ease;
+}
+.blogCineHero__back:hover{color:#d9ad61;gap:15px}
+.blogCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:110px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:clamp(60px,8vw,120px);
+  align-items:center;
+}
+.blogCineHero__copy{max-width:840px}
+.blogCineHero__eyebrow{
+  display:block;
+  margin-bottom:24px;
+  color:#d4a456;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.blogCineHero__copy h1{
+  margin:0 0 28px;
+  color:#fff;
+  font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 12px 58px rgba(0,0,0,.48);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(7px);
+  transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s;
+}
+.blogCineHero__copy h1 strong{
+  display:block;
+  color:#d3a64e;
+  font-weight:400;
+  font-style:italic;
+}
+.blogCineHero__copy p{
+  max-width:690px;
+  margin:0 0 36px;
+  color:rgba(255,249,232,.67);
+  font-size:clamp(13px,1.18vw,17px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .36s,transform .82s ease .36s;
+}
+.blogCineHero__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 28px;
+  border:1px solid rgba(213,170,88,.40);
+  border-radius:4px;
+  background:rgba(213,170,88,.08);
+  backdrop-filter:blur(12px);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .50s,transform .7s ease .50s,background .28s ease,gap .28s ease;
+}
+.blogCineHero__cta:hover{background:rgba(213,170,88,.16);gap:18px}
+.blogCineHero__rail{
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s;
+}
+.blogCineHero__rail>div{
+  min-height:120px;
+  padding:20px 0 20px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.blogCineHero__rail b{color:rgba(212,166,78,.90);font:500 36px Georgia,serif}
+.blogCineHero__rail span{color:rgba(255,255,255,.48);font-size:8px;font-weight:800;letter-spacing:.13em;line-height:1.55}
+.blogCineHero.cin3d--visible .blogCineHero__eyebrow,
+.blogCineHero.cin3d--visible .blogCineHero__copy h1,
+.blogCineHero.cin3d--visible .blogCineHero__copy p,
+.blogCineHero.cin3d--visible .blogCineHero__cta,
+.blogCineHero.cin3d--visible .blogCineHero__rail{
+  opacity:1;transform:none;filter:none;
+}
+.blogCineHero__scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.blogCineHero__scroll span{
+  width:1px;height:34px;
+  background:linear-gradient(180deg,transparent,#d4a657);
+  animation:blogCineScroll 1.7s ease-in-out infinite;
+}
+.blogCineHero__scroll small{color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.20em}
+
+/* featured */
+.blogCineFeatured{
+  display:flex;
+  align-items:center;
+  background:#090806;
+}
+.blogCineFeatured__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 40%,rgba(6,4,2,.20) 70%,rgba(6,4,2,.55) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.32),transparent 30%,transparent 70%,rgba(0,0,0,.66));
+}
+.blogCineFeatured__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:96px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(350px,.78fr);
+  gap:clamp(70px,9vw,140px);
+  align-items:center;
+}
+.blogCineFeatured__copy{max-width:740px}
+.blogCineFeatured__number{
+  display:block;
+  margin-bottom:-4px;
+  color:rgba(214,169,84,.17);
+  font:700 clamp(80px,10vw,142px)/.78 Georgia,serif;
+  letter-spacing:-.04em;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:opacity .8s ease .05s,transform .8s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.blogCineFeatured__eyebrow{
+  display:block;
+  margin-bottom:18px;
+  color:#d1a052;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.24em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .18s,transform .7s ease .18s;
+}
+.blogCineFeatured__copy h2{
+  margin:0 0 24px;
+  color:#fff;
+  font:400 clamp(44px,5.2vw,80px)/.99 Georgia,serif;
+  letter-spacing:-.04em;
+  text-shadow:0 10px 48px rgba(0,0,0,.45);
+  opacity:0;
+  transform:translateY(30px);
+  filter:blur(6px);
+  transition:opacity .9s ease .30s,transform .9s cubic-bezier(.16,.88,.2,1) .30s,filter .9s ease .30s;
+}
+.blogCineFeatured__copy>p{
+  max-width:630px;
+  margin:0 0 24px;
+  color:rgba(255,249,232,.64);
+  font-size:clamp(13px,1.1vw,16px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .44s,transform .8s ease .44s;
+}
+.blogCineFeatured__meta{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:30px;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .54s,transform .7s ease .54s;
+}
+.blogCineFeatured__meta time,
+.blogCineFeatured__meta span{
+  color:rgba(255,255,255,.48);
+  font-size:9px;
+}
+.blogCineFeatured__meta span{
+  padding-left:12px;
+  border-left:1px solid rgba(255,255,255,.14);
+}
+.blogCineFeatured__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  padding:14px 28px;
+  border:1px solid rgba(212,169,87,.38);
+  border-radius:4px;
+  background:rgba(212,169,87,.07);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .64s,transform .7s ease .64s,background .28s ease,gap .28s ease;
+}
+.blogCineFeatured__cta:hover{background:rgba(212,169,87,.16);gap:20px}
+.blogCineFeatured.cin3d--visible .blogCineFeatured__number,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__eyebrow,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__copy h2,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__copy>p,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__meta,
+.blogCineFeatured.cin3d--visible .blogCineFeatured__cta{
+  opacity:1;transform:none;filter:none;
+}
+.blogCineFeatured__glass{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  background:rgba(18,15,11,.58);
+  backdrop-filter:blur(22px);
+  box-shadow:0 34px 90px rgba(0,0,0,.42);
+  opacity:0;
+  transform:translateX(42px) scale(.96);
+  transition:opacity 1s ease .20s,transform 1s cubic-bezier(.16,.88,.2,1) .20s,box-shadow .45s ease;
+}
+.blogCineFeatured.cin3d--visible .blogCineFeatured__glass{opacity:1;transform:none}
+.blogCineFeatured__glassImage{
+  position:relative;
+  height:clamp(230px,28vw,380px);
+  overflow:hidden;
+}
+.blogCineFeatured__glassImage img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.78) brightness(.80);
+  transform:scale(1.035);
+  transition:transform .85s cubic-bezier(.18,.88,.2,1),filter .85s ease;
+}
+.blogCineFeatured__glass:hover .blogCineFeatured__glassImage img{transform:scale(1.085);filter:saturate(.90) brightness(.86)}
+.blogCineFeatured__glassImage div{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(7,5,3,.68))}
+.blogCineFeatured__author{
+  padding:22px 24px 16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.blogCineFeatured__avatar{
+  width:52px;height:52px;overflow:hidden;border-radius:50%;
+  border:1px solid rgba(213,170,88,.36);
+  display:grid;place-items:center;background:rgba(213,170,88,.08);
+  color:#d7aa5e;font:500 20px Georgia,serif;
+}
+.blogCineFeatured__avatar img{width:100%;height:100%;object-fit:cover}
+.blogCineFeatured__author>div:last-child{display:flex;flex-direction:column}
+.blogCineFeatured__author small{color:#bd8f48;font-size:7px;font-weight:800;letter-spacing:.14em}
+.blogCineFeatured__author strong{margin:3px 0;color:#fff;font:500 18px Georgia,serif}
+.blogCineFeatured__author span{color:rgba(255,255,255,.42);font-size:8px}
+.blogCineFeatured__glass blockquote{
+  margin:4px 24px 24px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.09);
+  color:rgba(255,255,255,.62);
+  font:400 17px/1.55 Georgia,serif;
+}
+
+/* archive */
+.blogCineArchive{
+  padding:110px 0 120px;
+  background:
+    radial-gradient(circle at 14% 12%,rgba(197,149,72,.11),transparent 26%),
+    linear-gradient(180deg,#15110d,#0a0907);
+}
+.blogCineArchive__intro{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto 46px;
+  display:grid;
+  grid-template-columns:.5fr 1.15fr .9fr;
+  gap:clamp(28px,5vw,68px);
+  align-items:end;
+}
+.blogCineArchive__intro>span{
+  align-self:start;color:#c99b4e;font-size:9px;font-weight:800;letter-spacing:.25em;
+}
+.blogCineArchive__intro h2{
+  margin:0;color:#fff;
+  font:400 clamp(42px,4.8vw,70px)/1.02 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.blogCineArchive__intro h2 strong{
+  display:block;color:#d4a84b;font-weight:400;font-style:italic;
+}
+.blogCineArchive__intro p{
+  margin:0;color:rgba(255,255,255,.52);font-size:12px;line-height:1.8;
+}
+.blogCineArchive__tools{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto 34px;
+  padding:18px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+}
+.blogCineSearch{
+  min-width:250px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background:rgba(0,0,0,.18);
+  color:#b88b46;
+}
+.blogCineSearch input{
+  width:100%;
+  padding:12px 0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font:inherit;
+  font-size:10px;
+}
+.blogCineSearch input::placeholder{color:rgba(255,255,255,.34)}
+.blogCineCategories{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:7px;
+}
+.blogCineCategories button{
+  padding:10px 13px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.52);
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+  transition:background .25s ease,color .25s ease,border-color .25s ease;
+}
+.blogCineCategories button:hover,
+.blogCineCategories button.is-active{
+  background:rgba(211,166,83,.12);
+  border-color:rgba(211,166,83,.32);
+  color:#deb568;
+}
+.blogCineGrid{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.blogCineCard{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(16px);
+  box-shadow:0 22px 68px rgba(0,0,0,.26);
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.16,.88,.2,1),border-color .3s ease,box-shadow .3s ease;
+}
+.blogCineCard.cin3d--visible{opacity:1;transform:none}
+.blogCineCard:hover{
+  border-color:rgba(213,170,88,.26);
+  box-shadow:0 34px 84px rgba(0,0,0,.38);
+}
+.blogCineCard__image{
+  position:relative;
+  display:block;
+  height:clamp(260px,31vw,430px);
+  overflow:hidden;
+}
+.blogCineCard__image>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.76) brightness(.80);
+  transform:scale(1.035);
+  transition:transform .85s cubic-bezier(.18,.88,.2,1),filter .85s ease;
+}
+.blogCineCard:hover .blogCineCard__image>img{transform:scale(1.085);filter:saturate(.90) brightness(.86)}
+.blogCineCard__shade{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(5,3,2,.04),rgba(5,3,2,.12) 48%,rgba(5,3,2,.82));
+}
+.blogCineCard__number{
+  position:absolute;z-index:2;top:20px;left:20px;
+  color:rgba(222,181,105,.86);
+  font:500 40px/.9 Georgia,serif;
+}
+.blogCineCard__image>small{
+  position:absolute;z-index:2;left:20px;bottom:17px;
+  color:#dbb267;font-size:7px;font-weight:800;letter-spacing:.16em;
+}
+.blogCineCard__body{padding:24px}
+.blogCineCard__meta{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.blogCineCard__meta time,
+.blogCineCard__meta span{color:rgba(255,255,255,.38);font-size:8px}
+.blogCineCard__meta span{padding-left:12px;border-left:1px solid rgba(255,255,255,.10)}
+.blogCineCard__body h3{margin:0 0 12px}
+.blogCineCard__body h3 a{
+  color:#fff;text-decoration:none;
+  font:500 clamp(25px,2.3vw,35px)/1.08 Georgia,serif;
+}
+.blogCineCard__body>p{
+  margin:0 0 22px;
+  color:rgba(255,255,255,.52);
+  font-size:11px;
+  line-height:1.74;
+}
+.blogCineCard__footer{
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.09);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.blogCineCard__author{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+.blogCineCard__author>div{
+  width:42px;height:42px;overflow:hidden;border-radius:50%;
+  border:1px solid rgba(213,170,88,.28);
+  display:grid;place-items:center;
+  background:rgba(213,170,88,.07);
+  color:#d7ab60;
+}
+.blogCineCard__author>div img{width:100%;height:100%;object-fit:cover}
+.blogCineCard__author>span{display:flex;flex-direction:column}
+.blogCineCard__author small{color:#b98b45;font-size:6px;font-weight:800;letter-spacing:.14em}
+.blogCineCard__author strong{margin:2px 0;color:#fff;font-size:9px}
+.blogCineCard__author em{color:rgba(255,255,255,.36);font-size:7px;font-style:normal}
+.blogCineCard__authorEmpty{color:rgba(255,255,255,.32);font-size:7px;font-weight:800;letter-spacing:.13em}
+.blogCineCard__read{
+  flex:0 0 auto;
+  display:flex;align-items:center;gap:8px;
+  color:#d8ae63;text-decoration:none;
+  font-size:8px;font-weight:800;letter-spacing:.10em;
+}
+.blogCineCard__read span{font-size:13px;transition:transform .25s ease}
+.blogCineCard__read:hover span{transform:translate(3px,-3px)}
+.blogCineEmpty{
+  width:min(1240px,calc(100% - 72px));
+  margin:20px auto 0;padding:50px;text-align:center;
+  border:1px solid rgba(255,255,255,.10);border-radius:18px;
+  background:rgba(255,255,255,.035);color:rgba(255,255,255,.48);
+}
+.blogCineEmpty h3{margin:14px 0 6px;color:#fff;font:500 24px Georgia,serif}
+.blogCineEmpty p{margin:0;font-size:10px}
+.blogCineMore{
+  margin:36px auto 0;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(213,170,88,.30);
+  border-radius:999px;
+  background:rgba(213,170,88,.06);
+  color:#d8ae63;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.11em;
+  cursor:pointer;
+}
+
+/* authors */
+.blogCineAuthors{
+  padding:110px 0 120px;
+  background:
+    radial-gradient(circle at 84% 16%,rgba(195,146,70,.12),transparent 26%),
+    linear-gradient(180deg,#0c0a08,#15110d);
+}
+.blogCineAuthors__head{
+  width:min(1000px,calc(100% - 72px));
+  margin:0 auto 44px;
+  text-align:center;
+}
+.blogCineAuthors__head>span{color:#c99b4e;font-size:8px;font-weight:800;letter-spacing:.24em}
+.blogCineAuthors__head h2{
+  margin:14px 0 16px;color:#fff;
+  font:400 clamp(42px,5vw,70px)/1 Georgia,serif;letter-spacing:-.035em;
+}
+.blogCineAuthors__head p{max-width:650px;margin:0 auto;color:rgba(255,255,255,.48);font-size:11px;line-height:1.8}
+.blogCineAuthors__grid{
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.blogCineAuthor{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  text-decoration:none;
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.blogCineAuthor:hover{
+  transform:translateY(-7px);
+  border-color:rgba(213,170,88,.28);
+  box-shadow:0 30px 80px rgba(0,0,0,.34);
+}
+.blogCineAuthor__photo{
+  position:relative;
+  height:330px;
+  overflow:hidden;
+}
+.blogCineAuthor__photo img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.76) brightness(.82);
+  transform:scale(1.035);
+  transition:transform .8s ease,filter .8s ease;
+}
+.blogCineAuthor:hover .blogCineAuthor__photo img{transform:scale(1.085);filter:saturate(.90) brightness(.88)}
+.blogCineAuthor__photo div{position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(6,4,2,.72))}
+.blogCineAuthor__photo>span{
+  position:absolute;z-index:2;left:18px;bottom:15px;
+  color:#d8ad61;font:500 35px Georgia,serif;
+}
+.blogCineAuthor__copy{padding:22px}
+.blogCineAuthor__copy small{color:#b98b45;font-size:6px;font-weight:800;letter-spacing:.14em}
+.blogCineAuthor__copy h3{margin:7px 0 4px;color:#fff;font:500 25px Georgia,serif}
+.blogCineAuthor__copy>strong{color:rgba(255,255,255,.42);font-size:8px;font-weight:600}
+.blogCineAuthor__copy p{
+  min-height:54px;margin:14px 0 20px;
+  color:rgba(255,255,255,.48);font-size:10px;line-height:1.7;
+}
+.blogCineAuthor__copy b{
+  display:flex;align-items:center;gap:9px;
+  color:#d8ae63;font-size:8px;letter-spacing:.10em;text-transform:uppercase;
+}
+.blogCineAuthor__copy i{font-style:normal;font-size:13px}
+.blogCineAuthors__all{
+  width:max-content;
+  margin:34px auto 0;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(213,170,88,.30);
+  border-radius:999px;
+  background:rgba(213,170,88,.06);
+  color:#d8ae63;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.11em;
+}
+
+@keyframes blogCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .blogCineHero__inner,
+  .blogCineFeatured__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:46px;
+    padding:90px 0;
+  }
+  .blogCineHero__rail{display:none}
+  .blogCineFeatured__glass{width:min(100%,540px)}
+  .blogCineArchive__intro{grid-template-columns:1fr}
+  .blogCineArchive__tools{flex-direction:column;align-items:stretch}
+  .blogCineCategories{justify-content:flex-start}
+  .blogCineGrid{grid-template-columns:1fr}
+  .blogCineAuthors__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .blogCineHero__inner,
+  .blogCineFeatured__inner,
+  .blogCineArchive__intro,
+  .blogCineArchive__tools,
+  .blogCineGrid,
+  .blogCineAuthors__head,
+  .blogCineAuthors__grid{
+    width:calc(100% - 30px);
+  }
+  .blogCineHero__copy h1{font-size:clamp(48px,15vw,72px)}
+  .blogCineFeatured__copy h2{font-size:clamp(38px,11vw,54px)}
+  .blogCineFeatured__glassImage{height:260px}
+  .blogCineArchive{padding:86px 0 94px}
+  .blogCineArchive__intro h2{font-size:clamp(38px,11vw,54px)}
+  .blogCineCard__image{height:280px}
+  .blogCineAuthors__grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .blogCineHero__bg>img,
+  .blogCineHero__eyebrow,
+  .blogCineHero__copy h1,
+  .blogCineHero__copy p,
+  .blogCineHero__cta,
+  .blogCineHero__rail,
+  .blogCineFeatured__bg>img,
+  .blogCineFeatured__number,
+  .blogCineFeatured__eyebrow,
+  .blogCineFeatured__copy h2,
+  .blogCineFeatured__copy>p,
+  .blogCineFeatured__meta,
+  .blogCineFeatured__cta,
+  .blogCineFeatured__glass,
+  .blogCineCard,
+  .blogCineHero__scroll span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP167 — BLOG ORİJİNAL İÇERİK AKIŞI + CINEMATIC UI
+   İçerik/yazar/admin/görsel yükleme mantığı değişmez.
+   ========================================================= */
+
+html{
+  scroll-behavior:smooth;
+}
+
+.blogOriginalCine{
+  position:relative;
+  padding:110px 0 120px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(249,244,235,.94),rgba(239,229,212,.97)),
+    url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=80") center/cover fixed;
+  color:#2b241d;
+}
+.blogOriginalCine:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.50'/%3E%3C/svg%3E");
+}
+.blogOriginalCine__intro{
+  position:relative;
+  z-index:2;
+  width:min(1240px,calc(100% - 72px));
+  margin:0 auto 48px;
+  display:grid;
+  grid-template-columns:.48fr 1.12fr .86fr;
+  gap:clamp(28px,5vw,68px);
+  align-items:end;
+}
+.blogOriginalCine__intro>span{
+  align-self:start;
+  color:#c99b4e;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+}
+.blogOriginalCine__intro h2{
+  margin:0;
+  color:#fff;
+  font:400 clamp(42px,4.9vw,72px)/1 Georgia,serif;
+  letter-spacing:-.038em;
+}
+.blogOriginalCine__intro h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.blogOriginalCine__intro p{
+  margin:0;
+  color:rgba(255,255,255,.53);
+  font-size:12px;
+  line-height:1.82;
+}
+.blogOriginalCine__workspace{
+  position:relative;
+  z-index:2;
+  width:min(1380px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 315px;
+  gap:26px;
+  align-items:start;
+}
+.blogOriginalCine__main{
+  min-width:0;
+}
+.blogOriginalCine__tools{
+  margin-bottom:22px;
+  padding:17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(18px);
+  box-shadow:0 18px 52px rgba(0,0,0,.18);
+}
+.blogOriginalCine__tools>label{
+  min-width:230px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background:rgba(0,0,0,.20);
+  color:#c4954a;
+}
+.blogOriginalCine__tools input{
+  width:100%;
+  padding:12px 0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font-size:10px;
+}
+.blogOriginalCine__tools input::placeholder{
+  color:rgba(255,255,255,.34);
+}
+.blogOriginalCine__categories{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:7px;
+}
+.blogOriginalCine__categories button{
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.50);
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+  transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease;
+}
+.blogOriginalCine__categories button:hover{
+  transform:translateY(-2px);
+}
+.blogOriginalCine__categories button:hover,
+.blogOriginalCine__categories button.is-active{
+  border-color:rgba(213,170,88,.34);
+  background:rgba(213,170,88,.12);
+  color:#dfb86b;
+}
+.blogOriginalCine__grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.blogOriginalCineCard{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(16px);
+  box-shadow:0 22px 64px rgba(0,0,0,.24);
+  transition:transform .4s cubic-bezier(.16,.8,.2,1),border-color .35s ease,box-shadow .35s ease;
+}
+.blogOriginalCineCard:hover{
+  transform:translateY(-7px);
+  border-color:rgba(213,170,88,.28);
+  box-shadow:0 35px 86px rgba(0,0,0,.38);
+}
+.blogOriginalCineCard.is-lead{
+  grid-column:span 2;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+}
+.blogOriginalCineCard__image{
+  position:relative;
+  min-height:310px;
+  display:block;
+  overflow:hidden;
+}
+.blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+  min-height:470px;
+}
+.blogOriginalCineCard__image>img{
+  width:100%;
+  height:100%;
+  position:absolute;
+  inset:0;
+  object-fit:cover;
+  filter:saturate(.76) brightness(.79);
+  transform:scale(1.035);
+  transition:transform .9s cubic-bezier(.18,.88,.2,1),filter .9s ease;
+}
+.blogOriginalCineCard:hover .blogOriginalCineCard__image>img{
+  transform:scale(1.09);
+  filter:saturate(.90) brightness(.86);
+}
+.blogOriginalCineCard__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(5,3,2,.04),rgba(5,3,2,.12) 48%,rgba(5,3,2,.82)),
+    linear-gradient(90deg,rgba(5,3,2,.15),transparent 55%);
+}
+.blogOriginalCineCard__index{
+  position:absolute;
+  z-index:2;
+  left:20px;
+  top:18px;
+  color:rgba(222,181,105,.86);
+  font:500 42px/.9 Georgia,serif;
+}
+.blogOriginalCineCard__category{
+  position:absolute;
+  z-index:2;
+  left:20px;
+  bottom:18px;
+  color:#deb568;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.blogOriginalCineCard__writerChip{
+  position:absolute;
+  z-index:3;
+  right:16px;
+  bottom:14px;
+  padding:7px 11px 7px 7px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  background:rgba(12,10,7,.72);
+  backdrop-filter:blur(14px);
+}
+.blogOriginalCineCard__writerChip img,
+.blogOriginalCineCard__writerChip>span{
+  width:29px;
+  height:29px;
+  border-radius:50%;
+  object-fit:cover;
+  display:grid;
+  place-items:center;
+  background:rgba(213,170,88,.15);
+  color:#dfb86b;
+}
+.blogOriginalCineCard__writerChip b{
+  color:#fff;
+  font-size:8px;
+}
+.blogOriginalCineCard__body{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+}
+.blogOriginalCineCard.is-lead .blogOriginalCineCard__body{
+  padding:38px 32px;
+  justify-content:center;
+}
+.blogOriginalCineCard__meta{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-bottom:14px;
+}
+.blogOriginalCineCard__meta time,
+.blogOriginalCineCard__meta small{
+  color:rgba(255,255,255,.38);
+  font-size:8px;
+}
+.blogOriginalCineCard__meta small{
+  padding-left:11px;
+  border-left:1px solid rgba(255,255,255,.10);
+}
+.blogOriginalCineCard__body h2{
+  margin:0 0 12px;
+}
+.blogOriginalCineCard__body h2 a{
+  color:#fff;
+  text-decoration:none;
+  font:500 clamp(25px,2.25vw,35px)/1.08 Georgia,serif;
+}
+.blogOriginalCineCard.is-lead .blogOriginalCineCard__body h2 a{
+  font-size:clamp(34px,3.3vw,52px);
+}
+.blogOriginalCineCard__body>p{
+  margin:0 0 22px;
+  color:rgba(255,255,255,.53);
+  font-size:11px;
+  line-height:1.74;
+}
+.blogOriginalCineCard__author,
+.blogOriginalCineCard__readOnly{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.09);
+}
+.blogOriginalCineCard__author{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.blogOriginalCineCard__avatar{
+  width:43px;
+  height:43px;
+  flex:0 0 auto;
+  overflow:hidden;
+  border:1px solid rgba(213,170,88,.30);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(213,170,88,.08);
+  color:#d8ad61;
+  text-decoration:none;
+}
+.blogOriginalCineCard__avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.blogOriginalCineCard__authorInfo{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.blogOriginalCineCard__authorInfo b{
+  color:#fff;
+  font-size:9px;
+}
+.blogOriginalCineCard__authorInfo small{
+  margin-top:3px;
+  color:rgba(255,255,255,.35);
+  font-size:7px;
+}
+.blogOriginalCineCard__readLink,
+.blogOriginalCineCard__readOnly a{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#d9af64;
+  text-decoration:none;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.09em;
+}
+.blogOriginalCineCard__readLink span,
+.blogOriginalCineCard__readOnly span{
+  font-size:13px;
+  transition:transform .25s ease;
+}
+.blogOriginalCineCard__readLink:hover span,
+.blogOriginalCineCard__readOnly a:hover span{
+  transform:translate(3px,-3px);
+}
+.blogOriginalCineCard__readOnly{
+  display:flex;
+  justify-content:flex-end;
+}
+.blogOriginalCine__more{
+  margin:34px auto 0;
+  padding:14px 27px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border:1px solid rgba(213,170,88,.30);
+  border-radius:999px;
+  background:rgba(213,170,88,.07);
+  color:#dbb267;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.10em;
+  cursor:pointer;
+  transition:background .25s ease,gap .25s ease;
+}
+.blogOriginalCine__more:hover{
+  background:rgba(213,170,88,.14);
+  gap:17px;
+}
+.blogOriginalCine__empty{
+  padding:60px 30px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  color:rgba(255,255,255,.45);
+}
+.blogOriginalCine__empty h3{
+  margin:14px 0 5px;
+  color:#fff;
+  font:500 24px Georgia,serif;
+}
+.blogOriginalCine__empty p{
+  margin:0;
+  font-size:9px;
+}
+
+/* sağ yazar paneli */
+.blogOriginalCineAuthors{
+  position:sticky;
+  top:92px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(18px);
+  box-shadow:0 22px 66px rgba(0,0,0,.22);
+}
+.blogOriginalCineAuthors__head{
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.blogOriginalCineAuthors__head>span{
+  color:#ba8c45;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.blogOriginalCineAuthors__head h2{
+  margin:7px 0 5px;
+  color:#fff;
+  font:500 27px Georgia,serif;
+}
+.blogOriginalCineAuthors__head p{
+  margin:0;
+  color:rgba(255,255,255,.40);
+  font-size:9px;
+  line-height:1.6;
+}
+.blogOriginalCineAuthorCard{
+  padding:16px 0;
+  display:grid;
+  grid-template-columns:76px minmax(0,1fr);
+  gap:12px;
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.blogOriginalCineAuthorCard__photo{
+  position:relative;
+  width:76px;
+  height:94px;
+  overflow:hidden;
+  border-radius:9px;
+}
+.blogOriginalCineAuthorCard__photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.78) brightness(.84);
+}
+.blogOriginalCineAuthorCard__photo>span{
+  position:absolute;
+  right:5px;
+  bottom:5px;
+  color:#e0b76a;
+  font:500 16px Georgia,serif;
+}
+.blogOriginalCineAuthorCard>div:last-child{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.blogOriginalCineAuthorCard strong{
+  color:#fff;
+  font:500 16px Georgia,serif;
+}
+.blogOriginalCineAuthorCard small{
+  margin-top:3px;
+  color:#c2944c;
+  font-size:7px;
+}
+.blogOriginalCineAuthorCard p{
+  margin:7px 0 8px;
+  color:rgba(255,255,255,.38);
+  font-size:8px;
+  line-height:1.5;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.blogOriginalCineAuthorCard b{
+  margin-top:auto;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  color:#d8ae63;
+  font-size:7px;
+  letter-spacing:.08em;
+}
+.blogOriginalCineAuthors__all{
+  margin-top:18px;
+  padding:11px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid rgba(213,170,88,.25);
+  border-radius:999px;
+  background:rgba(213,170,88,.06);
+  color:#d8ae63;
+  text-decoration:none;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.09em;
+}
+
+@media(max-width:1060px){
+  .blogOriginalCine__workspace{
+    grid-template-columns:1fr;
+  }
+  .blogOriginalCineAuthors{
+    position:relative;
+    top:auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0 18px;
+  }
+  .blogOriginalCineAuthors__head,
+  .blogOriginalCineAuthors__all{
+    grid-column:1/-1;
+  }
+}
+@media(max-width:850px){
+  .blogOriginalCine__intro{
+    grid-template-columns:1fr;
+    gap:17px;
+  }
+  .blogOriginalCine__tools{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .blogOriginalCine__categories{
+    justify-content:flex-start;
+  }
+  .blogOriginalCine__grid{
+    grid-template-columns:1fr;
+  }
+  .blogOriginalCineCard.is-lead{
+    grid-column:auto;
+    display:block;
+  }
+  .blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+    min-height:320px;
+  }
+}
+@media(max-width:620px){
+  .blogOriginalCine{
+    padding:84px 0 94px;
+  }
+  .blogOriginalCine__intro,
+  .blogOriginalCine__workspace{
+    width:calc(100% - 30px);
+  }
+  .blogOriginalCine__intro h2{
+    font-size:clamp(38px,11vw,54px);
+  }
+  .blogOriginalCineCard__image{
+    min-height:280px;
+  }
+  .blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+    min-height:300px;
+  }
+  .blogOriginalCineAuthors{
+    grid-template-columns:1fr;
+  }
+  .blogOriginalCineAuthors__head,
+  .blogOriginalCineAuthors__all{
+    grid-column:auto;
+  }
+}
+
+
+/* STEP168 — BLOG SOFT / AYDINLIK ARKA PLAN
+   Sadece blog içerik bölümünün renk atmosferi değiştirildi. */
+.blogOriginalCine:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,255,255,.64),transparent 32%),
+    linear-gradient(180deg,rgba(250,246,239,.10),rgba(237,226,207,.20));
+}
+.blogOriginalCine__intro>span{color:#9a6c2d}
+.blogOriginalCine__intro h2{color:#30271f}
+.blogOriginalCine__intro h2 strong{color:#a87932}
+.blogOriginalCine__intro p{color:rgba(48,39,31,.66)}
+
+.blogOriginalCine__tools,
+.blogOriginalCineAuthors{
+  border-color:rgba(92,68,40,.13);
+  background:rgba(255,252,246,.72);
+  box-shadow:0 22px 60px rgba(76,55,31,.10);
+}
+.blogOriginalCine__tools>label{
+  border-color:rgba(91,66,39,.14);
+  background:rgba(255,255,255,.60);
+  color:#9d7132;
+}
+.blogOriginalCine__tools input{color:#33291f}
+.blogOriginalCine__tools input::placeholder{color:rgba(51,41,31,.42)}
+.blogOriginalCine__categories button{
+  border-color:rgba(91,66,39,.12);
+  background:rgba(255,255,255,.48);
+  color:rgba(51,41,31,.60);
+}
+.blogOriginalCine__categories button:hover,
+.blogOriginalCine__categories button.is-active{
+  border-color:rgba(169,120,49,.30);
+  background:rgba(191,145,76,.13);
+  color:#8f6226;
+}
+
+/* Kartların sinematik koyu karakterini koruyup çevresini daha ferah bırak */
+.blogOriginalCineCard{
+  border-color:rgba(91,66,39,.12);
+  background:rgba(255,252,247,.78);
+  box-shadow:0 24px 68px rgba(73,52,29,.12);
+}
+.blogOriginalCineCard:hover{
+  border-color:rgba(173,126,56,.30);
+  box-shadow:0 34px 82px rgba(73,52,29,.18);
+}
+.blogOriginalCineCard__body h2 a{color:#30271f}
+.blogOriginalCineCard__body>p{color:rgba(48,39,31,.64)}
+.blogOriginalCineCard__meta time,
+.blogOriginalCineCard__meta small{color:rgba(48,39,31,.46)}
+.blogOriginalCineCard__meta small,
+.blogOriginalCineCard__author,
+.blogOriginalCineCard__readOnly{border-color:rgba(91,66,39,.10)}
+.blogOriginalCineCard__authorInfo b{color:#342a21}
+.blogOriginalCineCard__authorInfo small{color:rgba(48,39,31,.46)}
+.blogOriginalCineCard__readLink,
+.blogOriginalCineCard__readOnly a{color:#996a2c}
+
+.blogOriginalCineAuthors__head{border-color:rgba(91,66,39,.10)}
+.blogOriginalCineAuthors__head>span{color:#9b6d2e}
+.blogOriginalCineAuthors__head h2{color:#30271f}
+.blogOriginalCineAuthors__head p{color:rgba(48,39,31,.54)}
+.blogOriginalCineAuthorCard{border-color:rgba(91,66,39,.09)}
+.blogOriginalCineAuthorCard strong{color:#30271f}
+.blogOriginalCineAuthorCard small{color:#9b6d2e}
+.blogOriginalCineAuthorCard p{color:rgba(48,39,31,.52)}
+.blogOriginalCineAuthorCard b,
+.blogOriginalCineAuthors__all{color:#95672b}
+.blogOriginalCineAuthors__all{
+  border-color:rgba(169,120,49,.22);
+  background:rgba(191,145,76,.09);
+}
+.blogOriginalCine__more{
+  border-color:rgba(169,120,49,.25);
+  background:rgba(255,252,246,.64);
+  color:#95672b;
+}
+.blogOriginalCine__empty{
+  border-color:rgba(91,66,39,.10);
+  background:rgba(255,252,246,.65);
+  color:rgba(48,39,31,.52);
+}
+.blogOriginalCine__empty h3{color:#30271f}
+
+@media(max-width:900px){
+  .blogOriginalCine{
+    background:
+      linear-gradient(180deg,rgba(249,244,235,.95),rgba(239,229,212,.97)),
+      url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=78") center/cover;
+  }
+}
+
+
+/* =========================================================
+   STEP169 — İLETİŞİM SAYFASI / CINEMATIC
+   Ana sayfa + Hizmetler + Süreç tasarım dilinin devamı.
+   ========================================================= */
+
+.contactCinePage{
+  background:#090806;
+  color:#fff;
+}
+.contactCineHero,
+.contactCineChannel,
+.contactCineAppointment{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+}
+.contactCineHero{
+  display:flex;
+  align-items:center;
+  background:#0a0806;
+}
+.contactCineHero__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.contactCineHero__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.12);
+  filter:saturate(.68) contrast(1.03) brightness(.48);
+  transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease;
+}
+.contactCineHero.cin3d--visible .contactCineHero__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.80) contrast(1.01) brightness(.60);
+}
+.contactCineHero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.79) 42%,rgba(7,5,3,.22) 72%,rgba(7,5,3,.56) 100%),
+    radial-gradient(circle at 78% 34%,rgba(205,158,78,.18),transparent 34%),
+    linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 70%,rgba(0,0,0,.62));
+}
+.contactCineHero__grain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.055;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.contactCineHero__back{
+  position:absolute;
+  z-index:5;
+  top:34px;
+  left:clamp(20px,4vw,64px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  transition:color .25s ease,gap .25s ease;
+}
+.contactCineHero__back:hover{color:#d9ad61;gap:15px}
+.contactCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:110px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:clamp(60px,8vw,120px);
+  align-items:center;
+}
+.contactCineHero__copy{max-width:820px}
+.contactCineHero__eyebrow{
+  display:block;
+  margin-bottom:24px;
+  color:#d4a456;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.contactCineHero__copy h1{
+  margin:0 0 28px;
+  color:#fff;
+  font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 12px 58px rgba(0,0,0,.48);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(7px);
+  transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s;
+}
+.contactCineHero__copy h1 strong{
+  display:block;
+  color:#d3a64e;
+  font-weight:400;
+  font-style:italic;
+}
+.contactCineHero__copy p{
+  max-width:670px;
+  margin:0 0 36px;
+  color:rgba(255,249,232,.67);
+  font-size:clamp(13px,1.18vw,17px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .36s,transform .82s ease .36s;
+}
+.contactCineHero__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 28px;
+  border:1px solid rgba(213,170,88,.40);
+  border-radius:4px;
+  background:rgba(213,170,88,.08);
+  backdrop-filter:blur(12px);
+  color:#dfb86b;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .50s,transform .7s ease .50s,background .28s ease,gap .28s ease;
+}
+.contactCineHero__cta:hover{background:rgba(213,170,88,.16);gap:18px}
+.contactCineHero__rail{
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s;
+}
+.contactCineHero__rail>div{
+  min-height:120px;
+  padding:20px 0 20px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.contactCineHero__rail b{color:rgba(212,166,78,.90);font:500 36px Georgia,serif}
+.contactCineHero__rail span{color:rgba(255,255,255,.48);font-size:8px;font-weight:800;letter-spacing:.13em;line-height:1.55}
+.contactCineHero.cin3d--visible .contactCineHero__eyebrow,
+.contactCineHero.cin3d--visible .contactCineHero__copy h1,
+.contactCineHero.cin3d--visible .contactCineHero__copy p,
+.contactCineHero.cin3d--visible .contactCineHero__cta,
+.contactCineHero.cin3d--visible .contactCineHero__rail{
+  opacity:1;transform:none;filter:none;
+}
+.contactCineHero__scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.contactCineHero__scroll span{
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg,transparent,#d4a657);
+  animation:contactCineScroll 1.7s ease-in-out infinite;
+}
+.contactCineHero__scroll small{color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.20em}
+
+/* intro */
+.contactCineIntro{
+  position:relative;
+  overflow:hidden;
+  padding:110px 0 100px;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(191,144,69,.13),transparent 30%),
+    linear-gradient(180deg,#16120d,#0d0b08);
+}
+.contactCineIntro__inner{
+  width:min(1180px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.48fr 1.2fr .9fr;
+  gap:clamp(30px,5vw,70px);
+  align-items:end;
+}
+.contactCineIntro__inner>span{
+  align-self:start;
+  color:#c99b4e;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.contactCineIntro__inner h2{
+  margin:0;
+  color:#fff;
+  font:400 clamp(42px,4.7vw,70px)/1.02 Georgia,serif;
+  letter-spacing:-.035em;
+  opacity:0;
+  transform:translateY(28px);
+  filter:blur(5px);
+  transition:opacity .9s ease .18s,transform .9s cubic-bezier(.16,.88,.2,1) .18s,filter .9s ease .18s;
+}
+.contactCineIntro__inner h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.contactCineIntro__inner p{
+  margin:0;
+  color:rgba(255,249,232,.57);
+  font-size:13px;
+  line-height:1.85;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .30s,transform .8s ease .30s;
+}
+.contactCineIntro.cin3d--visible .contactCineIntro__inner>span,
+.contactCineIntro.cin3d--visible .contactCineIntro__inner h2,
+.contactCineIntro.cin3d--visible .contactCineIntro__inner p{
+  opacity:1;transform:none;filter:none;
+}
+
+/* channels */
+.contactCineChannels{
+  background:#090806;
+}
+.contactCineChannel{
+  display:flex;
+  align-items:center;
+  color:#fff;
+  text-decoration:none;
+}
+.contactCineChannel__bg{
+  position:absolute;
+  inset:-6%;
+  z-index:0;
+  overflow:hidden;
+}
+.contactCineChannel__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.66) brightness(.45);
+  transform:scale(1.11);
+  transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease;
+}
+.contactCineChannel.cin3d--visible .contactCineChannel__bg img{
+  transform:scale(1.02);
+  filter:saturate(.80) brightness(.58);
+}
+.contactCineChannel__bg div{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 42%,rgba(6,4,2,.18) 72%,rgba(6,4,2,.56) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.30),transparent 30%,transparent 70%,rgba(0,0,0,.64));
+}
+.contactCineChannel--reverse .contactCineChannel__bg div{
+  background:
+    linear-gradient(270deg,rgba(6,4,2,.94) 0%,rgba(6,4,2,.76) 42%,rgba(6,4,2,.18) 72%,rgba(6,4,2,.56) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.30),transparent 30%,transparent 70%,rgba(0,0,0,.64));
+}
+.contactCineChannel__inner{
+  position:relative;
+  z-index:2;
+  width:min(1280px,calc(100% - 72px));
+  margin:0 auto;
+  padding:100px 0;
+  max-width:1280px;
+}
+.contactCineChannel--reverse .contactCineChannel__inner{
+  text-align:right;
+}
+.contactCineChannel__no{
+  display:block;
+  margin-bottom:-2px;
+  color:rgba(214,169,84,.17);
+  font:700 clamp(80px,10vw,142px)/.78 Georgia,serif;
+  letter-spacing:-.04em;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:opacity .8s ease .05s,transform .8s cubic-bezier(.16,.88,.2,1) .05s;
+}
+.contactCineChannel--reverse .contactCineChannel__no{
+  transform:translateX(30px);
+}
+.contactCineChannel__icon{
+  width:58px;
+  height:58px;
+  margin-bottom:18px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(213,170,88,.32);
+  border-radius:50%;
+  background:rgba(213,170,88,.08);
+  color:#d8ad61;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .15s,transform .7s ease .15s;
+}
+.contactCineChannel--reverse .contactCineChannel__icon{
+  margin-left:auto;
+}
+.contactCineChannel__instagram svg{
+  width:26px;
+  height:26px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+}
+.contactCineChannel__eyebrow{
+  display:block;
+  margin-bottom:17px;
+  color:#d1a052;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.27em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .22s,transform .7s ease .22s;
+}
+.contactCineChannel__inner h2{
+  max-width:760px;
+  margin:0 0 22px;
+  color:#fff;
+  font:400 clamp(46px,5.4vw,82px)/.98 Georgia,serif;
+  letter-spacing:-.04em;
+  text-shadow:0 10px 48px rgba(0,0,0,.45);
+  opacity:0;
+  transform:translateY(30px);
+  filter:blur(6px);
+  transition:opacity .9s ease .30s,transform .9s cubic-bezier(.16,.88,.2,1) .30s,filter .9s ease .30s;
+}
+.contactCineChannel--reverse .contactCineChannel__inner h2{
+  margin-left:auto;
+}
+.contactCineChannel__inner p{
+  max-width:620px;
+  margin:0 0 24px;
+  color:rgba(255,249,232,.64);
+  font-size:clamp(13px,1.1vw,16px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .44s,transform .8s ease .44s;
+}
+.contactCineChannel--reverse .contactCineChannel__inner p{
+  margin-left:auto;
+}
+.contactCineChannel__inner>strong{
+  display:block;
+  margin-bottom:22px;
+  color:#fff;
+  font:500 clamp(19px,2vw,28px) Georgia,serif;
+  word-break:break-word;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .54s,transform .7s ease .54s;
+}
+.contactCineChannel__inner>b{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#ddb467;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .62s,transform .7s ease .62s,gap .25s ease;
+}
+.contactCineChannel:hover .contactCineChannel__inner>b{
+  gap:17px;
+}
+.contactCineChannel__inner>b span{
+  font-size:14px;
+}
+.contactCineChannel.cin3d--visible .contactCineChannel__no,
+.contactCineChannel.cin3d--visible .contactCineChannel__icon,
+.contactCineChannel.cin3d--visible .contactCineChannel__eyebrow,
+.contactCineChannel.cin3d--visible .contactCineChannel__inner h2,
+.contactCineChannel.cin3d--visible .contactCineChannel__inner p,
+.contactCineChannel.cin3d--visible .contactCineChannel__inner>strong,
+.contactCineChannel.cin3d--visible .contactCineChannel__inner>b{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+/* appointment */
+.contactCineAppointment{
+  display:grid;
+  place-items:center;
+}
+.contactCineAppointment__bg{
+  position:absolute;
+  inset:0;
+}
+.contactCineAppointment__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.60) brightness(.38);
+  transform:scale(1.06);
+}
+.contactCineAppointment__bg div{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(199,151,72,.13),transparent 32%),
+    linear-gradient(180deg,rgba(7,5,3,.72),rgba(7,5,3,.93));
+}
+.contactCineAppointment__inner{
+  position:relative;
+  z-index:2;
+  width:min(780px,calc(100% - 38px));
+  text-align:center;
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .9s ease .15s,transform .9s cubic-bezier(.16,.88,.2,1) .15s;
+}
+.contactCineAppointment.cin3d--visible .contactCineAppointment__inner{
+  opacity:1;
+  transform:none;
+}
+.contactCineAppointment__inner>span{
+  color:#c99b4d;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.24em;
+}
+.contactCineAppointment__inner h2{
+  margin:16px 0 20px;
+  color:#fff;
+  font:400 clamp(42px,5vw,70px)/1 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.contactCineAppointment__inner h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.contactCineAppointment__inner p{
+  margin:0 auto 30px;
+  max-width:650px;
+  color:rgba(255,255,255,.57);
+  font-size:13px;
+  line-height:1.85;
+}
+.contactCineAppointment__inner a{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 28px;
+  border:1px solid rgba(213,170,88,.34);
+  border-radius:4px;
+  background:rgba(213,170,88,.07);
+  color:#deb568;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+  transition:background .28s ease,gap .28s ease;
+}
+.contactCineAppointment__inner a:hover{
+  background:rgba(213,170,88,.15);
+  gap:18px;
+}
+
+@keyframes contactCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .contactCineHero__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:46px;
+    padding:90px 0;
+  }
+  .contactCineHero__rail{
+    display:none;
+  }
+  .contactCineIntro__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .contactCineChannel__inner{
+    width:min(100% - 36px,820px);
+  }
+}
+@media(max-width:620px){
+  .contactCineHero__inner,
+  .contactCineIntro__inner,
+  .contactCineChannel__inner{
+    width:calc(100% - 30px);
+  }
+  .contactCineHero__copy h1{
+    font-size:clamp(48px,15vw,72px);
+  }
+  .contactCineChannel__inner h2,
+  .contactCineAppointment__inner h2{
+    font-size:clamp(38px,11vw,54px);
+  }
+  .contactCineChannel--reverse .contactCineChannel__inner{
+    text-align:left;
+  }
+  .contactCineChannel--reverse .contactCineChannel__icon,
+  .contactCineChannel--reverse .contactCineChannel__inner h2,
+  .contactCineChannel--reverse .contactCineChannel__inner p{
+    margin-left:0;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .contactCineHero__bg>img,
+  .contactCineHero__eyebrow,
+  .contactCineHero__copy h1,
+  .contactCineHero__copy p,
+  .contactCineHero__cta,
+  .contactCineHero__rail,
+  .contactCineIntro__inner>span,
+  .contactCineIntro__inner h2,
+  .contactCineIntro__inner p,
+  .contactCineChannel__bg img,
+  .contactCineChannel__no,
+  .contactCineChannel__icon,
+  .contactCineChannel__eyebrow,
+  .contactCineChannel__inner h2,
+  .contactCineChannel__inner p,
+  .contactCineChannel__inner>strong,
+  .contactCineChannel__inner>b,
+  .contactCineAppointment__inner,
+  .contactCineHero__scroll span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* STEP170 — PODCAST & VİDEO CINEMATIC */
+.mediaCinePage{background:#090806;color:#fff}
+.mediaCineHero,.mediaCineOutro{position:relative;width:100%;min-height:100svh;overflow:hidden;isolation:isolate}
+.mediaCineHero{display:flex;align-items:center;background:#0a0806}
+.mediaCineHero__bg{position:absolute;inset:-7%;z-index:0;overflow:hidden;will-change:transform}
+.mediaCineHero__bg>img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);filter:saturate(.68) contrast(1.03) brightness(.47);transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease}
+.mediaCineHero.cin3d--visible .mediaCineHero__bg>img{transform:scale(1.02);filter:saturate(.81) contrast(1.01) brightness(.59)}
+.mediaCineHero__veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.79) 42%,rgba(7,5,3,.22) 72%,rgba(7,5,3,.56) 100%),radial-gradient(circle at 78% 34%,rgba(205,158,78,.18),transparent 34%),linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 70%,rgba(0,0,0,.62))}
+.mediaCineHero__grain{position:absolute;inset:0;pointer-events:none;opacity:.055;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+.mediaCineHero__back{position:absolute;z-index:5;top:34px;left:clamp(20px,4vw,64px);display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.62);text-decoration:none;font-size:9px;font-weight:800;letter-spacing:.12em}
+.mediaCineHero__inner{position:relative;z-index:2;width:min(1400px,calc(100% - 72px));margin:0 auto;padding:110px 0 90px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:clamp(60px,8vw,120px);align-items:center}
+.mediaCineHero__copy{max-width:840px}
+.mediaCineHero__eyebrow{display:block;margin-bottom:24px;color:#d4a456;font-size:9px;font-weight:800;letter-spacing:.30em;opacity:0;transform:translateY(12px);transition:opacity .7s ease .08s,transform .7s ease .08s}
+.mediaCineHero__copy h1{margin:0 0 28px;color:#fff;font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;letter-spacing:-.045em;text-shadow:0 12px 58px rgba(0,0,0,.48);opacity:0;transform:translateY(34px);filter:blur(7px);transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s}
+.mediaCineHero__copy h1 strong{display:block;color:#d3a64e;font-weight:400;font-style:italic}
+.mediaCineHero__copy p{max-width:690px;margin:0;color:rgba(255,249,232,.67);font-size:clamp(13px,1.18vw,17px);line-height:1.88;opacity:0;transform:translateY(18px);transition:opacity .82s ease .36s,transform .82s ease .36s}
+.mediaCineHero__rail{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.13);opacity:0;transform:translateX(30px);transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s}
+.mediaCineHero__rail>div{min-height:120px;padding:20px 0 20px 28px;display:flex;align-items:center;gap:18px;border-bottom:1px solid rgba(255,255,255,.10)}
+.mediaCineHero__rail b{color:rgba(212,166,78,.90);font:500 36px Georgia,serif}
+.mediaCineHero__rail span{color:rgba(255,255,255,.48);font-size:8px;font-weight:800;letter-spacing:.13em;line-height:1.55}
+.mediaCineHero.cin3d--visible .mediaCineHero__eyebrow,.mediaCineHero.cin3d--visible .mediaCineHero__copy h1,.mediaCineHero.cin3d--visible .mediaCineHero__copy p,.mediaCineHero.cin3d--visible .mediaCineHero__rail{opacity:1;transform:none;filter:none}
+.mediaCineHero__scroll{position:absolute;z-index:4;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px}
+.mediaCineHero__scroll span{width:1px;height:34px;background:linear-gradient(180deg,transparent,#d4a657);animation:mediaCineScroll 1.7s ease-in-out infinite}
+.mediaCineHero__scroll small{color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.20em}
+
+.mediaCineIntro{padding:108px 0 34px;background:radial-gradient(circle at 84% 20%,rgba(191,144,69,.13),transparent 30%),linear-gradient(180deg,#16120d,#0d0b08)}
+.mediaCineIntro__inner{width:min(1180px,calc(100% - 72px));margin:0 auto 34px;display:grid;grid-template-columns:.48fr 1.2fr .9fr;gap:clamp(30px,5vw,70px);align-items:end}
+.mediaCineIntro__inner>span{align-self:start;color:#c99b4e;font-size:9px;font-weight:800;letter-spacing:.25em}
+.mediaCineIntro__inner h2{margin:0;color:#fff;font:400 clamp(42px,4.7vw,70px)/1.02 Georgia,serif;letter-spacing:-.035em}
+.mediaCineIntro__inner h2 strong{display:block;color:#d4a84b;font-weight:400;font-style:italic}
+.mediaCineIntro__inner p{margin:0;color:rgba(255,249,232,.57);font-size:13px;line-height:1.85}
+.mediaCineTabs{width:min(1180px,calc(100% - 72px));margin:0 auto;padding-bottom:34px;display:flex;gap:8px;flex-wrap:wrap}
+.mediaCineTabs button{padding:11px 16px;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.10);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.50);font-size:8px;font-weight:800;letter-spacing:.09em;cursor:pointer}
+.mediaCineTabs button.is-active,.mediaCineTabs button:hover{border-color:rgba(213,170,88,.30);background:rgba(213,170,88,.10);color:#dcb466}
+
+.mediaCineLoading,.mediaCineLibrary{padding:58px 0 110px;background:radial-gradient(circle at 12% 14%,rgba(195,146,70,.10),transparent 26%),linear-gradient(180deg,#0d0b08,#090806)}
+.mediaCineLoading>div,.mediaCineEmpty{width:min(1180px,calc(100% - 72px));margin:0 auto;padding:60px 30px;text-align:center;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.45)}
+.mediaCineLibrary__head{width:min(1240px,calc(100% - 72px));margin:0 auto 30px;display:flex;justify-content:space-between;align-items:end;gap:24px}
+.mediaCineLibrary__head span{color:#c99b4e;font-size:8px;font-weight:800;letter-spacing:.22em}
+.mediaCineLibrary__head h2{margin:8px 0 0;color:#fff;font:400 clamp(38px,4vw,58px)/1 Georgia,serif}
+.mediaCineLibrary__head>a{display:flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid rgba(213,170,88,.26);border-radius:999px;background:rgba(213,170,88,.06);color:#d8ae63;text-decoration:none;font-size:8px;font-weight:800}
+
+.mediaCineVideoGrid{width:min(1240px,calc(100% - 72px));margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.mediaCineVideoCard{overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.045);box-shadow:0 22px 66px rgba(0,0,0,.25);cursor:pointer;opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,.88,.2,1),border-color .3s ease,box-shadow .3s ease}
+.mediaCineVideoCard.cin3d--visible{opacity:1;transform:none}
+.mediaCineVideoCard:hover{transform:translateY(-7px);border-color:rgba(213,170,88,.28);box-shadow:0 34px 84px rgba(0,0,0,.38)}
+.mediaCineVideoCard.is-featured{grid-column:span 2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)}
+.mediaCineVideoCard__visual{position:relative;min-height:330px;overflow:hidden}
+.mediaCineVideoCard.is-featured .mediaCineVideoCard__visual{min-height:470px}
+.mediaCineVideoCard__visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.76) brightness(.79);transform:scale(1.035);transition:transform .9s cubic-bezier(.18,.88,.2,1),filter .9s ease}
+.mediaCineVideoCard:hover .mediaCineVideoCard__visual>img{transform:scale(1.09);filter:saturate(.90) brightness(.86)}
+.mediaCineVideoCard__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,3,2,.03),rgba(5,3,2,.12) 48%,rgba(5,3,2,.82))}
+.mediaCineVideoCard__index{position:absolute;z-index:2;left:20px;top:18px;color:rgba(222,181,105,.86);font:500 42px/.9 Georgia,serif}
+.mediaCineVideoCard__play{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:70px;height:70px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(13,10,7,.48);backdrop-filter:blur(12px);color:#e0b86a}
+.mediaCineVideoCard__play span{font-size:21px;margin-left:3px}
+.mediaCineVideoCard__visual>small{position:absolute;z-index:2;right:18px;bottom:16px;padding:7px 9px;border-radius:999px;background:rgba(8,6,4,.70);color:#fff;font-size:8px}
+.mediaCineVideoCard__body{padding:24px;display:flex;flex-direction:column}
+.mediaCineVideoCard.is-featured .mediaCineVideoCard__body{padding:38px 32px;justify-content:center}
+.mediaCineVideoCard__body>span{color:#c99b4e;font-size:7px;font-weight:800;letter-spacing:.15em}
+.mediaCineVideoCard__body h3{margin:10px 0 12px;color:#fff;font:500 clamp(25px,2.3vw,35px)/1.08 Georgia,serif}
+.mediaCineVideoCard.is-featured .mediaCineVideoCard__body h3{font-size:clamp(34px,3.3vw,52px)}
+.mediaCineVideoCard__body p{margin:0 0 22px;color:rgba(255,255,255,.53);font-size:11px;line-height:1.74}
+.mediaCineVideoCard__body b{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);display:flex;align-items:center;gap:9px;color:#d9af64;font-size:8px;font-weight:800;letter-spacing:.09em}
+.mediaCineVideoCard__body i{font-style:normal;font-size:13px}
+
+.mediaCinePodcastGrid{width:min(1240px,calc(100% - 72px));margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.mediaCinePodcastCard{display:grid;grid-template-columns:220px minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.045);box-shadow:0 22px 66px rgba(0,0,0,.25);opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,.88,.2,1),border-color .3s ease}
+.mediaCinePodcastCard.cin3d--visible{opacity:1;transform:none}
+.mediaCinePodcastCard:hover{transform:translateY(-6px);border-color:rgba(213,170,88,.28)}
+.mediaCinePodcastCard__art{position:relative;min-height:270px;overflow:hidden}
+.mediaCinePodcastCard__art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.68) brightness(.62);transform:scale(1.06)}
+.mediaCinePodcastCard__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,4,2,.18),rgba(6,4,2,.76))}
+.mediaCinePodcastCard__art>span{position:absolute;z-index:2;left:16px;top:14px;color:#deb568;font:500 28px Georgia,serif}
+.mediaCinePodcastCard__disc{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(9,7,5,.50);color:#d8ae63;backdrop-filter:blur(12px);box-shadow:inset 0 0 0 12px rgba(255,255,255,.025)}
+.mediaCinePodcastCard__body{padding:24px;display:flex;flex-direction:column}
+.mediaCinePodcastCard__body>small{color:#c99b4e;font-size:7px;font-weight:800;letter-spacing:.15em}
+.mediaCinePodcastCard__body h3{margin:9px 0 12px;color:#fff;font:500 27px/1.1 Georgia,serif}
+.mediaCinePodcastCard__body p{margin:0 0 20px;color:rgba(255,255,255,.52);font-size:10px;line-height:1.7}
+.mediaCinePodcastCard__body>div{margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mediaCinePodcastCard__body strong{color:rgba(255,255,255,.42);font-size:8px}
+.mediaCinePodcastCard__body button{border:0;background:transparent;color:#d8ae63;font-size:8px;font-weight:800;cursor:pointer}
+.mediaCinePodcastCard__body button span{font-size:12px;margin-left:5px}
+
+.mediaCineOutro{display:grid;place-items:center}
+.mediaCineOutro__bg{position:absolute;inset:0}
+.mediaCineOutro__bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.58) brightness(.36);transform:scale(1.06)}
+.mediaCineOutro__bg div{position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(199,151,72,.13),transparent 32%),linear-gradient(180deg,rgba(7,5,3,.72),rgba(7,5,3,.93))}
+.mediaCineOutro__inner{position:relative;z-index:2;width:min(780px,calc(100% - 38px));text-align:center;opacity:0;transform:translateY(28px);transition:opacity .9s ease .15s,transform .9s cubic-bezier(.16,.88,.2,1) .15s}
+.mediaCineOutro.cin3d--visible .mediaCineOutro__inner{opacity:1;transform:none}
+.mediaCineOutro__inner>span{color:#c99b4d;font-size:8px;font-weight:800;letter-spacing:.24em}
+.mediaCineOutro__inner h2{margin:16px 0 20px;color:#fff;font:400 clamp(42px,5vw,70px)/1 Georgia,serif;letter-spacing:-.035em}
+.mediaCineOutro__inner h2 strong{display:block;color:#d4a84b;font-weight:400;font-style:italic}
+.mediaCineOutro__inner p{margin:0 auto 30px;max-width:650px;color:rgba(255,255,255,.57);font-size:13px;line-height:1.85}
+.mediaCineOutro__actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.mediaCineOutro__actions a{display:flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(213,170,88,.30);border-radius:999px;background:rgba(213,170,88,.07);color:#deb568;text-decoration:none;font-size:8px;font-weight:800}
+
+@keyframes mediaCineScroll{0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+@media(max-width:980px){
+  .mediaCineHero__inner{width:min(100% - 36px,820px);grid-template-columns:1fr;gap:46px;padding:90px 0}
+  .mediaCineHero__rail{display:none}
+  .mediaCineIntro__inner{width:min(100% - 36px,820px);grid-template-columns:1fr;gap:18px}
+  .mediaCineTabs{width:min(100% - 36px,820px)}
+  .mediaCineVideoGrid,.mediaCinePodcastGrid{grid-template-columns:1fr}
+  .mediaCineVideoCard.is-featured{grid-column:auto;display:block}
+}
+@media(max-width:620px){
+  .mediaCineHero__inner,.mediaCineIntro__inner,.mediaCineTabs,.mediaCineVideoGrid,.mediaCinePodcastGrid,.mediaCineLibrary__head{width:calc(100% - 30px)}
+  .mediaCineHero__copy h1{font-size:clamp(48px,15vw,72px)}
+  .mediaCineVideoCard__visual,.mediaCineVideoCard.is-featured .mediaCineVideoCard__visual{min-height:280px}
+  .mediaCinePodcastCard{grid-template-columns:1fr}
+  .mediaCinePodcastCard__art{min-height:230px}
+  .mediaCineLibrary__head{flex-direction:column;align-items:flex-start}
+}
+
+
+/* =========================================================
+   STEP171 — MEDIA ASYNC CONTENT VISIBILITY FIX
+   Supabase içerikleri sonradan geldiği için observer yerine
+   kartlar doğrudan görünür + giriş animasyonlu render edilir.
+   ========================================================= */
+
+.mediaCineVideoCard,
+.mediaCinePodcastCard{
+  opacity:1!important;
+  transform:none!important;
+}
+
+.mediaCineVideoCard{
+  animation:mediaLoadedCardIn .78s cubic-bezier(.16,.88,.2,1) both;
+}
+.mediaCineVideoCard:nth-child(2){animation-delay:.08s}
+.mediaCineVideoCard:nth-child(3){animation-delay:.14s}
+.mediaCineVideoCard:nth-child(4){animation-delay:.20s}
+.mediaCineVideoCard:nth-child(5){animation-delay:.26s}
+.mediaCineVideoCard:nth-child(6){animation-delay:.32s}
+
+.mediaCinePodcastCard{
+  animation:mediaLoadedPodcastIn .78s cubic-bezier(.16,.88,.2,1) both;
+}
+.mediaCinePodcastCard:nth-child(2){animation-delay:.08s}
+.mediaCinePodcastCard:nth-child(3){animation-delay:.14s}
+.mediaCinePodcastCard:nth-child(4){animation-delay:.20s}
+.mediaCinePodcastCard:nth-child(5){animation-delay:.26s}
+.mediaCinePodcastCard:nth-child(6){animation-delay:.32s}
+
+@keyframes mediaLoadedCardIn{
+  from{opacity:0;transform:translateY(28px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes mediaLoadedPodcastIn{
+  from{opacity:0;transform:translateY(24px) scale(.988)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.mediaCineVideoCard:hover{
+  transform:translateY(-7px)!important;
+}
+.mediaCinePodcastCard:hover{
+  transform:translateY(-6px)!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .mediaCineVideoCard,
+  .mediaCinePodcastCard{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP172 — RANDEVU / FULL CINEMATIC
+   Supabase kayıt ve form mantığı korunur.
+   ========================================================= */
+
+.aptCinePage{
+  background:#0a0806;
+  color:#fff;
+}
+.aptCineHero{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.aptCineHero__bg{
+  position:absolute;
+  inset:-7%;
+  z-index:0;
+  overflow:hidden;
+  will-change:transform;
+}
+.aptCineHero__bg>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.12);
+  filter:saturate(.68) contrast(1.03) brightness(.48);
+  transition:transform 1.9s cubic-bezier(.16,.82,.2,1),filter 1.9s ease;
+}
+.aptCineHero.cin3d--visible .aptCineHero__bg>img{
+  transform:scale(1.02);
+  filter:saturate(.80) contrast(1.01) brightness(.60);
+}
+.aptCineHero__veil{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,5,3,.95) 0%,rgba(7,5,3,.79) 42%,rgba(7,5,3,.23) 72%,rgba(7,5,3,.56) 100%),
+    radial-gradient(circle at 78% 34%,rgba(205,158,78,.18),transparent 34%),
+    linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 70%,rgba(0,0,0,.62));
+}
+.aptCineHero__grain{
+  position:absolute;
+  inset:0;
+  opacity:.055;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.aptCineHero__back{
+  position:absolute;
+  z-index:5;
+  top:34px;
+  left:clamp(20px,4vw,64px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.aptCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1400px,calc(100% - 72px));
+  margin:0 auto;
+  padding:110px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:clamp(60px,8vw,120px);
+  align-items:center;
+}
+.aptCineHero__copy{
+  max-width:840px;
+}
+.aptCineHero__eyebrow{
+  display:block;
+  margin-bottom:24px;
+  color:#d4a456;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.30em;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .7s ease .08s,transform .7s ease .08s;
+}
+.aptCineHero__copy h1{
+  margin:0 0 28px;
+  color:#fff;
+  font:400 clamp(54px,7vw,104px)/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 12px 58px rgba(0,0,0,.48);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(7px);
+  transition:opacity .95s ease .18s,transform .95s cubic-bezier(.16,.88,.2,1) .18s,filter .95s ease .18s;
+}
+.aptCineHero__copy h1 strong{
+  display:block;
+  color:#d3a64e;
+  font-weight:400;
+  font-style:italic;
+}
+.aptCineHero__copy>p{
+  max-width:690px;
+  margin:0 0 34px;
+  color:rgba(255,249,232,.67);
+  font-size:clamp(13px,1.18vw,17px);
+  line-height:1.88;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .82s ease .36s,transform .82s ease .36s;
+}
+.aptCineHero__trust{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .8s ease .48s,transform .8s ease .48s;
+}
+.aptCineHero__trust>div{
+  min-width:210px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:13px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(14px);
+  color:#d7ab5f;
+}
+.aptCineHero__trust span{
+  display:flex;
+  flex-direction:column;
+}
+.aptCineHero__trust strong{
+  color:#fff;
+  font-size:9px;
+}
+.aptCineHero__trust small{
+  margin-top:3px;
+  color:rgba(255,255,255,.40);
+  font-size:7px;
+}
+.aptCineHero__rail{
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .9s ease .40s,transform .9s cubic-bezier(.16,.88,.2,1) .40s;
+}
+.aptCineHero__rail>div{
+  min-height:120px;
+  padding:20px 0 20px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.aptCineHero__rail b{
+  color:rgba(212,166,78,.90);
+  font:500 36px Georgia,serif;
+}
+.aptCineHero__rail span{
+  color:rgba(255,255,255,.48);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.13em;
+  line-height:1.55;
+}
+.aptCineHero.cin3d--visible .aptCineHero__eyebrow,
+.aptCineHero.cin3d--visible .aptCineHero__copy h1,
+.aptCineHero.cin3d--visible .aptCineHero__copy>p,
+.aptCineHero.cin3d--visible .aptCineHero__trust,
+.aptCineHero.cin3d--visible .aptCineHero__rail{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.aptCineHero__scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.aptCineHero__scroll span{
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg,transparent,#d4a657);
+  animation:aptCineScroll 1.7s ease-in-out infinite;
+}
+.aptCineHero__scroll small{
+  color:rgba(255,255,255,.36);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.20em;
+}
+
+/* intro */
+.aptCineIntro{
+  padding:106px 0 74px;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(191,144,69,.13),transparent 30%),
+    linear-gradient(180deg,#16120d,#0d0b08);
+}
+.aptCineIntro__inner{
+  width:min(1180px,calc(100% - 72px));
+  margin:0 auto 42px;
+  display:grid;
+  grid-template-columns:.48fr 1.2fr .9fr;
+  gap:clamp(30px,5vw,70px);
+  align-items:end;
+}
+.aptCineIntro__inner>span{
+  align-self:start;
+  color:#c99b4e;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+}
+.aptCineIntro__inner h2{
+  margin:0;
+  color:#fff;
+  font:400 clamp(42px,4.7vw,70px)/1.02 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.aptCineIntro__inner h2 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.aptCineIntro__inner p{
+  margin:0;
+  color:rgba(255,249,232,.57);
+  font-size:13px;
+  line-height:1.85;
+}
+.aptCineIntro__steps{
+  width:min(1180px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.aptCineIntro__steps article{
+  padding:24px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+}
+.aptCineIntro__steps article>span{
+  color:rgba(212,167,84,.34);
+  font:500 28px Georgia,serif;
+}
+.aptCineIntro__steps h3{
+  margin:14px 0 7px;
+  color:#fff;
+  font:500 20px Georgia,serif;
+}
+.aptCineIntro__steps p{
+  margin:0;
+  color:rgba(255,255,255,.45);
+  font-size:9px;
+  line-height:1.65;
+}
+
+/* form area */
+.aptCineForm{
+  position:relative;
+  padding:110px 0 130px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.aptCineForm__bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.aptCineForm__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.55) brightness(.42);
+  transform:scale(1.03);
+}
+.aptCineForm__bg div{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(245,239,229,.94),rgba(236,226,210,.97)),
+    radial-gradient(circle at 82% 18%,rgba(194,147,73,.15),transparent 26%);
+}
+.aptCineForm__shell{
+  position:relative;
+  z-index:2;
+  width:min(1320px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  gap:22px;
+  align-items:start;
+}
+
+/* progress */
+.aptCineProgress{
+  position:sticky;
+  top:90px;
+  padding:24px;
+  border:1px solid rgba(94,70,42,.13);
+  border-radius:18px;
+  background:rgba(255,252,246,.80);
+  backdrop-filter:blur(18px);
+  box-shadow:0 26px 70px rgba(70,50,28,.12);
+}
+.aptCineProgress>span{
+  display:block;
+  margin-bottom:18px;
+  color:#996a2d;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.aptCineProgress>button{
+  width:100%;
+  padding:16px 0;
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  text-align:left;
+  border:0;
+  border-top:1px solid rgba(89,66,39,.09);
+  background:transparent;
+  cursor:pointer;
+  color:#342a21;
+}
+.aptCineProgress>button b{
+  width:34px;
+  height:34px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(153,106,45,.18);
+  border-radius:50%;
+  color:#9a6a2d;
+  font:500 11px Georgia,serif;
+}
+.aptCineProgress>button span{
+  display:flex;
+  flex-direction:column;
+}
+.aptCineProgress>button strong{
+  font-size:10px;
+}
+.aptCineProgress>button small{
+  margin-top:4px;
+  color:rgba(52,42,33,.48);
+  font-size:7px;
+  line-height:1.45;
+}
+.aptCineProgress>button.is-current b,
+.aptCineProgress>button.is-done b{
+  background:#a97836;
+  border-color:#a97836;
+  color:#fff;
+}
+.aptCineProgress__note{
+  margin-top:18px;
+  padding:14px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  border-radius:12px;
+  background:rgba(163,116,52,.08);
+  color:#986b30;
+}
+.aptCineProgress__note p{
+  margin:0;
+  color:rgba(52,42,33,.56);
+  font-size:8px;
+  line-height:1.55;
+}
+
+/* form card */
+.aptCineCard{
+  min-width:0;
+  padding:clamp(28px,4vw,50px);
+  border:1px solid rgba(94,70,42,.13);
+  border-radius:20px;
+  background:rgba(255,253,249,.88);
+  backdrop-filter:blur(20px);
+  box-shadow:0 32px 90px rgba(70,50,28,.13);
+  color:#33291f;
+}
+.aptCineStep header{
+  margin-bottom:30px;
+}
+.aptCineStep header>span{
+  color:#9b6b2e;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.aptCineStep header h2{
+  margin:10px 0 10px;
+  color:#30271f;
+  font:500 clamp(32px,3.4vw,48px)/1.04 Georgia,serif;
+  letter-spacing:-.025em;
+}
+.aptCineStep header p{
+  margin:0;
+  color:rgba(48,39,31,.56);
+  font-size:10px;
+  line-height:1.65;
+}
+
+/* services */
+.aptCineServices{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.aptCineServices>button{
+  position:relative;
+  min-height:190px;
+  padding:20px;
+  text-align:left;
+  border:1px solid rgba(89,66,39,.12);
+  border-radius:15px;
+  background:rgba(255,255,255,.56);
+  cursor:pointer;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+}
+.aptCineServices>button:hover{
+  transform:translateY(-4px);
+  border-color:rgba(164,117,50,.28);
+  box-shadow:0 18px 40px rgba(79,55,30,.09);
+}
+.aptCineServices>button.is-selected{
+  border-color:rgba(164,117,50,.42);
+  background:rgba(192,148,82,.11);
+}
+.aptCineServices__no{
+  position:absolute;
+  right:16px;
+  top:15px;
+  color:rgba(154,106,45,.28);
+  font:500 25px Georgia,serif;
+}
+.aptCineServices__icon{
+  width:44px;
+  height:44px;
+  margin-bottom:20px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(154,106,45,.19);
+  border-radius:50%;
+  color:#98692c;
+  background:rgba(172,125,59,.07);
+}
+.aptCineServices>button>strong{
+  display:block;
+  color:#30271f;
+  font:500 19px Georgia,serif;
+}
+.aptCineServices>button>p{
+  margin:8px 0 0;
+  max-width:90%;
+  color:rgba(48,39,31,.52);
+  font-size:8px;
+  line-height:1.55;
+}
+.aptCineServices>button>b{
+  position:absolute;
+  right:17px;
+  bottom:16px;
+  color:#9c6b2d;
+  font-size:13px;
+}
+
+/* format */
+.aptCineFormat{
+  margin-top:28px;
+  padding-top:24px;
+  border-top:1px solid rgba(89,66,39,.10);
+}
+.aptCineFormat>span{
+  display:block;
+  margin-bottom:12px;
+  color:#926329;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.aptCineFormat>div{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.aptCineFormat button{
+  padding:15px 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(89,66,39,.12);
+  border-radius:12px;
+  background:rgba(255,255,255,.55);
+  color:#3a2e24;
+  cursor:pointer;
+}
+.aptCineFormat button.is-selected{
+  border-color:rgba(164,117,50,.36);
+  background:rgba(192,148,82,.10);
+}
+.aptCineFormat button strong{
+  font-size:9px;
+}
+.aptCineFormat button span{
+  margin-left:auto;
+  color:#98692c;
+}
+
+/* date / time */
+.aptCineDate{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:18px;
+}
+.aptCineDate label,
+.aptCineTimes{
+  padding:20px;
+  border:1px solid rgba(89,66,39,.11);
+  border-radius:15px;
+  background:rgba(255,255,255,.50);
+}
+.aptCineDate label>span,
+.aptCineTimes>span{
+  display:block;
+  margin-bottom:13px;
+  color:#926329;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.aptCineDate input{
+  width:100%;
+  padding:14px 15px;
+  border:1px solid rgba(89,66,39,.13);
+  border-radius:10px;
+  background:#fffdf8;
+  color:#33291f;
+  outline:none;
+}
+.aptCineTimes>div{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.aptCineTimes button{
+  padding:12px 8px;
+  border:1px solid rgba(89,66,39,.12);
+  border-radius:9px;
+  background:#fffdf8;
+  color:#4a392b;
+  cursor:pointer;
+  font-size:9px;
+}
+.aptCineTimes button.is-selected{
+  background:#a97836;
+  border-color:#a97836;
+  color:#fff;
+}
+.aptCineNotice,
+.aptCineSensitive,
+.aptCineError{
+  margin-top:18px;
+  padding:14px 16px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  border-radius:12px;
+}
+.aptCineNotice{
+  background:rgba(164,117,50,.08);
+  color:#95682e;
+}
+.aptCineSensitive{
+  background:rgba(79,102,81,.08);
+  color:#567258;
+}
+.aptCineError{
+  background:rgba(149,58,48,.08);
+  color:#9a4338;
+}
+.aptCineNotice p,
+.aptCineSensitive p,
+.aptCineError p{
+  margin:0;
+  color:rgba(48,39,31,.58);
+  font-size:8px;
+  line-height:1.55;
+}
+
+/* fields */
+.aptCineFields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.aptCineFields label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.aptCineFields label>span{
+  color:#5a4634;
+  font-size:8px;
+  font-weight:700;
+}
+.aptCineFields label>span small{
+  color:rgba(48,39,31,.42);
+  font-weight:500;
+}
+.aptCineFields input,
+.aptCineFields textarea{
+  width:100%;
+  padding:14px 15px;
+  border:1px solid rgba(89,66,39,.13);
+  border-radius:10px;
+  outline:none;
+  background:#fffdf9;
+  color:#33291f;
+  font:inherit;
+  font-size:10px;
+  resize:vertical;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.aptCineFields input:focus,
+.aptCineFields textarea:focus{
+  border-color:rgba(161,113,47,.48);
+  box-shadow:0 0 0 3px rgba(161,113,47,.07);
+}
+.aptCineFields__full{
+  grid-column:1/-1;
+}
+.aptCineKvkk{
+  margin-top:18px;
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+}
+.aptCineKvkk>button{
+  width:24px;
+  height:24px;
+  flex:0 0 auto;
+  border:1px solid rgba(89,66,39,.20);
+  border-radius:6px;
+  background:#fffdf8;
+  color:#fff;
+  cursor:pointer;
+}
+.aptCineKvkk>button.is-checked{
+  background:#a97836;
+  border-color:#a97836;
+}
+.aptCineKvkk p{
+  margin:1px 0 0;
+  color:rgba(48,39,31,.54);
+  font-size:8px;
+  line-height:1.55;
+}
+.aptCineKvkk a{
+  color:#98692c;
+}
+
+/* actions */
+.aptCineActions{
+  margin-top:30px;
+  padding-top:22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-top:1px solid rgba(89,66,39,.10);
+}
+.aptCineActions>button{
+  padding:13px 20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid #a97836;
+  border-radius:999px;
+  background:#a97836;
+  color:#fff;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.08em;
+  cursor:pointer;
+  transition:transform .2s ease,opacity .2s ease,background .2s ease;
+}
+.aptCineActions>button:hover:not(:disabled){
+  transform:translateY(-2px);
+  background:#91632b;
+}
+.aptCineActions>button:disabled{
+  opacity:.38;
+  cursor:not-allowed;
+}
+.aptCineActions>button.is-secondary{
+  border-color:rgba(89,66,39,.16);
+  background:transparent;
+  color:#6b513b;
+}
+
+/* success */
+.aptCineSuccess{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#0a0806;
+}
+.aptCineSuccess__bg{
+  position:absolute;
+  inset:0;
+}
+.aptCineSuccess__bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.62) brightness(.37);
+  transform:scale(1.05);
+}
+.aptCineSuccess__bg div{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(200,151,73,.13),transparent 32%),
+    linear-gradient(180deg,rgba(7,5,3,.75),rgba(7,5,3,.93));
+}
+.aptCineSuccess__card{
+  position:relative;
+  z-index:2;
+  width:min(700px,calc(100% - 36px));
+  padding:clamp(30px,5vw,56px);
+  text-align:center;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  background:rgba(21,17,12,.70);
+  backdrop-filter:blur(20px);
+  box-shadow:0 40px 110px rgba(0,0,0,.42);
+}
+.aptCineSuccess__icon{
+  width:62px;
+  height:62px;
+  margin:0 auto 20px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(213,170,88,.32);
+  border-radius:50%;
+  background:rgba(213,170,88,.08);
+  color:#d8ad61;
+}
+.aptCineSuccess__card>span{
+  color:#c99b4d;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.aptCineSuccess__card h1{
+  margin:14px 0 17px;
+  color:#fff;
+  font:400 clamp(40px,5vw,66px)/1 Georgia,serif;
+}
+.aptCineSuccess__card h1 strong{
+  display:block;
+  color:#d4a84b;
+  font-weight:400;
+  font-style:italic;
+}
+.aptCineSuccess__card>p{
+  max-width:560px;
+  margin:0 auto 28px;
+  color:rgba(255,255,255,.57);
+  font-size:11px;
+  line-height:1.8;
+}
+.aptCineSuccess__summary{
+  margin-bottom:28px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.aptCineSuccess__summary div{
+  padding:15px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+}
+.aptCineSuccess__summary small{
+  display:block;
+  margin-bottom:5px;
+  color:#b98b45;
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.aptCineSuccess__summary strong{
+  color:#fff;
+  font-size:10px;
+}
+.aptCineSuccess__card>a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 22px;
+  border:1px solid rgba(213,170,88,.30);
+  border-radius:999px;
+  background:rgba(213,170,88,.07);
+  color:#deb568;
+  text-decoration:none;
+  font-size:8px;
+  font-weight:800;
+}
+
+@keyframes aptCineScroll{
+  0%,100%{opacity:.28;transform:scaleY(.55);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+@media(max-width:980px){
+  .aptCineHero__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:46px;
+    padding:90px 0;
+  }
+  .aptCineHero__rail{
+    display:none;
+  }
+  .aptCineIntro__inner{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .aptCineIntro__steps{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+  }
+  .aptCineForm__shell{
+    width:min(100% - 36px,820px);
+    grid-template-columns:1fr;
+  }
+  .aptCineProgress{
+    position:relative;
+    top:auto;
+  }
+}
+@media(max-width:700px){
+  .aptCineServices,
+  .aptCineFormat>div,
+  .aptCineDate,
+  .aptCineFields{
+    grid-template-columns:1fr;
+  }
+  .aptCineTimes>div{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .aptCineFields__full{
+    grid-column:auto;
+  }
+  .aptCineActions{
+    flex-direction:column-reverse;
+    align-items:stretch;
+  }
+  .aptCineActions>button{
+    width:100%;
+    justify-content:center;
+  }
+}
+@media(max-width:620px){
+  .aptCineHero__inner,
+  .aptCineIntro__inner,
+  .aptCineIntro__steps,
+  .aptCineForm__shell{
+    width:calc(100% - 30px);
+  }
+  .aptCineHero__copy h1{
+    font-size:clamp(48px,15vw,72px);
+  }
+  .aptCineForm{
+    padding:80px 0 94px;
+  }
+  .aptCineCard{
+    padding:24px 18px;
+  }
+  .aptCineProgress{
+    padding:19px;
+  }
+  .aptCineSuccess__summary{
+    grid-template-columns:1fr;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .aptCineHero__bg>img,
+  .aptCineHero__eyebrow,
+  .aptCineHero__copy h1,
+  .aptCineHero__copy>p,
+  .aptCineHero__trust,
+  .aptCineHero__rail,
+  .aptCineHero__scroll span{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP173 — ACİL MOBİL BLOG + İÇERİKLER MENÜ FIX
+   - Blog yazı gövdesinin iPhone Safari'de dev büyümesini engeller.
+   - Yatay taşmayı tamamen keser.
+   - İçerikler mobil menüsünde Blog / Yazarlarımız / Podcast & Video
+     seçeneklerinin tamamının görünmesini sağlar.
+   ========================================================= */
+
+.article103,
+.article103 *{
+  box-sizing:border-box;
+}
+
+.article103{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+.article103__layout,
+.article103__layout--premium,
+.article103__layout>article,
+.article103__layout--premium>article{
+  min-width:0!important;
+  max-width:100%!important;
+}
+
+.article103__layout article>p{
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  hyphens:auto;
+  -webkit-text-size-adjust:100%!important;
+  text-size-adjust:100%!important;
+}
+
+@media(max-width:700px){
+  .article103__top{
+    width:100%!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  .article103__top h1{
+    max-width:100%!important;
+    font-size:clamp(32px,9.2vw,40px)!important;
+    line-height:1.08!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .article103__top>p{
+    max-width:100%!important;
+    font-size:14px!important;
+    line-height:1.72!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .article103__layout.article103__layout--premium{
+    width:100%!important;
+    max-width:100%!important;
+    margin:30px auto 52px!important;
+    padding:0 20px!important;
+    display:block!important;
+  }
+
+  .article103__layout.article103__layout--premium>article{
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  .article103__layout.article103__layout--premium article>p{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 0 24px!important;
+    padding:0!important;
+    font-family:Georgia,"Times New Roman",serif!important;
+    font-size:17px!important;
+    font-weight:400!important;
+    line-height:1.82!important;
+    letter-spacing:0!important;
+    color:#373832!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    word-wrap:break-word!important;
+    -webkit-text-size-adjust:100%!important;
+    text-size-adjust:100%!important;
+  }
+
+  .article103__layout.article103__layout--premium article>p strong,
+  .article103__layout.article103__layout--premium article>p b{
+    font-size:inherit!important;
+    line-height:inherit!important;
+  }
+
+  .article103__layout blockquote{
+    max-width:100%!important;
+    margin:34px 0!important;
+    padding:18px 20px!important;
+    font-size:22px!important;
+    line-height:1.45!important;
+  }
+
+  .article103__note{
+    max-width:100%!important;
+  }
+
+  .article103__guide{
+    width:100%!important;
+    max-width:100%!important;
+    margin-top:28px!important;
+    position:static!important;
+  }
+
+  .article103__toc--premium{
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  .article103__related{
+    width:100%!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+}
+
+/* MOBİL HEADER: İçerikler açılınca 350px sınırında kesilmesin */
+@media(max-width:980px){
+  .nav.nav--open{
+    max-height:calc(100dvh - 76px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:28px!important;
+  }
+
+  .navContentMenu{
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+
+  .navContentMenu[open]{
+    padding-bottom:5px!important;
+  }
+
+  .navContentMenu__panel{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+
+  .navContentMenu__panel>a{
+    width:100%!important;
+    min-height:58px!important;
+    display:grid!important;
+    grid-template-columns:34px minmax(0,1fr)!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+
+  .navContentMenu__panel>a strong,
+  .navContentMenu__panel>a small{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+}
+
+@media(max-width:620px){
+  .article103__layout.article103__layout--premium{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+
+  .article103__layout.article103__layout--premium article>p{
+    font-size:16.5px!important;
+    line-height:1.8!important;
+  }
+
+  .nav.nav--open{
+    max-height:calc(100dvh - 76px)!important;
+  }
+
+  .navContentMenu summary{
+    min-height:48px!important;
+    padding:0!important;
+  }
+
+  .navContentMenu__panel{
+    padding:5px 0 9px!important;
+  }
+
+  .navContentMenu__panel>a{
+    min-height:56px!important;
+    padding:8px 10px!important;
+  }
 }
 
 `;
