@@ -1973,20 +1973,12 @@ function BlogPage({ content = defaultBlogContent }) {
 
   const authorFor = (post) => {
     const slug = String(post?.authorSlug || "").trim();
-    const matched = authors.find((author)=>String(author.slug || "").trim() === slug);
-    if (matched) return matched;
+    if (!slug) return null;
 
-    if (post?.authorName) {
-      return {
-        slug: slug || createBlogSlug(post.authorName),
-        name: post.authorName,
-        role: post.authorRole || "Yazar",
-        image: post.authorImage || "",
-        shortBio: "",
-      };
-    }
-
-    return authors[0] || null;
+    return (
+      authors.find((author)=>String(author.slug || "").trim() === slug) ||
+      null
+    );
   };
 
   /* ORİJİNAL BLOG İÇERİK AKIŞI KORUNDU */
@@ -2302,15 +2294,10 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
   if(!post) return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
   const paragraphs=Array.isArray(post.body)?post.body:String(post.body||"").split(/\n\s*\n/).filter(Boolean);
   const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item?.name);
-  const matchedAuthor = authors.find((item)=>String(item.slug || "").trim() === String(post.authorSlug || "").trim());
-  const author = matchedAuthor || (post.authorName ? {
-    slug: post.authorSlug || createBlogSlug(post.authorName),
-    name: post.authorName,
-    role: post.authorRole || "Yazar",
-    image: post.authorImage || "",
-    shortBio: "",
-    bio: "",
-  } : (authors[0] || null));
+  const postAuthorSlug = String(post.authorSlug || "").trim();
+  const author = postAuthorSlug
+    ? (authors.find((item)=>String(item.slug || "").trim() === postAuthorSlug) || null)
+    : null;
   const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
   return <main className="article103">
     <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
@@ -3907,7 +3894,7 @@ function AdminDemoPage() {
       status: "published",
       featured: false,
       sortOrder: (blogEditor.posts?.length || 0) + 1,
-      authorSlug: (blogEditor.authors?.find((author)=>author?.slug && author?.name)?.slug || ""),
+      authorSlug: "",
     });
   };
 
@@ -4141,18 +4128,14 @@ function AdminDemoPage() {
       }
 
       const availableAuthors = (latest.authors || []).filter((author) => author?.slug && author?.name);
-      const selectedAuthor =
-        availableAuthors.find(
-          (author) => String(author.slug || "").trim() === String(blogForm.authorSlug || "").trim()
-        ) ||
-        (blogForm.authorName
-          ? {
-              slug: blogForm.authorSlug || createBlogSlug(blogForm.authorName),
-              name: blogForm.authorName,
-              role: blogForm.authorRole || "Yazar",
-              image: blogForm.authorImage || "",
-            }
-          : null);
+      const selectedAuthorSlug = String(blogForm.authorSlug || "").trim();
+      const selectedAuthor = selectedAuthorSlug
+        ? (
+            availableAuthors.find(
+              (author) => String(author.slug || "").trim() === selectedAuthorSlug
+            ) || null
+          )
+        : null;
 
       const item = {
         id,
@@ -4229,7 +4212,7 @@ function AdminDemoPage() {
       status: post.status || "published",
       featured: Boolean(post.featured),
       sortOrder: post.sortOrder ?? 100,
-      authorSlug: post.authorSlug || (blogEditor.authors?.find((author)=>author?.slug && author?.name)?.slug || ""),
+      authorSlug: post.authorSlug || "",
     });
     window.setTimeout(() => {
       document.querySelector(".admin100Blog__editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -4402,10 +4385,10 @@ function AdminDemoPage() {
       if (saved) {
         resetAuthorForm();
 
-        // Yeni yazar, yeni blog yazısında anında seçilebilir olsun.
+        // Yeni yazar listeye eklenir; herhangi bir yazıya otomatik atanmaz.
         setBlogForm((current) => ({
           ...current,
-          authorSlug: current.authorSlug || slug,
+          authorSlug: current.authorSlug || "",
         }));
       }
     } catch (error) {
@@ -4427,7 +4410,15 @@ function AdminDemoPage() {
 
     const nextAuthors = authors.filter((item) => item.slug !== author.slug);
     const nextPosts = (blogEditor.posts || []).map((post) =>
-      post.authorSlug === author.slug ? { ...post, authorSlug: "" } : post
+      post.authorSlug === author.slug
+        ? {
+            ...post,
+            authorSlug: "",
+            authorName: "",
+            authorRole: "",
+            authorImage: "",
+          }
+        : post
     );
 
     const ok = await persistBlogEditor(
