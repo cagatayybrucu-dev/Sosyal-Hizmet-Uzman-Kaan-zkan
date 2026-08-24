@@ -1069,7 +1069,12 @@ function App() {
 
     // STEP123 -" Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
     // Eski Vercel canonical etiketleri index.html'de kalsa bile temizlenir.
-    const canonicalUrl = "https://www.ailedanismanikaanozkan.com/";
+    const siteBaseUrl = "https://www.ailedanismanikaanozkan.com/";
+    const currentHash = window.location.hash || "";
+    const canonicalUrl = currentHash.startsWith("#/blog/")
+      ? `${siteBaseUrl}${currentHash}`
+      : siteBaseUrl;
+
     document.head.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
     const canonical = document.createElement("link");
     canonical.rel = "canonical";
@@ -1088,23 +1093,23 @@ function App() {
       "@graph": [
         {
           "@type": "WebSite",
-          "@id": `${canonicalUrl}#website`,
-          url: canonicalUrl,
+          "@id": `${siteBaseUrl}#website`,
+          url: siteBaseUrl,
           name: "Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı",
           inLanguage: "tr-TR"
         },
         {
           "@type": "Person",
-          "@id": `${canonicalUrl}#kaan-ozkan`,
+          "@id": `${siteBaseUrl}#kaan-ozkan`,
           name: "Kaan Özkan",
-          url: canonicalUrl,
+          url: siteBaseUrl,
           jobTitle: "Sosyal Hizmet Uzmanı ve Aile Danışmanı",
           sameAs: ["https://www.instagram.com/ailedanismanikaanozkan/"]
         }
       ]
     });
     document.head.appendChild(schema);
-  }, [page]);
+  }, [page, blogSlug]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -2343,9 +2348,39 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
   const author = postAuthorSlug
     ? (authors.find((item)=>String(item.slug || "").trim() === postAuthorSlug) || null)
     : null;
+
+  const articleShareUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}${window.location.pathname}#/blog/${post.slug}`
+      : `https://www.ailedanismanikaanozkan.com/#/blog/${post.slug}`;
+
+  const shareArticle = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: post.title,
+          text: post.excerpt || "",
+          url: articleShareUrl,
+        });
+        return;
+      }
+
+      await navigator.clipboard.writeText(articleShareUrl);
+      window.alert("Yazının bağlantısı kopyalandı.");
+    } catch (error) {
+      if (error?.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(articleShareUrl);
+        window.alert("Yazının bağlantısı kopyalandı.");
+      } catch {
+        window.prompt("Yazının bağlantısını kopyalayın:", articleShareUrl);
+      }
+    }
+  };
+
   const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
   return <main className="article103">
-    <section className="article103__top"><a href="#/blog">← Blog'a Dön</a><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
+    <section className="article103__top"><div className="article103__topActions"><a href="#/blog">← Blog'a Dön</a><button type="button" onClick={shareArticle}>Paylaş ↗</button></div><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
     <div className="article103__coverShell">
       <div className="article103__cover">
         <img src={post.image} alt={post.title}/>
@@ -29249,6 +29284,47 @@ html.perfLite .aptCineHero__copy h1{
     font-size:12px!important;
     line-height:1.4!important;
     opacity:.82!important;
+  }
+}
+
+
+/* =========================================================
+   STEP178 — BLOG DEEP-LINK / iPHONE PAYLAŞIM FIX
+   Paylaşımda ana sayfa değil tam blog yazısı URL'si gider.
+   ========================================================= */
+.article103__topActions{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.article103__topActions>a{
+  margin:0!important;
+}
+.article103__topActions button{
+  appearance:none;
+  border:1px solid rgba(169,119,54,.35);
+  background:rgba(255,255,255,.62);
+  color:#8a632f;
+  min-height:38px;
+  padding:0 15px;
+  border-radius:999px;
+  font:800 10px/1 Arial,sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.article103__topActions button:hover{
+  background:#a77736;
+  color:#fff;
+  border-color:#a77736;
+}
+@media(max-width:620px){
+  .article103__topActions button{
+    min-height:40px;
+    padding:0 14px;
+    font-size:10px;
   }
 }
 
