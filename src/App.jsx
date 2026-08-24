@@ -1282,7 +1282,7 @@ function App() {
           : ""
       );
       setMenuOpen(false);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "auto" });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -1297,7 +1297,7 @@ function App() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, [page]);
+  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
 
   const handleHomeHeroPointer = (event) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -29441,6 +29441,24 @@ html.perfLite .aptCineHero__copy h1{
     height:auto!important;
     object-fit:contain!important;
   }
+}
+
+
+/* =========================================================
+   STEP181 — BLOG ROUTE HERO BLACK-SCREEN FIX
+   Blog detay -> Blog geçişinde yeni render edilen ilk sahnenin
+   observer beklerken görünmez kalmasını önler.
+   ========================================================= */
+.blogCinePage .blogCineHero{
+  visibility:visible!important;
+}
+
+.blogCinePage .blogCineHero:not(.cin3d--visible) .blogCineHero__bg{
+  opacity:1!important;
+}
+
+.blogCinePage .blogCineHero:not(.cin3d--visible){
+  background:#17130f!important;
 }
 
 `;
