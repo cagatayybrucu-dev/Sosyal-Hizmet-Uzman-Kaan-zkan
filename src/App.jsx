@@ -29224,6 +29224,34 @@ html.perfLite .aptCineHero__copy h1{
   }
 }
 
+
+/* =========================================================
+   STEP177 — BLOG YAZAR ÜNVANI OKUNABİLİRLİK FIX
+   Kart tasarımını bozmadan rol/uzmanlık satırını büyütür.
+   ========================================================= */
+.blogOriginalCineCard__authorCopy small{
+  font-size:11px!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+  letter-spacing:.01em!important;
+  opacity:.78!important;
+}
+
+@media(max-width:900px){
+  .blogOriginalCineCard__authorCopy small{
+    font-size:11.5px!important;
+    line-height:1.4!important;
+  }
+}
+
+@media(max-width:620px){
+  .blogOriginalCineCard__authorCopy small{
+    font-size:12px!important;
+    line-height:1.4!important;
+    opacity:.82!important;
+  }
+}
+
 `;
 
 export default App;
