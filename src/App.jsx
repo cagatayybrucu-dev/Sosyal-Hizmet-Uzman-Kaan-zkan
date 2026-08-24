@@ -1067,6 +1067,34 @@ function App() {
     meta("twitter:title", seo[0]);
     meta("twitter:description", seo[1]);
 
+    // STEP179 — Güncel site amblemini tarayıcı sekmesi ve sosyal paylaşım
+    // görsel sinyallerinde kullan. Eski favicon/logo kalıntılarını temizle.
+    document.head
+      .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
+      .forEach((node) => node.remove());
+
+    const favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.type = "image/png";
+    favicon.href = kaanOzkanEmblem;
+    document.head.appendChild(favicon);
+
+    const shortcutIcon = document.createElement("link");
+    shortcutIcon.rel = "shortcut icon";
+    shortcutIcon.href = kaanOzkanEmblem;
+    document.head.appendChild(shortcutIcon);
+
+    const appleTouchIcon = document.createElement("link");
+    appleTouchIcon.rel = "apple-touch-icon";
+    appleTouchIcon.href = kaanOzkanEmblem;
+    document.head.appendChild(appleTouchIcon);
+
+    const socialLogoUrl = new URL(kaanOzkanEmblem, window.location.origin).href;
+    meta("og:image", socialLogoUrl, true);
+    meta("og:image:alt", "Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", true);
+    meta("twitter:image", socialLogoUrl);
+    meta("twitter:card", "summary");
+
     // STEP123 -" Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
     // Eski Vercel canonical etiketleri index.html'de kalsa bile temizlenir.
     const siteBaseUrl = "https://www.ailedanismanikaanozkan.com/";
@@ -29325,6 +29353,93 @@ html.perfLite .aptCineHero__copy h1{
     min-height:40px;
     padding:0 14px;
     font-size:10px;
+  }
+}
+
+
+/* =========================================================
+   STEP180 — BLOG YAZI DETAY GÖRSELİ TAM OTURMA FIX
+   Makale kapak görseli artık hiçbir yerden kırpılmaz.
+   Yüklenen görsel kendi gerçek oranıyla tam görünür.
+   ========================================================= */
+
+.article103__coverShell{
+  max-width:1080px!important;
+  margin:0 auto!important;
+  padding:0 28px!important;
+}
+
+.article103__cover{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:28px!important;
+  background:#171714!important;
+}
+
+.article103__cover img{
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+}
+
+.article103__cover:hover img{
+  transform:none!important;
+}
+
+/* Görselin üstüne eklenen kategori/tarih katmanı korunuyor. */
+.article103__coverShade{
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+}
+
+.article103__coverCaption{
+  position:absolute!important;
+  z-index:4!important;
+}
+
+/* Eski sabit mobil yükseklikler görseli yeniden kırpmasın. */
+@media(max-width:900px){
+  .article103__cover{
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+  }
+
+  .article103__cover img{
+    width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+}
+
+@media(max-width:600px){
+  .article103__coverShell{
+    padding:0!important;
+  }
+
+  .article103__cover{
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+    border-radius:0!important;
+  }
+
+  .article103__cover img{
+    width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
   }
 }
 
