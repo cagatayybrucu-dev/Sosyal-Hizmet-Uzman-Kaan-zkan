@@ -28980,6 +28980,63 @@ html{
   }
 }
 
+
+/* =========================================================
+   STEP175 — BLOG KART GÖRSELİ TAM OTURMA FIX
+   Görselin üst/alt kısımlarının kırpılmasını engeller.
+   ========================================================= */
+
+.blogOriginalCineCard__image{
+  min-height:0!important;
+  height:auto!important;
+  aspect-ratio:16 / 9!important;
+  background:#17130f!important;
+}
+
+.blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+  min-height:0!important;
+  height:auto!important;
+  aspect-ratio:16 / 9!important;
+}
+
+.blogOriginalCineCard__image>img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+  background:#17130f!important;
+}
+
+.blogOriginalCineCard:hover .blogOriginalCineCard__image>img{
+  transform:scale(1.015)!important;
+}
+
+@media(max-width:850px){
+  .blogOriginalCineCard__image,
+  .blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16 / 9!important;
+  }
+}
+
+@media(max-width:620px){
+  .blogOriginalCineCard__image,
+  .blogOriginalCineCard.is-lead .blogOriginalCineCard__image{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16 / 9!important;
+  }
+
+  .blogOriginalCineCard__image>img{
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+}
+
 `;
 
 export default App;
