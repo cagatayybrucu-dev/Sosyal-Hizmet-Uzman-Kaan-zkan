@@ -1984,7 +1984,14 @@ function BlogPage({ content = defaultBlogContent }) {
   /* ORİJİNAL BLOG İÇERİK AKIŞI KORUNDU */
   const publishedPosts = (Array.isArray(content.posts) ? content.posts : [])
     .filter((post)=>post.status !== "draft")
-    .sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999));
+    .sort((a,b)=>{
+      const orderDiff = Number(b.sortOrder ?? 0) - Number(a.sortOrder ?? 0);
+      if (orderDiff !== 0) return orderDiff;
+
+      const aTime = Number(String(a.id || "").match(/blog-(\d+)/)?.[1] || 0);
+      const bTime = Number(String(b.id || "").match(/blog-(\d+)/)?.[1] || 0);
+      return bTime - aTime;
+    });
 
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
 
@@ -3893,7 +3900,11 @@ function AdminDemoPage() {
       quote: "",
       status: "published",
       featured: false,
-      sortOrder: (blogEditor.posts?.length || 0) + 1,
+      sortOrder:
+        Math.max(
+          0,
+          ...(blogEditor.posts || []).map((post)=>Number(post.sortOrder || 0))
+        ) + 1,
       authorSlug: "",
     });
   };
@@ -4137,6 +4148,13 @@ function AdminDemoPage() {
           )
         : null;
 
+      const nextSortOrder = editingBlogId
+        ? Number(blogForm.sortOrder || 100)
+        : Math.max(
+            0,
+            ...(latest.posts || []).map((post)=>Number(post.sortOrder || 0))
+          ) + 1;
+
       const item = {
         id,
         slug,
@@ -4150,7 +4168,7 @@ function AdminDemoPage() {
         quote: blogForm.quote.trim(),
         status: blogForm.status,
         featured: Boolean(blogForm.featured),
-        sortOrder: Number(blogForm.sortOrder || 100),
+        sortOrder: nextSortOrder,
         authorSlug: selectedAuthor?.slug || "",
         authorName: selectedAuthor?.name || "",
         authorRole: selectedAuthor?.role || "",
@@ -4194,6 +4212,74 @@ function AdminDemoPage() {
       console.error("Blog yazısı kayıt hazırlama hatası:", error);
       setBlogEditorMessage(`Blog yazısı kaydedilemedi: ${error?.message || "Bilinmeyen hata"}`);
       setBlogEditorSaving(false);
+    }
+  };
+
+  const getOrderedBlogPosts = (items = blogEditor.posts || []) =>
+    [...items].sort((a,b)=>{
+      const orderDiff = Number(b.sortOrder ?? 0) - Number(a.sortOrder ?? 0);
+      if (orderDiff !== 0) return orderDiff;
+
+      const aTime = Number(String(a.id || "").match(/blog-(\d+)/)?.[1] || 0);
+      const bTime = Number(String(b.id || "").match(/blog-(\d+)/)?.[1] || 0);
+      return bTime - aTime;
+    });
+
+  const moveBlogPost = async (post, direction) => {
+    if (blogEditorSaving) return;
+
+    try {
+      const latest = await readLatestBlogEditor();
+      const ordered = getOrderedBlogPosts(latest.posts || []);
+      const currentIndex = ordered.findIndex(
+        (item) => (item.id || item.slug) === (post.id || post.slug)
+      );
+
+      if (currentIndex < 0) {
+        setBlogEditorMessage("Yazı sıralama listesinde bulunamadı.");
+        return;
+      }
+
+      const targetIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
+      if (targetIndex < 0 || targetIndex >= ordered.length) return;
+
+      // Önce tüm kayıtları güvenli ve benzersiz bir sıra numarasına normalize et.
+      const normalized = ordered.map((item, index) => ({
+        ...item,
+        sortOrder: ordered.length - index,
+      }));
+
+      const current = normalized[currentIndex];
+      const target = normalized[targetIndex];
+      const currentOrder = current.sortOrder;
+
+      normalized[currentIndex] = { ...current, sortOrder: target.sortOrder };
+      normalized[targetIndex] = { ...target, sortOrder: currentOrder };
+
+      const byId = new Map(
+        normalized.map((item) => [String(item.id || item.slug), item])
+      );
+
+      const posts = (latest.posts || []).map(
+        (item) => byId.get(String(item.id || item.slug)) || item
+      );
+
+      await persistBlogEditor(
+        { ...latest, posts },
+        direction === "up"
+          ? "Yazı bir sıra yukarı taşındı."
+          : "Yazı bir sıra aşağı taşındı.",
+        (content) => {
+          const verifyOrdered = getOrderedBlogPosts(content.posts || []);
+          const verifyIndex = verifyOrdered.findIndex(
+            (item) => (item.id || item.slug) === (post.id || post.slug)
+          );
+          return verifyIndex === targetIndex;
+        }
+      );
+    } catch (error) {
+      console.error("Blog sıralama hatası:", error);
+      setBlogEditorMessage(`Sıralama güncellenemedi: ${error?.message || "Bilinmeyen hata"}`);
     }
   };
 
@@ -5424,15 +5510,13 @@ function AdminDemoPage() {
                     <span>04</span>
                     <div>
                       <strong>Blog Yazıları</strong>
-                      <small>{(blogEditor.posts || []).length} kayıt · Düzenleme, yayın ve öne çıkarma kontrolleri.</small>
+                      <small>{(blogEditor.posts || []).length} kayıt · Yeni yazılar otomatik en üstte. ↑ ↓ ile sıralamayı değiştirebilirsiniz.</small>
                     </div>
                   </div>
 
                   <div className="admin100Blog__list">
-                    {(blogEditor.posts || [])
-                      .slice()
-                      .sort((a,b)=>Number(a.sortOrder||999)-Number(b.sortOrder||999))
-                      .map((post)=>(
+                    {getOrderedBlogPosts()
+                      .map((post,index)=>(
                       <article key={post.id || post.slug}>
                         <img src={post.image} alt="" onError={(e)=>{e.currentTarget.src=servicesHeroRoom}}/>
                         <div className="admin100Blog__postCopy">
@@ -5443,8 +5527,27 @@ function AdminDemoPage() {
                           </div>
                           <strong>{post.title}</strong>
                           <small>{post.date} · {post.readTime} · /blog/{post.slug}</small>
+                          <small className="admin100Blog__orderLabel">Görünüm sırası: {index + 1}</small>
                         </div>
                         <div className="admin100Blog__actions">
+                          <div className="admin100Blog__moveActions">
+                            <button
+                              type="button"
+                              disabled={index === 0 || blogEditorSaving}
+                              onClick={()=>moveBlogPost(post,"up")}
+                              title="Yazıyı bir sıra yukarı taşı"
+                            >
+                              ↑ Yukarı
+                            </button>
+                            <button
+                              type="button"
+                              disabled={index === getOrderedBlogPosts().length - 1 || blogEditorSaving}
+                              onClick={()=>moveBlogPost(post,"down")}
+                              title="Yazıyı bir sıra aşağı taşı"
+                            >
+                              ↓ Aşağı
+                            </button>
+                          </div>
                           <button type="button" onClick={()=>editBlogPost(post)}>Düzenle</button>
                           <button type="button" onClick={()=>toggleBlogPostStatus(post)}>{post.status === "draft" ? "Yayınla" : "Taslağa Al"}</button>
                           {!post.featured && <button type="button" onClick={()=>featureBlogPost(post)}>Öne Çıkar</button>}
@@ -28835,6 +28938,45 @@ html{
   .navContentMenu__panel>a{
     min-height:56px!important;
     padding:8px 10px!important;
+  }
+}
+
+
+/* =========================================================
+   STEP174 — BLOG SIRALAMA KONTROLLERİ
+   Yeni yazı varsayılan olarak en üstte; admin ↑ ↓ manuel sıralama.
+   ========================================================= */
+.admin100Blog__orderLabel{
+  color:#a77736!important;
+  font-weight:800!important;
+  letter-spacing:.04em;
+}
+.admin100Blog__moveActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  margin-bottom:2px;
+}
+.admin100Blog__moveActions button{
+  min-height:29px!important;
+  border-color:#d9c3a5!important;
+  background:#fff8ed!important;
+  color:#8a632f!important;
+}
+.admin100Blog__moveActions button:hover:not(:disabled){
+  border-color:#a77736!important;
+  background:#f4e6d0!important;
+  color:#714b1f!important;
+}
+.admin100Blog__moveActions button:disabled{
+  opacity:.34!important;
+  cursor:not-allowed!important;
+}
+
+@media(max-width:950px){
+  .admin100Blog__moveActions{
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
 
