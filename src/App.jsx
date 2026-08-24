@@ -1089,11 +1089,15 @@ function App() {
     appleTouchIcon.href = kaanOzkanEmblem;
     document.head.appendChild(appleTouchIcon);
 
-    const socialLogoUrl = new URL(kaanOzkanEmblem, window.location.origin).href;
+    const socialLogoUrl = `${window.location.origin}/kaan-ozkan-share-logo.jpg?v=183`;
     meta("og:image", socialLogoUrl, true);
+    meta("og:image:secure_url", socialLogoUrl, true);
+    meta("og:image:type", "image/jpeg", true);
+    meta("og:image:width", "1254", true);
+    meta("og:image:height", "1254", true);
     meta("og:image:alt", "Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", true);
     meta("twitter:image", socialLogoUrl);
-    meta("twitter:card", "summary");
+    meta("twitter:card", "summary_large_image");
 
     // STEP123 -" Tek ve doğru ana alan adı (canonical) + sosyal URL sinyali.
     // Eski Vercel canonical etiketleri index.html'de kalsa bile temizlenir.
