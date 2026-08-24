@@ -1146,28 +1146,63 @@ function App() {
       cin3dObserver.observe(el);
     });
 
-    /* Parallax scroll efekti */
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(max > 0 ? window.scrollY / max : 0);
+    /* =======================================================
+       PERFORMANCE: rAF + cached parallax nodes + low-power mode
+       Scroll sırasında her event'te DOM taraması / layout yapılmaz.
+       ======================================================= */
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lowCpu = Number(navigator.hardwareConcurrency || 8) <= 4;
+    const lowMemory = "deviceMemory" in navigator && Number(navigator.deviceMemory || 8) <= 4;
+    const compactViewport = window.matchMedia("(max-width: 900px)").matches;
+    const liteMotion = prefersReducedMotion || lowCpu || lowMemory || compactViewport;
 
-      const sy = window.scrollY;
+    document.documentElement.classList.toggle("perfLite", liteMotion);
 
-      /* Hero parallax */
-      const heroBg = document.querySelector(".cinHero__bgImg");
-      if (heroBg) {
-        heroBg.style.transform = `scale(1.06) translateY(${sy * 0.28}px)`;
+    const heroBg = document.querySelector(".cinHero__bgImg");
+    const parallaxEls = liteMotion ? [] : Array.from(document.querySelectorAll(".cin3dParallax"));
+
+    let scrollRaf = 0;
+    let lastProgress = -1;
+
+    const renderScrollEffects = () => {
+      scrollRaf = 0;
+
+      const sy = window.scrollY || window.pageYOffset || 0;
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const nextProgress = sy / max;
+
+      // React state'i yalnızca görünür fark oluştuğunda güncelle.
+      if (Math.abs(nextProgress - lastProgress) > 0.0025) {
+        lastProgress = nextProgress;
+        setScrollProgress(nextProgress);
       }
 
-      /* Her .cin3dParallax elementine derinlik efekti */
-      document.querySelectorAll(".cin3dParallax").forEach((el) => {
+      if (liteMotion) return;
+
+      if (heroBg) {
+        // Hero çok aşağıdayken gereksiz GPU transform üretme.
+        if (sy < window.innerHeight * 1.35) {
+          heroBg.style.transform = `scale(1.06) translate3d(0, ${sy * 0.20}px, 0)`;
+        }
+      }
+
+      const vh = window.innerHeight;
+      for (const el of parallaxEls) {
         const rect = el.getBoundingClientRect();
+
+        // Ekranın uzağındaki sahnelerde hiçbir transform hesabı yapma.
+        if (rect.bottom < -vh * 0.30 || rect.top > vh * 1.30) continue;
+
         const center = rect.top + rect.height / 2;
-        const vh = window.innerHeight;
         const progress = (vh / 2 - center) / vh;
         const depth = parseFloat(el.dataset.depth || "0.15");
-        el.style.transform = `translateY(${progress * depth * 120}px)`;
-      });
+        el.style.transform = `translate3d(0, ${progress * depth * 92}px, 0)`;
+      }
+    };
+
+    const onScroll = () => {
+      if (scrollRaf) return;
+      scrollRaf = window.requestAnimationFrame(renderScrollEffects);
     };
 
     const onHashChange = () => {
@@ -1219,10 +1254,13 @@ function App() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("hashchange", onHashChange);
-    onScroll();
+    renderScrollEffects();
 
     return () => {
       observer.disconnect();
+      cin3dObserver.disconnect();
+      if (scrollRaf) window.cancelAnimationFrame(scrollRaf);
+      document.documentElement.classList.remove("perfLite");
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };
@@ -29034,6 +29072,155 @@ html{
   .blogOriginalCineCard__image>img{
     object-fit:contain!important;
     object-position:center center!important;
+  }
+}
+
+
+/* =========================================================
+   STEP176 — PERFORMANCE FIX
+   Tasarım korunur; düşük/orta güçlü cihazlarda pahalı GPU
+   efektleri otomatik hafifletilir.
+   ========================================================= */
+
+/* Tarayıcı aşağıdaki ağır bölümleri ekrana yaklaşana kadar çizmesin. */
+.blogOriginalCine,
+.blogCineAuthors,
+.svcCinePage > section:not(:first-child),
+.processCinePage > section:not(:first-child),
+.processCineSteps > section,
+.contactCinePage > section:not(:first-child),
+.contactCineChannels > section,
+.mediaCinePage > section:not(:first-child),
+.aptCinePage > section:not(:first-child){
+  content-visibility:auto;
+  contain-intrinsic-size:900px;
+}
+
+/* GPU layer'ı gerçekten hareket eden ana görsellere sınırla. */
+.cin3dParallax,
+.cinHero__bgImg{
+  backface-visibility:hidden;
+  transform-style:preserve-3d;
+}
+
+/* Düşük/orta güçlü cihaz otomatik modu */
+html.perfLite .cin3dParallax,
+html.perfLite .cinHero__bgImg{
+  transform:none!important;
+  will-change:auto!important;
+}
+
+html.perfLite .topCinePanel__floating,
+html.perfLite .lux155Manifest__visual--cinema>img,
+html.perfLite .lux155Manifest__cineGlow,
+html.perfLite .topCinePanel__scrollHint span,
+html.perfLite .svcCineHero__scroll span,
+html.perfLite .processCineHero__scroll span,
+html.perfLite .blogCineHero__scroll span,
+html.perfLite .contactCineHero__scroll span,
+html.perfLite .mediaCineHero__scroll span,
+html.perfLite .aptCineHero__scroll span{
+  animation:none!important;
+}
+
+/* backdrop-filter özellikle eski Intel GPU'larda en pahalı efektlerden biri.
+   Lite modda aynı şeffaf görünümü opak arka planla taklit ediyoruz. */
+html.perfLite .lux155Hero__trustPill,
+html.perfLite .topCinePanel__floating,
+html.perfLite .topCineServices__card,
+html.perfLite .svcCinePanel__glass,
+html.perfLite .processCineStep__glass,
+html.perfLite .processCineTrust__grid article,
+html.perfLite .processCineTestimonial,
+html.perfLite .blogCineFeatured__glass,
+html.perfLite .blogOriginalCine__tools,
+html.perfLite .blogOriginalCineAuthors,
+html.perfLite .blogOriginalCineCard,
+html.perfLite .contactCineHero__cta,
+html.perfLite .mediaCineVideoCard,
+html.perfLite .mediaCinePodcastCard,
+html.perfLite .aptCineHero__trust>div,
+html.perfLite .aptCineProgress,
+html.perfLite .aptCineCard{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+html.perfLite .svcCinePanel__glass,
+html.perfLite .processCineStep__glass,
+html.perfLite .blogCineFeatured__glass,
+html.perfLite .mediaCineVideoCard,
+html.perfLite .mediaCinePodcastCard{
+  background:rgba(20,17,12,.90)!important;
+}
+
+html.perfLite .blogOriginalCine__tools,
+html.perfLite .blogOriginalCineAuthors,
+html.perfLite .blogOriginalCineCard,
+html.perfLite .aptCineProgress,
+html.perfLite .aptCineCard{
+  background:rgba(255,252,246,.96)!important;
+}
+
+/* Blur reveal korunur ama düşük cihazda blur filtresi kaldırılır;
+   opacity/translate animasyonu devam ederek sinematik hissi korur. */
+html.perfLite .cin3d h1,
+html.perfLite .cin3d h2,
+html.perfLite .topCinePanel__copy h2,
+html.perfLite .svcCineHero__copy h1,
+html.perfLite .svcCinePanel__copy h2,
+html.perfLite .processCineHero__copy h1,
+html.perfLite .processCineStep__copy h2,
+html.perfLite .blogCineHero__copy h1,
+html.perfLite .blogCineFeatured__copy h2,
+html.perfLite .contactCineHero__copy h1,
+html.perfLite .contactCineChannel__inner h2,
+html.perfLite .mediaCineHero__copy h1,
+html.perfLite .aptCineHero__copy h1{
+  filter:none!important;
+}
+
+/* Küçük ekranlarda sabit background repaint maliyetini kaldır. */
+@media(max-width:1100px){
+  .blogOriginalCine{
+    background-attachment:scroll!important;
+  }
+
+  .cin3dParallax{
+    will-change:auto!important;
+  }
+}
+
+/* Çok küçük ekran / dokunmatik cihazlarda hover GPU işini kapat. */
+@media(hover:none), (pointer:coarse){
+  .topCinePanel__floating:hover img,
+  .topCineServices__card:hover,
+  .svcCinePanel__glass:hover,
+  .processCineStep__glass:hover,
+  .blogOriginalCineCard:hover,
+  .mediaCineVideoCard:hover,
+  .mediaCinePodcastCard:hover{
+    transform:none!important;
+  }
+
+  .topCinePanel__floating:hover img,
+  .svcCinePanel__glass:hover img,
+  .processCineStep__glass:hover img,
+  .blogOriginalCineCard:hover img,
+  .mediaCineVideoCard:hover img{
+    transform:none!important;
+  }
+}
+
+/* Kullanıcı sistemden animasyonu azaltmayı seçmişse tam sakin mod. */
+@media(prefers-reduced-motion:reduce){
+  .cin3dParallax,
+  .cinHero__bgImg{
+    transform:none!important;
+  }
+
+  *{
+    scroll-behavior:auto!important;
   }
 }
 
