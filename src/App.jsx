@@ -2884,8 +2884,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
             if(item?.type==="heading"){
               return (
-                <div className="articleRichHeading" key={index}>
-                  <span>{String(index+1).padStart(2,"0")}</span>
+                <div className="articleRichHeading articleRichHeading--plain" key={index}>
                   <h2>{item.text}</h2>
                 </div>
               );
@@ -2939,8 +2938,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
               const recTitle=parts.length>1?parts.shift():"";
               const recBody=parts.join(":").trim();
               return (
-                <div className="articleRichRecommendation" key={index}>
-                  <span>{String(item.number).padStart(2,"0")}</span>
+                <div className="articleRichRecommendation articleRichRecommendation--plain" key={index}>
                   <div>
                     {recTitle && <h3>{recTitle}</h3>}
                     <p>{recBody || item.text}</p>
@@ -2953,9 +2951,8 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
               return (
                 <div className="articleRichReferences" key={index}>
                   {(item.items||[]).map((reference,referenceIndex)=>(
-                    <div key={referenceIndex}>
-                      <span>{String(referenceIndex+1).padStart(2,"0")}</span>
-                      <p>{reference}</p>
+                    <div className="articleRichReferences__plain" key={referenceIndex}>
+                      <p>{String(reference||"").replace(/^\s*\d+\s*[-.)]\s*/, "")}</p>
                     </div>
                   ))}
                 </div>
@@ -2963,8 +2960,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
             }
 
             return (
-              <div className="articleCineParagraph" key={index}>
-                <span>{String(index+1).padStart(2,"0")}</span>
+              <div className="articleCineParagraph articleCineParagraph--plain" key={index}>
                 <p>{item?.text || ""}</p>
               </div>
             );
@@ -34092,6 +34088,80 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .articleCinePage .articleCineIntro h2{
     font-size:29px;
     line-height:1.12;
+  }
+}
+
+
+/* STEP192 — ARTICLE NUMBERING REMOVED / CLEAN FULL-WIDTH TEXT */
+.articleCinePage .articleCineParagraph.articleCineParagraph--plain{
+  display:block;
+  grid-template-columns:none;
+  padding-left:0;
+}
+.articleCinePage .articleCineParagraph.articleCineParagraph--plain>span{
+  display:none !important;
+}
+.articleCinePage .articleCineParagraph.articleCineParagraph--plain>p{
+  width:100%;
+  max-width:none;
+  margin-left:0;
+}
+
+.articleCinePage .articleRichHeading.articleRichHeading--plain{
+  display:block;
+  grid-template-columns:none;
+  padding-left:0;
+}
+.articleCinePage .articleRichHeading.articleRichHeading--plain>span{
+  display:none !important;
+}
+.articleCinePage .articleRichHeading.articleRichHeading--plain h2{
+  width:100%;
+  margin-left:0;
+}
+
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain{
+  display:block;
+  grid-template-columns:none;
+  gap:0;
+  padding:22px 24px;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain>span{
+  display:none !important;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain>div{
+  width:100%;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain h3{
+  margin:0 0 9px;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain p{
+  width:100%;
+}
+
+.articleCinePage .articleRichReferences .articleRichReferences__plain{
+  display:block;
+  grid-template-columns:none;
+  padding:12px 0;
+}
+.articleCinePage .articleRichReferences .articleRichReferences__plain>span{
+  display:none !important;
+}
+.articleCinePage .articleRichReferences .articleRichReferences__plain p{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+@media(max-width:760px){
+  .articleCinePage .articleCineParagraph.articleCineParagraph--plain,
+  .articleCinePage .articleRichHeading.articleRichHeading--plain,
+  .articleCinePage .articleRichRecommendation.articleRichRecommendation--plain,
+  .articleCinePage .articleRichReferences .articleRichReferences__plain{
+    grid-template-columns:none;
+  }
+  .articleCinePage .articleRichRecommendation.articleRichRecommendation--plain{
+    padding:17px;
   }
 }
 
