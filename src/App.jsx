@@ -2939,7 +2939,8 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
               return (
                 <div className="articleRichReferences" key={index}>
                   {(item.items||[]).map((reference,referenceIndex)=>(
-                    <div className="articleRichReferences__plain" key={referenceIndex}>
+                    <div className="articleRichReferences__plain articleRichReferences__numbered" key={referenceIndex}>
+                      <span>{referenceIndex + 1}.</span>
                       <p>{String(reference||"").replace(/^\s*\d+\s*[-.)]\s*/, "")}</p>
                     </div>
                   ))}
@@ -34391,6 +34392,25 @@ html.perfLite .articleCinePage .articleCineHero__author{
 @media(max-width:760px){
   .articleCinePage .articleCineBody{
     padding-top:18px !important;
+  }
+}
+
+
+/* STEP196 — REFERENCES NUMBERING RESTORED */
+.articleCinePage .articleRichReferences .articleRichReferences__numbered{
+  display:grid !important;grid-template-columns:34px minmax(0,1fr) !important;
+  gap:10px;align-items:start;padding:9px 0;border:0 !important;
+}
+.articleCinePage .articleRichReferences .articleRichReferences__numbered>span{
+  display:block !important;padding-top:1px;color:#9d743e;
+  font:500 12px/1.65 Georgia,serif;
+}
+.articleCinePage .articleRichReferences .articleRichReferences__numbered>p{
+  margin:0;padding:0;color:#75695d;font-size:12px;line-height:1.65;
+}
+@media(max-width:760px){
+  .articleCinePage .articleRichReferences .articleRichReferences__numbered{
+    grid-template-columns:28px minmax(0,1fr) !important;gap:7px;
   }
 }
 
