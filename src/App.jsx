@@ -2865,19 +2865,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
         </div>
       </section>
 
-      <section className="articleCompactIntro">
-        <div className="articleCompactIntro__inner">
-          <span>YAZI / {post.category}</span>
-          <h2>
-            Düşünceye alan açan,
-            <strong>sakince okunacak bir içerik.</strong>
-          </h2>
-          <p>
-            Yazıyı rahat bir okuma deneyimi için sade, geniş ve dikkat dağıtmayan
-            bir düzende sunuyoruz.
-          </p>
-        </div>
-      </section>
+
 
       <section className={`articleCineBody ${author ? "has-author" : ""}`}>
         <article className="articleCineBody__article">
@@ -34356,6 +34344,53 @@ html.perfLite .articleCinePage .articleCineHero__author{
   }
   .articleCinePage .articleCineBody{
     padding-top:20px !important;
+  }
+}
+
+
+/* STEP195 — DIRECT ARTICLE BODY / NO SEPARATOR LINES */
+.articleCinePage .articleCineBody{
+  margin-top:0 !important;
+  padding-top:24px !important;
+  border-top:0 !important;
+}
+.articleCinePage .articleCineParagraph,
+.articleCinePage .articleCineParagraph.articleCineParagraph--plain{
+  border:0 !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+  box-shadow:none !important;
+}
+.articleCinePage .articleCineParagraph + .articleCineParagraph,
+.articleCinePage .articleCineParagraph--plain + .articleCineParagraph--plain{
+  border-top:0 !important;
+}
+.articleCinePage .articleRichHeading,
+.articleCinePage .articleRichHeading.articleRichHeading--plain{
+  border:0 !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+.articleCinePage .articlePlainRecommendation,
+.articleCinePage .articlePlainRecommendation + .articlePlainRecommendation{
+  border:0 !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+.articleCinePage .articleRichReferences,
+.articleCinePage .articleRichReferences>div,
+.articleCinePage .articleRichReferences .articleRichReferences__plain{
+  border:0 !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+.articleCinePage .articleCineIntro,
+.articleCinePage .articleCompactIntro{
+  display:none !important;
+}
+@media(max-width:760px){
+  .articleCinePage .articleCineBody{
+    padding-top:18px !important;
   }
 }
 
