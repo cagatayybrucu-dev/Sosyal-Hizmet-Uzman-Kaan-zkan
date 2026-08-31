@@ -2898,7 +2898,6 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
                     {(item.columns||[]).map((column,columnIndex)=>(
                       <section key={columnIndex}>
                         <div className="articleRichRiskGrid__head">
-                          <b>0{columnIndex+1}</b>
                           <h3>{column.title}</h3>
                         </div>
                         <ul>
@@ -34030,6 +34029,70 @@ html.perfLite .articleCinePage .articleCineHero__author{
   color:#8a6331;
   font-size:11px;
   line-height:1.55;
+}
+
+
+/* STEP190 — FIGURE 1 UNIFORM ALIGNMENT */
+.articleCinePage .articleRichRiskGrid{
+  align-items:stretch;
+}
+.articleCinePage .articleRichRiskGrid section{
+  display:grid;
+  grid-template-rows:140px 1fr;
+  min-height:318px;
+}
+.articleCinePage .articleRichRiskGrid__head{
+  min-height:0;
+  height:140px;
+  display:flex;
+  align-items:center;
+  padding:20px;
+}
+.articleCinePage .articleRichRiskGrid__head b{
+  display:none !important;
+}
+.articleCinePage .articleRichRiskGrid__head h3{
+  margin:0;
+  min-height:0;
+  color:#fff;
+  font:500 16px/1.35 Georgia,serif;
+}
+.articleCinePage .articleRichRiskGrid ul{
+  height:100%;
+  margin:0;
+  padding:8px 20px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  background:#f7f0e5;
+}
+.articleCinePage .articleRichRiskGrid li{
+  min-height:51px;
+  display:flex;
+  align-items:center;
+}
+@media(max-width:760px){
+  .articleCinePage .articleRichRiskGrid section{
+    grid-template-rows:auto 1fr;
+    min-height:0;
+  }
+  .articleCinePage .articleRichRiskGrid__head{
+    height:auto;
+    min-height:94px;
+  }
+}
+
+
+/* STEP191 — BLOG ARTICLE INTRO TITLE SMALLER */
+.articleCinePage .articleCineIntro h2{
+  font-size:clamp(27px,3vw,43px);
+  line-height:1.10;
+}
+@media(max-width:760px){
+  .articleCinePage .articleCineIntro h2{
+    font-size:29px;
+    line-height:1.12;
+  }
 }
 
 `;
