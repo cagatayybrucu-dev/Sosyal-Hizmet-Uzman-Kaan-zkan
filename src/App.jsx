@@ -300,6 +300,327 @@ const defaultBlogContent = {
   })),
 };
 
+
+const bilgeAkarPost20260831 = {
+  "id": "bilge-akar-babalarda-dogum-sonrasi-depresyonu",
+  "slug": "babalarda-dogum-sonrasi-depresyonu",
+  "category": "AİLE & İLİŞKİLER",
+  "date": "31 Ağustos 2026",
+  "readTime": "20 dk okuma",
+  "title": "BABALARDA DOĞUM SONRASI DEPRESYONU",
+  "excerpt": "Doğum sonrası depresyonunun babalardaki yaygınlığı, belirleyicileri, aile ve çocuk üzerindeki yansımaları ile destek ve müdahale önerilerini ele alan kapsamlı bir inceleme.",
+  "image": servicesHeroRoom,
+  "body": [
+    {
+      "type": "heading",
+      "text": "Giriş"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dünya Sağlık Örgütü verilerine göre doğum sonrası depresyonunun, dünya genelinde en yaygın ruh sağlığı sorunlarından biri olacağı ve küresel çapta ikinci önde gelen engellilik nedeni haline geleceği tahmin edilmektedir (1). Tarihsel olarak doğum sonrası depresyonu genellikle anneler ile ilişkilendirilmiş olsa da son yıllarda bu durumun babalar üzerindeki olumsuz etkileri ve önemi giderek daha fazla kabul görmektedir (2,3,4). Erkekler doğum sürecinde kadınlarla aynı fizyolojik, anatomik ve hormonal değişimleri doğrudan yaşamasalar da hayatlarındaki bu radikal değişim ile birlikte özellikle yeni rolleri ve sorumlulukları çerçevesinde son derece önemli psikolojik değişiklikler yaşamaktadırlar (2)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Bebek beklerken genellikle neşeli ve tatmin edici bir ebeveynlik yolculuğu hayal edilse de (5,6), gerçek hayatın getirdiği yeni sorumluluklar, uykusuzluk ve bebekle ilişki kurma çabası yeni ebeveynleri hazırlıksız yakalayabilmektedir (7). Sonuç olarak, ebeveynliğe geçiş dönemi birçok yeni baba için ebeveynlik yeteneklerinden şüphe duydukları, kendilerini yalnız ve desteksiz hissettikleri (8,9) oldukça zorlu bir kriz süreci haline gelebilmektedir. Babalıkta yaşanan bu psikolojik sıkıntılar ve sessizce taşınan yükler, zamanında fark edilmediğinde babalarda doğum sonrası depresyonunun gelişmesine zemin hazırlayabilmektedir. Bu yazıda da babalarda görülen doğum sonrası depresyonunun yaygınlığı, doğum sonrası depresyonunun babalardaki belirleyicileri, babalarda görülen doğum sonrası depresyonunun yansımaları ve babaların sorun ve ihtiyaçlarının giderilebilmesi için neler yapılması gerektiği üzerinde durulmuştur."
+    },
+    {
+      "type": "heading",
+      "text": "Babalarda Görülen Doğum Sonrası Depresyonunun Yaygınlığı"
+    },
+    {
+      "type": "paragraph",
+      "text": "Doğum sonrası depresyonu yalnızca annelere özgü bir durum değildir. Yapılan geniş çaplı araştırmalar babaların da bu süreçte ciddi bir risk altında olduğunu göstermektedir. 30'dan fazla ülkede 1 milyondan fazla katılımcı ile gerçekleştirilen kapsamlı bir meta-analiz, babaların da doğum sonrası depresyonu yaşadığını, prevalans (yaygınlık) oranlarının doğum öncesi dönemde %9,76 civarındayken doğum sonrasında %8,75'e kadar değiştiğini ve bu durumun bir yıldan fazla sürebildiğini ortaya koymuştur (10). Farklı epidemiyolojik veriler de yaklaşık her 10 babadan 1'inin (%10) doğum sonrasındaki ilk yıl içinde bu depresif süreci deneyimlediğini doğrulamaktadır (11). Bu oran, genel yetişkin erkek nüfusundaki majör depresyon yaygınlığının (%5) yaklaşık iki katıdır (12)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Babalarda görülen doğum sonrası depresyonu oranları, çalışmalarda kullanılan ölçüm araçlarına (EPDS, Kessler-6, CES-D vb.), farklı kesme puanlarına, değerlendirme zamanlamalarına ve yerel sosyokültürel/ekonomik dinamiklere bağlı olarak dünya genelinde %1,2 ila %25,5 (bazı araştırmalarda %1,8 ile %55) gibi oldukça geniş bir yelpazede rapor edilmektedir (13,14,15,16). Örneğin, Amerika Birleşik Devletleri'nde babaların yaklaşık %5 ila %10'u (bazı ulusal örneklemlerde %10,3'ü) bu durumdan muzdariptir (17). Avustralya'da babaların %9,7'si ilk yılda psikolojik sıkıntı bildirmektedir (18). Brezilya'da babalardaki doğum sonrası depresyonu oranı %12, Çin'de ise doğumdan 8 hafta sonra %3,1 seviyesinde gözlenmiştir (19). Şili'de yapılan bir araştırma %18,5'lik bir yaygınlık bildirirken (10), İrlanda'da özellikle çalışan babalar arasında bu oran %19,4'e kadar yükselmektedir (20). Türkiye ve İsveç'te de babalarda görülen doğum sonrası depresyonunun yaygınlık oranları sırasıyla %1,8 ila %47 arasında değişmektedir (10)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Annelerin aksine babalarda görülen doğum sonrası depresyonu annelerde görülen doğum sonrası depresyonundan daha kademeli olarak gelişme eğilimindedir. Doğum öncesi dönemde depresyon oranı doğumdan kısa bir süre sonra azalmakta ancak ilk yıl boyunca artmaktadır (21). Babalar açısından en çarpıcı istatistik ise partnerin durumuna bağlıdır. Eşi doğum sonrası depresyonu yaşayan babalarda depresif semptomların görülme sıklığı dramatik bir şekilde %24 ila %50 gibi çok yüksek seviyelerde olmaktadır (22)."
+    },
+    {
+      "type": "heading",
+      "text": "Doğum Sonrası Depresyonunun Babalardaki Belirleyicileri"
+    },
+    {
+      "type": "paragraph",
+      "text": "Babalarda doğum sonrası depresyonunun ortaya çıkışı tek bir nedene bağlı olmayıp, çok faktörlü bir yapıya sahiptir (2,23). Araştırmalar, bu durumu tetikleyen başlıca risk faktörlerini şu şekilde sınıflandırmaktadır (Şekil 1):"
+    },
+    {
+      "type": "riskTable",
+      "caption": "Şekil 1: Doğum Sonrası Depresyonunun Babalardaki Belirleyicileri",
+      "columns": [
+        {
+          "title": "BİREYSEL & BİYOLOJİK BELİRLEYİCİLER",
+          "items": [
+            "Geçmiş Ruh Sağlığı Öyküsü",
+            "Hormonal Değişiklikler",
+            "Kronik Uyku Bozuklukları"
+          ]
+        },
+        {
+          "title": "AİLEVİ & İLİŞKİSEL BELİRLEYİCİLER",
+          "items": [
+            "Maternal Depresyon",
+            "Evlilik Sorunları",
+            "Perinatal ve Bebekle İlgili Faktörler"
+          ]
+        },
+        {
+          "title": "SOSYO-EKONOMİK & KÜLTÜREL BELİRLEYİCİLER",
+          "items": [
+            "İşsizlik ve Maddi Kaygılar",
+            "Sosyal Destek Eksikliği",
+            "“Erkeklik” Rolünün Yarattığı Stres"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Babalardaki doğum sonrası depresyonunun en güçlü ve en tutarlı belirleyicisi eşin depresyonda olmasıdır (13,24,25,26). Eşleri doğum sonrası depresyonu yaşayan babaların, eşleri depresyonda olmayan babalara kıyasla doğum sonrasındaki ilk haftalarda depresyona girme riski tam 2,5 kat daha fazladır (27). Babalarda daha önce yaşanmış bir depresyon öyküsü (28,29) ve psikiyatrik tedavi geçmişi (30,31) de doğum sonrası dönemde depresif semptomların gelişmesindeki en kuvvetli risk faktörüdür. Cui ve arkadaşları (32) ve Chhabra ve arkadaşları (33) tarafından yürütülen çalışmalarda da evlilik ile ilgili sorunlar diğerlerinin yanı sıra bir risk faktörü olarak tanımlanmaktadır. Evlilik ilişkisindeki çatışmalardaki artış, babalarda görülen doğum sonrası depresyonunu 5 kat artırmaktadır."
+    },
+    {
+      "type": "paragraph",
+      "text": "Yeni bir bebeğin getirdiği ek ekonomik yükler altındayken yaşanan işsizlik (34) ve düşük gelir düzeyi (35) gibi istihdam kaygıları babalarda ağır strese yol açabilmektedir. İşsiz babalarda depresyon görülme riski, çalışan babalara kıyasla 6 kat daha fazladır (35). Sosyal destek eksikliği de babalar arasında doğum sonrası depresyonunun önemli bir belirleyicisidir (36,37). Söz konusu bu sosyal destek eksikliği, babaların deneyimledikleri stresin artmasına, başa çıkma mekanizmalarının azalmasına ve izolasyon duygularına yol açabilmektedir (38,39)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Erkekler doğum yapmasa da babalığa geçişte hormonal dalgalanmalar yaşamaktadırlar. Bebekle bağ kurmayı kolaylaştıran testosterondaki düşüş ile östrojen, kortizol, vazopressin ve prolaktindeki artışlar, aynı zamanda babayı klinik depresyon semptomlarına karşı hassaslaştırabilmektedir (21). Bebeğin gece uyanmaları ve bakım ihtiyaçları nedeniyle yaşanan uykusuzluk ve bozulan sirkadiyen ritimler (40) de babalarda depresyon riskini artırmaktadır."
+    },
+    {
+      "type": "paragraph",
+      "text": "Toplumun erkekten beklediği \"güçlü görünme ve kırılganlık göstermeme” gibi geleneksel roller erkeklerin yardım isteme davranışlarını engelleyebilmektedir (41). Bu durum da babaların ruh sağlıklarına olumsuz yansıyabilmektedir. Tüm bu faktörlerin yanı sıra planlanmamış gebelikler (31,42,43), travmatik veya acil sezaryen doğum deneyimleri (44), emzirme problemleri (44,45) ve bebeğin teselli edilemeyen zor mizaçlı yapısı (sürekli ağlama) (45) da babalardaki stresi dramatik şekilde tetikleyen diğer unsurlardır."
+    },
+    {
+      "type": "heading",
+      "text": "Babalarda Görülen Doğum Sonrası Depresyonunun Yansımaları"
+    },
+    {
+      "type": "paragraph",
+      "text": "Doğum sonrası depresyonu yalnızca babayı etkileyen bir ruh sağlığı sorunu değildir. Aile sistemleri teorisine göre (46), bir aile üyesini etkileyen her durum doğrudan ya da dolaylı olarak tüm üyeleri ve ilişkileri etkilemektedir (22). Babalarda görülen doğum sonrası depresyonunun yarattığı zincirleme etkiler şu şekildedir (Şekil 2):"
+    },
+    {
+      "type": "impactDiagram",
+      "caption": "Şekil 2: Babalarda Görülen Doğum Sonrası Depresyonunun Yansımaları",
+      "items": [
+        "BABA",
+        "ANNE",
+        "BEBEK",
+        "AİLE"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Babadaki Etkileri"
+    },
+    {
+      "type": "paragraph",
+      "text": "Depresyon yaşayan babalarda ciddi düzeyde değersizlik hissi, anhedoni (hiçbir şeyden keyif alamama), kronik yorgunluk ve karar verme güçlüğü görülebilmektedir (47). Daha da endişe verici olanı, doğum sonrası depresyonu yaşayan babaların yaklaşık %11'i intihar veya hem kendilerine hem de bebeklerine zarar verme gibi son derece utanç ve suçluluk uyandıran dürtüsel düşüncelerle baş etmek zorunda kalabilmektedir (45). Ayrıca, babalar istenmeyen olumsuz duygularını artan madde kötüye kullanımı ve kaçışçı eğilimler de dahil olmak üzere uyumsuz başa çıkma mekanizmaları (48) yoluyla dışsallaştırabilmektedir (49,50). Bu uyumsuz başa çıkma yöntemleri, babayı ve diğerlerini tehlikeye atarak, zaten stresli olan bir ebeveynlik geçişi dönemine daha fazla gerginlik katmaktadır (51)."
+    },
+    {
+      "type": "heading",
+      "text": "İlişki ve Eş Üzerindeki Etkileri"
+    },
+    {
+      "type": "paragraph",
+      "text": "Babalarda görülen doğum sonrası depresyonu, ilişki memnuniyetinin azalması (3,26,52), yakınlık eksikliği ve cinsel sorunlar gibi evlilik sorunları (53) ile ilişkilendirilmektedir. Ayrıca ayrılık veya boşanmayı da beraberinde getirebilmektedir (54). Söz konusu depresyon, öfke, düşmanlık, güvensizlik (55,56) ve yakın partner şiddeti (57) ile karakterize edilen partnerler arasındaki bozulmuş kişilerarası etkileşimlerle de ilişkilidir. Bu etkileşimli özellikler, annelerin depresyon semptomlarını daha da zorlaştırabilmektedir (58). Depresif olmayan erkeklerle karşılaştırıldığında, depresif babalar partnerleriyle etkileşimlerde daha az olumlu ve öfkeli ifadelerden daha fazla yararlanmaktadırlar. Bu da depresif semptomatoloji, itme gibi orta derecede fiziksel saldırganlık ve şiddetli saldırganlık gösterme olasılığını artırmaktadır (59). Babalar normalde anneler için en kritik destek kaynağı olarak görülmektedir. Ancak kendileri depresyonda olduğunda eşlerine bu desteği sunamamaktadırlar. Bu durum, annenin doğum sonrası depresyonunun sürmesine ve depresif ataklarının nüksetmesine yol açabilmekte ve her iki ebeveynin de aynı anda depresif olma riskini beraberinde getirebilmektedir (45)."
+    },
+    {
+      "type": "heading",
+      "text": "Bebekle Bağ Kurma ve Ebeveynlik Davranışlarına Etkisi"
+    },
+    {
+      "type": "paragraph",
+      "text": "Depresyon, babanın bebeği ile sağlıklı bir güvenli bağlanma geliştirmesini engelleyebilmektedir (21). Depresif babalar bebeklerine karşı daha az sıcaklık ve ilgi gösterirken, daha fazla psikolojik kontrol sergilemekte (60) ve okuma-oyun gibi gelişimsel faaliyetlere neredeyse hiç katılmamaktadırlar (61). Bebeklerinin ağlamaları karşısında yoğun bir yetersizlik ve güçsüzlük hissi yaşayarak ebeveynlikten tamamen vazgeçebilmekte veya bebeğe karşı öfke, kızgınlık ve nefret geliştirebilmektedirler (45)."
+    },
+    {
+      "type": "heading",
+      "text": "Çocuk Gelişimi Üzerindeki Uzun Vadeli Etkileri"
+    },
+    {
+      "type": "paragraph",
+      "text": "Babanın doğum sonrası depresyonu yaşaması, çocukların duygusal, sosyal ve bilişsel gelişimi üzerinde uzun vadeli etkiler bırakabilmektedir. Örneğin, babası depresif olan çocukların, babası sağlıklı olan akranlarına kıyasla 7 yaşına kadar herhangi bir ruhsal bozukluk yaşama olasılığı tam iki kat fazladır (29). Babanın doğum sonrası depresyonu yaşaması aynı zamanda, aşırı bebek ağlaması (62,63,64) çocukların duygusal ve davranışsal gelişimindeki sorunlar (29,63) ve dil gelişimi (61) dahil olmak üzere zor çocuk mizacına da yol açabilmektedir. Bebeklik döneminde ebeveynlerin depresyonu nedeniyle maruz kalınan tepkisiz ve kaotik ortam, bebekte stres hormonu olan kortizolün kronik olarak yükselmesine neden olabilmektedir (65). Bu durum, bebeğin fizyolojik büyümesini ve bağışıklık sistemini zayıflatmakla kalmamakta (66) aynı zamanda yaşam boyu duygu düzenlemede kritik rol oynayan orbitofrontal korteksin sağlıklı olgunlaşmasını da engelleyebilmektedir (67). Depresyon veya başka bir ruh sağlığı sorunu olan bir babayla yaşayan çocukların duygusal veya davranışsal sorunlar geliştirme riski %33 ila %70 oranında artmaktadır (68) Baba depresyonundaki artışlar ayrıca 0 ila 4 yaş arasındaki çocuklarda artan saldırganlıkla da ilişkilidir (69). Baba depresyonu aynı zamanda 4 ve 5 yaşındaki çocuklarda davranışsal, duygusal ve sosyal gelişimdeki gecikmelerle pozitif olarak ilişkili görülmektedir (70). Bunlara ek olarak, babalarda görülen doğum sonrası depresyonunun en kritik boyutu ise, dengeli tutumlar sergilemeyen depresif bir babanın varlığı, çocuk istismarı ve bebek cinayeti (infantisid) risklerini de artırabilmektedir (21)."
+    },
+    {
+      "type": "heading",
+      "text": "Sonuç ve Öneriler"
+    },
+    {
+      "type": "paragraph",
+      "text": "Babalarda görülen doğum sonrası depresyonu, sadece babaların kendilerini değil, tüm aileyi ve gelecek nesilleri tehdit eden kritik bir halk sağlığı sorunu olarak karşımıza çıkmaktadır. Bu doğrultuda, babalara ihtiyaç duydukları desteği sunabilmek adına şu adımların atılması gerekmektedir:"
+    },
+    {
+      "type": "recommendation",
+      "number": 1,
+      "text": "Babalara Özel Rutin Tarama Araçlarının Geliştirilmesi: Mevcut klinik tarama testleri erkeklerde depresif semptomları yakalamada yetersiz kalabilmektedir. Babaların doğum öncesi ve sonrası süreçlerde ruh sağlığı profesyonelleri tarafından rutin olarak ve erkeklere duyarlı ölçekler ile ruh sağlığı taramasından geçirilmesi gerekmektedir."
+    },
+    {
+      "type": "recommendation",
+      "number": 2,
+      "text": "Aile Merkezli ve Çift Odaklı Müdahaleler: Sağlık sistemi sadece anneyi odak noktası yapan geleneksel yaklaşımdan sıyrılarak, her iki ebeveyni de kapsayan aile merkezli bir bakım modelini benimsemelidir. Eşlerin gebelik sürecinden itibaren birlikte katılacağı psikoeğitim programları, ortak ebeveynlik eğitimleri ve çift terapileri, çiftler arasındaki desteği artırarak evlilik memnuniyetsizliği ve karşılıklı depresyon riskini büyük ölçüde hafifletecektir."
+    },
+    {
+      "type": "recommendation",
+      "number": 3,
+      "text": "Ücretli Babalık İzni ve Esnek Çalışma Politikaları: Devlet düzeyinde ve çalışma kültüründe köklü değişiklikler yapılmalıdır. Çünkü babalık izni gibi toplumdan gelen destek, babaların doğum sonrası dönemdeki değişikliklere uyum sağlamalarına yardımcı olacaktır (21). Örneğin, İsveç'te babaları babalık izni haklarını kullanmaya teşvik etmek için babalık izni politikasında değişiklikler yapılmıştır (71). “Baba kotası” uygulaması ile baba izni için 450 günlük ebeveyn izni arasında 30 gün ayrılmaktadır. Bu, babaların babalık izni için 30 gün kullanmadıklarında, ebeveyn izni günlerini kaybedileceği anlamına gelmektedir. İsveç'teki babaların “baba kotasına” ek olarak, ailelerine evde destek olmak için 10 günlük babalık izni ve ödeneği de vardır. Bu ebeveyn izni, bir çocuk 18 aylık olana kadar herhangi bir zamanda kullanılabilmektedir. Söz konusu bu durumların, aile yaşamına olumlu yansıyacağı değerlendirilmektedir."
+    },
+    {
+      "type": "recommendation",
+      "number": 4,
+      "text": "Akran Destek Ağlarının Kurulması: Babaların ebeveynlik stresini, çaresizlik hissini ve izolasyon duygularını azaltmak amacıyla “babadan babaya” akran destek grupları kurulmalıdır (72,73). Benzer süreçlerden geçen diğer babalarla güvenli bir ortamda konuşabilmenin babaların deneyimledikleri yalnızlık hislerinin azaltılmasına ve durumlarının normalleştirilmesine yardımcı olacağı düşünülmektedir."
+    },
+    {
+      "type": "recommendation",
+      "number": 5,
+      "text": "Sağlık Profesyonellerinin Kapsamlı Eğitimi: Doğum kliniklerinde görev yapan profesyoneller babanın perinatal dönemdeki rolü ve ruh sağlığı riskleri konusunda eğitilmelidir. Sağlık çalışanlarının babaları sürece dahil etmesi (74), onların ebeveynlik becerileri edinmelerini kolaylaştıracak ve “kenara atılmışlık” hissini ortadan kaldıracaktır (51)."
+    },
+    {
+      "type": "recommendation",
+      "number": 6,
+      "text": "Toplumsal Farkındalık ve Damgalama (Stigma) ile Mücadele: Erkeklerin ruh sağlığı sorunları yaşayabileceği gerçeği topluma anlatılmalı, erkeklerin zayıflıklarını gizlemek zorunda hissettikleri geleneksel kalıplar ve toplumsal baskılar ile mücadele edilmelidir. Babaların yardım aramaları teşvik edilmeli ve hissettikleri duyguların anormal olmadığı, tedavi edilebilir tıbbi bir süreç olduğu vurgulanmalıdır."
+    },
+    {
+      "type": "heading",
+      "text": "Kaynakça"
+    },
+    {
+      "type": "references",
+      "items": [
+        "Dois, A., Uribe, C., Villarroel, L., & Contreras, A. (2012). Factores de riesgo asociados a síntomas depresivos post parto en mujeres de bajo riesgo obstétrico atendidas en el sistema público. Revista Médica de CChile, 140(6), 719-725.",
+        "Pérez, F., & Brahm, P. (2017). Depresión posparto en padres: por qué también es importante? Revista Chilena de Pediatría, 88(5), 582-585.",
+        "Bielawska‐Batorowicz, E., & Kossakowska‐Petrycka, K. (2006). Depressive mood in men after the birth of their offspring in relation to a partner's depression, social support, fathers' personality and prenatal expectations. Journal of Reproductive and Infant Psychology, 24(1), 21-29.",
+        "Garfield, C. F., & Isacco, A. (2009). Urban fathers' role in maternal postpartum mental health. Fathering, 7(3), 286.",
+        "Davis, K. D. M., Lu, L., Williams, B., Roas-Gomez, M. V., Leziak, K., Jackson, J., ... & Yee, L. M. (2022). The stress of parenting in the postpartum period during the COVID-19 pandemic. Women's Health Reports, 3(1), whr-2022.",
+        "Nyström, K., & Öhrling, K. (2004). Parenthood experiences during the child's first year: literature review. Journal of Advanced Nursing, 46(3), 319-330.",
+        "Rodriguez, A., & Adamsons, K. (2012). Parenting expectations: Younger and older first-time parents. Marriage & Family Review, 48(3), 248-271.",
+        "Lévesque, S., Bisson, V., Charton, L., & Fernet, M. (2020). Parenting and relational well-being during the transition to parenthood: Challenges for first-time parents. Journal of Child and Family Studies, 29(7), 1938-1956.",
+        "Sanders, R., Lehmann, J., & Gardner, F. (2022). Parents’ emotional responses to early parenthood. Journal of Family Issues, 43(7), 1874-1897.",
+        "Caparros-Gonzalez, R. A., Romero-Gonzalez, B., & Peralta-Ramirez, M. I. (2018). Depresión posparto, un problema de salud pública mundial. Revista Panamericana de Salud Pública, 42, e97.",
+        "Rao W. W., Zhu X.-M., Zong Q. Q., Zhang Q., Hall B. J., Ungvari G. S., & Xiang Y. T. (2020). Prevalence of prenatal and postpartum depression in fathers: A comprehensive meta-analysis of observational surveys. Journal of Affective Disorders, 263, 491–499.",
+        "Kessler, R. C., Berglund, P., Demler, O., Jin, R., Koretz, D., Merikangas, K. R., ... & Wang, P. S. (2003). The epidemiology of major depressive disorder: results from the National Comorbidity Survey Replication (NCS-R). Jama, 289(23), 3095-3105.",
+        "Soliday, E., McCluskey-Fawcett, K., & O'Brien, M. (1999). Postpartum affect and depressive symptoms in mothers and fathers. American Journal of Orthopsychiatry, 69(1), 30.",
+        "Pinheiro, R. T., Magalhães, P. V. S., Horta, B. L., Pinheiro, K. A. T., Da Silva, R. A., & Pinto, R. H. (2006). Is paternal postpartum depression associated with maternal postpartum depression? Population‐based study in Brazil. Acta Psychiatrica Scandinavica, 113(3), 230-232.",
+        "Gjerdingen, D. K., & Center, B. A. (2003). First-time parents’ prenatal to postpartum changes in health, and the relation of postpartum health to work and partner characteristics. The Journal of the American Board of Family Practice, 16(4), 304-311.",
+        "Quinlivan, J. A., & Condon, J. (2005). Anxiety and depression in fathers in teenage pregnancy. Australian & New Zealand Journal of Psychiatry, 39(10), 915-920.",
+        "Centers for Disease Control and Prevention. (n.d.). Depression among women. Retrieved from http://www.cdc.gov/reproductivehealth/depression/",
+        "Giallo, R., D'Esposito, F., Cooklin, A., Mensah, F., Lucas, N., Wade, C., & Nicholson, J. M. (2013). Psychosocial risk factors associated with fathers' mental health in the postnatal period: Results from a population-based study. Social Psychiatry and Psychiatric Epidemiology, 48, 563–573.",
+        "Lai, B. P., Tang, A. K., Lee, D. T., Yip, A. S., & Chung, T. K. (2010). Detecting postnatal depression in Chinese men: a comparison of three instruments. Psychiatry Research, 180(2-3), 80-85.",
+        "Philpott, L. F., & Corcoran, P. (2018). Paternal postnatal depression in Ireland: Prevalence and associated factors. Midwifery, 56, 121-127.",
+        "Kim, P., & Swain, J. E. (2007). Sad dads: paternal postpartum depression. Psychiatry, 4(2), 35.",
+        "Goodman, J. H. (2004). Paternal postpartum depression, its relationship to maternal postpartum depression, and implications for family health. Journal of Advanced Nursing, 45(1), 26-35.",
+        "Baldoni, F., & Ceccarelli, L. (2010). La depressione perinatale paterna. Una rassegna della ricerca clinica ed empirica. Infanzia e Adolescenza, 9(2), 79-92.",
+        "Deater-Deckard, K., Pickering, K., Dunn, J.F., & Golding, J. (1998). Family structure and depressive symptoms in men preceding and following the birth of a child. Am J Psychiatry, 155(6), 818–823.",
+        "Ballard, C.G., Davis, R., Cullen, P.C., et al. (1994). Prevalence of postnatal psychiatric morbidity in mothers and fathers. Br J Psychiatry, 164(6), 782–788.",
+        "Dudley, M., Roy, K., Kelk, N., & Bernard, D. (2001). Psychological correlates of depression in fathers and mothers in the first postnatal year. J Reproduc Infant Psychol, 19(3), 187–202.",
+        "Matthey, S., Barnett, B., Ungerer, J., & Waters, B. (2000). Paternal and maternal depressed mood during the transition to parenthood. Journal of Affective Disorders, 60(2), 75-85.",
+        "Areias, M. E. G., Kumar, R., Barros, H., & Figueiredo, E. (1996). Correlates of postnatal depression in mothers and fathers. The British Journal of Psychiatry, 169(1), 36-41.",
+        "Ramchandani, P. G., Stein, A., O'CONNOR, T. G., Heron, J. O. N., Murray, L., & Evans, J. (2008). Depression in men in the postnatal period and later child psychopathology: a population cohort study. Journal of the American Academy of Child & Adolescent Psychiatry, 47(4), 390-398.",
+        "Suto, M., Isogai, E., Mizutani, F., Kakee, N., Misago, C., & Takehara, K. (2016). Prevalence and factors associated with postpartum depression in fathers: A regional, longitudinal study in Japan. Research in nursing & health, 39(4), 253-262.",
+        "Nishimura, A., & Ohashi, K. (2010). Risk factors of paternal depression in the early postnatal period in Japan. Nursing & Health Sciences, 12(2), 170-176.",
+        "Cui, Y., Deng, Y., Zhou, B., Zeng, Y., & Cheng, A.S. (2020). Prevalence and Factors Associated with Male Postnatal Depression in China. J. Men’s Health, 17, 22–27.",
+        "Chhabra, J., Li, W., & McDermott, B. (2022). Predictive Factors for Depression and Anxiety in Men During the Perinatal Period: A Mixed Methods Study. Am. J. Men’s Health, 16, 155798832210794.",
+        "Roubinov, D. S., Luecken, L. J., Crnic, K. A., & Gonzales, N. A. (2014). Postnatal depression in Mexican American fathers: Demographic, cultural, and familial predictors. Journal of Affective Disorders, 154, 360–368.",
+        "Ansari, N. S., Shah, J., Dennis, C. L., & Shah, P. S. (2021). Risk factors for postpartum depressive symptoms among fathers: A systematic review and meta‐analysis. Acta Obstetricia et Gynecologica Scandinavica, 100(7), 1186-1199.",
+        "Mao, Q., Zhu, L.X., Su, X.Y. (2011). A comparison of postnatal depression and related factors between Chinese new mothers and fathers. J Clin Nurs, 20, 645-652.",
+        "Gao, L.L., Chan, S.W.C., & Mao, Q. (2009). Depression, perceived stress, and social support among first-time Chinese mothers and fathers in the postpartum period. Res Nurs Heal, 32, 50-58.",
+        "Cameron, E. E., Sedov, I. D., & Tomfohr-Madsen, L. M. (2016). Prevalence of paternal depression in pregnancy and the postpartum: An updated meta-analysis. Journal of Affective Disorders, 206, 189–203.",
+        "Leung, B. M., Letourneau, Y., N. L., Giesbrecht, G. F., Ntanda, N., Hart, M., & A. T. The, A. T. (2017). Predictors of postpartum depression in partnered mothers and fathers from a longitudinal cohort. Community Mental Health Journal, 53(4), 420–431.",
+        "Gallaher, K. G. H., Slyepchenko, A., Frey, B. N., Urstad, K., & Dørheim, S. K. (2018). The role of circadian rhythms in postpartum sleep and mood. Sleep Medicine Clinics, 13(3), 359-374.",
+        "Álvarez-García, P., García-Fernández, R., Martín-Vázquez, C., Calvo-Ayuso, N., & Quiroga-Sánchez, E. (2024). Postpartum depression in fathers: A systematic review. Journal of Clinical Medicine, 13(10), 2949.",
+        "Gao, L. L., Chan, S. W. C., & Mao, Q. (2009). Depression, perceived stress, and social support among first‐time Chinese mothers and fathers in the postpartum period. Research in Nursing & Health, 32(1), 50-58.",
+        "Koh, Y. W., Chui, C. Y., Tang, C. S. K., & Lee, A. M. (2014). The prevalence and risk factors of paternal depression from the antenatal to the postpartum period and the relationships between antenatal and postpartum depression among fathers in Hong Kong. Depression Research and Treatment, 2014(1), 127632.",
+        "Pedersen, S. C., Maindal, H. T., & Ryom, K. (2021). “I wanted to be there as a father, but I couldn’t”: A qualitative study of fathers’ experiences of postpartum depression and their help-seeking behavior. American Journal of Men's Health, 15(3), 15579883211024375.",
+        "Richardson, T. N., Graf, M. D., Hicks, L., & Caiola, C. (2025). “Whispered on Only the Darkest Corners of the Internet:”: A Qualitative Descriptive Study Exploring Fathers’ Experiences with Paternal Postpartum Depression on Reddit. Global Qualitative Nursing Research, 12, 23333936251374618.",
+        "Klein D. M., & White J. M. (1995). Family Theories: An Introduction. Sage, Thousand Oaks, CA.",
+        "American Psychiatric Association. (2022). Diagnostic and statistical manual of mental disorders (5th ed., Text rev.; DSM-5-TR). American Psychiatric Publishing.",
+        "Gentile, S., & Fusco, M. L. (2017). Untreated perinatal paternal depression: Effects on offspring. Psychiatry Research, 252, 325-332.",
+        "Domoney, J., Trevillion, K., & Challacombe, F. L. (2020). Developing an intervention for paternal perinatal depression: An international Delphi study. Journal of Affective Disorders Reports, 2, 100033.",
+        "Psouni, E., Agebjörn, J., & Linder, H. (2017). Symptoms of depression in Swedish fathers in the postnatal period and development of a screening tool. Scandinavian Journal of Psychology, 58(6), 485-496.",
+        "Chua, J. Y. X., Chan, Y. H., & Shorey, S. (2024). Development of the Paternal Involvement in Early Infancy Scale (PEACE) for fathers in Singapore. Journal of Pediatric Nursing, 79, 213-224.",
+        "Buist, A., Morse, C. A., & Durkin, S. (2002). Men's adjustment to fatherhood: Implications for obstetric health care. Journal of Obstetric, Gynecologic, and Neonatal Nursing, 32(2), 172–180.",
+        "Meighan, M., Davis, M. W., Thomas, S. P., & Droppleman, P. G. (1999). Living with postpartum depression: The father's experience. The American Journal of Maternal/Child Nursing, 24(4), 202–208.",
+        "Sayers, C., Kohn, C., Fresco, D., Bellack, A., & Sarwer, D. (2001). Marital cognitions and depression in the context of marital discord. Cognitive Therapy and Research, 25(6), 713–732.",
+        "Feldbau-Kohn, S., Heyman, R. E., & O′Leary, K. D. (1998). Major depressive disorder and depressive symptomatology as predictors of husband to wife physical aggression. Violence and Victims, 13(4), 347–360.",
+        "Kahn, J., Coyne, J., & Margolin, G. (1985). Depression and marital disagreement: The social construction of despair. Journal of Social and Personal Relations, 2, 447–461.",
+        "Vaeth, P. A., Ramisetty-Mikler, S., & Caetano, R. (2010). Depression among couples in the United States in the context of intimate partner violence. Journal of Interpersonal Violence, 25(5), 771–790.",
+        "Cohen, M., Schei, B., Ansara, D., Gallop, R., Stuckless, N., & Stewart, D. (2002). A history of personal violence and postpartum depression: Is there a link? Archive of Women's Mental Health, 4(3), 83–92.",
+        "Pan, H. S., Neidig, P. H., & O′Leary, K. D. (1994). Predicting mild and severe husband-to-wife physical aggression. Journal of Consulting and Clinical Psychology, 62(5), 975–981.",
+        "Cummings, E. M., Keller, P. S., & Davies, P. T. (2005). Towards a family process model of maternal and paternal depressive symptoms: Exploring multiple relations with child and family functioning. Journal of Child Psychology & Psychiatry, 46(5), 479–489.",
+        "Paulson, J. F., Keefe, H. A., & Leiferman, J. A. (2009). Early parental depression and child language development. Journal of Child Psychology & Psychiatry, 50(3), 254–262.",
+        "Hanington, L., Ramchandani, P., & Stein, A. (2010). Parental depression and child temperament: Assessing child to parent effects in a longitudinal population study. Infant Behavior & Development, 33, 88–95.",
+        "Kvalevaag, A. L., Ramchandani, P. G., Hove, O., Assmus, J., Eberhard-Gran, M., & Biringer, E. (2013). Paternal mental health and socioemotional and behavioral development in their children. Pediatrics, 131, e463–e469.",
+        "Perren, S., von Wyl, A., Burgin, D., Simoni, H., & von Klitzing, K. (2005). Depressive symptoms and psychosocial stress across the transition to parenthood: Associations with parental psychopathology and child difficulty. Journal of Psychosomatic Obstetrics and Gynaecology, 26, 173–183.",
+        "Cicchetti, D., & Rogosch, F. A. (2001). Diverse patterns of neuroendocrine activity in maltreated children. Development and Psychopathology, 13(3), 677-693.",
+        "Federenko, I. S., & Wadhwa, P. D. (2004). Women's mental health during pregnancy influences fetal and infant developmental and health outcomes. CNS Spectrums, 9(3), 198-206.",
+        "Schore, A. N. (2005). Back to basics: Attachment, affect regulation, and the developing right brain: Linking developmental neuroscience to pediatrics. Pediatrics in Review, 26(6), 204-217.",
+        "Weitzman, M., Rosenthal, D. G., & Liu, Y. H. (2011). Paternal depressive symptoms and child behavioral or emotional problems in the United States. Pediatrics, 128(6), 1126-1134.",
+        "Narayanan, M.K., & Naerde, A. (2016). Associations between maternal and paternal depressive symptoms and early child behavior problems: testing a mutually adjusted prospective longitudinal model. J Affect Disord, 196, 181–189.",
+        "Fletcher, R. J., Feeman, E., Garfield, C., & Vimpani, G. (2011). The effects of early paternal depression on children's development. Medical Journal of Australia, 195(11-12), 685-689.",
+        "Kozorovitskiy, Y., Hughes, M., Lee, K., & Gould, E. (2006). Fatherhood affects dendritic spines and vasopressin V1a receptors in the primate prefrontal cortex. Nature Neuroscience, 9(9), 1094-1095.",
+        "Habib, C. (2012). Paternal perinatal depression: An overview and suggestions towards an intervention model. Journal of Family Studies, 18(1), 4-16.",
+        "Kumar, S. V., Oliffe, J. L., & Kelly, M. T. (2018). Promoting postpartum mental health in fathers: recommendations for nurse practitioners. American Journal of Men's Health, 12(2), 221-228.",
+        "Rodríguez-Muñoz, M.F., Olivares, M.E., Izquierdo, N., Soto, C., & Huynh-Nhu, L. (2016). Prevención de La Depresión Perinatal. Clin Salud, 27, 97–99."
+      ]
+    }
+  ],
+  "quote": "",
+  "status": "published",
+  "featured": false,
+  "sortOrder": 999999,
+  "authorSlug": "",
+  "sourceAuthorName": "Bilge AKAR"
+};
+
+const normalizeAuthorName = (value = "") =>
+  String(value)
+    .toLocaleLowerCase("tr-TR")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const mergeBilgeAkarArticle = (content) => {
+  const next = {
+    ...defaultBlogContent,
+    ...(content || {}),
+    posts: Array.isArray(content?.posts) ? content.posts : defaultBlogContent.posts,
+    categories: Array.isArray(content?.categories) ? content.categories : defaultBlogContent.categories,
+    authors: Array.isArray(content?.authors) ? content.authors : defaultBlogContent.authors,
+  };
+
+  const bilge = (next.authors || []).find(
+    (author) => normalizeAuthorName(author?.name) === normalizeAuthorName("Bilge AKAR")
+  );
+
+  const prepared = {
+    ...bilgeAkarPost20260831,
+    authorSlug: bilge?.slug || "",
+    authorName: bilge?.name || "Bilge AKAR",
+    authorRole: bilge?.role || "Sosyal Hizmet Uzmanı & Doktora Öğrencisi",
+    authorImage: bilge?.image || "",
+  };
+
+  const exists = (next.posts || []).some(
+    (post) => post.slug === prepared.slug || post.id === prepared.id
+  );
+
+  return {
+    ...next,
+    categories: (next.categories || []).some(
+      (item) => normalizeAuthorName(item) === normalizeAuthorName(prepared.category)
+    )
+      ? next.categories
+      : [...(next.categories || []), prepared.category],
+    posts: exists
+      ? (next.posts || []).map((post) =>
+          post.slug === prepared.slug || post.id === prepared.id
+            ? { ...post, authorSlug: post.authorSlug || prepared.authorSlug }
+            : post
+        )
+      : [...(next.posts || []), prepared],
+  };
+};
+
 const createBlogSlug = (value = "") =>
   value
     .toLocaleLowerCase("tr-TR")
@@ -652,13 +973,13 @@ function App() {
   const [heroTouchStart, setHeroTouchStart] = useState(null);
   const [homeTextSlide, setHomeTextSlide] = useState(0);
   const [showSiteIntro, setShowSiteIntro] = useState(
-    () => window.location.hash !== "#/admin"
+    () => !["#/admin", "#/yazar-girisi", "#/yazar-paneli"].includes(window.location.hash)
   );
   const [blogSlug, setBlogSlug] = useState(() => {
     const hash = window.location.hash;
     return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
   });
-  const [blogContent, setBlogContent] = useState(defaultBlogContent);
+  const [blogContent, setBlogContent] = useState(() => mergeBilgeAkarArticle(defaultBlogContent));
   const [authorSlug, setAuthorSlug] = useState(() => {
     const hash = window.location.hash;
     return hash.startsWith("#/yazarlar/") ? hash.replace("#/yazarlar/", "") : "";
@@ -884,6 +1205,8 @@ function App() {
       ? "cookies"
       : window.location.hash === "#/admin"
       ? "admin"
+      : window.location.hash === "#/yazar-girisi" || window.location.hash === "#/yazar-paneli"
+      ? "authorPortal"
       : "home"
   );
 
@@ -1018,13 +1341,15 @@ function App() {
       }
 
       if (data?.content) {
-        setBlogContent((current) => ({
-          ...current,
-          ...data.content,
-          posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
-          categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
-          authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
-        }));
+        setBlogContent((current) =>
+          mergeBilgeAkarArticle({
+            ...current,
+            ...data.content,
+            posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
+            categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
+            authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
+          })
+        );
       }
     };
 
@@ -1268,6 +1593,8 @@ function App() {
           ? "cookies"
           : window.location.hash === "#/admin"
           ? "admin"
+          : window.location.hash === "#/yazar-girisi" || window.location.hash === "#/yazar-paneli"
+          ? "authorPortal"
           : "home";
       setPage(nextPage);
       setBlogSlug(
@@ -1410,7 +1737,7 @@ function App() {
           style={{ transform: `scaleX(${scrollProgress})` }}
           aria-hidden="true"
         />
-        {page !== "admin" && (
+        {page !== "admin" && page !== "authorPortal" && (
         <a
           className="podcastTopStrip podcastTopStrip--spotify"
           href="#/icerikler"
@@ -1442,7 +1769,7 @@ function App() {
         </a>
       )}
       <div className={`step145Site ${showSiteIntro ? "step145Site--waiting" : "step145Site--ready"}`}>
-      <header className={page === "admin" ? "topbar" : "topbar topbar--light"}>
+      <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
               <img src={kaanOzkanEmblem} alt="" decoding="async" />
@@ -1562,6 +1889,8 @@ function App() {
           <LegalPage type="cookies" />
         ) : page === "admin" ? (
           <AdminDemoPage />
+        ) : page === "authorPortal" ? (
+          <AuthorPortalPage blogContent={blogContent} />
         ) : (
         <main className="lux155">
           <section
@@ -2020,6 +2349,8 @@ function App() {
                 <a href="#/aydinlatma">Aydınlatma Metni</a>
                 <span>•</span>
                 <a href="#/cerez-politikasi">Çerez Politikası</a>
+                <span>•</span>
+                <a href="#/yazar-girisi">Yazar Girişi</a>
               </div>
             </div>
           </footer>
@@ -2373,12 +2704,28 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
 function BlogArticlePage({ slug, content = defaultBlogContent }) {
   const posts=(Array.isArray(content.posts)?content.posts:[]).filter(post=>post.status!=="draft");
   const post=posts.find(item=>item.slug===slug);
-  if(!post) return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>BLOG</span><h1>Bu yazı bulunamadı.</h1><a href="#/blog">Blog'a Dön</a></main>;
-  const paragraphs=Array.isArray(post.body)?post.body:String(post.body||"").split(/\n\s*\n/).filter(Boolean);
-  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item?.name);
-  const postAuthorSlug = String(post.authorSlug || "").trim();
-  const author = postAuthorSlug
-    ? (authors.find((item)=>String(item.slug || "").trim() === postAuthorSlug) || null)
+
+  if(!post) {
+    return (
+      <main className="blog99NotFound">
+        <img src={kaanOzkanLogo2026} alt=""/>
+        <span>BLOG</span>
+        <h1>Bu yazı bulunamadı.</h1>
+        <a href="#/blog">Blog'a Dön</a>
+      </main>
+    );
+  }
+
+  const paragraphs=Array.isArray(post.body)
+    ? post.body
+    : String(post.body||"").split(/\n\s*\n/).filter(Boolean);
+
+  const authors=(Array.isArray(content.authors)?content.authors:[])
+    .filter((item)=>item?.slug && item?.name);
+
+  const postAuthorSlug=String(post.authorSlug||"").trim();
+  const author=postAuthorSlug
+    ? (authors.find((item)=>String(item.slug||"").trim()===postAuthorSlug)||null)
     : null;
 
   const articleShareUrl =
@@ -2386,70 +2733,306 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
       ? `${window.location.origin}${window.location.pathname}#/blog/${post.slug}`
       : `https://www.ailedanismanikaanozkan.com/#/blog/${post.slug}`;
 
-  const shareArticle = async () => {
-    try {
-      if (navigator.share) {
+  const shareArticle=async()=>{
+    try{
+      if(navigator.share){
         await navigator.share({
-          title: post.title,
-          text: post.excerpt || "",
-          url: articleShareUrl,
+          title:post.title,
+          text:post.excerpt||"",
+          url:articleShareUrl,
         });
         return;
       }
 
       await navigator.clipboard.writeText(articleShareUrl);
       window.alert("Yazının bağlantısı kopyalandı.");
-    } catch (error) {
-      if (error?.name === "AbortError") return;
-      try {
+    }catch(error){
+      if(error?.name==="AbortError") return;
+
+      try{
         await navigator.clipboard.writeText(articleShareUrl);
         window.alert("Yazının bağlantısı kopyalandı.");
-      } catch {
-        window.prompt("Yazının bağlantısını kopyalayın:", articleShareUrl);
+      }catch{
+        window.prompt("Yazının bağlantısını kopyalayın:",articleShareUrl);
       }
     }
   };
 
-  const related=posts.filter(item=>item.slug!==post.slug).slice(0,3);
-  return <main className="article103">
-    <section className="article103__top"><div className="article103__topActions"><a href="#/blog">← Blog'a Dön</a><button type="button" onClick={shareArticle}>Paylaş ↗</button></div><span>{post.category}</span><h1>{post.title}</h1><p>{post.excerpt}</p>{author ? <div className="article103__by"><img src={author.image} alt={author.name}/><span><b>{author.name}</b><small>{author.role}</small></span><time>{post.date} · {post.readTime}</time></div> : <div className="article103__dateOnly"><time>{post.date} · {post.readTime}</time></div>}</section>
-    <div className="article103__coverShell">
-      <div className="article103__cover">
-        <img src={post.image} alt={post.title}/>
-        <div className="article103__coverShade"></div>
-        <div className="article103__coverCaption">
-          <span>{post.category}</span>
-          <small>{post.date} · {post.readTime}</small>
+  const related=posts.filter((item)=>item.slug!==post.slug).slice(0,3);
+
+  return (
+    <main className="articleCinePage">
+      <div className="articleCineProgress" aria-hidden="true"/>
+
+      <section className="articleCineHero cin3d">
+        <div className="articleCineHero__ambient" aria-hidden="true">
+          <img src={post.image} alt="" />
+          <span/>
         </div>
-      </div>
-    </div>
-    <section className="article103__layout article103__layout--premium">
-      <article>
-        {paragraphs.map((paragraph,index)=><p key={index}>{paragraph}</p>)}
-        {post.quote&&<blockquote>"{post.quote}"</blockquote>}
-        <div className="article103__note">Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.</div>
-      </article>
-      <aside className="article103__guide">
-        <div className="article103__toc article103__toc--premium">
-          {author && <a className="article103__guideAuthor" href={`#/yazarlar/${author.slug}`}>
-            <div className="article103__guideAvatar">
-              {author.image ? <img src={author.image} alt={author.name}/> : <span>{author.name?.charAt(0)}</span>}
+
+        <div className="articleCineHero__topbar">
+          <a href="#/blog">← Blog'a Dön</a>
+          <button type="button" onClick={shareArticle}>Paylaş ↗</button>
+        </div>
+
+        <div className="articleCineHero__inner">
+          <div className="articleCineHero__copy">
+            <span className="articleCineHero__eyebrow">{post.category}</span>
+
+            <h1>{post.title}</h1>
+
+            {post.excerpt && <p>{post.excerpt}</p>}
+
+            <div className="articleCineHero__meta">
+              <time>{post.date}</time>
+              <i/>
+              <span>{post.readTime}</span>
             </div>
-            <div>
-              <small>YAZAR</small>
-              <b>{author.name}</b>
-              <span>{author.role || "Yazar"}</span>
+
+            {author && (
+              <a className="articleCineHero__author" href={`#/yazarlar/${author.slug}`}>
+                <div>
+                  {author.image
+                    ? <img src={author.image} alt={author.name}/>
+                    : <span>{author.name?.charAt(0)}</span>}
+                </div>
+
+                <p>
+                  <small>YAZAR</small>
+                  <strong>{author.name}</strong>
+                  <em>{author.role}</em>
+                </p>
+
+                <b>↗</b>
+              </a>
+            )}
+          </div>
+
+          <div className="articleCineHero__visual">
+            <div className="articleCineHero__frame">
+              <img src={post.image} alt={post.title}/>
+              <div className="articleCineHero__frameInfo">
+                <span>{post.category}</span>
+                <small>{post.date} · {post.readTime}</small>
+              </div>
             </div>
-            <em>-'</em>
-          </a>}
-          <div className="article103__tocRows">
-            <p><small>KATEGORİ</small><strong>{post.category}</strong></p>
           </div>
         </div>
-      </aside>
-    </section>
-    <section className="article103__related"><span>OKUMAYA DEVAM EDİN</span><h2>Diğer yazılar</h2><div>{related.map(item=><a href={`#/blog/${item.slug}`} key={item.slug}><img src={item.image} alt=""/><small>{item.category}</small><h3>{item.title}</h3></a>)}</div></section>
-  </main>;
+
+        <div className="articleCineHero__scroll" aria-hidden="true">
+          <span/>
+          <small>OKUMAYA BAŞLA</small>
+        </div>
+      </section>
+
+      <section className="articleCineIntro cin3d">
+        <span>YAZI / {post.category}</span>
+        <h2>
+          Düşünceye alan açan,
+          <strong>sakince okunacak bir içerik.</strong>
+        </h2>
+        <p>
+          Yazıyı rahat bir okuma deneyimi için sade, geniş ve dikkat dağıtmayan
+          bir düzende sunuyoruz.
+        </p>
+      </section>
+
+      <section className={`articleCineBody ${author ? "has-author" : ""}`}>
+        <article className="articleCineBody__article">
+          {paragraphs.map((block,index)=>{
+            const item = typeof block === "string" ? { type:"paragraph", text:block } : block;
+
+            if(item?.type==="heading"){
+              return (
+                <div className="articleRichHeading" key={index}>
+                  <span>{String(index+1).padStart(2,"0")}</span>
+                  <h2>{item.text}</h2>
+                </div>
+              );
+            }
+
+            if(item?.type==="riskTable"){
+              return (
+                <figure className="articleRichFigure articleRichFigure--risk" key={index}>
+                  <div className="articleRichRiskGrid">
+                    {(item.columns||[]).map((column,columnIndex)=>(
+                      <section key={columnIndex}>
+                        <div className="articleRichRiskGrid__head">
+                          <b>0{columnIndex+1}</b>
+                          <h3>{column.title}</h3>
+                        </div>
+                        <ul>
+                          {(column.items||[]).map((entry,entryIndex)=><li key={entryIndex}>{entry}</li>)}
+                        </ul>
+                      </section>
+                    ))}
+                  </div>
+                  <figcaption>{item.caption}</figcaption>
+                </figure>
+              );
+            }
+
+            if(item?.type==="impactDiagram"){
+              return (
+                <figure className="articleRichFigure articleRichFigure--impact" key={index}>
+                  <div className="articleRichImpact articleRichImpact--source">
+                    <div className="articleRichImpact__node is-top"><span>ANNE</span></div>
+                    <div className="articleRichImpact__node is-left"><span>BABA</span></div>
+                    <div className="articleRichImpact__node is-right"><span>BEBEK</span></div>
+                    <div className="articleRichImpact__node is-bottom"><span>AİLE</span></div>
+
+                    <div className="articleRichImpact__arrows" aria-hidden="true">
+                      <span className="arrowStem arrowStem--vertical"></span>
+                      <span className="arrowStem arrowStem--horizontal"></span>
+                      <span className="arrowHead arrowHead--up"></span>
+                      <span className="arrowHead arrowHead--down"></span>
+                      <span className="arrowHead arrowHead--left"></span>
+                      <span className="arrowHead arrowHead--right"></span>
+                    </div>
+                  </div>
+                  <figcaption>{item.caption}</figcaption>
+                </figure>
+              );
+            }
+
+            if(item?.type==="recommendation"){
+              const parts=String(item.text||"").split(":");
+              const recTitle=parts.length>1?parts.shift():"";
+              const recBody=parts.join(":").trim();
+              return (
+                <div className="articleRichRecommendation" key={index}>
+                  <span>{String(item.number).padStart(2,"0")}</span>
+                  <div>
+                    {recTitle && <h3>{recTitle}</h3>}
+                    <p>{recBody || item.text}</p>
+                  </div>
+                </div>
+              );
+            }
+
+            if(item?.type==="references"){
+              return (
+                <div className="articleRichReferences" key={index}>
+                  {(item.items||[]).map((reference,referenceIndex)=>(
+                    <div key={referenceIndex}>
+                      <span>{String(referenceIndex+1).padStart(2,"0")}</span>
+                      <p>{reference}</p>
+                    </div>
+                  ))}
+                </div>
+              );
+            }
+
+            return (
+              <div className="articleCineParagraph" key={index}>
+                <span>{String(index+1).padStart(2,"0")}</span>
+                <p>{item?.text || ""}</p>
+              </div>
+            );
+          })}
+
+          {post.quote && (
+            <blockquote className="articleCineQuote">
+              <span>“</span>
+              <p>{post.quote}</p>
+            </blockquote>
+          )}
+
+          <div className="articleCineNote">
+            <span>BİLGİLENDİRME</span>
+            <p>
+              Bu içerik genel bilgilendirme amacıyla hazırlanmıştır. Kişisel
+              ihtiyaçların değerlendirilmesi için profesyonel görüşme gerekebilir.
+            </p>
+          </div>
+        </article>
+
+        <aside className="articleCineRail">
+          <div className="articleCineRail__card">
+            <span>YAZI BİLGİLERİ</span>
+
+            <div className="articleCineRail__row">
+              <small>KATEGORİ</small>
+              <strong>{post.category}</strong>
+            </div>
+
+            <div className="articleCineRail__row">
+              <small>OKUMA</small>
+              <strong>{post.readTime}</strong>
+            </div>
+
+            <button type="button" onClick={shareArticle}>
+              Yazıyı Paylaş
+              <b>↗</b>
+            </button>
+          </div>
+
+          {author && (
+            <a className="articleCineRail__author" href={`#/yazarlar/${author.slug}`}>
+              <div className="articleCineRail__avatar">
+                {author.image
+                  ? <img src={author.image} alt={author.name}/>
+                  : <span>{author.name?.charAt(0)}</span>}
+              </div>
+
+              <small>YAZAR</small>
+              <h3>{author.name}</h3>
+              <p>{author.role}</p>
+              <span>Yazar profilini görüntüle ↗</span>
+            </a>
+          )}
+        </aside>
+      </section>
+
+      <section className="articleCineEnd">
+        <div>
+          <span>YAZININ SONU</span>
+          <h2>
+            Okuduğunuz için
+            <strong>teşekkür ederiz.</strong>
+          </h2>
+          <p>
+            İçeriği faydalı bulduysanız bağlantıyı paylaşarak daha fazla kişiye
+            ulaşmasına katkı sağlayabilirsiniz.
+          </p>
+        </div>
+
+        <button type="button" onClick={shareArticle}>
+          Yazıyı Paylaş
+          <span>↗</span>
+        </button>
+      </section>
+
+      {related.length>0 && (
+        <section className="articleCineRelated">
+          <div className="articleCineRelated__head">
+            <span>OKUMAYA DEVAM EDİN</span>
+            <h2>Diğer yazılar</h2>
+          </div>
+
+          <div className="articleCineRelated__grid">
+            {related.map((item,index)=>(
+              <a
+                className="articleCineRelated__card"
+                href={`#/blog/${item.slug}`}
+                key={item.slug}
+              >
+                <div>
+                  <img src={item.image} alt={item.title}/>
+                  <span>0{index+1}</span>
+                </div>
+
+                <small>{item.category}</small>
+                <h3>{item.title}</h3>
+                <p>{item.excerpt}</p>
+                <b>Yazıyı Oku ↗</b>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  );
 }
 
 function ContactDetailPage() {
@@ -3393,6 +3976,745 @@ function ContentDetailPage() {
   );
 }
 
+
+function AuthorPortalPage({ blogContent = defaultBlogContent }) {
+  const AUTHOR_SESSION_KEY = "kaan_author_portal_session";
+  const [session, setSession] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [accountLoading, setAccountLoading] = useState(false);
+  const [account, setAccount] = useState(null);
+  const [authError, setAuthError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [submissions, setSubmissions] = useState([]);
+  const [submissionsLoading, setSubmissionsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [activeView, setActiveView] = useState("dashboard");
+  const [designPreview, setDesignPreview] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+
+  const emptyForm = {
+    title: "",
+    category: "AİLE & İLİŞKİLER",
+    excerpt: "",
+    image: "",
+    body: "",
+    quote: "",
+  };
+  const [form, setForm] = useState(emptyForm);
+
+  const categories = Array.from(
+    new Set(
+      (Array.isArray(blogContent?.categories) ? blogContent.categories : blogCategories)
+        .filter((item) => item && item !== "Tümü")
+    )
+  );
+
+  const previewAuthor = (Array.isArray(blogContent?.authors) ? blogContent.authors : [])[0] || null;
+  const effectiveAccount = designPreview
+    ? {
+        author_slug: previewAuthor?.slug || "demo-yazar",
+        display_name: previewAuthor?.name || "Örnek Yazar",
+        role: "author",
+        status: "active",
+      }
+    : account;
+
+  const profile = (Array.isArray(blogContent?.authors) ? blogContent.authors : [])
+    .find((item) => item?.slug && item.slug === effectiveAccount?.author_slug);
+
+  const displayName = effectiveAccount?.display_name || profile?.name || "Yazar";
+  const displayRole = profile?.role || "Yazar";
+  const displayImage = profile?.image || "";
+
+  const statusLabel = (status) => ({
+    draft: "Taslak",
+    submitted: "İncelemede",
+    approved: "Yayınlandı",
+    rejected: "Düzeltme İstendi",
+  }[status] || status || "Taslak");
+
+  const loadAccount = async (currentSession) => {
+    if (!currentSession?.user?.id) return;
+    setAccountLoading(true);
+    setAuthError("");
+
+    const { data, error } = await supabase
+      .from("author_accounts")
+      .select("user_id,author_slug,display_name,role,status")
+      .eq("user_id", currentSession.user.id)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Yazar hesabı yüklenemedi:", error);
+      setAuthError("Yazar hesabı doğrulanamadı. Yetki ayarlarını kontrol edin.");
+      setAccount(null);
+    } else if (!data || data.status !== "active" || data.role !== "author") {
+      setAuthError("Bu hesap için aktif bir yazar profili tanımlanmamış.");
+      setAccount(null);
+    } else {
+      setAccount(data);
+    }
+    setAccountLoading(false);
+  };
+
+  const loadSubmissions = async (currentSession = session) => {
+    if (!currentSession?.user?.id) return;
+    setSubmissionsLoading(true);
+    setMessage("");
+
+    const { data, error } = await supabase
+      .from("author_submissions")
+      .select("id,title,category,excerpt,image,body,quote,status,admin_note,published_post_id,created_at,updated_at")
+      .eq("author_id", currentSession.user.id)
+      .order("updated_at", { ascending: false });
+
+    if (error) {
+      console.error("Yazar gönderileri yüklenemedi:", error);
+      setMessage("Yazılarınız yüklenemedi.");
+      setSubmissions([]);
+    } else {
+      setSubmissions(data || []);
+    }
+    setSubmissionsLoading(false);
+  };
+
+  useEffect(() => {
+    let mounted = true;
+
+    const restore = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!mounted) return;
+
+      const active = window.sessionStorage.getItem(AUTHOR_SESSION_KEY) === "active";
+      if (data.session && active) {
+        setSession(data.session);
+        await loadAccount(data.session);
+        await loadSubmissions(data.session);
+      } else {
+        setSession(null);
+      }
+      setAuthLoading(false);
+    };
+
+    restore();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, nextSession) => {
+      if (!mounted) return;
+      setSession(nextSession || null);
+      if (nextSession && window.sessionStorage.getItem(AUTHOR_SESSION_KEY) === "active") {
+        await loadAccount(nextSession);
+        await loadSubmissions(nextSession);
+      } else if (!nextSession) {
+        setAccount(null);
+        setSubmissions([]);
+      }
+      setAuthLoading(false);
+    });
+
+    return () => {
+      mounted = false;
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  const openDesignPreview = () => {
+    setDesignPreview(true);
+    setAccount({
+      author_slug: ((Array.isArray(blogContent?.authors) ? blogContent.authors : [])[0]?.slug) || "demo-yazar",
+      display_name: ((Array.isArray(blogContent?.authors) ? blogContent.authors : [])[0]?.name) || "Örnek Yazar",
+      role: "author",
+      status: "active",
+    });
+    setSession({ user: { id: "design-preview" } });
+    setSubmissions([
+      {
+        id: "preview-1",
+        title: "Aile İçinde Sağlıklı İletişimin Temel Taşları",
+        category: "AİLE & İLİŞKİLER",
+        excerpt: "Aile içinde güvenli iletişim kurmak, yalnızca konuşmak değil; görülmek, anlaşılmak ve sınırları koruyabilmekle başlar.",
+        image: "",
+        body: "",
+        quote: "",
+        status: "submitted",
+        admin_note: "",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      },
+      {
+        id: "preview-2",
+        title: "İlişkilerde Duygusal Yakınlık Nasıl Güçlenir?",
+        category: "İLİŞKİLER",
+        excerpt: "Duygusal yakınlığın oluşması için güven, açıklık ve karşılıklı merak gerekir.",
+        image: "",
+        body: "",
+        quote: "",
+        status: "draft",
+        admin_note: "",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      },
+      {
+        id: "preview-3",
+        title: "Sınır Koymak Neden Zordur?",
+        category: "BİREYSEL",
+        excerpt: "Sağlıklı sınırlar, ilişkileri uzaklaştırmak yerine daha güvenli hale getirebilir.",
+        image: "",
+        body: "",
+        quote: "",
+        status: "approved",
+        admin_note: "",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      },
+    ]);
+    setActiveView("dashboard");
+    setMessage("Tasarım önizleme modu açık. Bu alanda yaptığınız değişiklikler Supabase'e kaydedilmez.");
+    window.location.hash = "#/yazar-paneli";
+  };
+
+  const login = async (e) => {
+    e.preventDefault();
+    setAuthError("");
+
+    if (!email.trim() || !password) {
+      setAuthError("E-posta ve şifrenizi girin.");
+      return;
+    }
+
+    setAuthLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+
+    if (error || !data?.session) {
+      setAuthError("E-posta veya şifre hatalı.");
+      setAuthLoading(false);
+      return;
+    }
+
+    window.sessionStorage.setItem(AUTHOR_SESSION_KEY, "active");
+    setSession(data.session);
+    setPassword("");
+    await loadAccount(data.session);
+    await loadSubmissions(data.session);
+    setAuthLoading(false);
+    window.location.hash = "#/yazar-paneli";
+  };
+
+  const logout = async () => {
+    window.sessionStorage.removeItem(AUTHOR_SESSION_KEY);
+    if (!designPreview) await supabase.auth.signOut();
+    setDesignPreview(false);
+    setSession(null);
+    setAccount(null);
+    setSubmissions([]);
+    setActiveView("dashboard");
+    setForm(emptyForm);
+    setEditingId(null);
+    setMessage("");
+    window.location.hash = "#/yazar-girisi";
+  };
+
+  const resetForm = () => {
+    setForm({
+      ...emptyForm,
+      category: categories[0] || "GENEL",
+    });
+    setEditingId(null);
+  };
+
+  const editSubmission = (item) => {
+    if (!["draft", "rejected"].includes(item.status)) return;
+    setEditingId(item.id);
+    setForm({
+      title: item.title || "",
+      category: item.category || categories[0] || "GENEL",
+      excerpt: item.excerpt || "",
+      image: item.image || "",
+      body: item.body || "",
+      quote: item.quote || "",
+    });
+    setActiveView("editor");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  const uploadImage = async (file) => {
+    if (designPreview) { setMessage("Tasarım önizleme modunda görsel yükleme devre dışıdır."); return; }
+    if (!file || !session?.user?.id) return;
+    if (!file.type.startsWith("image/")) {
+      setMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
+      return;
+    }
+    if (file.size > 6 * 1024 * 1024) {
+      setMessage("Kapak görseli en fazla 6 MB olabilir.");
+      return;
+    }
+
+    setUploading(true);
+    setMessage("");
+
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazi-kapak";
+    const filePath = `author-submissions/${session.user.id}/${Date.now()}-${safeName}.${extension}`;
+
+    const { error } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type,
+      });
+
+    if (error) {
+      console.error("Yazar kapak görseli yüklenemedi:", error);
+      setMessage("Görsel yüklenemedi. Storage yetkilerini kontrol edin.");
+    } else {
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+      setForm((current) => ({ ...current, image: data.publicUrl }));
+      setMessage("Kapak görseli hazır.");
+    }
+
+    setUploading(false);
+  };
+
+  const saveSubmission = async (targetStatus = "draft") => {
+    if (designPreview) {
+      setMessage(targetStatus === "submitted"
+        ? "Önizleme: Yazı editör incelemesine gönderilmiş gibi gösterildi."
+        : "Önizleme: Taslak kaydedilmiş gibi gösterildi.");
+      setActiveView("dashboard");
+      return;
+    }
+    if (!session?.user?.id || !account?.author_slug) return;
+
+    if (!form.title.trim() || !form.excerpt.trim() || !form.body.trim() || !form.image.trim()) {
+      setMessage("Başlık, kısa açıklama, kapak görseli ve yazı içeriği zorunludur.");
+      return;
+    }
+
+    const payload = {
+      author_id: session.user.id,
+      author_slug: account.author_slug,
+      title: form.title.trim(),
+      category: form.category.trim() || "GENEL",
+      excerpt: form.excerpt.trim(),
+      image: form.image.trim(),
+      body: form.body.trim(),
+      quote: form.quote.trim(),
+      status: targetStatus,
+      admin_note: targetStatus === "submitted" ? "" : undefined,
+      updated_at: new Date().toISOString(),
+    };
+
+    setMessage(targetStatus === "submitted" ? "Yazınız incelemeye gönderiliyor..." : "Taslak kaydediliyor...");
+
+    let result;
+    if (editingId) {
+      result = await supabase
+        .from("author_submissions")
+        .update(payload)
+        .eq("id", editingId)
+        .eq("author_id", session.user.id)
+        .select("id")
+        .single();
+    } else {
+      result = await supabase
+        .from("author_submissions")
+        .insert(payload)
+        .select("id")
+        .single();
+    }
+
+    if (result.error) {
+      console.error("Yazar gönderisi kaydedilemedi:", result.error);
+      setMessage("Yazı kaydedilemedi. Lütfen tekrar deneyin.");
+      return;
+    }
+
+    await loadSubmissions();
+    resetForm();
+    setActiveView("dashboard");
+    setMessage(
+      targetStatus === "submitted"
+        ? "Yazınız başarıyla incelemeye gönderildi. Yayınlanmadan önce editör onayından geçecektir."
+        : "Taslağınız başarıyla kaydedildi."
+    );
+  };
+
+  const deleteDraft = async (item) => {
+    if (designPreview) {
+      setSubmissions((items)=>items.filter((entry)=>entry.id!==item.id));
+      setMessage("Önizleme kaydı listeden kaldırıldı.");
+      return;
+    }
+    if (!["draft", "rejected"].includes(item.status)) return;
+    if (!window.confirm(`"${item.title}" taslağını silmek istediğinize emin misiniz?`)) return;
+
+    const { error } = await supabase
+      .from("author_submissions")
+      .delete()
+      .eq("id", item.id)
+      .eq("author_id", session.user.id);
+
+    if (error) {
+      setMessage("Taslak silinemedi.");
+      return;
+    }
+
+    await loadSubmissions();
+    setMessage("Taslak silindi.");
+  };
+
+  if (authLoading) {
+    return (
+      <main className="authorPortal authorPortal--loading">
+        <div className="authorPortalLoading">
+          <img src={kaanOzkanEmblem} alt="" />
+          <span />
+          <p>Yazar alanı hazırlanıyor</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (!designPreview && (!session || !account)) {
+    return (
+      <main className="authorPortal authorPortalLogin">
+        <div className="authorPortalLogin__visual">
+          <div className="authorPortalLogin__visualMedia">
+            <img src={servicesHeroRoom} alt="" />
+            <span />
+          </div>
+
+          <a className="authorPortalLogin__home" href="#/anasayfa">
+            <img src={kaanOzkanEmblem} alt="" />
+            <span>
+              <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
+              <strong>KAAN ÖZKAN</strong>
+            </span>
+          </a>
+
+          <div className="authorPortalLogin__statement">
+            <span>YAZAR PORTALI</span>
+            <h1>Bilginizi,<br/><em>özenle paylaşın.</em></h1>
+            <p>
+              Yazarlarımız için hazırlanan güvenli içerik alanı.
+              Yazılarınızı oluşturun, taslak olarak saklayın ve editör incelemesine gönderin.
+            </p>
+          </div>
+
+          <div className="authorPortalLogin__visualFoot">
+            <span>KAAN ÖZKAN · YAYIN PLATFORMU</span>
+            <i/>
+            <span>GÜVENLİ YAZAR ERİŞİMİ</span>
+          </div>
+        </div>
+
+        <div className="authorPortalLogin__panel">
+          <div className="authorPortalLogin__panelInner">
+            <div className="authorPortalLogin__mark">
+              <img src={kaanOzkanEmblem} alt="" />
+            </div>
+
+            <div className="authorPortalLogin__heading">
+              <span>HOŞ GELDİNİZ</span>
+              <h2>Yazar Girişi</h2>
+              <p>Size tanımlanan e-posta ve şifre ile güvenli yazar alanına giriş yapın.</p>
+            </div>
+
+            <form className="authorPortalLogin__form" onSubmit={login}>
+              <label>
+                <span>E-POSTA ADRESİ</span>
+                <div>
+                  <Icon name="mail" size={17}/>
+                  <input
+                    type="email"
+                    autoComplete="email"
+                    placeholder="ornek@mail.com"
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                  />
+                </div>
+              </label>
+
+              <label>
+                <span>ŞİFRE</span>
+                <div>
+                  <Icon name="lock" size={17}/>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    autoComplete="current-password"
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
+                  />
+                  <button type="button" onClick={()=>setShowPassword((v)=>!v)}>
+                    {showPassword ? "Gizle" : "Göster"}
+                  </button>
+                </div>
+              </label>
+
+              {authError && <div className="authorPortalLogin__error">{authError}</div>}
+
+              <button className="authorPortalLogin__submit" type="submit" disabled={authLoading || accountLoading}>
+                <span>{authLoading || accountLoading ? "Giriş yapılıyor..." : "Yazar Alanına Giriş"}</span>
+                <b>↗</b>
+              </button>
+
+              <button className="authorPortalLogin__preview" type="button" onClick={openDesignPreview}>
+                <span>Tasarımı Hesapsız Önizle</span>
+                <b>→</b>
+              </button>
+            </form>
+
+            <div className="authorPortalLogin__security">
+              <span>◆</span>
+              <p>
+                <strong>Güvenli erişim</strong>
+                Hesabınız yalnızca size ait yazıları görüntüleyebilir ve düzenleyebilir.
+              </p>
+            </div>
+
+            <a className="authorPortalLogin__back" href="#/anasayfa">← Siteye dön</a>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  const publishedCount = submissions.filter((item)=>item.status==="approved").length;
+  const reviewCount = submissions.filter((item)=>item.status==="submitted").length;
+  const draftCount = submissions.filter((item)=>["draft","rejected"].includes(item.status)).length;
+
+  return (
+    <main className="authorPortal authorPortalDash">
+      <aside className="authorPortalSide">
+        <a className="authorPortalSide__brand" href="#/anasayfa">
+          <img src={kaanOzkanEmblem} alt="" />
+          <span>
+            <small>YAZAR PORTALI</small>
+            <strong>KAAN ÖZKAN</strong>
+          </span>
+        </a>
+
+        <div className="authorPortalSide__profile">
+          <div className="authorPortalSide__avatar">
+            {displayImage ? <img src={displayImage} alt={displayName}/> : <span>{displayName.charAt(0)}</span>}
+          </div>
+          <div>
+            <small>HOŞ GELDİNİZ</small>
+            <strong>{displayName}</strong>
+            <span>{displayRole}</span>
+          </div>
+        </div>
+
+        <nav className="authorPortalSide__nav">
+          <button className={activeView==="dashboard" ? "is-active" : ""} onClick={()=>setActiveView("dashboard")}>
+            <span>01</span><b>Yazılarım</b>
+          </button>
+          <button className={activeView==="editor" ? "is-active" : ""} onClick={()=>{resetForm();setActiveView("editor");}}>
+            <span>02</span><b>Yeni Yazı</b>
+          </button>
+        </nav>
+
+        <div className="authorPortalSide__bottom">
+          <a href={`#/yazarlar/${effectiveAccount?.author_slug || ""}`}>Yazar profilimi gör ↗</a>
+          <button type="button" onClick={logout}>Güvenli Çıkış</button>
+        </div>
+      </aside>
+
+      <section className="authorPortalMain">
+        <header className="authorPortalMain__top">
+          <div>
+            {designPreview && <div className="authorPortalPreviewBadge">TASARIM ÖNİZLEME</div>}
+            <span>YAZAR ÇALIŞMA ALANI</span>
+            <h1>{activeView==="editor" ? (editingId ? "Yazınızı düzenleyin." : "Yeni bir yazı oluşturun.") : "İçeriklerinizi yönetin."}</h1>
+          </div>
+          <div className="authorPortalMain__topActions">
+            <a href="#/blog">Blogu Gör</a>
+            <button type="button" onClick={()=>{resetForm();setActiveView("editor");}}>+ Yeni Yazı</button>
+          </div>
+        </header>
+
+        {message && <div className="authorPortalMessage">{message}</div>}
+
+        {activeView === "dashboard" ? (
+          <>
+            <div className="authorPortalStats">
+              <article><small>TOPLAM İÇERİK</small><strong>{submissions.length}</strong><span>Tüm gönderimleriniz</span></article>
+              <article><small>İNCELEMEDE</small><strong>{reviewCount}</strong><span>Editör onayı bekliyor</span></article>
+              <article><small>YAYINLANDI</small><strong>{publishedCount}</strong><span>Blogda yayında</span></article>
+              <article><small>TASLAK</small><strong>{draftCount}</strong><span>Üzerinde çalışabilirsiniz</span></article>
+            </div>
+
+            <div className="authorPortalList">
+              <div className="authorPortalList__head">
+                <div>
+                  <span>İÇERİK ARŞİVİNİZ</span>
+                  <h2>Yazılarım</h2>
+                </div>
+                <button type="button" onClick={()=>loadSubmissions()} disabled={submissionsLoading}>
+                  {submissionsLoading ? "Yenileniyor..." : "Listeyi Yenile"}
+                </button>
+              </div>
+
+              {submissionsLoading ? (
+                <div className="authorPortalEmpty">Yazılarınız yükleniyor...</div>
+              ) : submissions.length === 0 ? (
+                <div className="authorPortalEmpty">
+                  <span>✦</span>
+                  <h3>Henüz bir yazınız yok.</h3>
+                  <p>İlk içeriğinizi hazırlamak için yeni yazı oluşturabilirsiniz.</p>
+                  <button type="button" onClick={()=>{resetForm();setActiveView("editor");}}>İlk Yazımı Oluştur</button>
+                </div>
+              ) : (
+                <div className="authorPortalList__items">
+                  {submissions.map((item)=>(
+                    <article className="authorPortalItem" key={item.id}>
+                      <div className="authorPortalItem__image">
+                        {item.image ? <img src={item.image} alt=""/> : <span>✦</span>}
+                      </div>
+                      <div className="authorPortalItem__copy">
+                        <div>
+                          <span className={`authorPortalStatus is-${item.status}`}>{statusLabel(item.status)}</span>
+                          <small>{item.category}</small>
+                        </div>
+                        <h3>{item.title}</h3>
+                        <p>{item.excerpt}</p>
+                        {item.admin_note && <em>Editör notu: {item.admin_note}</em>}
+                        <span>Son güncelleme: {item.updated_at ? new Date(item.updated_at).toLocaleDateString("tr-TR") : "—"}</span>
+                      </div>
+                      <div className="authorPortalItem__actions">
+                        {["draft","rejected"].includes(item.status) ? (
+                          <>
+                            <button type="button" onClick={()=>editSubmission(item)}>Düzenle</button>
+                            <button type="button" className="is-delete" onClick={()=>deleteDraft(item)}>Sil</button>
+                          </>
+                        ) : item.status === "approved" && item.published_post_id ? (
+                          <a href="#/blog">Blogda Gör ↗</a>
+                        ) : (
+                          <span>İnceleme sürecinde</span>
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="authorPortalEditor">
+            <div className="authorPortalEditor__head">
+              <div>
+                <span>{editingId ? "İÇERİĞİ DÜZENLE" : "YENİ İÇERİK"}</span>
+                <h2>Yazınızı hazırlayın.</h2>
+                <p>Yayınlamadan önce editör incelemesine gönderebilirsiniz. Taslaklar yalnızca size görünür.</p>
+              </div>
+              <button type="button" onClick={()=>{resetForm();setActiveView("dashboard");}}>Kapat ×</button>
+            </div>
+
+            <div className="authorPortalEditor__grid">
+              <div className="authorPortalEditor__fields">
+                <label className="is-wide">
+                  <span>YAZI BAŞLIĞI</span>
+                  <input
+                    value={form.title}
+                    onChange={(e)=>setForm({...form,title:e.target.value})}
+                    placeholder="Okuyucuya ne anlatmak istiyorsunuz?"
+                  />
+                </label>
+
+                <label>
+                  <span>KATEGORİ</span>
+                  <select value={form.category} onChange={(e)=>setForm({...form,category:e.target.value})}>
+                    {(categories.length ? categories : ["GENEL"]).map((item)=><option key={item} value={item}>{item}</option>)}
+                  </select>
+                </label>
+
+                <label className="is-wide">
+                  <span>KISA AÇIKLAMA</span>
+                  <textarea
+                    rows="4"
+                    value={form.excerpt}
+                    onChange={(e)=>setForm({...form,excerpt:e.target.value})}
+                    placeholder="Yazının kısa özetini 2–3 cümleyle anlatın."
+                  />
+                  <small>{form.excerpt.length} karakter</small>
+                </label>
+
+                <label className="is-wide">
+                  <span>YAZI İÇERİĞİ</span>
+                  <textarea
+                    className="authorPortalEditor__body"
+                    rows="18"
+                    value={form.body}
+                    onChange={(e)=>setForm({...form,body:e.target.value})}
+                    placeholder={"Paragraflar arasında bir boş satır bırakabilirsiniz.\n\nYazınızı burada hazırlayın..."}
+                  />
+                  <small>Yaklaşık {Math.max(1, Math.ceil(form.body.trim().split(/\s+/).filter(Boolean).length / 200))} dk okuma</small>
+                </label>
+
+                <label className="is-wide">
+                  <span>ÖNE ÇIKAN ALINTI <em>OPSİYONEL</em></span>
+                  <textarea
+                    rows="3"
+                    value={form.quote}
+                    onChange={(e)=>setForm({...form,quote:e.target.value})}
+                    placeholder="Yazı içinde vurgulanmasını istediğiniz kısa bir cümle."
+                  />
+                </label>
+              </div>
+
+              <aside className="authorPortalEditor__aside">
+                <div className="authorPortalCover">
+                  <span>KAPAK GÖRSELİ</span>
+                  <div className="authorPortalCover__preview">
+                    {form.image ? <img src={form.image} alt="Kapak önizleme"/> : <div><b>✦</b><p>Kapak görselinizi yükleyin</p></div>}
+                  </div>
+                  <label className="authorPortalCover__upload">
+                    <input type="file" accept="image/png,image/jpeg,image/webp" onChange={(e)=>uploadImage(e.target.files?.[0])}/>
+                    <span>{uploading ? "Yükleniyor..." : "Görsel Yükle"}</span>
+                  </label>
+                  <input
+                    value={form.image}
+                    onChange={(e)=>setForm({...form,image:e.target.value})}
+                    placeholder="veya görsel URL"
+                  />
+                </div>
+
+                <div className="authorPortalGuide">
+                  <span>YAYIN REHBERİ</span>
+                  <ul>
+                    <li><b>01</b><p>Başlık açık ve sade olsun.</p></li>
+                    <li><b>02</b><p>Paragrafları kısa ve okunabilir tutun.</p></li>
+                    <li><b>03</b><p>Kaynak gösterilmesi gereken bilgileri belirtin.</p></li>
+                    <li><b>04</b><p>Danışan veya üçüncü kişilere ait özel bilgi kullanmayın.</p></li>
+                  </ul>
+                </div>
+              </aside>
+            </div>
+
+            <div className="authorPortalEditor__savebar">
+              <div>
+                <strong>Yazınız siz göndermeden yayınlanmaz.</strong>
+                <span>İncelemeye gönderilen içerik editör onayından sonra blogda yayınlanır.</span>
+              </div>
+              <div>
+                <button type="button" className="is-draft" onClick={()=>saveSubmission("draft")}>Taslak Kaydet</button>
+                <button type="button" className="is-submit" onClick={()=>saveSubmission("submitted")}>İncelemeye Gönder ↗</button>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+    </main>
+  );
+}
+
 function AdminDemoPage() {
   const ADMIN_SESSION_KEY = "kaan_admin_browser_session";
   const ADMIN_INACTIVITY_MS = 30 * 60 * 1000;
@@ -3528,6 +4850,10 @@ function AdminDemoPage() {
     youtubeChannelUrl: "",
     spotifyChannelUrl: "",
   });
+
+  const [authorSubmissions, setAuthorSubmissions] = useState([]);
+  const [authorSubmissionsLoading, setAuthorSubmissionsLoading] = useState(false);
+  const [authorSubmissionsMessage, setAuthorSubmissionsMessage] = useState("");
 
   useEffect(() => {
     const timer = window.setTimeout(() => setAdminIntroVisible(false), 1700);
@@ -3671,6 +4997,12 @@ function AdminDemoPage() {
   useEffect(() => {
     if (session && activeTab === "blog") {
       loadBlogEditor();
+    }
+  }, [session, activeTab]);
+
+  useEffect(() => {
+    if (session && activeTab === "blog") {
+      loadAuthorSubmissionsAdmin();
     }
   }, [session, activeTab]);
 
@@ -4029,7 +5361,7 @@ function AdminDemoPage() {
       setBlogEditorMessage("Blog içeriği yüklenemedi.");
     } else {
       const remote = data?.content || {};
-      const next = {
+      const next = mergeBilgeAkarArticle({
         ...defaultBlogContent,
         ...remote,
         posts: Array.isArray(remote.posts) ? remote.posts : [],
@@ -4037,7 +5369,7 @@ function AdminDemoPage() {
         authors: Array.isArray(remote.authors)
           ? remote.authors.filter((author) => author?.slug && author?.name)
           : [],
-      };
+      });
       setBlogEditor(next);
       setBlogEditorMessage(
         `Blog verisi yüklendi · ${next.posts.length} yazı · ${next.authors.length} yazar`
@@ -4057,7 +5389,7 @@ function AdminDemoPage() {
     if (error) throw error;
 
     const remote = data?.content || {};
-    return {
+    return mergeBilgeAkarArticle({
       ...defaultBlogContent,
       ...remote,
       posts: Array.isArray(remote.posts) ? remote.posts : defaultBlogContent.posts,
@@ -4065,7 +5397,7 @@ function AdminDemoPage() {
       authors: Array.isArray(remote.authors)
         ? remote.authors.filter((author) => author?.slug && author?.name)
         : defaultBlogContent.authors,
-    };
+    });
   };
 
   const persistBlogEditor = async (
@@ -4144,6 +5476,155 @@ function AdminDemoPage() {
       );
       setBlogEditorSaving(false);
       return false;
+    }
+  };
+
+
+  const loadAuthorSubmissionsAdmin = async () => {
+    setAuthorSubmissionsLoading(true);
+    setAuthorSubmissionsMessage("");
+
+    const { data, error } = await supabase
+      .from("author_submissions")
+      .select("id,author_id,author_slug,title,category,excerpt,image,body,quote,status,admin_note,published_post_id,created_at,updated_at")
+      .in("status", ["submitted", "rejected", "approved"])
+      .order("updated_at", { ascending: false });
+
+    if (error) {
+      console.error("Yazar gönderimleri yüklenemedi:", error);
+      setAuthorSubmissionsMessage("Yazar gönderimleri yüklenemedi. author_submissions tablosunu ve RLS yetkilerini kontrol edin.");
+      setAuthorSubmissions([]);
+    } else {
+      setAuthorSubmissions(data || []);
+    }
+
+    setAuthorSubmissionsLoading(false);
+  };
+
+  const rejectAuthorSubmission = async (submission) => {
+    const note = window.prompt(
+      `"${submission.title}" için yazara iletilecek düzeltme notunu yazın:`,
+      submission.admin_note || ""
+    );
+    if (note === null) return;
+
+    const { error } = await supabase
+      .from("author_submissions")
+      .update({
+        status: "rejected",
+        admin_note: note.trim(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", submission.id);
+
+    if (error) {
+      setAuthorSubmissionsMessage("Gönderim yazara geri gönderilemedi.");
+      return;
+    }
+
+    setAuthorSubmissionsMessage("İçerik düzeltme notuyla yazara geri gönderildi.");
+    await loadAuthorSubmissionsAdmin();
+  };
+
+  const publishAuthorSubmission = async (submission) => {
+    if (!window.confirm(`"${submission.title}" yazısını blogda yayınlamak istediğinize emin misiniz?`)) return;
+
+    setAuthorSubmissionsMessage("Yazı hazırlanıyor ve bloga ekleniyor...");
+
+    try {
+      const latest = await readLatestBlogEditor();
+      const author = (latest.authors || []).find(
+        (item) => String(item.slug || "").trim() === String(submission.author_slug || "").trim()
+      );
+
+      if (!author) {
+        setAuthorSubmissionsMessage("Bu gönderimin yazar profili blogdaki yazarlarla eşleşmedi.");
+        return;
+      }
+
+      let slug = createBlogSlug(submission.title);
+      const duplicate = (latest.posts || []).some((post)=>post.slug === slug);
+      if (duplicate) slug = `${slug}-${Date.now().toString().slice(-5)}`;
+
+      const postId = `blog-${Date.now()}`;
+      const wordCount = String(submission.body || "").trim().split(/\s+/).filter(Boolean).length;
+      const readTime = `${Math.max(1, Math.ceil(wordCount / 200))} dk okuma`;
+      const nextSortOrder = Math.max(
+        0,
+        ...(latest.posts || []).map((post)=>Number(post.sortOrder || 0))
+      ) + 1;
+
+      const post = {
+        id: postId,
+        slug,
+        title: String(submission.title || "").trim(),
+        category: String(submission.category || "GENEL").trim(),
+        date: new Date().toLocaleDateString("tr-TR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }),
+        readTime,
+        excerpt: String(submission.excerpt || "").trim(),
+        image: String(submission.image || "").trim(),
+        body: String(submission.body || "")
+          .split(/\n\s*\n/)
+          .map((item)=>item.trim())
+          .filter(Boolean),
+        quote: String(submission.quote || "").trim(),
+        status: "published",
+        featured: false,
+        sortOrder: nextSortOrder,
+        authorSlug: author.slug,
+        authorName: author.name,
+        authorRole: author.role,
+        authorImage: author.image,
+      };
+
+      const categoryName = post.category;
+      const categories = (latest.categories || blogCategories).some(
+        (item)=>String(item || "").trim().toLocaleLowerCase("tr-TR") === categoryName.toLocaleLowerCase("tr-TR")
+      )
+        ? (latest.categories || blogCategories)
+        : ["Tümü", ...(latest.categories || blogCategories).filter((item)=>item !== "Tümü"), categoryName];
+
+      const saved = await persistBlogEditor(
+        {
+          ...latest,
+          posts: [...(latest.posts || []), post],
+          categories,
+          authors: latest.authors || [],
+        },
+        `Yazar gönderimi yayınlandı: ${post.title}`,
+        (content) => Array.isArray(content?.posts) && content.posts.some((item)=>item.id === postId)
+      );
+
+      if (!saved) {
+        setAuthorSubmissionsMessage("Yazı bloga eklenemedi.");
+        return;
+      }
+
+      const { error } = await supabase
+        .from("author_submissions")
+        .update({
+          status: "approved",
+          admin_note: "",
+          published_post_id: postId,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", submission.id);
+
+      if (error) {
+        console.error("Gönderim onay durumu güncellenemedi:", error);
+        setAuthorSubmissionsMessage("Yazı yayınlandı; ancak gönderim durumu güncellenemedi.");
+      } else {
+        setAuthorSubmissionsMessage("Yazı başarıyla yayınlandı ve yazar profiline bağlandı.");
+      }
+
+      await loadAuthorSubmissionsAdmin();
+    } catch (error) {
+      console.error("Yazar gönderimi yayınlama hatası:", error);
+      setAuthorSubmissionsMessage(`Yayınlama başarısız: ${error?.message || "Bilinmeyen hata"}`);
     }
   };
 
@@ -5365,8 +6846,8 @@ function AdminDemoPage() {
                   taslağa alın veya öne çıkan yazıyı tek tıkla değiştirin.
                 </p>
               </div>
-              <button type="button" onClick={loadBlogEditor} disabled={blogEditorLoading}>
-                {blogEditorLoading ? "Yükleniyor..." : "Blogu Yenile"}
+              <button type="button" onClick={()=>{loadBlogEditor();loadAuthorSubmissionsAdmin();}} disabled={blogEditorLoading || authorSubmissionsLoading}>
+                {blogEditorLoading || authorSubmissionsLoading ? "Yükleniyor..." : "Blogu Yenile"}
               </button>
             </div>
 
@@ -5380,6 +6861,68 @@ function AdminDemoPage() {
               <div className="admin100Blog__loading">Blog içeriği yükleniyor...</div>
             ) : (
               <>
+
+                <section className="adminAuthorInbox">
+                  <div className="adminAuthorInbox__head">
+                    <div>
+                      <span>YAZAR GÖNDERİMLERİ</span>
+                      <h3>İnceleme Kutusu</h3>
+                      <p>Yazarların panelden gönderdiği içerikler burada görünür. Onayladığınız yazı otomatik olarak ilgili yazar profiline bağlanır.</p>
+                    </div>
+                    <div className="adminAuthorInbox__count">
+                      <strong>{authorSubmissions.filter((item)=>item.status==="submitted").length}</strong>
+                      <span>bekleyen</span>
+                    </div>
+                  </div>
+
+                  {authorSubmissionsMessage && <div className="adminAuthorInbox__message">{authorSubmissionsMessage}</div>}
+
+                  {authorSubmissionsLoading ? (
+                    <div className="adminAuthorInbox__empty">Yazar gönderimleri yükleniyor...</div>
+                  ) : authorSubmissions.filter((item)=>item.status==="submitted").length === 0 ? (
+                    <div className="adminAuthorInbox__empty">
+                      <span>✓</span>
+                      <div>
+                        <strong>Bekleyen gönderim yok.</strong>
+                        <p>Yeni bir yazar içeriği gönderildiğinde burada görünecek.</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="adminAuthorInbox__list">
+                      {authorSubmissions.filter((item)=>item.status==="submitted").map((submission)=>{
+                        const author = (blogEditor.authors || []).find((item)=>item.slug===submission.author_slug);
+                        return (
+                          <article className="adminAuthorInbox__item" key={submission.id}>
+                            <div className="adminAuthorInbox__cover">
+                              {submission.image ? <img src={submission.image} alt=""/> : <span>✦</span>}
+                            </div>
+                            <div className="adminAuthorInbox__copy">
+                              <div>
+                                <span>İNCELEME BEKLİYOR</span>
+                                <small>{submission.category}</small>
+                              </div>
+                              <h4>{submission.title}</h4>
+                              <p>{submission.excerpt}</p>
+                              <div className="adminAuthorInbox__author">
+                                {author?.image ? <img src={author.image} alt=""/> : <span>{(author?.name || "Y").charAt(0)}</span>}
+                                <p>
+                                  <strong>{author?.name || submission.author_slug}</strong>
+                                  <small>{author?.role || "Yazar"}</small>
+                                </p>
+                              </div>
+                            </div>
+                            <div className="adminAuthorInbox__actions">
+                              <button type="button" onClick={()=>window.open(`#/yazarlar/${submission.author_slug}`,"_blank")}>Yazar Profili</button>
+                              <button type="button" className="is-reject" onClick={()=>rejectAuthorSubmission(submission)}>Düzeltme İste</button>
+                              <button type="button" className="is-approve" onClick={()=>publishAuthorSubmission(submission)}>Yayınla ↗</button>
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
+
                 <form className="admin100Blog__settings" onSubmit={saveBlogSettings}>
                   <div className="admin100Blog__sectionHead">
                     <span>01</span>
@@ -29463,6 +31006,2962 @@ html.perfLite .aptCineHero__copy h1{
 
 .blogCinePage .blogCineHero:not(.cin3d--visible){
   background:#17130f!important;
+}
+
+
+/* =========================================================
+   STEP183 — BLOG YAZI DETAY / FULL CINEMATIC EXPERIENCE
+   Mevcut blog, Supabase, yazar atama ve paylaşım sistemi korunur.
+   ========================================================= */
+
+.articleCinePage{
+  background:#f4efe6;
+  color:#29251f;
+  overflow:hidden;
+}
+
+/* İnce okuma progress çizgisi. Destekleyen tarayıcılarda scroll ile ilerler. */
+.articleCineProgress{
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:3px;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:linear-gradient(90deg,#9e6e2d,#e0bd78);
+  animation:articleCineReading linear;
+  animation-timeline:scroll(root block);
+  pointer-events:none;
+}
+@keyframes articleCineReading{
+  to{transform:scaleX(1)}
+}
+
+/* HERO */
+.articleCineHero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  isolation:isolate;
+  overflow:hidden;
+  background:#0b0a08;
+  color:#fff;
+}
+.articleCineHero__ambient{
+  position:absolute;
+  inset:-8%;
+  z-index:-2;
+}
+.articleCineHero__ambient>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:blur(22px) brightness(.32) saturate(.72);
+  transform:scale(1.14);
+}
+.articleCineHero__ambient>span{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 75% 36%,rgba(207,161,82,.18),transparent 34%),
+    linear-gradient(90deg,rgba(8,7,5,.97) 0%,rgba(8,7,5,.82) 43%,rgba(8,7,5,.38) 76%,rgba(8,7,5,.72) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.25),transparent 26%,transparent 72%,rgba(0,0,0,.63));
+}
+.articleCineHero__topbar{
+  position:absolute;
+  z-index:5;
+  top:32px;
+  left:clamp(20px,4vw,64px);
+  right:clamp(20px,4vw,64px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.articleCineHero__topbar>a,
+.articleCineHero__topbar>button{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  background:rgba(14,12,9,.28);
+  backdrop-filter:blur(12px);
+  color:rgba(255,255,255,.72);
+  padding:0 16px;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.articleCineHero__topbar>button{
+  cursor:pointer;
+}
+.articleCineHero__inner{
+  width:min(1450px,calc(100% - 72px));
+  margin:0 auto;
+  padding:120px 0 95px;
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(420px,.88fr);
+  gap:clamp(48px,7vw,110px);
+  align-items:center;
+}
+.articleCineHero__copy{
+  min-width:0;
+}
+.articleCineHero__eyebrow{
+  display:block;
+  margin-bottom:23px;
+  color:#d4a655;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.28em;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .75s ease .08s,transform .75s ease .08s;
+}
+.articleCineHero__copy h1{
+  margin:0;
+  max-width:850px;
+  color:#fff;
+  font:400 clamp(52px,6vw,94px)/.98 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+  text-shadow:0 20px 65px rgba(0,0,0,.44);
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(6px);
+  transition:
+    opacity .95s ease .18s,
+    transform .95s cubic-bezier(.16,.88,.2,1) .18s,
+    filter .95s ease .18s;
+}
+.articleCineHero__copy>p{
+  max-width:720px;
+  margin:27px 0 0;
+  color:rgba(255,249,235,.63);
+  font-size:clamp(13px,1.12vw,17px);
+  line-height:1.85;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease .35s,transform .8s ease .35s;
+}
+.articleCineHero__meta{
+  margin-top:27px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:rgba(255,255,255,.52);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.10em;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .75s ease .44s,transform .75s ease .44s;
+}
+.articleCineHero__meta i{
+  width:28px;
+  height:1px;
+  background:rgba(211,165,80,.58);
+}
+.articleCineHero__author{
+  width:min(100%,470px);
+  margin-top:28px;
+  padding:13px 14px;
+  display:grid;
+  grid-template-columns:50px minmax(0,1fr) 28px;
+  gap:12px;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(14px);
+  color:inherit;
+  text-decoration:none;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .8s ease .54s,transform .8s ease .54s,border-color .25s ease;
+}
+.articleCineHero__author:hover{
+  border-color:rgba(211,165,80,.40);
+}
+.articleCineHero__author>div{
+  width:50px;
+  height:50px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#2d291f;
+  color:#d5aa5f;
+}
+.articleCineHero__author img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.articleCineHero__author>p{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.articleCineHero__author small{
+  color:#c99a4b;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.articleCineHero__author strong{
+  margin-top:3px;
+  color:#fff;
+  font:500 16px Georgia,serif;
+}
+.articleCineHero__author em{
+  margin-top:3px;
+  color:rgba(255,255,255,.46);
+  font-size:8px;
+  font-style:normal;
+  line-height:1.35;
+}
+.articleCineHero__author>b{
+  color:#d7ac61;
+  font-size:15px;
+}
+.articleCineHero__visual{
+  min-width:0;
+  opacity:0;
+  transform:translateY(44px) rotateY(-3deg) scale(.97);
+  transform-origin:center;
+  transition:
+    opacity 1s ease .22s,
+    transform 1.1s cubic-bezier(.16,.88,.2,1) .22s;
+}
+.articleCineHero__frame{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:30px;
+  background:rgba(10,9,7,.82);
+  box-shadow:0 40px 100px rgba(0,0,0,.42);
+}
+.articleCineHero__frame>img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:68vh;
+  object-fit:contain;
+  object-position:center;
+}
+.articleCineHero__frameInfo{
+  padding:14px 17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-top:1px solid rgba(255,255,255,.09);
+}
+.articleCineHero__frameInfo span{
+  color:#d0a256;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.articleCineHero__frameInfo small{
+  color:rgba(255,255,255,.42);
+  font-size:7px;
+}
+.articleCineHero.cin3d--visible .articleCineHero__eyebrow,
+.articleCineHero.cin3d--visible .articleCineHero__copy h1,
+.articleCineHero.cin3d--visible .articleCineHero__copy>p,
+.articleCineHero.cin3d--visible .articleCineHero__meta,
+.articleCineHero.cin3d--visible .articleCineHero__author,
+.articleCineHero.cin3d--visible .articleCineHero__visual{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.articleCineHero__scroll{
+  position:absolute;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+}
+.articleCineHero__scroll>span{
+  width:1px;
+  height:35px;
+  background:linear-gradient(180deg,transparent,#d4a655);
+  animation:articleCineScroll 1.8s ease-in-out infinite;
+}
+.articleCineHero__scroll small{
+  color:rgba(255,255,255,.34);
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.20em;
+}
+@keyframes articleCineScroll{
+  0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top}
+  50%{opacity:1;transform:scaleY(1);transform-origin:top}
+}
+
+/* INTRO */
+.articleCineIntro{
+  padding:105px max(24px,calc((100vw - 1180px)/2));
+  display:grid;
+  grid-template-columns:.45fr 1.1fr .85fr;
+  gap:clamp(28px,5vw,70px);
+  align-items:end;
+  background:
+    radial-gradient(circle at 83% 10%,rgba(174,126,57,.12),transparent 27%),
+    #f4efe6;
+}
+.articleCineIntro>span{
+  align-self:start;
+  color:#9a6b2d;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.24em;
+}
+.articleCineIntro h2{
+  margin:0;
+  color:#302920;
+  font:400 clamp(38px,4.4vw,64px)/1.04 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.articleCineIntro h2 strong{
+  display:block;
+  color:#a97835;
+  font-weight:400;
+  font-style:italic;
+}
+.articleCineIntro>p{
+  margin:0;
+  color:rgba(47,40,31,.58);
+  font-size:12px;
+  line-height:1.85;
+}
+
+/* ARTICLE BODY */
+.articleCineBody{
+  width:min(1200px,calc(100% - 72px));
+  margin:0 auto;
+  padding:40px 0 120px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 285px;
+  gap:clamp(50px,7vw,92px);
+  align-items:start;
+}
+.articleCineBody:not(.has-author){
+  grid-template-columns:minmax(0,1fr) 260px;
+}
+.articleCineBody__article{
+  min-width:0;
+}
+.articleCineParagraph{
+  position:relative;
+  padding:38px 0 40px 58px;
+  border-bottom:1px solid rgba(99,73,41,.11);
+}
+.articleCineParagraph>span{
+  position:absolute;
+  left:0;
+  top:44px;
+  color:rgba(155,107,45,.34);
+  font:500 19px Georgia,serif;
+}
+.articleCineParagraph>p{
+  margin:0;
+  color:#38332c;
+  font:400 18px/1.95 Georgia,"Times New Roman",serif;
+  letter-spacing:.002em;
+}
+.articleCineParagraph.cin3d{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.16,.88,.2,1);
+}
+.articleCineParagraph.cin3d--visible{
+  opacity:1;
+  transform:none;
+}
+.articleCineQuote{
+  position:relative;
+  margin:54px 0;
+  padding:35px 38px 35px 78px;
+  overflow:hidden;
+  border-radius:20px;
+  background:#27231d;
+  color:#fff;
+}
+.articleCineQuote>span{
+  position:absolute;
+  left:25px;
+  top:17px;
+  color:#c99747;
+  font:400 62px Georgia,serif;
+}
+.articleCineQuote>p{
+  margin:0;
+  color:#f7f0e3;
+  font:italic 28px/1.45 Georgia,serif;
+}
+.articleCineNote{
+  margin-top:38px;
+  padding:22px 24px;
+  border:1px solid rgba(142,100,43,.15);
+  border-radius:16px;
+  background:#ebe2d4;
+}
+.articleCineNote>span{
+  color:#916329;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.17em;
+}
+.articleCineNote>p{
+  margin:9px 0 0;
+  color:rgba(54,47,39,.62);
+  font-size:10px;
+  line-height:1.65;
+}
+
+/* RAIL */
+.articleCineRail{
+  position:sticky;
+  top:105px;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+.articleCineRail__card,
+.articleCineRail__author{
+  border:1px solid rgba(91,67,38,.13);
+  border-radius:18px;
+  background:rgba(255,252,246,.78);
+  box-shadow:0 24px 60px rgba(72,52,29,.07);
+}
+.articleCineRail__card{
+  padding:21px;
+}
+.articleCineRail__card>span{
+  color:#93662d;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.articleCineRail__row{
+  margin-top:15px;
+  padding-top:14px;
+  display:flex;
+  flex-direction:column;
+  border-top:1px solid rgba(91,67,38,.09);
+}
+.articleCineRail__row small{
+  color:rgba(50,43,35,.38);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.articleCineRail__row strong{
+  margin-top:4px;
+  color:#382f26;
+  font:500 15px Georgia,serif;
+}
+.articleCineRail__card button{
+  width:100%;
+  min-height:42px;
+  margin-top:18px;
+  padding:0 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #a97835;
+  border-radius:999px;
+  background:#a97835;
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.10em;
+  cursor:pointer;
+}
+.articleCineRail__author{
+  padding:20px;
+  color:inherit;
+  text-decoration:none;
+  transition:transform .28s ease,box-shadow .28s ease;
+}
+.articleCineRail__author:hover{
+  transform:translateY(-4px);
+  box-shadow:0 30px 70px rgba(72,52,29,.12);
+}
+.articleCineRail__avatar{
+  width:68px;
+  height:68px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#2c281f;
+  color:#d2a655;
+}
+.articleCineRail__avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.articleCineRail__author>small{
+  display:block;
+  margin-top:15px;
+  color:#9b6b2f;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.articleCineRail__author h3{
+  margin:5px 0 3px;
+  color:#342c24;
+  font:500 22px Georgia,serif;
+}
+.articleCineRail__author p{
+  margin:0;
+  color:rgba(52,44,36,.53);
+  font-size:8px;
+  line-height:1.45;
+}
+.articleCineRail__author>span{
+  display:block;
+  margin-top:15px;
+  color:#916329;
+  font-size:8px;
+  font-weight:800;
+}
+
+/* END CTA */
+.articleCineEnd{
+  padding:100px max(24px,calc((100vw - 1180px)/2));
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:50px;
+  align-items:end;
+  background:
+    radial-gradient(circle at 80% 30%,rgba(207,161,82,.14),transparent 28%),
+    #211e18;
+  color:#fff;
+}
+.articleCineEnd>div>span{
+  color:#c99b4c;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.22em;
+}
+.articleCineEnd h2{
+  margin:12px 0 14px;
+  font:400 clamp(42px,5vw,72px)/1 Georgia,serif;
+}
+.articleCineEnd h2 strong{
+  display:block;
+  color:#d3a44f;
+  font-weight:400;
+  font-style:italic;
+}
+.articleCineEnd p{
+  max-width:650px;
+  margin:0;
+  color:rgba(255,255,255,.52);
+  font-size:11px;
+  line-height:1.8;
+}
+.articleCineEnd>button{
+  min-width:180px;
+  min-height:52px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  border:1px solid rgba(213,168,82,.34);
+  border-radius:999px;
+  background:rgba(213,168,82,.08);
+  color:#dfb569;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.10em;
+  cursor:pointer;
+}
+
+/* RELATED */
+.articleCineRelated{
+  padding:95px max(24px,calc((100vw - 1280px)/2)) 120px;
+  background:#12110e;
+  color:#fff;
+}
+.articleCineRelated__head{
+  margin-bottom:36px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:25px;
+}
+.articleCineRelated__head>span{
+  color:#c99a4b;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.22em;
+}
+.articleCineRelated__head h2{
+  margin:0;
+  font:400 clamp(38px,4vw,58px) Georgia,serif;
+}
+.articleCineRelated__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+.articleCineRelated__card{
+  min-width:0;
+  padding:10px 10px 22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:20px;
+  background:rgba(255,255,255,.035);
+  color:inherit;
+  text-decoration:none;
+  transition:transform .32s ease,border-color .32s ease;
+}
+.articleCineRelated__card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(207,161,82,.28);
+}
+.articleCineRelated__card>div{
+  position:relative;
+  overflow:hidden;
+  border-radius:13px;
+  background:#0d0c0a;
+}
+.articleCineRelated__card img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:contain;
+  background:#0d0c0a;
+}
+.articleCineRelated__card>div>span{
+  position:absolute;
+  left:13px;
+  top:11px;
+  color:#e0b460;
+  font:500 28px Georgia,serif;
+}
+.articleCineRelated__card>small{
+  display:block;
+  margin:17px 10px 0;
+  color:#c99a4b;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.articleCineRelated__card h3{
+  margin:8px 10px 0;
+  color:#fff;
+  font:500 23px/1.12 Georgia,serif;
+}
+.articleCineRelated__card>p{
+  margin:10px 10px 0;
+  color:rgba(255,255,255,.43);
+  font-size:9px;
+  line-height:1.55;
+}
+.articleCineRelated__card>b{
+  display:block;
+  margin:17px 10px 0;
+  color:#d5a856;
+  font-size:8px;
+}
+
+/* Author profile desktop photograph visibility improvement from prior request */
+.author126__card{
+  align-items:start;
+}
+.author126__portrait{
+  align-self:start;
+  position:sticky;
+  top:125px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .articleCineHero__inner{
+    grid-template-columns:1fr;
+    width:min(900px,calc(100% - 44px));
+    padding-top:115px;
+  }
+  .articleCineHero__copy{
+    max-width:820px;
+  }
+  .articleCineHero__visual{
+    max-width:780px;
+    width:100%;
+  }
+  .articleCineHero{
+    min-height:auto;
+  }
+  .articleCineHero__scroll{
+    display:none;
+  }
+  .articleCineIntro{
+    grid-template-columns:1fr;
+    gap:17px;
+  }
+  .articleCineBody{
+    grid-template-columns:1fr!important;
+    width:min(850px,calc(100% - 44px));
+  }
+  .articleCineRail{
+    position:static;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .articleCineRelated__grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:700px){
+  .articleCineProgress{
+    height:2px;
+  }
+  .articleCineHero__topbar{
+    top:18px;
+    left:15px;
+    right:15px;
+  }
+  .articleCineHero__topbar>a,
+  .articleCineHero__topbar>button{
+    min-height:38px;
+    padding:0 12px;
+    font-size:8px;
+  }
+  .articleCineHero__inner{
+    width:calc(100% - 30px);
+    padding:82px 0 55px;
+    gap:34px;
+  }
+  .articleCineHero__copy h1{
+    font-size:clamp(42px,13vw,61px);
+    line-height:1;
+  }
+  .articleCineHero__copy>p{
+    font-size:13px;
+    line-height:1.72;
+  }
+  .articleCineHero__frame{
+    border-radius:18px;
+  }
+  .articleCineHero__frame>img{
+    max-height:none;
+    width:100%;
+    height:auto;
+  }
+  .articleCineHero__author{
+    grid-template-columns:45px minmax(0,1fr) 22px;
+  }
+  .articleCineHero__author>div{
+    width:45px;
+    height:45px;
+  }
+  .articleCineIntro{
+    padding:70px 20px;
+  }
+  .articleCineIntro h2{
+    font-size:38px;
+  }
+  .articleCineBody{
+    width:100%;
+    padding:12px 18px 75px;
+  }
+  .articleCineParagraph{
+    padding:30px 0 31px 0;
+  }
+  .articleCineParagraph>span{
+    position:static;
+    display:block;
+    margin-bottom:9px;
+    font-size:15px;
+  }
+  .articleCineParagraph>p{
+    font-size:17px;
+    line-height:1.82;
+    overflow-wrap:anywhere;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+  .articleCineQuote{
+    margin:38px 0;
+    padding:30px 22px 27px;
+  }
+  .articleCineQuote>span{
+    position:static;
+    display:block;
+    height:37px;
+  }
+  .articleCineQuote>p{
+    font-size:22px;
+  }
+  .articleCineRail{
+    grid-template-columns:1fr;
+  }
+  .articleCineEnd{
+    padding:72px 20px;
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .articleCineEnd h2{
+    font-size:43px;
+  }
+  .articleCineEnd>button{
+    width:100%;
+  }
+  .articleCineRelated{
+    padding:70px 15px 85px;
+  }
+  .articleCineRelated__head{
+    display:block;
+  }
+  .articleCineRelated__head h2{
+    margin-top:10px;
+  }
+  .articleCineRelated__grid{
+    grid-template-columns:1fr;
+  }
+  .articleCineRelated__card h3{
+    font-size:22px;
+  }
+  .author126__portrait{
+    position:relative;
+    top:auto;
+  }
+}
+
+/* PERFORMANCE / ACCESSIBILITY */
+html.perfLite .articleCineHero__ambient>img{
+  filter:brightness(.34) saturate(.72)!important;
+}
+html.perfLite .articleCineHero__topbar>a,
+html.perfLite .articleCineHero__topbar>button,
+html.perfLite .articleCineHero__author{
+  backdrop-filter:none!important;
+  background:rgba(20,17,13,.90)!important;
+}
+html.perfLite .articleCineHero__visual{
+  transform:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .articleCineHero__eyebrow,
+  .articleCineHero__copy h1,
+  .articleCineHero__copy>p,
+  .articleCineHero__meta,
+  .articleCineHero__author,
+  .articleCineHero__visual,
+  .articleCineParagraph{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+  }
+  .articleCineHero__scroll>span{
+    animation:none!important;
+  }
+}
+
+
+/* =========================================================
+   STEP184 — BLOG ARTICLE PREMIUM / LOW-MOTION
+   SADECE blog yazı detay sayfasını etkiler.
+   Diğer sayfalar, veri kaynakları, admin, Supabase ve cin3d
+   sistemi olduğu gibi korunur.
+   ========================================================= */
+
+/* Makale gövdesi: scroll reveal animasyonlarını tamamen kapat */
+.articleCinePage .articleCineParagraph,
+.articleCinePage .articleCineQuote,
+.articleCinePage .articleCineNote,
+.articleCinePage .articleCineRail__card,
+.articleCinePage .articleCineRail__author,
+.articleCinePage .articleCineEnd,
+.articleCinePage .articleCineRelated__head,
+.articleCinePage .articleCineRelated__card{
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  animation:none !important;
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background-color .18s ease !important;
+}
+
+/* ÜST SAHNE — daha premium, daha sakin, GPU dostu */
+.articleCinePage .articleCineHero{
+  min-height:760px;
+  background:
+    radial-gradient(circle at 74% 24%,rgba(191,143,69,.16),transparent 29%),
+    linear-gradient(135deg,#17130e 0%,#0d0b08 56%,#19140e 100%);
+}
+
+.articleCinePage .articleCineHero__ambient{
+  inset:0;
+  overflow:hidden;
+}
+
+/* Ağır blur yerine gerçek görselin sakin, karartılmış kullanımı */
+.articleCinePage .articleCineHero__ambient>img{
+  position:absolute;
+  inset:0 0 0 auto;
+  width:58%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.72) brightness(.43) contrast(1.03);
+  transform:none;
+}
+
+.articleCinePage .articleCineHero__ambient>span{
+  background:
+    linear-gradient(90deg,
+      #17130e 0%,
+      rgba(23,19,14,.99) 34%,
+      rgba(23,19,14,.91) 48%,
+      rgba(23,19,14,.50) 67%,
+      rgba(23,19,14,.30) 100%
+    ),
+    linear-gradient(180deg,rgba(0,0,0,.18),transparent 50%,rgba(0,0,0,.42));
+}
+
+/* İnce, dergi kapağı hissi veren iç çerçeve */
+.articleCinePage .articleCineHero::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:92px;
+  left:clamp(22px,4vw,62px);
+  right:clamp(22px,4vw,62px);
+  bottom:42px;
+  border:1px solid rgba(220,181,107,.15);
+  border-radius:28px;
+  pointer-events:none;
+}
+
+.articleCinePage .articleCineHero__inner{
+  position:relative;
+  z-index:2;
+  width:min(1380px,calc(100% - 96px));
+  grid-template-columns:minmax(0,1.08fr) minmax(390px,.72fr);
+  gap:clamp(44px,6vw,88px);
+  padding:140px 0 94px;
+}
+
+.articleCinePage .articleCineHero__copy{
+  max-width:820px;
+  padding-left:clamp(12px,2vw,28px);
+}
+
+.articleCinePage .articleCineHero__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  min-height:31px;
+  margin-bottom:19px;
+  padding:0 13px;
+  border:1px solid rgba(214,168,89,.27);
+  border-radius:999px;
+  background:rgba(214,168,89,.055);
+  color:#dfb363;
+  font-size:8px;
+  letter-spacing:.22em;
+}
+
+/* Sadece hero ilk açılışında hafif tek seferlik geçiş.
+   Makale boyunca tekrar eden animasyon yok. */
+.articleCinePage .articleCineHero__copy h1{
+  max-width:790px;
+  font-size:clamp(50px,5.25vw,84px);
+  line-height:.99;
+  letter-spacing:-.043em;
+  text-wrap:balance;
+  text-shadow:0 16px 54px rgba(0,0,0,.32);
+}
+
+.articleCinePage .articleCineHero__copy>p{
+  max-width:635px;
+  margin-top:22px;
+  padding-left:17px;
+  border-left:1px solid rgba(219,176,98,.32);
+  color:rgba(255,249,239,.66);
+  font-size:14px;
+  line-height:1.76;
+}
+
+.articleCinePage .articleCineHero__meta{
+  margin-top:23px;
+}
+
+.articleCinePage .articleCineHero__author{
+  width:min(100%,435px);
+  margin-top:23px;
+  padding:12px 13px;
+  border-color:rgba(215,173,98,.19);
+  background:rgba(18,15,11,.82);
+  backdrop-filter:none;
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+
+/* Sağdaki kapak: parallax yok, temiz poster vitrini */
+.articleCinePage .articleCineHero__visual{
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  transition:none !important;
+  padding-right:clamp(8px,2vw,23px);
+}
+
+.articleCinePage .articleCineHero__frame{
+  border:1px solid rgba(227,190,119,.20);
+  border-radius:24px;
+  background:#100e0b;
+  box-shadow:
+    0 32px 86px rgba(0,0,0,.38),
+    0 0 0 7px rgba(255,255,255,.017);
+}
+
+.articleCinePage .articleCineHero__frame>img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:570px;
+  object-fit:contain;
+  object-position:center;
+  background:#100e0b;
+}
+
+.articleCinePage .articleCineHero__frameInfo{
+  min-height:52px;
+  padding:12px 16px;
+  background:linear-gradient(90deg,#17130f,#100e0b);
+}
+
+/* Scroll işaretini animasyonsuz ve daha zarif yap */
+.articleCinePage .articleCineHero__scroll>span{
+  animation:none;
+  opacity:.72;
+}
+.articleCinePage .articleCineHero__scroll{
+  opacity:.58;
+}
+
+/* OKUMA ALANI — sakin ve daha rafine */
+.articleCinePage .articleCineIntro{
+  padding-top:92px;
+  padding-bottom:88px;
+}
+
+.articleCinePage .articleCineBody{
+  padding-top:54px;
+}
+
+.articleCinePage .articleCineParagraph{
+  padding-top:30px;
+  padding-bottom:32px;
+}
+
+.articleCinePage .articleCineParagraph>p{
+  font-size:18px;
+  line-height:1.90;
+}
+
+.articleCinePage .articleCineParagraph>span{
+  color:rgba(154,106,43,.27);
+}
+
+.articleCinePage .articleCineRail__card,
+.articleCinePage .articleCineRail__author{
+  background:#fbf8f2;
+  backdrop-filter:none;
+}
+
+/* Hover'da da hareket yok; sadece sınır değişir */
+@media(hover:hover) and (pointer:fine){
+  .articleCinePage .articleCineRail__author:hover,
+  .articleCinePage .articleCineRelated__card:hover{
+    transform:none !important;
+    border-color:rgba(164,116,49,.29);
+  }
+}
+
+/* Tablet */
+@media(max-width:1050px){
+  .articleCinePage .articleCineHero{
+    min-height:auto;
+  }
+
+  .articleCinePage .articleCineHero::after{
+    top:78px;
+    left:18px;
+    right:18px;
+    bottom:22px;
+  }
+
+  .articleCinePage .articleCineHero__ambient>img{
+    width:100%;
+    opacity:.31;
+  }
+
+  .articleCinePage .articleCineHero__ambient>span{
+    background:
+      linear-gradient(180deg,
+        rgba(16,13,10,.89) 0%,
+        rgba(16,13,10,.94) 56%,
+        rgba(16,13,10,.82) 100%
+      );
+  }
+
+  .articleCinePage .articleCineHero__inner{
+    width:min(900px,calc(100% - 44px));
+    grid-template-columns:1fr;
+    padding:118px 0 62px;
+  }
+
+  .articleCinePage .articleCineHero__copy{
+    padding:0 12px;
+  }
+
+  .articleCinePage .articleCineHero__visual{
+    width:100%;
+    max-width:760px;
+    padding:0 12px 16px;
+  }
+}
+
+/* Telefon */
+@media(max-width:700px){
+  .articleCinePage .articleCineHero::after{
+    top:68px;
+    left:10px;
+    right:10px;
+    bottom:12px;
+    border-radius:20px;
+  }
+
+  .articleCinePage .articleCineHero__inner{
+    width:calc(100% - 24px);
+    padding:87px 0 34px;
+    gap:27px;
+  }
+
+  .articleCinePage .articleCineHero__copy{
+    padding:0 8px;
+  }
+
+  .articleCinePage .articleCineHero__copy h1{
+    font-size:clamp(40px,11.8vw,58px);
+    line-height:1;
+  }
+
+  .articleCinePage .articleCineHero__copy>p{
+    padding-left:13px;
+    font-size:13px;
+    line-height:1.68;
+  }
+
+  .articleCinePage .articleCineHero__visual{
+    padding:0 8px 10px;
+  }
+
+  .articleCinePage .articleCineHero__frame{
+    border-radius:16px;
+  }
+
+  .articleCinePage .articleCineHero__frame>img{
+    max-height:none;
+  }
+
+  .articleCinePage .articleCineParagraph{
+    padding:27px 0 28px;
+  }
+
+  .articleCinePage .articleCineParagraph>p{
+    font-size:16.5px;
+    line-height:1.82;
+  }
+}
+
+/* Düşük güçlü cihazda hero giriş efektlerini de direkt kapat */
+html.perfLite .articleCinePage .articleCineHero__eyebrow,
+html.perfLite .articleCinePage .articleCineHero__copy h1,
+html.perfLite .articleCinePage .articleCineHero__copy>p,
+html.perfLite .articleCinePage .articleCineHero__meta,
+html.perfLite .articleCinePage .articleCineHero__author{
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  transition:none !important;
+}
+
+
+/* =========================================================
+   STEP185 — PROFESSIONAL AUTHOR PORTAL
+   Dedicated login/dashboard/editor + admin review inbox.
+   Public site design/data remains isolated.
+   ========================================================= */
+
+.authorPortal{
+  min-height:100svh;
+  color:#2b261f;
+  background:#f3eee5;
+}
+.authorPortal--loading{
+  display:grid;
+  place-items:center;
+  background:#13100c;
+}
+.authorPortalLoading{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:#fff;
+}
+.authorPortalLoading img{
+  width:82px;
+  height:82px;
+  object-fit:contain;
+}
+.authorPortalLoading span{
+  width:90px;
+  height:1px;
+  margin:20px 0 15px;
+  background:linear-gradient(90deg,transparent,#c89a4d,transparent);
+}
+.authorPortalLoading p{
+  margin:0;
+  color:rgba(255,255,255,.5);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+
+/* Login */
+.authorPortalLogin{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(430px,.72fr);
+  background:#12100c;
+}
+.authorPortalLogin__visual{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  isolation:isolate;
+  padding:46px clamp(34px,5vw,76px) 38px;
+  color:#fff;
+}
+.authorPortalLogin__visualMedia{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+}
+.authorPortalLogin__visualMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.72) brightness(.42);
+  transform:scale(1.02);
+}
+.authorPortalLogin__visualMedia span{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 65% 30%,rgba(205,158,80,.14),transparent 30%),
+    linear-gradient(90deg,rgba(13,11,8,.92),rgba(13,11,8,.56) 68%,rgba(13,11,8,.48)),
+    linear-gradient(180deg,rgba(0,0,0,.12),transparent 45%,rgba(0,0,0,.62));
+}
+.authorPortalLogin__visual:after{
+  content:"";
+  position:absolute;
+  inset:27px;
+  z-index:-1;
+  border:1px solid rgba(223,185,117,.13);
+  border-radius:26px;
+  pointer-events:none;
+}
+.authorPortalLogin__home{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  width:max-content;
+  color:#fff;
+  text-decoration:none;
+}
+.authorPortalLogin__home img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.authorPortalLogin__home>span{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.authorPortalLogin__home small{
+  color:rgba(255,255,255,.46);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.authorPortalLogin__home strong{
+  font:500 17px Georgia,serif;
+  letter-spacing:.04em;
+}
+.authorPortalLogin__statement{
+  width:min(700px,92%);
+  padding:70px 0 40px;
+}
+.authorPortalLogin__statement>span{
+  color:#d1a054;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.28em;
+}
+.authorPortalLogin__statement h1{
+  margin:17px 0 20px;
+  color:#fff;
+  font:400 clamp(58px,6.4vw,100px)/.94 Georgia,"Times New Roman",serif;
+  letter-spacing:-.045em;
+}
+.authorPortalLogin__statement h1 em{
+  color:#d5a65a;
+  font-weight:400;
+}
+.authorPortalLogin__statement p{
+  max-width:590px;
+  margin:0;
+  padding-left:18px;
+  border-left:1px solid rgba(213,166,90,.38);
+  color:rgba(255,255,255,.54);
+  font-size:13px;
+  line-height:1.8;
+}
+.authorPortalLogin__visualFoot{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:rgba(255,255,255,.3);
+  font-size:6px;
+  font-weight:800;
+  letter-spacing:.17em;
+}
+.authorPortalLogin__visualFoot i{
+  width:38px;
+  height:1px;
+  background:rgba(207,159,80,.45);
+}
+.authorPortalLogin__panel{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:48px 38px;
+  background:
+    radial-gradient(circle at 70% 20%,rgba(185,139,64,.10),transparent 28%),
+    #f5f0e7;
+}
+.authorPortalLogin__panelInner{
+  width:min(440px,100%);
+}
+.authorPortalLogin__mark{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(150,104,45,.16);
+  border-radius:17px;
+  background:#fffaf2;
+  box-shadow:0 20px 55px rgba(75,53,29,.08);
+}
+.authorPortalLogin__mark img{
+  width:43px;
+  height:43px;
+  object-fit:contain;
+}
+.authorPortalLogin__heading{
+  margin-top:31px;
+}
+.authorPortalLogin__heading>span{
+  color:#a47535;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.23em;
+}
+.authorPortalLogin__heading h2{
+  margin:9px 0 11px;
+  color:#302820;
+  font:500 46px/1 Georgia,serif;
+}
+.authorPortalLogin__heading p{
+  margin:0;
+  color:#81766a;
+  font-size:11px;
+  line-height:1.7;
+}
+.authorPortalLogin__form{
+  margin-top:32px;
+}
+.authorPortalLogin__form label{
+  display:block;
+  margin-bottom:17px;
+}
+.authorPortalLogin__form label>span{
+  display:block;
+  margin-bottom:8px;
+  color:#817365;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.authorPortalLogin__form label>div{
+  min-height:56px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:0 14px;
+  border:1px solid rgba(90,68,43,.12);
+  border-radius:13px;
+  background:#fffdf9;
+  box-shadow:0 14px 36px rgba(76,55,32,.045);
+}
+.authorPortalLogin__form svg{
+  flex:0 0 auto;
+  color:#aa7b3c;
+}
+.authorPortalLogin__form input{
+  min-width:0;
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#302820;
+  font-size:12px;
+}
+.authorPortalLogin__form label button{
+  border:0;
+  background:none;
+  color:#9e7138;
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+.authorPortalLogin__error{
+  margin:-3px 0 16px;
+  padding:11px 13px;
+  border:1px solid rgba(151,68,50,.16);
+  border-radius:10px;
+  background:#f8ebe6;
+  color:#8b4637;
+  font-size:9px;
+  line-height:1.45;
+}
+.authorPortalLogin__submit{
+  width:100%;
+  min-height:57px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 19px;
+  border:1px solid #9d7136;
+  border-radius:999px;
+  background:#9d7136;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.10em;
+  cursor:pointer;
+  box-shadow:0 18px 40px rgba(120,82,33,.18);
+}
+.authorPortalLogin__submit b{
+  font-size:17px;
+  font-weight:400;
+}
+.authorPortalLogin__security{
+  margin-top:21px;
+  display:grid;
+  grid-template-columns:20px 1fr;
+  gap:10px;
+  padding:14px;
+  border-top:1px solid rgba(96,72,43,.11);
+  border-bottom:1px solid rgba(96,72,43,.11);
+}
+.authorPortalLogin__security>span{
+  color:#a87b3f;
+}
+.authorPortalLogin__security p{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  color:#94877a;
+  font-size:8px;
+  line-height:1.5;
+}
+.authorPortalLogin__security strong{
+  color:#4c433a;
+  font-size:8px;
+}
+.authorPortalLogin__back{
+  display:inline-block;
+  margin-top:20px;
+  color:#9a8d80;
+  text-decoration:none;
+  font-size:8px;
+  font-weight:800;
+}
+
+/* Dashboard shell */
+.authorPortalDash{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:286px minmax(0,1fr);
+  background:#f2ede4;
+}
+.authorPortalSide{
+  position:sticky;
+  top:0;
+  height:100svh;
+  display:flex;
+  flex-direction:column;
+  padding:28px 22px 24px;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(200,151,74,.13),transparent 24%),
+    #17140f;
+  color:#fff;
+}
+.authorPortalSide__brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:4px 6px 24px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#fff;
+  text-decoration:none;
+}
+.authorPortalSide__brand img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+}
+.authorPortalSide__brand>span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.authorPortalSide__brand small{
+  color:#c6974c;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.2em;
+}
+.authorPortalSide__brand strong{
+  font:500 16px Georgia,serif;
+}
+.authorPortalSide__profile{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:15px;
+  background:rgba(255,255,255,.035);
+}
+.authorPortalSide__avatar{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#2a251d;
+  color:#d7a959;
+  font:500 18px Georgia,serif;
+}
+.authorPortalSide__avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.authorPortalSide__profile>div:last-child{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.authorPortalSide__profile small{
+  color:#a88248;
+  font-size:5.5px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.authorPortalSide__profile strong{
+  margin-top:4px;
+  overflow:hidden;
+  color:#fff;
+  font:500 14px Georgia,serif;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.authorPortalSide__profile span{
+  margin-top:3px;
+  overflow:hidden;
+  color:rgba(255,255,255,.42);
+  font-size:6.5px;
+  line-height:1.3;
+  text-overflow:ellipsis;
+}
+.authorPortalSide__nav{
+  margin-top:28px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.authorPortalSide__nav button{
+  min-height:48px;
+  display:grid;
+  grid-template-columns:33px 1fr;
+  align-items:center;
+  text-align:left;
+  border:1px solid transparent;
+  border-radius:11px;
+  background:transparent;
+  color:rgba(255,255,255,.52);
+  cursor:pointer;
+}
+.authorPortalSide__nav button>span{
+  color:#8b714c;
+  font:500 12px Georgia,serif;
+  text-align:center;
+}
+.authorPortalSide__nav button>b{
+  font-size:8px;
+  letter-spacing:.06em;
+}
+.authorPortalSide__nav button.is-active{
+  border-color:rgba(212,168,91,.16);
+  background:rgba(212,168,91,.08);
+  color:#e7c681;
+}
+.authorPortalSide__bottom{
+  margin-top:auto;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.authorPortalSide__bottom a,
+.authorPortalSide__bottom button{
+  min-height:39px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:999px;
+  background:transparent;
+  color:rgba(255,255,255,.53);
+  text-decoration:none;
+  font-size:7px;
+  font-weight:800;
+  cursor:pointer;
+}
+.authorPortalSide__bottom button{
+  color:#d4aa64;
+}
+.authorPortalMain{
+  min-width:0;
+  padding:34px clamp(26px,4vw,64px) 70px;
+}
+.authorPortalMain__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:30px;
+  padding-bottom:27px;
+  border-bottom:1px solid rgba(91,67,39,.12);
+}
+.authorPortalMain__top>div:first-child>span{
+  color:#9e7138;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.22em;
+}
+.authorPortalMain__top h1{
+  margin:8px 0 0;
+  color:#2f2922;
+  font:500 clamp(34px,3.4vw,52px)/1 Georgia,serif;
+  letter-spacing:-.025em;
+}
+.authorPortalMain__topActions{
+  display:flex;
+  gap:9px;
+}
+.authorPortalMain__topActions a,
+.authorPortalMain__topActions button{
+  min-height:42px;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(95,69,38,.13);
+  border-radius:999px;
+  background:#fffaf2;
+  color:#6d5c49;
+  text-decoration:none;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
+}
+.authorPortalMain__topActions button{
+  border-color:#9f7238;
+  background:#9f7238;
+  color:#fff;
+}
+.authorPortalMessage{
+  margin-top:18px;
+  padding:12px 15px;
+  border:1px solid rgba(147,106,52,.15);
+  border-radius:11px;
+  background:#fff8ec;
+  color:#725633;
+  font-size:9px;
+  line-height:1.5;
+}
+.authorPortalStats{
+  margin-top:27px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:11px;
+}
+.authorPortalStats article{
+  min-height:130px;
+  padding:19px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(96,71,42,.11);
+  border-radius:17px;
+  background:#fbf8f2;
+  box-shadow:0 18px 45px rgba(70,49,26,.045);
+}
+.authorPortalStats small{
+  color:#9a7445;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.authorPortalStats strong{
+  margin-top:auto;
+  color:#332a21;
+  font:500 36px Georgia,serif;
+}
+.authorPortalStats span{
+  margin-top:3px;
+  color:#9a8c7e;
+  font-size:7px;
+}
+.authorPortalList{
+  margin-top:18px;
+  padding:24px;
+  border:1px solid rgba(96,71,42,.11);
+  border-radius:20px;
+  background:#faf7f1;
+}
+.authorPortalList__head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(96,71,42,.10);
+}
+.authorPortalList__head span{
+  color:#9b6f38;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.authorPortalList__head h2{
+  margin:6px 0 0;
+  color:#342d25;
+  font:500 29px Georgia,serif;
+}
+.authorPortalList__head button{
+  border:0;
+  background:none;
+  color:#9d7138;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
+}
+.authorPortalList__items{
+  display:flex;
+  flex-direction:column;
+}
+.authorPortalItem{
+  display:grid;
+  grid-template-columns:112px minmax(0,1fr) auto;
+  gap:18px;
+  align-items:center;
+  padding:19px 0;
+  border-bottom:1px solid rgba(96,71,42,.09);
+}
+.authorPortalItem:last-child{
+  border-bottom:0;
+}
+.authorPortalItem__image{
+  height:82px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#eae1d4;
+  color:#a1763e;
+}
+.authorPortalItem__image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.authorPortalItem__copy{
+  min-width:0;
+}
+.authorPortalItem__copy>div:first-child{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.authorPortalItem__copy>div:first-child>small{
+  color:#9a8e80;
+  font-size:6px;
+  font-weight:800;
+}
+.authorPortalStatus{
+  display:inline-flex;
+  align-items:center;
+  min-height:22px;
+  padding:0 8px;
+  border-radius:999px;
+  font-size:5.5px;
+  font-weight:900;
+  letter-spacing:.10em;
+}
+.authorPortalStatus.is-draft{background:#ece6dd;color:#76695c}
+.authorPortalStatus.is-submitted{background:#f4e8ce;color:#8e651f}
+.authorPortalStatus.is-approved{background:#e5efe7;color:#4b6b52}
+.authorPortalStatus.is-rejected{background:#f5dfda;color:#8b4f42}
+.authorPortalItem h3{
+  margin:7px 0 5px;
+  color:#342c24;
+  font:500 18px/1.2 Georgia,serif;
+}
+.authorPortalItem__copy>p{
+  margin:0;
+  overflow:hidden;
+  color:#817669;
+  font-size:8px;
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.authorPortalItem__copy>em{
+  display:block;
+  margin-top:7px;
+  color:#9a5a45;
+  font-size:7px;
+  font-style:normal;
+}
+.authorPortalItem__copy>span{
+  display:block;
+  margin-top:7px;
+  color:#aaa094;
+  font-size:6px;
+}
+.authorPortalItem__actions{
+  min-width:105px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.authorPortalItem__actions button,
+.authorPortalItem__actions a{
+  min-height:31px;
+  padding:0 11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(102,76,44,.12);
+  border-radius:999px;
+  background:#fff;
+  color:#725b41;
+  text-decoration:none;
+  font-size:6.5px;
+  font-weight:900;
+  cursor:pointer;
+}
+.authorPortalItem__actions .is-delete{
+  color:#a15b4a;
+}
+.authorPortalItem__actions>span{
+  color:#9d9081;
+  font-size:7px;
+}
+.authorPortalEmpty{
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#8e8174;
+}
+.authorPortalEmpty>span{
+  color:#b58a4e;
+  font-size:26px;
+}
+.authorPortalEmpty h3{
+  margin:12px 0 6px;
+  color:#3c3329;
+  font:500 22px Georgia,serif;
+}
+.authorPortalEmpty p{
+  margin:0;
+  font-size:9px;
+}
+.authorPortalEmpty button{
+  min-height:38px;
+  margin-top:16px;
+  padding:0 15px;
+  border:1px solid #a0743b;
+  border-radius:999px;
+  background:#a0743b;
+  color:#fff;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* Editor */
+.authorPortalEditor{
+  margin-top:27px;
+  overflow:hidden;
+  border:1px solid rgba(96,71,42,.11);
+  border-radius:21px;
+  background:#fbf8f2;
+  box-shadow:0 25px 65px rgba(70,49,26,.05);
+}
+.authorPortalEditor__head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  padding:26px 28px;
+  border-bottom:1px solid rgba(96,71,42,.10);
+}
+.authorPortalEditor__head span{
+  color:#9c6e36;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.authorPortalEditor__head h2{
+  margin:6px 0 6px;
+  color:#342c24;
+  font:500 31px Georgia,serif;
+}
+.authorPortalEditor__head p{
+  margin:0;
+  color:#908477;
+  font-size:8px;
+}
+.authorPortalEditor__head button{
+  border:0;
+  background:none;
+  color:#978979;
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+.authorPortalEditor__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:30px;
+  padding:28px;
+}
+.authorPortalEditor__fields{
+  min-width:0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:17px;
+}
+.authorPortalEditor__fields label{
+  display:block;
+}
+.authorPortalEditor__fields label>span,
+.authorPortalCover>span,
+.authorPortalGuide>span{
+  display:block;
+  margin-bottom:8px;
+  color:#826c53;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.authorPortalEditor__fields label>span em{
+  margin-left:7px;
+  color:#b2a698;
+  font-style:normal;
+}
+.authorPortalEditor__fields input,
+.authorPortalEditor__fields select,
+.authorPortalEditor__fields textarea,
+.authorPortalCover>input{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid rgba(101,74,43,.12);
+  border-radius:11px;
+  outline:none;
+  background:#fffdfa;
+  color:#332c24;
+  font:400 11px/1.6 Arial,sans-serif;
+}
+.authorPortalEditor__fields input,
+.authorPortalEditor__fields select,
+.authorPortalCover>input{
+  min-height:48px;
+  padding:0 13px;
+}
+.authorPortalEditor__fields textarea{
+  padding:13px;
+  resize:vertical;
+}
+.authorPortalEditor__fields .authorPortalEditor__body{
+  min-height:420px;
+  font:400 13px/1.75 Georgia,serif;
+}
+.authorPortalEditor__fields label>small{
+  display:block;
+  margin-top:6px;
+  color:#aaa094;
+  font-size:6px;
+  text-align:right;
+}
+.authorPortalEditor__aside{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.authorPortalCover,
+.authorPortalGuide{
+  padding:17px;
+  border:1px solid rgba(101,74,43,.10);
+  border-radius:15px;
+  background:#f5efe6;
+}
+.authorPortalCover__preview{
+  aspect-ratio:16/10;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#1b1813;
+  color:#bb8c49;
+}
+.authorPortalCover__preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.authorPortalCover__preview>div{
+  text-align:center;
+}
+.authorPortalCover__preview b{
+  font-size:24px;
+  font-weight:400;
+}
+.authorPortalCover__preview p{
+  margin:7px 0 0;
+  color:rgba(255,255,255,.45);
+  font-size:7px;
+}
+.authorPortalCover__upload{
+  min-height:38px;
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #9e7239;
+  border-radius:999px;
+  background:#9e7239;
+  color:#fff;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
+}
+.authorPortalCover__upload input{
+  display:none;
+}
+.authorPortalCover>input{
+  margin-top:9px;
+  font-size:7px;
+}
+.authorPortalGuide ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.authorPortalGuide li{
+  display:grid;
+  grid-template-columns:27px 1fr;
+  gap:8px;
+  padding:9px 0;
+  border-bottom:1px solid rgba(101,74,43,.09);
+}
+.authorPortalGuide li:last-child{
+  border-bottom:0;
+}
+.authorPortalGuide li>b{
+  color:#a67a40;
+  font:500 12px Georgia,serif;
+}
+.authorPortalGuide li>p{
+  margin:0;
+  color:#7f7367;
+  font-size:7.5px;
+  line-height:1.5;
+}
+.authorPortalEditor__savebar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  padding:20px 28px;
+  border-top:1px solid rgba(96,71,42,.10);
+  background:#f3ede4;
+}
+.authorPortalEditor__savebar>div:first-child{
+  display:flex;
+  flex-direction:column;
+}
+.authorPortalEditor__savebar strong{
+  color:#514638;
+  font-size:8px;
+}
+.authorPortalEditor__savebar span{
+  margin-top:4px;
+  color:#9b8e80;
+  font-size:7px;
+}
+.authorPortalEditor__savebar>div:last-child{
+  display:flex;
+  gap:8px;
+}
+.authorPortalEditor__savebar button{
+  min-height:42px;
+  padding:0 16px;
+  border-radius:999px;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
+}
+.authorPortalEditor__savebar .is-draft{
+  border:1px solid rgba(94,70,42,.15);
+  background:#fffaf2;
+  color:#725f49;
+}
+.authorPortalEditor__savebar .is-submit{
+  border:1px solid #9e7137;
+  background:#9e7137;
+  color:#fff;
+}
+
+/* Admin author inbox */
+.adminAuthorInbox{
+  margin-bottom:18px;
+  padding:22px;
+  border:1px solid rgba(179,133,65,.18);
+  border-radius:18px;
+  background:linear-gradient(135deg,#fffaf2,#f7efe3);
+}
+.adminAuthorInbox__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:25px;
+  padding-bottom:17px;
+  border-bottom:1px solid rgba(112,81,43,.11);
+}
+.adminAuthorInbox__head>div:first-child>span{
+  color:#9b6e33;
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.adminAuthorInbox__head h3{
+  margin:6px 0 5px;
+  color:#342b22;
+  font:500 25px Georgia,serif;
+}
+.adminAuthorInbox__head p{
+  max-width:700px;
+  margin:0;
+  color:#8a7d6f;
+  font-size:8px;
+  line-height:1.55;
+}
+.adminAuthorInbox__count{
+  min-width:76px;
+  text-align:right;
+}
+.adminAuthorInbox__count strong{
+  display:block;
+  color:#9e7137;
+  font:500 34px Georgia,serif;
+}
+.adminAuthorInbox__count span{
+  color:#9d8f80;
+  font-size:6px;
+}
+.adminAuthorInbox__message{
+  margin-top:13px;
+  padding:10px 12px;
+  border-radius:9px;
+  background:#fff;
+  color:#715936;
+  font-size:8px;
+}
+.adminAuthorInbox__empty{
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  color:#897d70;
+  text-align:left;
+}
+.adminAuthorInbox__empty>span{
+  width:35px;
+  height:35px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#e7efe7;
+  color:#58705b;
+}
+.adminAuthorInbox__empty strong{
+  color:#51463a;
+  font-size:9px;
+}
+.adminAuthorInbox__empty p{
+  margin:3px 0 0;
+  font-size:7px;
+}
+.adminAuthorInbox__list{
+  display:flex;
+  flex-direction:column;
+}
+.adminAuthorInbox__item{
+  display:grid;
+  grid-template-columns:112px minmax(0,1fr) 125px;
+  gap:17px;
+  align-items:center;
+  padding:17px 0;
+  border-bottom:1px solid rgba(112,81,43,.10);
+}
+.adminAuthorInbox__item:last-child{
+  border-bottom:0;
+}
+.adminAuthorInbox__cover{
+  height:80px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#e9dfd1;
+  color:#9e7137;
+}
+.adminAuthorInbox__cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.adminAuthorInbox__copy{
+  min-width:0;
+}
+.adminAuthorInbox__copy>div:first-child{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.adminAuthorInbox__copy>div:first-child>span{
+  color:#99691f;
+  font-size:5.5px;
+  font-weight:900;
+  letter-spacing:.10em;
+}
+.adminAuthorInbox__copy>div:first-child>small{
+  color:#9c8e7d;
+  font-size:6px;
+}
+.adminAuthorInbox__copy h4{
+  margin:6px 0 4px;
+  color:#362e25;
+  font:500 17px Georgia,serif;
+}
+.adminAuthorInbox__copy>p{
+  margin:0;
+  color:#887c6e;
+  font-size:7.5px;
+  line-height:1.5;
+}
+.adminAuthorInbox__author{
+  margin-top:9px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.adminAuthorInbox__author>img,
+.adminAuthorInbox__author>span{
+  width:26px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  object-fit:cover;
+  background:#2f2a22;
+  color:#d0a156;
+}
+.adminAuthorInbox__author>p{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+.adminAuthorInbox__author strong{
+  color:#4f4438;
+  font-size:7px;
+}
+.adminAuthorInbox__author small{
+  margin-top:2px;
+  color:#9a8d7e;
+  font-size:6px;
+}
+.adminAuthorInbox__actions{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.adminAuthorInbox__actions button{
+  min-height:31px;
+  border:1px solid rgba(104,76,43,.13);
+  border-radius:999px;
+  background:#fff;
+  color:#685640;
+  font-size:6px;
+  font-weight:900;
+  cursor:pointer;
+}
+.adminAuthorInbox__actions .is-reject{
+  color:#9a5b49;
+}
+.adminAuthorInbox__actions .is-approve{
+  border-color:#9c7139;
+  background:#9c7139;
+  color:#fff;
+}
+
+@media(max-width:980px){
+  .authorPortalLogin{
+    grid-template-columns:1fr;
+  }
+  .authorPortalLogin__visual{
+    min-height:510px;
+  }
+  .authorPortalLogin__panel{
+    min-height:auto;
+    padding:70px 25px;
+  }
+  .authorPortalDash{
+    grid-template-columns:1fr;
+  }
+  .authorPortalSide{
+    position:relative;
+    height:auto;
+  }
+  .authorPortalSide__nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .authorPortalSide__bottom{
+    margin-top:24px;
+  }
+  .authorPortalStats{
+    grid-template-columns:1fr 1fr;
+  }
+  .authorPortalEditor__grid{
+    grid-template-columns:1fr;
+  }
+  .adminAuthorInbox__item{
+    grid-template-columns:90px minmax(0,1fr);
+  }
+  .adminAuthorInbox__actions{
+    grid-column:1/-1;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+@media(max-width:650px){
+  .authorPortalLogin__visual{
+    min-height:430px;
+    padding:28px 22px;
+  }
+  .authorPortalLogin__visual:after{
+    inset:12px;
+  }
+  .authorPortalLogin__statement{
+    padding:50px 0 30px;
+  }
+  .authorPortalLogin__statement h1{
+    font-size:50px;
+  }
+  .authorPortalLogin__visualFoot{
+    display:none;
+  }
+  .authorPortalLogin__panel{
+    padding:55px 20px 70px;
+  }
+  .authorPortalMain{
+    padding:25px 16px 55px;
+  }
+  .authorPortalMain__top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .authorPortalMain__topActions{
+    width:100%;
+  }
+  .authorPortalMain__topActions>*{
+    flex:1;
+  }
+  .authorPortalStats{
+    grid-template-columns:1fr 1fr;
+  }
+  .authorPortalItem{
+    grid-template-columns:78px minmax(0,1fr);
+  }
+  .authorPortalItem__image{
+    height:70px;
+  }
+  .authorPortalItem__actions{
+    grid-column:1/-1;
+    flex-direction:row;
+  }
+  .authorPortalEditor__head,
+  .authorPortalEditor__grid,
+  .authorPortalEditor__savebar{
+    padding-left:17px;
+    padding-right:17px;
+  }
+  .authorPortalEditor__savebar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .authorPortalEditor__savebar>div:last-child{
+    width:100%;
+  }
+  .authorPortalEditor__savebar button{
+    flex:1;
+  }
+  .adminAuthorInbox__head{
+    align-items:flex-start;
+  }
+  .adminAuthorInbox__item{
+    grid-template-columns:1fr;
+  }
+  .adminAuthorInbox__cover{
+    height:auto;
+    aspect-ratio:16/8;
+  }
+  .adminAuthorInbox__actions{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .authorPortal *,
+  .adminAuthorInbox *{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+
+/* STEP186 — AUTHOR PORTAL DESIGN PREVIEW */
+.authorPortalLogin__preview{
+  width:100%;
+  min-height:49px;
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border:1px solid rgba(111,83,48,.16);
+  border-radius:999px;
+  background:rgba(255,255,255,.42);
+  color:#76614a;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.authorPortalLogin__preview b{
+  color:#a67639;
+  font-size:15px;
+  font-weight:400;
+}
+.authorPortalPreviewBadge{
+  width:max-content;
+  margin-bottom:10px;
+  padding:6px 9px;
+  border:1px solid rgba(165,117,54,.18);
+  border-radius:999px;
+  background:#fff5e4;
+  color:#94672f;
+  font-size:5.5px;
+  font-weight:900;
+  letter-spacing:.17em;
+}
+
+
+/* =========================================================
+   STEP187 — BILGE AKAR / WORD RICH ARTICLE SUPPORT
+   Tables, figures, section headings, numbered recommendations,
+   and full bibliography. Scoped to article pages only.
+   ========================================================= */
+.articleCinePage .articleRichHeading{
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+  margin:58px 0 24px;
+  padding-top:24px;
+  border-top:1px solid rgba(159,113,55,.20);
+}
+.articleCinePage .articleRichHeading>span{
+  color:#a77a40;
+  font:500 11px Georgia,serif;
+  letter-spacing:.08em;
+}
+.articleCinePage .articleRichHeading h2{
+  margin:0;
+  color:#302820;
+  font:500 clamp(27px,3vw,42px)/1.12 Georgia,serif;
+  letter-spacing:-.025em;
+}
+.articleCinePage .articleRichFigure{
+  margin:38px 0 48px;
+}
+.articleCinePage .articleRichFigure figcaption{
+  margin-top:12px;
+  color:#8c7d6d;
+  font-size:11px;
+  font-style:italic;
+  line-height:1.5;
+  text-align:center;
+}
+.articleCinePage .articleRichRiskGrid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  overflow:hidden;
+  border:1px solid rgba(132,95,48,.20);
+  border-radius:20px;
+  background:#f7f0e5;
+}
+.articleCinePage .articleRichRiskGrid section{
+  min-width:0;
+  border-right:1px solid rgba(132,95,48,.14);
+}
+.articleCinePage .articleRichRiskGrid section:last-child{
+  border-right:0;
+}
+.articleCinePage .articleRichRiskGrid__head{
+  min-height:120px;
+  padding:22px 20px;
+  background:#262019;
+  color:#fff;
+}
+.articleCinePage .articleRichRiskGrid__head b{
+  display:block;
+  margin-bottom:13px;
+  color:#c99b51;
+  font:500 13px Georgia,serif;
+}
+.articleCinePage .articleRichRiskGrid__head h3{
+  margin:0;
+  color:#fff;
+  font:500 17px/1.35 Georgia,serif;
+}
+.articleCinePage .articleRichRiskGrid ul{
+  margin:0;
+  padding:8px 20px 18px;
+  list-style:none;
+}
+.articleCinePage .articleRichRiskGrid li{
+  padding:15px 0;
+  border-bottom:1px solid rgba(115,85,50,.12);
+  color:#554a3e;
+  font-size:13px;
+  line-height:1.5;
+}
+.articleCinePage .articleRichRiskGrid li:last-child{
+  border-bottom:0;
+}
+.articleCinePage .articleRichImpact{
+  position:relative;
+  min-height:460px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid rgba(132,95,48,.18);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at center,rgba(191,143,71,.16),transparent 35%),
+    #211c16;
+}
+.articleCinePage .articleRichImpact:before,
+.articleCinePage .articleRichImpact:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:62%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(207,161,88,.45),transparent);
+  transform:translate(-50%,-50%);
+}
+.articleCinePage .articleRichImpact:after{
+  transform:translate(-50%,-50%) rotate(90deg);
+}
+.articleCinePage .articleRichImpact__core{
+  position:relative;
+  z-index:2;
+  width:180px;
+  height:180px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(213,170,98,.46);
+  border-radius:50%;
+  background:#2d261d;
+  box-shadow:0 0 0 18px rgba(207,161,88,.04);
+}
+.articleCinePage .articleRichImpact__core small{
+  max-width:125px;
+  color:rgba(255,255,255,.46);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+  line-height:1.45;
+  text-align:center;
+}
+.articleCinePage .articleRichImpact__core strong{
+  margin-top:8px;
+  color:#d8aa5f;
+  font:500 28px Georgia,serif;
+}
+.articleCinePage .articleRichImpact__node{
+  position:absolute;
+  z-index:2;
+  width:112px;
+  height:112px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:50%;
+  background:#f2e9dc;
+  color:#4b4034;
+  font:600 15px Georgia,serif;
+}
+.articleCinePage .articleRichImpact__node.is-1{top:34px;left:50%;transform:translateX(-50%)}
+.articleCinePage .articleRichImpact__node.is-2{left:11%;top:50%;transform:translateY(-50%)}
+.articleCinePage .articleRichImpact__node.is-3{right:11%;top:50%;transform:translateY(-50%)}
+.articleCinePage .articleRichRecommendation{
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  gap:18px;
+  margin:18px 0;
+  padding:22px;
+  border:1px solid rgba(146,104,52,.15);
+  border-radius:16px;
+  background:#f8f2e8;
+}
+.articleCinePage .articleRichRecommendation>span{
+  color:#a7773b;
+  font:500 27px Georgia,serif;
+}
+.articleCinePage .articleRichRecommendation h3{
+  margin:0 0 8px;
+  color:#352d25;
+  font:500 19px/1.3 Georgia,serif;
+}
+.articleCinePage .articleRichRecommendation p{
+  margin:0;
+  color:#655a4e;
+  font-size:16px;
+  line-height:1.82;
+}
+.articleCinePage .articleRichReferences{
+  margin-top:22px;
+  padding:22px;
+  border:1px solid rgba(124,91,50,.12);
+  border-radius:18px;
+  background:#f5efe6;
+}
+.articleCinePage .articleRichReferences>div{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr);
+  gap:12px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(124,91,50,.10);
+}
+.articleCinePage .articleRichReferences>div:last-child{
+  border-bottom:0;
+}
+.articleCinePage .articleRichReferences span{
+  color:#a1763f;
+  font:500 10px Georgia,serif;
+}
+.articleCinePage .articleRichReferences p{
+  margin:0;
+  color:#75695d;
+  font-size:12px;
+  line-height:1.65;
+}
+@media(max-width:760px){
+  .articleCinePage .articleRichHeading{
+    grid-template-columns:28px minmax(0,1fr);
+    gap:10px;
+    margin-top:42px;
+  }
+  .articleCinePage .articleRichHeading h2{
+    font-size:26px;
+  }
+  .articleCinePage .articleRichRiskGrid{
+    grid-template-columns:1fr;
+  }
+  .articleCinePage .articleRichRiskGrid section{
+    border-right:0;
+    border-bottom:1px solid rgba(132,95,48,.14);
+  }
+  .articleCinePage .articleRichRiskGrid section:last-child{
+    border-bottom:0;
+  }
+  .articleCinePage .articleRichRiskGrid__head{
+    min-height:auto;
+  }
+  .articleCinePage .articleRichImpact{
+    min-height:430px;
+  }
+  .articleCinePage .articleRichImpact__core{
+    width:142px;
+    height:142px;
+  }
+  .articleCinePage .articleRichImpact__node{
+    width:86px;
+    height:86px;
+    font-size:12px;
+  }
+  .articleCinePage .articleRichImpact__node.is-2{left:4%}
+  .articleCinePage .articleRichImpact__node.is-3{right:4%}
+  .articleCinePage .articleRichRecommendation{
+    grid-template-columns:42px minmax(0,1fr);
+    padding:17px;
+  }
+  .articleCinePage .articleRichRecommendation p{
+    font-size:15px;
+  }
+  .articleCinePage .articleRichReferences{
+    padding:14px;
+  }
+  .articleCinePage .articleRichReferences>div{
+    grid-template-columns:29px minmax(0,1fr);
+  }
+}
+
+
+/* STEP188 — FIGURE 2: WORD SOURCE LAYOUT */
+.articleCinePage .articleRichImpact.articleRichImpact--source{
+  position:relative;
+  min-height:620px;
+  border:1px solid #173242;
+  border-radius:0;
+  background:#738696;
+}
+.articleCinePage .articleRichImpact--source:before,
+.articleCinePage .articleRichImpact--source:after{
+  display:none;
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node{
+  position:absolute;
+  z-index:3;
+  width:210px;
+  height:160px;
+  display:grid;
+  place-items:center;
+  border:2px solid #173242;
+  border-radius:50%;
+  background:#efefef;
+  color:#111;
+  transform:none;
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node span{
+  padding:8px 13px;
+  border:1px solid #111;
+  background:#f7f7f7;
+  font:500 15px/1 Arial,sans-serif;
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node.is-top{
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node.is-left{
+  top:50%;
+  left:8px;
+  transform:translateY(-50%);
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node.is-right{
+  top:50%;
+  right:8px;
+  transform:translateY(-50%);
+}
+.articleCinePage .articleRichImpact--source .articleRichImpact__node.is-bottom{
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.articleCinePage .articleRichImpact__arrows{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  width:150px;
+  height:150px;
+  transform:translate(-50%,-50%);
+}
+.articleCinePage .articleRichImpact__arrows .arrowStem{
+  position:absolute;
+  display:block;
+  background:#24769b;
+  border:2px solid #173242;
+}
+.articleCinePage .articleRichImpact__arrows .arrowStem--vertical{
+  left:59px;
+  top:0;
+  width:32px;
+  height:150px;
+}
+.articleCinePage .articleRichImpact__arrows .arrowStem--horizontal{
+  left:0;
+  top:59px;
+  width:150px;
+  height:32px;
+}
+.articleCinePage .articleRichImpact__arrows .arrowHead{
+  position:absolute;
+  z-index:4;
+  width:0;
+  height:0;
+}
+.articleCinePage .articleRichImpact__arrows .arrowHead--up{
+  left:45px; top:-18px;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+  border-bottom:32px solid #24769b;
+  filter:drop-shadow(0 -2px 0 #173242) drop-shadow(2px 0 0 #173242) drop-shadow(-2px 0 0 #173242);
+}
+.articleCinePage .articleRichImpact__arrows .arrowHead--down{
+  left:45px; bottom:-18px;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+  border-top:32px solid #24769b;
+  filter:drop-shadow(0 2px 0 #173242) drop-shadow(2px 0 0 #173242) drop-shadow(-2px 0 0 #173242);
+}
+.articleCinePage .articleRichImpact__arrows .arrowHead--left{
+  left:-18px; top:45px;
+  border-top:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-right:32px solid #24769b;
+  filter:drop-shadow(-2px 0 0 #173242) drop-shadow(0 2px 0 #173242) drop-shadow(0 -2px 0 #173242);
+}
+.articleCinePage .articleRichImpact__arrows .arrowHead--right{
+  right:-18px; top:45px;
+  border-top:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-left:32px solid #24769b;
+  filter:drop-shadow(2px 0 0 #173242) drop-shadow(0 2px 0 #173242) drop-shadow(0 -2px 0 #173242);
+}
+@media(max-width:760px){
+  .articleCinePage .articleRichImpact.articleRichImpact--source{
+    min-height:430px;
+  }
+  .articleCinePage .articleRichImpact--source .articleRichImpact__node{
+    width:112px;
+    height:90px;
+  }
+  .articleCinePage .articleRichImpact--source .articleRichImpact__node span{
+    padding:6px 9px;
+    font-size:11px;
+  }
+  .articleCinePage .articleRichImpact--source .articleRichImpact__node.is-left{left:3px}
+  .articleCinePage .articleRichImpact--source .articleRichImpact__node.is-right{right:3px}
+  .articleCinePage .articleRichImpact__arrows{
+    width:90px;
+    height:90px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowStem--vertical{
+    left:34px; width:22px; height:90px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowStem--horizontal{
+    top:34px; width:90px; height:22px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowHead--up{
+    left:25px; top:-12px;
+    border-left-width:20px; border-right-width:20px; border-bottom-width:23px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowHead--down{
+    left:25px; bottom:-12px;
+    border-left-width:20px; border-right-width:20px; border-top-width:23px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowHead--left{
+    left:-12px; top:25px;
+    border-top-width:20px; border-bottom-width:20px; border-right-width:23px;
+  }
+  .articleCinePage .articleRichImpact__arrows .arrowHead--right{
+    right:-12px; top:25px;
+    border-top-width:20px; border-bottom-width:20px; border-left-width:23px;
+  }
 }
 
 `;
