@@ -2865,16 +2865,18 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
         </div>
       </section>
 
-      <section className="articleCineIntro cin3d">
-        <span>YAZI / {post.category}</span>
-        <h2>
-          Düşünceye alan açan,
-          <strong>sakince okunacak bir içerik.</strong>
-        </h2>
-        <p>
-          Yazıyı rahat bir okuma deneyimi için sade, geniş ve dikkat dağıtmayan
-          bir düzende sunuyoruz.
-        </p>
+      <section className="articleCompactIntro">
+        <div className="articleCompactIntro__inner">
+          <span>YAZI / {post.category}</span>
+          <h2>
+            Düşünceye alan açan,
+            <strong>sakince okunacak bir içerik.</strong>
+          </h2>
+          <p>
+            Yazıyı rahat bir okuma deneyimi için sade, geniş ve dikkat dağıtmayan
+            bir düzende sunuyoruz.
+          </p>
+        </div>
       </section>
 
       <section className={`articleCineBody ${author ? "has-author" : ""}`}>
@@ -2938,12 +2940,10 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
               const recTitle=parts.length>1?parts.shift():"";
               const recBody=parts.join(":").trim();
               return (
-                <div className="articleRichRecommendation articleRichRecommendation--plain" key={index}>
-                  <div>
-                    {recTitle && <h3>{recTitle}</h3>}
-                    <p>{recBody || item.text}</p>
-                  </div>
-                </div>
+                <section className="articlePlainRecommendation" key={index}>
+                  {recTitle && <h3>{recTitle}</h3>}
+                  <p>{recBody || item.text}</p>
+                </section>
               );
             }
 
@@ -34239,6 +34239,123 @@ html.perfLite .articleCinePage .articleCineHero__author{
   }
   .articleCinePage .articleCineBody{
     padding-top:28px !important;
+  }
+}
+
+
+/* STEP194 — STRUCTURAL FIX: COMPACT INTRO + TRUE PLAIN RECOMMENDATIONS */
+
+/* Bu bölüm artık eski articleCineIntro grid'ini kullanmıyor */
+.articleCinePage .articleCompactIntro{
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#f4efe6;
+  border:0;
+}
+.articleCinePage .articleCompactIntro__inner{
+  width:min(1180px,calc(100% - 48px));
+  margin:0 auto;
+  padding:34px 0 30px;
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr) 250px;
+  gap:34px;
+  align-items:start;
+  border-bottom:1px solid rgba(109,78,42,.14);
+}
+.articleCinePage .articleCompactIntro__inner>span{
+  padding-top:5px;
+  color:#9a6b2d;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.24em;
+}
+.articleCinePage .articleCompactIntro__inner h2{
+  margin:0;
+  color:#302920;
+  font:400 clamp(27px,3vw,43px)/1.06 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.articleCinePage .articleCompactIntro__inner h2 strong{
+  display:block;
+  color:#a97835;
+  font-weight:400;
+  font-style:italic;
+}
+.articleCinePage .articleCompactIntro__inner>p{
+  margin:4px 0 0;
+  color:rgba(47,40,31,.58);
+  font-size:12px;
+  line-height:1.75;
+}
+
+/* Sonuç ve öneriler artık gerçek anlamda kart değil */
+.articleCinePage .articlePlainRecommendation{
+  margin:0;
+  padding:24px 0;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+}
+.articleCinePage .articlePlainRecommendation + .articlePlainRecommendation{
+  border-top:1px solid rgba(99,73,41,.11);
+}
+.articleCinePage .articlePlainRecommendation h3{
+  margin:0 0 9px;
+  padding:0;
+  color:#352d25;
+  font:500 20px/1.35 Georgia,serif;
+}
+.articleCinePage .articlePlainRecommendation p{
+  width:100%;
+  margin:0;
+  padding:0;
+  color:#494137;
+  font:400 17px/1.86 Georgia,"Times New Roman",serif;
+}
+
+/* Introdan sonra içerik hemen gelsin */
+.articleCinePage .articleCineBody{
+  margin-top:0 !important;
+  padding-top:28px !important;
+}
+
+@media(max-width:900px){
+  .articleCinePage .articleCompactIntro__inner{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:28px 0 24px;
+  }
+  .articleCinePage .articleCompactIntro__inner>span{
+    padding-top:0;
+  }
+  .articleCinePage .articleCompactIntro__inner>p{
+    max-width:620px;
+  }
+}
+
+@media(max-width:700px){
+  .articleCinePage .articleCompactIntro__inner{
+    width:calc(100% - 36px);
+    padding:22px 0 20px;
+  }
+  .articleCinePage .articleCompactIntro__inner h2{
+    font-size:27px;
+    line-height:1.08;
+  }
+  .articleCinePage .articlePlainRecommendation{
+    padding:20px 0;
+  }
+  .articleCinePage .articlePlainRecommendation h3{
+    font-size:18px;
+  }
+  .articleCinePage .articlePlainRecommendation p{
+    font-size:16px;
+    line-height:1.8;
+  }
+  .articleCinePage .articleCineBody{
+    padding-top:20px !important;
   }
 }
 
