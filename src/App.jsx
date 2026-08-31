@@ -309,7 +309,7 @@ const bilgeAkarPost20260831 = {
   "readTime": "20 dk okuma",
   "title": "BABALARDA DOĞUM SONRASI DEPRESYONU",
   "excerpt": "Doğum sonrası depresyonunun babalardaki yaygınlığı, belirleyicileri, aile ve çocuk üzerindeki yansımaları ile destek ve müdahale önerilerini ele alan kapsamlı bir inceleme.",
-  "image": servicesHeroRoom,
+  "image": "/babalarda-dogum-sonrasi-depresyonu-kapak.jpeg",
   "body": [
     {
       "type": "heading",
@@ -614,12 +614,52 @@ const mergeBilgeAkarArticle = (content) => {
     posts: exists
       ? (next.posts || []).map((post) =>
           post.slug === prepared.slug || post.id === prepared.id
-            ? { ...post, authorSlug: post.authorSlug || prepared.authorSlug }
+            ? {
+                ...post,
+                body: prepared.body,
+                image: prepared.image,
+                authorSlug: post.authorSlug || prepared.authorSlug,
+                authorName: post.authorName || prepared.authorName,
+                authorRole: post.authorRole || prepared.authorRole,
+                authorImage: post.authorImage || prepared.authorImage,
+              }
             : post
         )
       : [...(next.posts || []), prepared],
   };
 };
+
+
+const blogRichBodyToEditorText = (body) => {
+  if (!Array.isArray(body)) return String(body || "");
+  return body
+    .map((block) => {
+      if (typeof block === "string") return block;
+      if (!block || typeof block !== "object") return "";
+      if (block.type === "heading") return `## ${block.text || ""}`;
+      if (block.type === "paragraph") return block.text || "";
+      if (block.type === "recommendation") return `${block.number || ""}. ${block.text || ""}`;
+      if (block.type === "references") return (block.items || []).join("\n");
+      if (block.type === "riskTable") {
+        return [
+          block.caption || "",
+          ...(block.columns || []).map((column) =>
+            [column.title, ...(column.items || [])].filter(Boolean).join(" — ")
+          ),
+        ].filter(Boolean).join("\n");
+      }
+      if (block.type === "impactDiagram") {
+        return [block.caption || "", ...(block.items || [])].filter(Boolean).join(" — ");
+      }
+      return block.text || "";
+    })
+    .filter(Boolean)
+    .join("\n\n");
+};
+
+const hasRichBlogBody = (body) =>
+  Array.isArray(body) && body.some((block) => block && typeof block === "object");
+
 
 const createBlogSlug = (value = "") =>
   value
@@ -4814,6 +4854,8 @@ function AdminDemoPage() {
     excerpt: "",
     image: "",
     body: "",
+    richBody: null,
+    bodyDirty: false,
     quote: "",
     status: "published",
     featured: false,
@@ -5334,6 +5376,8 @@ function AdminDemoPage() {
       excerpt: "",
       image: "",
       body: "",
+      richBody: null,
+      bodyDirty: false,
       quote: "",
       status: "published",
       featured: false,
@@ -5750,7 +5794,10 @@ function AdminDemoPage() {
         readTime: blogForm.readTime.trim() || "5 dk okuma",
         excerpt: blogForm.excerpt.trim(),
         image: blogForm.image.trim(),
-        body: blogForm.body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+        body:
+          Array.isArray(blogForm.richBody) && !blogForm.bodyDirty
+            ? blogForm.richBody
+            : blogForm.body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
         quote: blogForm.quote.trim(),
         status: blogForm.status,
         featured: Boolean(blogForm.featured),
@@ -5879,7 +5926,9 @@ function AdminDemoPage() {
       readTime: post.readTime || "5 dk okuma",
       excerpt: post.excerpt || "",
       image: post.image || "",
-      body: Array.isArray(post.body) ? post.body.join("\n\n") : post.body || "",
+      body: blogRichBodyToEditorText(post.body),
+      richBody: hasRichBlogBody(post.body) ? post.body : null,
+      bodyDirty: false,
       quote: post.quote || "",
       status: post.status || "published",
       featured: Boolean(post.featured),
@@ -7077,10 +7126,15 @@ function AdminDemoPage() {
 
                       <label>
                         <span>Yazının Tamamı *</span>
+                        {Array.isArray(blogForm.richBody) && !blogForm.bodyDirty && (
+                          <small className="adminRichBodyNotice">
+                            Bu yazıda tablo/şekil gibi özel bloklar var. Kategori, kapak, yazar veya tarih değiştirip kaydetmeniz içerik düzenini bozmaz.
+                          </small>
+                        )}
                         <textarea
                           rows="18"
                           value={blogForm.body}
-                          onChange={(e)=>setBlogForm({...blogForm,body:e.target.value})}
+                          onChange={(e)=>setBlogForm({...blogForm,body:e.target.value,bodyDirty:true})}
                           placeholder={"Yazınızı buraya yazın.\n\nYeni paragraf için bir boş satır bırakın.\n\nPanel paragrafları otomatik ayırır."}
                         />
                       </label>
@@ -33962,6 +34016,20 @@ html.perfLite .articleCinePage .articleCineHero__author{
     right:-12px; top:25px;
     border-top-width:20px; border-bottom-width:20px; border-left-width:23px;
   }
+}
+
+
+/* STEP189 — ADMIN RICH BLOG CONTENT SAFETY */
+.adminRichBodyNotice{
+  display:block;
+  margin:7px 0 10px;
+  padding:10px 12px;
+  border:1px solid rgba(166,118,55,.18);
+  border-radius:10px;
+  background:#fff7e9;
+  color:#8a6331;
+  font-size:11px;
+  line-height:1.55;
 }
 
 `;
