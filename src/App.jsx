@@ -34165,6 +34165,83 @@ html.perfLite .articleCinePage .articleCineHero__author{
   }
 }
 
+
+/* STEP193 — RESULTS PLAIN TEXT + ARTICLE INTRO GAP FIX */
+
+/* Sonuç ve Öneriler: kart görünümünü tamamen kaldır, sade metin akışı yap */
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain{
+  display:block;
+  margin:0;
+  padding:22px 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain + .articleRichRecommendation--plain{
+  border-top:1px solid rgba(117,86,49,.13);
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain>div{
+  width:100%;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain h3{
+  margin:0 0 8px;
+  color:#352d25;
+  font:500 20px/1.35 Georgia,serif;
+}
+.articleCinePage .articleRichRecommendation.articleRichRecommendation--plain p{
+  margin:0;
+  width:100%;
+  color:#655a4e;
+  font-size:16px;
+  line-height:1.86;
+}
+
+/* "Düşünceye alan açan..." bölümündeki gereksiz büyük yüksekliği kaldır */
+.articleCinePage .articleCineIntro{
+  min-height:0 !important;
+  height:auto !important;
+  padding-top:42px !important;
+  padding-bottom:42px !important;
+  margin-bottom:0 !important;
+  align-items:start !important;
+}
+.articleCinePage .articleCineIntro__inner,
+.articleCinePage .articleCineIntro>div{
+  min-height:0 !important;
+  height:auto !important;
+}
+.articleCinePage .articleCineIntro h2{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+.articleCinePage .articleCineIntro p{
+  margin-bottom:0 !important;
+}
+.articleCinePage .articleCineBody{
+  margin-top:0 !important;
+  padding-top:42px !important;
+}
+
+@media(max-width:760px){
+  .articleCinePage .articleRichRecommendation.articleRichRecommendation--plain{
+    padding:18px 0;
+  }
+  .articleCinePage .articleRichRecommendation.articleRichRecommendation--plain h3{
+    font-size:18px;
+  }
+  .articleCinePage .articleRichRecommendation.articleRichRecommendation--plain p{
+    font-size:15px;
+  }
+  .articleCinePage .articleCineIntro{
+    padding-top:28px !important;
+    padding-bottom:28px !important;
+  }
+  .articleCinePage .articleCineBody{
+    padding-top:28px !important;
+  }
+}
+
 `;
 
 export default App;
