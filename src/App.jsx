@@ -1006,6 +1006,184 @@ const detailedServicePages = {
   }
 };
 
+
+/* =========================================================
+   STEP197 — PRIVACY-FIRST VISITOR ANALYTICS
+   - Public pages only (admin/author portal excluded)
+   - No raw IP is stored
+   - IP geolocation is cached and stored only at approximate city level
+   ========================================================= */
+const ANALYTICS_VISITOR_KEY = "kaan_analytics_visitor_v1";
+const ANALYTICS_SESSION_KEY = "kaan_analytics_session_v1";
+const ANALYTICS_GEO_KEY = "kaan_analytics_geo_v1";
+
+const analyticsId = (storage, key) => {
+  try {
+    const current = storage.getItem(key);
+    if (current) return current;
+    const next =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `v-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+    storage.setItem(key, next);
+    return next;
+  } catch {
+    return `v-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+  }
+};
+
+const analyticsDevice = () => {
+  const ua = navigator.userAgent || "";
+  const width = window.innerWidth || 0;
+  if (/iPad|Tablet|PlayBook|Silk/i.test(ua) || (width >= 700 && width <= 1100)) return "Tablet";
+  if (/Mobi|Android|iPhone|iPod/i.test(ua) || width < 700) return "Mobil";
+  return "Masaüstü";
+};
+
+const analyticsBrowser = () => {
+  const ua = navigator.userAgent || "";
+  if (/Edg\//.test(ua)) return "Edge";
+  if (/OPR\//.test(ua)) return "Opera";
+  if (/Chrome\//.test(ua) && !/Edg\//.test(ua)) return "Chrome";
+  if (/Safari\//.test(ua) && !/Chrome\//.test(ua)) return "Safari";
+  if (/Firefox\//.test(ua)) return "Firefox";
+  return "Diğer";
+};
+
+const analyticsOS = () => {
+  const ua = navigator.userAgent || "";
+  if (/iPhone|iPad|iPod/i.test(ua)) return "iOS";
+  if (/Android/i.test(ua)) return "Android";
+  if (/Windows/i.test(ua)) return "Windows";
+  if (/Mac OS X|Macintosh/i.test(ua)) return "macOS";
+  if (/Linux/i.test(ua)) return "Linux";
+  return "Diğer";
+};
+
+const analyticsPageLabel = (hash = "") => {
+  if (!hash || hash === "#/") return "Ana Sayfa";
+  if (hash === "#/hakkimda") return "Hakkımda";
+  if (hash === "#/hizmetler") return "Hizmetler";
+  if (hash.startsWith("#/hizmetler/")) return "Hizmet Detayı";
+  if (hash === "#/surec") return "Süreç";
+  if (hash === "#/icerikler") return "İçerikler";
+  if (hash === "#/blog") return "Blog";
+  if (hash.startsWith("#/blog/")) return "Blog Yazısı";
+  if (hash === "#/yazarlar") return "Yazarlar";
+  if (hash.startsWith("#/yazarlar/")) return "Yazar Profili";
+  if (hash === "#/iletisim") return "İletişim";
+  if (hash === "#/randevu") return "Randevu";
+  if (hash === "#/gizlilik") return "Gizlilik";
+  if (hash === "#/aydinlatma") return "Aydınlatma";
+  if (hash === "#/cerez-politikasi") return "Çerez Politikası";
+  return "Diğer";
+};
+
+const getApproxAnalyticsGeo = async () => {
+  try {
+    const cached = JSON.parse(window.localStorage.getItem(ANALYTICS_GEO_KEY) || "null");
+    if (cached?.savedAt && Date.now() - cached.savedAt < 24 * 60 * 60 * 1000) {
+      return cached.data || {};
+    }
+  } catch {}
+
+  try {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 3200);
+    const response = await fetch(
+      "https://ipwho.is/?fields=success,country,country_code,region,city,latitude,longitude,timezone",
+      { signal: controller.signal }
+    );
+    window.clearTimeout(timeout);
+    const data = await response.json();
+    if (!data?.success) return {};
+    const safe = {
+      country: data.country || "",
+      country_code: data.country_code || "",
+      region: data.region || "",
+      city: data.city || "",
+      latitude:
+        Number.isFinite(Number(data.latitude))
+          ? Math.round(Number(data.latitude) * 10) / 10
+          : null,
+      longitude:
+        Number.isFinite(Number(data.longitude))
+          ? Math.round(Number(data.longitude) * 10) / 10
+          : null,
+      timezone: data.timezone?.id || data.timezone || "",
+    };
+    try {
+      window.localStorage.setItem(
+        ANALYTICS_GEO_KEY,
+        JSON.stringify({ savedAt: Date.now(), data: safe })
+      );
+    } catch {}
+    return safe;
+  } catch {
+    return {};
+  }
+};
+
+const recordSiteVisit = async () => {
+  if (typeof window === "undefined" || typeof navigator === "undefined") return;
+  const hash = window.location.hash || "#/";
+  if (
+    hash === "#/admin" ||
+    hash === "#/yazar-girisi" ||
+    hash === "#/yazar-paneli"
+  ) return;
+
+  const visitorId = analyticsId(window.localStorage, ANALYTICS_VISITOR_KEY);
+  const sessionId = analyticsId(window.sessionStorage, ANALYTICS_SESSION_KEY);
+  const geo = await getApproxAnalyticsGeo();
+
+  const payload = {
+    visitor_id: visitorId,
+    session_id: sessionId,
+    path: hash || "#/",
+    page_label: analyticsPageLabel(hash),
+    page_title: document.title || "",
+    referrer: document.referrer || "",
+    device_type: analyticsDevice(),
+    browser: analyticsBrowser(),
+    operating_system: analyticsOS(),
+    language: navigator.language || "",
+    screen_size: `${window.screen?.width || 0}x${window.screen?.height || 0}`,
+    timezone:
+      geo.timezone ||
+      Intl.DateTimeFormat().resolvedOptions().timeZone ||
+      "",
+    city: geo.city || "",
+    region: geo.region || "",
+    country: geo.country || "",
+    country_code: geo.country_code || "",
+    latitude: geo.latitude ?? null,
+    longitude: geo.longitude ?? null,
+    location_source: geo.city || geo.country ? "IP tabanlı yaklaşık" : "Konum yok",
+  };
+
+  try {
+    await supabase.from("site_visits").insert(payload);
+  } catch (error) {
+    console.debug("Analytics kaydı atlandı:", error);
+  }
+};
+
+const analyticsHost = (value = "") => {
+  try {
+    if (!value) return "Doğrudan";
+    const host = new URL(value).hostname.replace(/^www\./, "");
+    if (!host || host === window.location.hostname.replace(/^www\./, "")) return "Site içi";
+    return host;
+  } catch {
+    return value ? "Diğer" : "Doğrudan";
+  }
+};
+
+const analyticsDateKey = (value) =>
+  new Date(value).toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit" });
+
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -1163,6 +1341,14 @@ function App() {
   const [servicesContent, setServicesContent] = useState(defaultServicesContent);
   const [processContent, setProcessContent] = useState(defaultProcessContent);
   const [aboutContent, setAboutContent] = useState(defaultAboutContent);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      recordSiteVisit();
+    }, 450);
+    return () => window.clearTimeout(timer);
+  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
+
 
   const heroSlides = [
     {
@@ -4755,6 +4941,14 @@ function AdminDemoPage() {
   const [updatingId, setUpdatingId] = useState(null);
   const [appointmentFilter, setAppointmentFilter] = useState("all");
 
+
+  const [analyticsRows, setAnalyticsRows] = useState([]);
+  const [analyticsLoading, setAnalyticsLoading] = useState(false);
+  const [analyticsError, setAnalyticsError] = useState("");
+  const [analyticsRange, setAnalyticsRange] = useState("7");
+  const [analyticsLastUpdated, setAnalyticsLastUpdated] = useState(null);
+  const [analyticsSearch, setAnalyticsSearch] = useState("");
+
   const emptyHomeEditor = {
     eyebrow: "",
     titleLine: "",
@@ -4885,6 +5079,226 @@ function AdminDemoPage() {
     const timer = window.setTimeout(() => setAdminIntroVisible(false), 1700);
     return () => window.clearTimeout(timer);
   }, []);
+
+
+  const loadAnalytics = async () => {
+    setAnalyticsLoading(true);
+    setAnalyticsError("");
+
+    const days = Math.max(1, Number(analyticsRange || 7));
+    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+
+    const { data, error } = await supabase
+      .from("site_visits")
+      .select(
+        "id,visitor_id,session_id,path,page_label,page_title,referrer,device_type,browser,operating_system,language,screen_size,timezone,city,region,country,country_code,latitude,longitude,location_source,created_at"
+      )
+      .gte("created_at", since)
+      .order("created_at", { ascending: false })
+      .limit(5000);
+
+    if (error) {
+      console.error("Ziyaretçi analitiği yüklenemedi:", error);
+      setAnalyticsRows([]);
+      setAnalyticsError(
+        "Analitik verileri yüklenemedi. Önce ZIP içindeki SUPABASE-ZIYARETCI-ANALITIK-KURULUM.sql dosyasını Supabase SQL Editor'de bir kez çalıştırın."
+      );
+    } else {
+      setAnalyticsRows(data || []);
+      setAnalyticsLastUpdated(new Date());
+    }
+
+    setAnalyticsLoading(false);
+  };
+
+  useEffect(() => {
+    if (session && activeTab === "analytics") {
+      loadAnalytics();
+    }
+  }, [session, activeTab, analyticsRange]);
+
+  useEffect(() => {
+    if (!session || activeTab !== "analytics") return undefined;
+    const timer = window.setInterval(loadAnalytics, 60000);
+    return () => window.clearInterval(timer);
+  }, [session, activeTab, analyticsRange]);
+
+  const analyticsSummary = useMemo(() => {
+    const rows = analyticsRows || [];
+    const visitors = new Set(rows.map((row) => row.visitor_id).filter(Boolean));
+    const sessions = new Map();
+
+    rows.forEach((row) => {
+      const key = row.session_id || row.visitor_id || row.id;
+      if (!sessions.has(key)) sessions.set(key, []);
+      sessions.get(key).push(row);
+    });
+
+    const sessionList = [...sessions.values()];
+    const bounceSessions = sessionList.filter((items) => items.length <= 1).length;
+    const avgPages = sessionList.length ? rows.length / sessionList.length : 0;
+    const bounceRate = sessionList.length ? (bounceSessions / sessionList.length) * 100 : 0;
+
+    const todayKey = new Date().toLocaleDateString("tr-TR");
+    const todayViews = rows.filter(
+      (row) => new Date(row.created_at).toLocaleDateString("tr-TR") === todayKey
+    ).length;
+
+    const group = (keyFn) => {
+      const map = new Map();
+      rows.forEach((row) => {
+        const key = keyFn(row) || "Bilinmiyor";
+        map.set(key, (map.get(key) || 0) + 1);
+      });
+      return [...map.entries()]
+        .map(([label, value]) => ({ label, value }))
+        .sort((a, b) => b.value - a.value);
+    };
+
+    const pages = group((row) => row.page_label || row.path || "Diğer");
+    const devices = group((row) => row.device_type || "Bilinmiyor");
+    const browsers = group((row) => row.browser || "Bilinmiyor");
+    const systems = group((row) => row.operating_system || "Bilinmiyor");
+    const countries = group((row) => row.country || "Bilinmiyor");
+    const cities = group((row) =>
+      row.city
+        ? `${row.city}${row.country ? `, ${row.country}` : ""}`
+        : row.country || "Bilinmiyor"
+    );
+    const sources = group((row) => analyticsHost(row.referrer));
+
+    const days = Math.max(1, Number(analyticsRange || 7));
+    const trend = [];
+    for (let offset = days - 1; offset >= 0; offset -= 1) {
+      const date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - offset);
+      const next = new Date(date);
+      next.setDate(next.getDate() + 1);
+      const count = rows.filter((row) => {
+        const at = new Date(row.created_at);
+        return at >= date && at < next;
+      }).length;
+      trend.push({
+        label: date.toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit" }),
+        value: count,
+      });
+    }
+
+    return {
+      pageViews: rows.length,
+      uniqueVisitors: visitors.size,
+      sessions: sessionList.length,
+      avgPages,
+      bounceRate,
+      todayViews,
+      pages,
+      devices,
+      browsers,
+      systems,
+      countries,
+      cities,
+      sources,
+      trend,
+    };
+  }, [analyticsRows, analyticsRange]);
+
+  const analyticsRecentRows = useMemo(() => {
+    const query = analyticsSearch.trim().toLocaleLowerCase("tr-TR");
+    if (!query) return analyticsRows.slice(0, 120);
+    return analyticsRows
+      .filter((row) =>
+        [
+          row.city,
+          row.region,
+          row.country,
+          row.page_label,
+          row.path,
+          row.device_type,
+          row.browser,
+          row.operating_system,
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLocaleLowerCase("tr-TR")
+          .includes(query)
+      )
+      .slice(0, 120);
+  }, [analyticsRows, analyticsSearch]);
+
+  const AnalyticsSparkline = ({ data = [] }) => {
+    const width = 760;
+    const height = 220;
+    const pad = 18;
+    const max = Math.max(1, ...data.map((item) => Number(item.value) || 0));
+    const points = data.map((item, index) => {
+      const x =
+        data.length <= 1
+          ? width / 2
+          : pad + (index / (data.length - 1)) * (width - pad * 2);
+      const y = height - pad - ((Number(item.value) || 0) / max) * (height - pad * 2);
+      return { ...item, x, y };
+    });
+    const polyline = points.map((point) => `${point.x},${point.y}`).join(" ");
+
+    return (
+      <div className="adminAnalyticsChart">
+        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Ziyaret trendi">
+          <defs>
+            <linearGradient id="analyticsArea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(186,137,69,.28)" />
+              <stop offset="100%" stopColor="rgba(186,137,69,0)" />
+            </linearGradient>
+          </defs>
+          {[0.25,0.5,0.75].map((ratio)=>(
+            <line
+              key={ratio}
+              x1={pad}
+              x2={width-pad}
+              y1={height*ratio}
+              y2={height*ratio}
+              className="adminAnalyticsChart__grid"
+            />
+          ))}
+          {points.length > 1 && (
+            <polygon
+              points={`${points[0].x},${height-pad} ${polyline} ${points[points.length-1].x},${height-pad}`}
+              fill="url(#analyticsArea)"
+            />
+          )}
+          <polyline points={polyline} className="adminAnalyticsChart__line" />
+          {points.map((point,index)=>(
+            <g key={`${point.label}-${index}`}>
+              <circle cx={point.x} cy={point.y} r="4.5" className="adminAnalyticsChart__dot" />
+              {(data.length <= 14 || index % Math.ceil(data.length / 8) === 0 || index === data.length-1) && (
+                <text x={point.x} y={height-2} textAnchor="middle">{point.label}</text>
+              )}
+            </g>
+          ))}
+        </svg>
+      </div>
+    );
+  };
+
+  const AnalyticsBars = ({ items = [], limit = 6 }) => {
+    const visible = items.slice(0, limit);
+    const max = Math.max(1, ...visible.map((item) => item.value));
+    return (
+      <div className="adminAnalyticsBars">
+        {visible.length === 0 ? (
+          <p className="adminAnalyticsEmptyMini">Henüz veri yok.</p>
+        ) : visible.map((item) => (
+          <div className="adminAnalyticsBar" key={item.label}>
+            <div>
+              <span>{item.label}</span>
+              <b>{item.value}</b>
+            </div>
+            <i><em style={{ width: `${Math.max(4,(item.value/max)*100)}%` }} /></i>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   const loadAppointments = async () => {
     setAppointmentsLoading(true);
@@ -6439,6 +6853,7 @@ function AdminDemoPage() {
             ["services", "grid", "Hizmetler"],
             ["process", "chart", "Süreç"],
             ["blog", "edit", "Blog"],
+            ["analytics", "chart", "Ziyaretçi Analitiği"],
             ["appointments", "calendar", "Randevular"],
             ["content", "video", "YouTube & Podcast"],
             ["articles", "edit", "İçerikler"],
@@ -6502,6 +6917,8 @@ function AdminDemoPage() {
                 ? "YouTube & Podcast"
                 : activeTab === "articles"
                 ? "İçerik Yönetimi"
+                : activeTab === "analytics"
+                ? "Ziyaretçi Analitiği"
                 : activeTab === "appointments"
                 ? "Randevular"
                 : activeTab === "users"
@@ -7246,6 +7663,254 @@ function AdminDemoPage() {
                 </section>
               </>
             )}
+          </section>
+        )}
+
+        {activeTab === "analytics" && (
+          <section className="adminAnalytics">
+            <div className="adminAnalyticsHero">
+              <div className="adminAnalyticsHero__copy">
+                <span>CANLI ZİYARETÇİ İÇGÖRÜLERİ</span>
+                <h2>Sitenizin dijital nabzı.</h2>
+                <p>
+                  Ziyaretçilerin hangi sayfalara geldiğini, yaklaşık şehir/ülke bilgisini,
+                  cihaz ve tarayıcı dağılımını tek ekrandan izleyin. Ham IP adresi saklanmaz.
+                </p>
+              </div>
+
+              <div className="adminAnalyticsHero__controls">
+                <div className="adminAnalyticsRange">
+                  {[
+                    ["1","24 Saat"],
+                    ["7","7 Gün"],
+                    ["30","30 Gün"],
+                    ["90","90 Gün"],
+                  ].map(([value,label])=>(
+                    <button
+                      key={value}
+                      type="button"
+                      className={analyticsRange===value ? "is-active" : ""}
+                      onClick={()=>setAnalyticsRange(value)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  className="adminAnalyticsRefresh"
+                  type="button"
+                  onClick={loadAnalytics}
+                  disabled={analyticsLoading}
+                >
+                  <Icon name="chart" size={16} />
+                  {analyticsLoading ? "Yenileniyor" : "Veriyi Yenile"}
+                </button>
+                {analyticsLastUpdated && (
+                  <small>
+                    Son güncelleme {analyticsLastUpdated.toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})}
+                  </small>
+                )}
+              </div>
+            </div>
+
+            {analyticsError && (
+              <div className="adminAnalyticsError">
+                <Icon name="info" size={19}/>
+                <div>
+                  <strong>Analitik kurulumu gerekiyor</strong>
+                  <p>{analyticsError}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="adminAnalyticsKpis">
+              {[
+                ["Sayfa Görüntüleme", analyticsSummary.pageViews, "Seçili dönemde toplam"],
+                ["Tekil Ziyaretçi", analyticsSummary.uniqueVisitors, "Anonim cihaz kimliği"],
+                ["Oturum", analyticsSummary.sessions, "Ayrı ziyaret oturumları"],
+                ["Bugünkü Görüntüleme", analyticsSummary.todayViews, "Bugün kaydedilen"],
+                ["Oturum Başına Sayfa", analyticsSummary.avgPages.toFixed(1), "Ortalama gezinme"],
+                ["Tek Sayfa Oranı", `%${analyticsSummary.bounceRate.toFixed(0)}`, "1 sayfalık oturum"],
+              ].map(([label,value,note],index)=>(
+                <article key={label}>
+                  <div className="adminAnalyticsKpis__top">
+                    <span>0{index+1}</span>
+                    <Icon name={index===1 ? "users" : index===3 ? "calendar" : "chart"} size={18}/>
+                  </div>
+                  <strong>{value}</strong>
+                  <h3>{label}</h3>
+                  <p>{note}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="adminAnalyticsGrid adminAnalyticsGrid--hero">
+              <article className="adminAnalyticsPanel adminAnalyticsPanel--trend">
+                <div className="adminAnalyticsPanel__head">
+                  <div>
+                    <span>ZİYARET TRENDİ</span>
+                    <h3>Günlük sayfa görüntülemeleri</h3>
+                  </div>
+                  <b>{analyticsSummary.pageViews}</b>
+                </div>
+                {analyticsLoading && analyticsRows.length===0 ? (
+                  <div className="adminAnalyticsLoader">Analitik verileri hazırlanıyor...</div>
+                ) : (
+                  <AnalyticsSparkline data={analyticsSummary.trend}/>
+                )}
+              </article>
+
+              <article className="adminAnalyticsPanel adminAnalyticsPanel--location">
+                <div className="adminAnalyticsPanel__head">
+                  <div>
+                    <span>KONUM</span>
+                    <h3>En yoğun şehirler</h3>
+                  </div>
+                  <Icon name="users" size={20}/>
+                </div>
+                <AnalyticsBars items={analyticsSummary.cities} limit={7}/>
+                <p className="adminAnalyticsPrivacy">
+                  Konumlar IP üzerinden yaklaşık şehir/ülke seviyesindedir; GPS kullanılmaz.
+                </p>
+              </article>
+            </div>
+
+            <div className="adminAnalyticsGrid adminAnalyticsGrid--three">
+              <article className="adminAnalyticsPanel">
+                <div className="adminAnalyticsPanel__head">
+                  <div>
+                    <span>İÇERİK</span>
+                    <h3>En çok görüntülenen sayfalar</h3>
+                  </div>
+                </div>
+                <AnalyticsBars items={analyticsSummary.pages} limit={7}/>
+              </article>
+
+              <article className="adminAnalyticsPanel">
+                <div className="adminAnalyticsPanel__head">
+                  <div>
+                    <span>CİHAZ</span>
+                    <h3>Cihaz dağılımı</h3>
+                  </div>
+                </div>
+                <AnalyticsBars items={analyticsSummary.devices} limit={7}/>
+                <div className="adminAnalyticsSplitMeta">
+                  {analyticsSummary.systems.slice(0,4).map(item=>(
+                    <span key={item.label}>{item.label}<b>{item.value}</b></span>
+                  ))}
+                </div>
+              </article>
+
+              <article className="adminAnalyticsPanel">
+                <div className="adminAnalyticsPanel__head">
+                  <div>
+                    <span>KAYNAK</span>
+                    <h3>Ziyaret nereden geldi?</h3>
+                  </div>
+                </div>
+                <AnalyticsBars items={analyticsSummary.sources} limit={7}/>
+                <div className="adminAnalyticsSplitMeta">
+                  {analyticsSummary.browsers.slice(0,4).map(item=>(
+                    <span key={item.label}>{item.label}<b>{item.value}</b></span>
+                  ))}
+                </div>
+              </article>
+            </div>
+
+            <div className="adminAnalyticsMapCard">
+              <div className="adminAnalyticsPanel__head">
+                <div>
+                  <span>COĞRAFİ DAĞILIM</span>
+                  <h3>Ülke ve şehir kırılımı</h3>
+                </div>
+                <b>{analyticsSummary.countries.length} ülke</b>
+              </div>
+              <div className="adminAnalyticsCountries">
+                {analyticsSummary.countries.slice(0,12).map((item,index)=>(
+                  <article key={item.label}>
+                    <span>{String(index+1).padStart(2,"0")}</span>
+                    <div>
+                      <strong>{item.label}</strong>
+                      <i><em style={{width:`${Math.max(4,(item.value/Math.max(1,analyticsSummary.countries[0]?.value||1))*100)}%`}}/></i>
+                    </div>
+                    <b>{item.value}</b>
+                  </article>
+                ))}
+                {analyticsSummary.countries.length===0 && (
+                  <p className="adminAnalyticsEmptyMini">Konum verisi henüz oluşmadı.</p>
+                )}
+              </div>
+            </div>
+
+            <div className="adminAnalyticsRecent">
+              <div className="adminAnalyticsRecent__head">
+                <div>
+                  <span>SON ZİYARETLER</span>
+                  <h3>Ziyaret akışı</h3>
+                  <p>En yeni 120 sayfa görüntülemesi.</p>
+                </div>
+                <label>
+                  <Icon name="search" size={15}/>
+                  <input
+                    value={analyticsSearch}
+                    onChange={(e)=>setAnalyticsSearch(e.target.value)}
+                    placeholder="Şehir, sayfa, cihaz ara..."
+                  />
+                </label>
+              </div>
+
+              <div className="adminAnalyticsTableWrap">
+                <table className="adminAnalyticsTable">
+                  <thead>
+                    <tr>
+                      <th>Zaman</th>
+                      <th>Konum</th>
+                      <th>Sayfa</th>
+                      <th>Cihaz</th>
+                      <th>Tarayıcı</th>
+                      <th>Kaynak</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {analyticsRecentRows.map((row)=>(
+                      <tr key={row.id}>
+                        <td>
+                          <strong>{new Date(row.created_at).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})}</strong>
+                          <small>{new Date(row.created_at).toLocaleDateString("tr-TR")}</small>
+                        </td>
+                        <td>
+                          <strong>{row.city || row.country || "Bilinmiyor"}</strong>
+                          <small>{row.city && row.country ? row.country : row.region || row.location_source || "—"}</small>
+                        </td>
+                        <td>
+                          <strong>{row.page_label || "Sayfa"}</strong>
+                          <small>{row.path || "#/"}</small>
+                        </td>
+                        <td>
+                          <strong>{row.device_type || "—"}</strong>
+                          <small>{row.operating_system || row.screen_size || "—"}</small>
+                        </td>
+                        <td>
+                          <strong>{row.browser || "—"}</strong>
+                          <small>{row.language || "—"}</small>
+                        </td>
+                        <td>
+                          <strong>{analyticsHost(row.referrer)}</strong>
+                          <small>{row.referrer ? "Yönlendirme" : "Doğrudan giriş"}</small>
+                        </td>
+                      </tr>
+                    ))}
+                    {!analyticsLoading && analyticsRecentRows.length===0 && (
+                      <tr>
+                        <td colSpan="6" className="adminAnalyticsTable__empty">
+                          Henüz görüntülenecek ziyaret kaydı yok.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </section>
         )}
 
@@ -34412,6 +35077,387 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .articleCinePage .articleRichReferences .articleRichReferences__numbered{
     grid-template-columns:28px minmax(0,1fr) !important;gap:7px;
   }
+}
+
+
+/* =========================================================
+   STEP198 — PREMIUM ADMIN VISITOR ANALYTICS
+   ========================================================= */
+.adminAnalytics{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  padding-bottom:34px;
+}
+.adminAnalyticsHero{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  min-height:255px;
+  padding:34px;
+  border:1px solid rgba(184,139,79,.20);
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(205,157,87,.18),transparent 30%),
+    linear-gradient(135deg,#1d1914 0%,#292219 55%,#171411 100%);
+  color:#fff;
+  box-shadow:0 24px 70px rgba(35,27,17,.12);
+}
+.adminAnalyticsHero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to left,#000,transparent 74%);
+}
+.adminAnalyticsHero__copy{position:relative;z-index:1;max-width:670px}
+.adminAnalyticsHero__copy>span,
+.adminAnalyticsPanel__head span,
+.adminAnalyticsRecent__head>div>span{
+  display:block;
+  margin-bottom:10px;
+  color:#c89a59;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.22em;
+}
+.adminAnalyticsHero__copy h2{
+  margin:0 0 14px;
+  color:#fff;
+  font:500 clamp(34px,4vw,58px)/.98 Georgia,serif;
+  letter-spacing:-.045em;
+}
+.adminAnalyticsHero__copy p{
+  max-width:620px;
+  margin:0;
+  color:rgba(255,255,255,.61);
+  font-size:13px;
+  line-height:1.8;
+}
+.adminAnalyticsHero__controls{
+  position:relative;
+  z-index:1;
+  min-width:315px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+}
+.adminAnalyticsRange{
+  display:flex;
+  padding:5px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(12px);
+}
+.adminAnalyticsRange button{
+  min-width:65px;
+  padding:9px 12px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:rgba(255,255,255,.55);
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+.adminAnalyticsRange button.is-active{
+  background:#f3e6d1;
+  color:#2e251d;
+}
+.adminAnalyticsRefresh{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 16px;
+  border:1px solid rgba(209,165,98,.30);
+  border-radius:12px;
+  background:rgba(205,157,87,.10);
+  color:#e0bb82;
+  font-size:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+.adminAnalyticsHero__controls small{color:rgba(255,255,255,.38);font-size:8px}
+.adminAnalyticsError{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:17px 19px;
+  border:1px solid rgba(181,114,55,.20);
+  border-radius:16px;
+  background:#fff6e8;
+  color:#6d4b26;
+}
+.adminAnalyticsError strong{display:block;margin-bottom:4px;font-size:12px}
+.adminAnalyticsError p{margin:0;font-size:10px;line-height:1.6}
+.adminAnalyticsKpis{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:12px;
+}
+.adminAnalyticsKpis article{
+  min-width:0;
+  padding:18px;
+  border:1px solid rgba(92,69,43,.10);
+  border-radius:18px;
+  background:rgba(255,255,255,.72);
+  box-shadow:0 12px 34px rgba(40,30,20,.035);
+}
+.adminAnalyticsKpis__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+  color:#a57638;
+}
+.adminAnalyticsKpis__top span{font:500 9px Georgia,serif}
+.adminAnalyticsKpis article>strong{
+  display:block;
+  margin-bottom:7px;
+  color:#2e271f;
+  font:500 30px/1 Georgia,serif;
+}
+.adminAnalyticsKpis h3{margin:0 0 4px;color:#4b4034;font-size:9px}
+.adminAnalyticsKpis p{margin:0;color:#9a8c7c;font-size:7.5px;line-height:1.5}
+.adminAnalyticsGrid{display:grid;gap:16px}
+.adminAnalyticsGrid--hero{grid-template-columns:minmax(0,1.8fr) minmax(300px,.8fr)}
+.adminAnalyticsGrid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.adminAnalyticsPanel,
+.adminAnalyticsMapCard,
+.adminAnalyticsRecent{
+  overflow:hidden;
+  padding:22px;
+  border:1px solid rgba(92,69,43,.10);
+  border-radius:22px;
+  background:rgba(255,255,255,.74);
+  box-shadow:0 14px 42px rgba(40,30,20,.035);
+}
+.adminAnalyticsPanel__head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+}
+.adminAnalyticsPanel__head span{margin-bottom:5px}
+.adminAnalyticsPanel__head h3{
+  margin:0;
+  color:#302820;
+  font:500 17px/1.25 Georgia,serif;
+}
+.adminAnalyticsPanel__head>b{
+  color:#b27f3e;
+  font:500 25px/1 Georgia,serif;
+}
+.adminAnalyticsChart{width:100%;min-height:215px}
+.adminAnalyticsChart svg{display:block;width:100%;height:auto;overflow:visible}
+.adminAnalyticsChart__grid{stroke:rgba(83,61,36,.09);stroke-width:1}
+.adminAnalyticsChart__line{
+  fill:none;
+  stroke:#b88646;
+  stroke-width:2.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.adminAnalyticsChart__dot{fill:#f7efe3;stroke:#a87538;stroke-width:2.5}
+.adminAnalyticsChart text{fill:#9a8c7c;font-size:8px}
+.adminAnalyticsBars{display:flex;flex-direction:column;gap:13px}
+.adminAnalyticsBar>div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:6px;
+}
+.adminAnalyticsBar span{
+  overflow:hidden;
+  color:#5e5145;
+  font-size:9px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.adminAnalyticsBar b{color:#3e342b;font-size:9px}
+.adminAnalyticsBar>i,
+.adminAnalyticsCountries article i{
+  display:block;
+  height:4px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#eee6da;
+}
+.adminAnalyticsBar>i>em,
+.adminAnalyticsCountries article i>em{
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#8d6739,#c89a59);
+}
+.adminAnalyticsPrivacy{
+  margin:18px 0 0;
+  padding-top:13px;
+  border-top:1px solid rgba(90,66,40,.08);
+  color:#a0907e;
+  font-size:7.5px;
+  line-height:1.6;
+}
+.adminAnalyticsSplitMeta{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin-top:18px;
+  padding-top:15px;
+  border-top:1px solid rgba(90,66,40,.08);
+}
+.adminAnalyticsSplitMeta span{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  color:#8e806f;
+  font-size:7.5px;
+}
+.adminAnalyticsSplitMeta b{color:#55483c}
+.adminAnalyticsMapCard{padding:24px}
+.adminAnalyticsCountries{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:36px;
+}
+.adminAnalyticsCountries article{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr) 36px;
+  gap:11px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid rgba(91,68,42,.07);
+}
+.adminAnalyticsCountries article>span{
+  color:#b28a59;
+  font:500 8px Georgia,serif;
+}
+.adminAnalyticsCountries article>div strong{
+  display:block;
+  margin-bottom:6px;
+  color:#584c40;
+  font-size:9px;
+}
+.adminAnalyticsCountries article>b{
+  text-align:right;
+  color:#342b23;
+  font:500 14px Georgia,serif;
+}
+.adminAnalyticsRecent{padding:0}
+.adminAnalyticsRecent__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  padding:23px 24px 18px;
+}
+.adminAnalyticsRecent__head h3{
+  margin:0 0 3px;
+  color:#302820;
+  font:500 19px Georgia,serif;
+}
+.adminAnalyticsRecent__head p{margin:0;color:#978979;font-size:8px}
+.adminAnalyticsRecent__head label{
+  width:min(320px,100%);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border:1px solid rgba(93,68,40,.11);
+  border-radius:12px;
+  background:#f8f4ed;
+  color:#9a7850;
+}
+.adminAnalyticsRecent__head input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#40362c;
+  font-size:9px;
+}
+.adminAnalyticsTableWrap{overflow:auto;border-top:1px solid rgba(90,66,40,.08)}
+.adminAnalyticsTable{
+  width:100%;
+  min-width:920px;
+  border-collapse:collapse;
+}
+.adminAnalyticsTable th{
+  padding:11px 16px;
+  background:#f4eee5;
+  color:#9b7d59;
+  text-align:left;
+  font-size:7px;
+  letter-spacing:.12em;
+}
+.adminAnalyticsTable td{
+  padding:14px 16px;
+  border-bottom:1px solid rgba(90,66,40,.065);
+  vertical-align:top;
+}
+.adminAnalyticsTable td strong{
+  display:block;
+  max-width:180px;
+  overflow:hidden;
+  margin-bottom:3px;
+  color:#4a3e33;
+  font-size:8.5px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.adminAnalyticsTable td small{
+  display:block;
+  max-width:190px;
+  overflow:hidden;
+  color:#9b8d7d;
+  font-size:7px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.adminAnalyticsTable__empty{text-align:center;color:#998b7b!important;padding:34px!important}
+.adminAnalyticsEmptyMini{margin:0;color:#998b7b;font-size:9px}
+.adminAnalyticsLoader{
+  min-height:220px;
+  display:grid;
+  place-items:center;
+  color:#988978;
+  font-size:9px;
+}
+@media(max-width:1250px){
+  .adminAnalyticsKpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .adminAnalyticsGrid--three{grid-template-columns:1fr 1fr}
+  .adminAnalyticsGrid--three .adminAnalyticsPanel:last-child{grid-column:1/-1}
+}
+@media(max-width:980px){
+  .adminAnalyticsHero{align-items:flex-start;flex-direction:column}
+  .adminAnalyticsHero__controls{width:100%;min-width:0;align-items:flex-start}
+  .adminAnalyticsGrid--hero,.adminAnalyticsGrid--three{grid-template-columns:1fr}
+  .adminAnalyticsGrid--three .adminAnalyticsPanel:last-child{grid-column:auto}
+  .adminAnalyticsCountries{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .adminAnalytics{gap:14px}
+  .adminAnalyticsHero{min-height:0;padding:24px 20px;border-radius:20px}
+  .adminAnalyticsHero__copy h2{font-size:37px}
+  .adminAnalyticsRange{width:100%;overflow:auto}
+  .adminAnalyticsRange button{flex:1;min-width:64px}
+  .adminAnalyticsKpis{grid-template-columns:1fr 1fr;gap:9px}
+  .adminAnalyticsKpis article{padding:15px}
+  .adminAnalyticsKpis article>strong{font-size:25px}
+  .adminAnalyticsPanel,.adminAnalyticsMapCard{padding:18px;border-radius:17px}
+  .adminAnalyticsRecent__head{align-items:stretch;flex-direction:column;padding:18px}
+  .adminAnalyticsRecent__head label{width:100%}
 }
 
 `;
