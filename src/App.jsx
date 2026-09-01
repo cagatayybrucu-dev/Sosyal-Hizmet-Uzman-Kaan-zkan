@@ -1342,14 +1342,6 @@ function App() {
   const [processContent, setProcessContent] = useState(defaultProcessContent);
   const [aboutContent, setAboutContent] = useState(defaultAboutContent);
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      recordSiteVisit();
-    }, 450);
-    return () => window.clearTimeout(timer);
-  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
-
-
   const heroSlides = [
     {
       image: heroSlide1,
@@ -1435,6 +1427,13 @@ function App() {
       ? "authorPortal"
       : "home"
   );
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      Promise.resolve(recordSiteVisit()).catch(() => {});
+    }, 450);
+    return () => window.clearTimeout(timer);
+  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
 
   useEffect(() => {
     if (page !== "home") return;
