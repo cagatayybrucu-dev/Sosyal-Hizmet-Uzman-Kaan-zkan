@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import heroSlide1 from "./assets/hero-slide-1.jpg";
 import heroSlide2 from "./assets/hero-slide-2.jpg";
@@ -6852,7 +6852,7 @@ function AdminDemoPage() {
             ["services", "grid", "Hizmetler"],
             ["process", "chart", "Süreç"],
             ["blog", "edit", "Blog"],
-            ["analytics", "chart", "Ziyaretçi Analitiği"],
+            ["analytics", "users", "Ziyaretçi Analitiği"],
             ["appointments", "calendar", "Randevular"],
             ["content", "video", "YouTube & Podcast"],
             ["articles", "edit", "İçerikler"],
@@ -7701,7 +7701,7 @@ function AdminDemoPage() {
                   onClick={loadAnalytics}
                   disabled={analyticsLoading}
                 >
-                  <Icon name="chart" size={16} />
+                  <Icon name="users" size={16} />
                   {analyticsLoading ? "Yenileniyor" : "Veriyi Yenile"}
                 </button>
                 {analyticsLastUpdated && (
@@ -7734,7 +7734,7 @@ function AdminDemoPage() {
                 <article key={label}>
                   <div className="adminAnalyticsKpis__top">
                     <span>0{index+1}</span>
-                    <Icon name={index===1 ? "users" : index===3 ? "calendar" : "chart"} size={18}/>
+                    <Icon name={index===1 ? "users" : index===3 ? "calendar" : "edit"} size={18}/>
                   </div>
                   <strong>{value}</strong>
                   <h3>{label}</h3>
