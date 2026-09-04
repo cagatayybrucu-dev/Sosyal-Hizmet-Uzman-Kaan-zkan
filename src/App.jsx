@@ -669,31 +669,21 @@ const prepareBlogImageForUpload = async (file, options = {}) => {
 
   if (!file) throw new Error("Görsel seçilmedi.");
   if (!String(file.type || "").startsWith("image/")) {
-    throw new Error("Lütfen JPG, PNG veya WebP görsel seçin.");
+    throw new Error("Lütfen bir görsel dosyası seçin.");
   }
   if (file.size > maxInputBytes) {
     throw new Error("Görsel en fazla 20 MB olabilir.");
   }
 
-  // Already safely below the Storage threshold: preserve original bytes.
-  if (file.size <= targetBytes) {
-    return {
-      file,
-      extension: (file.name.split(".").pop() || "jpg").toLowerCase(),
-      contentType: file.type || "image/jpeg",
-      compressed: false,
-    };
-  }
-
-  let bitmap = null;
+  let source = null;
   let objectUrl = "";
 
   try {
     if (typeof createImageBitmap === "function") {
-      bitmap = await createImageBitmap(file);
+      source = await createImageBitmap(file);
     } else {
       objectUrl = URL.createObjectURL(file);
-      bitmap = await new Promise((resolve, reject) => {
+      source = await new Promise((resolve, reject) => {
         const image = new Image();
         image.onload = () => resolve(image);
         image.onerror = () => reject(new Error("Görsel tarayıcıda açılamadı."));
@@ -701,71 +691,68 @@ const prepareBlogImageForUpload = async (file, options = {}) => {
       });
     }
 
-    const naturalWidth = bitmap.width || bitmap.naturalWidth || 0;
-    const naturalHeight = bitmap.height || bitmap.naturalHeight || 0;
-    if (!naturalWidth || !naturalHeight) {
-      throw new Error("Görsel boyutları okunamadı.");
-    }
+    const naturalWidth = source.width || source.naturalWidth || 0;
+    const naturalHeight = source.height || source.naturalHeight || 0;
+    if (!naturalWidth || !naturalHeight) throw new Error("Görsel boyutları okunamadı.");
 
-    let scale = Math.min(1, maxDimension / Math.max(naturalWidth, naturalHeight));
-    let width = Math.max(1, Math.round(naturalWidth * scale));
-    let height = Math.max(1, Math.round(naturalHeight * scale));
+    const baseScale = Math.min(1, maxDimension / Math.max(naturalWidth, naturalHeight));
+    let width = Math.max(1, Math.round(naturalWidth * baseScale));
+    let height = Math.max(1, Math.round(naturalHeight * baseScale));
 
-    const encode = async (w, h, quality) => {
+    const makeBlob = async (w, h, quality) => {
       const canvas = document.createElement("canvas");
       canvas.width = w;
       canvas.height = h;
-      const context = canvas.getContext("2d", { alpha: false });
-      if (!context) throw new Error("Görsel işlenemedi.");
-      context.imageSmoothingEnabled = true;
-      context.imageSmoothingQuality = "high";
-      context.fillStyle = "#ffffff";
-      context.fillRect(0, 0, w, h);
-      context.drawImage(bitmap, 0, 0, w, h);
+      const ctx = canvas.getContext("2d", { alpha: false });
+      if (!ctx) throw new Error("Görsel işlenemedi.");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, w, h);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(source, 0, 0, w, h);
 
-      const blob = await new Promise((resolve, reject) => {
+      return await new Promise((resolve, reject) => {
         canvas.toBlob(
-          (result) => result ? resolve(result) : reject(new Error("Görsel sıkıştırılamadı.")),
+          (blob) => blob ? resolve(blob) : reject(new Error("Görsel dönüştürülemedi.")),
           "image/jpeg",
           quality
         );
       });
-      return blob;
     };
 
     let blob = null;
-    const qualities = [0.92, 0.86, 0.80, 0.74, 0.68, 0.62, 0.56];
+    const qualities = [0.90, 0.84, 0.78, 0.72, 0.66, 0.60, 0.54];
 
-    for (let resizePass = 0; resizePass < 4; resizePass += 1) {
+    for (let pass = 0; pass < 5; pass += 1) {
       for (const quality of qualities) {
-        blob = await encode(width, height, quality);
+        blob = await makeBlob(width, height, quality);
         if (blob.size <= targetBytes) break;
       }
-      if (blob && blob.size <= targetBytes) break;
-      width = Math.max(960, Math.round(width * 0.82));
-      height = Math.max(960, Math.round(height * 0.82));
+      if (blob?.size <= targetBytes) break;
+      width = Math.max(900, Math.round(width * 0.80));
+      height = Math.max(900, Math.round(height * 0.80));
     }
 
-    if (!blob) throw new Error("Görsel hazırlanamadı.");
-    if (blob.size > targetBytes) {
-      throw new Error("Görsel otomatik olarak yeterince küçültülemedi.");
+    if (!blob || blob.size > targetBytes) {
+      throw new Error("Görsel 4 MB altına indirilemedi.");
     }
 
-    const baseName = String(file.name || "gorsel").replace(/\.[^.]+$/, "") || "gorsel";
-    const prepared = new File([blob], `${baseName}.jpg`, {
-      type: "image/jpeg",
-      lastModified: Date.now(),
-    });
+    const baseName = String(file.name || "blog-gorsel")
+      .replace(/\.[^.]+$/, "")
+      .replace(/[^\w\-]+/g, "-") || "blog-gorsel";
 
     return {
-      file: prepared,
+      file: new File([blob], `${baseName}.jpg`, {
+        type: "image/jpeg",
+        lastModified: Date.now(),
+      }),
       extension: "jpg",
       contentType: "image/jpeg",
       compressed: true,
     };
   } finally {
-    if (bitmap && typeof bitmap.close === "function") {
-      try { bitmap.close(); } catch {}
+    if (source && typeof source.close === "function") {
+      try { source.close(); } catch {}
     }
     if (objectUrl) URL.revokeObjectURL(objectUrl);
   }
@@ -6475,7 +6462,7 @@ function AdminDemoPage() {
     if (!blogForm.image.trim()) {
       setBlogEditorMessage(
         blogImageSelectedName
-          ? "Görsel bilgisayardan seçildi fakat Supabase'e yüklenemedi. Aşağıdaki Supabase Storage izin SQL'ini bir kez çalıştırmanız gerekiyor."
+          ? "Görsel seçildi ancak Supabase yüklemesi tamamlanmadı. Yukarıdaki görsel yükleme hata mesajını kontrol edin."
           : "Blog kapak görseli zorunludur."
       );
       return;
@@ -6710,7 +6697,7 @@ function AdminDemoPage() {
     });
 
     setBlogImageUploading(true);
-    setBlogEditorMessage("Görsel hazırlanıyor ve Supabase'e yükleniyor...");
+    setBlogEditorMessage("Görsel hazırlanıyor...");
 
     try {
       const prepared = await prepareBlogImageForUpload(file, {
@@ -6719,43 +6706,48 @@ function AdminDemoPage() {
       });
 
       const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
-      const filePath = `covers/${Date.now()}-${safeName}.${prepared.extension}`;
+
+      // ÖNEMLİ:
+      // Admin panelinin daha önce çalışan Storage düzeni ROOT path kullanıyordu.
+      // covers/ klasörü önceki fix sırasında eklendi ve mevcut Storage policy ile
+      // çakıştı. Tekrar çalışan eski dizilime dönüyoruz.
+      const filePath = `${Date.now()}-${safeName}.jpg`;
+
+      setBlogEditorMessage("Görsel Supabase'e yükleniyor...");
 
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from("blog-images")
         .upload(filePath, prepared.file, {
           cacheControl: "3600",
           upsert: false,
-          contentType: prepared.contentType,
+          contentType: "image/jpeg",
         });
 
       if (uploadError) {
         console.error("Blog görsel yükleme hatası:", uploadError);
-        throw new Error(uploadError.message || "Supabase Storage yüklemesi başarısız.");
+        throw new Error(
+          `${uploadError.message || "Storage yüklemesi başarısız."} [${uploadError.statusCode || uploadError.status || "storage"}]`
+        );
       }
 
-      if (!uploadData?.path) {
-        throw new Error("Supabase yükleme yolu döndürmedi.");
-      }
-
+      const storedPath = uploadData?.path || filePath;
       const { data: publicData } = supabase.storage
         .from("blog-images")
-        .getPublicUrl(uploadData.path);
+        .getPublicUrl(storedPath);
 
-      if (!publicData?.publicUrl) {
-        throw new Error("Görselin public URL'i oluşturulamadı.");
-      }
+      const publicUrl = publicData?.publicUrl || "";
+      if (!publicUrl) throw new Error("Supabase görsel URL'si oluşturulamadı.");
 
-      setBlogForm((current) => ({ ...current, image: publicData.publicUrl }));
-      setBlogEditorMessage(
-        prepared.compressed
-          ? "✓ Görsel optimize edildi ve Supabase'e başarıyla yüklendi."
-          : "✓ Görsel Supabase'e başarıyla yüklendi."
-      );
+      setBlogForm((current) => ({ ...current, image: publicUrl }));
+      setBlogImageLocalPreview((current)=>{
+        if (current?.startsWith("blob:")) URL.revokeObjectURL(current);
+        return "";
+      });
+      setBlogEditorMessage("✓ Görsel başarıyla yüklendi. Artık yazıyı yayınlayabilirsiniz.");
     } catch (error) {
       console.error("Blog görsel yükleme hatası:", error);
       setBlogEditorMessage(
-        `Görsel yüklenemedi: ${error?.message || "Bilinmeyen hata."}`
+        `Görsel yükleme hatası: ${error?.message || "Bilinmeyen hata."}`
       );
     } finally {
       setBlogImageUploading(false);
@@ -7830,18 +7822,11 @@ function AdminDemoPage() {
                         <span>YAZAR FOTOĞRAFI *</span>
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
                         <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>{ const file=e.target.files?.[0]; uploadAuthorImage(file); e.target.value=""; }}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
-                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik olarak 4 MB altına optimize edilir</small>
+                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Otomatik JPEG optimizasyonu</small>
                       {blogImageSelectedName && (
                         <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
-                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "SUPABASE İZNİ GEREKİYOR"}</strong>
+                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "YÜKLEME BAŞARISIZ"}</strong>
                           <span>{blogImageSelectedName}</span>
-                        </div>
-                      )}
-                      {blogImageSelectedName && !blogForm.image && !blogImageUploading && (
-                        <div className="admin100Blog__storageWarning">
-                          Görsel seçildi ve önizleme hazır; ancak Supabase Storage yüklemeyi reddetti. Paketteki
-                          <b> SUPABASE-BLOG-GORSEL-YUKLEME-FIX.sql </b>
-                          dosyasını Supabase SQL Editor'de bir kez çalıştırın.
                         </div>
                       )}
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
