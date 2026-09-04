@@ -758,6 +758,20 @@ const prepareBlogImageForUpload = async (file, options = {}) => {
   }
 };
 
+const fileToBlogDataUrl = async (file) => {
+  const prepared = await prepareBlogImageForUpload(file, {
+    targetBytes: 550 * 1024,
+    maxDimension: 1600,
+  });
+
+  return await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(new Error("Görsel dahili olarak hazırlanamadı."));
+    reader.readAsDataURL(prepared.file);
+  });
+};
+
 const createBlogSlug = (value = "") =>
   value
     .toLocaleLowerCase("tr-TR")
@@ -6460,11 +6474,7 @@ function AdminDemoPage() {
       return;
     }
     if (!blogForm.image.trim()) {
-      setBlogEditorMessage(
-        blogImageSelectedName
-          ? "Görsel seçildi ancak Supabase yüklemesi tamamlanmadı. Yukarıdaki görsel yükleme hata mesajını kontrol edin."
-          : "Blog kapak görseli zorunludur."
-      );
+      setBlogEditorMessage("Blog kapak görseli zorunludur. Görsel seçildikten sonra 'HAZIR' yazısını görmelisiniz.");
       return;
     }
 
@@ -6691,64 +6701,42 @@ function AdminDemoPage() {
     if (!file) return;
 
     setBlogImageSelectedName(file.name || "Seçilen görsel");
-    setBlogImageLocalPreview((current)=>{
-      if (current?.startsWith("blob:")) URL.revokeObjectURL(current);
-      try { return URL.createObjectURL(file); } catch { return ""; }
-    });
-
     setBlogImageUploading(true);
     setBlogEditorMessage("Görsel hazırlanıyor...");
 
     try {
-      const prepared = await prepareBlogImageForUpload(file, {
-        targetBytes: 4 * 1024 * 1024,
-        maxDimension: 2560,
-      });
-
-      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
-
-      // ÖNEMLİ:
-      // Admin panelinin daha önce çalışan Storage düzeni ROOT path kullanıyordu.
-      // covers/ klasörü önceki fix sırasında eklendi ve mevcut Storage policy ile
-      // çakıştı. Tekrar çalışan eski dizilime dönüyoruz.
-      const filePath = `${Date.now()}-${safeName}.jpg`;
-
-      setBlogEditorMessage("Görsel Supabase'e yükleniyor...");
-
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from("blog-images")
-        .upload(filePath, prepared.file, {
-          cacheControl: "3600",
-          upsert: false,
-          contentType: "image/jpeg",
-        });
-
-      if (uploadError) {
-        console.error("Blog görsel yükleme hatası:", uploadError);
-        throw new Error(
-          `${uploadError.message || "Storage yüklemesi başarısız."} [${uploadError.statusCode || uploadError.status || "storage"}]`
-        );
+      if (!String(file.type || "").startsWith("image/")) {
+        throw new Error("Lütfen bir görsel dosyası seçin.");
+      }
+      if (file.size > 20 * 1024 * 1024) {
+        throw new Error("Görsel en fazla 20 MB olabilir.");
       }
 
-      const storedPath = uploadData?.path || filePath;
-      const { data: publicData } = supabase.storage
-        .from("blog-images")
-        .getPublicUrl(storedPath);
+      // Admin blog kapaklarında Storage'a bağımlılığı tamamen kaldırıyoruz.
+      // Görsel küçültülüp doğrudan blog verisine data URL olarak yazılır.
+      const embeddedImage = await fileToBlogDataUrl(file);
 
-      const publicUrl = publicData?.publicUrl || "";
-      if (!publicUrl) throw new Error("Supabase görsel URL'si oluşturulamadı.");
+      if (!embeddedImage || !embeddedImage.startsWith("data:image/")) {
+        throw new Error("Görsel hazırlanamadı.");
+      }
 
-      setBlogForm((current) => ({ ...current, image: publicUrl }));
+      setBlogForm((current) => ({
+        ...current,
+        image: embeddedImage,
+      }));
+
       setBlogImageLocalPreview((current)=>{
-        if (current?.startsWith("blob:")) URL.revokeObjectURL(current);
+        if (current?.startsWith("blob:")) {
+          try { URL.revokeObjectURL(current); } catch {}
+        }
         return "";
       });
-      setBlogEditorMessage("✓ Görsel başarıyla yüklendi. Artık yazıyı yayınlayabilirsiniz.");
+
+      setBlogEditorMessage("✓ Görsel hazır. Yazıyı şimdi yayınlayabilirsiniz.");
     } catch (error) {
-      console.error("Blog görsel yükleme hatası:", error);
-      setBlogEditorMessage(
-        `Görsel yükleme hatası: ${error?.message || "Bilinmeyen hata."}`
-      );
+      console.error("Blog görsel hazırlama hatası:", error);
+      setBlogForm((current)=>({ ...current, image: "" }));
+      setBlogEditorMessage(`Görsel hazırlanamadı: ${error?.message || "Bilinmeyen hata."}`);
     } finally {
       setBlogImageUploading(false);
     }
@@ -7822,11 +7810,16 @@ function AdminDemoPage() {
                         <span>YAZAR FOTOĞRAFI *</span>
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
                         <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>{ const file=e.target.files?.[0]; uploadAuthorImage(file); e.target.value=""; }}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
-                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Otomatik JPEG optimizasyonu</small>
+                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Görsel yazıya doğrudan eklenir</small>
                       {blogImageSelectedName && (
                         <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
-                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "YÜKLEME BAŞARISIZ"}</strong>
+                          <strong>{blogForm.image ? "HAZIR" : blogImageUploading ? "HAZIRLANIYOR" : "GÖRSEL SEÇİLMEDİ"}</strong>
                           <span>{blogImageSelectedName}</span>
+                        </div>
+                      )}
+                      {blogForm.image?.startsWith("data:image/") && (
+                        <div className="admin100Blog__embeddedBadge">
+                          Görsel yazıya doğrudan eklendi; yayınlamaya hazır.
                         </div>
                       )}
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
@@ -7954,11 +7947,11 @@ function AdminDemoPage() {
                         />
                         <Icon name="plus" size={17}/>
                         {blogImageUploading
-                          ? "Supabase'e Yükleniyor..."
+                          ? "Görsel Hazırlanıyor..."
                           : blogForm.image
-                          ? "✓ Görsel Yüklendi — Değiştir"
+                          ? "✓ Görsel Hazır — Değiştir"
                           : blogImageSelectedName
-                          ? `${blogImageSelectedName} — Tekrar Dene`
+                          ? `${blogImageSelectedName}`
                           : "Bilgisayardan Görsel Seç"}
                       </label>
 
@@ -7968,7 +7961,8 @@ function AdminDemoPage() {
 
                       <label className="admin100Blog__url">
                         <span>Görsel URL</span>
-                        <input value={blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."/>
+                        <input value={blogForm.image?.startsWith("data:image/") ? "Dahili görsel hazır ✓" : blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."
+                        readOnly={blogForm.image?.startsWith("data:image/")}/>
                       </label>
 
                       <label className="admin100Blog__slug">
@@ -36705,6 +36699,18 @@ html.perfLite .articleCinePage .articleCineHero__author{
 .admin100Blog__storageWarning b{
   color:#9d5a43;
   font-weight:900;
+}
+
+
+.admin100Blog__embeddedBadge{
+  margin-top:8px;
+  padding:9px 11px;
+  border:1px solid rgba(40,122,80,.18);
+  background:rgba(40,122,80,.055);
+  color:#287a50;
+  font-size:7px;
+  line-height:1.55;
+  font-weight:700;
 }
 
 `;
