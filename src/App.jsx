@@ -2766,21 +2766,12 @@ function BlogPage({ content = defaultBlogContent }) {
     <main className="blogV3">
       <section className="blogV3Hero">
         <div className="blogV3Hero__media cin3dParallax" data-depth="0.10" aria-hidden="true">
-          {[
-            featuredPost?.image || content.heroImage || defaultBlogContent.heroImage,
-            latestPosts[0]?.image || content.heroImage || defaultBlogContent.heroImage,
-            latestPosts[1]?.image || featuredPost?.image || content.heroImage || defaultBlogContent.heroImage,
-          ].filter(Boolean).map((src, index) => (
-            <img
-              key={`${src}-${index}`}
-              className={`blogV3Hero__cinemaFrame blogV3Hero__cinemaFrame--${index + 1}`}
-              src={src}
-              alt=""
-              fetchPriority={index === 0 ? "high" : "auto"}
-              loading={index === 0 ? "eager" : "lazy"}
-              decoding="async"
-            />
-          ))}
+          <img
+            src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=2400"
+            alt="Sakin ve profesyonel bir çalışma ortamı"
+            fetchPriority="high"
+            decoding="async"
+          />
           <div className="blogV3Hero__wash"/>
           <div className="blogV3Hero__grain"/>
         </div>
@@ -2812,23 +2803,6 @@ function BlogPage({ content = defaultBlogContent }) {
             </div>
           </div>
 
-          <div className="blogV3Hero__metrics">
-            <article>
-              <span>01</span>
-              <b>{String(publishedPosts.length).padStart(2,"0")}</b>
-              <small>YAYINLANMIŞ<br/>İÇERİK</small>
-            </article>
-            <article>
-              <span>02</span>
-              <b>{String(authors.length).padStart(2,"0")}</b>
-              <small>AKTİF<br/>YAZAR</small>
-            </article>
-            <article>
-              <span>03</span>
-              <b>{String(Math.max(0,categories.length - (categories.includes("Tümü") ? 1 : 0))).padStart(2,"0")}</b>
-              <small>EDİTORYAL<br/>KATEGORİ</small>
-            </article>
-          </div>
         </div>
 
         <div className="blogV3Hero__scroll" aria-hidden="true">
@@ -36652,6 +36626,28 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .articleCinePage .articleRichHeading h2{font-size:35px!important}
   .articleCinePage .articleCineQuote{padding:28px 23px!important}
 }
+/* BLOG V4.8 — gerçek tam ekran sinematik hero / hafif performans */
+.blogV3Hero{min-height:calc(100svh - 0px)!important;background:#17130f!important}
+.blogV3Hero__media{inset:0!important;transform:none!important;overflow:hidden!important}
+.blogV3Hero__media img{
+  width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 48%!important;
+  filter:saturate(.82) contrast(1.03) brightness(.72)!important;
+  transform:scale(1.035);animation:blogHeroCinema 16s ease-in-out infinite alternate;will-change:transform;
+}
+.blogV3Hero__wash{
+  background:linear-gradient(90deg,rgba(19,14,10,.84) 0%,rgba(19,14,10,.60) 34%,rgba(19,14,10,.18) 66%,rgba(19,14,10,.08) 100%),linear-gradient(180deg,rgba(10,8,6,.10),rgba(10,8,6,.42))!important;
+}
+.blogV3Hero__grain{opacity:.08!important}
+.blogV3Hero__stage{display:flex!important;align-items:center!important;width:100%!important;max-width:none!important;padding:70px clamp(24px,7vw,120px) 110px!important}
+.blogV3Hero__copy{max-width:790px!important}
+.blogV3Hero__copy h1{font-size:clamp(72px,9vw,158px)!important;line-height:.76!important;text-shadow:0 8px 38px rgba(0,0,0,.24)}
+.blogV3Hero__copy>p{max-width:610px!important;color:rgba(255,255,255,.78)!important;font-size:14px!important}
+.blogV3Hero__metrics{display:none!important}
+.blogV3Hero__edition{display:none!important}
+@keyframes blogHeroCinema{0%{transform:scale(1.035) translate3d(0,0,0)}100%{transform:scale(1.105) translate3d(-1.2%,-.7%,0)}}
+@media(max-width:820px){.blogV3Hero__media img{object-position:62% center!important}.blogV3Hero__wash{background:linear-gradient(90deg,rgba(18,13,9,.82),rgba(18,13,9,.32)),linear-gradient(180deg,transparent,rgba(10,8,6,.5))!important}.blogV3Hero__stage{padding:55px 20px 105px!important}.blogV3Hero__copy h1{font-size:clamp(64px,20vw,112px)!important}}
+@media(prefers-reduced-motion:reduce){.blogV3Hero__media img{animation:none!important;transform:scale(1.04)!important}}
+
 @media(prefers-reduced-motion:reduce){
   .blogV3 *, .authorsV3 *, .authorV3 *{
     scroll-behavior:auto!important;
@@ -36720,115 +36716,6 @@ html.perfLite .articleCinePage .articleCineHero__author{
   font-size:7px;
   line-height:1.55;
   font-weight:700;
-}
-
-
-/* BLOG V4.7 — FULL BLEED CINEMATIC HERO + BALANCED CARDS */
-.blogV3Hero{
-  position:relative!important;
-  min-height:100svh!important;
-  overflow:hidden!important;
-  isolation:isolate!important;
-  background:#17120f!important;
-}
-.blogV3Hero__media{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  overflow:hidden!important;
-  z-index:0!important;
-  transform:none!important;
-}
-.blogV3Hero__cinemaFrame{
-  position:absolute!important;
-  inset:-3%!important;
-  width:106%!important;
-  height:106%!important;
-  max-width:none!important;
-  object-fit:cover!important;
-  object-position:center!important;
-  opacity:0!important;
-  transform:scale(1.055)!important;
-  animation:blogHeroCinema 21s infinite ease-in-out!important;
-  will-change:opacity,transform!important;
-}
-.blogV3Hero__cinemaFrame--1{animation-delay:0s!important}
-.blogV3Hero__cinemaFrame--2{animation-delay:7s!important}
-.blogV3Hero__cinemaFrame--3{animation-delay:14s!important}
-@keyframes blogHeroCinema{
-  0%{opacity:0;transform:scale(1.075) translate3d(0,0,0)}
-  5%{opacity:1}
-  28%{opacity:1}
-  36%{opacity:0;transform:scale(1.015) translate3d(-.8%,.35%,0)}
-  100%{opacity:0;transform:scale(1.015) translate3d(-.8%,.35%,0)}
-}
-.blogV3Hero__wash{
-  position:absolute!important;
-  inset:0!important;
-  z-index:4!important;
-  background:
-    linear-gradient(90deg,rgba(20,14,10,.84) 0%,rgba(28,19,14,.66) 35%,rgba(22,15,11,.20) 67%,rgba(16,11,8,.12) 100%),
-    linear-gradient(0deg,rgba(13,9,7,.62) 0%,transparent 45%,rgba(14,10,8,.24) 100%)!important;
-}
-.blogV3Hero__grain{z-index:5!important;opacity:.16!important}
-.blogV3Hero__topline,.blogV3Hero__stage,.blogV3Hero__scroll{position:relative!important;z-index:8!important}
-.blogV3Hero__stage{
-  min-height:calc(100svh - 70px)!important;
-  align-items:center!important;
-}
-.blogV3Hero__copy{
-  max-width:780px!important;
-  padding-top:5vh!important;
-  text-shadow:0 4px 32px rgba(0,0,0,.28)!important;
-}
-.blogV3Hero__copy h1{font-size:clamp(78px,9.2vw,176px)!important}
-.blogV3Hero__copy>p{max-width:620px!important;color:rgba(255,255,255,.82)!important}
-.blogV3Hero__actions a:first-child{
-  box-shadow:0 18px 45px rgba(0,0,0,.18)!important;
-}
-
-/* Cards: no awkward empty columns, equal visual rhythm */
-.blogV3Mosaic{
-  display:grid!important;
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  gap:22px!important;
-  grid-auto-flow:row!important;
-  align-items:stretch!important;
-}
-.blogV3Card,.blogV3Card.is-cinema,.blogV3Card.is-tall{
-  grid-column:auto!important;
-  grid-row:auto!important;
-  min-width:0!important;
-  height:100%!important;
-  display:flex!important;
-  flex-direction:column!important;
-}
-.blogV3Card__visual,.blogV3Card.is-cinema .blogV3Card__visual,.blogV3Card.is-tall .blogV3Card__visual{
-  width:100%!important;
-  aspect-ratio:16/10!important;
-  min-height:0!important;
-  height:auto!important;
-}
-.blogV3Card__visual img{width:100%!important;height:100%!important;object-fit:cover!important}
-.blogV3Card__body{flex:1!important;display:flex!important;flex-direction:column!important}
-.blogV3Card__body>a:last-child{margin-top:auto!important}
-
-@media(max-width:1050px){
-  .blogV3Mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  .blogV3Hero__wash{background:linear-gradient(90deg,rgba(18,12,9,.82),rgba(18,12,9,.30)),linear-gradient(0deg,rgba(12,8,6,.58),transparent 55%)!important}
-}
-@media(max-width:700px){
-  .blogV3Hero{min-height:100svh!important}
-  .blogV3Hero__stage{min-height:calc(100svh - 55px)!important;padding-bottom:110px!important}
-  .blogV3Hero__copy{padding-top:8vh!important}
-  .blogV3Hero__copy h1{font-size:clamp(64px,21vw,104px)!important}
-  .blogV3Mosaic{grid-template-columns:1fr!important;gap:18px!important}
-  .blogV3Hero__cinemaFrame{inset:0!important;width:100%!important;height:100%!important;object-position:58% center!important}
-}
-@media(prefers-reduced-motion:reduce){
-  .blogV3Hero__cinemaFrame{animation:none!important;opacity:0!important;transform:none!important}
-  .blogV3Hero__cinemaFrame--1{opacity:1!important}
 }
 
 `;
