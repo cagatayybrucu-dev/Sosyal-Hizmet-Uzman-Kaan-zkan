@@ -2798,21 +2798,38 @@ function BlogPage({ content = defaultBlogContent }) {
   return (
     <main className="blogV3">
       <section className="blogV3Hero">
-        <div className="blogV3Hero__media cin3dParallax" data-depth="0.10" aria-hidden="true">
-          <img
-            src={content.heroImage || defaultBlogContent.heroImage}
-            alt=""
-            fetchPriority="high"
-            decoding="async"
-          />
-          <div className="blogV3Hero__wash"/>
+        <div className="blogV3Hero__media blogV3Cinema" aria-hidden="true">
+          {[
+            heroSlide1,
+            servicesHeroRoom,
+            heroSlide2,
+            processHeroDesk,
+          ].map((src, index) => (
+            <div
+              className={`blogV3Cinema__slide blogV3Cinema__slide--${index + 1}`}
+              key={`blog-cinema-${index}`}
+            >
+              <img
+                src={src}
+                alt=""
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <i className="blogV3Cinema__depth blogV3Cinema__depth--a"/>
+              <i className="blogV3Cinema__depth blogV3Cinema__depth--b"/>
+            </div>
+          ))}
+          <div className="blogV3Cinema__veil"/>
+          <div className="blogV3Cinema__vignette"/>
+          <div className="blogV3Cinema__progress">
+            <span/><span/><span/><span/>
+          </div>
           <div className="blogV3Hero__grain"/>
         </div>
 
         <div className="blogV3Hero__topline">
           <a href="#/" className="blogV3Hero__back">← ANA SAYFA</a>
-          <span>KAAN ÖZKAN / EDITORIAL JOURNAL</span>
-          <small>MMXXVI</small>
         </div>
 
         <div className="blogV3Hero__stage">
@@ -36941,6 +36958,196 @@ html.perfLite .articleCinePage .articleCineHero__author{
     display:block!important;
     visibility:visible!important;
   }
+}
+
+
+/* =========================================================
+   BLOG CINEMA HERO — 4 SCENE / 3D DEPTH TRANSITIONS
+   Uses existing local assets only. No blog cover or admin hero URL.
+   ========================================================= */
+.blogV3Hero{
+  min-height:100svh!important;
+  background:#0d0b09!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.blogV3Hero__media.blogV3Cinema{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  perspective:1400px!important;
+  transform:none!important;
+  z-index:0!important;
+  background:#0d0b09!important;
+}
+.blogV3Cinema__slide{
+  position:absolute;
+  inset:-5%;
+  width:110%;
+  height:110%;
+  opacity:0;
+  overflow:hidden;
+  transform-origin:center;
+  backface-visibility:hidden;
+  will-change:opacity,transform,clip-path;
+  animation:blogCineScene 28s cubic-bezier(.22,.72,.22,1) infinite;
+}
+.blogV3Cinema__slide--1{animation-delay:-1.4s}
+.blogV3Cinema__slide--2{animation-delay:5.6s}
+.blogV3Cinema__slide--3{animation-delay:12.6s}
+.blogV3Cinema__slide--4{animation-delay:19.6s}
+.blogV3Cinema__slide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  opacity:1!important;
+  filter:saturate(.86) contrast(1.04) brightness(.78)!important;
+  transform:scale(1.045) translate3d(0,0,0);
+  animation:blogCineImage 7s cubic-bezier(.18,.68,.2,1) infinite alternate!important;
+  backface-visibility:hidden!important;
+}
+.blogV3Cinema__slide--2 img{object-position:center 54%!important;animation-direction:alternate-reverse!important}
+.blogV3Cinema__slide--3 img{object-position:center 46%!important}
+.blogV3Cinema__slide--4 img{object-position:center 52%!important;animation-direction:alternate-reverse!important}
+.blogV3Cinema__depth{
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  border:1px solid rgba(232,214,189,.20);
+  opacity:.22;
+  mix-blend-mode:screen;
+  transform:translateZ(70px);
+}
+.blogV3Cinema__depth--a{
+  width:36vw;height:36vw;min-width:360px;min-height:360px;
+  right:-10vw;top:-13vw;
+  box-shadow:0 0 120px rgba(215,178,125,.07) inset;
+}
+.blogV3Cinema__depth--b{
+  width:18vw;height:18vw;min-width:210px;min-height:210px;
+  left:42%;bottom:-8vw;
+  border-color:rgba(255,255,255,.13);
+}
+.blogV3Cinema__progress{
+  position:absolute;
+  right:clamp(24px,5vw,80px);
+  bottom:34px;
+  z-index:26;
+  display:flex;
+  gap:8px;
+  width:min(260px,34vw);
+}
+.blogV3Cinema__progress span{
+  position:relative;
+  flex:1;
+  height:2px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.20);
+}
+.blogV3Cinema__progress span:after{
+  content:"";
+  position:absolute;inset:0;
+  background:#e6c48d;
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:blogCineProgress 28s linear infinite;
+}
+.blogV3Cinema__progress span:nth-child(1):after{animation-delay:-1.4s}
+.blogV3Cinema__progress span:nth-child(2):after{animation-delay:5.6s}
+.blogV3Cinema__progress span:nth-child(3):after{animation-delay:12.6s}
+.blogV3Cinema__progress span:nth-child(4):after{animation-delay:19.6s}
+@keyframes blogCineProgress{
+  0%{transform:scaleX(0);opacity:1}
+  24%{transform:scaleX(1);opacity:1}
+  27%{transform:scaleX(1);opacity:0}
+  100%{transform:scaleX(0);opacity:0}
+}
+.blogV3Cinema__veil{
+  position:absolute;
+  inset:0;
+  z-index:20;
+  background:
+    linear-gradient(90deg,rgba(11,9,7,.88) 0%,rgba(14,11,8,.70) 34%,rgba(11,9,7,.25) 66%,rgba(8,7,6,.20) 100%),
+    linear-gradient(0deg,rgba(8,7,6,.72) 0%,transparent 46%,rgba(8,7,6,.34) 100%);
+  pointer-events:none;
+}
+.blogV3Cinema__vignette{
+  position:absolute;
+  inset:-1px;
+  z-index:21;
+  pointer-events:none;
+  box-shadow:inset 0 0 180px 36px rgba(0,0,0,.46);
+  background:radial-gradient(circle at 72% 48%,transparent 0 28%,rgba(0,0,0,.08) 62%,rgba(0,0,0,.30) 100%);
+}
+.blogV3Hero__grain{z-index:22!important;opacity:.15!important}
+.blogV3Hero__topline,.blogV3Hero__stage,.blogV3Hero__scroll{position:relative!important;z-index:30!important}
+.blogV3Hero__stage{min-height:calc(100svh - 72px)!important;align-items:center!important}
+.blogV3Hero__copy{max-width:820px!important;text-shadow:0 9px 42px rgba(0,0,0,.28)!important}
+.blogV3Hero__copy h1{font-size:clamp(76px,9.4vw,172px)!important}
+.blogV3Hero__copy>p{max-width:620px!important;color:rgba(255,255,255,.82)!important}
+.blogV3Hero__edition{opacity:.07!important;transform:translate3d(0,0,0)!important}
+
+@keyframes blogCineScene{
+  0%{
+    opacity:0;
+    transform:perspective(1400px) rotateY(3deg) rotateX(-1deg) scale(1.08) translate3d(2.2%,0,0);
+    clip-path:inset(0 0 0 100%);
+  }
+  5%{
+    opacity:1;
+    clip-path:inset(0 0 0 0);
+  }
+  22%{
+    opacity:1;
+    transform:perspective(1400px) rotateY(0deg) rotateX(0deg) scale(1.02) translate3d(0,0,0);
+    clip-path:inset(0 0 0 0);
+  }
+  27%{
+    opacity:0;
+    transform:perspective(1400px) rotateY(-2.2deg) scale(1.01) translate3d(-1.4%,.25%,0);
+    clip-path:inset(0 100% 0 0);
+  }
+  100%{opacity:0;clip-path:inset(0 100% 0 0)}
+}
+@keyframes blogCineImage{
+  from{transform:scale(1.08) translate3d(-.7%,-.35%,0)}
+  to{transform:scale(1.015) translate3d(.7%,.35%,0)}
+}
+
+@media(max-width:900px){
+  .blogV3Cinema__veil{
+    background:
+      linear-gradient(90deg,rgba(10,8,6,.82) 0%,rgba(10,8,6,.57) 56%,rgba(10,8,6,.25) 100%),
+      linear-gradient(0deg,rgba(8,7,6,.70),transparent 54%);
+  }
+  .blogV3Hero__copy h1{font-size:clamp(68px,16vw,118px)!important}
+}
+@media(max-width:700px){
+  .blogV3Hero{min-height:100svh!important}
+  .blogV3Hero__stage{min-height:calc(100svh - 58px)!important;padding-bottom:98px!important}
+  .blogV3Hero__copy{padding-top:6vh!important;max-width:92vw!important}
+  .blogV3Hero__copy h1{font-size:clamp(62px,20vw,98px)!important}
+  .blogV3Hero__copy>p{font-size:13px!important;line-height:1.75!important;max-width:88vw!important}
+  .blogV3Cinema__slide{inset:-2%;width:104%;height:104%}
+  .blogV3Cinema__slide img{object-position:58% center!important}
+  .blogV3Cinema__slide--2 img{object-position:62% center!important}
+  .blogV3Cinema__slide--3 img{object-position:52% center!important}
+  .blogV3Cinema__slide--4 img{object-position:60% center!important}
+  .blogV3Cinema__depth{display:none}
+  .blogV3Cinema__progress{right:18px;bottom:24px;width:150px;gap:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .blogV3Cinema__slide{animation:none!important;opacity:0!important;clip-path:none!important;transform:none!important}
+  .blogV3Cinema__slide--1{opacity:1!important}
+  .blogV3Cinema__slide img{animation:none!important;transform:none!important}
+  .blogV3Cinema__progress{display:none!important}
 }
 
 `;
