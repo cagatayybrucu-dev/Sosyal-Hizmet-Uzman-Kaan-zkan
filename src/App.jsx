@@ -664,7 +664,7 @@ const hasRichBlogBody = (body) =>
 
 const prepareBlogImageForUpload = async (file, options = {}) => {
   const maxInputBytes = options.maxInputBytes || 20 * 1024 * 1024;
-  const targetBytes = options.targetBytes || 5 * 1024 * 1024;
+  const targetBytes = options.targetBytes || 4 * 1024 * 1024;
   const maxDimension = options.maxDimension || 2560;
 
   if (!file) throw new Error("Görsel seçilmedi.");
@@ -726,7 +726,7 @@ const prepareBlogImageForUpload = async (file, options = {}) => {
       const blob = await new Promise((resolve, reject) => {
         canvas.toBlob(
           (result) => result ? resolve(result) : reject(new Error("Görsel sıkıştırılamadı.")),
-          "image/webp",
+          "image/jpeg",
           quality
         );
       });
@@ -752,15 +752,15 @@ const prepareBlogImageForUpload = async (file, options = {}) => {
     }
 
     const baseName = String(file.name || "gorsel").replace(/\.[^.]+$/, "") || "gorsel";
-    const prepared = new File([blob], `${baseName}.webp`, {
-      type: "image/webp",
+    const prepared = new File([blob], `${baseName}.jpg`, {
+      type: "image/jpeg",
       lastModified: Date.now(),
     });
 
     return {
       file: prepared,
-      extension: "webp",
-      contentType: "image/webp",
+      extension: "jpg",
+      contentType: "image/jpeg",
       compressed: true,
     };
   } finally {
@@ -5333,6 +5333,8 @@ function AdminDemoPage() {
   const [blogEditorMessage, setBlogEditorMessage] = useState("");
   const [newBlogCategory, setNewBlogCategory] = useState("");
   const [blogImageUploading, setBlogImageUploading] = useState(false);
+  const [blogImageSelectedName, setBlogImageSelectedName] = useState("");
+  const [blogImageLocalPreview, setBlogImageLocalPreview] = useState("");
   const [editingBlogId, setEditingBlogId] = useState(null);
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -6076,6 +6078,8 @@ function AdminDemoPage() {
 
   const resetBlogForm = () => {
     setEditingBlogId(null);
+    setBlogImageSelectedName("");
+    setBlogImageLocalPreview((current)=>{ if(current?.startsWith("blob:")) URL.revokeObjectURL(current); return ""; });
     setBlogForm({
       title: "",
       slug: "",
@@ -6678,15 +6682,25 @@ function AdminDemoPage() {
   const uploadBlogImage = async (file) => {
     if (!file) return;
 
+    setBlogImageSelectedName(file.name || "Seçilen görsel");
+    setBlogImageLocalPreview((current)=>{
+      if (current?.startsWith("blob:")) URL.revokeObjectURL(current);
+      try { return URL.createObjectURL(file); } catch { return ""; }
+    });
+
     setBlogImageUploading(true);
-    setBlogEditorMessage("Görsel hazırlanıyor...");
+    setBlogEditorMessage("Görsel hazırlanıyor ve Supabase'e yükleniyor...");
 
     try {
-      const prepared = await prepareBlogImageForUpload(file);
-      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
-      const filePath = `${Date.now()}-${safeName}.${prepared.extension}`;
+      const prepared = await prepareBlogImageForUpload(file, {
+        targetBytes: 4 * 1024 * 1024,
+        maxDimension: 2560,
+      });
 
-      const { error: uploadError } = await supabase.storage
+      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
+      const filePath = `covers/${Date.now()}-${safeName}.${prepared.extension}`;
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
         .from("blog-images")
         .upload(filePath, prepared.file, {
           cacheControl: "3600",
@@ -6696,27 +6710,31 @@ function AdminDemoPage() {
 
       if (uploadError) {
         console.error("Blog görsel yükleme hatası:", uploadError);
-        throw new Error(
-          uploadError.message ||
-          "Görsel Supabase Storage alanına yüklenemedi."
-        );
+        throw new Error(uploadError.message || "Supabase Storage yüklemesi başarısız.");
       }
 
-      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
-      if (!data?.publicUrl) throw new Error("Görsel bağlantısı oluşturulamadı.");
+      if (!uploadData?.path) {
+        throw new Error("Supabase yükleme yolu döndürmedi.");
+      }
 
-      setBlogForm((current) => ({ ...current, image: data.publicUrl }));
+      const { data: publicData } = supabase.storage
+        .from("blog-images")
+        .getPublicUrl(uploadData.path);
+
+      if (!publicData?.publicUrl) {
+        throw new Error("Görselin public URL'i oluşturulamadı.");
+      }
+
+      setBlogForm((current) => ({ ...current, image: publicData.publicUrl }));
       setBlogEditorMessage(
         prepared.compressed
-          ? "Görsel otomatik optimize edildi ve başarıyla yüklendi. Yazıyı kaydetmeyi unutmayın."
-          : "Görsel başarıyla yüklendi. Yazıyı kaydetmeyi unutmayın."
+          ? "✓ Görsel optimize edildi ve Supabase'e başarıyla yüklendi."
+          : "✓ Görsel Supabase'e başarıyla yüklendi."
       );
     } catch (error) {
       console.error("Blog görsel yükleme hatası:", error);
       setBlogEditorMessage(
-        error?.message
-          ? `Görsel yüklenemedi: ${error.message}`
-          : "Görsel yüklenemedi. Lütfen tekrar deneyin."
+        `Görsel yüklenemedi: ${error?.message || "Bilinmeyen hata."}`
       );
     } finally {
       setBlogImageUploading(false);
@@ -7791,7 +7809,13 @@ function AdminDemoPage() {
                         <span>YAZAR FOTOĞRAFI *</span>
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
                         <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>{ const file=e.target.files?.[0]; uploadAuthorImage(file); e.target.value=""; }}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
-                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik optimize edilir</small>
+                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik olarak 4 MB altına optimize edilir</small>
+                      {blogImageSelectedName && (
+                        <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
+                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "SEÇİLDİ"}</strong>
+                          <span>{blogImageSelectedName}</span>
+                        </div>
+                      )}
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
                       </aside>
                       <div className="admin125Authors__actions">
@@ -7898,8 +7922,12 @@ function AdminDemoPage() {
                     <aside className="admin100Blog__imageBox">
                       <span>KAPAK GÖRSELİ *</span>
                       <div className="admin100Blog__preview">
-                        {blogForm.image ? (
-                          <img src={blogForm.image} alt="Blog kapak önizleme" onError={(e)=>{e.currentTarget.style.display="none"}}/>
+                        {(blogImageLocalPreview || blogForm.image) ? (
+                          <img
+                            src={blogImageLocalPreview || blogForm.image}
+                            alt="Blog kapak önizleme"
+                            onError={(e)=>{e.currentTarget.style.display="none"}}
+                          />
                         ) : (
                           <div><Icon name="image" size={30}/><p>Henüz görsel seçilmedi</p></div>
                         )}
@@ -7912,7 +7940,13 @@ function AdminDemoPage() {
                           onChange={(e)=>{ const file=e.target.files?.[0]; uploadBlogImage(file); e.target.value=""; }}
                         />
                         <Icon name="plus" size={17}/>
-                        {blogImageUploading ? "Görsel Yükleniyor..." : "Bilgisayardan Görsel Seç"}
+                        {blogImageUploading
+                          ? "Supabase'e Yükleniyor..."
+                          : blogForm.image
+                          ? "✓ Görsel Yüklendi — Değiştir"
+                          : blogImageSelectedName
+                          ? `${blogImageSelectedName} — Tekrar Dene`
+                          : "Bilgisayardan Görsel Seç"}
                       </label>
 
                       <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik optimize edilir</small>
@@ -36608,6 +36642,41 @@ html.perfLite .articleCinePage .articleCineHero__author{
     transition-duration:.01ms!important;
     animation-duration:.01ms!important;
   }
+}
+
+
+/* BLOG IMAGE UPLOAD V2 — explicit state feedback */
+.admin100Blog__uploadStatus{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:10px;
+  padding:10px 12px;
+  border:1px solid rgba(157,116,62,.18);
+  background:rgba(157,116,62,.05);
+  font-size:7px;
+}
+.admin100Blog__uploadStatus strong{
+  flex:0 0 auto;
+  color:#9d743e;
+  letter-spacing:.12em;
+}
+.admin100Blog__uploadStatus span{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#74695e;
+}
+.admin100Blog__uploadStatus.is-ok{
+  border-color:rgba(40,122,80,.22);
+  background:rgba(40,122,80,.06);
+}
+.admin100Blog__uploadStatus.is-ok strong{color:#287a50}
+.admin100Blog__uploadStatus.is-loading{
+  border-color:rgba(157,116,62,.28);
+  background:rgba(157,116,62,.08);
 }
 
 `;
