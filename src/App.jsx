@@ -661,117 +661,6 @@ const hasRichBlogBody = (body) =>
   Array.isArray(body) && body.some((block) => block && typeof block === "object");
 
 
-
-const prepareBlogImageForUpload = async (file, options = {}) => {
-  const maxInputBytes = options.maxInputBytes || 20 * 1024 * 1024;
-  const targetBytes = options.targetBytes || 4 * 1024 * 1024;
-  const maxDimension = options.maxDimension || 2560;
-
-  if (!file) throw new Error("Görsel seçilmedi.");
-  if (!String(file.type || "").startsWith("image/")) {
-    throw new Error("Lütfen bir görsel dosyası seçin.");
-  }
-  if (file.size > maxInputBytes) {
-    throw new Error("Görsel en fazla 20 MB olabilir.");
-  }
-
-  let source = null;
-  let objectUrl = "";
-
-  try {
-    if (typeof createImageBitmap === "function") {
-      source = await createImageBitmap(file);
-    } else {
-      objectUrl = URL.createObjectURL(file);
-      source = await new Promise((resolve, reject) => {
-        const image = new Image();
-        image.onload = () => resolve(image);
-        image.onerror = () => reject(new Error("Görsel tarayıcıda açılamadı."));
-        image.src = objectUrl;
-      });
-    }
-
-    const naturalWidth = source.width || source.naturalWidth || 0;
-    const naturalHeight = source.height || source.naturalHeight || 0;
-    if (!naturalWidth || !naturalHeight) throw new Error("Görsel boyutları okunamadı.");
-
-    const baseScale = Math.min(1, maxDimension / Math.max(naturalWidth, naturalHeight));
-    let width = Math.max(1, Math.round(naturalWidth * baseScale));
-    let height = Math.max(1, Math.round(naturalHeight * baseScale));
-
-    const makeBlob = async (w, h, quality) => {
-      const canvas = document.createElement("canvas");
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext("2d", { alpha: false });
-      if (!ctx) throw new Error("Görsel işlenemedi.");
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, w, h);
-      ctx.imageSmoothingEnabled = true;
-      ctx.imageSmoothingQuality = "high";
-      ctx.drawImage(source, 0, 0, w, h);
-
-      return await new Promise((resolve, reject) => {
-        canvas.toBlob(
-          (blob) => blob ? resolve(blob) : reject(new Error("Görsel dönüştürülemedi.")),
-          "image/jpeg",
-          quality
-        );
-      });
-    };
-
-    let blob = null;
-    const qualities = [0.90, 0.84, 0.78, 0.72, 0.66, 0.60, 0.54];
-
-    for (let pass = 0; pass < 5; pass += 1) {
-      for (const quality of qualities) {
-        blob = await makeBlob(width, height, quality);
-        if (blob.size <= targetBytes) break;
-      }
-      if (blob?.size <= targetBytes) break;
-      width = Math.max(900, Math.round(width * 0.80));
-      height = Math.max(900, Math.round(height * 0.80));
-    }
-
-    if (!blob || blob.size > targetBytes) {
-      throw new Error("Görsel 4 MB altına indirilemedi.");
-    }
-
-    const baseName = String(file.name || "blog-gorsel")
-      .replace(/\.[^.]+$/, "")
-      .replace(/[^\w\-]+/g, "-") || "blog-gorsel";
-
-    return {
-      file: new File([blob], `${baseName}.jpg`, {
-        type: "image/jpeg",
-        lastModified: Date.now(),
-      }),
-      extension: "jpg",
-      contentType: "image/jpeg",
-      compressed: true,
-    };
-  } finally {
-    if (source && typeof source.close === "function") {
-      try { source.close(); } catch {}
-    }
-    if (objectUrl) URL.revokeObjectURL(objectUrl);
-  }
-};
-
-const fileToBlogDataUrl = async (file) => {
-  const prepared = await prepareBlogImageForUpload(file, {
-    targetBytes: 550 * 1024,
-    maxDimension: 1600,
-  });
-
-  return await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ""));
-    reader.onerror = () => reject(new Error("Görsel dahili olarak hazırlanamadı."));
-    reader.readAsDataURL(prepared.file);
-  });
-};
-
 const createBlogSlug = (value = "") =>
   value
     .toLocaleLowerCase("tr-TR")
@@ -2708,47 +2597,39 @@ function App() {
 function BlogPage({ content = defaultBlogContent }) {
   const [category, setCategory] = useState("Tümü");
   const [query, setQuery] = useState("");
-  const [visibleCount, setVisibleCount] = useState(9);
+  const [visibleCount, setVisibleCount] = useState(8);
 
-  const categories = Array.isArray(content.categories) && content.categories.length
-    ? content.categories
-    : blogCategories;
-
-  const authors = (Array.isArray(content.authors) ? content.authors : [])
-    .filter((author)=>author?.slug && author?.name);
+  const categories = Array.isArray(content.categories) && content.categories.length ? content.categories : blogCategories;
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author?.name);
 
   const authorFor = (post) => {
     const slug = String(post?.authorSlug || "").trim();
     if (!slug) return null;
-    return authors.find((author)=>String(author.slug || "").trim() === slug) || null;
+
+    return (
+      authors.find((author)=>String(author.slug || "").trim() === slug) ||
+      null
+    );
   };
 
+  /* ORİJİNAL BLOG İÇERİK AKIŞI KORUNDU */
   const publishedPosts = (Array.isArray(content.posts) ? content.posts : [])
     .filter((post)=>post.status !== "draft")
     .sort((a,b)=>{
       const orderDiff = Number(b.sortOrder ?? 0) - Number(a.sortOrder ?? 0);
       if (orderDiff !== 0) return orderDiff;
+
       const aTime = Number(String(a.id || "").match(/blog-(\d+)/)?.[1] || 0);
       const bTime = Number(String(b.id || "").match(/blog-(\d+)/)?.[1] || 0);
       return bTime - aTime;
     });
-
-  const featuredPost =
-    publishedPosts.find((post)=>post.featured) ||
-    publishedPosts[0] ||
-    null;
-
-  const latestPosts = publishedPosts
-    .filter((post)=>post.slug !== featuredPost?.slug)
-    .slice(0,3);
 
   const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
 
   const filteredPosts = publishedPosts.filter((post)=>{
     const categoryMatch =
       category === "Tümü" ||
-      String(post.category||"").toLocaleLowerCase("tr-TR")
-        .includes(category.toLocaleLowerCase("tr-TR"));
+      String(post.category||"").toLocaleLowerCase("tr-TR").includes(category.toLocaleLowerCase("tr-TR"));
 
     const queryMatch =
       !normalizedQuery ||
@@ -2759,464 +2640,288 @@ function BlogPage({ content = defaultBlogContent }) {
     return categoryMatch && queryMatch;
   });
 
-  const authorPostCount = (author) =>
-    publishedPosts.filter((post)=>String(post.authorSlug||"")===String(author.slug||"")).length;
-
   return (
-    <main className="blogV3">
-      <section className="blogV3Hero">
-        <div className="blogV3Hero__media cin3dParallax" data-depth="0.10" aria-hidden="true">
+    <main className="blogCinePage blogCinePage--originalContent">
+      <section className="blogCineHero cin3d">
+        <div className="blogCineHero__bg cin3dParallax" data-depth="0.13" aria-hidden="true">
           <img
-            src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=2400"
-            alt="Sakin ve profesyonel bir çalışma ortamı"
+            src={content.heroImage || defaultBlogContent.heroImage}
+            alt=""
             fetchPriority="high"
             decoding="async"
           />
-          <div className="blogV3Hero__wash"/>
-          <div className="blogV3Hero__grain"/>
+          <div className="blogCineHero__veil" />
+          <div className="blogCineHero__grain" />
         </div>
 
-        <div className="blogV3Hero__topline">
-          <a href="#/" className="blogV3Hero__back">← ANA SAYFA</a>
-          <span>KAAN ÖZKAN / EDITORIAL JOURNAL</span>
-          <small>MMXXVI</small>
-        </div>
+        <a className="blogCineHero__back" href="#/">
+          <span>←</span>
+          Ana Sayfaya Dön
+        </a>
 
-        <div className="blogV3Hero__stage">
-          <div className="blogV3Hero__edition" aria-hidden="true">JOURNAL</div>
-
-          <div className="blogV3Hero__copy">
-            <span className="blogV3Hero__eyebrow">DÜŞÜNCE · İNSAN · İLİŞKİ</span>
+        <div className="blogCineHero__inner">
+          <div className="blogCineHero__copy">
+            <span className="blogCineHero__eyebrow">KAAN ÖZKAN · BLOG</span>
             <h1>
-              <span>Blog</span>
-              <em>&</em>
+              Blog &
               <strong>İçerikler</strong>
             </h1>
             <p>
-              Alışılmış içerik akışının dışında; insanı, ilişkileri ve psikososyal yaşamı
-              daha derinden okumaya davet eden bağımsız bir editoryal alan.
+              Aile, ilişkiler, kişisel gelişim ve psikososyal yaşama dair güncel yazılar;
+              düşünmeye, anlamaya ve farkındalık kazanmaya alan açan içerikler.
             </p>
 
-            <div className="blogV3Hero__actions">
-              <a href="#blogV3Archive">Yazıları Keşfet <Icon name="arrow" size={15}/></a>
-              <a href="#/yazarlar">Yazarları Tanı <span>↗</span></a>
-            </div>
+            <a href="#blogOriginalContent" className="blogCineHero__cta">
+              Yazıları Keşfedin
+              <Icon name="arrow" size={16} />
+            </a>
           </div>
 
+          <div className="blogCineHero__rail" aria-hidden="true">
+            <div><b>{String(publishedPosts.length).padStart(2,"0")}</b><span>YAYINLANMIŞ<br/>YAZI</span></div>
+            <div><b>{String(categories.length).padStart(2,"0")}</b><span>İÇERİK<br/>KATEGORİSİ</span></div>
+            <div><b>{String(authors.length).padStart(2,"0")}</b><span>AKTİF<br/>YAZAR</span></div>
+          </div>
         </div>
 
-        <div className="blogV3Hero__scroll" aria-hidden="true">
-          <i/>
-          <span>SCROLL TO ENTER</span>
+        <div className="blogCineHero__scroll" aria-hidden="true">
+          <span />
+          <small>OKUMAYA BAŞLA</small>
         </div>
       </section>
 
-      {featuredPost && (
-        <section className="blogV3Feature">
-          <div className="blogV3SectionCode">
-            <span>01 / FEATURED STORY</span>
-            <i/>
-            <small>ÖNE ÇIKAN DOSYA</small>
-          </div>
-
-          <div className="blogV3Feature__stage">
-            <a className="blogV3Feature__visual" href={`#/blog/${featuredPost.slug}`}>
-              <div className="blogV3Feature__image">
-                <img src={featuredPost.image} alt={featuredPost.title}/>
-                <span className="blogV3Feature__imageNo">NO.01</span>
-                <div className="blogV3Feature__shine"/>
-              </div>
-              <div className="blogV3Feature__ghost">{featuredPost.category}</div>
-            </a>
-
-            <div className="blogV3Feature__content">
-              <span className="blogV3Feature__category">{featuredPost.category}</span>
-              <h2>
-                <a href={`#/blog/${featuredPost.slug}`}>{featuredPost.title}</a>
-              </h2>
-              <p>{featuredPost.excerpt}</p>
-
-              <div className="blogV3Feature__meta">
-                <span>{featuredPost.date}</span>
-                <i/>
-                <span>{featuredPost.readTime}</span>
-              </div>
-
-              {authorFor(featuredPost) && (() => {
-                const author = authorFor(featuredPost);
-                return (
-                  <a className="blogV3Feature__author" href={`#/yazarlar/${author.slug}`}>
-                    <div>
-                      {author.image
-                        ? <img src={author.image} alt={author.name}/>
-                        : <span>{author.name?.charAt(0)}</span>}
-                    </div>
-                    <p>
-                      <small>YAZAR</small>
-                      <strong>{author.name}</strong>
-                      <em>{author.role || "Yazar"}</em>
-                    </p>
-                    <b>↗</b>
-                  </a>
-                );
-              })()}
-
-              <a className="blogV3Feature__read" href={`#/blog/${featuredPost.slug}`}>
-                <span>YAZIYI OKU</span>
-                <b>↗</b>
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {latestPosts.length > 0 && (
-        <section className="blogV3Dispatch">
-          <div className="blogV3Dispatch__title">
-            <span>02 / FRESH NOTES</span>
-            <h2>Yeni <em>Dosyalar</em></h2>
-            <p>Son yayınlanan metinlerden hızlı bir editoryal seçki.</p>
-          </div>
-
-          <div className="blogV3Dispatch__list">
-            {latestPosts.map((post,index)=>{
-              const author = authorFor(post);
-              return (
-                <a href={`#/blog/${post.slug}`} className="blogV3Dispatch__item" key={post.id||post.slug}>
-                  <span className="blogV3Dispatch__no">0{index+1}</span>
-                  <div className="blogV3Dispatch__thumb">
-                    <img src={post.image} alt=""/>
-                  </div>
-                  <div className="blogV3Dispatch__copy">
-                    <small>{post.category}</small>
-                    <h3>{post.title}</h3>
-                    <p>{author?.name || post.date}</p>
-                  </div>
-                  <b>↗</b>
-                </a>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      <section className="blogV3Archive" id="blogV3Archive">
-        <div className="blogV3Archive__head">
-          <div>
-            <span>03 / THE ARCHIVE</span>
-            <h2>Tüm <em>Yazılar</em></h2>
-          </div>
+      {/* ORİJİNAL YAZI LİSTESİ — veri, filtre, yazar ve link yapısı korunmuştur */}
+      <section className="blogOriginalCine" id="blogOriginalContent">
+        <div className="blogOriginalCine__intro">
+          <span>YAZILAR & İÇERİKLER</span>
+          <h2>
+            Bilgiye ulaşın,
+            <strong> merak ettiğinizi keşfedin.</strong>
+          </h2>
           <p>
-            Konuya, yazara veya bir kelimeye göre ilerleyin. Her içerik kendi görsel
-            ritmiyle arşivde yerini alır.
+            Tüm yayınlanan içerikler burada yer alır. Yeni yazılar admin panelinden eklendiğinde
+            bu bölümde otomatik olarak görünmeye devam eder.
           </p>
         </div>
 
-        <div className="blogV3Tools">
-          <label className="blogV3Search">
-            <Icon name="search" size={16}/>
-            <input
-              value={query}
-              onChange={(e)=>setQuery(e.target.value)}
-              placeholder="Arşivde ara..."
-            />
-            <span>{String(filteredPosts.length).padStart(2,"0")} SONUÇ</span>
-          </label>
+        <div className="blogOriginalCine__workspace">
+          <div className="blogOriginalCine__main">
+            <div className="blogOriginalCine__tools">
+              <label>
+                <Icon name="search" size={18}/>
+                <input
+                  value={query}
+                  onChange={(e)=>setQuery(e.target.value)}
+                  placeholder="Yazı ara..."
+                />
+              </label>
 
-          <div className="blogV3Categories">
-            {categories.map((item)=>(
-              <button
-                type="button"
-                key={item}
-                className={category===item ? "is-active" : ""}
-                onClick={()=>setCategory(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="blogV3Mosaic">
-          {filteredPosts.slice(0,visibleCount).map((post,index)=>{
-            const author = authorFor(post);
-            const mode = index % 7 === 0
-              ? "is-cinema"
-              : index % 5 === 0
-              ? "is-tall"
-              : index % 3 === 0
-              ? "is-dark"
-              : "is-standard";
-
-            return (
-              <article
-                className={`blogV3Card ${mode}`}
-                key={post.id||post.slug}
-              >
-                <a className="blogV3Card__visual" href={`#/blog/${post.slug}`}>
-                  <img src={post.image} alt={post.title} loading="lazy" decoding="async"/>
-                  <div className="blogV3Card__overlay"/>
-                  <span className="blogV3Card__number">{String(index+1).padStart(2,"0")}</span>
-                  <small>{post.category}</small>
-                </a>
-
-                <div className="blogV3Card__body">
-                  <div className="blogV3Card__meta">
-                    <time>{post.date}</time>
-                    <span>{post.readTime}</span>
-                  </div>
-
-                  <h3><a href={`#/blog/${post.slug}`}>{post.title}</a></h3>
-                  <p>{post.excerpt}</p>
-
-                  <div className="blogV3Card__footer">
-                    {author ? (
-                      <a className="blogV3Card__author" href={`#/yazarlar/${author.slug}`}>
-                        <div>
-                          {author.image
-                            ? <img src={author.image} alt={author.name}/>
-                            : <span>{author.name?.charAt(0)}</span>}
-                        </div>
-                        <span>
-                          <small>YAZAR</small>
-                          <b>{author.name}</b>
-                        </span>
-                      </a>
-                    ) : <span/>}
-
-                    <a className="blogV3Card__arrow" href={`#/blog/${post.slug}`} aria-label="Yazıyı oku">↗</a>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        {filteredPosts.length === 0 && (
-          <div className="blogV3Empty">
-            <span>∅</span>
-            <h3>Bu aramada bir dosya bulunamadı.</h3>
-            <p>Farklı bir kategori veya arama kelimesi deneyebilirsiniz.</p>
-          </div>
-        )}
-
-        {visibleCount < filteredPosts.length && (
-          <button
-            className="blogV3More"
-            type="button"
-            onClick={()=>setVisibleCount((value)=>value+6)}
-          >
-            <span>ARŞİVİ GENİŞLET</span>
-            <Icon name="arrow" size={15}/>
-          </button>
-        )}
-      </section>
-
-      {authors.length > 0 && (
-        <section className="blogV3Authors">
-          <div className="blogV3Authors__ambient" aria-hidden="true">AUTHORS</div>
-
-          <div className="blogV3Authors__head">
-            <div>
-              <span>04 / CONTRIBUTORS</span>
-              <h2>Yazarlar <em>Odası</em></h2>
+              <div className="blogOriginalCine__categories">
+                {categories.map((item)=>(
+                  <button
+                    type="button"
+                    key={item}
+                    className={category===item ? "is-active" : ""}
+                    onClick={()=>setCategory(item)}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
             </div>
-            <p>
-              Farklı uzmanlık alanları, ortak bir editoryal çizgi. Her yazarın kendi
-              sesi, perspektifi ve içerik arşivi.
-            </p>
+
+            <div className="blogOriginalCine__grid">
+              {filteredPosts.slice(0,visibleCount).map((post,index)=>{
+                const author = authorFor(post);
+
+                return (
+                  <article
+                    className={`blogOriginalCineCard ${index===0 ? "is-lead" : ""}`}
+                    key={post.id||post.slug}
+                  >
+                    <a className="blogOriginalCineCard__image" href={`#/blog/${post.slug}`}>
+                      <img src={post.image} alt={post.title} loading="lazy" decoding="async" />
+                      <div className="blogOriginalCineCard__shade" />
+
+                      <span className="blogOriginalCineCard__index">
+                        {String(index+1).padStart(2,"0")}
+                      </span>
+
+                      <small className="blogOriginalCineCard__category">
+                        {post.category}
+                      </small>
+
+                      {author && (
+                        <div className="blogOriginalCineCard__writerChip">
+                          {author.image
+                            ? <img src={author.image} alt="" />
+                            : <span>{author.name?.charAt(0)}</span>}
+                          <b>{author.name}</b>
+                        </div>
+                      )}
+                    </a>
+
+                    <div className="blogOriginalCineCard__body">
+                      <div className="blogOriginalCineCard__meta">
+                        <time>{post.date}</time>
+                        {post.readTime && <small>{post.readTime}</small>}
+                      </div>
+
+                      <h2>
+                        <a href={`#/blog/${post.slug}`}>{post.title}</a>
+                      </h2>
+
+                      <p>{post.excerpt}</p>
+
+                      {author ? (
+                        <div className="blogOriginalCineCard__author">
+                          <a
+                            className="blogOriginalCineCard__avatar"
+                            href={`#/yazarlar/${author.slug}`}
+                            aria-label={`${author.name} profilini gör`}
+                          >
+                            {author.image
+                              ? <img src={author.image} alt={author.name}/>
+                              : <span>{author.name?.charAt(0)}</span>}
+                          </a>
+
+                          <span className="blogOriginalCineCard__authorInfo">
+                            <b>{author.name}</b>
+                            <small>{author.role || "Yazar"}</small>
+                          </span>
+
+                          <a
+                            className="blogOriginalCineCard__readLink"
+                            href={`#/blog/${post.slug}`}
+                          >
+                            Yazıyı Oku <span>↗</span>
+                          </a>
+                        </div>
+                      ) : (
+                        <div className="blogOriginalCineCard__readOnly">
+                          <a href={`#/blog/${post.slug}`}>Yazıyı Oku <span>↗</span></a>
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            {filteredPosts.length === 0 && (
+              <div className="blogOriginalCine__empty">
+                <Icon name="search" size={25}/>
+                <h3>Yazı bulunamadı.</h3>
+                <p>Farklı bir kategori veya arama kelimesi deneyebilirsiniz.</p>
+              </div>
+            )}
+
+            {visibleCount < filteredPosts.length && (
+              <button
+                className="blogOriginalCine__more"
+                type="button"
+                onClick={()=>setVisibleCount((value)=>value+4)}
+              >
+                Daha Fazla Yazı Göster
+                <Icon name="arrow" size={16}/>
+              </button>
+            )}
           </div>
 
-          <div className="blogV3Authors__grid">
-            {authors.map((author,index)=>(
-              <a
-                href={`#/yazarlar/${author.slug}`}
-                className="blogV3Author"
-                key={author.slug}
-              >
-                <div className="blogV3Author__portrait">
-                  {author.image
-                    ? <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
-                    : <span>{author.name?.charAt(0)}</span>}
-                  <div className="blogV3Author__glass"/>
-                  <small>0{index+1}</small>
-                </div>
+          {authors.length > 0 && (
+            <aside className="blogOriginalCineAuthors">
+              <div className="blogOriginalCineAuthors__head">
+                <span>YAZARLARIMIZ</span>
+                <h2>Yazarlarımız</h2>
+                <p>Yazarlarımızı tanıyın ve yazılarını keşfedin.</p>
+              </div>
 
-                <div className="blogV3Author__copy">
-                  <span>CONTRIBUTOR / 2026</span>
-                  <h3>{author.name}</h3>
-                  <p className="blogV3Author__role">{author.role}</p>
-                  <p>{author.shortBio}</p>
-
-                  <div className="blogV3Author__stats">
-                    <span><b>{String(authorPostCount(author)).padStart(2,"0")}</b><small>YAYIN</small></span>
-                    <i/>
-                    <span><b>∞</b><small>PERSPEKTİF</small></span>
+              {authors.map((author,index)=>(
+                <a
+                  href={`#/yazarlar/${author.slug}`}
+                  className="blogOriginalCineAuthorCard"
+                  key={author.slug}
+                >
+                  <div className="blogOriginalCineAuthorCard__photo">
+                    <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
+                    <span>{String(index+1).padStart(2,"0")}</span>
                   </div>
 
-                  <strong>YAZAR PROFİLİ <b>↗</b></strong>
-                </div>
+                  <div>
+                    <strong>{author.name}</strong>
+                    <small>{author.role}</small>
+                    <p>{author.shortBio}</p>
+                    <b>Profili Gör <span>↗</span></b>
+                  </div>
+                </a>
+              ))}
+
+              <a className="blogOriginalCineAuthors__all" href="#/yazarlar">
+                Tüm Yazarlar
+                <Icon name="arrow" size={14}/>
               </a>
-            ))}
-          </div>
-
-          <a className="blogV3Authors__all" href="#/yazarlar">
-            <span>TÜM YAZARLARI KEŞFET</span>
-            <b>↗</b>
-          </a>
-        </section>
-      )}
-
-      <section className="blogV3Manifesto">
-        <span>KAAN ÖZKAN / JOURNAL</span>
-        <h2>
-          Her metin bir cevap vermek zorunda değil.
-          <em>Bazen doğru soruyu bırakması yeter.</em>
-        </h2>
-        <a href="#blogV3Archive">ARŞİVE DÖN ↗</a>
+            </aside>
+          )}
+        </div>
       </section>
     </main>
   );
 }
 
 function AuthorsPage({ content = defaultBlogContent }) {
-  const authors = (Array.isArray(content.authors) ? content.authors : [])
-    .filter((author)=>author?.slug && author?.name);
-
-  const posts = (Array.isArray(content.posts) ? content.posts : [])
-    .filter((post)=>post.status !== "draft");
-
-  const countFor = (author) =>
-    posts.filter((post)=>String(post.authorSlug||"")===String(author.slug||"")).length;
-
-  return (
-    <main className="authorsV3">
-      <section className="authorsV3Hero">
-        <a href="#/blog" className="authorsV3Hero__back">← BLOG'A DÖN</a>
-        <span className="authorsV3Hero__ghost" aria-hidden="true">VOICES</span>
-        <div>
-          <span>THE CONTRIBUTORS / 2026</span>
-          <h1>Yazarlar <em>Odası</em></h1>
-          <p>
-            Bilgi, deneyim ve farklı disiplinlerin ortak bir editoryal alanda
-            buluştuğu; her profilin kendi karakterini taşıdığı yazar seçkisi.
-          </p>
-        </div>
-      </section>
-
-      <section className="authorsV3Grid">
-        {authors.length ? authors.map((author,index)=>(
-          <a href={`#/yazarlar/${author.slug}`} className="authorsV3Card" key={author.slug}>
-            <div className="authorsV3Card__photo">
-              {author.image
-                ? <img src={author.image} alt={author.name}/>
-                : <span>{author.name?.charAt(0)}</span>}
-              <small>0{index+1}</small>
-              <i/>
-            </div>
-
-            <div className="authorsV3Card__body">
-              <span>CONTRIBUTOR</span>
-              <h2>{author.name}</h2>
-              <p className="authorsV3Card__role">{author.role}</p>
-              <p>{author.shortBio}</p>
-              <div className="authorsV3Card__foot">
-                <span><b>{String(countFor(author)).padStart(2,"0")}</b> YAYIN</span>
-                <strong>PROFİLİ İNCELE ↗</strong>
-              </div>
-            </div>
-          </a>
-        )) : (
-          <div className="authorsV3Empty">Henüz yazar eklenmedi.</div>
-        )}
-      </section>
-    </main>
-  );
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((author)=>author?.slug && author?.name);
+  return <main className="authors101">
+    <section className="authors101__hero"><span>YAZARLARIMIZ</span><h1>Yazarlarımız</h1><p>İçeriklerimize bilgi, deneyim ve farklı uzmanlık alanlarıyla katkı sunan yazarlarımızı yakından tanıyın.</p></section>
+    <section className="authors101__grid">{authors.length ? authors.map((author)=><a href={`#/yazarlar/${author.slug}`} className="authors101__card" key={author.slug}><div className="authors101__photo"><img src={author.image} alt={author.name}/><span className="authors101__seal">YAZAR</span></div><div><span>YAZAR PROFİLİ</span><h2>{author.name}</h2><small>{author.role}</small><p>{author.shortBio}</p><strong>Profili İncele <Icon name="arrow" size={14}/></strong></div></a>) : <div className="authors101__empty">Henüz yazar eklenmedi.</div>}</section>
+  </main>;
 }
 
 function AuthorProfilePage({ slug, content = defaultBlogContent }) {
-  const authors = (Array.isArray(content.authors) ? content.authors : [])
-    .filter((item)=>item?.slug && item?.name);
-
-  const author = authors.find((item)=>item.slug===slug);
+  const authors = (Array.isArray(content.authors) ? content.authors : []).filter((item)=>item?.slug && item?.name);
+  const author = authors.find(item=>item.slug===slug);
 
   if (!author) {
     return <main className="blog99NotFound"><img src={kaanOzkanLogo2026} alt=""/><span>YAZARLAR</span><h1>Bu yazar bulunamadı.</h1><a href="#/yazarlar">Yazarlara Dön</a></main>;
   }
 
-  const authorPosts = (Array.isArray(content.posts) ? content.posts : [])
-    .filter((post)=>post.status !== "draft" && String(post.authorSlug||"")===String(author.slug||""))
-    .sort((a,b)=>Number(b.sortOrder||0)-Number(a.sortOrder||0));
-
   return (
-    <main className="authorV3">
-      <section className="authorV3Hero">
-        <div className="authorV3Hero__top">
-          <a href="#/yazarlar">← YAZARLAR</a>
-          <span>CONTRIBUTOR PROFILE / 2026</span>
-        </div>
+    <main className="author126">
+      <section className="author126__shell">
+        <a className="author126__back" href="#/yazarlar">← Yazarlarımıza Dön</a>
 
-        <div className="authorV3Hero__layout">
-          <div className="authorV3Hero__portrait">
-            {author.image
-              ? <img src={author.image} alt={author.name}/>
-              : <span>{author.name?.charAt(0)}</span>}
-            <div className="authorV3Hero__portraitFrame"/>
-            <small>KAAN ÖZKAN JOURNAL</small>
+        <div className="author126__card">
+          <div className="author126__portrait">
+            <img src={author.image} alt={author.name} />
+            <span>YAZAR</span>
           </div>
 
-          <div className="authorV3Hero__copy">
-            <span>YAZAR PROFİLİ</span>
+          <div className="author126__content">
+            <div className="author126__kicker">
+              <i />
+              <span>YAZAR PROFİLİ</span>
+            </div>
+
             <h1>{author.name}</h1>
-            <p className="authorV3Hero__role">{author.role}</p>
+            <p className="author126__role">{author.role}</p>
 
-            {author.shortBio && <p className="authorV3Hero__lead">{author.shortBio}</p>}
+            {author.shortBio && (
+              <p className="author126__lead">{author.shortBio}</p>
+            )}
 
-            <div className="authorV3Hero__stats">
-              <article>
-                <b>{String(authorPosts.length).padStart(2,"0")}</b>
-                <small>YAYINLANMIŞ<br/>İÇERİK</small>
-              </article>
-              <i/>
-              <article>
-                <b>∞</b>
-                <small>FARKLI<br/>PERSPEKTİF</small>
-              </article>
+            <div className="author126__divider"><span /></div>
+
+            <div className="author126__bio">
+              <span>BİYOGRAFİ</span>
+              <p>{author.bio || author.shortBio}</p>
+            </div>
+
+            <div className="author126__footer">
+              <a href="#/blog">Blog Yazılarını Keşfet <Icon name="arrow" size={15}/></a>
+              <small>Bilgi · Deneyim · Perspektif</small>
             </div>
           </div>
         </div>
       </section>
-
-      <section className="authorV3Bio">
-        <div className="authorV3Bio__label">
-          <span>01</span>
-          <small>BİYOGRAFİ</small>
-        </div>
-        <p>{author.bio || author.shortBio}</p>
-      </section>
-
-      {authorPosts.length > 0 && (
-        <section className="authorV3Works">
-          <div className="authorV3Works__head">
-            <span>02 / SELECTED WORKS</span>
-            <h2>Yazarın <em>Yazıları</em></h2>
-          </div>
-
-          <div className="authorV3Works__grid">
-            {authorPosts.map((post,index)=>(
-              <a href={`#/blog/${post.slug}`} className="authorV3Work" key={post.id||post.slug}>
-                <div>
-                  <img src={post.image} alt={post.title}/>
-                  <span>{String(index+1).padStart(2,"0")}</span>
-                </div>
-                <small>{post.category} · {post.readTime}</small>
-                <h3>{post.title}</h3>
-                <strong>YAZIYI OKU ↗</strong>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
     </main>
   );
 }
@@ -3284,8 +2989,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
     <main className="articleCinePage">
       <div className="articleCineProgress" aria-hidden="true"/>
 
-      <section className="articleCineHero cin3d articleV3Hero">
-        <div className="articleV3Hero__edition" aria-hidden="true">EDITORIAL / 2026</div>
+      <section className="articleCineHero cin3d">
         <div className="articleCineHero__ambient" aria-hidden="true">
           <img src={post.image} alt="" />
           <span/>
@@ -4750,40 +4454,40 @@ function AuthorPortalPage({ blogContent = defaultBlogContent }) {
   const uploadImage = async (file) => {
     if (designPreview) { setMessage("Tasarım önizleme modunda görsel yükleme devre dışıdır."); return; }
     if (!file || !session?.user?.id) return;
+    if (!file.type.startsWith("image/")) {
+      setMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setMessage("Kapak görseli en fazla 20 MB olabilir.");
+      return;
+    }
 
     setUploading(true);
-    setMessage("Kapak görseli hazırlanıyor...");
+    setMessage("");
 
-    try {
-      const prepared = await prepareBlogImageForUpload(file);
-      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazi-kapak";
-      const filePath = `author-submissions/${session.user.id}/${Date.now()}-${safeName}.${prepared.extension}`;
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazi-kapak";
+    const filePath = `author-submissions/${session.user.id}/${Date.now()}-${safeName}.${extension}`;
 
-      const { error } = await supabase.storage
-        .from("blog-images")
-        .upload(filePath, prepared.file, {
-          cacheControl: "3600",
-          upsert: false,
-          contentType: prepared.contentType,
-        });
+    const { error } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type,
+      });
 
-      if (error) throw new Error(error.message || "Storage yüklemesi başarısız.");
-
-      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
-      if (!data?.publicUrl) throw new Error("Kapak bağlantısı oluşturulamadı.");
-
-      setForm((current) => ({ ...current, image: data.publicUrl }));
-      setMessage(
-        prepared.compressed
-          ? "Kapak görseli optimize edildi ve hazır."
-          : "Kapak görseli hazır."
-      );
-    } catch (error) {
+    if (error) {
       console.error("Yazar kapak görseli yüklenemedi:", error);
-      setMessage(`Görsel yüklenemedi: ${error?.message || "Lütfen tekrar deneyin."}`);
-    } finally {
-      setUploading(false);
+      setMessage("Görsel yüklenemedi. Storage yetkilerini kontrol edin.");
+    } else {
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+      setForm((current) => ({ ...current, image: data.publicUrl }));
+      setMessage("Kapak görseli hazır.");
     }
+
+    setUploading(false);
   };
 
   const saveSubmission = async (targetStatus = "draft") => {
@@ -5317,8 +5021,6 @@ function AdminDemoPage() {
   const [blogEditorMessage, setBlogEditorMessage] = useState("");
   const [newBlogCategory, setNewBlogCategory] = useState("");
   const [blogImageUploading, setBlogImageUploading] = useState(false);
-  const [blogImageSelectedName, setBlogImageSelectedName] = useState("");
-  const [blogImageLocalPreview, setBlogImageLocalPreview] = useState("");
   const [editingBlogId, setEditingBlogId] = useState(null);
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -6062,8 +5764,6 @@ function AdminDemoPage() {
 
   const resetBlogForm = () => {
     setEditingBlogId(null);
-    setBlogImageSelectedName("");
-    setBlogImageLocalPreview((current)=>{ if(current?.startsWith("blob:")) URL.revokeObjectURL(current); return ""; });
     setBlogForm({
       title: "",
       slug: "",
@@ -6439,25 +6139,8 @@ function AdminDemoPage() {
   const saveBlogPost = async (e) => {
     e.preventDefault();
 
-    if (blogImageUploading) {
-      setBlogEditorMessage("Görsel hâlâ Supabase'e yükleniyor. Yükleme tamamlandıktan sonra tekrar yayınlayın.");
-      return;
-    }
-
-    if (!blogForm.title.trim()) {
-      setBlogEditorMessage("Yazı başlığı zorunludur.");
-      return;
-    }
-    if (!blogForm.excerpt.trim()) {
-      setBlogEditorMessage("Kısa açıklama zorunludur.");
-      return;
-    }
-    if (!blogForm.body.trim()) {
-      setBlogEditorMessage("Yazı içeriği zorunludur.");
-      return;
-    }
-    if (!blogForm.image.trim()) {
-      setBlogEditorMessage("Blog kapak görseli zorunludur. Görsel seçildikten sonra 'HAZIR' yazısını görmelisiniz.");
+    if (!blogForm.title.trim() || !blogForm.excerpt.trim() || !blogForm.body.trim() || !blogForm.image.trim()) {
+      setBlogEditorMessage("Başlık, kısa açıklama, görsel ve yazı içeriği zorunludur.");
       return;
     }
 
@@ -6682,47 +6365,43 @@ function AdminDemoPage() {
 
   const uploadBlogImage = async (file) => {
     if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setBlogEditorMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setBlogEditorMessage("Görsel en fazla 20 MB olabilir.");
+      return;
+    }
 
-    setBlogImageSelectedName(file.name || "Seçilen görsel");
     setBlogImageUploading(true);
-    setBlogEditorMessage("Görsel hazırlanıyor...");
+    setBlogEditorMessage("");
 
-    try {
-      if (!String(file.type || "").startsWith("image/")) {
-        throw new Error("Lütfen bir görsel dosyası seçin.");
-      }
-      if (file.size > 20 * 1024 * 1024) {
-        throw new Error("Görsel en fazla 20 MB olabilir.");
-      }
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-gorsel";
+    const filePath = `${Date.now()}-${safeName}.${extension}`;
 
-      // Admin blog kapaklarında Storage'a bağımlılığı tamamen kaldırıyoruz.
-      // Görsel küçültülüp doğrudan blog verisine data URL olarak yazılır.
-      const embeddedImage = await fileToBlogDataUrl(file);
-
-      if (!embeddedImage || !embeddedImage.startsWith("data:image/")) {
-        throw new Error("Görsel hazırlanamadı.");
-      }
-
-      setBlogForm((current) => ({
-        ...current,
-        image: embeddedImage,
-      }));
-
-      setBlogImageLocalPreview((current)=>{
-        if (current?.startsWith("blob:")) {
-          try { URL.revokeObjectURL(current); } catch {}
-        }
-        return "";
+    const { error: uploadError } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type,
       });
 
-      setBlogEditorMessage("✓ Görsel hazır. Yazıyı şimdi yayınlayabilirsiniz.");
-    } catch (error) {
-      console.error("Blog görsel hazırlama hatası:", error);
-      setBlogForm((current)=>({ ...current, image: "" }));
-      setBlogEditorMessage(`Görsel hazırlanamadı: ${error?.message || "Bilinmeyen hata."}`);
-    } finally {
+    if (uploadError) {
+      console.error("Blog görsel yükleme hatası:", uploadError);
+      setBlogEditorMessage(
+        "Görsel yüklenemedi. Supabase Storage içinde blog-images bucket ve yetkilerini kontrol edin."
+      );
       setBlogImageUploading(false);
+      return;
     }
+
+    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+    setBlogForm((current) => ({ ...current, image: data.publicUrl }));
+    setBlogEditorMessage("Görsel başarıyla yüklendi. Yazıyı kaydetmeyi unutmayın.");
+    setBlogImageUploading(false);
   };
 
   const resetAuthorForm = () => {
@@ -6732,40 +6411,23 @@ function AdminDemoPage() {
 
   const uploadAuthorImage = async (file) => {
     if (!file) return;
-
+    if (!file.type.startsWith("image/")) { setBlogEditorMessage("Lütfen JPG, PNG veya WebP yazar fotoğrafı seçin."); return; }
+    if (file.size > 20 * 1024 * 1024) { setBlogEditorMessage("Yazar fotoğrafı en fazla 20 MB olabilir."); return; }
     setAuthorImageUploading(true);
-    setBlogEditorMessage("Yazar fotoğrafı hazırlanıyor...");
-
-    try {
-      const prepared = await prepareBlogImageForUpload(file, { maxDimension: 2200 });
-      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazar";
-      const filePath = `authors/${Date.now()}-${safeName}.${prepared.extension}`;
-
-      const { error } = await supabase.storage
-        .from("blog-images")
-        .upload(filePath, prepared.file, {
-          cacheControl: "3600",
-          upsert: false,
-          contentType: prepared.contentType,
-        });
-
-      if (error) throw new Error(error.message || "Yazar fotoğrafı yüklenemedi.");
-
-      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
-      if (!data?.publicUrl) throw new Error("Yazar fotoğrafı bağlantısı oluşturulamadı.");
-
-      setAuthorForm((current)=>({ ...current, image: data.publicUrl }));
-      setBlogEditorMessage(
-        prepared.compressed
-          ? "Yazar fotoğrafı optimize edildi ve başarıyla yüklendi. Yazarı kaydetmeyi unutmayın."
-          : "Yazar fotoğrafı başarıyla yüklendi. Yazarı kaydetmeyi unutmayın."
-      );
-    } catch (error) {
+    setBlogEditorMessage("");
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "yazar";
+    const filePath = `authors/${Date.now()}-${safeName}.${extension}`;
+    const { error } = await supabase.storage.from("blog-images").upload(filePath, file, { cacheControl: "3600", upsert: false, contentType: file.type });
+    if (error) {
       console.error("Yazar fotoğrafı yükleme hatası:", error);
-      setBlogEditorMessage(`Yazar fotoğrafı yüklenemedi: ${error?.message || "Lütfen tekrar deneyin."}`);
-    } finally {
-      setAuthorImageUploading(false);
+      setBlogEditorMessage("Yazar fotoğrafı yüklenemedi. blog-images bucket yetkilerini kontrol edin.");
+    } else {
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+      setAuthorForm((current)=>({ ...current, image: data.publicUrl }));
+      setBlogEditorMessage("Yazar fotoğrafı başarıyla yüklendi. Yazarı kaydetmeyi unutmayın.");
     }
+    setAuthorImageUploading(false);
   };
 
   const saveAuthor = async (e) => {
@@ -7792,19 +7454,8 @@ function AdminDemoPage() {
                       <aside className="admin125Authors__photo">
                         <span>YAZAR FOTOĞRAFI *</span>
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
-                        <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>{ const file=e.target.files?.[0]; uploadAuthorImage(file); e.target.value=""; }}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
-                        <small>JPG, PNG veya WebP · Maksimum 20 MB · Görsel yazıya doğrudan eklenir</small>
-                      {blogImageSelectedName && (
-                        <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
-                          <strong>{blogForm.image ? "HAZIR" : blogImageUploading ? "HAZIRLANIYOR" : "GÖRSEL SEÇİLMEDİ"}</strong>
-                          <span>{blogImageSelectedName}</span>
-                        </div>
-                      )}
-                      {blogForm.image?.startsWith("data:image/") && (
-                        <div className="admin100Blog__embeddedBadge">
-                          Görsel yazıya doğrudan eklendi; yayınlamaya hazır.
-                        </div>
-                      )}
+                        <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>uploadAuthorImage(e.target.files?.[0])}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
+                        <small>JPG, PNG veya WebP · Maksimum 20 MB</small>
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
                       </aside>
                       <div className="admin125Authors__actions">
@@ -7911,12 +7562,8 @@ function AdminDemoPage() {
                     <aside className="admin100Blog__imageBox">
                       <span>KAPAK GÖRSELİ *</span>
                       <div className="admin100Blog__preview">
-                        {(blogImageLocalPreview || blogForm.image) ? (
-                          <img
-                            src={blogImageLocalPreview || blogForm.image}
-                            alt="Blog kapak önizleme"
-                            onError={(e)=>{e.currentTarget.style.display="none"}}
-                          />
+                        {blogForm.image ? (
+                          <img src={blogForm.image} alt="Blog kapak önizleme" onError={(e)=>{e.currentTarget.style.display="none"}}/>
                         ) : (
                           <div><Icon name="image" size={30}/><p>Henüz görsel seçilmedi</p></div>
                         )}
@@ -7926,26 +7573,19 @@ function AdminDemoPage() {
                         <input
                           type="file"
                           accept="image/jpeg,image/png,image/webp"
-                          onChange={(e)=>{ const file=e.target.files?.[0]; uploadBlogImage(file); e.target.value=""; }}
+                          onChange={(e)=>uploadBlogImage(e.target.files?.[0])}
                         />
                         <Icon name="plus" size={17}/>
-                        {blogImageUploading
-                          ? "Görsel Hazırlanıyor..."
-                          : blogForm.image
-                          ? "✓ Görsel Hazır — Değiştir"
-                          : blogImageSelectedName
-                          ? `${blogImageSelectedName}`
-                          : "Bilgisayardan Görsel Seç"}
+                        {blogImageUploading ? "Görsel Yükleniyor..." : "Bilgisayardan Görsel Seç"}
                       </label>
 
-                      <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik optimize edilir</small>
+                      <small>JPG, PNG veya WebP · Maksimum 20 MB</small>
 
                       <div className="admin100Blog__or"><span/>veya<span/></div>
 
                       <label className="admin100Blog__url">
                         <span>Görsel URL</span>
-                        <input value={blogForm.image?.startsWith("data:image/") ? "Dahili görsel hazır ✓" : blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."
-                        readOnly={blogForm.image?.startsWith("data:image/")}/>
+                        <input value={blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."/>
                       </label>
 
                       <label className="admin100Blog__slug">
@@ -7960,7 +7600,7 @@ function AdminDemoPage() {
                       <strong>{editingBlogId ? "Değişiklikleri kaydet" : "Yazıyı bloga ekle"}</strong>
                       <span>Kaydedildiğinde blog kartı ve detay sayfası otomatik oluşur.</span>
                     </div>
-                    <button type="submit" disabled={blogEditorSaving}>
+                    <button type="submit" disabled={blogEditorSaving || blogImageUploading}>
                       {blogEditorSaving ? "Kaydediliyor..." : editingBlogId ? "Yazıyı Güncelle" : "Yazıyı Yayınla"}
                       {!blogEditorSaving && <Icon name="arrow" size={15}/>}
                     </button>
@@ -35817,905 +35457,6 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .adminAnalyticsPanel,.adminAnalyticsMapCard{padding:18px;border-radius:17px}
   .adminAnalyticsRecent__head{align-items:stretch;flex-direction:column;padding:18px}
   .adminAnalyticsRecent__head label{width:100%}
-}
-
-
-/* ============================================================
-   BLOG V3 — AGGRESSIVE / PREMIUM / CINEMATIC EDITORIAL PACKAGE
-   Data, Supabase, routes, admin, authors and article renderer preserved.
-   ============================================================ */
-.blogV3{
-  --ink:#17130f;
-  --paper:#f4efe6;
-  --paper2:#ebe2d5;
-  --gold:#b7894b;
-  --gold2:#d4ad72;
-  --muted:#8f8273;
-  overflow:hidden;
-  background:var(--paper);
-  color:var(--ink);
-}
-.blogV3 a{text-decoration:none;color:inherit}
-.blogV3Hero{
-  position:relative;
-  min-height:100svh;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  background:#0d0c0a;
-  color:#fff;
-  isolation:isolate;
-}
-.blogV3Hero__media{
-  position:absolute;inset:-6%;
-  z-index:-2;
-  transform:scale(1.06);
-}
-.blogV3Hero__media img{
-  width:100%;height:100%;object-fit:cover;
-  filter:saturate(.55) contrast(1.08) brightness(.48);
-}
-.blogV3Hero__wash{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 72% 35%,rgba(191,145,79,.20),transparent 29%),
-    linear-gradient(90deg,rgba(8,7,6,.96) 0%,rgba(8,7,6,.84) 41%,rgba(8,7,6,.32) 72%,rgba(8,7,6,.72) 100%),
-    linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72));
-}
-.blogV3Hero__grain{
-  position:absolute;inset:0;opacity:.17;mix-blend-mode:soft-light;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
-}
-.blogV3Hero__topline{
-  position:relative;
-  z-index:2;
-  display:grid;grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:18px;
-  padding:28px clamp(24px,5vw,80px);
-  border-bottom:1px solid rgba(255,255,255,.13);
-  font-size:8px;font-weight:800;letter-spacing:.18em;
-  color:rgba(255,255,255,.56);
-}
-.blogV3Hero__back{justify-self:start;color:#d9b880!important}
-.blogV3Hero__topline small{justify-self:end;font-size:8px}
-.blogV3Hero__stage{
-  position:relative;
-  flex:1;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(330px,.42fr);
-  align-items:center;
-  gap:40px;
-  width:min(1500px,100%);
-  margin:auto;
-  padding:70px clamp(24px,6vw,100px) 110px;
-}
-.blogV3Hero__edition{
-  position:absolute;
-  left:3vw;top:50%;
-  transform:translate(-24%,-50%) rotate(-90deg);
-  color:rgba(255,255,255,.035);
-  font:500 clamp(90px,14vw,220px)/1 "Bodoni 72","Didot","Iowan Old Style",Georgia,serif;
-  letter-spacing:-.08em;
-  pointer-events:none;
-  white-space:nowrap;
-}
-.blogV3Hero__copy{position:relative;z-index:2;max-width:900px}
-.blogV3Hero__eyebrow{
-  display:flex;align-items:center;gap:13px;
-  margin-bottom:24px;
-  color:#d0a669;
-  font-size:9px;font-weight:900;letter-spacing:.28em;
-}
-.blogV3Hero__eyebrow:before{content:"";width:48px;height:1px;background:#b7894b}
-.blogV3Hero__copy h1{
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .16em;
-  margin:0;
-  font:400 clamp(76px,11.2vw,190px)/.70 "Bodoni 72","Didot","Iowan Old Style",Georgia,serif;
-  letter-spacing:-.075em;
-}
-.blogV3Hero__copy h1 span{color:#fff}
-.blogV3Hero__copy h1 em{
-  color:#bd8d4d;
-  font-size:.55em;
-  font-weight:400;
-}
-.blogV3Hero__copy h1 strong{
-  display:block;
-  width:100%;
-  margin-left:.22em;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.75);
-  font-weight:400;
-  font-style:italic;
-}
-.blogV3Hero__copy>p{
-  max-width:680px;
-  margin:46px 0 0 8px;
-  color:rgba(255,255,255,.64);
-  font-size:13px;line-height:1.9;
-}
-.blogV3Hero__actions{
-  display:flex;flex-wrap:wrap;gap:12px;
-  margin:28px 0 0 8px;
-}
-.blogV3Hero__actions a{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  min-height:49px;padding:0 20px;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:999px;
-  color:#fff;
-  font-size:9px;font-weight:900;letter-spacing:.1em;
-  transition:.35s ease;
-  backdrop-filter:blur(8px);
-}
-.blogV3Hero__actions a:first-child{background:#e8d6bd;color:#282017;border-color:#e8d6bd}
-.blogV3Hero__actions a:hover{transform:translateY(-3px);border-color:#c69b60}
-.blogV3Hero__metrics{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;
-  border-left:1px solid rgba(255,255,255,.15);
-}
-.blogV3Hero__metrics article{
-  position:relative;
-  display:grid;grid-template-columns:34px 1fr 1fr;
-  align-items:center;gap:16px;
-  min-height:125px;
-  padding:22px 0 22px 28px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-}
-.blogV3Hero__metrics article:after{
-  content:"";position:absolute;left:-1px;top:0;width:1px;height:0;background:#c99c60;
-  transition:height .45s ease;
-}
-.blogV3Hero__metrics article:hover:after{height:100%}
-.blogV3Hero__metrics span{color:#ad8757;font-size:8px}
-.blogV3Hero__metrics b{
-  color:#fff;
-  font:400 46px/1 "Bodoni 72","Didot",Georgia,serif;
-}
-.blogV3Hero__metrics small{color:rgba(255,255,255,.47);font-size:8px;line-height:1.6;letter-spacing:.12em}
-.blogV3Hero__scroll{
-  position:absolute;left:50%;bottom:25px;z-index:3;
-  display:flex;align-items:center;gap:12px;transform:translateX(-50%);
-  color:rgba(255,255,255,.37);font-size:7px;letter-spacing:.18em;
-}
-.blogV3Hero__scroll i{width:42px;height:1px;background:linear-gradient(90deg,transparent,#c4985e)}
-.blogV3SectionCode{
-  display:flex;align-items:center;gap:18px;
-  margin-bottom:35px;
-  color:#8a7356;font-size:8px;font-weight:900;letter-spacing:.15em;
-}
-.blogV3SectionCode i{flex:1;height:1px;background:rgba(66,48,31,.12)}
-.blogV3SectionCode small{font-size:7px;color:#a49687}
-.blogV3Feature{
-  padding:90px clamp(22px,6vw,100px) 110px;
-  background:linear-gradient(180deg,#f5f0e7,#eee5d8);
-}
-.blogV3Feature__stage{
-  display:grid;grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);
-  gap:clamp(35px,6vw,90px);
-  align-items:center;
-  max-width:1500px;margin:auto;
-}
-.blogV3Feature__visual{position:relative;perspective:1200px}
-.blogV3Feature__image{
-  position:relative;overflow:hidden;
-  aspect-ratio:1.34/1;
-  border-radius:2px;
-  box-shadow:0 38px 90px rgba(51,38,24,.18);
-  transform:rotateY(0deg) rotateX(0deg);
-  transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s ease;
-}
-.blogV3Feature__visual:hover .blogV3Feature__image{
-  transform:rotateY(-3deg) rotateX(1.5deg) translateY(-7px);
-  box-shadow:30px 45px 100px rgba(51,38,24,.24);
-}
-.blogV3Feature__image img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .7s;
-}
-.blogV3Feature__visual:hover img{transform:scale(1.04);filter:saturate(.88)}
-.blogV3Feature__image:after{
-  content:"";position:absolute;inset:0;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
-  pointer-events:none;
-}
-.blogV3Feature__imageNo{
-  position:absolute;left:20px;bottom:18px;z-index:3;
-  color:#fff;font-size:8px;font-weight:900;letter-spacing:.18em;
-}
-.blogV3Feature__shine{
-  position:absolute;z-index:2;inset:-20% auto -20% -45%;
-  width:35%;transform:skewX(-18deg);
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.20),transparent);
-  transition:left .9s ease;
-}
-.blogV3Feature__visual:hover .blogV3Feature__shine{left:125%}
-.blogV3Feature__ghost{
-  position:absolute;right:-9%;bottom:-8%;
-  color:rgba(90,60,30,.055);
-  font:500 clamp(52px,7vw,110px)/1 "Bodoni 72","Didot",Georgia,serif;
-  text-transform:uppercase;
-  writing-mode:vertical-rl;
-  pointer-events:none;
-}
-.blogV3Feature__content{padding-right:clamp(0px,3vw,35px)}
-.blogV3Feature__category{
-  display:block;margin-bottom:20px;
-  color:#a37137;font-size:8px;font-weight:900;letter-spacing:.2em;
-}
-.blogV3Feature__content h2{
-  margin:0;
-  font:400 clamp(44px,5vw,77px)/.96 "Bodoni 72","Didot","Iowan Old Style",Georgia,serif;
-  letter-spacing:-.045em;
-}
-.blogV3Feature__content h2 a{transition:color .25s}
-.blogV3Feature__content h2 a:hover{color:#9b6b32}
-.blogV3Feature__content>p{
-  margin:24px 0 0;max-width:590px;
-  color:#6e6255;font-size:12px;line-height:1.85;
-}
-.blogV3Feature__meta{
-  display:flex;align-items:center;gap:13px;margin-top:22px;
-  color:#948473;font-size:8px;font-weight:700;letter-spacing:.06em;
-}
-.blogV3Feature__meta i{width:28px;height:1px;background:#c7aa83}
-.blogV3Feature__author{
-  display:grid;grid-template-columns:46px 1fr 30px;align-items:center;gap:12px;
-  max-width:500px;margin-top:30px;padding:14px 0;
-  border-top:1px solid rgba(74,53,34,.12);
-  border-bottom:1px solid rgba(74,53,34,.12);
-}
-.blogV3Feature__author>div{
-  width:43px;height:43px;overflow:hidden;border-radius:50%;
-  background:#2a2119;color:#fff;display:grid;place-items:center;
-}
-.blogV3Feature__author img{width:100%;height:100%;object-fit:cover}
-.blogV3Feature__author p{margin:0;display:flex;flex-direction:column}
-.blogV3Feature__author small{color:#a17745;font-size:6.5px;font-weight:900;letter-spacing:.14em}
-.blogV3Feature__author strong{margin-top:2px;font:500 15px Georgia,serif}
-.blogV3Feature__author em{margin-top:2px;color:#8a7e70;font-size:7px;font-style:normal}
-.blogV3Feature__author>b{font-size:18px;font-weight:400;color:#a5763e}
-.blogV3Feature__read{
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:500px;margin-top:20px;padding:13px 0;
-  color:#2c241c;font-size:8px;font-weight:900;letter-spacing:.17em;
-}
-.blogV3Feature__read b{font:400 25px/1 Georgia,serif;color:#a4743a;transition:transform .3s}
-.blogV3Feature__read:hover b{transform:translate(5px,-5px)}
-.blogV3Dispatch{
-  display:grid;grid-template-columns:minmax(240px,.52fr) minmax(0,1.48fr);
-  gap:55px;
-  padding:75px clamp(22px,6vw,100px);
-  background:#17130f;color:#fff;
-}
-.blogV3Dispatch__title{max-width:400px;padding-top:8px}
-.blogV3Dispatch__title>span,.blogV3Archive__head>div>span,.blogV3Authors__head>div>span,.authorsV3Hero>div>span,.authorV3Works__head>span{
-  color:#c39458;font-size:8px;font-weight:900;letter-spacing:.18em;
-}
-.blogV3Dispatch__title h2,.blogV3Archive__head h2,.blogV3Authors__head h2{
-  margin:15px 0 14px;
-  font:400 clamp(42px,5vw,72px)/.95 "Bodoni 72","Didot",Georgia,serif;
-  letter-spacing:-.05em;
-}
-.blogV3Dispatch__title h2 em,.blogV3Archive__head h2 em,.blogV3Authors__head h2 em{
-  color:#c89b5f;font-weight:400;
-}
-.blogV3Dispatch__title p{margin:0;color:rgba(255,255,255,.45);font-size:10px;line-height:1.75}
-.blogV3Dispatch__list{border-top:1px solid rgba(255,255,255,.14)}
-.blogV3Dispatch__item{
-  display:grid;grid-template-columns:45px 92px minmax(0,1fr) 25px;
-  gap:18px;align-items:center;
-  min-height:130px;padding:18px 4px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-  transition:padding .35s,background .35s;
-}
-.blogV3Dispatch__item:hover{padding-left:13px;padding-right:13px;background:rgba(255,255,255,.035)}
-.blogV3Dispatch__no{color:#8a6a44;font:400 12px Georgia,serif}
-.blogV3Dispatch__thumb{width:92px;height:80px;overflow:hidden}
-.blogV3Dispatch__thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.65);transition:.45s}
-.blogV3Dispatch__item:hover img{transform:scale(1.06);filter:saturate(.95)}
-.blogV3Dispatch__copy small{color:#b78c58;font-size:7px;font-weight:800;letter-spacing:.12em}
-.blogV3Dispatch__copy h3{margin:6px 0;font:400 22px/1.1 "Bodoni 72","Didot",Georgia,serif}
-.blogV3Dispatch__copy p{margin:0;color:rgba(255,255,255,.4);font-size:8px}
-.blogV3Dispatch__item>b{font:400 18px Georgia,serif;color:#be925a}
-.blogV3Archive{
-  padding:105px clamp(22px,6vw,100px) 120px;
-  background:#f5f0e8;
-}
-.blogV3Archive__head{
-  display:flex;align-items:flex-end;justify-content:space-between;gap:50px;
-  max-width:1500px;margin:0 auto 45px;
-}
-.blogV3Archive__head p{
-  max-width:470px;margin:0 0 8px;color:#7c7063;font-size:10px;line-height:1.8;
-}
-.blogV3Tools{
-  max-width:1500px;margin:0 auto 42px;
-  border-top:1px solid rgba(74,54,35,.14);
-  border-bottom:1px solid rgba(74,54,35,.14);
-}
-.blogV3Search{
-  display:grid;grid-template-columns:20px 1fr auto;align-items:center;gap:12px;
-  min-height:58px;padding:0 4px;color:#9c7548;
-}
-.blogV3Search input{
-  width:100%;border:0;outline:0;background:transparent;color:#2f281f;
-  font:400 16px/1.2 "Iowan Old Style",Georgia,serif;
-}
-.blogV3Search input::placeholder{color:#a89b8d}
-.blogV3Search>span{font-size:7px;font-weight:900;letter-spacing:.14em;color:#9c8d7c}
-.blogV3Categories{
-  display:flex;gap:7px;overflow:auto;padding:12px 0 14px;border-top:1px solid rgba(74,54,35,.08);
-  scrollbar-width:none;
-}
-.blogV3Categories::-webkit-scrollbar{display:none}
-.blogV3Categories button{
-  flex:0 0 auto;
-  padding:9px 13px;border:1px solid rgba(80,58,36,.12);border-radius:999px;
-  background:transparent;color:#817464;font-size:7.5px;font-weight:800;
-  cursor:pointer;transition:.3s;
-}
-.blogV3Categories button.is-active,.blogV3Categories button:hover{
-  background:#211a14;border-color:#211a14;color:#ead8be;
-}
-.blogV3Mosaic{
-  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
-  gap:18px;
-  max-width:1500px;margin:auto;
-}
-.blogV3Card{
-  grid-column:span 4;
-  overflow:hidden;
-  min-width:0;
-  border:1px solid rgba(72,53,34,.09);
-  background:#fbf8f2;
-  box-shadow:0 15px 40px rgba(44,34,24,.035);
-  transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s,border-color .4s;
-}
-.blogV3Card.is-cinema{grid-column:span 8}
-.blogV3Card.is-tall{grid-column:span 4}
-.blogV3Card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(174,126,66,.35);
-  box-shadow:0 28px 70px rgba(44,34,24,.11);
-}
-.blogV3Card__visual{
-  position:relative;display:block;overflow:hidden;
-  aspect-ratio:1.42/1;background:#ddd3c5;
-}
-.blogV3Card.is-cinema .blogV3Card__visual{aspect-ratio:2.12/1}
-.blogV3Card.is-tall .blogV3Card__visual{aspect-ratio:.98/1}
-.blogV3Card__visual img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .6s;
-}
-.blogV3Card:hover .blogV3Card__visual img{transform:scale(1.045);filter:saturate(.82)}
-.blogV3Card__overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.48));
-}
-.blogV3Card__number{
-  position:absolute;left:16px;top:15px;color:#fff;font-size:8px;letter-spacing:.12em;
-}
-.blogV3Card__visual>small{
-  position:absolute;left:16px;bottom:15px;
-  color:#fff;font-size:7px;font-weight:900;letter-spacing:.16em;
-}
-.blogV3Card__body{padding:20px}
-.blogV3Card__meta{display:flex;justify-content:space-between;gap:10px;color:#9b8e80;font-size:7px}
-.blogV3Card h3{
-  margin:13px 0 11px;
-  font:400 26px/1.08 "Bodoni 72","Didot","Iowan Old Style",Georgia,serif;
-  letter-spacing:-.025em;
-}
-.blogV3Card.is-cinema h3{font-size:clamp(30px,3vw,47px);max-width:840px}
-.blogV3Card__body>p{
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-  margin:0;color:#776b5f;font-size:9px;line-height:1.75;
-}
-.blogV3Card__footer{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-top:20px;padding-top:14px;border-top:1px solid rgba(78,57,36,.10);
-}
-.blogV3Card__author{display:flex;align-items:center;gap:9px;min-width:0}
-.blogV3Card__author>div{
-  width:32px;height:32px;flex:0 0 32px;overflow:hidden;border-radius:50%;
-  display:grid;place-items:center;background:#211b16;color:#fff;font-size:10px;
-}
-.blogV3Card__author img{width:100%;height:100%;object-fit:cover}
-.blogV3Card__author>span{display:flex;flex-direction:column;min-width:0}
-.blogV3Card__author small{font-size:5.5px;color:#ab8351;letter-spacing:.12em}
-.blogV3Card__author b{margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px}
-.blogV3Card__arrow{
-  width:34px;height:34px;display:grid;place-items:center;border-radius:50%;
-  border:1px solid rgba(84,61,38,.14);color:#a6763d!important;
-  font-size:14px;transition:.3s;
-}
-.blogV3Card:hover .blogV3Card__arrow{background:#211b16;color:#e1bd86!important;transform:rotate(8deg)}
-.blogV3Card.is-dark{background:#1b1713;color:#fff;border-color:#1b1713}
-.blogV3Card.is-dark .blogV3Card__body>p{color:rgba(255,255,255,.48)}
-.blogV3Card.is-dark .blogV3Card__meta{color:rgba(255,255,255,.42)}
-.blogV3Card.is-dark .blogV3Card__footer{border-color:rgba(255,255,255,.10)}
-.blogV3Empty{text-align:center;padding:80px 20px;color:#897b6b}
-.blogV3Empty>span{font:400 50px Georgia,serif;color:#bd9361}
-.blogV3Empty h3{margin:12px 0 5px;font:400 27px Georgia,serif;color:#30271f}
-.blogV3Empty p{margin:0;font-size:9px}
-.blogV3More{
-  margin:45px auto 0;
-  display:flex;align-items:center;justify-content:center;gap:11px;
-  min-width:230px;min-height:50px;padding:0 20px;
-  border:1px solid #2a2119;background:#2a2119;color:#f0dcc0;
-  font-size:8px;font-weight:900;letter-spacing:.15em;cursor:pointer;
-  transition:.35s;
-}
-.blogV3More:hover{transform:translateY(-3px);background:#a7773d;border-color:#a7773d;color:#fff}
-.blogV3Authors{
-  position:relative;overflow:hidden;
-  padding:110px clamp(22px,6vw,100px);
-  background:#17130f;color:#fff;
-}
-.blogV3Authors__ambient{
-  position:absolute;right:-3vw;top:-3vw;
-  color:rgba(255,255,255,.025);
-  font:500 clamp(110px,18vw,300px)/1 "Bodoni 72","Didot",Georgia,serif;
-  letter-spacing:-.08em;pointer-events:none;
-}
-.blogV3Authors__head{
-  position:relative;z-index:1;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
-  max-width:1500px;margin:0 auto 45px;
-}
-.blogV3Authors__head p{max-width:470px;margin:0 0 8px;color:rgba(255,255,255,.43);font-size:10px;line-height:1.75}
-.blogV3Authors__grid{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;max-width:1500px;margin:auto;
-}
-.blogV3Author{
-  position:relative;overflow:hidden;
-  display:grid;grid-template-columns:minmax(120px,.75fr) minmax(0,1.25fr);
-  min-height:420px;
-  border:1px solid rgba(255,255,255,.11);
-  background:rgba(255,255,255,.035);
-  transition:.55s cubic-bezier(.2,.8,.2,1);
-}
-.blogV3Author:hover{transform:translateY(-8px);border-color:rgba(198,150,88,.52);background:rgba(255,255,255,.055)}
-.blogV3Author__portrait{position:relative;overflow:hidden;background:#2a241e}
-.blogV3Author__portrait>img{width:100%;height:100%;object-fit:cover;filter:saturate(.65) contrast(1.03);transition:.7s}
-.blogV3Author:hover .blogV3Author__portrait>img{transform:scale(1.05);filter:saturate(.9)}
-.blogV3Author__portrait>span{height:100%;display:grid;place-items:center;font:400 80px Georgia,serif;color:#c99b5e}
-.blogV3Author__glass{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 45%,rgba(15,13,11,.55));
-}
-.blogV3Author__portrait>small{position:absolute;left:13px;bottom:13px;color:#fff;font-size:7px}
-.blogV3Author__copy{display:flex;flex-direction:column;padding:27px 22px}
-.blogV3Author__copy>span{color:#a98355;font-size:6px;font-weight:900;letter-spacing:.13em}
-.blogV3Author__copy h3{margin:13px 0 7px;font:400 31px/1 "Bodoni 72","Didot",Georgia,serif}
-.blogV3Author__role{margin:0!important;color:#c69a62!important;font-size:7.5px!important;line-height:1.55!important}
-.blogV3Author__copy>p{margin:18px 0 0;color:rgba(255,255,255,.45);font-size:8px;line-height:1.7}
-.blogV3Author__stats{
-  display:flex;align-items:center;gap:15px;margin-top:auto;padding-top:23px;
-}
-.blogV3Author__stats>span{display:flex;flex-direction:column}
-.blogV3Author__stats b{font:400 24px Georgia,serif;color:#d2a86e}
-.blogV3Author__stats small{margin-top:3px;color:rgba(255,255,255,.36);font-size:5.5px;letter-spacing:.12em}
-.blogV3Author__stats i{width:1px;height:34px;background:rgba(255,255,255,.12)}
-.blogV3Author__copy>strong{
-  display:flex;justify-content:space-between;gap:10px;
-  margin-top:22px;padding-top:13px;border-top:1px solid rgba(255,255,255,.10);
-  color:#fff;font-size:7px;letter-spacing:.12em;
-}
-.blogV3Author__copy>strong b{color:#c49860}
-.blogV3Authors__all{
-  position:relative;z-index:1;
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:1500px;margin:22px auto 0;padding:19px 0;
-  border-top:1px solid rgba(255,255,255,.13);
-  color:#caa06a!important;font-size:8px;font-weight:900;letter-spacing:.16em;
-}
-.blogV3Authors__all b{font-size:17px;font-weight:400}
-.blogV3Manifesto{
-  min-height:70svh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:80px 24px;
-  background:
-    radial-gradient(circle at 50% 45%,rgba(188,141,76,.13),transparent 33%),
-    #eee5d8;
-}
-.blogV3Manifesto>span{color:#9e7648;font-size:7px;font-weight:900;letter-spacing:.22em}
-.blogV3Manifesto h2{
-  max-width:1100px;margin:24px 0 32px;
-  font:400 clamp(43px,6.5vw,96px)/.97 "Bodoni 72","Didot","Iowan Old Style",Georgia,serif;
-  letter-spacing:-.05em;
-}
-.blogV3Manifesto h2 em{display:block;color:#a2743b;font-weight:400}
-.blogV3Manifesto a{font-size:8px;font-weight:900;letter-spacing:.15em;border-bottom:1px solid #9e7648;padding-bottom:7px}
-
-/* Authors V3 */
-.authorsV3{min-height:100vh;background:#f2ece2;color:#1b1611;overflow:hidden}
-.authorsV3Hero{
-  position:relative;overflow:hidden;min-height:72svh;
-  display:flex;align-items:flex-end;padding:90px clamp(22px,7vw,120px);
-  background:#17130f;color:#fff;
-}
-.authorsV3Hero__back{position:absolute;left:clamp(22px,7vw,120px);top:36px;color:#c69a61;font-size:8px;font-weight:900;letter-spacing:.13em}
-.authorsV3Hero__ghost{
-  position:absolute;right:-4%;top:0;color:rgba(255,255,255,.028);
-  font:400 clamp(110px,21vw,350px)/.8 "Bodoni 72","Didot",Georgia,serif;
-  letter-spacing:-.08em;
-}
-.authorsV3Hero>div{position:relative;z-index:1;max-width:1000px}
-.authorsV3Hero h1{
-  margin:18px 0 20px;
-  font:400 clamp(72px,10vw,160px)/.78 "Bodoni 72","Didot",Georgia,serif;
-  letter-spacing:-.07em;
-}
-.authorsV3Hero h1 em{display:block;margin-left:.3em;color:#c99a5e;font-weight:400}
-.authorsV3Hero p{max-width:650px;margin:0;color:rgba(255,255,255,.50);font-size:11px;line-height:1.8}
-.authorsV3Grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;
-  max-width:1500px;margin:auto;padding:80px clamp(22px,6vw,100px) 110px;
-}
-.authorsV3Card{
-  display:grid;grid-template-columns:minmax(210px,.8fr) minmax(0,1.2fr);
-  min-height:430px;background:#faf7f1;border:1px solid rgba(65,47,30,.10);
-  box-shadow:0 20px 60px rgba(45,34,23,.05);transition:.5s;
-}
-.authorsV3Card:hover{transform:translateY(-7px);box-shadow:0 35px 85px rgba(45,34,23,.13)}
-.authorsV3Card__photo{position:relative;overflow:hidden;background:#241e18}
-.authorsV3Card__photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.72);transition:.65s}
-.authorsV3Card:hover img{transform:scale(1.04);filter:saturate(.95)}
-.authorsV3Card__photo>span{height:100%;display:grid;place-items:center;color:#d0a365;font:400 80px Georgia,serif}
-.authorsV3Card__photo small{position:absolute;left:17px;bottom:17px;color:#fff;font-size:8px}
-.authorsV3Card__photo i{position:absolute;right:0;top:0;width:1px;height:100%;background:linear-gradient(transparent,#d3a565,transparent)}
-.authorsV3Card__body{display:flex;flex-direction:column;padding:33px}
-.authorsV3Card__body>span{color:#a47742;font-size:7px;font-weight:900;letter-spacing:.17em}
-.authorsV3Card h2{margin:15px 0 8px;font:400 39px/1 "Bodoni 72","Didot",Georgia,serif}
-.authorsV3Card__role{margin:0!important;color:#9a713f!important;font-size:8px!important;line-height:1.55!important}
-.authorsV3Card__body>p{margin:22px 0 0;color:#776b5e;font-size:9px;line-height:1.75}
-.authorsV3Card__foot{
-  display:flex;align-items:end;justify-content:space-between;gap:15px;
-  margin-top:auto;padding-top:25px;border-top:1px solid rgba(67,48,30,.10);
-}
-.authorsV3Card__foot>span{font-size:7px;color:#8c7c69}
-.authorsV3Card__foot b{font:400 23px Georgia,serif;color:#a6763c;margin-right:4px}
-.authorsV3Card__foot strong{font-size:7px;letter-spacing:.12em}
-.authorsV3Empty{grid-column:1/-1;padding:70px;text-align:center;color:#847565}
-
-/* Author Profile V3 */
-.authorV3{min-height:100vh;background:#f3ede4;color:#1b1612}
-.authorV3Hero{min-height:100svh;padding:34px clamp(22px,6vw,100px) 70px;background:#17130f;color:#fff}
-.authorV3Hero__top{
-  display:flex;justify-content:space-between;gap:20px;padding-bottom:22px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.43);font-size:7px;font-weight:900;letter-spacing:.14em;
-}
-.authorV3Hero__top a{color:#c7995d}
-.authorV3Hero__layout{
-  min-height:calc(100svh - 130px);
-  display:grid;grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr);
-  gap:clamp(45px,8vw,120px);align-items:center;max-width:1450px;margin:auto;
-}
-.authorV3Hero__portrait{position:relative;aspect-ratio:.78/1;max-height:72vh;background:#2b241e;box-shadow:0 35px 90px rgba(0,0,0,.28)}
-.authorV3Hero__portrait>img{width:100%;height:100%;object-fit:cover;filter:saturate(.74)}
-.authorV3Hero__portrait>span{height:100%;display:grid;place-items:center;font:400 130px Georgia,serif;color:#c79a61}
-.authorV3Hero__portraitFrame{position:absolute;inset:15px;border:1px solid rgba(220,183,130,.33);pointer-events:none}
-.authorV3Hero__portrait>small{
-  position:absolute;left:-25px;bottom:60px;transform:rotate(-90deg);
-  transform-origin:left bottom;color:rgba(255,255,255,.42);font-size:6px;letter-spacing:.16em;
-}
-.authorV3Hero__copy>span{color:#c49458;font-size:8px;font-weight:900;letter-spacing:.18em}
-.authorV3Hero__copy h1{
-  margin:18px 0 13px;
-  font:400 clamp(65px,8vw,132px)/.79 "Bodoni 72","Didot",Georgia,serif;
-  letter-spacing:-.07em;
-}
-.authorV3Hero__role{margin:0;color:#d1a66d;font-size:10px;line-height:1.65;max-width:700px}
-.authorV3Hero__lead{max-width:700px;margin:30px 0 0;color:rgba(255,255,255,.54);font:400 18px/1.65 "Iowan Old Style",Georgia,serif}
-.authorV3Hero__stats{display:flex;align-items:center;gap:27px;margin-top:45px}
-.authorV3Hero__stats article{display:flex;align-items:center;gap:13px}
-.authorV3Hero__stats b{font:400 41px Georgia,serif;color:#d0a56b}
-.authorV3Hero__stats small{color:rgba(255,255,255,.38);font-size:6.5px;line-height:1.45;letter-spacing:.11em}
-.authorV3Hero__stats>i{width:1px;height:45px;background:rgba(255,255,255,.13)}
-.authorV3Bio{
-  display:grid;grid-template-columns:180px minmax(0,900px);justify-content:center;gap:65px;
-  padding:110px clamp(22px,6vw,100px);
-}
-.authorV3Bio__label{display:flex;flex-direction:column;border-top:1px solid rgba(68,49,31,.16);padding-top:13px}
-.authorV3Bio__label span{font:400 34px Georgia,serif;color:#a6763d}
-.authorV3Bio__label small{margin-top:7px;color:#8e7f6f;font-size:7px;letter-spacing:.15em}
-.authorV3Bio>p{margin:0;font:400 clamp(24px,2.6vw,39px)/1.55 "Iowan Old Style","Palatino Linotype",Georgia,serif;color:#453a30}
-.authorV3Works{padding:90px clamp(22px,6vw,100px) 120px;background:#e9dfd1}
-.authorV3Works__head{max-width:1450px;margin:0 auto 35px}
-.authorV3Works__head h2{margin:13px 0 0;font:400 clamp(48px,6vw,82px)/.9 "Bodoni 72","Didot",Georgia,serif}
-.authorV3Works__head h2 em{color:#a8783e;font-weight:400}
-.authorV3Works__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1450px;margin:auto}
-.authorV3Work{background:#f8f4ed;padding:12px 12px 22px;border:1px solid rgba(66,47,29,.09);transition:.45s}
-.authorV3Work:hover{transform:translateY(-6px);box-shadow:0 25px 60px rgba(48,35,22,.12)}
-.authorV3Work>div{position:relative;overflow:hidden;aspect-ratio:1.35/1}
-.authorV3Work img{width:100%;height:100%;object-fit:cover;transition:.55s}
-.authorV3Work:hover img{transform:scale(1.04)}
-.authorV3Work>div>span{position:absolute;left:12px;bottom:11px;color:#fff;font-size:7px}
-.authorV3Work>small{display:block;margin-top:17px;color:#9a7447;font-size:6.5px;letter-spacing:.1em}
-.authorV3Work h3{margin:9px 0 20px;font:400 26px/1.1 "Bodoni 72","Didot",Georgia,serif}
-.authorV3Work strong{font-size:7px;letter-spacing:.12em}
-
-/* Article V3 — dramatic entrance, calm reading */
-.articleV3Hero{position:relative;overflow:hidden}
-.articleV3Hero__edition{
-  position:absolute;right:-20px;top:42%;z-index:0;
-  color:rgba(255,255,255,.035);
-  font:400 clamp(80px,13vw,210px)/1 "Bodoni 72","Didot",Georgia,serif;
-  transform:rotate(90deg);pointer-events:none;white-space:nowrap;
-}
-.articleCinePage .articleCineHero{
-  min-height:100svh!important;
-  background:#15110e!important;
-}
-.articleCinePage .articleCineHero__ambient:after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 72% 40%,rgba(188,139,75,.16),transparent 28%);
-}
-.articleCinePage .articleCineHero__copy h1{
-  font-family:"Bodoni 72","Didot","Iowan Old Style",Georgia,serif!important;
-  font-size:clamp(54px,6.7vw,108px)!important;
-  line-height:.92!important;
-  letter-spacing:-.055em!important;
-  font-weight:400!important;
-}
-.articleCinePage .articleCineHero__eyebrow{letter-spacing:.2em!important}
-.articleCinePage .articleCineHero__visual{perspective:1300px}
-.articleCinePage .articleCineHero__frame{
-  transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s!important;
-  box-shadow:0 45px 110px rgba(0,0,0,.34)!important;
-}
-.articleCinePage .articleCineHero__visual:hover .articleCineHero__frame{
-  transform:rotateY(-3deg) rotateX(2deg) translateY(-7px)!important;
-  box-shadow:35px 55px 120px rgba(0,0,0,.42)!important;
-}
-.articleCinePage .articleCineBody{
-  max-width:1380px!important;
-  padding-top:65px!important;
-}
-.articleCinePage .articleCineBody__article{
-  font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif!important;
-}
-.articleCinePage .articleCineParagraph p{
-  font-size:clamp(17px,1.35vw,20px)!important;
-  line-height:1.92!important;
-  color:#4d443b!important;
-}
-.articleCinePage .articleRichHeading h2{
-  margin-top:52px!important;
-  font-family:"Bodoni 72","Didot","Iowan Old Style",Georgia,serif!important;
-  font-size:clamp(34px,3.5vw,54px)!important;
-  line-height:1.02!important;
-  letter-spacing:-.035em!important;
-  font-weight:400!important;
-  color:#251e18!important;
-}
-.articleCinePage .articleCineQuote{
-  position:relative!important;overflow:hidden!important;
-  margin:55px 0!important;padding:45px!important;
-  background:#1d1712!important;color:#fff!important;border:0!important;
-  box-shadow:0 25px 70px rgba(47,35,23,.15)!important;
-}
-.articleCinePage .articleCineQuote:after{
-  content:"“";position:absolute;right:20px;bottom:-65px;
-  color:rgba(255,255,255,.045);font:400 220px Georgia,serif;
-}
-.articleCinePage .articleCineQuote p{
-  position:relative;z-index:1;
-  font-family:"Bodoni 72","Didot",Georgia,serif!important;
-  font-size:clamp(26px,3vw,42px)!important;line-height:1.22!important;
-}
-.articleCinePage .articleCineRail__card,
-.articleCinePage .articleCineRail__author{
-  border-radius:0!important;
-  border-color:rgba(90,65,38,.12)!important;
-  box-shadow:0 20px 55px rgba(52,38,24,.06)!important;
-}
-.articleCinePage .articleCineRail__author h3{
-  font-family:"Bodoni 72","Didot",Georgia,serif!important;
-  font-size:26px!important;font-weight:400!important;
-}
-.articleCinePage .articleCineEnd{
-  background:#17130f!important;color:#fff!important;
-  border-radius:0!important;
-}
-.articleCinePage .articleCineEnd h2,
-.articleCinePage .articleCineRelated__head h2{
-  font-family:"Bodoni 72","Didot",Georgia,serif!important;
-  font-weight:400!important;
-}
-.articleCinePage .articleCineRelated__card{
-  border-radius:0!important;
-  transition:transform .4s,box-shadow .4s!important;
-}
-.articleCinePage .articleCineRelated__card:hover{
-  transform:translateY(-7px)!important;
-  box-shadow:0 28px 65px rgba(43,32,21,.12)!important;
-}
-
-/* Mobile / tablet */
-@media(max-width:1100px){
-  .blogV3Hero__stage{grid-template-columns:1fr;align-content:center}
-  .blogV3Hero__metrics{display:grid;grid-template-columns:repeat(3,1fr);border-left:0;border-top:1px solid rgba(255,255,255,.14)}
-  .blogV3Hero__metrics article{grid-template-columns:25px 1fr;min-height:95px;padding:17px;border-right:1px solid rgba(255,255,255,.11)}
-  .blogV3Hero__metrics small{grid-column:2}
-  .blogV3Feature__stage{grid-template-columns:1fr}
-  .blogV3Dispatch{grid-template-columns:1fr}
-  .blogV3Authors__grid{grid-template-columns:1fr 1fr}
-  .blogV3Author{min-height:390px}
-  .authorsV3Grid{grid-template-columns:1fr}
-}
-@media(max-width:820px){
-  .blogV3Hero__topline{grid-template-columns:1fr auto}
-  .blogV3Hero__topline>span{display:none}
-  .blogV3Hero__stage{padding-top:55px}
-  .blogV3Hero__copy h1{font-size:clamp(68px,20vw,120px);line-height:.72}
-  .blogV3Hero__copy>p{margin-top:32px}
-  .blogV3Archive__head,.blogV3Authors__head{align-items:flex-start;flex-direction:column;gap:13px}
-  .blogV3Mosaic{grid-template-columns:1fr 1fr}
-  .blogV3Card,.blogV3Card.is-cinema,.blogV3Card.is-tall{grid-column:auto}
-  .blogV3Card.is-cinema .blogV3Card__visual,.blogV3Card__visual{aspect-ratio:1.25/1}
-  .blogV3Authors__grid{grid-template-columns:1fr}
-  .blogV3Author{grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr)}
-  .authorsV3Card{grid-template-columns:minmax(180px,.75fr) minmax(0,1.25fr)}
-  .authorV3Hero__layout{grid-template-columns:1fr;padding-top:55px}
-  .authorV3Hero__portrait{max-width:480px;max-height:none}
-  .authorV3Hero__copy{padding-bottom:40px}
-  .authorV3Bio{grid-template-columns:1fr;gap:25px}
-  .authorV3Works__grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:620px){
-  .blogV3Hero{min-height:100svh}
-  .blogV3Hero__topline{padding:20px}
-  .blogV3Hero__stage{padding:35px 20px 120px}
-  .blogV3Hero__copy h1{font-size:clamp(62px,22vw,105px);letter-spacing:-.065em}
-  .blogV3Hero__copy h1 strong{margin-left:.06em}
-  .blogV3Hero__copy>p{margin-left:0;font-size:11px;line-height:1.75}
-  .blogV3Hero__actions{margin-left:0}
-  .blogV3Hero__actions a{flex:1 1 150px;min-height:46px}
-  .blogV3Hero__metrics{grid-template-columns:repeat(3,1fr)}
-  .blogV3Hero__metrics article{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:12px}
-  .blogV3Hero__metrics b{font-size:28px}
-  .blogV3Hero__metrics span{font-size:6px}
-  .blogV3Hero__metrics small{font-size:5.5px}
-  .blogV3Feature{padding:65px 18px 75px}
-  .blogV3Feature__content h2{font-size:42px}
-  .blogV3Dispatch{padding:60px 18px}
-  .blogV3Dispatch__item{grid-template-columns:28px 65px minmax(0,1fr) 15px;gap:9px;min-height:100px}
-  .blogV3Dispatch__thumb{width:65px;height:65px}
-  .blogV3Dispatch__copy h3{font-size:17px}
-  .blogV3Archive{padding:70px 18px 85px}
-  .blogV3Archive__head h2,.blogV3Authors__head h2{font-size:49px}
-  .blogV3Mosaic{grid-template-columns:1fr}
-  .blogV3Card h3,.blogV3Card.is-cinema h3{font-size:27px}
-  .blogV3Authors{padding:75px 18px}
-  .blogV3Author{grid-template-columns:130px minmax(0,1fr);min-height:370px}
-  .blogV3Author__copy{padding:20px 15px}
-  .blogV3Author__copy h3{font-size:25px}
-  .blogV3Author__copy>p{font-size:7.5px}
-  .blogV3Manifesto{min-height:62svh}
-  .blogV3Manifesto h2{font-size:44px}
-  .authorsV3Hero{min-height:65svh;padding:85px 20px 55px}
-  .authorsV3Hero__back{left:20px;top:25px}
-  .authorsV3Hero h1{font-size:71px}
-  .authorsV3Grid{padding:50px 18px 75px}
-  .authorsV3Card{grid-template-columns:1fr;min-height:0}
-  .authorsV3Card__photo{aspect-ratio:1.1/1}
-  .authorsV3Card__body{padding:25px 20px}
-  .authorsV3Card h2{font-size:34px}
-  .authorV3Hero{padding:24px 18px 55px}
-  .authorV3Hero__top>span{display:none}
-  .authorV3Hero__layout{gap:38px}
-  .authorV3Hero__portrait{width:88%;margin:auto}
-  .authorV3Hero__copy h1{font-size:62px}
-  .authorV3Hero__lead{font-size:16px}
-  .authorV3Bio{padding:70px 20px}
-  .authorV3Bio>p{font-size:25px}
-  .authorV3Works{padding:65px 18px 80px}
-  .authorV3Works__grid{grid-template-columns:1fr}
-  .articleCinePage .articleCineHero__copy h1{font-size:44px!important}
-  .articleCinePage .articleCineBody{padding-top:24px!important}
-  .articleCinePage .articleCineParagraph p{font-size:16.5px!important;line-height:1.85!important}
-  .articleCinePage .articleRichHeading h2{font-size:35px!important}
-  .articleCinePage .articleCineQuote{padding:28px 23px!important}
-}
-/* BLOG V4.8 — gerçek tam ekran sinematik hero / hafif performans */
-.blogV3Hero{min-height:calc(100svh - 0px)!important;background:#17130f!important}
-.blogV3Hero__media{inset:0!important;transform:none!important;overflow:hidden!important}
-.blogV3Hero__media img{
-  width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 48%!important;
-  filter:saturate(.82) contrast(1.03) brightness(.72)!important;
-  transform:scale(1.035);animation:blogHeroCinema 16s ease-in-out infinite alternate;will-change:transform;
-}
-.blogV3Hero__wash{
-  background:linear-gradient(90deg,rgba(19,14,10,.84) 0%,rgba(19,14,10,.60) 34%,rgba(19,14,10,.18) 66%,rgba(19,14,10,.08) 100%),linear-gradient(180deg,rgba(10,8,6,.10),rgba(10,8,6,.42))!important;
-}
-.blogV3Hero__grain{opacity:.08!important}
-.blogV3Hero__stage{display:flex!important;align-items:center!important;width:100%!important;max-width:none!important;padding:70px clamp(24px,7vw,120px) 110px!important}
-.blogV3Hero__copy{max-width:790px!important}
-.blogV3Hero__copy h1{font-size:clamp(72px,9vw,158px)!important;line-height:.76!important;text-shadow:0 8px 38px rgba(0,0,0,.24)}
-.blogV3Hero__copy>p{max-width:610px!important;color:rgba(255,255,255,.78)!important;font-size:14px!important}
-.blogV3Hero__metrics{display:none!important}
-.blogV3Hero__edition{display:none!important}
-@keyframes blogHeroCinema{0%{transform:scale(1.035) translate3d(0,0,0)}100%{transform:scale(1.105) translate3d(-1.2%,-.7%,0)}}
-@media(max-width:820px){.blogV3Hero__media img{object-position:62% center!important}.blogV3Hero__wash{background:linear-gradient(90deg,rgba(18,13,9,.82),rgba(18,13,9,.32)),linear-gradient(180deg,transparent,rgba(10,8,6,.5))!important}.blogV3Hero__stage{padding:55px 20px 105px!important}.blogV3Hero__copy h1{font-size:clamp(64px,20vw,112px)!important}}
-@media(prefers-reduced-motion:reduce){.blogV3Hero__media img{animation:none!important;transform:scale(1.04)!important}}
-
-@media(prefers-reduced-motion:reduce){
-  .blogV3 *, .authorsV3 *, .authorV3 *{
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-    animation-duration:.01ms!important;
-  }
-}
-
-
-/* BLOG IMAGE UPLOAD V2 — explicit state feedback */
-.admin100Blog__uploadStatus{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:10px;
-  padding:10px 12px;
-  border:1px solid rgba(157,116,62,.18);
-  background:rgba(157,116,62,.05);
-  font-size:7px;
-}
-.admin100Blog__uploadStatus strong{
-  flex:0 0 auto;
-  color:#9d743e;
-  letter-spacing:.12em;
-}
-.admin100Blog__uploadStatus span{
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  color:#74695e;
-}
-.admin100Blog__uploadStatus.is-ok{
-  border-color:rgba(40,122,80,.22);
-  background:rgba(40,122,80,.06);
-}
-.admin100Blog__uploadStatus.is-ok strong{color:#287a50}
-.admin100Blog__uploadStatus.is-loading{
-  border-color:rgba(157,116,62,.28);
-  background:rgba(157,116,62,.08);
-}
-
-
-.admin100Blog__storageWarning{
-  margin-top:10px;
-  padding:12px 13px;
-  border:1px solid rgba(160,76,51,.25);
-  background:rgba(160,76,51,.07);
-  color:#7d4938;
-  font-size:8px;
-  line-height:1.65;
-}
-.admin100Blog__storageWarning b{
-  color:#9d5a43;
-  font-weight:900;
-}
-
-
-.admin100Blog__embeddedBadge{
-  margin-top:8px;
-  padding:9px 11px;
-  border:1px solid rgba(40,122,80,.18);
-  background:rgba(40,122,80,.055);
-  color:#287a50;
-  font-size:7px;
-  line-height:1.55;
-  font-weight:700;
 }
 
 `;
