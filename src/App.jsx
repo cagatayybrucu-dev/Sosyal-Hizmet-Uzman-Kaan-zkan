@@ -2828,7 +2828,7 @@ const BlogPage = ({ content = defaultBlogContent }) => {
       <section
         className="blog4Hero"
         style={{
-          "--blog4-bg": `url("${BLOG_PREMIUM_BG}")`,
+          "--blog4-cover": `url("${content?.heroImage || defaultBlogContent.heroImage}")`,
         }}
       >
         <div className="blog4Hero__veil" />
@@ -2878,19 +2878,21 @@ const BlogPage = ({ content = defaultBlogContent }) => {
             “İyi bir yaşam, doğru bilgiyle başlar.”
           </div>
 
-          <div className="blog4Hero__visualRail" aria-hidden="true">
-            <div className="blog4Hero__visualCard">
-              <span>PSİKOLOJİ</span>
-              <strong>İnsanı anlamaya açılan alan.</strong>
+          <div className="blog4Hero__visualStage" aria-hidden="true">
+            <div className="blog4Hero__visualFrame">
+              <img
+                src={content?.heroImage || defaultBlogContent.heroImage}
+                alt=""
+                decoding="async"
+              />
+              <span className="blog4Hero__visualGlow"/>
+              <div className="blog4Hero__visualStamp">
+                <small>KAAN ÖZKAN</small>
+                <strong>JOURNAL</strong>
+                <i>2026</i>
+              </div>
             </div>
-            <div className="blog4Hero__visualCard">
-              <span>İLİŞKİLER</span>
-              <strong>Bağ kurmanın daha bilinçli yolları.</strong>
-            </div>
-            <div className="blog4Hero__visualCard">
-              <span>AİLE</span>
-              <strong>Gündelik yaşamın görünmeyen dinamikleri.</strong>
-            </div>
+            <div className="blog4Hero__visualLine"/>
           </div>
         </div>
       </section>
@@ -3119,6 +3121,24 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
     .filter((post)=>post.status !== "draft" && String(post.authorSlug||"")===String(author.slug||""))
     .sort((a,b)=>Number(b.sortOrder||0)-Number(a.sortOrder||0));
 
+  const rawAuthorBio = String(author.bio || author.shortBio || "").trim();
+  const expertiseHeadingPattern = /Akademik\s+ve\s+Mesleki\s+Uzmanlık\s+Alanları\s*[:\-]?/i;
+  const expertiseMatch = rawAuthorBio.match(expertiseHeadingPattern);
+  const authorBiography = expertiseMatch
+    ? rawAuthorBio.slice(0, expertiseMatch.index).trim()
+    : rawAuthorBio;
+
+  const expertiseSource = expertiseMatch
+    ? rawAuthorBio.slice((expertiseMatch.index || 0) + expertiseMatch[0].length).trim()
+    : "";
+
+  const authorExpertise = expertiseSource
+    ? expertiseSource
+        .split(/\s*[•·▪◦]\s*|\n+/)
+        .map((item) => item.replace(/^[-–—]\s*/, "").trim())
+        .filter(Boolean)
+    : [];
+
   return (
     <main className="authorV3">
       <section className="authorV3Hero">
@@ -3163,13 +3183,34 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
           <span>01</span>
           <small>BİYOGRAFİ</small>
         </div>
-        <p>{author.bio || author.shortBio}</p>
+        <p>{authorBiography}</p>
       </section>
+
+      {authorExpertise.length > 0 && (
+        <section className="authorV3Expertise">
+          <div className="authorV3Expertise__head">
+            <span>02</span>
+            <div>
+              <small>UZMANLIK ALANLARI</small>
+              <h2>Akademik ve Mesleki <em>Uzmanlık</em></h2>
+            </div>
+          </div>
+
+          <div className="authorV3Expertise__grid">
+            {authorExpertise.map((item,index)=>(
+              <article className="authorV3Expertise__item" key={`${author.slug}-expertise-${index}`}>
+                <i>{String(index+1).padStart(2,"0")}</i>
+                <span>{item}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {authorPosts.length > 0 && (
         <section className="authorV3Works">
           <div className="authorV3Works__head">
-            <span>02 / SELECTED WORKS</span>
+            <span>{authorExpertise.length ? "03" : "02"} / SELECTED WORKS</span>
             <h2>Yazarın <em>Yazıları</em></h2>
           </div>
 
@@ -37667,6 +37708,283 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .blog4Content{
     background:linear-gradient(180deg,#efe4d8,#e7d7c4) !important;
   }
+}
+
+
+/* ==================================================
+   BLOG V4.3 — LIGHTER SOFT EDITORIAL / CLEAN HERO
+   ================================================== */
+.blog4{
+  background:
+    radial-gradient(circle at 18% 5%,rgba(196,157,111,.22),transparent 29%),
+    radial-gradient(circle at 86% 18%,rgba(176,139,101,.15),transparent 24%),
+    linear-gradient(180deg,#6f5b49 0%,#a58d77 30%,#e8ddd0 68%,#f3ece4 100%) !important;
+}
+.blog4Hero{
+  min-height:90svh !important;
+  background:
+    radial-gradient(circle at 76% 36%,rgba(232,208,178,.20),transparent 28%),
+    linear-gradient(120deg,#4f4034 0%,#74604f 48%,#9a826d 100%) !important;
+}
+.blog4Hero__veil{
+  background:
+    radial-gradient(circle at 77% 40%,rgba(255,232,202,.13),transparent 24%),
+    linear-gradient(90deg,rgba(48,38,31,.62) 0%,rgba(58,46,37,.42) 44%,rgba(76,60,48,.20) 70%,rgba(61,48,39,.25) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(73,57,45,.15) 62%,rgba(116,92,73,.48) 100%) !important;
+}
+.blog4Hero__grain{opacity:.07 !important}
+.blog4Hero__content{
+  width:min(690px,calc(100% - 48px)) !important;
+  margin-left:clamp(26px,6vw,118px) !important;
+  padding-bottom:92px !important;
+}
+.blog4Hero__title>span:first-child{
+  font-size:clamp(78px,7.5vw,142px) !important;
+}
+.blog4Hero__outline{
+  font-size:clamp(68px,7vw,132px) !important;
+}
+.blog4Hero__copy{
+  max-width:610px !important;
+  font-size:clamp(14px,1.05vw,17px) !important;
+  line-height:1.78 !important;
+}
+.blog4Hero__visualRail{display:none !important}
+.blog4Hero__visualStage{
+  position:absolute;
+  left:calc(100% + clamp(42px,5vw,88px));
+  top:50%;
+  transform:translateY(-46%);
+  width:clamp(310px,30vw,500px);
+  height:clamp(430px,58vh,650px);
+  z-index:2;
+}
+.blog4Hero__visualFrame{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:180px 180px 24px 24px;
+  border:1px solid rgba(255,245,230,.28);
+  background:#88715d;
+  box-shadow:0 40px 100px rgba(48,35,25,.28);
+}
+.blog4Hero__visualFrame:before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  z-index:2;
+  border:1px solid rgba(255,248,237,.22);
+  border-radius:168px 168px 18px 18px;
+  pointer-events:none;
+}
+.blog4Hero__visualFrame img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.72) sepia(.12) contrast(.92) brightness(.88);
+  transform:scale(1.02);
+}
+.blog4Hero__visualGlow{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(255,224,186,.10),transparent 45%,rgba(47,34,25,.44)),
+    radial-gradient(circle at 68% 18%,rgba(255,228,192,.18),transparent 25%);
+}
+.blog4Hero__visualStamp{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:26px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.35);
+  color:#fff7ed;
+}
+.blog4Hero__visualStamp small{
+  grid-column:1;
+  font-size:7px;
+  letter-spacing:.24em;
+  opacity:.75;
+}
+.blog4Hero__visualStamp strong{
+  grid-column:1;
+  margin-top:4px;
+  font:400 25px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:.08em;
+}
+.blog4Hero__visualStamp i{
+  grid-column:2;
+  grid-row:1/3;
+  font:italic 13px Georgia,"Times New Roman",serif;
+  opacity:.72;
+}
+.blog4Hero__visualLine{
+  position:absolute;
+  width:120px;
+  height:1px;
+  left:-72px;
+  top:20%;
+  background:linear-gradient(90deg,transparent,#d8b27b);
+}
+.blog4Content{
+  background:
+    radial-gradient(circle at 12% 14%,rgba(192,153,110,.11),transparent 23%),
+    radial-gradient(circle at 90% 74%,rgba(164,127,89,.08),transparent 25%),
+    linear-gradient(180deg,#eee3d7 0%,#f5eee7 46%,#eaded1 100%) !important;
+}
+.blog4Content:before{
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(244,235,226,.18)) !important;
+  backdrop-filter:none !important;
+}
+.blog4Card{
+  background:linear-gradient(180deg,rgba(255,253,249,.97),rgba(248,240,231,.98)) !important;
+}
+.blog4Toolbar{
+  background:rgba(255,252,248,.78) !important;
+}
+
+/* Author profile — biography and expertise are separate editorial sections */
+.authorV3{
+  background:linear-gradient(180deg,#f1e7dc 0%,#f7f1eb 52%,#eee2d5 100%) !important;
+}
+.authorV3Hero{
+  background:
+    radial-gradient(circle at 72% 18%,rgba(196,153,104,.18),transparent 26%),
+    linear-gradient(135deg,#6d5948,#927963) !important;
+}
+.authorV3Bio{
+  background:#f7f1eb !important;
+  border-bottom:1px solid rgba(91,67,47,.10);
+}
+.authorV3Bio>p{
+  color:#51453a !important;
+}
+.authorV3Expertise{
+  padding:74px clamp(22px,6vw,90px) 84px;
+  background:
+    radial-gradient(circle at 88% 20%,rgba(190,148,99,.12),transparent 25%),
+    linear-gradient(180deg,#eadfd3,#f4ece4);
+  border-bottom:1px solid rgba(91,67,47,.10);
+}
+.authorV3Expertise__head,
+.authorV3Expertise__grid{
+  width:min(1180px,100%);
+  margin-left:auto;
+  margin-right:auto;
+}
+.authorV3Expertise__head{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:32px;
+  align-items:start;
+  margin-bottom:34px;
+}
+.authorV3Expertise__head>span{
+  color:#b17c3e;
+  font:italic 34px/1 Georgia,"Times New Roman",serif;
+}
+.authorV3Expertise__head small{
+  display:block;
+  margin-bottom:8px;
+  color:#a1723d;
+  font-size:8px;
+  letter-spacing:.25em;
+  font-weight:800;
+}
+.authorV3Expertise__head h2{
+  margin:0;
+  color:#33271e;
+  font:400 clamp(34px,3.8vw,56px)/1.02 Georgia,"Times New Roman",serif;
+  letter-spacing:-.04em;
+}
+.authorV3Expertise__head h2 em{
+  color:#9f713c;
+  font-weight:400;
+}
+.authorV3Expertise__grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  padding-left:142px;
+}
+.authorV3Expertise__item{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  align-items:center;
+  gap:12px;
+  min-height:62px;
+  padding:13px 16px;
+  border:1px solid rgba(112,82,56,.11);
+  border-radius:14px;
+  background:rgba(255,252,248,.66);
+  box-shadow:0 12px 30px rgba(83,60,40,.05);
+}
+.authorV3Expertise__item i{
+  color:#b17c3e;
+  font:italic 11px Georgia,"Times New Roman",serif;
+}
+.authorV3Expertise__item span{
+  color:#4d4035;
+  font-size:13px;
+  line-height:1.48;
+}
+.authorV3Works{
+  background:#f7f1eb !important;
+}
+
+@media(max-width:1100px){
+  .blog4Hero__content{
+    width:min(620px,55vw) !important;
+    margin-left:36px !important;
+  }
+  .blog4Hero__visualStage{
+    left:calc(100% + 34px);
+    width:clamp(280px,34vw,390px);
+  }
+}
+@media(max-width:820px){
+  .blog4Hero{
+    min-height:auto !important;
+    padding-bottom:58px;
+  }
+  .blog4Hero__content{
+    width:calc(100% - 36px) !important;
+    margin:0 18px !important;
+    padding-bottom:0 !important;
+  }
+  .blog4Hero__visualStage{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    width:100%;
+    height:440px;
+    margin-top:36px;
+  }
+  .blog4Hero__visualFrame{
+    border-radius:120px 120px 22px 22px;
+  }
+  .blog4Hero__visualLine{display:none}
+  .authorV3Expertise__head{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .authorV3Expertise__grid{
+    grid-template-columns:1fr;
+    padding-left:0;
+  }
+}
+@media(max-width:520px){
+  .blog4Hero__visualStage{height:360px}
+  .blog4Hero__visualFrame{border-radius:90px 90px 18px 18px}
+  .authorV3Expertise{padding:56px 18px 64px}
+  .authorV3Expertise__item{min-height:58px}
 }
 
 `;
