@@ -2708,49 +2708,86 @@ function App() {
 
 
 
-const BlogPage = ({
-  posts = [],
-  authors = [],
-  onOpenPost,
-  onOpenAuthors,
-  onOpenAuthor,
-  onBackHome,
-}) => {
+
+const BlogPage = ({ content = defaultBlogContent }) => {
   const [blogSearch, setBlogSearch] = useState("");
   const [blogCategory, setBlogCategory] = useState("Tümü");
 
+  const authors = useMemo(
+    () =>
+      (Array.isArray(content?.authors) ? content.authors : [])
+        .filter((author) => author?.slug && author?.name),
+    [content]
+  );
+
   const publishedPosts = useMemo(
     () =>
-      [...posts]
+      [...(Array.isArray(content?.posts) ? content.posts : [])]
         .filter((post) => String(post?.status || "").toLowerCase() !== "draft")
-        .sort(
-          (a, b) =>
-            Number(b?.sortOrder || 0) - Number(a?.sortOrder || 0)
-        ),
-    [posts]
+        .sort((a, b) => {
+          const orderDiff =
+            Number(b?.sortOrder ?? 0) - Number(a?.sortOrder ?? 0);
+          if (orderDiff !== 0) return orderDiff;
+
+          const aTime = Number(
+            String(a?.id || "").match(/blog-(\d+)/)?.[1] || 0
+          );
+          const bTime = Number(
+            String(b?.id || "").match(/blog-(\d+)/)?.[1] || 0
+          );
+          return bTime - aTime;
+        }),
+    [content]
   );
 
   const categories = useMemo(() => {
-    const values = publishedPosts
+    const sourceCategories =
+      Array.isArray(content?.categories) && content.categories.length
+        ? content.categories
+        : blogCategories;
+
+    const normalized = sourceCategories
+      .map((item) =>
+        typeof item === "string"
+          ? item
+          : String(item?.name || item?.label || item?.title || "").trim()
+      )
+      .filter(Boolean);
+
+    const postCategories = publishedPosts
       .map((post) => String(post?.category || "").trim())
       .filter(Boolean);
-    return ["Tümü", ...Array.from(new Set(values))];
-  }, [publishedPosts]);
+
+    return [
+      "Tümü",
+      ...Array.from(
+        new Set(
+          [...normalized, ...postCategories].filter(
+            (item) =>
+              String(item).toLocaleLowerCase("tr-TR") !==
+              "tümü".toLocaleLowerCase("tr-TR")
+          )
+        )
+      ),
+    ];
+  }, [content, publishedPosts]);
 
   const filteredPosts = useMemo(() => {
     const q = blogSearch.trim().toLocaleLowerCase("tr-TR");
+
     return publishedPosts.filter((post) => {
       const categoryOk =
         blogCategory === "Tümü" ||
-        String(post?.category || "") === blogCategory;
+        String(post?.category || "")
+          .toLocaleLowerCase("tr-TR")
+          .includes(blogCategory.toLocaleLowerCase("tr-TR"));
 
       if (!categoryOk) return false;
       if (!q) return true;
 
       const author = authors.find(
         (item) =>
-          item?.slug === post?.authorSlug ||
-          item?.name === post?.authorName
+          String(item?.slug || "") === String(post?.authorSlug || "")
       );
 
       const haystack = [
@@ -2768,6 +2805,24 @@ const BlogPage = ({
     });
   }, [publishedPosts, blogCategory, blogSearch, authors]);
 
+  const openPost = (post) => {
+    if (!post?.slug) return;
+    window.location.hash = `#/blog/${post.slug}`;
+  };
+
+  const openAuthor = (author) => {
+    if (!author?.slug) return;
+    window.location.hash = `#/yazarlar/${author.slug}`;
+  };
+
+  const openAuthors = () => {
+    window.location.hash = "#/yazarlar";
+  };
+
+  const backHome = () => {
+    window.location.hash = "#/";
+  };
+
   return (
     <main className="blog4">
       <section
@@ -2780,7 +2835,7 @@ const BlogPage = ({
         <div className="blog4Hero__grain" />
 
         <header className="blog4Topbar">
-          <button type="button" className="blog4Back" onClick={onBackHome}>
+          <button type="button" className="blog4Back" onClick={backHome}>
             ← ANA SAYFA
           </button>
           <div className="blog4Journal">KAAN ÖZKAN / EDITORIAL JOURNAL</div>
@@ -2802,13 +2857,19 @@ const BlogPage = ({
           </p>
 
           <div className="blog4Hero__actions">
-            <button type="button" className="blog4Primary" onClick={() => {
-              document.getElementById("blog4-all-posts")?.scrollIntoView({ behavior: "smooth" });
-            }}>
+            <button
+              type="button"
+              className="blog4Primary"
+              onClick={() =>
+                document
+                  .getElementById("blog4-all-posts")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
               Tüm Yazıları Keşfet <span>↓</span>
             </button>
 
-            <button type="button" className="blog4Ghost" onClick={onOpenAuthors}>
+            <button type="button" className="blog4Ghost" onClick={openAuthors}>
               Yazarları Tanı <span>↗</span>
             </button>
           </div>
@@ -2862,20 +2923,28 @@ const BlogPage = ({
             {filteredPosts.map((post, index) => {
               const author = authors.find(
                 (item) =>
-                  item?.slug === post?.authorSlug ||
-                  item?.name === post?.authorName
+                  String(item?.slug || "") ===
+                  String(post?.authorSlug || "")
               );
 
-              const image = post?.image || post?.cover || post?.coverImage || "";
+              const image =
+                post?.image ||
+                post?.cover ||
+                post?.coverImage ||
+                content?.heroImage ||
+                defaultBlogContent.heroImage;
+
               return (
                 <article
                   key={post?.slug || post?.id || `${post?.title}-${index}`}
-                  className={`blog4Card ${index % 7 === 0 ? "blog4Card--wide" : ""}`}
+                  className={`blog4Card ${
+                    index % 7 === 0 ? "blog4Card--wide" : ""
+                  }`}
                 >
                   <button
                     type="button"
                     className="blog4Card__media"
-                    onClick={() => onOpenPost?.(post)}
+                    onClick={() => openPost(post)}
                     aria-label={post?.title || "Yazıyı aç"}
                   >
                     {image ? (
@@ -2890,7 +2959,9 @@ const BlogPage = ({
                     )}
                     <span className="blog4Card__shade" />
                     {post?.category && (
-                      <span className="blog4Card__category">{post.category}</span>
+                      <span className="blog4Card__category">
+                        {post.category}
+                      </span>
                     )}
                   </button>
 
@@ -2898,7 +2969,7 @@ const BlogPage = ({
                     <button
                       type="button"
                       className="blog4Card__title"
-                      onClick={() => onOpenPost?.(post)}
+                      onClick={() => openPost(post)}
                     >
                       {post?.title}
                     </button>
@@ -2917,7 +2988,7 @@ const BlogPage = ({
                         <button
                           type="button"
                           className="blog4Card__author"
-                          onClick={() => onOpenAuthor?.(author)}
+                          onClick={() => openAuthor(author)}
                         >
                           {author.name}
                         </button>
@@ -2931,7 +3002,7 @@ const BlogPage = ({
                     <button
                       type="button"
                       className="blog4Card__read"
-                      onClick={() => onOpenPost?.(post)}
+                      onClick={() => openPost(post)}
                     >
                       Yazıyı Oku <span>↗</span>
                     </button>
@@ -2944,6 +3015,60 @@ const BlogPage = ({
           <div className="blog4Empty">
             Bu aramayla eşleşen bir yazı bulunamadı.
           </div>
+        )}
+
+        {authors.length > 0 && (
+          <section className="blog4Authors">
+            <div className="blog4Authors__head">
+              <div>
+                <span>EDİTORYAL KADRO</span>
+                <h2>Yazarlar</h2>
+              </div>
+              <button type="button" onClick={openAuthors}>
+                Tüm Yazarları Gör ↗
+              </button>
+            </div>
+
+            <div className="blog4Authors__grid">
+              {authors.map((author) => {
+                const postCount = publishedPosts.filter(
+                  (post) =>
+                    String(post?.authorSlug || "") ===
+                    String(author?.slug || "")
+                ).length;
+
+                return (
+                  <button
+                    type="button"
+                    className="blog4AuthorCard"
+                    key={author.slug}
+                    onClick={() => openAuthor(author)}
+                  >
+                    <div className="blog4AuthorCard__portrait">
+                      {author?.image || author?.photo ? (
+                        <img
+                          src={author.image || author.photo}
+                          alt={author.name}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span>{String(author.name || "?").charAt(0)}</span>
+                      )}
+                    </div>
+                    <div className="blog4AuthorCard__copy">
+                      <strong>{author.name}</strong>
+                      {(author?.role || author?.title) && (
+                        <small>{author.role || author.title}</small>
+                      )}
+                      <em>{postCount} yazı</em>
+                    </div>
+                    <i>↗</i>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
         )}
 
         <div className="blog4FooterLine">
@@ -37112,6 +37237,122 @@ html.perfLite .articleCinePage .articleCineHero__author{
 @media (prefers-reduced-motion:reduce){
   .blog4Hero__grain{animation:none}
   .blog4Card,.blog4Card__media img,.blog4Primary,.blog4Ghost{transition:none}
+}
+
+
+.blog4Authors{
+  width:min(1500px,100%);
+  margin:88px auto 0;
+  padding-top:54px;
+  border-top:1px solid rgba(255,255,255,.09);
+}
+.blog4Authors__head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:24px;
+}
+.blog4Authors__head span{
+  color:#d6ae6e;
+  font-size:9px;
+  letter-spacing:.28em;
+  font-weight:800;
+}
+.blog4Authors__head h2{
+  margin:7px 0 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(40px,4.2vw,68px);
+  font-weight:500;
+  letter-spacing:-.045em;
+}
+.blog4Authors__head>button{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  min-height:44px;
+  padding:0 17px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:10px;
+}
+.blog4Authors__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.blog4AuthorCard{
+  display:grid;
+  grid-template-columns:74px 1fr auto;
+  align-items:center;
+  gap:15px;
+  min-height:104px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+  color:#fff;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.blog4AuthorCard:hover{
+  transform:translateY(-3px);
+  border-color:rgba(214,174,110,.3);
+  background:linear-gradient(135deg,rgba(214,174,110,.10),rgba(255,255,255,.025));
+}
+.blog4AuthorCard__portrait{
+  width:74px;
+  height:74px;
+  overflow:hidden;
+  border-radius:50%;
+  background:#21170f;
+  border:1px solid rgba(214,174,110,.25);
+  display:grid;
+  place-items:center;
+}
+.blog4AuthorCard__portrait img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.blog4AuthorCard__portrait span{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  color:#d6ae6e;
+}
+.blog4AuthorCard__copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.blog4AuthorCard__copy strong{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;
+  font-weight:500;
+}
+.blog4AuthorCard__copy small{
+  color:rgba(255,255,255,.54);
+  font-size:10px;
+  line-height:1.4;
+}
+.blog4AuthorCard__copy em{
+  color:#d6ae6e;
+  font-style:normal;
+  font-size:9px;
+}
+.blog4AuthorCard>i{
+  color:#d6ae6e;
+  font-size:16px;
+  font-style:normal;
+}
+@media(max-width:1000px){
+  .blog4Authors__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  .blog4Authors__head{align-items:flex-start;flex-direction:column}
+  .blog4Authors__grid{grid-template-columns:1fr}
 }
 
 `;
