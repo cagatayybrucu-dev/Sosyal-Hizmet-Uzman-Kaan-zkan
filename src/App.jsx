@@ -6455,8 +6455,29 @@ function AdminDemoPage() {
   const saveBlogPost = async (e) => {
     e.preventDefault();
 
-    if (!blogForm.title.trim() || !blogForm.excerpt.trim() || !blogForm.body.trim() || !blogForm.image.trim()) {
-      setBlogEditorMessage("Başlık, kısa açıklama, görsel ve yazı içeriği zorunludur.");
+    if (blogImageUploading) {
+      setBlogEditorMessage("Görsel hâlâ Supabase'e yükleniyor. Yükleme tamamlandıktan sonra tekrar yayınlayın.");
+      return;
+    }
+
+    if (!blogForm.title.trim()) {
+      setBlogEditorMessage("Yazı başlığı zorunludur.");
+      return;
+    }
+    if (!blogForm.excerpt.trim()) {
+      setBlogEditorMessage("Kısa açıklama zorunludur.");
+      return;
+    }
+    if (!blogForm.body.trim()) {
+      setBlogEditorMessage("Yazı içeriği zorunludur.");
+      return;
+    }
+    if (!blogForm.image.trim()) {
+      setBlogEditorMessage(
+        blogImageSelectedName
+          ? "Görsel bilgisayardan seçildi fakat Supabase'e yüklenemedi. Aşağıdaki Supabase Storage izin SQL'ini bir kez çalıştırmanız gerekiyor."
+          : "Blog kapak görseli zorunludur."
+      );
       return;
     }
 
@@ -7812,8 +7833,15 @@ function AdminDemoPage() {
                         <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik olarak 4 MB altına optimize edilir</small>
                       {blogImageSelectedName && (
                         <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
-                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "SEÇİLDİ"}</strong>
+                          <strong>{blogForm.image ? "YÜKLENDİ" : blogImageUploading ? "YÜKLENİYOR" : "SUPABASE İZNİ GEREKİYOR"}</strong>
                           <span>{blogImageSelectedName}</span>
+                        </div>
+                      )}
+                      {blogImageSelectedName && !blogForm.image && !blogImageUploading && (
+                        <div className="admin100Blog__storageWarning">
+                          Görsel seçildi ve önizleme hazır; ancak Supabase Storage yüklemeyi reddetti. Paketteki
+                          <b> SUPABASE-BLOG-GORSEL-YUKLEME-FIX.sql </b>
+                          dosyasını Supabase SQL Editor'de bir kez çalıştırın.
                         </div>
                       )}
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
@@ -7970,7 +7998,7 @@ function AdminDemoPage() {
                       <strong>{editingBlogId ? "Değişiklikleri kaydet" : "Yazıyı bloga ekle"}</strong>
                       <span>Kaydedildiğinde blog kartı ve detay sayfası otomatik oluşur.</span>
                     </div>
-                    <button type="submit" disabled={blogEditorSaving || blogImageUploading}>
+                    <button type="submit" disabled={blogEditorSaving}>
                       {blogEditorSaving ? "Kaydediliyor..." : editingBlogId ? "Yazıyı Güncelle" : "Yazıyı Yayınla"}
                       {!blogEditorSaving && <Icon name="arrow" size={15}/>}
                     </button>
@@ -36677,6 +36705,21 @@ html.perfLite .articleCinePage .articleCineHero__author{
 .admin100Blog__uploadStatus.is-loading{
   border-color:rgba(157,116,62,.28);
   background:rgba(157,116,62,.08);
+}
+
+
+.admin100Blog__storageWarning{
+  margin-top:10px;
+  padding:12px 13px;
+  border:1px solid rgba(160,76,51,.25);
+  background:rgba(160,76,51,.07);
+  color:#7d4938;
+  font-size:8px;
+  line-height:1.65;
+}
+.admin100Blog__storageWarning b{
+  color:#9d5a43;
+  font-weight:900;
 }
 
 `;
