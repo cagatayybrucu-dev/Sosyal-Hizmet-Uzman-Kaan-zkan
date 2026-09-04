@@ -1324,6 +1324,7 @@ function App() {
   });
   const [blogSlug, setBlogSlug] = useState(() => getSharedBlogSlug());
   const [blogContent, setBlogContent] = useState(() => mergeBilgeAkarArticle(defaultBlogContent));
+  const [blogContentLoaded, setBlogContentLoaded] = useState(false);
   const [authorSlug, setAuthorSlug] = useState(() => {
     const hash = window.location.hash;
     return hash.startsWith("#/yazarlar/") ? hash.replace("#/yazarlar/", "") : "";
@@ -1690,28 +1691,36 @@ function App() {
     let active = true;
 
     const loadBlogContent = async () => {
-      const { data, error } = await supabase
-        .from("site_content")
-        .select("content")
-        .eq("id", "blog")
-        .maybeSingle();
+      try {
+        const { data, error } = await supabase
+          .from("site_content")
+          .select("content")
+          .eq("id", "blog")
+          .maybeSingle();
 
-      if (!active) return;
-      if (error) {
-        console.error("Blog içeriği yüklenemedi:", error);
-        return;
-      }
+        if (!active) return;
 
-      if (data?.content) {
-        setBlogContent((current) =>
-          mergeBilgeAkarArticle({
-            ...current,
-            ...data.content,
-            posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
-            categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
-            authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
-          })
-        );
+        if (error) {
+          console.error("Blog içeriği yüklenemedi:", error);
+          setBlogContentLoaded(true);
+          return;
+        }
+
+        if (data?.content) {
+          setBlogContent((current) =>
+            mergeBilgeAkarArticle({
+              ...current,
+              ...data.content,
+              posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
+              categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
+              authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
+            })
+          );
+        }
+      } catch (error) {
+        if (active) console.error("Blog içeriği yüklenirken beklenmeyen hata:", error);
+      } finally {
+        if (active) setBlogContentLoaded(true);
       }
     };
 
@@ -1986,7 +1995,7 @@ function App() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
+  }, [page, blogSlug, authorSlug, serviceDetailSlug, blogContent.posts?.length]);
 
   const handleHomeHeroPointer = (event) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -2234,7 +2243,7 @@ function App() {
         ) : page === "content" ? (
           <ContentDetailPage />
         ) : page === "blog" ? (
-          blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} /> : <BlogPage content={blogContent} />
+          blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} contentReady={blogContentLoaded} /> : <BlogPage content={blogContent} />
         ) : page === "authors" ? (
           authorSlug ? <AuthorProfilePage slug={authorSlug} content={blogContent} /> : <AuthorsPage content={blogContent} />
         ) : page === "contact" ? (
@@ -3206,9 +3215,96 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
   );
 }
 
-function BlogArticlePage({ slug, content = defaultBlogContent }) {
+function ReliableBlogPostImage({ src, alt = "", className = "", eager = false }) {
+  const fallback = defaultBlogContent.heroImage || servicesHeroRoom;
+  const normalizedSrc = String(src || "").trim();
+  const [resolvedSrc, setResolvedSrc] = useState(() => normalizedSrc || fallback);
+  const [failedOnce, setFailedOnce] = useState(false);
+  const blobUrlRef = useRef("");
+
+  useEffect(() => {
+    if (blobUrlRef.current) {
+      try { URL.revokeObjectURL(blobUrlRef.current); } catch {}
+      blobUrlRef.current = "";
+    }
+    setFailedOnce(false);
+    setResolvedSrc(normalizedSrc || fallback);
+
+    return () => {
+      if (blobUrlRef.current) {
+        try { URL.revokeObjectURL(blobUrlRef.current); } catch {}
+        blobUrlRef.current = "";
+      }
+    };
+  }, [normalizedSrc, fallback]);
+
+  const tryBlobFallback = () => {
+    if (failedOnce || !/^data:image\//i.test(normalizedSrc)) {
+      setResolvedSrc(fallback);
+      return;
+    }
+
+    setFailedOnce(true);
+
+    try {
+      const comma = normalizedSrc.indexOf(",");
+      if (comma < 0) throw new Error("Geçersiz data görseli");
+
+      const header = normalizedSrc.slice(0, comma);
+      const payload = normalizedSrc.slice(comma + 1);
+      const mime = header.match(/^data:([^;,]+)/i)?.[1] || "image/jpeg";
+      const isBase64 = /;base64/i.test(header);
+      const binary = isBase64 ? atob(payload) : decodeURIComponent(payload);
+
+      // iOS WebView'da tek seferde çok büyük Uint8Array oluşturmak yerine
+      // küçük parçalarla Blob üretmek daha kararlı çalışıyor.
+      const chunkSize = 1024 * 64;
+      const chunks = [];
+      for (let offset = 0; offset < binary.length; offset += chunkSize) {
+        const part = binary.slice(offset, offset + chunkSize);
+        const bytes = new Uint8Array(part.length);
+        for (let i = 0; i < part.length; i += 1) {
+          bytes[i] = part.charCodeAt(i);
+        }
+        chunks.push(bytes);
+      }
+
+      const objectUrl = URL.createObjectURL(new Blob(chunks, { type: mime }));
+      blobUrlRef.current = objectUrl;
+      setResolvedSrc(objectUrl);
+    } catch (error) {
+      console.warn("Blog görseli alternatif biçimde açılamadı:", error);
+      setResolvedSrc(fallback);
+    }
+  };
+
+  return (
+    <img
+      className={className}
+      src={resolvedSrc || fallback}
+      alt={alt}
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : "auto"}
+      decoding={eager ? "sync" : "async"}
+      onError={tryBlobFallback}
+    />
+  );
+}
+
+function BlogArticlePage({ slug, content = defaultBlogContent, contentReady = true }) {
   const posts=(Array.isArray(content.posts)?content.posts:[]).filter(post=>post.status!=="draft");
   const post=posts.find(item=>item.slug===slug);
+
+  if(!post && !contentReady) {
+    return (
+      <main className="blog99Loading" aria-live="polite" aria-busy="true">
+        <img src={kaanOzkanLogo2026} alt=""/>
+        <span>BLOG</span>
+        <div className="blog99Loading__line"/>
+        <p>Yazı yükleniyor...</p>
+      </main>
+    );
+  }
 
   if(!post) {
     return (
@@ -3269,9 +3365,9 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
     <main className="articleCinePage">
       <div className="articleCineProgress" aria-hidden="true"/>
 
-      <section className="articleCineHero cin3d articleV3Hero">
+      <section className="articleCineHero cin3d cin3d--visible articleV3Hero">
         <div className="articleCineHero__ambient" aria-hidden="true">
-          <img src={post.image} alt="" />
+          <ReliableBlogPostImage src={post.image} alt="" eager />
           <span/>
         </div>
 
@@ -3315,7 +3411,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
           <div className="articleCineHero__visual">
             <div className="articleCineHero__frame">
-              <img src={post.image} alt={post.title}/>
+              <ReliableBlogPostImage src={post.image} alt={post.title} eager />
               <div className="articleCineHero__frameInfo">
                 <span>{post.category}</span>
                 <small>{post.date} · {post.readTime}</small>
@@ -36712,6 +36808,140 @@ html.perfLite .articleCinePage .articleCineHero__author{
 @media(max-width:1050px){.blogV3Mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:700px){.blogV3Mosaic{grid-template-columns:1fr!important;gap:18px!important}.blogV3Hero__media>img{object-position:58% center!important}}
 @media(prefers-reduced-motion:reduce){.blogV3Hero__media>img{animation:none!important;transform:none!important}}
+
+
+/* =========================================================
+   MOBILE BLOG ARTICLE IMAGE RELIABILITY FIX
+   WhatsApp / iOS WebView: kapak görselini görünür ve ölçülü tut.
+   ========================================================= */
+@media(max-width:700px){
+  .articleCinePage .articleCineHero__visual{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  .articleCinePage .articleCineHero__frame{
+    display:block!important;
+    width:100%!important;
+    min-height:240px!important;
+    overflow:hidden!important;
+    background:#100e0b!important;
+  }
+  .articleCinePage .articleCineHero__frame>img{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:240px!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#100e0b!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .articleCinePage .articleCineHero__ambient>img{
+    visibility:visible!important;
+    opacity:.28!important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE SHARE ROUTE + ARTICLE IMAGE FINAL STABILITY FIX
+   - Supabase blog verisi gelmeden "bulunamadı" göstermez.
+   - iOS/WhatsApp WebView'da kapak görseli görünür kalır.
+   ========================================================= */
+.blog99Loading{
+  min-height:calc(100svh - 90px);
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:14px;
+  padding:90px 24px;
+  background:#f7f3eb;
+  color:#2b241b;
+  text-align:center;
+}
+.blog99Loading>img{
+  width:92px;
+  height:auto;
+  object-fit:contain;
+}
+.blog99Loading>span{
+  color:#9d762f;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.24em;
+}
+.blog99Loading>p{
+  margin:0;
+  color:#766e63;
+  font-size:12px;
+}
+.blog99Loading__line{
+  width:120px;
+  height:2px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(151,112,44,.14);
+  position:relative;
+}
+.blog99Loading__line::after{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:45%;
+  border-radius:inherit;
+  background:#a57b34;
+  animation:blog99LoadingMove 1.05s ease-in-out infinite alternate;
+}
+@keyframes blog99LoadingMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(122%)}
+}
+
+@media(max-width:700px){
+  .articleCinePage .articleCineHero__visual{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .articleCinePage .articleCineHero__frame{
+    display:block!important;
+    min-height:0!important;
+    height:auto!important;
+    background:#100e0b!important;
+  }
+
+  .articleCinePage .articleCineHero__frame>img{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .articleCinePage .articleCineHero__ambient>img{
+    display:block!important;
+    visibility:visible!important;
+  }
+}
 
 `;
 
