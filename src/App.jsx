@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import heroSlide1 from "./assets/hero-slide-1.jpg";
 import heroSlide2 from "./assets/hero-slide-2.jpg";
