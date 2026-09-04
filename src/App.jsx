@@ -3124,19 +3124,10 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
   const rawAuthorBio = String(author.bio || author.shortBio || "").trim();
   const expertiseHeadingPattern = /Akademik\s+ve\s+Mesleki\s+Uzmanlık\s+Alanları\s*[:\-]?/i;
   const expertiseMatch = rawAuthorBio.match(expertiseHeadingPattern);
-  const authorBiography = expertiseMatch
-    ? rawAuthorBio.slice(0, expertiseMatch.index).trim()
-    : rawAuthorBio;
-
-  const expertiseSource = expertiseMatch
-    ? rawAuthorBio.slice((expertiseMatch.index || 0) + expertiseMatch[0].length).trim()
-    : "";
-
+  const authorBiography = expertiseMatch ? rawAuthorBio.slice(0, expertiseMatch.index).trim() : rawAuthorBio;
+  const expertiseSource = expertiseMatch ? rawAuthorBio.slice((expertiseMatch.index || 0) + expertiseMatch[0].length).trim() : "";
   const authorExpertise = expertiseSource
-    ? expertiseSource
-        .split(/\s*[•·▪◦]\s*|\n+/)
-        .map((item) => item.replace(/^[-–—]\s*/, "").trim())
-        .filter(Boolean)
+    ? expertiseSource.split(/\s*[•·▪◦]\s*|\n+/).map((item)=>item.replace(/^[-–—]\s*/, "").trim()).filter(Boolean)
     : [];
 
   return (
@@ -3183,34 +3174,25 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
           <span>01</span>
           <small>BİYOGRAFİ</small>
         </div>
-        <p>{authorBiography}</p>
-      </section>
-
-      {authorExpertise.length > 0 && (
-        <section className="authorV3Expertise">
-          <div className="authorV3Expertise__head">
-            <span>02</span>
-            <div>
-              <small>UZMANLIK ALANLARI</small>
-              <h2>Akademik ve Mesleki <em>Uzmanlık</em></h2>
+        <div className="authorV3Bio__content">
+          <p>{authorBiography}</p>
+          {authorExpertise.length > 0 && (
+            <div className="authorV3Bio__expertise">
+              <h3>Akademik ve Mesleki Uzmanlık Alanları</h3>
+              <ul>
+                {authorExpertise.map((item,index)=>(
+                  <li key={`${author.slug}-expertise-${index}`}>{item}</li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          <div className="authorV3Expertise__grid">
-            {authorExpertise.map((item,index)=>(
-              <article className="authorV3Expertise__item" key={`${author.slug}-expertise-${index}`}>
-                <i>{String(index+1).padStart(2,"0")}</i>
-                <span>{item}</span>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
 
       {authorPosts.length > 0 && (
         <section className="authorV3Works">
           <div className="authorV3Works__head">
-            <span>{authorExpertise.length ? "03" : "02"} / SELECTED WORKS</span>
+            <span>02 / SELECTED WORKS</span>
             <h2>Yazarın <em>Yazıları</em></h2>
           </div>
 
@@ -37985,6 +37967,210 @@ html.perfLite .articleCinePage .articleCineHero__author{
   .blog4Hero__visualFrame{border-radius:90px 90px 18px 18px}
   .authorV3Expertise{padding:56px 18px 64px}
   .authorV3Expertise__item{min-height:58px}
+}
+
+
+/* ==================================================
+   BLOG V4.4 — WIDE CINEMATIC HERO + OLD AUTHOR PROFILE
+   ================================================== */
+
+/* Yazar profili: V4.2 davranışına geri döndü.
+   Uzmanlıklar tekrar biyografi metninin doğal akışında görünür. */
+.authorV3Expertise{display:none !important}
+
+/* Blog hero: sağdaki küçük/dar görsel yerine geniş sinematik görsel */
+.blog4Hero{
+  min-height:94svh !important;
+}
+.blog4Hero__content{
+  width:min(640px,43vw) !important;
+  margin-left:clamp(26px,5vw,96px) !important;
+  padding-top:86px !important;
+  padding-bottom:92px !important;
+}
+.blog4Hero__visualStage{
+  position:absolute !important;
+  left:auto !important;
+  right:clamp(28px,4vw,72px) !important;
+  top:50% !important;
+  transform:translateY(-45%) !important;
+  width:clamp(520px,46vw,880px) !important;
+  height:clamp(480px,65vh,720px) !important;
+  margin:0 !important;
+}
+.blog4Hero__visualFrame{
+  width:100% !important;
+  height:100% !important;
+  border-radius:34px !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,246,234,.34) !important;
+  box-shadow:
+    0 42px 120px rgba(45,31,21,.25),
+    0 0 0 1px rgba(255,255,255,.05) inset !important;
+  background:#8f7965 !important;
+}
+.blog4Hero__visualFrame:before{
+  inset:14px !important;
+  border-radius:24px !important;
+  border-color:rgba(255,248,238,.25) !important;
+}
+.blog4Hero__visualFrame img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  filter:saturate(.86) sepia(.05) contrast(.96) brightness(.95) !important;
+  transform:scale(1.01) !important;
+}
+.blog4Hero__visualGlow{
+  background:
+    linear-gradient(180deg,rgba(255,232,201,.08),transparent 48%,rgba(48,34,24,.28)),
+    linear-gradient(90deg,rgba(62,45,32,.10),transparent 28%) !important;
+}
+.blog4Hero__visualStamp{
+  left:30px !important;
+  right:30px !important;
+  bottom:27px !important;
+}
+.blog4Hero__visualLine{
+  left:-88px !important;
+  width:145px !important;
+  top:17% !important;
+}
+.blog4Hero__title>span:first-child{
+  font-size:clamp(76px,7vw,126px) !important;
+}
+.blog4Hero__outline{
+  font-size:clamp(66px,6.4vw,116px) !important;
+}
+.blog4Hero__copy{
+  max-width:580px !important;
+}
+
+/* Sayfayı biraz daha aydınlat */
+.blog4{
+  background:
+    radial-gradient(circle at 17% 4%,rgba(215,181,141,.23),transparent 30%),
+    radial-gradient(circle at 88% 22%,rgba(196,160,121,.17),transparent 25%),
+    linear-gradient(180deg,#7a6654 0%,#a9927d 30%,#eadfd3 66%,#f6f0e9 100%) !important;
+}
+.blog4Hero{
+  background:
+    radial-gradient(circle at 78% 38%,rgba(241,216,184,.22),transparent 29%),
+    linear-gradient(120deg,#5d4c3e 0%,#806b59 49%,#a28b76 100%) !important;
+}
+.blog4Hero__veil{
+  background:
+    linear-gradient(90deg,rgba(53,42,34,.58) 0%,rgba(62,49,39,.35) 42%,rgba(91,73,59,.08) 69%,rgba(65,51,41,.18) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(90,70,55,.12) 62%,rgba(139,111,88,.36) 100%) !important;
+}
+.blog4Content{
+  background:
+    radial-gradient(circle at 12% 14%,rgba(200,166,127,.12),transparent 23%),
+    radial-gradient(circle at 90% 74%,rgba(179,143,105,.08),transparent 25%),
+    linear-gradient(180deg,#f1e7dc 0%,#f8f2ec 47%,#eee3d8 100%) !important;
+}
+
+@media(max-width:1200px){
+  .blog4Hero__content{
+    width:min(560px,45vw) !important;
+    margin-left:30px !important;
+  }
+  .blog4Hero__visualStage{
+    right:28px !important;
+    width:46vw !important;
+    height:58vh !important;
+  }
+}
+@media(max-width:860px){
+  .blog4Hero{
+    min-height:auto !important;
+    padding-bottom:60px !important;
+  }
+  .blog4Hero__content{
+    width:calc(100% - 36px) !important;
+    margin:0 18px !important;
+    padding-top:108px !important;
+    padding-bottom:0 !important;
+  }
+  .blog4Hero__visualStage{
+    position:relative !important;
+    right:auto !important;
+    top:auto !important;
+    transform:none !important;
+    width:100% !important;
+    height:clamp(360px,62vw,520px) !important;
+    margin-top:38px !important;
+  }
+  .blog4Hero__visualFrame{
+    border-radius:24px !important;
+  }
+  .blog4Hero__visualFrame:before{
+    border-radius:16px !important;
+  }
+  .blog4Hero__visualLine{display:none !important}
+}
+
+
+/* AUTHOR PROFILE V4.5 — cleaner, smaller, neutral */
+.authorV3{background:#f5efe8!important;color:#352b23!important}
+.authorV3Hero{
+  background:linear-gradient(135deg,#8f7866 0%,#b59e89 54%,#d2c0ae 100%)!important;
+  color:#fffaf5!important
+}
+.authorV3Hero__layout{
+  max-width:1040px!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  gap:46px!important;
+  align-items:center!important
+}
+.authorV3Hero__portrait{
+  width:210px!important;max-width:210px!important;height:270px!important;max-height:270px!important;
+  border-radius:18px!important;overflow:hidden!important;justify-self:start!important;
+  box-shadow:0 18px 40px rgba(72,50,33,.15)!important;
+  border:1px solid rgba(255,255,255,.25)!important;background:#cbb8a6!important
+}
+.authorV3Hero__portrait img{
+  width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important;
+  filter:saturate(.9) contrast(.98) brightness(1.02)!important
+}
+.authorV3Hero__copy h1{font-size:clamp(44px,4.8vw,70px)!important;line-height:.98!important;color:#fffaf5!important}
+.authorV3Hero__role,.authorV3Hero__lead{color:rgba(255,250,245,.82)!important}
+.authorV3Bio{
+  max-width:1040px!important;margin:0 auto!important;padding:64px 28px 72px!important;
+  display:grid!important;grid-template-columns:110px minmax(0,1fr)!important;gap:32px!important;
+  background:transparent!important;border-bottom:1px solid rgba(103,78,58,.10)!important
+}
+.authorV3Bio__content{max-width:760px!important}
+.authorV3Bio__content>p{
+  margin:0!important;color:#4f4237!important;
+  font:400 16.5px/1.88 "Iowan Old Style","Palatino Linotype",Georgia,serif!important
+}
+.authorV3Bio__expertise{
+  margin-top:26px!important;padding-top:20px!important;
+  border-top:1px solid rgba(115,86,62,.13)!important
+}
+.authorV3Bio__expertise h3{
+  margin:0 0 12px!important;color:#6e4c2c!important;
+  font:500 20px/1.2 Georgia,"Times New Roman",serif!important
+}
+.authorV3Bio__expertise ul{
+  margin:0!important;padding-left:20px!important;display:grid!important;gap:7px!important
+}
+.authorV3Bio__expertise li{
+  color:#5a4b3e!important;font-size:14px!important;line-height:1.58!important;padding-left:2px!important
+}
+.authorV3Bio__expertise li::marker{color:#b17f45!important}
+.authorV3Expertise{display:none!important}
+.authorV3Works{background:#f8f3ed!important}
+@media(max-width:820px){
+  .authorV3Hero__layout{grid-template-columns:1fr!important;gap:26px!important}
+  .authorV3Hero__portrait{width:180px!important;max-width:180px!important;height:230px!important;max-height:230px!important;justify-self:center!important}
+  .authorV3Bio{grid-template-columns:1fr!important;gap:16px!important;padding:52px 20px 60px!important}
+}
+@media(max-width:520px){
+  .authorV3Hero__portrait{width:160px!important;max-width:160px!important;height:205px!important;max-height:205px!important}
+  .authorV3Bio__content>p{font-size:15.5px!important;line-height:1.82!important}
 }
 
 `;
