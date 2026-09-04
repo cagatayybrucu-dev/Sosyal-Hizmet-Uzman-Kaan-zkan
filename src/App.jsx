@@ -2877,6 +2877,21 @@ const BlogPage = ({ content = defaultBlogContent }) => {
           <div className="blog4Hero__quote">
             “İyi bir yaşam, doğru bilgiyle başlar.”
           </div>
+
+          <div className="blog4Hero__visualRail" aria-hidden="true">
+            <div className="blog4Hero__visualCard">
+              <span>PSİKOLOJİ</span>
+              <strong>İnsanı anlamaya açılan alan.</strong>
+            </div>
+            <div className="blog4Hero__visualCard">
+              <span>İLİŞKİLER</span>
+              <strong>Bağ kurmanın daha bilinçli yolları.</strong>
+            </div>
+            <div className="blog4Hero__visualCard">
+              <span>AİLE</span>
+              <strong>Gündelik yaşamın görünmeyen dinamikleri.</strong>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2987,10 +3002,17 @@ const BlogPage = ({ content = defaultBlogContent }) => {
                       {author ? (
                         <button
                           type="button"
-                          className="blog4Card__author"
+                          className="blog4Card__author blog4Card__authorWithAvatar"
                           onClick={() => openAuthor(author)}
                         >
-                          {author.name}
+                          <span className="blog4Card__authorAvatar">
+                            {author?.image || author?.photo ? (
+                              <img src={author.image || author.photo} alt="" loading="lazy" decoding="async" />
+                            ) : (
+                              <span>{String(author?.name || "?").charAt(0)}</span>
+                            )}
+                          </span>
+                          <span>{author.name}</span>
                         </button>
                       ) : post?.authorName ? (
                         <span className="blog4Card__authorText">
@@ -3017,59 +3039,6 @@ const BlogPage = ({ content = defaultBlogContent }) => {
           </div>
         )}
 
-        {authors.length > 0 && (
-          <section className="blog4Authors">
-            <div className="blog4Authors__head">
-              <div>
-                <span>EDİTORYAL KADRO</span>
-                <h2>Yazarlar</h2>
-              </div>
-              <button type="button" onClick={openAuthors}>
-                Tüm Yazarları Gör ↗
-              </button>
-            </div>
-
-            <div className="blog4Authors__grid">
-              {authors.map((author) => {
-                const postCount = publishedPosts.filter(
-                  (post) =>
-                    String(post?.authorSlug || "") ===
-                    String(author?.slug || "")
-                ).length;
-
-                return (
-                  <button
-                    type="button"
-                    className="blog4AuthorCard"
-                    key={author.slug}
-                    onClick={() => openAuthor(author)}
-                  >
-                    <div className="blog4AuthorCard__portrait">
-                      {author?.image || author?.photo ? (
-                        <img
-                          src={author.image || author.photo}
-                          alt={author.name}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <span>{String(author.name || "?").charAt(0)}</span>
-                      )}
-                    </div>
-                    <div className="blog4AuthorCard__copy">
-                      <strong>{author.name}</strong>
-                      {(author?.role || author?.title) && (
-                        <small>{author.role || author.title}</small>
-                      )}
-                      <em>{postCount} yazı</em>
-                    </div>
-                    <i>↗</i>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-        )}
 
         <div className="blog4FooterLine">
           <span />
@@ -3344,7 +3313,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
         <div className="articleCineHero__scroll" aria-hidden="true">
           <span/>
-          <small>OKUMAYA BAŞLA</small>
+          <small></small>
         </div>
       </section>
 
@@ -37353,6 +37322,351 @@ html.perfLite .articleCinePage .articleCineHero__author{
 @media(max-width:680px){
   .blog4Authors__head{align-items:flex-start;flex-direction:column}
   .blog4Authors__grid{grid-template-columns:1fr}
+}
+
+
+/* ==========================================
+   AUTHOR PROFILE — PREMIUM READABILITY FIX
+   ========================================== */
+.authorV3{
+  --authorReadableMax:1180px;
+}
+.authorV3Hero{
+  min-height:auto !important;
+  padding:34px clamp(22px,6vw,90px) 72px !important;
+}
+.authorV3Hero__layout{
+  min-height:auto !important;
+  max-width:var(--authorReadableMax) !important;
+  grid-template-columns:minmax(280px,.7fr) minmax(0,1.3fr) !important;
+  gap:clamp(38px,6vw,78px) !important;
+  padding-top:58px !important;
+}
+.authorV3Hero__portrait{
+  max-height:560px !important;
+  max-width:390px !important;
+  width:100% !important;
+  justify-self:center !important;
+}
+.authorV3Hero__copy h1{
+  margin:14px 0 12px !important;
+  font:400 clamp(48px,5.6vw,82px)/.92 "Bodoni 72","Didot",Georgia,serif !important;
+  letter-spacing:-.055em !important;
+}
+.authorV3Hero__role{
+  font-size:12px !important;
+  line-height:1.6 !important;
+  max-width:650px !important;
+}
+.authorV3Hero__lead{
+  max-width:690px !important;
+  margin:24px 0 0 !important;
+  font:400 clamp(15px,1.15vw,18px)/1.78 "Iowan Old Style",Georgia,serif !important;
+  color:rgba(255,255,255,.68) !important;
+}
+.authorV3Hero__stats{
+  margin-top:32px !important;
+  gap:20px !important;
+}
+.authorV3Hero__stats b{
+  font-size:32px !important;
+}
+.authorV3Hero__stats small{
+  font-size:7px !important;
+}
+.authorV3Bio{
+  grid-template-columns:140px minmax(0,760px) !important;
+  gap:46px !important;
+  padding:82px clamp(22px,6vw,90px) !important;
+}
+.authorV3Bio__label span{
+  font-size:28px !important;
+}
+.authorV3Bio>p{
+  max-width:760px !important;
+  margin:0 !important;
+  font:400 clamp(16px,1.18vw,18px)/1.9 "Iowan Old Style","Palatino Linotype",Georgia,serif !important;
+  color:#51453a !important;
+  letter-spacing:0 !important;
+}
+.authorV3Works{
+  padding:72px clamp(22px,6vw,90px) 96px !important;
+}
+.authorV3Works__head{
+  max-width:var(--authorReadableMax) !important;
+}
+.authorV3Works__head h2{
+  font:400 clamp(38px,4vw,60px)/.98 "Bodoni 72","Didot",Georgia,serif !important;
+}
+.authorV3Works__grid{
+  max-width:var(--authorReadableMax) !important;
+  gap:18px !important;
+}
+.authorV3Work h3{
+  margin:9px 0 16px !important;
+  font:400 clamp(21px,1.7vw,27px)/1.16 "Bodoni 72","Didot",Georgia,serif !important;
+}
+.authorV3Work>small{
+  font-size:7px !important;
+}
+.authorV3Work strong{
+  font-size:7.5px !important;
+}
+@media(max-width:920px){
+  .authorV3Hero__layout{
+    grid-template-columns:1fr !important;
+    max-width:760px !important;
+    padding-top:44px !important;
+  }
+  .authorV3Hero__portrait{
+    max-width:330px !important;
+    max-height:none !important;
+  }
+  .authorV3Bio{
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+    max-width:820px !important;
+    margin:auto !important;
+  }
+}
+@media(max-width:620px){
+  .authorV3Hero{
+    padding:22px 18px 48px !important;
+  }
+  .authorV3Hero__layout{
+    gap:30px !important;
+  }
+  .authorV3Hero__copy h1{
+    font-size:clamp(42px,13vw,58px) !important;
+    line-height:.96 !important;
+  }
+  .authorV3Hero__lead{
+    font-size:15px !important;
+    line-height:1.75 !important;
+  }
+  .authorV3Bio{
+    padding:58px 20px !important;
+  }
+  .authorV3Bio>p{
+    font-size:15.5px !important;
+    line-height:1.82 !important;
+  }
+  .authorV3Works{
+    padding:58px 18px 72px !important;
+  }
+  .authorV3Works__head h2{
+    font-size:39px !important;
+  }
+}
+
+
+/* ==========================================
+   BLOG V4.2 — SOFT PREMIUM + AUTHOR RESTORE
+   ========================================== */
+.blog4{
+  --b4-gold:#b9894a;
+  --b4-gold-soft:#d8b27b;
+  --b4-ink:#2b2118;
+  --b4-paper:#f4ede4;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(185,137,74,.16), transparent 28%),
+    radial-gradient(circle at 88% 36%, rgba(154,116,74,.10), transparent 26%),
+    linear-gradient(180deg,#2b221a 0%,#443528 36%,#665040 70%,#e6d9c9 100%) !important;
+}
+.blog4Hero{
+  min-height:92svh !important;
+  background-position:center 44% !important;
+}
+.blog4Hero__veil{
+  background:
+    linear-gradient(90deg,rgba(31,24,18,.76) 0%,rgba(39,30,22,.54) 37%,rgba(49,38,29,.22) 64%,rgba(42,31,23,.34) 100%),
+    linear-gradient(180deg,rgba(28,20,14,.10),rgba(32,24,17,.14) 58%,rgba(73,55,42,.68) 100%) !important;
+}
+.blog4Hero__content{
+  position:relative;
+  max-width:760px;
+  padding-bottom:110px;
+}
+.blog4Hero__copy{
+  color:rgba(255,248,238,.84) !important;
+  max-width:640px !important;
+}
+.blog4Hero__quote{
+  color:rgba(247,224,191,.78) !important;
+}
+.blog4Hero__visualRail{
+  position:absolute;
+  left:calc(100% + 74px);
+  top:50%;
+  transform:translateY(-42%);
+  width:min(360px,28vw);
+  display:grid;
+  gap:14px;
+}
+.blog4Hero__visualCard{
+  padding:18px 18px 17px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,249,239,.14),rgba(255,255,255,.045));
+  backdrop-filter:blur(14px);
+  box-shadow:0 20px 55px rgba(33,24,17,.18);
+}
+.blog4Hero__visualCard span{
+  display:block;
+  margin-bottom:7px;
+  color:#e7bf83;
+  font-size:8px;
+  letter-spacing:.24em;
+  font-weight:800;
+}
+.blog4Hero__visualCard strong{
+  display:block;
+  color:#fff8ef;
+  font:400 18px/1.28 Georgia,"Times New Roman",serif;
+}
+.blog4Content{
+  margin-top:-26px !important;
+  background:
+    linear-gradient(180deg,rgba(239,229,217,.96),rgba(233,220,205,.98)),
+    var(--blog4-bg) !important;
+  color:#2c2219 !important;
+}
+.blog4Content:before{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(183,133,76,.14),transparent 24%),
+    radial-gradient(circle at 89% 72%,rgba(135,105,76,.10),transparent 28%),
+    linear-gradient(180deg,rgba(255,248,240,.20),rgba(238,226,213,.44)) !important;
+  backdrop-filter:blur(10px) !important;
+}
+.blog4Toolbar{
+  border-color:rgba(94,69,46,.12) !important;
+  background:rgba(255,250,245,.68) !important;
+  box-shadow:0 24px 60px rgba(86,62,40,.12) !important;
+}
+.blog4Search{
+  background:rgba(255,255,255,.68) !important;
+  border-color:rgba(96,71,49,.10) !important;
+}
+.blog4Search span{color:#6d5948 !important}
+.blog4Search input{color:#3b2d22 !important}
+.blog4Search input::placeholder{color:rgba(59,45,34,.46) !important}
+.blog4Categories button{
+  border-color:rgba(99,75,54,.10) !important;
+  background:rgba(255,255,255,.56) !important;
+  color:#5b4738 !important;
+}
+.blog4Categories button:hover,
+.blog4Categories button.is-active{
+  background:linear-gradient(135deg,#e0c49e,#b9894a) !important;
+  color:#302015 !important;
+}
+.blog4SectionHead__kicker{color:#a77537 !important}
+.blog4SectionHead h2{color:#2b2119 !important}
+.blog4SectionHead p{color:rgba(59,45,34,.62) !important}
+.blog4Card{
+  border-color:rgba(111,82,55,.12) !important;
+  background:linear-gradient(180deg,rgba(255,250,244,.93),rgba(246,236,225,.96)) !important;
+  box-shadow:0 22px 55px rgba(82,59,37,.12) !important;
+}
+.blog4Card:hover{
+  border-color:rgba(176,126,65,.28) !important;
+  box-shadow:0 28px 65px rgba(82,59,37,.18) !important;
+}
+.blog4Card__media{
+  background:#efe4d8 !important;
+}
+.blog4Card__media img{
+  background:
+    radial-gradient(circle at center,rgba(196,156,112,.16),rgba(239,229,218,.82)) !important;
+}
+.blog4Card__shade{
+  background:linear-gradient(180deg,transparent 66%,rgba(40,29,20,.34)) !important;
+}
+.blog4Card__title{
+  color:#2b2119 !important;
+}
+.blog4Card__excerpt{
+  color:rgba(59,45,34,.66) !important;
+}
+.blog4Card__meta{
+  color:rgba(75,56,42,.52) !important;
+  border-top-color:rgba(99,74,53,.10) !important;
+}
+.blog4Card__author,
+.blog4Card__authorText{
+  color:#9a6a31 !important;
+}
+.blog4Card__read{
+  color:#6b4a28 !important;
+}
+.blog4Card__authorWithAvatar{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+}
+.blog4Card__authorAvatar{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  flex:0 0 26px;
+  border:1px solid rgba(154,106,49,.25);
+  background:#eadbc8;
+}
+.blog4Card__authorAvatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.blog4Card__authorAvatar>span{
+  font-size:10px;
+  font-weight:700;
+  color:#7b572e;
+}
+.blog4FooterLine{
+  color:rgba(126,88,45,.72) !important;
+}
+.blog4FooterLine span{
+  background:linear-gradient(90deg,transparent,rgba(126,88,45,.34),transparent) !important;
+}
+
+/* Remove article hero read cue completely */
+.articleV3Hero__readCue,
+.articleV3Hero [class*="readCue"],
+.articleV3Hero [class*="ReadCue"],
+.articleV3Hero [class*="read-cue"]{
+  display:none !important;
+}
+
+@media(max-width:1100px){
+  .blog4Hero__visualRail{
+    position:static;
+    width:100%;
+    max-width:760px;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    transform:none;
+    margin-top:28px;
+  }
+}
+@media(max-width:760px){
+  .blog4Hero{
+    min-height:880px !important;
+  }
+  .blog4Hero__content{
+    padding-bottom:72px;
+  }
+  .blog4Hero__visualRail{
+    grid-template-columns:1fr;
+  }
+  .blog4Hero__visualCard strong{
+    font-size:16px;
+  }
+  .blog4Content{
+    background:linear-gradient(180deg,#efe4d8,#e7d7c4) !important;
+  }
 }
 
 `;
