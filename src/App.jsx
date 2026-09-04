@@ -4458,8 +4458,8 @@ function AuthorPortalPage({ blogContent = defaultBlogContent }) {
       setMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
       return;
     }
-    if (file.size > 6 * 1024 * 1024) {
-      setMessage("Kapak görseli en fazla 6 MB olabilir.");
+    if (file.size > 20 * 1024 * 1024) {
+      setMessage("Kapak görseli en fazla 20 MB olabilir.");
       return;
     }
 
@@ -6369,8 +6369,8 @@ function AdminDemoPage() {
       setBlogEditorMessage("Lütfen JPG, PNG veya WebP görsel seçin.");
       return;
     }
-    if (file.size > 6 * 1024 * 1024) {
-      setBlogEditorMessage("Görsel en fazla 6 MB olabilir.");
+    if (file.size > 20 * 1024 * 1024) {
+      setBlogEditorMessage("Görsel en fazla 20 MB olabilir.");
       return;
     }
 
@@ -6412,7 +6412,7 @@ function AdminDemoPage() {
   const uploadAuthorImage = async (file) => {
     if (!file) return;
     if (!file.type.startsWith("image/")) { setBlogEditorMessage("Lütfen JPG, PNG veya WebP yazar fotoğrafı seçin."); return; }
-    if (file.size > 6 * 1024 * 1024) { setBlogEditorMessage("Yazar fotoğrafı en fazla 6 MB olabilir."); return; }
+    if (file.size > 20 * 1024 * 1024) { setBlogEditorMessage("Yazar fotoğrafı en fazla 20 MB olabilir."); return; }
     setAuthorImageUploading(true);
     setBlogEditorMessage("");
     const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
@@ -7455,7 +7455,7 @@ function AdminDemoPage() {
                         <span>YAZAR FOTOĞRAFI *</span>
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
                         <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>uploadAuthorImage(e.target.files?.[0])}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
-                        <small>JPG, PNG veya WebP · Maksimum 6 MB</small>
+                        <small>JPG, PNG veya WebP · Maksimum 20 MB</small>
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
                       </aside>
                       <div className="admin125Authors__actions">
@@ -7579,7 +7579,7 @@ function AdminDemoPage() {
                         {blogImageUploading ? "Görsel Yükleniyor..." : "Bilgisayardan Görsel Seç"}
                       </label>
 
-                      <small>JPG, PNG veya WebP · Maksimum 6 MB</small>
+                      <small>JPG, PNG veya WebP · Maksimum 20 MB</small>
 
                       <div className="admin100Blog__or"><span/>veya<span/></div>
 
