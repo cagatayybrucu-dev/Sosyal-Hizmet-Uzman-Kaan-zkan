@@ -35063,7 +35063,7 @@ html.perfLite .articleCinePage .articleCineHero__author{
 }
 .articleCinePage .articleRichRiskGrid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   overflow:hidden;
   border:1px solid rgba(132,95,48,.20);
   border-radius:20px;
