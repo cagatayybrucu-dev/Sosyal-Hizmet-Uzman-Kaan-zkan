@@ -37114,15 +37114,4 @@ export default App;
 
 
 /* FINAL BLOG CLEANUP — no editorial watermarks / centered article covers / 2-column comparison table */
-.blogV3Hero__edition,
-.articleV3Hero__edition{display:none!important;}
-.blogV3Hero__topline > span,
-.blogV3Hero__topline > small{display:none!important;}
-.articleCinePage .articleRichRiskGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
-.articleCinePage .articleCineHero__frame{display:grid!important;place-items:center!important;overflow:hidden!important;}
-.articleCinePage .articleCineHero__frame>img{display:block!important;width:100%!important;height:100%!important;min-height:320px!important;max-height:570px!important;object-fit:contain!important;object-position:center center!important;}
-@media(max-width:760px){
-  .articleCinePage .articleRichRiskGrid{grid-template-columns:1fr!important;}
-  .articleCinePage .articleCineHero__frame{min-height:240px!important;}
-  .articleCinePage .articleCineHero__frame>img{min-height:240px!important;max-height:none!important;}
-}
+
