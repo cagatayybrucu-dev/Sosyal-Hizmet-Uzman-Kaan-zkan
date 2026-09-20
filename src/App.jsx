@@ -3170,13 +3170,9 @@ function BlogPage({ content = defaultBlogContent }) {
 
         <div className="blogV3Hero__topline">
           <a href="#/" className="blogV3Hero__back">← ANA SAYFA</a>
-          <span>KAAN ÖZKAN / EDITORIAL JOURNAL</span>
-          <small>MMXXVI</small>
         </div>
 
         <div className="blogV3Hero__stage">
-          <div className="blogV3Hero__edition" aria-hidden="true">JOURNAL</div>
-
           <div className="blogV3Hero__copy">
             <span className="blogV3Hero__eyebrow">DÜŞÜNCE · İNSAN · İLİŞKİ</span>
             <h1>
@@ -3694,7 +3690,6 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
       <div className="articleCineProgress" aria-hidden="true"/>
 
       <section className="articleCineHero cin3d articleV3Hero">
-        <div className="articleV3Hero__edition" aria-hidden="true">EDITORIAL / 2026</div>
         <div className="articleCineHero__ambient" aria-hidden="true">
           <img src={post.image} alt="" />
           <span/>
@@ -33508,13 +33503,19 @@ html.perfLite .articleCineHero__visual{
     0 0 0 7px rgba(255,255,255,.017);
 }
 
+.articleCinePage .articleCineHero__frame{
+  display:grid;
+  place-items:center;
+  min-height:clamp(320px,52vh,570px);
+}
 .articleCinePage .articleCineHero__frame>img{
   display:block;
   width:100%;
-  height:auto;
+  height:100%;
+  min-height:320px;
   max-height:570px;
   object-fit:contain;
-  object-position:center;
+  object-position:center center;
   background:#100e0b;
 }
 
@@ -35453,6 +35454,7 @@ html.perfLite .articleCinePage .articleCineHero__author{
 /* STEP190 — FIGURE 1 UNIFORM ALIGNMENT */
 .articleCinePage .articleRichRiskGrid{
   align-items:stretch;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
 }
 .articleCinePage .articleRichRiskGrid section{
   display:grid;
@@ -37109,3 +37111,18 @@ html.perfLite .articleCinePage .articleCineHero__author{
 
 export default App;
 
+
+
+/* FINAL BLOG CLEANUP — no editorial watermarks / centered article covers / 2-column comparison table */
+.blogV3Hero__edition,
+.articleV3Hero__edition{display:none!important;}
+.blogV3Hero__topline > span,
+.blogV3Hero__topline > small{display:none!important;}
+.articleCinePage .articleRichRiskGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+.articleCinePage .articleCineHero__frame{display:grid!important;place-items:center!important;overflow:hidden!important;}
+.articleCinePage .articleCineHero__frame>img{display:block!important;width:100%!important;height:100%!important;min-height:320px!important;max-height:570px!important;object-fit:contain!important;object-position:center center!important;}
+@media(max-width:760px){
+  .articleCinePage .articleRichRiskGrid{grid-template-columns:1fr!important;}
+  .articleCinePage .articleCineHero__frame{min-height:240px!important;}
+  .articleCinePage .articleCineHero__frame>img{min-height:240px!important;max-height:none!important;}
+}
