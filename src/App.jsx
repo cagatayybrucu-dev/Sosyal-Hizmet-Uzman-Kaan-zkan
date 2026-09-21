@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import heroSlide1 from "./assets/hero-slide-1.jpg";
 import heroSlide2 from "./assets/hero-slide-2.jpg";
@@ -573,390 +573,6 @@ const bilgeAkarPost20260831 = {
   "sourceAuthorName": "Bilge AKAR"
 };
 
-
-const erkekRuhSagligiPost20260920 = {
-  "id": "erkek-ruh-sagligi-ve-yardim-arama-20260920",
-  "slug": "erkek-ruh-sagligi-ve-yardim-arama",
-  "category": "PSİKOSOSYAL DESTEK",
-  "date": "20 Eylül 2026",
-  "readTime": "15 dk okuma",
-  "title": "ERKEK RUH SAĞLIĞI VE YARDIM ARAMA: ENGELLER VE ÇÖZÜM YOLLARI",
-  "excerpt": "Erkeklerin ruh sağlığı sorunlarında profesyonel yardım aramasını etkileyen toplumsal, psikososyal, ekonomik ve hizmet düzeyindeki engelleri; yardım aramayı kolaylaştıran yaklaşımlar ve çözüm yollarıyla birlikte ele alan kapsamlı bir inceleme.",
-  "image": heroSlide2,
-  "body": [
-    {
-      "type": "heading",
-      "text": "Giriş"
-    },
-    {
-      "type": "paragraph",
-      "text": "Yardım arama, bir bireyin karşılaştığı zorluklar kendi başa çıkma kaynaklarını aştığında tetiklenen (1), farkındalık, sorun tanıma ve sorunu tanımlamayla başlayan kasıtlı (2,3) bir başa çıkma mekanizmasıdır (1). Ancak dünya genelindeki araştırmalar, ruh sağlığı sorunu yaşayan bireylerin profesyonel destek alma konusunda sıklıkla isteksiz olduğunu ve özellikle de erkeklerin tüm demografik gruplar arasında yardım arama olasılığı en düşük kitleyi oluşturduğunu göstermektedir (4,5,6,7,8). Örneğin Türkiye'de yapılan bir çalışma da son 12 ayda ruh sağlığı desteğine ihtiyaç duyduğunu belirten kadınların %91'inin yardım aradığını, erkeklerde ise bu oranın yalnızca %9 seviyesinde kaldığını ortaya koymaktadır (9)."
-    },
-    {
-      "type": "paragraph",
-      "text": "Yardım arama oranlarındaki bu düşüklük, ciddi bir halk sağlığı krizini beraberinde getirmektedir. Tamamlanmış intiharların %75’inden fazlası erkekler tarafından gerçekleştirilmektedir (10). Bu durum Türkiye istatistiklerinde de benzer şekilde, erkeklerde kadınlara kıyasla yaklaşık 2 kat daha yüksek intihar oranlarıyla kendini göstermektedir (11). Ayrıca erkekler, yaşadıkları psikolojik sıkıntıları doğrudan ifade etmek yerine çoğunlukla alkol ve madde bağımlılığı ve agresif davranışlar (5,7,12,13,14,15) gibi dolaylı yollarla dışa vurmaktadır. Bu durum, tanı sürecini etkileyerek erkeklerin deneyimledikleri ruh sağlığı sorunlarının yanlış teşhis edilmesine veya hiç teşhis edilmemesine neden olabilmektedir (16,17,18). Dolayısıyla başkalarından destek alamama, erkeklerin ruh sağlığı sorunlarının ele alınmadığı ve genellikle zaman içinde kötüleştiği bir kısır döngü yaratmaktadır (19). Erkek ruh sağlığında yaşanan bu tablonun temel nedenlerini anlamak toplumsal engelleri, psikososyal dinamikleri ve çözüme yönelik kolaylaştırıcı faktörleri incelemeyi gerektirmektedir. Bundan sonraki bölümde yardım aramayı engelleyen ve kolaylaştıran faktörler üzerinde durulmuştur."
-    },
-    {
-      "type": "heading",
-      "text": "Yardım Aramayı Engelleyen ve Kolaylaştıran Faktörler"
-    },
-    {
-      "type": "riskTable",
-      "caption": "Tablo 1: Yardım aramayı engelleyen ve kolaylaştıran faktörler",
-      "columns": [
-        {
-          "title": "ENGELLER",
-          "items": [
-            "Hegemonik Erkeklik Normları",
-            "Algılanan Toplumsal ve Öz Damgalanma",
-            "Düşük Ruh Sağlığı Okuryazarlığı ve İletişim Engelleri",
-            "İşlevsel Olmayan Başa Çıkma Stratejileri",
-            "Yapısal, Ekonomik ve Hizmet Düzeyindeki Yetersizlikler"
-          ]
-        },
-        {
-          "title": "KOLAYLAŞTIRICILAR",
-          "items": [
-            "Pozitif Erkeklik ve Güç Temelli Yaklaşımlar",
-            "“Erkek Dostu” ve Doğrudan İletişim Kampanyaları",
-            "Eyleme ve Birlikteliğe Dayalı Destek Modelleri",
-            "Kişiselleştirilmiş, Kontrol Veren ve Anonim Destekler"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "1. Yardım Aramanın Önündeki Engeller"
-    },
-    {
-      "type": "recommendation",
-      "text": "Hegemonik Erkeklik Normları: Toplumun erkeklere yüklediği “sert olma, dayanıklılık, duygusal kısıtlayıcılık ve kendine güven (kendi kendine yetme)” gibi beklentileri yardım arama davranışının önündeki en belirgin engeldir (15,20,21,22,23). Yardım istemek, genellikle erkekliğin toplumsal beklentileriyle uyumsuz olarak algılanmaktadır. Nitekim birçok erkek, utanç duygusu ya da zayıf olarak algılanma korkusu nedeniyle profesyonel ruh sağlığı hizmetleri aramaktan kaçınmaktadır (20,24,25,26,27,28,29). Ramaeker ve Petrie’nin (30) çalışmasında da kırılganlığı kabul etmenin erkeklik algılarıyla çeliştiği ve bunun bireylerin sosyal izolasyonlarını ve psikolojik sıkıntılarını daha da şiddetlendirdiği bulunmuştur."
-    },
-    {
-      "type": "recommendation",
-      "text": "Algılanan Toplumsal ve Öz Damgalanma: Psikolojik destek almanın akran grubu veya toplum tarafından etiketlenme, alay edilme ve reddedilmeyle sonuçlanacağı korkusu son derece yaygındır (20). Toplumsal damgalanmanın birey tarafından içselleştirilmesiyle oluşan öz damgalanma, erkeklerin kendini değersiz hissetmesine (31) neden olarak yardım aramamasına yol açabilmektedir."
-    },
-    {
-      "type": "recommendation",
-      "text": "Düşük Ruh Sağlığı Okuryazarlığı ve İletişim Engelleri: Duyguların inkârı ve düşük ruh sağlığı okuryazarlığı da genellikle yardım aramamaya neden olabilmektedir (32,33,34). Sıkıntıyı yorumlama, yönetme ve iletme ile ilgili sorunlar, Biddle ve arkadaşları (5) tarafından belirtildiği gibi erkeklerin bir kaçınma döngüsüne yakalanmasını beraberinde getirebilmektedir. Başka bir ifadeyle, erkekler arasında sıkıntıları baskılama, sorunu küçümseme ve ancak kontrolü tamamen kaybetme veya “dibe vurma” (hitting rock bottom) noktasında yardım arama döngüsü sıklıkla gözlemlenmektedir (35)."
-    },
-    {
-      "type": "recommendation",
-      "text": "İşlevsel Olmayan Başa Çıkma Stratejileri: Duyguları ve acıyı uyuşturmak amacıyla alkol/madde kullanımı ve agresif tutumlar (5,7,14,15,20) gibi davranışlar geleneksel erkeklik kültüründe kabul gören ancak sorunu daha da derinleştiren kaçış mekanizmalarıdır."
-    },
-    {
-      "type": "recommendation",
-      "text": "Yapısal, Ekonomik ve Hizmet Düzeyindeki Yetersizlikler: Psikoterapi ve danışmanlık gibi psikiyatrik ilaç tedavisinin kapsamında olmayan ruh sağlığı hizmetleri çoğunlukla özel kurumlar tarafından sunulmaktadır (36). Bu durum, işsizlik ve yoksulluk gibi ekonomik sorunlar yaşayan ve ailesinin geçimini sağlama yönündeki geleneksel erkeklik rolünün baskısı altında olan erkeklerin bu hizmetlere erişimini zorlaştırmaktadır (35). Gizlilik ihlali kaygıları (37), ruh sağlığı uzmanları (38) ve ilaç tedavisi hakkındaki olumsuz algılar (39) ve “erkek dostu” olmayan hizmet tasarımları da söz konusu hizmetlere erişimin önünde bir engel olarak değerlendirilmektedir (40,41)."
-    },
-    {
-      "type": "heading",
-      "text": "2. Yardım Aramayı Kolaylaştıran Faktörler"
-    },
-    {
-      "type": "recommendation",
-      "text": "Pozitif Erkeklik ve Güç Temelli Yaklaşımlar: Erkekliği olumsuzlamak yerine erkeklerin ruh sağlıklarını ve refahlarını desteklemek için esnek norm ve değerlerin geliştirilmesi gerekmektedir (41,42). Alternatif olarak, erkekleri erkekliklerinin adaptif ve sağlıklı yönlerini belirlemede desteklemeyi ve tedavinin erkeklerin ihtiyaçlarını karşılayacak şekilde nasıl uyarlanabileceğine odaklanmayı amaçlayan güç temelli bir “pozitif erkeklik” modeli önerilmektedir (41,43). Örneğin, kendine güven, erkeklerde duygusal başa çıkmayı kolaylaştırabilmektedir (41)."
-    },
-    {
-      "type": "recommendation",
-      "text": "“Erkek Dostu” ve Doğrudan İletişim Kampanyaları: Erkeklerin yaşamlarıyla alakalı (sosyal medya, oyun web siteleri, maçlar vb.) ve onları temsil eden doğrudan, olumlu ve çözüm odaklı bir dil kullanan kampanyalar farkındalık yaratmada oldukça etkilidir. İlgili kamu figürlerini kullanmak, profesyonel yardım arayışını erkeklik kimliğine dahil etmeye yardımcı olabilmekte ve yardım aramanın sorunlarla başa çıkmak için bir strateji olduğu mesajını pekiştirebilmektedir (20)."
-    },
-    {
-      "type": "recommendation",
-      "text": "Eyleme ve Birlikteliğe Dayalı Destek Modelleri: Toplum düzeyinde, erkeklerin sağlığını ve iyi oluşunu geliştirmeye yönelik müdahalelerin erkekleri sürece dahil etmede etkili olabileceğine ilişkin kanıtlar giderek artmaktadır. Bu müdahalelerin etkili olabilmesi için toplum üyelerinin müdahalelerin tasarlanması ve uygulanmasına dahil edilmesi ve çalışmaların yerel olarak değer verilen erkeklik normlarına dayandırılması önem taşımaktadır (44,45,46). Örneğin birçok ülkede, sosyal olarak izole olan ve ruhsal hastalık açısından hassas durumdaki yaşlı erkekler, “Men’s Shed/Erkekler Kulübesi” girişiminden yararlanmıştır. Bu girişimde erkekler arası dayanışma, birlikte bir şeyler yapma (örneğin marangozluk) ve birbirlerini dolaylı biçimde destekleme ön plandadır. Destek, yüz yüze olmaktan ziyade “omuz omuza” bir etkileşim biçimi üzerinden sağlanmaktadır (47)."
-    },
-    {
-      "type": "recommendation",
-      "text": "Kişiselleştirilmiş, Kontrol Veren ve Anonim Destekler: Tedavinin ortak karar verme ve kontrolü içerecek şekilde uyarlanması da erkeklerin tedavileri ve iyileşmeleri üzerinde bir kontrol duygusunu sürdürmelerine olanak tanıyabilmektedir (43,48). Bu da erkeklerin yardım arama davranışlarını kolaylaştırabilmektedir. Erkekler aynı zamanda arama motorları aracılığıyla çevrimiçi desteğe erişimi diğer yöntemlere tercih etmektedir (49,50). Erkekler bunu bağımsız olmanın ve kendi sorunlarını çözmenin bir yolu olarak görmektedirler (50)."
-    },
-    {
-      "type": "heading",
-      "text": "Sonuç ve Öneriler"
-    },
-    {
-      "type": "paragraph",
-      "text": "Erkeklerin ruh sağlığı sorunları için yardım aramakta isteksiz kalması, bireysel bir tercihten ziyade sosyokültürel faktörlerin, geleneksel toplumsal cinsiyet kalıplarının ve hizmet sunumundaki yetersizliklerin bir sonucu olarak değerlendirilmektedir. Erkek ruh sağlığında yaşanan bu krizi aşmak ve erken müdahale imkanlarını artırmak için şu somut adımlar atılmalıdır:"
-    },
-    {
-      "type": "recommendation",
-      "text": "Söylem ve Dil Değişimi: Yardım arama eylemi bir zayıflık değil, kişisel güçlenme stratejisi olarak yeniden çerçevelenmelidir."
-    },
-    {
-      "type": "recommendation",
-      "text": "Kültürel ve Toplumsal Cinsiyete Duyarlı Hizmet Tasarımı: Ruh sağlığı ve sosyal hizmet sunumlarında erkeklerin ihtiyaçlarına uygun, eylem odaklı, özerkliği koruyan ve toplumsal cinsiyete duyarlı müdahale modelleri geliştirilmelidir."
-    },
-    {
-      "type": "recommendation",
-      "text": "Erken Yaşta Okuryazarlık ve Eğitimin Güçlendirilmesi: Okul müfredatlarına ruh sağlığı okuryazarlığı dahil edilmeli, erkek çocukların duygusal ifade ve yardım arama becerileri küçük yaşlardan itibaren desteklenmelidir."
-    },
-    {
-      "type": "recommendation",
-      "text": "Toplumsal ve Gayri Resmi Destek Ağlarının Yaygınlaştırılması: Akran desteğini besleyen topluluk projeleri (Men's Shed benzeri yapılar) teşvik edilmeli, öğretmenler, mentörler ve gençlik çalışanları erken uyarı ve yönlendirme süreçlerine dahil edilmelidir."
-    },
-    {
-      "type": "paragraph",
-      "text": "Chan M. E. (2013). Antecedents of instrumental interpersonal help-seeking: An integrative review. Applied Psychology, 62, 571-596."
-    },
-    {
-      "type": "paragraph",
-      "text": "Cornally N., McCarthy G. (2011). Help-seeking behaviour: A concept analysis. International Journal of Nursing Practice, 17, 280-288."
-    },
-    {
-      "type": "paragraph",
-      "text": "Rickwood D., Deane F. P., Wilson C. J., Ciarrochi J. (2005). Young people’s help-seeking for mental health problems. Australian e-Journal for the Advancement of Mental Health, 4, 218-251."
-    },
-    {
-      "type": "paragraph",
-      "text": "Barney L. J., Griffiths K. M., Jorm A. F., Christensen H. (2006). Stigma about depression and its impact on help-seeking intentions. Australian and New Zealand Journal of Psychiatry, 40, 51-54."
-    },
-    {
-      "type": "paragraph",
-      "text": "Biddle L., Donovan J., Sharp D., Gunnell D. (2007). Explaining non-help-seeking amongst young adults with mental distress: A dynamic interpretive model of illness behaviour. Sociology of Health & Illness, 29, 983-1002."
-    },
-    {
-      "type": "paragraph",
-      "text": "Biddle L., Gunnell D., Sharp D., Donovan J. L. (2004). Factors influencing help seeking in mentally distressed young adults: A cross-sectional survey. British Journal of General Practice, 54, 248-253."
-    },
-    {
-      "type": "paragraph",
-      "text": "Mackenzie C. S., Gekoski W. L., Knox V. J. (2006). Age, gender, and the underutilization of mental health services: The influence of help-seeking attitudes. Aging & Mental Health, 10, 574-582."
-    },
-    {
-      "type": "paragraph",
-      "text": "Nam S. K., Chu H. J., Lee M. K., Lee J. H., Kim N., Lee S. M. (2010). A meta-analysis of gender differences in attitudes toward seeking professional psychological help. Journal of American College Health, 59, 110-116."
-    },
-    {
-      "type": "paragraph",
-      "text": "Ministry of Health of the Republic of Türkiye, General Directorate of Health Services, Department of Research, Development and Health Technology Assessment. (2025, February 19). Turkey Mental Health Profile-2 Results Report."
-    },
-    {
-      "type": "paragraph",
-      "text": "Australian Bureau of Statistics. (2022). Causes of Death, Australia, 2020."
-    },
-    {
-      "type": "paragraph",
-      "text": "World Health Organization. (2026). Erişim tarihi, 14 Eylül 2026. Erişim adresi, https://www.who.int/data/gho/data/themes/mental-health/suicide-rates"
-    },
-    {
-      "type": "paragraph",
-      "text": "Doornbos M. M., Zandee G. L., Bjelland C. (2024). Men’s mental health–Conceptualization, effects, and coping. Archives of Psychiatric Nursing, 50, 100–107."
-    },
-    {
-      "type": "paragraph",
-      "text": "Scott J. (2018). Gender role conflict, traditional masculinity ideology, and help-seeking experiences of substance dependent men: A mixed methods study [Doctoral dissertation, University of Saskatchewan]."
-    },
-    {
-      "type": "paragraph",
-      "text": "Cleary A. (2012). Suicidal action, emotional expression, and the performance of masculinities. Social Science & Medicine, 74, 498-505."
-    },
-    {
-      "type": "paragraph",
-      "text": "Möller-Leimkühler A. M. (2003). The gender gap in suicide and premature death or: Why are men so vulnerable? European Archives of Psychiatry and Clinical Neuroscience, 253, 1-8."
-    },
-    {
-      "type": "paragraph",
-      "text": "Mahalik, J. R., & Rochlen, A. B. (2006). Men’s likely responses to clinical depression: What are they and do masculinity norms predict them? Sex roles, 55(9), 659-667."
-    },
-    {
-      "type": "paragraph",
-      "text": "Ross, C. E., & Mirowsky, J. (1984). Men who cry. Social Psychology Quarterly, 138-146."
-    },
-    {
-      "type": "paragraph",
-      "text": "Salk, R. H., Hyde, J. S., & Abramson, L. Y. (2017). Gender differences in depression in representative national samples: Meta-analyses of diagnoses and symptoms. Psychological Bulletin, 143(8), 783."
-    },
-    {
-      "type": "paragraph",
-      "text": "Mokhwelepa, L. W., & Sumbane, G. O. (2025). Men’s mental health matters: the impact of traditional masculinity norms on men’s willingness to seek mental health support; a systematic review of literature. American Journal of Men's Health, 19(3), 15579883251321670."
-    },
-    {
-      "type": "paragraph",
-      "text": "Lynch, L., Long, M., & Moorhead, A. (2018). Young men, help-seeking, and mental health services: Exploring barriers and solutions. American Journal of Men's Health, 12(1), 138-149."
-    },
-    {
-      "type": "paragraph",
-      "text": "Garrett, M. F., Cutrer-Párraga, E. A., Allen, G. K., Young, E. L., Urbina, K. J., & Hull, I. M. (2025). “It Would Ruin My Life”: Pacific Islander Male Adolescents’ Perceptions of Mental Health Help-Seeking—An Interpretative Phenomenological Analysis Focus Group Study. International Journal of Environmental Research and Public Health, 22(1), 62."
-    },
-    {
-      "type": "paragraph",
-      "text": "Topkaya, N. (2014). Gender, Self-stigma, and Public Stigma in Predicting Attitudes toward Psychological Help-seeking. Educ Sci Theor Pract, 14(2), 480-487."
-    },
-    {
-      "type": "paragraph",
-      "text": "Vogel, D. L., Edwards, S. R., Hammer, J. H., & Hubbard, A. (2011). “Boys don’t cry”: Examination of the links between endorsement of masculine norms, self-stigma, and help-seeking attitudes for men from diverse backgrounds. J Couns Psychol, 58(3), 368–382."
-    },
-    {
-      "type": "paragraph",
-      "text": "Emslie C., Ridge D., Ziebland S., Hunt K. (2006). Men’s accounts of depression: Reconstructing or resisting hegemonic masculinity? Social Science & Medicine, 62(9), 2246–2257."
-    },
-    {
-      "type": "paragraph",
-      "text": "Gulliver A., Griffiths K. M., Christensen H. (2012). Barriers and facilitators to mental health help-seeking for young elite athletes: A qualitative study. BMC Psychiatry, 12, 1–14."
-    },
-    {
-      "type": "paragraph",
-      "text": "Lysova A., Hanson K., Dixon L., Douglas E. M., Hines D. A., Celi E. M. (2022). Internal and external barriers to help seeking: Voices of men who experienced abuse in the intimate relationships. International Journal of Offender Therapy and Comparative Criminology, 66(5), 538–559."
-    },
-    {
-      "type": "paragraph",
-      "text": "McKenzie S. K., Collings S., Jenkin G., River J. (2018). Masculinity, social connectedness, and mental health: Men’s diverse patterns of practice. American Journal of Men’s Health, 12(5), 1247–1261."
-    },
-    {
-      "type": "paragraph",
-      "text": "Oliffe J. L., Broom A., Rossnagel E., Kelly M. T., Affleck W., Rice S. M. (2020). Help-seeking prior to male suicide: Bereaved men perspectives. Social Science & Medicine, 261, 113173."
-    },
-    {
-      "type": "paragraph",
-      "text": "Wiggins A. Y. (2024). Addressing stigma and help-seeking barriers for men. In Bates D. (Ed.), Mental health counseling for men: Practical strategies and effective engagement (pp. 1–22). IGI Global."
-    },
-    {
-      "type": "paragraph",
-      "text": "Ramaeker J., Petrie T. A. (2019). “Man up!”: Exploring intersections of sport participation, masculinity, psychological distress, and help-seeking attitudes and intentions. Psychology of Men & Masculinities, 20(4), 515."
-    },
-    {
-      "type": "paragraph",
-      "text": "Kim, S., & Kim, D. (2025). Mental health help-seeking among Korean men: the influence of stigma, masculine norms, and face. BMC psychology, 13(1), 461."
-    },
-    {
-      "type": "paragraph",
-      "text": "Hernan A., Philpot B., Edmonds A., Reddy P. (2010). Healthy minds for country youth: Help-seeking for depression among rural adolescents. Australian Journal of Rural Health, 18, 118-124."
-    },
-    {
-      "type": "paragraph",
-      "text": "Rickwood D., Deane F. P., Wilson C. J. (2007). When and how do young people seek professional help for mental health problems? Medical Journal of Australia, 187, S35-S39."
-    },
-    {
-      "type": "paragraph",
-      "text": "Wilson C. J., & Deane F. P. (2001). Adolescent opinions about reducing help-seeking barriers and increasing appropriate help engagement. Journal of Educational and Psychological Consultation, 12, 345-364."
-    },
-    {
-      "type": "paragraph",
-      "text": "Akçay, S., Akar, B., & Köse, Ö. (2026). “We Don't Stay Where We Feel Weak”: Experiences of Men Discontinuing Mental Health Services in Türkiye. Journal of Marital and Family Therapy, 52(2), e70126."
-    },
-    {
-      "type": "paragraph",
-      "text": "RUSİHAK. (2008). Akıl ve ruh sağlığı alanında insan hakları: 2018 Türkiye raporu sorunlar ve çözüm önerileri. Karika Matbaacılık."
-    },
-    {
-      "type": "paragraph",
-      "text": "van der Schyff, E. L., Amon, K. L., Ridout, B., Forsyth, R., & Campbell, A. J. (2023). Mental health help-seeking behavior of male video game players: an online survey. Cyberpsychol Behav Soc Netw, 26(9), 717–723."
-    },
-    {
-      "type": "paragraph",
-      "text": "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119."
-    },
-    {
-      "type": "paragraph",
-      "text": "Brown, J. S. L., Sagar-Ouriaghli, I., & Sullivan, L. (2019). Help-seeking among men for mental health problems. In: Barry JA, Kingerlee R, Seager M, Sullivan L (eds) The Palgrave handbook of male psychology and mental health. Springer International Publishing, pp 397–415."
-    },
-    {
-      "type": "paragraph",
-      "text": "Seidler, Z. E., Dawes, A. J., Rice, S. M., Oliffe, J. L., & Dhillon, H. M. (2016). The role of masculinity in men’s help-seeking for depression: a systematic review. Clin Psychol Rev, 49, 106–118."
-    },
-    {
-      "type": "paragraph",
-      "text": "Englar-Carlson, M., & Kiselica, M. S. (2013). Affirming the strengths in men: A positive masculinity approach to assisting male clients. Journal of Counseling & Development, 91(4), 399–409."
-    },
-    {
-      "type": "paragraph",
-      "text": "Wilson, M., Gwyther, K., Swann, R., Casey, K., Featherston, R., Oliffe, J. L., Englar-Carlson, M., & Rice, S. M. (2022). Operationalizing positive masculinity: A theoretical synthesis and school-based framework to engage boys and young men. Health Promotion International, 37(1), 1-15."
-    },
-    {
-      "type": "paragraph",
-      "text": "Seidler, Z. E., Rice, S. M., River, J., Oliffe, J. L., & Dhillon, H. M. (2018). Men’s mental health services: The case for a masculinities model. The Journal of Men’s Studies, 26(1), 92–104."
-    },
-    {
-      "type": "paragraph",
-      "text": "Костенко, M. A. (2013). Psychosocial assistance to men of working age in the context of sociodemographic policy: statement on the context of the problem. Социальная интеграция и развитие этнокультур в евразийском пространстве. 1, 153–157 (in Russian)."
-    },
-    {
-      "type": "paragraph",
-      "text": "Robertson, S., Gough, B., Hanna, E., Raine, G., Robinson, M., Seims, A. et al. (2018). Successful mental health promotion with men: evidence from “tacit knowledge”. Health Prom Int, 33(2), 334–344."
-    },
-    {
-      "type": "paragraph",
-      "text": "Рахлина, E. B. (2017). Psychological work with men who use violence in close relationships. Experience of a psychologist of the Saint Petersburg publically funded organization “Stork” Centre for Social Assistance to Family and Children of the Pushkin District. Социальное обслуживание семей и детей: научно- методический сборник. Вып. 11: Социальная работа с мужчинами, 11, 108–122 (in Russian)."
-    },
-    {
-      "type": "paragraph",
-      "text": "Robertson, S. (2007). Understanding men and health: masculinities, identity and well-being. Maidenhead: Open University Press."
-    },
-    {
-      "type": "paragraph",
-      "text": "Rice, S., Telford, N., Rickwood, D. J., & Parker, A. (2018). Young men’s access to community-based mental health care: Qualitative analysis of barriers and facilitators. Journal of Mental Health (Abingdon, England), 27(1), 59–65."
-    },
-    {
-      "type": "paragraph",
-      "text": "Best, P., Gil-Rodriguez, E., Manktelow, R., & Taylor, B. J. (2016). Seeking help from everyone and no-one: conceptualizing the online help-seeking process among adolescent males. Qual Health Res, 26(8),1067–1077."
-    },
-    {
-      "type": "paragraph",
-      "text": "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119."
-    },
-    {
-      "type": "references",
-      "items": [
-        "Chan M. E. (2013). Antecedents of instrumental interpersonal help-seeking: An integrative review. Applied Psychology, 62, 571-596.",
-        "Cornally N., McCarthy G. (2011). Help-seeking behaviour: A concept analysis. International Journal of Nursing Practice, 17, 280-288.",
-        "Rickwood D., Deane F. P., Wilson C. J., Ciarrochi J. (2005). Young people’s help-seeking for mental health problems. Australian e-Journal for the Advancement of Mental Health, 4, 218-251.",
-        "Barney L. J., Griffiths K. M., Jorm A. F., Christensen H. (2006). Stigma about depression and its impact on help-seeking intentions. Australian and New Zealand Journal of Psychiatry, 40, 51-54.",
-        "Biddle L., Donovan J., Sharp D., Gunnell D. (2007). Explaining non-help-seeking amongst young adults with mental distress: A dynamic interpretive model of illness behaviour. Sociology of Health & Illness, 29, 983-1002.",
-        "Biddle L., Gunnell D., Sharp D., Donovan J. L. (2004). Factors influencing help seeking in mentally distressed young adults: A cross-sectional survey. British Journal of General Practice, 54, 248-253.",
-        "Mackenzie C. S., Gekoski W. L., Knox V. J. (2006). Age, gender, and the underutilization of mental health services: The influence of help-seeking attitudes. Aging & Mental Health, 10, 574-582.",
-        "Nam S. K., Chu H. J., Lee M. K., Lee J. H., Kim N., Lee S. M. (2010). A meta-analysis of gender differences in attitudes toward seeking professional psychological help. Journal of American College Health, 59, 110-116.",
-        "Ministry of Health of the Republic of Türkiye, General Directorate of Health Services, Department of Research, Development and Health Technology Assessment. (2025, February 19). Turkey Mental Health Profile-2 Results Report.",
-        "Australian Bureau of Statistics. (2022). Causes of Death, Australia, 2020.",
-        "World Health Organization. (2026). Erişim tarihi, 14 Eylül 2026. Erişim adresi, https://www.who.int/data/gho/data/themes/mental-health/suicide-rates",
-        "Doornbos M. M., Zandee G. L., Bjelland C. (2024). Men’s mental health–Conceptualization, effects, and coping. Archives of Psychiatric Nursing, 50, 100–107.",
-        "Scott J. (2018). Gender role conflict, traditional masculinity ideology, and help-seeking experiences of substance dependent men: A mixed methods study [Doctoral dissertation, University of Saskatchewan].",
-        "Cleary A. (2012). Suicidal action, emotional expression, and the performance of masculinities. Social Science & Medicine, 74, 498-505.",
-        "Möller-Leimkühler A. M. (2003). The gender gap in suicide and premature death or: Why are men so vulnerable? European Archives of Psychiatry and Clinical Neuroscience, 253, 1-8.",
-        "Mahalik, J. R., & Rochlen, A. B. (2006). Men’s likely responses to clinical depression: What are they and do masculinity norms predict them? Sex roles, 55(9), 659-667.",
-        "Ross, C. E., & Mirowsky, J. (1984). Men who cry. Social Psychology Quarterly, 138-146.",
-        "Salk, R. H., Hyde, J. S., & Abramson, L. Y. (2017). Gender differences in depression in representative national samples: Meta-analyses of diagnoses and symptoms. Psychological Bulletin, 143(8), 783.",
-        "Mokhwelepa, L. W., & Sumbane, G. O. (2025). Men’s mental health matters: the impact of traditional masculinity norms on men’s willingness to seek mental health support; a systematic review of literature. American Journal of Men's Health, 19(3), 15579883251321670.",
-        "Lynch, L., Long, M., & Moorhead, A. (2018). Young men, help-seeking, and mental health services: Exploring barriers and solutions. American Journal of Men's Health, 12(1), 138-149.",
-        "Garrett, M. F., Cutrer-Párraga, E. A., Allen, G. K., Young, E. L., Urbina, K. J., & Hull, I. M. (2025). “It Would Ruin My Life”: Pacific Islander Male Adolescents’ Perceptions of Mental Health Help-Seeking—An Interpretative Phenomenological Analysis Focus Group Study. International Journal of Environmental Research and Public Health, 22(1), 62.",
-        "Topkaya, N. (2014). Gender, Self-stigma, and Public Stigma in Predicting Attitudes toward Psychological Help-seeking. Educ Sci Theor Pract, 14(2), 480-487.",
-        "Vogel, D. L., Edwards, S. R., Hammer, J. H., & Hubbard, A. (2011). “Boys don’t cry”: Examination of the links between endorsement of masculine norms, self-stigma, and help-seeking attitudes for men from diverse backgrounds. J Couns Psychol, 58(3), 368–382.",
-        "Emslie C., Ridge D., Ziebland S., Hunt K. (2006). Men’s accounts of depression: Reconstructing or resisting hegemonic masculinity? Social Science & Medicine, 62(9), 2246–2257.",
-        "Gulliver A., Griffiths K. M., Christensen H. (2012). Barriers and facilitators to mental health help-seeking for young elite athletes: A qualitative study. BMC Psychiatry, 12, 1–14.",
-        "Lysova A., Hanson K., Dixon L., Douglas E. M., Hines D. A., Celi E. M. (2022). Internal and external barriers to help seeking: Voices of men who experienced abuse in the intimate relationships. International Journal of Offender Therapy and Comparative Criminology, 66(5), 538–559.",
-        "McKenzie S. K., Collings S., Jenkin G., River J. (2018). Masculinity, social connectedness, and mental health: Men’s diverse patterns of practice. American Journal of Men’s Health, 12(5), 1247–1261.",
-        "Oliffe J. L., Broom A., Rossnagel E., Kelly M. T., Affleck W., Rice S. M. (2020). Help-seeking prior to male suicide: Bereaved men perspectives. Social Science & Medicine, 261, 113173.",
-        "Wiggins A. Y. (2024). Addressing stigma and help-seeking barriers for men. In Bates D. (Ed.), Mental health counseling for men: Practical strategies and effective engagement (pp. 1–22). IGI Global.",
-        "Ramaeker J., Petrie T. A. (2019). “Man up!”: Exploring intersections of sport participation, masculinity, psychological distress, and help-seeking attitudes and intentions. Psychology of Men & Masculinities, 20(4), 515.",
-        "Kim, S., & Kim, D. (2025). Mental health help-seeking among Korean men: the influence of stigma, masculine norms, and face. BMC psychology, 13(1), 461.",
-        "Hernan A., Philpot B., Edmonds A., Reddy P. (2010). Healthy minds for country youth: Help-seeking for depression among rural adolescents. Australian Journal of Rural Health, 18, 118-124.",
-        "Rickwood D., Deane F. P., Wilson C. J. (2007). When and how do young people seek professional help for mental health problems? Medical Journal of Australia, 187, S35-S39.",
-        "Wilson C. J., & Deane F. P. (2001). Adolescent opinions about reducing help-seeking barriers and increasing appropriate help engagement. Journal of Educational and Psychological Consultation, 12, 345-364.",
-        "Akçay, S., Akar, B., & Köse, Ö. (2026). “We Don't Stay Where We Feel Weak”: Experiences of Men Discontinuing Mental Health Services in Türkiye. Journal of Marital and Family Therapy, 52(2), e70126.",
-        "RUSİHAK. (2008). Akıl ve ruh sağlığı alanında insan hakları: 2018 Türkiye raporu sorunlar ve çözüm önerileri. Karika Matbaacılık.",
-        "van der Schyff, E. L., Amon, K. L., Ridout, B., Forsyth, R., & Campbell, A. J. (2023). Mental health help-seeking behavior of male video game players: an online survey. Cyberpsychol Behav Soc Netw, 26(9), 717–723.",
-        "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119.",
-        "Brown, J. S. L., Sagar-Ouriaghli, I., & Sullivan, L. (2019). Help-seeking among men for mental health problems. In: Barry JA, Kingerlee R, Seager M, Sullivan L (eds) The Palgrave handbook of male psychology and mental health. Springer International Publishing, pp 397–415.",
-        "Seidler, Z. E., Dawes, A. J., Rice, S. M., Oliffe, J. L., & Dhillon, H. M. (2016). The role of masculinity in men’s help-seeking for depression: a systematic review. Clin Psychol Rev, 49, 106–118.",
-        "Englar-Carlson, M., & Kiselica, M. S. (2013). Affirming the strengths in men: A positive masculinity approach to assisting male clients. Journal of Counseling & Development, 91(4), 399–409.",
-        "Wilson, M., Gwyther, K., Swann, R., Casey, K., Featherston, R., Oliffe, J. L., Englar-Carlson, M., & Rice, S. M. (2022). Operationalizing positive masculinity: A theoretical synthesis and school-based framework to engage boys and young men. Health Promotion International, 37(1), 1-15.",
-        "Seidler, Z. E., Rice, S. M., River, J., Oliffe, J. L., & Dhillon, H. M. (2018). Men’s mental health services: The case for a masculinities model. The Journal of Men’s Studies, 26(1), 92–104.",
-        "Костенко, M. A. (2013). Psychosocial assistance to men of working age in the context of sociodemographic policy: statement on the context of the problem. Социальная интеграция и развитие этнокультур в евразийском пространстве. 1, 153–157 (in Russian).",
-        "Robertson, S., Gough, B., Hanna, E., Raine, G., Robinson, M., Seims, A. et al. (2018). Successful mental health promotion with men: evidence from “tacit knowledge”. Health Prom Int, 33(2), 334–344.",
-        "Рахлина, E. B. (2017). Psychological work with men who use violence in close relationships. Experience of a psychologist of the Saint Petersburg publically funded organization “Stork” Centre for Social Assistance to Family and Children of the Pushkin District. Социальное обслуживание семей и детей: научно- методический сборник. Вып. 11: Социальная работа с мужчинами, 11, 108–122 (in Russian).",
-        "Robertson, S. (2007). Understanding men and health: masculinities, identity and well-being. Maidenhead: Open University Press.",
-        "Rice, S., Telford, N., Rickwood, D. J., & Parker, A. (2018). Young men’s access to community-based mental health care: Qualitative analysis of barriers and facilitators. Journal of Mental Health (Abingdon, England), 27(1), 59–65.",
-        "Best, P., Gil-Rodriguez, E., Manktelow, R., & Taylor, B. J. (2016). Seeking help from everyone and no-one: conceptualizing the online help-seeking process among adolescent males. Qual Health Res, 26(8),1067–1077.",
-        "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119."
-      ]
-    }
-  ],
-  "quote": "",
-  "status": "published",
-  "featured": true,
-  "sortOrder": 999998,
-  "authorSlug": "",
-  "sourceAuthorName": ""
-};
-
 const normalizeAuthorName = (value = "") =>
   String(value)
     .toLocaleLowerCase("tr-TR")
@@ -976,7 +592,7 @@ const mergeBilgeAkarArticle = (content) => {
     (author) => normalizeAuthorName(author?.name) === normalizeAuthorName("Bilge AKAR")
   );
 
-  const preparedBilge = {
+  const prepared = {
     ...bilgeAkarPost20260831,
     authorSlug: bilge?.slug || "",
     authorName: bilge?.name || "Bilge AKAR",
@@ -984,43 +600,35 @@ const mergeBilgeAkarArticle = (content) => {
     authorImage: bilge?.image || "",
   };
 
-  const preparedMenMentalHealth = {
-    ...erkekRuhSagligiPost20260920,
-  };
-
-  const upsertPost = (posts, prepared) => {
-    const exists = posts.some((post) => post.slug === prepared.slug || post.id === prepared.id);
-    if (!exists) return [...posts, prepared];
-    return posts.map((post) =>
-      post.slug === prepared.slug || post.id === prepared.id
-        ? {
-            ...post,
-            ...prepared,
-            authorSlug: post.authorSlug || prepared.authorSlug || "",
-            authorName: post.authorName || prepared.authorName || "",
-            authorRole: post.authorRole || prepared.authorRole || "",
-            authorImage: post.authorImage || prepared.authorImage || "",
-          }
-        : post
-    );
-  };
-
-  const postsWithBilge = upsertPost(next.posts || [], preparedBilge);
-  const postsWithBoth = upsertPost(postsWithBilge, preparedMenMentalHealth);
-  const categories = [...(next.categories || [])];
-
-  for (const category of [preparedBilge.category, preparedMenMentalHealth.category]) {
-    if (!categories.some((item) => normalizeAuthorName(item) === normalizeAuthorName(category))) {
-      categories.push(category);
-    }
-  }
+  const exists = (next.posts || []).some(
+    (post) => post.slug === prepared.slug || post.id === prepared.id
+  );
 
   return {
     ...next,
-    categories,
-    posts: postsWithBoth,
+    categories: (next.categories || []).some(
+      (item) => normalizeAuthorName(item) === normalizeAuthorName(prepared.category)
+    )
+      ? next.categories
+      : [...(next.categories || []), prepared.category],
+    posts: exists
+      ? (next.posts || []).map((post) =>
+          post.slug === prepared.slug || post.id === prepared.id
+            ? {
+                ...post,
+                body: prepared.body,
+                image: prepared.image,
+                authorSlug: post.authorSlug || prepared.authorSlug,
+                authorName: post.authorName || prepared.authorName,
+                authorRole: post.authorRole || prepared.authorRole,
+                authorImage: post.authorImage || prepared.authorImage,
+              }
+            : post
+        )
+      : [...(next.posts || []), prepared],
   };
 };
+
 
 const blogRichBodyToEditorText = (body) => {
   if (!Array.isArray(body)) return String(body || "");
@@ -1687,20 +1295,36 @@ const analyticsDateKey = (value) =>
   new Date(value).toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit" });
 
 
+const getSharedBlogSlug = () => {
+  if (typeof window === "undefined") return "";
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const querySlug = String(params.get("blog") || "").trim();
+    if (querySlug) return createBlogSlug(decodeURIComponent(querySlug));
+  } catch {}
+  const hash = String(window.location.hash || "");
+  if (!hash.startsWith("#/blog/")) return "";
+  try {
+    return createBlogSlug(decodeURIComponent(hash.slice("#/blog/".length).split(/[?&]/)[0].replace(/\/+$/, "")));
+  } catch {
+    return createBlogSlug(hash.slice("#/blog/".length).split(/[?&]/)[0].replace(/\/+$/, ""));
+  }
+};
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [heroTouchStart, setHeroTouchStart] = useState(null);
   const [homeTextSlide, setHomeTextSlide] = useState(0);
-  const [showSiteIntro, setShowSiteIntro] = useState(
-    () => !["#/admin", "#/yazar-girisi", "#/yazar-paneli"].includes(window.location.hash)
-  );
-  const [blogSlug, setBlogSlug] = useState(() => {
-    const hash = window.location.hash;
-    return hash.startsWith("#/blog/") ? hash.replace("#/blog/", "") : "";
+  const [showSiteIntro, setShowSiteIntro] = useState(() => {
+    const hash = String(window.location.hash || "");
+    const hasSharedBlog = Boolean(getSharedBlogSlug());
+    return !hasSharedBlog && !hash.startsWith("#/") && !["#/admin", "#/yazar-girisi", "#/yazar-paneli"].includes(hash);
   });
+  const [blogSlug, setBlogSlug] = useState(() => getSharedBlogSlug());
   const [blogContent, setBlogContent] = useState(() => mergeBilgeAkarArticle(defaultBlogContent));
+  const [blogContentLoaded, setBlogContentLoaded] = useState(false);
   const [authorSlug, setAuthorSlug] = useState(() => {
     const hash = window.location.hash;
     return hash.startsWith("#/yazarlar/") ? hash.replace("#/yazarlar/", "") : "";
@@ -1910,7 +1534,7 @@ function App() {
       ? "process"
       : window.location.hash === "#/icerikler"
       ? "content"
-      : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
+      : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/") || Boolean(getSharedBlogSlug())
       ? "blog"
       : window.location.hash === "#/yazarlar" || window.location.hash.startsWith("#/yazarlar/")
       ? "authors"
@@ -1930,6 +1554,17 @@ function App() {
       ? "authorPortal"
       : "home"
   );
+
+  useEffect(() => {
+    const sharedSlug = getSharedBlogSlug();
+    const params = new URLSearchParams(window.location.search || "");
+    if (sharedSlug && params.get("blog")) {
+      setPage("blog");
+      setBlogSlug(sharedSlug);
+      const cleanUrl = `${window.location.pathname}#/blog/${sharedSlug}`;
+      window.history.replaceState(null, "", cleanUrl);
+    }
+  }, []);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -2056,28 +1691,36 @@ function App() {
     let active = true;
 
     const loadBlogContent = async () => {
-      const { data, error } = await supabase
-        .from("site_content")
-        .select("content")
-        .eq("id", "blog")
-        .maybeSingle();
+      try {
+        const { data, error } = await supabase
+          .from("site_content")
+          .select("content")
+          .eq("id", "blog")
+          .maybeSingle();
 
-      if (!active) return;
-      if (error) {
-        console.error("Blog içeriği yüklenemedi:", error);
-        return;
-      }
+        if (!active) return;
 
-      if (data?.content) {
-        setBlogContent((current) =>
-          mergeBilgeAkarArticle({
-            ...current,
-            ...data.content,
-            posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
-            categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
-            authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
-          })
-        );
+        if (error) {
+          console.error("Blog içeriği yüklenemedi:", error);
+          setBlogContentLoaded(true);
+          return;
+        }
+
+        if (data?.content) {
+          setBlogContent((current) =>
+            mergeBilgeAkarArticle({
+              ...current,
+              ...data.content,
+              posts: Array.isArray(data.content.posts) ? data.content.posts : current.posts,
+              categories: Array.isArray(data.content.categories) ? data.content.categories : current.categories,
+              authors: Array.isArray(data.content.authors) ? data.content.authors : current.authors,
+            })
+          );
+        }
+      } catch (error) {
+        if (active) console.error("Blog içeriği yüklenirken beklenmeyen hata:", error);
+      } finally {
+        if (active) setBlogContentLoaded(true);
       }
     };
 
@@ -2325,11 +1968,7 @@ function App() {
           ? "authorPortal"
           : "home";
       setPage(nextPage);
-      setBlogSlug(
-        window.location.hash.startsWith("#/blog/")
-          ? window.location.hash.replace("#/blog/", "")
-          : ""
-      );
+      setBlogSlug(getSharedBlogSlug());
       setAuthorSlug(
         window.location.hash.startsWith("#/yazarlar/")
           ? window.location.hash.replace("#/yazarlar/", "")
@@ -2356,7 +1995,7 @@ function App() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, [page, blogSlug, authorSlug, serviceDetailSlug]);
+  }, [page, blogSlug, authorSlug, serviceDetailSlug, blogContent.posts?.length]);
 
   const handleHomeHeroPointer = (event) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -2375,7 +2014,9 @@ function App() {
 
   return (
     <>
-      <style>{styles}</style>
+      <style>{styles}
+
+</style>
 
       {showSiteIntro && (
         <div className="prm__wrap" aria-hidden="true">
@@ -2602,7 +2243,7 @@ function App() {
         ) : page === "content" ? (
           <ContentDetailPage />
         ) : page === "blog" ? (
-          blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} /> : <BlogPage content={blogContent} />
+          blogSlug ? <BlogArticlePage slug={blogSlug} content={blogContent} contentReady={blogContentLoaded} /> : <BlogPage content={blogContent} />
         ) : page === "authors" ? (
           authorSlug ? <AuthorProfilePage slug={authorSlug} content={blogContent} /> : <AuthorsPage content={blogContent} />
         ) : page === "contact" ? (
@@ -3157,14 +2798,33 @@ function BlogPage({ content = defaultBlogContent }) {
   return (
     <main className="blogV3">
       <section className="blogV3Hero">
-        <div className="blogV3Hero__media cin3dParallax" data-depth="0.10" aria-hidden="true">
-          <img
-            src={featuredPost?.image || content.heroImage || defaultBlogContent.heroImage}
-            alt=""
-            fetchPriority="high"
-            decoding="async"
-          />
-          <div className="blogV3Hero__wash"/>
+        <div className="blogV3Hero__media blogV3Cinema" aria-hidden="true">
+          {[
+            heroSlide1,
+            servicesHeroRoom,
+            heroSlide2,
+            processHeroDesk,
+          ].map((src, index) => (
+            <div
+              className={`blogV3Cinema__slide blogV3Cinema__slide--${index + 1}`}
+              key={`blog-cinema-${index}`}
+            >
+              <img
+                src={src}
+                alt=""
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <i className="blogV3Cinema__depth blogV3Cinema__depth--a"/>
+              <i className="blogV3Cinema__depth blogV3Cinema__depth--b"/>
+            </div>
+          ))}
+          <div className="blogV3Cinema__veil"/>
+          <div className="blogV3Cinema__vignette"/>
+          <div className="blogV3Cinema__progress">
+            <span/><span/><span/><span/>
+          </div>
           <div className="blogV3Hero__grain"/>
         </div>
 
@@ -3173,6 +2833,8 @@ function BlogPage({ content = defaultBlogContent }) {
         </div>
 
         <div className="blogV3Hero__stage">
+          <div className="blogV3Hero__edition" aria-hidden="true">JOURNAL</div>
+
           <div className="blogV3Hero__copy">
             <span className="blogV3Hero__eyebrow">DÜŞÜNCE · İNSAN · İLİŞKİ</span>
             <h1>
@@ -3191,23 +2853,6 @@ function BlogPage({ content = defaultBlogContent }) {
             </div>
           </div>
 
-          <div className="blogV3Hero__metrics">
-            <article>
-              <span>01</span>
-              <b>{String(publishedPosts.length).padStart(2,"0")}</b>
-              <small>YAYINLANMIŞ<br/>İÇERİK</small>
-            </article>
-            <article>
-              <span>02</span>
-              <b>{String(authors.length).padStart(2,"0")}</b>
-              <small>AKTİF<br/>YAZAR</small>
-            </article>
-            <article>
-              <span>03</span>
-              <b>{String(Math.max(0,categories.length - (categories.includes("Tümü") ? 1 : 0))).padStart(2,"0")}</b>
-              <small>EDİTORYAL<br/>KATEGORİ</small>
-            </article>
-          </div>
         </div>
 
         <div className="blogV3Hero__scroll" aria-hidden="true">
@@ -3275,36 +2920,6 @@ function BlogPage({ content = defaultBlogContent }) {
         </section>
       )}
 
-      {latestPosts.length > 0 && (
-        <section className="blogV3Dispatch">
-          <div className="blogV3Dispatch__title">
-            <span>02 / FRESH NOTES</span>
-            <h2>Yeni <em>Dosyalar</em></h2>
-            <p>Son yayınlanan metinlerden hızlı bir editoryal seçki.</p>
-          </div>
-
-          <div className="blogV3Dispatch__list">
-            {latestPosts.map((post,index)=>{
-              const author = authorFor(post);
-              return (
-                <a href={`#/blog/${post.slug}`} className="blogV3Dispatch__item" key={post.id||post.slug}>
-                  <span className="blogV3Dispatch__no">0{index+1}</span>
-                  <div className="blogV3Dispatch__thumb">
-                    <img src={post.image} alt=""/>
-                  </div>
-                  <div className="blogV3Dispatch__copy">
-                    <small>{post.category}</small>
-                    <h3>{post.title}</h3>
-                    <p>{author?.name || post.date}</p>
-                  </div>
-                  <b>↗</b>
-                </a>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
       <section className="blogV3Archive" id="blogV3Archive">
         <div className="blogV3Archive__head">
           <div>
@@ -3345,23 +2960,14 @@ function BlogPage({ content = defaultBlogContent }) {
         <div className="blogV3Mosaic">
           {filteredPosts.slice(0,visibleCount).map((post,index)=>{
             const author = authorFor(post);
-            const mode = index % 7 === 0
-              ? "is-cinema"
-              : index % 5 === 0
-              ? "is-tall"
-              : index % 3 === 0
-              ? "is-dark"
-              : "is-standard";
-
             return (
               <article
-                className={`blogV3Card ${mode}`}
+                className="blogV3Card"
                 key={post.id||post.slug}
               >
                 <a className="blogV3Card__visual" href={`#/blog/${post.slug}`}>
                   <img src={post.image} alt={post.title} loading="lazy" decoding="async"/>
                   <div className="blogV3Card__overlay"/>
-                  <span className="blogV3Card__number">{String(index+1).padStart(2,"0")}</span>
                   <small>{post.category}</small>
                 </a>
 
@@ -3626,9 +3232,96 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
   );
 }
 
-function BlogArticlePage({ slug, content = defaultBlogContent }) {
+function ReliableBlogPostImage({ src, alt = "", className = "", eager = false }) {
+  const fallback = defaultBlogContent.heroImage || servicesHeroRoom;
+  const normalizedSrc = String(src || "").trim();
+  const [resolvedSrc, setResolvedSrc] = useState(() => normalizedSrc || fallback);
+  const [failedOnce, setFailedOnce] = useState(false);
+  const blobUrlRef = useRef("");
+
+  useEffect(() => {
+    if (blobUrlRef.current) {
+      try { URL.revokeObjectURL(blobUrlRef.current); } catch {}
+      blobUrlRef.current = "";
+    }
+    setFailedOnce(false);
+    setResolvedSrc(normalizedSrc || fallback);
+
+    return () => {
+      if (blobUrlRef.current) {
+        try { URL.revokeObjectURL(blobUrlRef.current); } catch {}
+        blobUrlRef.current = "";
+      }
+    };
+  }, [normalizedSrc, fallback]);
+
+  const tryBlobFallback = () => {
+    if (failedOnce || !/^data:image\//i.test(normalizedSrc)) {
+      setResolvedSrc(fallback);
+      return;
+    }
+
+    setFailedOnce(true);
+
+    try {
+      const comma = normalizedSrc.indexOf(",");
+      if (comma < 0) throw new Error("Geçersiz data görseli");
+
+      const header = normalizedSrc.slice(0, comma);
+      const payload = normalizedSrc.slice(comma + 1);
+      const mime = header.match(/^data:([^;,]+)/i)?.[1] || "image/jpeg";
+      const isBase64 = /;base64/i.test(header);
+      const binary = isBase64 ? atob(payload) : decodeURIComponent(payload);
+
+      // iOS WebView'da tek seferde çok büyük Uint8Array oluşturmak yerine
+      // küçük parçalarla Blob üretmek daha kararlı çalışıyor.
+      const chunkSize = 1024 * 64;
+      const chunks = [];
+      for (let offset = 0; offset < binary.length; offset += chunkSize) {
+        const part = binary.slice(offset, offset + chunkSize);
+        const bytes = new Uint8Array(part.length);
+        for (let i = 0; i < part.length; i += 1) {
+          bytes[i] = part.charCodeAt(i);
+        }
+        chunks.push(bytes);
+      }
+
+      const objectUrl = URL.createObjectURL(new Blob(chunks, { type: mime }));
+      blobUrlRef.current = objectUrl;
+      setResolvedSrc(objectUrl);
+    } catch (error) {
+      console.warn("Blog görseli alternatif biçimde açılamadı:", error);
+      setResolvedSrc(fallback);
+    }
+  };
+
+  return (
+    <img
+      className={className}
+      src={resolvedSrc || fallback}
+      alt={alt}
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : "auto"}
+      decoding={eager ? "sync" : "async"}
+      onError={tryBlobFallback}
+    />
+  );
+}
+
+function BlogArticlePage({ slug, content = defaultBlogContent, contentReady = true }) {
   const posts=(Array.isArray(content.posts)?content.posts:[]).filter(post=>post.status!=="draft");
   const post=posts.find(item=>item.slug===slug);
+
+  if(!post && !contentReady) {
+    return (
+      <main className="blog99Loading" aria-live="polite" aria-busy="true">
+        <img src={kaanOzkanLogo2026} alt=""/>
+        <span>BLOG</span>
+        <div className="blog99Loading__line"/>
+        <p>Yazı yükleniyor...</p>
+      </main>
+    );
+  }
 
   if(!post) {
     return (
@@ -3655,8 +3348,8 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
   const articleShareUrl =
     typeof window !== "undefined"
-      ? `${window.location.origin}${window.location.pathname}#/blog/${post.slug}`
-      : `https://www.ailedanismanikaanozkan.com/#/blog/${post.slug}`;
+      ? `${window.location.origin}/?blog=${encodeURIComponent(post.slug)}`
+      : `https://www.ailedanismanikaanozkan.com/?blog=${encodeURIComponent(post.slug)}`;
 
   const shareArticle=async()=>{
     try{
@@ -3689,9 +3382,9 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
     <main className="articleCinePage">
       <div className="articleCineProgress" aria-hidden="true"/>
 
-      <section className="articleCineHero cin3d articleV3Hero">
+      <section className="articleCineHero cin3d cin3d--visible articleV3Hero">
         <div className="articleCineHero__ambient" aria-hidden="true">
-          <img src={post.image} alt="" />
+          <ReliableBlogPostImage src={post.image} alt="" eager />
           <span/>
         </div>
 
@@ -3735,7 +3428,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent }) {
 
           <div className="articleCineHero__visual">
             <div className="articleCineHero__frame">
-              <img src={post.image} alt={post.title}/>
+              <ReliableBlogPostImage src={post.image} alt={post.title} eager />
               <div className="articleCineHero__frameInfo">
                 <span>{post.category}</span>
                 <small>{post.date} · {post.readTime}</small>
@@ -6844,7 +6537,7 @@ function AdminDemoPage() {
     e.preventDefault();
 
     if (blogImageUploading) {
-      setBlogEditorMessage("Görsel hâlâ Supabase'e yükleniyor. Yükleme tamamlandıktan sonra tekrar yayınlayın.");
+      setBlogEditorMessage("Görsel hâlâ hazırlanıyor. Hazırlama tamamlandıktan sonra tekrar yayınlayın.");
       return;
     }
 
@@ -7087,42 +6780,51 @@ function AdminDemoPage() {
   const uploadBlogImage = async (file) => {
     if (!file) return;
 
+    if (!String(file.type || "").startsWith("image/")) {
+      setBlogEditorMessage("Görsel hazırlanamadı: Lütfen JPG, PNG veya WebP bir görsel seçin.");
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setBlogEditorMessage("Görsel hazırlanamadı: Görsel en fazla 20 MB olabilir.");
+      return;
+    }
+
     setBlogImageSelectedName(file.name || "Seçilen görsel");
     setBlogImageUploading(true);
     setBlogEditorMessage("Görsel hazırlanıyor...");
 
-    try {
-      if (!String(file.type || "").startsWith("image/")) {
-        throw new Error("Lütfen bir görsel dosyası seçin.");
+    const previewUrl = URL.createObjectURL(file);
+    setBlogImageLocalPreview((current) => {
+      if (current?.startsWith("blob:")) {
+        try { URL.revokeObjectURL(current); } catch {}
       }
-      if (file.size > 20 * 1024 * 1024) {
-        throw new Error("Görsel en fazla 20 MB olabilir.");
-      }
+      return previewUrl;
+    });
 
-      // Admin blog kapaklarında Storage'a bağımlılığı tamamen kaldırıyoruz.
-      // Görsel küçültülüp doğrudan blog verisine data URL olarak yazılır.
-      const embeddedImage = await fileToBlogDataUrl(file);
+    try {
+      let embeddedImage = "";
+      try {
+        embeddedImage = await fileToBlogDataUrl(file);
+      } catch (compressionError) {
+        if (file.size > 4 * 1024 * 1024) throw compressionError;
+        embeddedImage = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result || ""));
+          reader.onerror = () => reject(new Error("Görsel okunamadı."));
+          reader.readAsDataURL(file);
+        });
+      }
 
       if (!embeddedImage || !embeddedImage.startsWith("data:image/")) {
         throw new Error("Görsel hazırlanamadı.");
       }
 
-      setBlogForm((current) => ({
-        ...current,
-        image: embeddedImage,
-      }));
-
-      setBlogImageLocalPreview((current)=>{
-        if (current?.startsWith("blob:")) {
-          try { URL.revokeObjectURL(current); } catch {}
-        }
-        return "";
-      });
-
+      setBlogForm((current) => ({ ...current, image: embeddedImage }));
       setBlogEditorMessage("✓ Görsel hazır. Yazıyı şimdi yayınlayabilirsiniz.");
     } catch (error) {
       console.error("Blog görsel hazırlama hatası:", error);
       setBlogForm((current)=>({ ...current, image: "" }));
+      setBlogImageSelectedName("");
       setBlogEditorMessage(`Görsel hazırlanamadı: ${error?.message || "Bilinmeyen hata."}`);
     } finally {
       setBlogImageUploading(false);
@@ -8326,11 +8028,13 @@ function AdminDemoPage() {
                         )}
                       </div>
 
-                      <label className="admin100Blog__upload">
+                      <label className="admin100Blog__upload" htmlFor="adminBlogCoverInput">
                         <input
+                          id="adminBlogCoverInput"
                           type="file"
                           accept="image/jpeg,image/png,image/webp"
-                          onChange={(e)=>{ const file=e.target.files?.[0]; uploadBlogImage(file); e.target.value=""; }}
+                          onClick={(e)=>{ e.currentTarget.value = ""; }}
+                          onChange={(e)=>{ const file=e.currentTarget.files?.[0]; if (file) uploadBlogImage(file); }}
                         />
                         <Icon name="plus" size={17}/>
                         {blogImageUploading
@@ -33503,19 +33207,13 @@ html.perfLite .articleCineHero__visual{
     0 0 0 7px rgba(255,255,255,.017);
 }
 
-.articleCinePage .articleCineHero__frame{
-  display:grid;
-  place-items:center;
-  min-height:clamp(320px,52vh,570px);
-}
 .articleCinePage .articleCineHero__frame>img{
   display:block;
   width:100%;
-  height:100%;
-  min-height:320px;
+  height:auto;
   max-height:570px;
   object-fit:contain;
-  object-position:center center;
+  object-position:center;
   background:#100e0b;
 }
 
@@ -35063,7 +34761,7 @@ html.perfLite .articleCinePage .articleCineHero__author{
 }
 .articleCinePage .articleRichRiskGrid{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   overflow:hidden;
   border:1px solid rgba(132,95,48,.20);
   border-radius:20px;
@@ -35454,7 +35152,6 @@ html.perfLite .articleCinePage .articleCineHero__author{
 /* STEP190 — FIGURE 1 UNIFORM ALIGNMENT */
 .articleCinePage .articleRichRiskGrid{
   align-items:stretch;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
 }
 .articleCinePage .articleRichRiskGrid section{
   display:grid;
@@ -37107,11 +36804,353 @@ html.perfLite .articleCinePage .articleCineHero__author{
   font-weight:700;
 }
 
+
+/* BLOG FINAL CLEANUP — scoped, no layout regressions */
+.blogV3Hero__metrics{display:none!important}
+.blogV3Hero__media{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;overflow:hidden!important}
+.blogV3Hero__media>img{width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center 48%!important;transform:scale(1.025);animation:blogHeroGentleMove 18s ease-in-out infinite alternate!important}
+@keyframes blogHeroGentleMove{from{transform:scale(1.025) translate3d(0,0,0)}to{transform:scale(1.075) translate3d(-.7%,.3%,0)}}
+.blogV3Hero__wash{background:linear-gradient(90deg,rgba(18,12,9,.82) 0%,rgba(22,15,11,.56) 38%,rgba(19,13,10,.20) 72%,rgba(15,10,8,.12) 100%),linear-gradient(0deg,rgba(12,8,6,.56),transparent 48%)!important}
+.blogV3Hero__copy{max-width:760px!important}
+.blogV3Hero__edition{opacity:.055!important}
+.blogV3Dispatch{display:none!important}
+.articleV3Hero__edition{display:none!important}
+.blogV3Mosaic{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;align-items:stretch!important;grid-auto-flow:row!important}
+.blogV3Card,.blogV3Card.is-cinema,.blogV3Card.is-tall,.blogV3Card.is-dark,.blogV3Card.is-standard{grid-column:auto!important;grid-row:auto!important;width:100%!important;min-width:0!important;height:100%!important;display:flex!important;flex-direction:column!important}
+.blogV3Card__visual,.blogV3Card.is-cinema .blogV3Card__visual,.blogV3Card.is-tall .blogV3Card__visual{width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/10!important}
+.blogV3Card__visual img{width:100%!important;height:100%!important;object-fit:cover!important}
+.blogV3Card__number{display:none!important}
+.blogV3Card__body{display:flex!important;flex:1!important;flex-direction:column!important}
+.blogV3Card__footer{margin-top:auto!important}
+@media(max-width:1050px){.blogV3Mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){.blogV3Mosaic{grid-template-columns:1fr!important;gap:18px!important}.blogV3Hero__media>img{object-position:58% center!important}}
+@media(prefers-reduced-motion:reduce){.blogV3Hero__media>img{animation:none!important;transform:none!important}}
+
+
+/* =========================================================
+   MOBILE BLOG ARTICLE IMAGE RELIABILITY FIX
+   WhatsApp / iOS WebView: kapak görselini görünür ve ölçülü tut.
+   ========================================================= */
+@media(max-width:700px){
+  .articleCinePage .articleCineHero__visual{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  .articleCinePage .articleCineHero__frame{
+    display:block!important;
+    width:100%!important;
+    min-height:240px!important;
+    overflow:hidden!important;
+    background:#100e0b!important;
+  }
+  .articleCinePage .articleCineHero__frame>img{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:240px!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#100e0b!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .articleCinePage .articleCineHero__ambient>img{
+    visibility:visible!important;
+    opacity:.28!important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE SHARE ROUTE + ARTICLE IMAGE FINAL STABILITY FIX
+   - Supabase blog verisi gelmeden "bulunamadı" göstermez.
+   - iOS/WhatsApp WebView'da kapak görseli görünür kalır.
+   ========================================================= */
+.blog99Loading{
+  min-height:calc(100svh - 90px);
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:14px;
+  padding:90px 24px;
+  background:#f7f3eb;
+  color:#2b241b;
+  text-align:center;
+}
+.blog99Loading>img{
+  width:92px;
+  height:auto;
+  object-fit:contain;
+}
+.blog99Loading>span{
+  color:#9d762f;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.24em;
+}
+.blog99Loading>p{
+  margin:0;
+  color:#766e63;
+  font-size:12px;
+}
+.blog99Loading__line{
+  width:120px;
+  height:2px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(151,112,44,.14);
+  position:relative;
+}
+.blog99Loading__line::after{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:45%;
+  border-radius:inherit;
+  background:#a57b34;
+  animation:blog99LoadingMove 1.05s ease-in-out infinite alternate;
+}
+@keyframes blog99LoadingMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(122%)}
+}
+
+@media(max-width:700px){
+  .articleCinePage .articleCineHero__visual{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .articleCinePage .articleCineHero__frame{
+    display:block!important;
+    min-height:0!important;
+    height:auto!important;
+    background:#100e0b!important;
+  }
+
+  .articleCinePage .articleCineHero__frame>img{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .articleCinePage .articleCineHero__ambient>img{
+    display:block!important;
+    visibility:visible!important;
+  }
+}
+
+
+/* =========================================================
+   BLOG CINEMA HERO — 4 SCENE / 3D DEPTH TRANSITIONS
+   Uses existing local assets only. No blog cover or admin hero URL.
+   ========================================================= */
+.blogV3Hero{
+  min-height:100svh!important;
+  background:#0d0b09!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.blogV3Hero__media.blogV3Cinema{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  perspective:1400px!important;
+  transform:none!important;
+  z-index:0!important;
+  background:#0d0b09!important;
+}
+.blogV3Cinema__slide{
+  position:absolute;
+  inset:-5%;
+  width:110%;
+  height:110%;
+  opacity:0;
+  overflow:hidden;
+  transform-origin:center;
+  backface-visibility:hidden;
+  will-change:opacity,transform,clip-path;
+  animation:blogCineScene 28s cubic-bezier(.22,.72,.22,1) infinite;
+}
+.blogV3Cinema__slide--1{animation-delay:-1.4s}
+.blogV3Cinema__slide--2{animation-delay:5.6s}
+.blogV3Cinema__slide--3{animation-delay:12.6s}
+.blogV3Cinema__slide--4{animation-delay:19.6s}
+.blogV3Cinema__slide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  opacity:1!important;
+  filter:saturate(.86) contrast(1.04) brightness(.78)!important;
+  transform:scale(1.045) translate3d(0,0,0);
+  animation:blogCineImage 7s cubic-bezier(.18,.68,.2,1) infinite alternate!important;
+  backface-visibility:hidden!important;
+}
+.blogV3Cinema__slide--2 img{object-position:center 54%!important;animation-direction:alternate-reverse!important}
+.blogV3Cinema__slide--3 img{object-position:center 46%!important}
+.blogV3Cinema__slide--4 img{object-position:center 52%!important;animation-direction:alternate-reverse!important}
+.blogV3Cinema__depth{
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  border:1px solid rgba(232,214,189,.20);
+  opacity:.22;
+  mix-blend-mode:screen;
+  transform:translateZ(70px);
+}
+.blogV3Cinema__depth--a{
+  width:36vw;height:36vw;min-width:360px;min-height:360px;
+  right:-10vw;top:-13vw;
+  box-shadow:0 0 120px rgba(215,178,125,.07) inset;
+}
+.blogV3Cinema__depth--b{
+  width:18vw;height:18vw;min-width:210px;min-height:210px;
+  left:42%;bottom:-8vw;
+  border-color:rgba(255,255,255,.13);
+}
+.blogV3Cinema__progress{
+  position:absolute;
+  right:clamp(24px,5vw,80px);
+  bottom:34px;
+  z-index:26;
+  display:flex;
+  gap:8px;
+  width:min(260px,34vw);
+}
+.blogV3Cinema__progress span{
+  position:relative;
+  flex:1;
+  height:2px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.20);
+}
+.blogV3Cinema__progress span:after{
+  content:"";
+  position:absolute;inset:0;
+  background:#e6c48d;
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:blogCineProgress 28s linear infinite;
+}
+.blogV3Cinema__progress span:nth-child(1):after{animation-delay:-1.4s}
+.blogV3Cinema__progress span:nth-child(2):after{animation-delay:5.6s}
+.blogV3Cinema__progress span:nth-child(3):after{animation-delay:12.6s}
+.blogV3Cinema__progress span:nth-child(4):after{animation-delay:19.6s}
+@keyframes blogCineProgress{
+  0%{transform:scaleX(0);opacity:1}
+  24%{transform:scaleX(1);opacity:1}
+  27%{transform:scaleX(1);opacity:0}
+  100%{transform:scaleX(0);opacity:0}
+}
+.blogV3Cinema__veil{
+  position:absolute;
+  inset:0;
+  z-index:20;
+  background:
+    linear-gradient(90deg,rgba(11,9,7,.88) 0%,rgba(14,11,8,.70) 34%,rgba(11,9,7,.25) 66%,rgba(8,7,6,.20) 100%),
+    linear-gradient(0deg,rgba(8,7,6,.72) 0%,transparent 46%,rgba(8,7,6,.34) 100%);
+  pointer-events:none;
+}
+.blogV3Cinema__vignette{
+  position:absolute;
+  inset:-1px;
+  z-index:21;
+  pointer-events:none;
+  box-shadow:inset 0 0 180px 36px rgba(0,0,0,.46);
+  background:radial-gradient(circle at 72% 48%,transparent 0 28%,rgba(0,0,0,.08) 62%,rgba(0,0,0,.30) 100%);
+}
+.blogV3Hero__grain{z-index:22!important;opacity:.15!important}
+.blogV3Hero__topline,.blogV3Hero__stage,.blogV3Hero__scroll{position:relative!important;z-index:30!important}
+.blogV3Hero__stage{min-height:calc(100svh - 72px)!important;align-items:center!important}
+.blogV3Hero__copy{max-width:820px!important;text-shadow:0 9px 42px rgba(0,0,0,.28)!important}
+.blogV3Hero__copy h1{font-size:clamp(76px,9.4vw,172px)!important}
+.blogV3Hero__copy>p{max-width:620px!important;color:rgba(255,255,255,.82)!important}
+.blogV3Hero__edition{opacity:.07!important;transform:translate3d(0,0,0)!important}
+
+@keyframes blogCineScene{
+  0%{
+    opacity:0;
+    transform:perspective(1400px) rotateY(3deg) rotateX(-1deg) scale(1.08) translate3d(2.2%,0,0);
+    clip-path:inset(0 0 0 100%);
+  }
+  5%{
+    opacity:1;
+    clip-path:inset(0 0 0 0);
+  }
+  22%{
+    opacity:1;
+    transform:perspective(1400px) rotateY(0deg) rotateX(0deg) scale(1.02) translate3d(0,0,0);
+    clip-path:inset(0 0 0 0);
+  }
+  27%{
+    opacity:0;
+    transform:perspective(1400px) rotateY(-2.2deg) scale(1.01) translate3d(-1.4%,.25%,0);
+    clip-path:inset(0 100% 0 0);
+  }
+  100%{opacity:0;clip-path:inset(0 100% 0 0)}
+}
+@keyframes blogCineImage{
+  from{transform:scale(1.08) translate3d(-.7%,-.35%,0)}
+  to{transform:scale(1.015) translate3d(.7%,.35%,0)}
+}
+
+@media(max-width:900px){
+  .blogV3Cinema__veil{
+    background:
+      linear-gradient(90deg,rgba(10,8,6,.82) 0%,rgba(10,8,6,.57) 56%,rgba(10,8,6,.25) 100%),
+      linear-gradient(0deg,rgba(8,7,6,.70),transparent 54%);
+  }
+  .blogV3Hero__copy h1{font-size:clamp(68px,16vw,118px)!important}
+}
+@media(max-width:700px){
+  .blogV3Hero{min-height:100svh!important}
+  .blogV3Hero__stage{min-height:calc(100svh - 58px)!important;padding-bottom:98px!important}
+  .blogV3Hero__copy{padding-top:6vh!important;max-width:92vw!important}
+  .blogV3Hero__copy h1{font-size:clamp(62px,20vw,98px)!important}
+  .blogV3Hero__copy>p{font-size:13px!important;line-height:1.75!important;max-width:88vw!important}
+  .blogV3Cinema__slide{inset:-2%;width:104%;height:104%}
+  .blogV3Cinema__slide img{object-position:58% center!important}
+  .blogV3Cinema__slide--2 img{object-position:62% center!important}
+  .blogV3Cinema__slide--3 img{object-position:52% center!important}
+  .blogV3Cinema__slide--4 img{object-position:60% center!important}
+  .blogV3Cinema__depth{display:none}
+  .blogV3Cinema__progress{right:18px;bottom:24px;width:150px;gap:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .blogV3Cinema__slide{animation:none!important;opacity:0!important;clip-path:none!important;transform:none!important}
+  .blogV3Cinema__slide--1{opacity:1!important}
+  .blogV3Cinema__slide img{animation:none!important;transform:none!important}
+  .blogV3Cinema__progress{display:none!important}
+}
+
 `;
 
 export default App;
-
-
-
-/* FINAL BLOG CLEANUP — no editorial watermarks / centered article covers / 2-column comparison table */
 
