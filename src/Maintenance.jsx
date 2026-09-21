@@ -48,8 +48,8 @@ export default function Maintenance() {
 
         {/* Dev Sinematik Başlık */}
         <h1 style={styles.mainTitle}>
-          SİSTEM <br />
-          <span style={styles.gradientText}>YENİDEN DOĞUYOR</span>
+           <br />
+          <span style={styles.gradientText}>DAHA GÜÇLÜ,DAHA HIZLI</span>
         </h1>
 
         {/* Açıklama */}
@@ -61,7 +61,7 @@ export default function Maintenance() {
         <div style={styles.statusCard}>
           <div style={styles.statusHeader}>
             <span style={styles.livePulse}></span>
-            <span style={styles.statusTitle}>DÖNÜŞÜM MODU AKTİF</span>
+            <span style={styles.statusTitle}>GÜNCELLEME DEVAM EDİYOR</span>
           </div>
           <p style={styles.statusDesc}>Tüm veriler güvende &bull; Sunucu yükseltmeleri devam ediyor</p>
         </div>
