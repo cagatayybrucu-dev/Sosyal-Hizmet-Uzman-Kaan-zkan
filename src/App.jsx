@@ -13,6 +13,7 @@ import serviceCoupleImage from "./assets/service-couple-therapy.jpg";
 import servicePsychosocialImage from "./assets/service-psychosocial.jpg";
 import serviceDivorceGriefImage from "./assets/service-divorce-grief.jpg";
 import { supabase } from "./supabase";
+import Maintenance from "./Maintenance";
 
 const Icon = ({ name, size = 22 }) => {
   const common = {
@@ -1312,6 +1313,10 @@ const getSharedBlogSlug = () => {
 };
 
 function App() {
+  const isMaintenanceMode = true;
+  if (isMaintenanceMode) {
+    return <Maintenance />;
+  }
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
