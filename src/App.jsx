@@ -574,6 +574,193 @@ const bilgeAkarPost20260831 = {
   "sourceAuthorName": "Bilge AKAR"
 };
 
+const erkekRuhSagligiPost20260920 = {
+  "id": "erkek-ruh-sagligi-ve-yardim-arama-20260920",
+  "slug": "erkek-ruh-sagligi-ve-yardim-arama",
+  "category": "PSİKOSOSYAL DESTEK",
+  "date": "20 Eylül 2026",
+  "readTime": "15 dk okuma",
+  "title": "ERKEK RUH SAĞLIĞI VE YARDIM ARAMA: ENGELLER VE ÇÖZÜM YOLLARI",
+  "excerpt": "Erkeklerin ruh sağlığı sorunlarında profesyonel yardım aramasını etkileyen toplumsal, psikososyal, ekonomik ve hizmet düzeyindeki engelleri; yardım aramayı kolaylaştıran yaklaşımlar ve çözüm yollarıyla birlikte ele alan kapsamlı bir inceleme.",
+  "image": heroSlide2,
+  "body": [
+    {
+      "type": "heading",
+      "text": "Giriş"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yardım arama, bir bireyin karşılaştığı zorluklar kendi başa çıkma kaynaklarını aştığında tetiklenen (1), farkındalık, sorun tanıma ve sorunu tanımlamayla başlayan kasıtlı (2,3) bir başa çıkma mekanizmasıdır (1). Ancak dünya genelindeki araştırmalar, ruh sağlığı sorunu yaşayan bireylerin profesyonel destek alma konusunda sıklıkla isteksiz olduğunu ve özellikle de erkeklerin tüm demografik gruplar arasında yardım arama olasılığı en düşük kitleyi oluşturduğunu göstermektedir (4,5,6,7,8). Örneğin Türkiye'de yapılan bir çalışma da son 12 ayda ruh sağlığı desteğine ihtiyaç duyduğunu belirten kadınların %91'inin yardım aradığını, erkeklerde ise bu oranın yalnızca %9 seviyesinde kaldığını ortaya koymaktadır (9)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Yardım arama oranlarındaki bu düşüklük, ciddi bir halk sağlığı krizini beraberinde getirmektedir. Tamamlanmış intiharların %75’inden fazlası erkekler tarafından gerçekleştirilmektedir (10). Bu durum Türkiye istatistiklerinde de benzer şekilde, erkeklerde kadınlara kıyasla yaklaşık 2 kat daha yüksek intihar oranlarıyla kendini göstermektedir (11). Ayrıca erkekler, yaşadıkları psikolojik sıkıntıları doğrudan ifade etmek yerine çoğunlukla alkol ve madde bağımlılığı ve agresif davranışlar (5,7,12,13,14,15) gibi dolaylı yollarla dışa vurmaktadır. Bu durum, tanı sürecini etkileyerek erkeklerin deneyimledikleri ruh sağlığı sorunlarının yanlış teşhis edilmesine veya hiç teşhis edilmemesine neden olabilmektedir (16,17,18). Dolayısıyla başkalarından destek alamama, erkeklerin ruh sağlığı sorunlarının ele alınmadığı ve genellikle zaman içinde kötüleştiği bir kısır döngü yaratmaktadır (19). Erkek ruh sağlığında yaşanan bu tablonun temel nedenlerini anlamak toplumsal engelleri, psikososyal dinamikleri ve çözüme yönelik kolaylaştırıcı faktörleri incelemeyi gerektirmektedir. Bundan sonraki bölümde yardım aramayı engelleyen ve kolaylaştıran faktörler üzerinde durulmuştur."
+    },
+    {
+      "type": "heading",
+      "text": "Yardım Aramayı Engelleyen ve Kolaylaştıran Faktörler"
+    },
+    {
+      "type": "riskTable",
+      "caption": "Tablo 1: Yardım aramayı engelleyen ve kolaylaştıran faktörler",
+      "columns": [
+        {
+          "title": "ENGELLER",
+          "items": [
+            "Hegemonik Erkeklik Normları",
+            "Algılanan Toplumsal ve Öz Damgalanma",
+            "Düşük Ruh Sağlığı Okuryazarlığı ve İletişim Engelleri",
+            "İşlevsel Olmayan Başa Çıkma Stratejileri",
+            "Yapısal, Ekonomik ve Hizmet Düzeyindeki Yetersizlikler"
+          ]
+        },
+        {
+          "title": "KOLAYLAŞTIRICILAR",
+          "items": [
+            "Pozitif Erkeklik ve Güç Temelli Yaklaşımlar",
+            "“Erkek Dostu” ve Doğrudan İletişim Kampanyaları",
+            "Eyleme ve Birlikteliğe Dayalı Destek Modelleri",
+            "Kişiselleştirilmiş, Kontrol Veren ve Anonim Destekler"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "1. Yardım Aramanın Önündeki Engeller"
+    },
+    {
+      "type": "recommendation",
+      "text": "Hegemonik Erkeklik Normları: Toplumun erkeklere yüklediği “sert olma, dayanıklılık, duygusal kısıtlayıcılık ve kendine güven (kendi kendine yetme)” gibi beklentileri yardım arama davranışının önündeki en belirgin engeldir (15,20,21,22,23). Yardım istemek, genellikle erkekliğin toplumsal beklentileriyle uyumsuz olarak algılanmaktadır. Nitekim birçok erkek, utanç duygusu ya da zayıf olarak algılanma korkusu nedeniyle profesyonel ruh sağlığı hizmetleri aramaktan kaçınmaktadır (20,24,25,26,27,28,29). Ramaeker ve Petrie’nin (30) çalışmasında da kırılganlığı kabul etmenin erkeklik algılarıyla çeliştiği ve bunun bireylerin sosyal izolasyonlarını ve psikolojik sıkıntılarını daha da şiddetlendirdiği bulunmuştur."
+    },
+    {
+      "type": "recommendation",
+      "text": "Algılanan Toplumsal ve Öz Damgalanma: Psikolojik destek almanın akran grubu veya toplum tarafından etiketlenme, alay edilme ve reddedilmeyle sonuçlanacağı korkusu son derece yaygındır (20). Toplumsal damgalanmanın birey tarafından içselleştirilmesiyle oluşan öz damgalanma, erkeklerin kendini değersiz hissetmesine (31) neden olarak yardım aramamasına yol açabilmektedir."
+    },
+    {
+      "type": "recommendation",
+      "text": "Düşük Ruh Sağlığı Okuryazarlığı ve İletişim Engelleri: Duyguların inkârı ve düşük ruh sağlığı okuryazarlığı da genellikle yardım aramamaya neden olabilmektedir (32,33,34). Sıkıntıyı yorumlama, yönetme ve iletme ile ilgili sorunlar, Biddle ve arkadaşları (5) tarafından belirtildiği gibi erkeklerin bir kaçınma döngüsüne yakalanmasını beraberinde getirebilmektedir. Başka bir ifadeyle, erkekler arasında sıkıntıları baskılama, sorunu küçümseme ve ancak kontrolü tamamen kaybetme veya “dibe vurma” (hitting rock bottom) noktasında yardım arama döngüsü sıklıkla gözlemlenmektedir (35)."
+    },
+    {
+      "type": "recommendation",
+      "text": "İşlevsel Olmayan Başa Çıkma Stratejileri: Duyguları ve acıyı uyuşturmak amacıyla alkol/madde kullanımı ve agresif tutumlar (5,7,14,15,20) gibi davranışlar geleneksel erkeklik kültüründe kabul gören ancak sorunu daha da derinleştiren kaçış mekanizmalarıdır."
+    },
+    {
+      "type": "recommendation",
+      "text": "Yapısal, Ekonomik ve Hizmet Düzeyindeki Yetersizlikler: Psikoterapi ve danışmanlık gibi psikiyatrik ilaç tedavisinin kapsamında olmayan ruh sağlığı hizmetleri çoğunlukla özel kurumlar tarafından sunulmaktadır (36). Bu durum, işsizlik ve yoksulluk gibi ekonomik sorunlar yaşayan ve ailesinin geçimini sağlama yönündeki geleneksel erkeklik rolünün baskısı altında olan erkeklerin bu hizmetlere erişimini zorlaştırmaktadır (35). Gizlilik ihlali kaygıları (37), ruh sağlığı uzmanları (38) ve ilaç tedavisi hakkındaki olumsuz algılar (39) ve “erkek dostu” olmayan hizmet tasarımları da söz konusu hizmetlere erişimin önünde bir engel olarak değerlendirilmektedir (40,41)."
+    },
+    {
+      "type": "heading",
+      "text": "2. Yardım Aramayı Kolaylaştıran Faktörler"
+    },
+    {
+      "type": "recommendation",
+      "text": "Pozitif Erkeklik ve Güç Temelli Yaklaşımlar: Erkekliği olumsuzlamak yerine erkeklerin ruh sağlıklarını ve refahlarını desteklemek için esnek norm ve değerlerin geliştirilmesi gerekmektedir (41,42). Alternatif olarak, erkekleri erkekliklerinin adaptif ve sağlıklı yönlerini belirlemede desteklemeyi ve tedavinin erkeklerin ihtiyaçlarını karşılayacak şekilde nasıl uyarlanabileceğine odaklanmayı amaçlayan güç temelli bir “pozitif erkeklik” modeli önerilmektedir (41,43). Örneğin, kendine güven, erkeklerde duygusal başa çıkmayı kolaylaştırabilmektedir (41)."
+    },
+    {
+      "type": "recommendation",
+      "text": "“Erkek Dostu” ve Doğrudan İletişim Kampanyaları: Erkeklerin yaşamlarıyla alakalı (sosyal medya, oyun web siteleri, maçlar vb.) ve onları temsil eden doğrudan, olumlu ve çözüm odaklı bir dil kullanan kampanyalar farkındalık yaratmada oldukça etkilidir. İlgili kamu figürlerini kullanmak, profesyonel yardım arayışını erkeklik kimliğine dahil etmeye yardımcı olabilmekte ve yardım aramanın sorunlarla başa çıkmak için bir strateji olduğu mesajını pekiştirebilmektedir (20)."
+    },
+    {
+      "type": "recommendation",
+      "text": "Eyleme ve Birlikteliğe Dayalı Destek Modelleri: Toplum düzeyinde, erkeklerin sağlığını ve iyi oluşunu geliştirmeye yönelik müdahalelerin erkekleri sürece dahil etmede etkili olabileceğine ilişkin kanıtlar giderek artmaktadır. Bu müdahalelerin etkili olabilmesi için toplum üyelerinin müdahalelerin tasarlanması ve uygulanmasına dahil edilmesi ve çalışmaların yerel olarak değer verilen erkeklik normlarına dayandırılması önem taşımaktadır (44,45,46). Örneğin birçok ülkede, sosyal olarak izole olan ve ruhsal hastalık açısından hassas durumdaki yaşlı erkekler, “Men’s Shed/Erkekler Kulübesi” girişiminden yararlanmıştır. Bu girişimde erkekler arası dayanışma, birlikte bir şeyler yapma (örneğin marangozluk) ve birbirlerini dolaylı biçimde destekleme ön plandadır. Destek, yüz yüze olmaktan ziyade “omuz omuza” bir etkileşim biçimi üzerinden sağlanmaktadır (47)."
+    },
+    {
+      "type": "recommendation",
+      "text": "Kişiselleştirilmiş, Kontrol Veren ve Anonim Destekler: Tedavinin ortak karar verme ve kontrolü içerecek şekilde uyarlanması da erkeklerin tedavileri ve iyileşmeleri üzerinde bir kontrol duygusunu sürdürmelerine olanak tanıyabilmektedir (43,48). Bu da erkeklerin yardım arama davranışlarını kolaylaştırabilmektedir. Erkekler aynı zamanda arama motorları aracılığıyla çevrimiçi desteğe erişimi diğer yöntemlere tercih etmektedir (49,50). Erkekler bunu bağımsız olmanın ve kendi sorunlarını çözmenin bir yolu olarak görmektedirler (50)."
+    },
+    {
+      "type": "heading",
+      "text": "Sonuç ve Öneriler"
+    },
+    {
+      "type": "paragraph",
+      "text": "Erkeklerin ruh sağlığı sorunları için yardım aramakta isteksiz kalması, bireysel bir tercihten ziyade sosyokültürel faktörlerin, geleneksel toplumsal cinsiyet kalıplarının ve hizmet sunumundaki yetersizliklerin bir sonucu olarak değerlendirilmektedir. Erkek ruh sağlığında yaşanan bu krizi aşmak ve erken müdahale imkanlarını artırmak için şu somut adımlar atılmalıdır:"
+    },
+    {
+      "type": "recommendation",
+      "text": "Söylem ve Dil Değişimi: Yardım arama eylemi bir zayıflık değil, kişisel güçlenme stratejisi olarak yeniden çerçevelenmelidir."
+    },
+    {
+      "type": "recommendation",
+      "text": "Kültürel ve Toplumsal Cinsiyete Duyarlı Hizmet Tasarımı: Ruh sağlığı ve sosyal hizmet sunumlarında erkeklerin ihtiyaçlarına uygun, eylem odaklı, özerkliği koruyan ve toplumsal cinsiyete duyarlı müdahale modelleri geliştirilmelidir."
+    },
+    {
+      "type": "recommendation",
+      "text": "Erken Yaşta Okuryazarlık ve Eğitimin Güçlendirilmesi: Okul müfredatlarına ruh sağlığı okuryazarlığı dahil edilmeli, erkek çocukların duygusal ifade ve yardım arama becerileri küçük yaşlardan itibaren desteklenmelidir."
+    },
+    {
+      "type": "recommendation",
+      "text": "Toplumsal ve Gayri Resmi Destek Ağlarının Yaygınlaştırılması: Akran desteğini besleyen topluluk projeleri (Men's Shed benzeri yapılar) teşvik edilmeli, öğretmenler, mentörler ve gençlik çalışanları erken uyarı ve yönlendirme süreçlerine dahil edilmelidir."
+    },
+    {
+      "type": "heading",
+      "text": "KAYNAKÇA"
+    },
+    {
+      "type": "references",
+      "items": [
+        "Chan M. E. (2013). Antecedents of instrumental interpersonal help-seeking: An integrative review. Applied Psychology, 62, 571-596.",
+        "Cornally N., McCarthy G. (2011). Help-seeking behaviour: A concept analysis. International Journal of Nursing Practice, 17, 280-288.",
+        "Rickwood D., Deane F. P., Wilson C. J., Ciarrochi J. (2005). Young people’s help-seeking for mental health problems. Australian e-Journal for the Advancement of Mental Health, 4, 218-251.",
+        "Barney L. J., Griffiths K. M., Jorm A. F., Christensen H. (2006). Stigma about depression and its impact on help-seeking intentions. Australian and New Zealand Journal of Psychiatry, 40, 51-54.",
+        "Biddle L., Donovan J., Sharp D., Gunnell D. (2007). Explaining non-help-seeking amongst young adults with mental distress: A dynamic interpretive model of illness behaviour. Sociology of Health & Illness, 29, 983-1002.",
+        "Biddle L., Gunnell D., Sharp D., Donovan J. L. (2004). Factors influencing help seeking in mentally distressed young adults: A cross-sectional survey. British Journal of General Practice, 54, 248-253.",
+        "Mackenzie C. S., Gekoski W. L., Knox V. J. (2006). Age, gender, and the underutilization of mental health services: The influence of help-seeking attitudes. Aging & Mental Health, 10, 574-582.",
+        "Nam S. K., Chu H. J., Lee M. K., Lee J. H., Kim N., Lee S. M. (2010). A meta-analysis of gender differences in attitudes toward seeking professional psychological help. Journal of American College Health, 59, 110-116.",
+        "Ministry of Health of the Republic of Türkiye, General Directorate of Health Services, Department of Research, Development and Health Technology Assessment. (2025, February 19). Turkey Mental Health Profile-2 Results Report.",
+        "Australian Bureau of Statistics. (2022). Causes of Death, Australia, 2020.",
+        "World Health Organization. (2026). Erişim tarihi, 14 Eylül 2026. Erişim adresi, https://www.who.int/data/gho/data/themes/mental-health/suicide-rates",
+        "Doornbos M. M., Zandee G. L., Bjelland C. (2024). Men’s mental health–Conceptualization, effects, and coping. Archives of Psychiatric Nursing, 50, 100–107.",
+        "Scott J. (2018). Gender role conflict, traditional masculinity ideology, and help-seeking experiences of substance dependent men: A mixed methods study [Doctoral dissertation, University of Saskatchewan].",
+        "Cleary A. (2012). Suicidal action, emotional expression, and the performance of masculinities. Social Science & Medicine, 74, 498-505.",
+        "Möller-Leimkühler A. M. (2003). The gender gap in suicide and premature death or: Why are men so vulnerable? European Archives of Psychiatry and Clinical Neuroscience, 253, 1-8.",
+        "Mahalik, J. R., & Rochlen, A. B. (2006). Men’s likely responses to clinical depression: What are they and do masculinity norms predict them? Sex roles, 55(9), 659-667.",
+        "Ross, C. E., & Mirowsky, J. (1984). Men who cry. Social Psychology Quarterly, 138-146.",
+        "Salk, R. H., Hyde, J. S., & Abramson, L. Y. (2017). Gender differences in depression in representative national samples: Meta-analyses of diagnoses and symptoms. Psychological Bulletin, 143(8), 783.",
+        "Mokhwelepa, L. W., & Sumbane, G. O. (2025). Men’s mental health matters: the impact of traditional masculinity norms on men’s willingness to seek mental health support; a systematic review of literature. American Journal of Men's Health, 19(3), 15579883251321670.",
+        "Lynch, L., Long, M., & Moorhead, A. (2018). Young men, help-seeking, and mental health services: Exploring barriers and solutions. American Journal of Men's Health, 12(1), 138-149.",
+        "Garrett, M. F., Cutrer-Párraga, E. A., Allen, G. K., Young, E. L., Urbina, K. J., & Hull, I. M. (2025). “It Would Ruin My Life”: Pacific Islander Male Adolescents’ Perceptions of Mental Health Help-Seeking—An Interpretative Phenomenological Analysis Focus Group Study. International Journal of Environmental Research and Public Health, 22(1), 62.",
+        "Topkaya, N. (2014). Gender, Self-stigma, and Public Stigma in Predicting Attitudes toward Psychological Help-seeking. Educ Sci Theor Pract, 14(2), 480-487.",
+        "Vogel, D. L., Edwards, S. R., Hammer, J. H., & Hubbard, A. (2011). “Boys don’t cry”: Examination of the links between endorsement of masculine norms, self-stigma, and help-seeking attitudes for men from diverse backgrounds. J Couns Psychol, 58(3), 368–382.",
+        "Emslie C., Ridge D., Ziebland S., Hunt K. (2006). Men’s accounts of depression: Reconstructing or resisting hegemonic masculinity? Social Science & Medicine, 62(9), 2246–2257.",
+        "Gulliver A., Griffiths K. M., Christensen H. (2012). Barriers and facilitators to mental health help-seeking for young elite athletes: A qualitative study. BMC Psychiatry, 12, 1–14.",
+        "Lysova A., Hanson K., Dixon L., Douglas E. M., Hines D. A., Celi E. M. (2022). Internal and external barriers to help seeking: Voices of men who experienced abuse in the intimate relationships. International Journal of Offender Therapy and Comparative Criminology, 66(5), 538–559.",
+        "McKenzie S. K., Collings S., Jenkin G., River J. (2018). Masculinity, social connectedness, and mental health: Men’s diverse patterns of practice. American Journal of Men’s Health, 12(5), 1247–1261.",
+        "Oliffe J. L., Broom A., Rossnagel E., Kelly M. T., Affleck W., Rice S. M. (2020). Help-seeking prior to male suicide: Bereaved men perspectives. Social Science & Medicine, 261, 113173.",
+        "Wiggins A. Y. (2024). Addressing stigma and help-seeking barriers for men. In Bates D. (Ed.), Mental health counseling for men: Practical strategies and effective engagement (pp. 1–22). IGI Global.",
+        "Ramaeker J., Petrie T. A. (2019). “Man up!”: Exploring intersections of sport participation, masculinity, psychological distress, and help-seeking attitudes and intentions. Psychology of Men & Masculinities, 20(4), 515.",
+        "Kim, S., & Kim, D. (2025). Mental health help-seeking among Korean men: the influence of stigma, masculine norms, and face. BMC psychology, 13(1), 461.",
+        "Hernan A., Philpot B., Edmonds A., Reddy P. (2010). Healthy minds for country youth: Help-seeking for depression among rural adolescents. Australian Journal of Rural Health, 18, 118-124.",
+        "Rickwood D., Deane F. P., Wilson C. J. (2007). When and how do young people seek professional help for mental health problems? Medical Journal of Australia, 187, S35-S39.",
+        "Wilson C. J., & Deane F. P. (2001). Adolescent opinions about reducing help-seeking barriers and increasing appropriate help engagement. Journal of Educational and Psychological Consultation, 12, 345-364.",
+        "Akçay, S., Akar, B., & Köse, Ö. (2026). “We Don't Stay Where We Feel Weak”: Experiences of Men Discontinuing Mental Health Services in Türkiye. Journal of Marital and Family Therapy, 52(2), e70126.",
+        "RUSİHAK. (2008). Akıl ve ruh sağlığı alanında insan hakları: 2018 Türkiye raporu sorunlar ve çözüm önerileri. Karika Matbaacılık.",
+        "van der Schyff, E. L., Amon, K. L., Ridout, B., Forsyth, R., & Campbell, A. J. (2023). Mental health help-seeking behavior of male video game players: an online survey. Cyberpsychol Behav Soc Netw, 26(9), 717–723.",
+        "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119.",
+        "Brown, J. S. L., Sagar-Ouriaghli, I., & Sullivan, L. (2019). Help-seeking among men for mental health problems. In: Barry JA, Kingerlee R, Seager M, Sullivan L (eds) The Palgrave handbook of male psychology and mental health. Springer International Publishing, pp 397–415.",
+        "Seidler, Z. E., Dawes, A. J., Rice, S. M., Oliffe, J. L., & Dhillon, H. M. (2016). The role of masculinity in men’s help-seeking for depression: a systematic review. Clin Psychol Rev, 49, 106–118.",
+        "Englar-Carlson, M., & Kiselica, M. S. (2013). Affirming the strengths in men: A positive masculinity approach to assisting male clients. Journal of Counseling & Development, 91(4), 399–409.",
+        "Wilson, M., Gwyther, K., Swann, R., Casey, K., Featherston, R., Oliffe, J. L., Englar-Carlson, M., & Rice, S. M. (2022). Operationalizing positive masculinity: A theoretical synthesis and school-based framework to engage boys and young men. Health Promotion International, 37(1), 1-15.",
+        "Seidler, Z. E., Rice, S. M., River, J., Oliffe, J. L., & Dhillon, H. M. (2018). Men’s mental health services: The case for a masculinities model. The Journal of Men’s Studies, 26(1), 92–104.",
+        "Костенко, M. A. (2013). Psychosocial assistance to men of working age in the context of sociodemographic policy: statement on the context of the problem. Социальная интеграция и развитие этнокультур в евразийском пространстве. 1, 153–157 (in Russian).",
+        "Robertson, S., Gough, B., Hanna, E., Raine, G., Robinson, M., Seims, A. et al. (2018). Successful mental health promotion with men: evidence from “tacit knowledge”. Health Prom Int, 33(2), 334–344.",
+        "Рахлина, E. B. (2017). Psychological work with men who use violence in close relationships. Experience of a psychologist of the Saint Petersburg publically funded organization “Stork” Centre for Social Assistance to Family and Children of the Pushkin District. Социальное обслуживание семей и детей: научно- методический сборник. Вып. 11: Социальная работа с мужчинами, 11, 108–122 (in Russian).",
+        "Robertson, S. (2007). Understanding men and health: masculinities, identity and well-being. Maidenhead: Open University Press.",
+        "Rice, S., Telford, N., Rickwood, D. J., & Parker, A. (2018). Young men’s access to community-based mental health care: Qualitative analysis of barriers and facilitators. Journal of Mental Health (Abingdon, England), 27(1), 59–65.",
+        "Best, P., Gil-Rodriguez, E., Manktelow, R., & Taylor, B. J. (2016). Seeking help from everyone and no-one: conceptualizing the online help-seeking process among adolescent males. Qual Health Res, 26(8),1067–1077.",
+        "Ellis, L. A., Collin, P., Hurley, P. J., Davenport, T. A., Burns, J. M., & Hickie, I. B. (2013). Young men’s attitudes and behaviour in relation to mental health and technology: implications for the development of online mental health services. BMC Psychiatry, 13(1), 119."
+      ]
+    }
+  ],
+  "quote": "",
+  "status": "published",
+  "featured": true,
+  "sortOrder": 999998,
+  "authorSlug": "",
+  "sourceAuthorName": ""
+};
+
 const normalizeAuthorName = (value = "") =>
   String(value)
     .toLocaleLowerCase("tr-TR")
@@ -593,7 +780,7 @@ const mergeBilgeAkarArticle = (content) => {
     (author) => normalizeAuthorName(author?.name) === normalizeAuthorName("Bilge AKAR")
   );
 
-  const prepared = {
+  const preparedBilge = {
     ...bilgeAkarPost20260831,
     authorSlug: bilge?.slug || "",
     authorName: bilge?.name || "Bilge AKAR",
@@ -601,35 +788,48 @@ const mergeBilgeAkarArticle = (content) => {
     authorImage: bilge?.image || "",
   };
 
-  const exists = (next.posts || []).some(
-    (post) => post.slug === prepared.slug || post.id === prepared.id
-  );
+  const preparedMenMentalHealth = {
+    ...erkekRuhSagligiPost20260920,
+  };
+
+  const upsertPost = (posts, prepared) => {
+    const exists = posts.some((post) => post.slug === prepared.slug || post.id === prepared.id);
+    if (!exists) return [...posts, prepared];
+    return posts.map((post) =>
+      post.slug === prepared.slug || post.id === prepared.id
+        ? {
+            // Bu yazılar ilk açılışta hazır içerikle eklenir. Sonrasında admin
+            // panelinden yapılan başlık/kapak/metin düzenlemelerini varsayılan
+            // veriyle ezme; aksi halde yeni kapak görseli sayfada eski hâline döner.
+            ...prepared,
+            ...post,
+            body: Array.isArray(post.body) && post.body.length ? post.body : prepared.body,
+            image: post.image || prepared.image,
+            authorSlug: post.authorSlug || prepared.authorSlug || "",
+            authorName: post.authorName || prepared.authorName || "",
+            authorRole: post.authorRole || prepared.authorRole || "",
+            authorImage: post.authorImage || prepared.authorImage || "",
+          }
+        : post
+    );
+  };
+
+  const postsWithBilge = upsertPost(next.posts || [], preparedBilge);
+  const postsWithBoth = upsertPost(postsWithBilge, preparedMenMentalHealth);
+  const categories = [...(next.categories || [])];
+
+  for (const category of [preparedBilge.category, preparedMenMentalHealth.category]) {
+    if (!categories.some((item) => normalizeAuthorName(item) === normalizeAuthorName(category))) {
+      categories.push(category);
+    }
+  }
 
   return {
     ...next,
-    categories: (next.categories || []).some(
-      (item) => normalizeAuthorName(item) === normalizeAuthorName(prepared.category)
-    )
-      ? next.categories
-      : [...(next.categories || []), prepared.category],
-    posts: exists
-      ? (next.posts || []).map((post) =>
-          post.slug === prepared.slug || post.id === prepared.id
-            ? {
-                ...post,
-                body: prepared.body,
-                image: prepared.image,
-                authorSlug: post.authorSlug || prepared.authorSlug,
-                authorName: post.authorName || prepared.authorName,
-                authorRole: post.authorRole || prepared.authorRole,
-                authorImage: post.authorImage || prepared.authorImage,
-              }
-            : post
-        )
-      : [...(next.posts || []), prepared],
+    categories,
+    posts: postsWithBoth,
   };
 };
-
 
 const blogRichBodyToEditorText = (body) => {
   if (!Array.isArray(body)) return String(body || "");
@@ -772,6 +972,31 @@ const fileToBlogDataUrl = async (file) => {
     reader.readAsDataURL(prepared.file);
   });
 };
+
+// Yönetim panelindeki yerel önizleme yerine, ziyaretçilerin göreceği gerçek
+// public URL'yi doğrular. Storage public değilse bozuk bağlantı kaydedilmez.
+const verifyPublicBlogImageUrl = (url) =>
+  new Promise((resolve, reject) => {
+    if (!url) {
+      reject(new Error("Görsel bağlantısı oluşturulamadı."));
+      return;
+    }
+    const probe = new Image();
+    const timeout = window.setTimeout(() => {
+      probe.onload = null;
+      probe.onerror = null;
+      reject(new Error("Yüklenen görsel public URL üzerinden doğrulanamadı."));
+    }, 12000);
+    probe.onload = () => {
+      window.clearTimeout(timeout);
+      resolve(url);
+    };
+    probe.onerror = () => {
+      window.clearTimeout(timeout);
+      reject(new Error("Yüklenen görsel ziyaretçiler için açılamadı. Bucket'ın public ayarını kontrol edin."));
+    };
+    probe.src = `${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`;
+  });
 
 const createBlogSlug = (value = "") =>
   value
@@ -1313,7 +1538,8 @@ const getSharedBlogSlug = () => {
 };
 
 function App() {
-  const isMaintenanceMode = true;
+  // Ana sayfa yayında. Bakım ekranını tekrar açmak gerekirse bunu true yapın.
+  const isMaintenanceMode = false;
   if (isMaintenanceMode) {
     return <Maintenance />;
   }
@@ -2971,7 +3197,7 @@ function BlogPage({ content = defaultBlogContent }) {
                 key={post.id||post.slug}
               >
                 <a className="blogV3Card__visual" href={`#/blog/${post.slug}`}>
-                  <img src={post.image} alt={post.title} loading="lazy" decoding="async"/>
+                  <ReliableBlogPostImage src={post.image} alt={post.title}/>
                   <div className="blogV3Card__overlay"/>
                   <small>{post.category}</small>
                 </a>
@@ -3222,7 +3448,7 @@ function AuthorProfilePage({ slug, content = defaultBlogContent }) {
             {authorPosts.map((post,index)=>(
               <a href={`#/blog/${post.slug}`} className="authorV3Work" key={post.id||post.slug}>
                 <div>
-                  <img src={post.image} alt={post.title}/>
+                  <ReliableBlogPostImage src={post.image} alt={post.title}/>
                   <span>{String(index+1).padStart(2,"0")}</span>
                 </div>
                 <small>{post.category} · {post.readTime}</small>
@@ -3466,7 +3692,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent, contentReady = tr
             if(item?.type==="riskTable"){
               return (
                 <figure className="articleRichFigure articleRichFigure--risk" key={index}>
-                  <div className="articleRichRiskGrid">
+                  <div className={`articleRichRiskGrid ${(item.columns || []).length === 2 ? "is-two-columns" : ""}`}>
                     {(item.columns||[]).map((column,columnIndex)=>(
                       <section key={columnIndex}>
                         <div className="articleRichRiskGrid__head">
@@ -3625,7 +3851,7 @@ function BlogArticlePage({ slug, content = defaultBlogContent, contentReady = tr
                 key={item.slug}
               >
                 <div>
-                  <img src={item.image} alt={item.title}/>
+                  <ReliableBlogPostImage src={item.image} alt={item.title}/>
                   <span>0{index+1}</span>
                 </div>
 
@@ -5421,6 +5647,7 @@ function AdminDemoPage() {
   const [blogImageUploading, setBlogImageUploading] = useState(false);
   const [blogImageSelectedName, setBlogImageSelectedName] = useState("");
   const [blogImageLocalPreview, setBlogImageLocalPreview] = useState("");
+  const [blogImageUploadError, setBlogImageUploadError] = useState("");
   const [editingBlogId, setEditingBlogId] = useState(null);
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -6165,6 +6392,7 @@ function AdminDemoPage() {
   const resetBlogForm = () => {
     setEditingBlogId(null);
     setBlogImageSelectedName("");
+    setBlogImageUploadError("");
     setBlogImageLocalPreview((current)=>{ if(current?.startsWith("blob:")) URL.revokeObjectURL(current); return ""; });
     setBlogForm({
       title: "",
@@ -6734,6 +6962,7 @@ function AdminDemoPage() {
 
   const editBlogPost = (post) => {
     setEditingBlogId(post.id || post.slug);
+    setBlogImageUploadError("");
     setBlogForm({
       title: post.title || "",
       slug: post.slug || "",
@@ -6795,8 +7024,9 @@ function AdminDemoPage() {
     }
 
     setBlogImageSelectedName(file.name || "Seçilen görsel");
+    setBlogImageUploadError("");
     setBlogImageUploading(true);
-    setBlogEditorMessage("Görsel hazırlanıyor...");
+    setBlogEditorMessage("Görsel optimize ediliyor ve güvenli depolamaya yükleniyor...");
 
     const previewUrl = URL.createObjectURL(file);
     setBlogImageLocalPreview((current) => {
@@ -6807,30 +7037,70 @@ function AdminDemoPage() {
     });
 
     try {
-      let embeddedImage = "";
-      try {
-        embeddedImage = await fileToBlogDataUrl(file);
-      } catch (compressionError) {
-        if (file.size > 4 * 1024 * 1024) throw compressionError;
-        embeddedImage = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(String(reader.result || ""));
-          reader.onerror = () => reject(new Error("Görsel okunamadı."));
-          reader.readAsDataURL(file);
+      // Görseli JSON içine base64 olarak gömmeyin. Büyük veri site_content
+      // kaydını taşırarak yazıların eski hâle dönmesine sebep oluyordu.
+      const prepared = await prepareBlogImageForUpload(file, {
+        targetBytes: 4 * 1024 * 1024,
+        maxDimension: 2560,
+      });
+      const safeName = createBlogSlug(file.name.replace(/\.[^.]+$/, "")) || "blog-kapak";
+      const filePath = `blog-covers/${Date.now()}-${safeName}.${prepared.extension}`;
+      const { error: uploadError } = await supabase.storage
+        .from("blog-images")
+        .upload(filePath, prepared.file, {
+          cacheControl: "31536000",
+          upsert: false,
+          contentType: prepared.contentType,
         });
+
+      if (uploadError) {
+        throw new Error(uploadError.message || "Supabase Storage yüklemesi başarısız oldu.");
       }
 
-      if (!embeddedImage || !embeddedImage.startsWith("data:image/")) {
-        throw new Error("Görsel hazırlanamadı.");
-      }
+      const { data: publicUrlData } = supabase.storage
+        .from("blog-images")
+        .getPublicUrl(filePath);
+      const publicUrl = publicUrlData?.publicUrl;
+      if (!publicUrl) throw new Error("Yüklenen görselin bağlantısı oluşturulamadı.");
 
-      setBlogForm((current) => ({ ...current, image: embeddedImage }));
-      setBlogEditorMessage("✓ Görsel hazır. Yazıyı şimdi yayınlayabilirsiniz.");
+      await verifyPublicBlogImageUrl(publicUrl);
+
+      setBlogImageLocalPreview((current) => {
+        if (current?.startsWith("blob:")) {
+          try { URL.revokeObjectURL(current); } catch {}
+        }
+        return publicUrl;
+      });
+
+      setBlogForm((current) => ({ ...current, image: publicUrl }));
+      setBlogEditorMessage("✓ Görsel Supabase Storage'a yüklendi. Yazıyı şimdi yayınlayabilirsiniz.");
     } catch (error) {
       console.error("Blog görsel hazırlama hatası:", error);
+      // Bazı eski Supabase Storage projelerinde bozuk Storage şeması 503 döndürür.
+      // SQL düzeltmesi uygulanana kadar küçük ve optimize edilmiş görseli kullanarak
+      // admin panelinin blog yazısını kaydetmeye devam etmesini sağla.
+      const isStorageSchemaIssue = /database schema.*(invalid|incompatible)|schema.*out of sync/i.test(
+        String(error?.message || "")
+      );
+      if (isStorageSchemaIssue) {
+        try {
+          const embeddedImage = await fileToBlogDataUrl(file);
+          if (embeddedImage?.startsWith("data:image/")) {
+            setBlogForm((current) => ({ ...current, image: embeddedImage }));
+            setBlogImageUploadError("");
+            setBlogEditorMessage(
+              "✓ Storage geçici olarak kullanılamıyor; görsel optimize edilerek yazıya eklendi. Yazıyı yayınlayabilirsiniz."
+            );
+            return;
+          }
+        } catch (fallbackError) {
+          console.error("Görsel yedek hazırlama hatası:", fallbackError);
+        }
+      }
       setBlogForm((current)=>({ ...current, image: "" }));
-      setBlogImageSelectedName("");
-      setBlogEditorMessage(`Görsel hazırlanamadı: ${error?.message || "Bilinmeyen hata."}`);
+      const uploadMessage = error?.message || "Bilinmeyen hata.";
+      setBlogImageUploadError(uploadMessage);
+      setBlogEditorMessage(`Görsel Storage'a yüklenemedi: ${uploadMessage}`);
     } finally {
       setBlogImageUploading(false);
     }
@@ -7905,17 +8175,6 @@ function AdminDemoPage() {
                         <div>{authorForm.image?<img src={authorForm.image} alt="Yazar önizleme"/>:<div className="admin125Authors__placeholder"><Icon name="user" size={32}/><small>Fotoğraf seçilmedi</small></div>}</div>
                         <label><input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e)=>{ const file=e.target.files?.[0]; uploadAuthorImage(file); e.target.value=""; }}/><Icon name="image" size={16}/>{authorImageUploading?"Yükleniyor...":"Bilgisayardan Fotoğraf Seç"}</label>
                         <small>JPG, PNG veya WebP · Maksimum 20 MB · Görsel yazıya doğrudan eklenir</small>
-                      {blogImageSelectedName && (
-                        <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : "is-waiting"}`}>
-                          <strong>{blogForm.image ? "HAZIR" : blogImageUploading ? "HAZIRLANIYOR" : "GÖRSEL SEÇİLMEDİ"}</strong>
-                          <span>{blogImageSelectedName}</span>
-                        </div>
-                      )}
-                      {blogForm.image?.startsWith("data:image/") && (
-                        <div className="admin100Blog__embeddedBadge">
-                          Görsel yazıya doğrudan eklendi; yayınlamaya hazır.
-                        </div>
-                      )}
                         <input value={authorForm.image} onChange={(e)=>setAuthorForm({...authorForm,image:e.target.value})} placeholder="veya https:// görsel adresi"/>
                       </aside>
                       <div className="admin125Authors__actions">
@@ -8044,6 +8303,8 @@ function AdminDemoPage() {
                         <Icon name="plus" size={17}/>
                         {blogImageUploading
                           ? "Görsel Hazırlanıyor..."
+                          : blogImageUploadError
+                          ? "Yükleme Hatası — Tekrar Dene"
                           : blogForm.image
                           ? "✓ Görsel Hazır — Değiştir"
                           : blogImageSelectedName
@@ -8051,14 +8312,20 @@ function AdminDemoPage() {
                           : "Bilgisayardan Görsel Seç"}
                       </label>
 
-                      <small>JPG, PNG veya WebP · Maksimum 20 MB · Büyük görseller otomatik optimize edilir</small>
+                      {blogImageSelectedName && (
+                        <div className={`admin100Blog__uploadStatus ${blogForm.image ? "is-ok" : blogImageUploading ? "is-loading" : blogImageUploadError ? "is-error" : "is-waiting"}`}>
+                          <strong>{blogForm.image ? "HAZIR" : blogImageUploading ? "YÜKLENİYOR" : blogImageUploadError ? "YÜKLEME HATASI" : "BEKLİYOR"}</strong>
+                          <span>{blogImageUploadError || blogImageSelectedName}</span>
+                        </div>
+                      )}
+
+                      <small>JPG, PNG veya WebP · Maksimum 20 MB · Görsel Supabase Storage'a yüklenir ve optimize edilir</small>
 
                       <div className="admin100Blog__or"><span/>veya<span/></div>
 
                       <label className="admin100Blog__url">
                         <span>Görsel URL</span>
-                        <input value={blogForm.image?.startsWith("data:image/") ? "Dahili görsel hazır ✓" : blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."
-                        readOnly={blogForm.image?.startsWith("data:image/")}/>
+                        <input value={blogForm.image} onChange={(e)=>setBlogForm({...blogForm,image:e.target.value})} placeholder="https://..."/>
                       </label>
 
                       <label className="admin100Blog__slug">
@@ -35158,6 +35425,11 @@ html.perfLite .articleCinePage .articleCineHero__author{
 .articleCinePage .articleRichRiskGrid{
   align-items:stretch;
 }
+@media(min-width:761px){
+  .articleCinePage .articleRichRiskGrid.is-two-columns{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
 .articleCinePage .articleRichRiskGrid section{
   display:grid;
   grid-template-rows:140px 1fr;
@@ -36781,6 +37053,11 @@ html.perfLite .articleCinePage .articleCineHero__author{
   border-color:rgba(157,116,62,.28);
   background:rgba(157,116,62,.08);
 }
+.admin100Blog__uploadStatus.is-error{
+  border-color:rgba(160,76,51,.32);
+  background:rgba(160,76,51,.08);
+}
+.admin100Blog__uploadStatus.is-error strong{color:#a04c33}
 
 
 .admin100Blog__storageWarning{
