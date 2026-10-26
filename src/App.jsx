@@ -1130,7 +1130,7 @@ const pressCoverage = [
     date: "07 Ocak 2026",
     title: "Bağbaşı Aile Yaşam Merkezi Psikososyal Danışmanlık Hizmetleri Veriyor",
     excerpt: "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan tarafından yürütülen danışmanlık alanları Kırşehir Belediyesi’nin resmî haberinde tanıtıldı.",
-    image: "/press/press-kirsehir-belediyesi.jpg",
+    image: null,
     url: "https://www.kirsehir.bel.tr/haberler/bagbasi-aile-yasam-merkezi-psikososyal-danismanlik-hizmetleri-veriyor",
   },
   {
@@ -1139,7 +1139,7 @@ const pressCoverage = [
     date: "07 Ocak 2026",
     title: "Kırşehir Belediyesi’nden Ücretsiz Psikososyal Danışmanlık Hizmeti",
     excerpt: "Bağbaşı Aile Yaşam Merkezi’nde sunulan psikososyal danışmanlık hizmetlerinin kapsamı ulusal haber platformunda yer buldu.",
-    image: "/press/press-kirsehir-belediyesi.jpg",
+    image: null,
     url: "https://www.sondakika.com/guncel/haber-kirsehir-de-ucretsiz-psikososyal-danismanlik-hizmetleri-19433590/",
   },
   {
@@ -1148,7 +1148,7 @@ const pressCoverage = [
     date: "Ocak 2026",
     title: "Psikososyal Yardım Kırşehir’de Başladı",
     excerpt: "Kırşehir’de bireyler, çiftler ve aileler için erişilebilir psikososyal desteğin başlaması yerel basına yansıdı.",
-    image: "/press/press-kirsehir-belediyesi.jpg",
+    image: null,
     url: "https://www.kirsehirmemleket.com.tr/psikososyal-yardim-kirsehirde-basladi",
   },
   {
@@ -1157,7 +1157,7 @@ const pressCoverage = [
     date: "Facebook paylaşımı",
     title: "Kırşehir Belediyesi’nden Ücretsiz Psikolojik ve Aile Danışmanlığı",
     excerpt: "Ücretsiz psikolojik ve aile danışmanlığı hizmetleri Kırşehir Ses Haber’in sosyal medya kanalında okuyucularla paylaşıldı.",
-    image: "/press/press-kirsehir-belediyesi.jpg",
+    image: null,
     url: "https://www.facebook.com/kirsehirseshaber/posts/k%C4%B1r%C5%9Fehir-belediyesinden-%C3%BCcretsiz-psikolojik-ve-aile-dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1k%C4%B1r%C5%9Fehir-belediy/122190642194850726/",
   },
   {
@@ -3124,8 +3124,15 @@ function SiteApp() {
                   key={item.id}
                   aria-label={`${item.title} — ${item.source} kaynağında aç`}
                 >
-                  <div className="homePress167__visual">
-                    <img src={item.image} alt="" loading="lazy" decoding="async" />
+                  <div className={`homePress167__visual ${item.image ? "" : "homePress167__visual--plain"}`}>
+                    {item.image ? (
+                      <img src={item.image} alt="" loading="lazy" decoding="async" />
+                    ) : (
+                      <div className="homePress167__placeholder" aria-hidden="true">
+                        <small>BASINDA</small>
+                        <strong>BİZ</strong>
+                      </div>
+                    )}
                     <span>{item.source}</span>
                     <i>{String(index + 1).padStart(2, "0")}</i>
                   </div>
@@ -3321,12 +3328,6 @@ function PressPage() {
   return (
     <main className="press167">
       <section className="press167Hero">
-        <div className="press167Hero__media" aria-hidden="true">
-          <img src="/press/press-kirsehir-belediyesi.jpg" alt="" fetchPriority="high" />
-          <div className="press167Hero__veil" />
-          <div className="press167Hero__grain" />
-        </div>
-
         <a className="press167Hero__back" href="#/">← ANA SAYFA</a>
 
         <div className="press167Hero__content">
@@ -3365,9 +3366,16 @@ function PressPage() {
 
         <div className="press167Grid">
           {pressCoverage.map((item, index) => (
-            <article className={`press167Card ${index === 0 ? "press167Card--featured" : ""}`} key={item.id}>
-              <a className="press167Card__visual" href={item.url} target="_blank" rel="noreferrer" aria-label={`${item.title} haberini aç`}>
-                <img src={item.image} alt="" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+            <article className={`press167Card ${index === 0 ? "press167Card--featured" : ""} ${item.image ? "" : "press167Card--plain"}`} key={item.id}>
+              <a className={`press167Card__visual ${item.image ? "" : "press167Card__visual--plain"}`} href={item.url} target="_blank" rel="noreferrer" aria-label={`${item.title} haberini aç`}>
+                {item.image ? (
+                  <img src={item.image} alt="" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+                ) : (
+                  <div className="press167Card__placeholder" aria-hidden="true">
+                    <small>BASINDA</small>
+                    <strong>BİZ</strong>
+                  </div>
+                )}
                 <div className="press167Card__shade" />
                 <span>{item.source}</span>
                 <b>{String(index + 1).padStart(2, "0")}</b>
