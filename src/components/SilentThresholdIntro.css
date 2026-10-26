@@ -1,0 +1,176 @@
+.silentThreshold {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f3ecdf;
+  color: #30372e;
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(.4, 0, .2, 1);
+}
+.silentThreshold__scene,
+.silentThreshold__wash,
+.silentThreshold__light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.silentThreshold__scene { z-index: -1; overflow: hidden; }
+.silentThreshold__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 59% 50%;
+  opacity: 0;
+  transform: scale(1.13);
+  filter: blur(5px);
+  will-change: transform, opacity;
+  transition: opacity .8s ease, filter 1.6s ease, transform 5.4s cubic-bezier(.16, .6, .3, 1);
+}
+.silentThreshold--ready .silentThreshold__image {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.005);
+}
+.silentThreshold__wash {
+  background: linear-gradient(90deg, rgba(250,246,237,.66) 0%, rgba(250,246,237,.48) 45%, rgba(250,246,237,.04) 80%),
+    linear-gradient(180deg, rgba(248,243,234,.2), transparent 28%, transparent 75%, rgba(248,243,234,.58));
+}
+.silentThreshold__light {
+  background: linear-gradient(110deg, transparent 10%, rgba(255,253,246,.28) 42%, transparent 68%);
+  opacity: 0;
+  transform: translateX(-30%);
+}
+.silentThreshold--ready .silentThreshold__light { animation: thresholdLight 3.8s ease both; }
+.silentThreshold__frame {
+  position: absolute;
+  inset: clamp(22px, 3.4vw, 54px) clamp(24px, 4.4vw, 76px) auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(104, 87, 58, .25);
+  color: #655d4e;
+  font: 600 9px/1.5 Inter, system-ui, sans-serif;
+  letter-spacing: .19em;
+}
+.silentThreshold__content {
+  position: absolute;
+  left: clamp(30px, 8vw, 150px);
+  right: 20%;
+  top: 50%;
+  transform: translateY(-46%);
+  max-width: 1000px;
+}
+.silentThreshold__eyebrow,
+.silentThreshold__name,
+.silentThreshold__identity,
+.silentThreshold__sentence {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .85s ease, transform 1.1s cubic-bezier(.16,.8,.2,1);
+}
+.silentThreshold__eyebrow {
+  display: block;
+  color: #87673b;
+  font: 600 10px/1.6 Inter, system-ui, sans-serif;
+  letter-spacing: .22em;
+  transition-delay: .12s;
+}
+.silentThreshold__name {
+  margin: 23px 0 27px;
+  color: #30372e;
+  font: 400 clamp(68px, 8.7vw, 150px)/1.01 Georgia, "Times New Roman", serif;
+  letter-spacing: -.065em;
+  transition-delay: .25s;
+}
+.silentThreshold__name em { font-weight: 400; color: #8d6c3f; }
+.silentThreshold__identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #5c614f;
+  font: 600 11px/1.6 Inter, system-ui, sans-serif;
+  letter-spacing: .25em;
+  transition-delay: .43s;
+}
+.silentThreshold__identity i { width: 43px; height: 1px; background: #a18b65; }
+.silentThreshold__sentence {
+  max-width: 620px;
+  margin: 40px 0 0;
+  color: #50584a;
+  font: 400 clamp(18px, 1.65vw, 27px)/1.6 Georgia, "Times New Roman", serif;
+  letter-spacing: -.015em;
+  transition-delay: .6s;
+}
+.silentThreshold__sentence em { color: #796443; }
+.silentThreshold--ready .silentThreshold__eyebrow,
+.silentThreshold--ready .silentThreshold__name,
+.silentThreshold--ready .silentThreshold__identity,
+.silentThreshold--ready .silentThreshold__sentence { opacity: 1; transform: translateY(0); }
+.silentThreshold__footer {
+  position: absolute;
+  left: clamp(24px, 4.4vw, 76px);
+  right: clamp(24px, 4.4vw, 76px);
+  bottom: max(30px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+.silentThreshold__progress { width: clamp(55px, 9vw, 140px); height: 1px; background: rgba(124,103,67,.24); overflow: hidden; }
+.silentThreshold__progress i { display: block; width: 100%; height: 100%; background: #8e7247; transform: scaleX(0); transform-origin: left; }
+.silentThreshold--ready .silentThreshold__progress i { animation: thresholdProgress 2.7s linear both; }
+.silentThreshold__footnote { color: #6a604e; font: 600 8px/1.5 Inter,system-ui,sans-serif; letter-spacing: .18em; }
+.silentThreshold__skip {
+  margin-left: auto;
+  padding: 11px 16px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  border: 1px solid rgba(112,91,55,.3);
+  border-radius: 999px;
+  background: rgba(255,253,249,.68);
+  color: #57513f;
+  font: 500 11px/1.4 Inter,system-ui,sans-serif;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.silentThreshold__skip span { font-size: 18px; }
+.silentThreshold__skip:hover { background: #fffcf6; border-color: #9e8154; }
+.silentThreshold__skip:focus-visible { outline: 2px solid #826333; outline-offset: 4px; }
+.silentThreshold--leaving { opacity: 0; pointer-events: none; }
+.silentThreshold--leaving .silentThreshold__content { transform: translateY(-51%); transition: transform 1s cubic-bezier(.4,0,.2,1); }
+.silentThreshold--leaving .silentThreshold__scene { transform: scale(1.035); transition: transform 1.15s ease; }
+/* Reveal the waiting homepage through a single fade, without a second blur animation. */
+.thresholdPreviewSite.step145Site--waiting,
+.thresholdPreviewSite.step145Site--ready { opacity: 1; transform: none; filter: none; animation: none; }
+@keyframes thresholdLight { 0% {opacity:0;transform:translateX(-30%)} 40% {opacity:.75} 100% {opacity:0;transform:translateX(22%)} }
+@keyframes thresholdProgress { to {transform:scaleX(1)} }
+@media(max-width:700px) {
+  .silentThreshold__image { object-position: 58% 50%; }
+  .silentThreshold__wash { background:linear-gradient(90deg,rgba(250,246,237,.83),rgba(250,246,237,.56) 58%,rgba(250,246,237,.22)),linear-gradient(180deg,rgba(248,243,234,.15),transparent 60%,rgba(248,243,234,.7)); }
+  .silentThreshold__frame { font-size:7px; letter-spacing:.14em; }
+  .silentThreshold__content {left:26px;right:26px;top:47%;transform:translateY(-43%)}
+  .silentThreshold__eyebrow {font-size:8px;letter-spacing:.15em;max-width:260px}
+  .silentThreshold__name {font-size:clamp(56px,12.3vw,86px);margin:22px 0 25px;letter-spacing:-.06em;white-space:nowrap}
+  .silentThreshold__identity {font-size:9px;gap:12px;letter-spacing:.17em}
+  .silentThreshold__identity i {width:25px}
+  .silentThreshold__sentence {font-size:20px;max-width:285px;margin-top:28px}
+  .silentThreshold__footnote {display:none}
+  .silentThreshold__footer {gap:12px}
+}
+@media(max-height:500px) and (min-width:701px) {
+  .silentThreshold__name {font-size:70px;margin:12px 0 14px}
+  .silentThreshold__sentence {margin-top:18px;font-size:19px}
+  .silentThreshold__content {top:48%}
+}
+@media(prefers-reduced-motion:reduce) {
+  .silentThreshold {transition-duration:.15s}
+  .silentThreshold *, .silentThreshold *::before, .silentThreshold *::after {animation:none!important;transition:none!important}
+  .silentThreshold__image {filter:none;transform:none}
+  .silentThreshold__eyebrow,.silentThreshold__name,.silentThreshold__identity,.silentThreshold__sentence {transform:none}
+}
