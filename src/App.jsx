@@ -1105,6 +1105,72 @@ const withRequestTimeout = async (
   }
 };
 
+const pressCoverage = [
+  {
+    id: "kirsehir-manset-2026",
+    source: "Kırşehir Manşet",
+    date: "13 Eylül 2026",
+    title: "Bağbaşı Aile Yaşam Merkezi’nde Ücretsiz Psikoterapi ve Danışmanlık Dönemi",
+    excerpt: "Kırşehir Belediyesi’nin Bağbaşı Aile Yaşam Merkezi’nde sunduğu ücretsiz psikolojik destek ve danışmanlık hizmetleri basında yer aldı.",
+    image: "/press/press-kirsehir-manset.webp",
+    url: "https://kirsehirmanset.com/haber/bagbasi-aile-yasam-merkezinde-ucretsiz-psikoterapi-ve-danismanlik-donemi-e9fad",
+  },
+  {
+    id: "kirsehir-memleket-eylul-2026",
+    source: "Kırşehir Memleket",
+    date: "10 Eylül 2026",
+    title: "Kırşehir Bağbaşı Aile Yaşam Merkezi’nden Ücretsiz Psikolojik Danışmanlık Desteği",
+    excerpt: "Bireysel, çift ve aile danışmanlığından stres, kaygı ve iletişim çalışmalarına uzanan ücretsiz destek programı duyuruldu.",
+    image: "/press/press-kirsehir-manset.webp",
+    url: "https://www.kirsehirmemleket.com.tr/kirsehir-bagbasi-aile-yasam-merkezinden-ucretsiz-psikolojik-danismanlik-destegi",
+  },
+  {
+    id: "kirsehir-belediyesi-ocak-2026",
+    source: "Kırşehir Belediyesi",
+    date: "07 Ocak 2026",
+    title: "Bağbaşı Aile Yaşam Merkezi Psikososyal Danışmanlık Hizmetleri Veriyor",
+    excerpt: "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan tarafından yürütülen danışmanlık alanları Kırşehir Belediyesi’nin resmî haberinde tanıtıldı.",
+    image: "/press/press-kirsehir-belediyesi.jpg",
+    url: "https://www.kirsehir.bel.tr/haberler/bagbasi-aile-yasam-merkezi-psikososyal-danismanlik-hizmetleri-veriyor",
+  },
+  {
+    id: "sondakika-ocak-2026",
+    source: "SonDakika.com",
+    date: "07 Ocak 2026",
+    title: "Kırşehir Belediyesi’nden Ücretsiz Psikososyal Danışmanlık Hizmeti",
+    excerpt: "Bağbaşı Aile Yaşam Merkezi’nde sunulan psikososyal danışmanlık hizmetlerinin kapsamı ulusal haber platformunda yer buldu.",
+    image: "/press/press-kirsehir-belediyesi.jpg",
+    url: "https://www.sondakika.com/guncel/haber-kirsehir-de-ucretsiz-psikososyal-danismanlik-hizmetleri-19433590/",
+  },
+  {
+    id: "kirsehir-memleket-ocak-2026",
+    source: "Kırşehir Memleket",
+    date: "Ocak 2026",
+    title: "Psikososyal Yardım Kırşehir’de Başladı",
+    excerpt: "Kırşehir’de bireyler, çiftler ve aileler için erişilebilir psikososyal desteğin başlaması yerel basına yansıdı.",
+    image: "/press/press-kirsehir-belediyesi.jpg",
+    url: "https://www.kirsehirmemleket.com.tr/psikososyal-yardim-kirsehirde-basladi",
+  },
+  {
+    id: "kirsehir-ses-haber-2026",
+    source: "Kırşehir Ses Haber",
+    date: "Facebook paylaşımı",
+    title: "Kırşehir Belediyesi’nden Ücretsiz Psikolojik ve Aile Danışmanlığı",
+    excerpt: "Ücretsiz psikolojik ve aile danışmanlığı hizmetleri Kırşehir Ses Haber’in sosyal medya kanalında okuyucularla paylaşıldı.",
+    image: "/press/press-kirsehir-belediyesi.jpg",
+    url: "https://www.facebook.com/kirsehirseshaber/posts/k%C4%B1r%C5%9Fehir-belediyesinden-%C3%BCcretsiz-psikolojik-ve-aile-dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1k%C4%B1r%C5%9Fehir-belediy/122190642194850726/",
+  },
+  {
+    id: "kirsehir-haber40-ocak-2026",
+    source: "Kırşehir Haber 40",
+    date: "07 Ocak 2026",
+    title: "Kırşehir’de Ücretsiz Aile ve Çocuk Danışmanlığı",
+    excerpt: "Bağbaşı Aile Yaşam Merkezi’nde bireyler, aileler ve çocuklar için sunulan ücretsiz danışmanlık hizmetleri haberleştirildi.",
+    image: "/press/press-kirsehir-haber40.jpg",
+    url: "https://www.kirsehirhaber40.com/kirsehirde-ucretsiz-aile-ve-cocuk-danismanligi",
+  },
+];
+
 const detailedServicePages = {
   "bireysel-danismanlik": {
     no: "01", eyebrow: "BİREYSEL DANIŞMANLIK", title: "Bireysel Danışmanlık", accent: "Detaylı Bilgi", icon: "user",
@@ -1499,6 +1565,7 @@ const analyticsPageLabel = (hash = "") => {
   if (hash === "#/surec") return "Süreç";
   if (hash === "#/yorumlar") return "Değerli Yorumlarınız";
   if (hash === "#/icerikler") return "İçerikler";
+  if (hash === "#/basinda-biz") return "Basında Biz";
   if (hash === "#/blog") return "Blog";
   if (hash.startsWith("#/blog/")) return "Blog Yazısı";
   if (hash === "#/yazar-basvuru") return "Yazar Başvurusu";
@@ -1856,6 +1923,8 @@ function SiteApp() {
       ? "testimonials"
       : window.location.hash === "#/icerikler"
       ? "content"
+      : window.location.hash === "#/basinda-biz"
+      ? "press"
       : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/") || Boolean(getSharedBlogSlug())
       ? "blog"
       : window.location.hash === "#/yazar-basvuru"
@@ -2099,6 +2168,7 @@ function SiteApp() {
       blog: ["Blog | Kaan Özkan", "Aile, ilişkiler, psikososyal destek, kişisel gelişim ve sosyal hizmet alanlarında bilgilendirici yazıları keşfedin."],
       contact: ["İletişim | Kaan Özkan", "Kaan Özkan ile telefon veya e-posta üzerinden iletişime geçin ve randevu süreci hakkında bilgi alın."],
       content: ["İçerikler | Kaan Özkan", "Podcast, video ve sosyal hizmet alanındaki güncel içerikleri inceleyin."],
+      press: ["Basında Biz | Kaan Özkan", "Kaan Özkan'ın psikososyal danışmanlık ve aile danışmanlığı çalışmalarının basındaki yansımalarını inceleyin."],
       authors: ["Yazarlarımız | Kaan Özkan", "Sosyal hizmet, aile ve ilişkiler alanlarından yazarların güncel yazılarını ve profillerini keşfedin."],
       writerApplication: ["Yazar Başvurusu | Kaan Özkan", "Kaan Özkan blogunda yazmak için yazar başvurunuzu ve çalışma örneğinizi gönderin."],
       privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
@@ -2353,6 +2423,8 @@ function SiteApp() {
           ? "testimonials"
           : window.location.hash === "#/icerikler"
           ? "content"
+          : window.location.hash === "#/basinda-biz"
+          ? "press"
           : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
           ? "blog"
           : window.location.hash === "#/yazar-basvuru"
@@ -2589,7 +2661,7 @@ function SiteApp() {
             >
               Süreç
             </a>
-            <details className={`navContentMenu ${["content","blog","authors","writerApplication"].includes(page) ? "is-active" : ""}`}>
+            <details className={`navContentMenu ${["content","blog","authors","writerApplication","press"].includes(page) ? "is-active" : ""}`}>
               <summary>
                 İçerikler
                 <span className="navContentMenu__chevron" aria-hidden="true">⌄</span>
@@ -2618,6 +2690,14 @@ function SiteApp() {
                 >
                   <span className="navContentMenu__mark" aria-hidden="true">✦</span>
                   <span><strong>Podcast & Video</strong><small>Dinle ve izle</small></span>
+                </a>
+                <a
+                  href="#/basinda-biz"
+                  className={page === "press" ? "is-active" : ""}
+                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
+                >
+                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
+                  <span><strong>Basında Biz</strong><small>Haberler ve yayınlar</small></span>
                 </a>
               </div>
             </details>
@@ -2657,6 +2737,8 @@ function SiteApp() {
           <TestimonialsPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
+        ) : page === "press" ? (
+          <PressPage />
         ) : page === "writerApplication" ? (
           <WriterApplicationPage />
         ) : page === "blog" ? (
@@ -3020,6 +3102,44 @@ function SiteApp() {
             </div>
           </section>
 
+          <section className="homePress167" aria-labelledby="homePressTitle">
+            <div className="homePress167__head">
+              <div>
+                <span className="homePress167__eyebrow">BASINDA BİZ</span>
+                <h2 id="homePressTitle">Çalışmalarımızdan <em>basına yansıyanlar.</em></h2>
+              </div>
+              <div className="homePress167__intro">
+                <p>Psikososyal danışmanlık ve aile danışmanlığı çalışmalarımızın yerel ve ulusal basındaki yansımalarından seçkiler.</p>
+                <a href="#/basinda-biz">TÜM HABERLERİ GÖR <span>↗</span></a>
+              </div>
+            </div>
+
+            <div className="homePress167__grid">
+              {pressCoverage.slice(0, 3).map((item, index) => (
+                <a
+                  className="homePress167__card"
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={item.id}
+                  aria-label={`${item.title} — ${item.source} kaynağında aç`}
+                >
+                  <div className="homePress167__visual">
+                    <img src={item.image} alt="" loading="lazy" decoding="async" />
+                    <span>{item.source}</span>
+                    <i>{String(index + 1).padStart(2, "0")}</i>
+                  </div>
+                  <div className="homePress167__body">
+                    <small>{item.date}</small>
+                    <h3>{item.title}</h3>
+                    <p>{item.excerpt}</p>
+                    <b>HABERİ KAYNAĞINDA OKU <span>↗</span></b>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
           <section className="section contactSection" id="iletisim">
             <div className="contactLead reveal">
               <span className="sectionEyebrow">İLETİŞİME GEÇİN</span>
@@ -3101,6 +3221,7 @@ function SiteApp() {
                 <a href="#/surec">Süreç</a>
                 <a href="#/icerikler">İçerikler</a>
                 <a href="#/blog">Blog</a>
+                <a href="#/basinda-biz">Basında Biz</a>
                 <a href="#/iletisim">İletişim</a>
               </div>
 
@@ -3192,6 +3313,89 @@ class SiteErrorBoundary extends Component {
 function App() {
   const isMaintenanceMode = false;
   return isMaintenanceMode ? <Maintenance /> : <SiteErrorBoundary><SiteApp /></SiteErrorBoundary>;
+}
+
+function PressPage() {
+  const sourceCount = new Set(pressCoverage.map((item) => item.source)).size;
+
+  return (
+    <main className="press167">
+      <section className="press167Hero">
+        <div className="press167Hero__media" aria-hidden="true">
+          <img src="/press/press-kirsehir-belediyesi.jpg" alt="" fetchPriority="high" />
+          <div className="press167Hero__veil" />
+          <div className="press167Hero__grain" />
+        </div>
+
+        <a className="press167Hero__back" href="#/">← ANA SAYFA</a>
+
+        <div className="press167Hero__content">
+          <span className="press167Hero__eyebrow">KAAN ÖZKAN · BASIN ARŞİVİ</span>
+          <h1>Basında <em>Biz</em></h1>
+          <p>
+            Psikososyal destek, aile danışmanlığı ve toplumla yürüttüğümüz çalışmaların
+            yerel ve ulusal basındaki yansımaları.
+          </p>
+          <button type="button" onClick={() => document.getElementById("press167Archive")?.scrollIntoView({ behavior: "smooth" })}>
+            HABERLERİ İNCELE <Icon name="arrow" size={16} />
+          </button>
+        </div>
+
+        <div className="press167Hero__stats" aria-label="Basın arşivi özeti">
+          <div><strong>{String(pressCoverage.length).padStart(2, "0")}</strong><span>YAYIN</span></div>
+          <i />
+          <div><strong>{String(sourceCount).padStart(2, "0")}</strong><span>HABER KAYNAĞI</span></div>
+        </div>
+      </section>
+
+      <section className="press167Lead">
+        <span>GÖRÜNÜRLÜK DEĞİL, TOPLUMSAL FAYDA</span>
+        <h2>Her haber, daha fazla kişinin <em>desteğe ulaşabilmesi</em> için açılan bir kapı.</h2>
+        <p>
+          Bu arşiv, çalışmalarımızı konu alan bağımsız haberleri bir araya getirir.
+          Haber kartları sizi içeriğin yayımlandığı özgün kaynağa yönlendirir.
+        </p>
+      </section>
+
+      <section className="press167Archive" id="press167Archive">
+        <div className="press167Archive__head">
+          <div><span>BASINDA YER ALANLAR</span><h2>Haber <em>Arşivi</em></h2></div>
+          <p>{pressCoverage.length} yayın · En yeni haberlerden başlayarak</p>
+        </div>
+
+        <div className="press167Grid">
+          {pressCoverage.map((item, index) => (
+            <article className={`press167Card ${index === 0 ? "press167Card--featured" : ""}`} key={item.id}>
+              <a className="press167Card__visual" href={item.url} target="_blank" rel="noreferrer" aria-label={`${item.title} haberini aç`}>
+                <img src={item.image} alt="" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+                <div className="press167Card__shade" />
+                <span>{item.source}</span>
+                <b>{String(index + 1).padStart(2, "0")}</b>
+              </a>
+
+              <div className="press167Card__body">
+                <time>{item.date}</time>
+                <h3><a href={item.url} target="_blank" rel="noreferrer">{item.title}</a></h3>
+                <p>{item.excerpt}</p>
+                <a className="press167Card__link" href={item.url} target="_blank" rel="noreferrer">
+                  <span>HABERİ KAYNAĞINDA OKU</span><b>↗</b>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="press167Outro">
+        <span>KAAN ÖZKAN</span>
+        <h2>İnsan odaklı çalışmalar, <em>topluma dokunan izler.</em></h2>
+        <div>
+          <a href="#/hakkimda">HAKKIMDA <span>↗</span></a>
+          <a href="#/iletisim">İLETİŞİME GEÇİN <span>↗</span></a>
+        </div>
+      </section>
+    </main>
+  );
 }
 
 function BlogPage({ content = defaultBlogContent }) {
