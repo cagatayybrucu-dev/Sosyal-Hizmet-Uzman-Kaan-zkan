@@ -28525,11 +28525,11 @@ html{background:#f7f3eb;overscroll-behavior-y:none}body{min-width:320px}:focus-v
 .press167Lead{padding-top:clamp(62px,7vw,96px);padding-bottom:clamp(62px,7vw,96px)}
 .press167Archive{background:#ece5da}
 .press167Card{box-shadow:none}.press167Card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(52,44,33,.08)}
-.homePress167__visual--plain,.press167Card__visual--plain{background:#405147}
-.homePress167__visual--plain:after,.press167Card__visual--plain .press167Card__shade{background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(21,34,27,.16))}
-.homePress167__placeholder,.press167Card__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#efe7db;text-align:center}
-.homePress167__placeholder small,.press167Card__placeholder small{font-size:9px;font-weight:800;letter-spacing:.28em}
-.homePress167__placeholder strong,.press167Card__placeholder strong{margin-top:3px;color:#d7b479;font:400 clamp(34px,4vw,62px)/1 Georgia,"Times New Roman",serif;font-style:italic}
+.homePress167__visual--kaan img,.press167Card__visual--kaan img{object-position:left center}
+.homePress167__visual--kaan:before,.press167Card__visual--kaan:before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,transparent 36%,rgba(53,69,60,.72) 49%,#35453c 60%,#35453c 100%);pointer-events:none}
+.homePress167__visual--kaan:after{z-index:1;background:linear-gradient(180deg,transparent 45%,rgba(20,27,23,.74))}
+.press167Card__visual--kaan .press167Card__shade{z-index:1;background:linear-gradient(180deg,transparent 48%,rgba(20,27,23,.7))}
+.press167Card__visual>span,.press167Card__visual>b{z-index:2}
 
 @media(max-width:760px){
   .press167Hero{grid-template-columns:1fr;gap:34px;align-items:start;padding:105px 22px 50px}
