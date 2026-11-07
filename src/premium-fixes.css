@@ -1,8 +1,22 @@
 @media(min-width:581px){
-  .authorCard{height:420px!important;min-height:0!important;min-width:0}
+  .authorCard{height:auto!important;min-height:420px!important;min-width:0}
   .authorCardPortrait{height:420px!important;min-height:0!important;min-width:0}
   .authorCardPortrait img,.authorCardPortrait>i{height:100%!important;min-height:0!important;min-width:0!important;object-fit:cover!important;object-position:center top!important}
 }
 @media(max-width:580px){
   .authorCard{height:auto!important}
+}
+.authorsHero{grid-template-columns:minmax(0,920px)!important;min-height:560px!important;padding-bottom:80px!important}
+.authorsHero>div:first-child{max-width:920px}
+.authorsMosaic{display:none!important}
+.authorsGrid{grid-template-columns:1fr!important;gap:28px!important}
+.authorCard{grid-template-columns:320px minmax(0,1fr)!important;align-items:start}
+.authorCardCopy{min-height:420px}
+.authorCardCopy p{display:block!important;overflow:visible!important;max-height:none!important;white-space:pre-line;font-size:.88rem!important;line-height:1.82!important}
+.authorCardCopy footer{margin-top:26px!important}
+@media(max-width:700px){
+  .authorsHero{min-height:auto!important;padding-bottom:60px!important}
+  .authorCard{grid-template-columns:1fr!important}
+  .authorCardPortrait{width:100%;height:auto!important;aspect-ratio:4/5}
+  .authorCardCopy{min-height:0}
 }
