@@ -10,7 +10,7 @@ import portraitImage from "./assets/kaan-about.jpg";
 
 const TOPICS = ["Gündelik Hayat", "Toplum", "Dayanışma", "Gençlik", "Kültür", "Haftanın Sorusu"];
 const ARTICLE_IMAGES = [readingImage, journalImage, galleryImage, editorialImage];
-const BLOCKED_TITLES = ["aile danışman", "çift danışman", "evlilik danışman", "randevu", "boşanma danışman"];
+const BLOCKED_TITLES = ["aile danışman", "aile içinde", "çift danışman", "evlilik danışman", "evlilik ve ilişki", "randevu", "boşanma danışman"];
 const SAMPLE_POSTS = [
   { id: "s1", author_name: "Meydan Editörü", author_username: "meydan", topic: "Haftanın Sorusu", content: "Bazen bir toplumu anlamanın en iyi yolu büyük cümlelerden değil, insanların gündelik hayatta birbirine nasıl davrandığından geçer. Sizce son yıllarda en çok ne değişti?", created_at: new Date().toISOString(), likes: 18, comments: 4, is_featured: true },
   { id: "s2", author_name: "Meydan Editörü", author_username: "meydan", topic: "Dayanışma", content: "Dayanışma yalnızca zor zamanda yardım etmek değildir. Birini gerçekten dinlemek, görünmeyen emeği fark etmek ve küçük bir iyiliği alışkanlığa dönüştürmektir.", created_at: new Date(Date.now() - 86400000).toISOString(), likes: 12, comments: 2 },
@@ -24,8 +24,13 @@ const fallbackArticles = [
 ];
 
 const cleanRole = (value = "") => String(value).replace(/\s*[&·,-]?\s*(Aile|Evlilik ve İlişki|Çift) Danışmanı/gi, "").replace(/\s{2,}/g, " ").replace(/^[&·,-]+|[&·,-]+$/g, "").trim() || "Yazar";
+const normalizeName = (value = "") => String(value).toLocaleLowerCase("tr-TR").replace(/\s+/g, " ").trim();
 const slugify = (value = "") => String(value).toLocaleLowerCase("tr-TR").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/ğ/g, "g").replace(/ş/g, "s").replace(/ç/g, "c").replace(/ö/g, "o").replace(/ü/g, "u").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const formatDate = (value) => new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", year: "numeric" }).format(value ? new Date(value) : new Date());
+const formatDate = (value) => {
+  const date = value ? new Date(value) : new Date();
+  if (Number.isNaN(date.getTime())) return String(value || "Tarih belirtilmedi");
+  return new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", year: "numeric" }).format(date);
+};
 const path = () => (window.location.hash.slice(1) || "/").split("?")[0];
 const go = (to) => { window.location.hash = to; };
 
@@ -88,11 +93,20 @@ function App() {
     supabase.from("site_content").select("content").eq("id", "blog").maybeSingle().then(({ data }) => {
       const content = data?.content;
       if (!content) return;
+      const remoteAuthors = (Array.isArray(content.authors) ? content.authors : []).map((author) => ({ ...author, role: cleanRole(author.role) }));
+      const nextAuthors = [
+        { name: "Kaan Özkan", slug: "kaan-ozkan", role: "Sosyal Hizmet Uzmanı · Kurucu Editör", bio: "İnsan, toplum ve gündelik hayat üzerine yazıyor; farklı sesler için bağımsız yayın alanları kuruyor.", image: portraitImage },
+        ...remoteAuthors.filter((author) => normalizeName(author.name) !== normalizeName("Kaan Özkan")),
+      ];
       const nextArticles = (Array.isArray(content.posts) ? content.posts : [])
         .filter((post) => post.status !== "draft" && !BLOCKED_TITLES.some((term) => String(post.title || "").toLocaleLowerCase("tr-TR").includes(term)))
-        .map((post, index) => ({ ...post, id: post.id || post.slug || index, slug: slugify(post.slug || post.title), excerpt: post.excerpt || post.summary || "İnsan, toplum ve yaşama dair editoryal bir okuma.", category: post.category || "Toplum", authorName: post.authorName || post.author || "Kaan Özkan", authorRole: cleanRole(post.authorRole), publishedAt: post.publishedAt || post.date, image: post.image || post.coverImage || ARTICLE_IMAGES[index % ARTICLE_IMAGES.length] }));
+        .map((post, index) => {
+          const authorName = post.authorName || post.author || "Kaan Özkan";
+          const matchedAuthor = nextAuthors.find((author) => author.slug === post.authorSlug || normalizeName(author.name) === normalizeName(authorName));
+          return { ...post, id: post.id || post.slug || index, slug: slugify(post.slug || post.title), excerpt: post.excerpt || post.summary || "İnsan, toplum ve yaşama dair editoryal bir okuma.", category: post.category || "Toplum", authorName, authorRole: cleanRole(post.authorRole || matchedAuthor?.role), authorImage: post.authorImage || matchedAuthor?.image || (normalizeName(authorName).includes("kaan") ? portraitImage : ""), publishedAt: post.publishedAt || post.date, image: post.image || post.coverImage || ARTICLE_IMAGES[index % ARTICLE_IMAGES.length] };
+        });
       if (nextArticles.length) setArticles(nextArticles);
-      setAuthors((Array.isArray(content.authors) ? content.authors : []).map((author) => ({ ...author, role: cleanRole(author.role) })));
+      setAuthors(nextAuthors);
     });
   }, []);
 
@@ -119,13 +133,17 @@ function App() {
 function Header({ session, profile, menuOpen, setMenuOpen, onAuth }) {
   const closeMenu = () => setMenuOpen(false);
   return <header className="siteHeader">
-    <button className="brand" onClick={() => go("/")}><b>KO</b><span>Kaan Özkan<small>İnsan · Toplum · Yaşam</small></span></button>
+    <button className="brand" onClick={() => go("/")} aria-label="Ana sayfaya git"><LogoMark /><span>Kaan Özkan<small>İnsan · Toplum · Yaşam</small></span></button>
     <button className="navToggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menüyü aç">{menuOpen ? "KAPAT" : "MENÜ"}</button>
     <nav className={menuOpen ? "siteNav isOpen" : "siteNav"}>
-      <a href="#/dergi" onClick={closeMenu}>Dergi</a><a href="#/meydan" onClick={closeMenu}>Meydan</a><a href="#/yazarlar" onClick={closeMenu}>Yazarlar</a><a href="#/hakkimda" onClick={closeMenu}>Hakkımda</a>
+      <a href="#/" onClick={closeMenu}>Ana Sayfa</a><a href="#/dergi" onClick={closeMenu}>Dergi</a><a href="#/meydan" onClick={closeMenu}>Meydan</a><a href="#/yazarlar" onClick={closeMenu}>Yazarlar</a><a href="#/hakkimda" onClick={closeMenu}>Hakkımda</a>
       {session ? <a className="profileChip" href="#/profil" onClick={closeMenu}>{profile?.display_name || "Profilim"}</a> : <button className="headerJoin" onClick={() => { closeMenu(); onAuth(); }}>Aramıza katıl</button>}
     </nav>
   </header>;
+}
+
+function LogoMark() {
+  return <svg className="brandMark" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" /><path d="M15 18c7 0 11 2 13 6 2-4 6-6 13-6v22c-7 0-11 2-13 6-2-4-6-6-13-6Z" /><path d="M28 24v22" /><circle className="brandSun" cx="28" cy="13" r="3" /></svg>;
 }
 
 function Home({ articles, posts, authors }) {
@@ -147,7 +165,8 @@ function Home({ articles, posts, authors }) {
 }
 
 function SectionHeading({ no, kicker, title, link }) { return <div className="sectionHeading"><span>{no} — {kicker}</span><h2>{title}</h2>{link && <button onClick={() => go(link)}>Tümünü gör ↗</button>}</div>; }
-function ArticleCard({ article, index }) { return <article className="editorialCard" onClick={() => go(`/dergi/${article.slug}`)}><div><img src={article.image} alt="" /><span>{String(index).padStart(2, "0")}</span></div><small>{article.category}</small><h3>{article.title}</h3><p>{article.excerpt}</p><footer>{article.authorName}<b>↗</b></footer></article>; }
+function AuthorIdentity({ article, light = false }) { return <span className={`authorIdentity ${light ? "isLight" : ""}`}>{article.authorImage ? <img src={article.authorImage} alt="" /> : <i>{article.authorName?.[0] || "Y"}</i>}<span><b>{article.authorName || "Editör"}</b><small>{cleanRole(article.authorRole)}</small></span></span>; }
+function ArticleCard({ article, index }) { return <article className="editorialCard" onClick={() => go(`/dergi/${article.slug}`)}><div><img src={article.image} alt="" /><span>{String(index).padStart(2, "0")}</span></div><small>{article.category}</small><h3>{article.title}</h3><p>{article.excerpt}</p><footer><AuthorIdentity article={article} /><b>↗</b></footer></article>; }
 
 function Editorial({ articles }) {
   const [query, setQuery] = useState(""); const [category, setCategory] = useState("Tümü");
@@ -205,7 +224,7 @@ function CommentsDrawer({ post, session, onAuth, onClose, onReload }) {
 
 function Authors({ authors, articles }) {
   const list = authors.length ? authors : [{ name: "Kaan Özkan", role: "Sosyal Hizmet Uzmanı", bio: "İnsan, toplum ve gündelik hayat üzerine yazıyor.", image: portraitImage }];
-  return <div className="page authorsPage"><section className="simpleHero"><span className="eyebrow">YAZARLAR</span><h1>Her metin,<br /><em>başka bir pencere.</em></h1><p>Farklı disiplinlerden, ortak bir merakla yazan isimler.</p></section><section className="authorsGrid sectionPad">{list.map((author, index) => <article className="authorCard" key={author.slug || author.name}><span>{String(index + 1).padStart(2, "0")}</span>{author.image ? <img src={author.image} alt={author.name} /> : <i>{author.name?.[0]}</i>}<h2>{author.name}</h2><small>{cleanRole(author.role)}</small><p>{author.bio || "İnsan, toplum ve yaşam üzerine düşüncelerini paylaşıyor."}</p><b>{articles.filter((x) => x.authorName === author.name).length} YAZI</b></article>)}</section></div>;
+  return <div className="page authorsPage"><section className="authorsHero"><div><span className="eyebrow">YAZARLAR KOLEKTİFİ</span><h1>Her metin,<br /><em>başka bir pencere.</em></h1><p>Farklı disiplinlerden, ortak bir merakla yazan isimler. Bilgiyi mesafeli değil, insana yakın bir dille paylaşan bağımsız sesler.</p><div className="authorsStats"><span><b>{String(list.length).padStart(2, "0")}</b> YAZAR</span><span><b>{String(articles.length).padStart(2, "0")}</b> YAYIN</span></div></div><div className="authorsMosaic">{list.slice(0, 3).map((author, index) => author.image ? <img key={author.slug || author.name} src={author.image} alt={author.name} style={{ "--author-order": index }} /> : <i key={author.slug || author.name}>{author.name?.[0]}</i>)}</div></section><section className="authorsArchive"><header><span>01 — KOLEKTİF</span><h2>Kalemi olanlar,<br /><em>sözü çoğaltanlar.</em></h2></header><div className="authorsGrid">{list.map((author, index) => { const count = articles.filter((x) => normalizeName(x.authorName) === normalizeName(author.name)).length; return <article className="authorCard" key={author.slug || author.name}><div className="authorCardPortrait">{author.image ? <img src={author.image} alt={author.name} /> : <i>{author.name?.[0]}</i>}<span>{String(index + 1).padStart(2, "0")}</span></div><div className="authorCardCopy"><small>{cleanRole(author.role)}</small><h2>{author.name}</h2><p>{author.bio || "İnsan, toplum ve yaşam üzerine düşüncelerini; araştırma, deneyim ve merakla paylaşıyor."}</p><footer><b>{String(count).padStart(2, "0")} YAZI</b><span>Profili yakında ↗</span></footer></div></article>; })}</div></section></div>;
 }
 
 function About() { return <div className="page aboutPage"><section className="aboutHero"><div><span className="eyebrow">HAKKIMDA</span><h1>Merakla bakmak.<br /><em>Dikkatle yazmak.</em></h1><p>Kaan Özkan — sosyal hizmet uzmanı, editör ve bu bağımsız yayın alanının kurucusu.</p></div><img src={portraitImage} alt="Kaan Özkan" /></section><section className="aboutStory sectionPad"><span>01 — HİKÂYE</span><div><h2>Bu site artık bir hizmet vitrini değil; <em>bir karşılaşma alanı.</em></h2><p>Sosyal hizmet eğitimi, insana yalnızca bireysel hikâyesiyle değil; içinde yaşadığı çevre, koşullar ve ilişkiler ağıyla birlikte bakmayı öğretir. Buradaki yayın çizgisi de tam olarak bu bakıştan besleniyor.</p><p>Dergide araştırma temelli yazılar ve insan hikâyeleri; Meydan'da ise ziyaretçilerin kendi sözü var. Amaç kesin cevaplar dağıtmak değil, daha iyi sorular sorabileceğimiz sakin ve özenli bir alan açmak.</p></div></section><section className="aboutValues sectionPad"><article><b>01</b><h3>İnsana saygı</h3><p>Her hikâyeyi kendi bağlamı ve biricikliği içinde ele almak.</p></article><article><b>02</b><h3>Editoryal özen</h3><p>Bilgiyi anlaşılır, kaynaklı ve sorumlu bir dille paylaşmak.</p></article><article><b>03</b><h3>Açık meydan</h3><p>Farklı seslerin güvenli ve saygılı biçimde karşılaşmasını sağlamak.</p></article></section><section className="aboutDisclaimer"><span>ÖNEMLİ NOT</span><p>Bu platform herhangi bir terapi, aile danışmanlığı, tanı, tedavi veya randevu hizmeti sunmaz. Yayınlanan içerikler genel bilgilendirme ve düşünce paylaşımı amaçlıdır.</p></section></div>; }
