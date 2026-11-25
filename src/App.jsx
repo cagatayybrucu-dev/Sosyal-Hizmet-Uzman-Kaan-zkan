@@ -2765,26 +2765,26 @@ function SiteApp() {
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
-              <svg className="brandLogoSeal2026" viewBox="0 0 96 96" focusable="false">
+              <svg className="brandLogoSignature2026" viewBox="0 0 112 80" focusable="false">
                 <defs>
-                  <linearGradient id="kaanOzkanGold" x1="18" y1="14" x2="78" y2="82" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stopColor="#f4dfae" />
-                    <stop offset=".42" stopColor="#c89a4d" />
-                    <stop offset="1" stopColor="#8a5b22" />
+                  <linearGradient id="kaanOzkanSignatureGold" x1="9" y1="8" x2="103" y2="72" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stopColor="#fff0c8" />
+                    <stop offset=".38" stopColor="#d6aa5e" />
+                    <stop offset=".72" stopColor="#a66d2e" />
+                    <stop offset="1" stopColor="#f0d79e" />
                   </linearGradient>
                 </defs>
-                <circle className="brandLogoSeal2026__field" cx="48" cy="48" r="44" />
-                <circle className="brandLogoSeal2026__ring" cx="48" cy="48" r="37.5" />
-                <path className="brandLogoSeal2026__k" d="M28 27v42M29 49l18-22M29 49l20 22" />
-                <ellipse className="brandLogoSeal2026__o" cx="60" cy="49" rx="17" ry="22" />
-                <circle className="brandLogoSeal2026__dot" cx="55" cy="20.5" r="2.3" />
-                <circle className="brandLogoSeal2026__dot" cx="65" cy="20.5" r="2.3" />
-                <path className="brandLogoSeal2026__leaf" d="M38 78c6-5 13-7 21-5-5 5-12 7-21 5Zm20-5c3-4 7-6 11-6-2 5-6 7-11 6Z" />
+                <path className="brandLogoSignature2026__k" d="M18 69C29 55 34 38 33 13M33 41C45 23 56 15 69 13M33 41C48 45 58 57 69 70" />
+                <path className="brandLogoSignature2026__o" d="M98 24C88 15 72 18 65 30c-8 13-5 29 7 35 13 7 27-3 30-18 3-12-2-22-12-26-9-4-20 1-24 10-5 10-1 22 8 26 9 4 19-3 20-13" />
+                <path className="brandLogoSignature2026__thread" d="M12 73c20 3 42 2 65-2 10-2 19-5 27-9" />
+                <circle className="brandLogoSignature2026__dot" cx="75" cy="9" r="2.5" />
+                <circle className="brandLogoSignature2026__dot" cx="86" cy="7" r="2.5" />
+                <path className="brandLogoSignature2026__leaf" d="M84 69c5-7 12-10 20-9-4 7-11 10-20 9Z" />
               </svg>
             </span>
             <span className="brandLogoCopy">
               <small>SOSYAL HİZMET UZMANI</small>
-              <strong>KAAN ÖZKAN</strong>
+              <strong className="brandWordmark2026"><span>KAAN</span><em>ÖZKAN</em></strong>
               <span className="brandLogoOrnament" aria-hidden="true">
                 <svg viewBox="0 0 52 18" focusable="false">
                   <path d="M3 9h15M34 9h15" />
