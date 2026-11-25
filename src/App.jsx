@@ -44,10 +44,12 @@ import blogCinemaGallery from "./assets/blog-cinema-04-gallery.png";
 import { supabase } from "./supabase";
 import Maintenance from "./Maintenance";
 import SilentThresholdIntro from "./components/SilentThresholdIntro";
+import CosmicHome2026 from "./components/CosmicHome2026";
 
 // Onaylanan açılış canlıda etkindir; localhost'ta ?intro=legacy ile karşılaştırılabilir.
 const USE_SILENT_THRESHOLD_INTRO = !(import.meta.env.DEV && new URLSearchParams(window.location.search).get("intro") === "legacy");
 const USE_EDITORIAL_HOME_2026 = true;
+const USE_COSMIC_HOME_2026 = true;
 
 const certificateMedia = import.meta.glob("./assets/certificates/*", { eager: true, import: "default" });
 const certificateImage = (file) => certificateMedia[`./assets/certificates/${file}`];
@@ -2759,7 +2761,7 @@ function SiteApp() {
           </span>
         </a>
       )}
-      <div inert={showSiteIntro && USE_SILENT_THRESHOLD_INTRO ? true : undefined} className={`step145Site ${USE_SILENT_THRESHOLD_INTRO ? "thresholdPreviewSite" : ""} ${showSiteIntro ? "step145Site--waiting" : "step145Site--ready"}`}>
+      <div inert={showSiteIntro && USE_SILENT_THRESHOLD_INTRO ? true : undefined} className={`step145Site ${USE_SILENT_THRESHOLD_INTRO ? "thresholdPreviewSite" : ""} ${showSiteIntro ? "step145Site--waiting" : "step145Site--ready"} ${page === "home" && USE_COSMIC_HOME_2026 ? "step145Site--cosmic" : ""}`}>
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
@@ -2903,7 +2905,9 @@ function SiteApp() {
           <AuthorPortalPage blogContent={blogContent} />
         ) : (
         <>
-        {USE_EDITORIAL_HOME_2026 ? (
+        {USE_COSMIC_HOME_2026 ? (
+        <CosmicHome2026 articles={blogContent.posts} pressCoverage={pressCoverage} />
+        ) : USE_EDITORIAL_HOME_2026 ? (
         <EditorialHome2026 articles={blogContent.posts} />
         ) : (
         <main className="lux155 editorial2026Legacy" aria-hidden="true">
