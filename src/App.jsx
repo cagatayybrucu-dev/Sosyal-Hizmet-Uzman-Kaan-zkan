@@ -47,6 +47,7 @@ import SilentThresholdIntro from "./components/SilentThresholdIntro";
 
 // Onaylanan açılış canlıda etkindir; localhost'ta ?intro=legacy ile karşılaştırılabilir.
 const USE_SILENT_THRESHOLD_INTRO = !(import.meta.env.DEV && new URLSearchParams(window.location.search).get("intro") === "legacy");
+const USE_EDITORIAL_HOME_2026 = true;
 
 const certificateMedia = import.meta.glob("./assets/certificates/*", { eager: true, import: "default" });
 const certificateImage = (file) => certificateMedia[`./assets/certificates/${file}`];
@@ -1705,6 +1706,143 @@ const getSharedBlogSlug = () => {
   }
 };
 
+const editorialServiceChoices = [
+  { no: "01", eyebrow: "BİREYSEL ÇALIŞMA", title: "Kendimi daha iyi anlamak istiyorum.", text: "Duygular, sınırlar, benlik algısı ve zorlayıcı yaşam olayları üzerine kişiye özgü bir çalışma alanı.", href: "#/hizmetler/bireysel-danismanlik", image: serviceIndividualCinemaV2 },
+  { no: "02", eyebrow: "İLİŞKİ & İLETİŞİM", title: "İlişkimizde iletişim zorlaştı.", text: "Çatışma döngülerini, güveni ve ilişki içinde duyulmayan ihtiyaçları birlikte görünür hâle getirin.", href: "#/hizmetler/cift-danismanligi", image: serviceDivorceGriefCoupleV3 },
+  { no: "03", eyebrow: "UYUM & DAYANIKLILIK", title: "Bir kayıp veya değişim yaşıyorum.", text: "Yas, ayrılık, taşınma ve yaşam geçişlerinde kaynaklarınızı yeniden kurmaya odaklanan psikososyal destek.", href: "#/hizmetler/psikososyal-destek", image: servicePsychosocialFamilyV3 },
+  { no: "04", eyebrow: "İLK ADIM", title: "Nereden başlayacağımı bilmiyorum.", text: "Kısa bir ön görüşmeyle ihtiyacınızı netleştirin ve sizin için doğru çalışma biçimini birlikte belirleyin.", href: "#/randevu", image: appointmentSunlitThresholdV1 },
+];
+
+function EditorialHome2026({ articles = [] }) {
+  const selectedArticles = (Array.isArray(articles) ? articles : []).filter((article) => article?.status !== "draft").slice(0, 3);
+  const visibleArticles = selectedArticles.length ? selectedArticles : defaultBlogContent.posts.slice(0, 3);
+
+  return (
+    <main className="field2026" id="anasayfa">
+      <section className="field2026Hero field2026Page" aria-labelledby="field2026Title">
+        <div className="field2026Hero__media" aria-hidden="true">
+          <img src={homeLightCinemaHero} alt="" decoding="async" />
+          <div className="field2026Hero__ink" />
+          <div className="field2026Hero__grain" />
+        </div>
+        <div className="field2026Hero__issue" aria-hidden="true"><span>SAHA NOTLARI</span><b>NO. 01</b><small>2026 / KIRŞEHİR</small></div>
+        <div className="field2026Hero__copy">
+          <p className="field2026Kicker"><span /> SOSYAL HİZMET UZMANI · KAAN ÖZKAN</p>
+          <h1 id="field2026Title">İnsanı,<em>yaşadığı çevreden</em>bağımsız düşünemeyiz.</h1>
+          <p className="field2026Hero__lead">Yaşam öykünüzü, ilişkilerinizi ve sosyal çevrenizi birlikte ele alan; güçlenme, farkındalık ve sürdürülebilir değişim odaklı bir görüşme alanı.</p>
+          <div className="field2026Hero__actions">
+            <a className="field2026Button field2026Button--gold" href="#/randevu">Randevu Talebi <span>↗</span></a>
+            <a className="field2026Button field2026Button--line" href="#/hizmetler">Çalışma Alanları <span>→</span></a>
+          </div>
+        </div>
+        <div className="field2026Hero__folio" aria-hidden="true"><span>GÜVENLİ ALAN</span><i /><span>BÜTÜNCÜL BAKIŞ</span><i /><span>KİŞİYE ÖZGÜ SÜREÇ</span></div>
+        <a className="field2026Hero__scroll" href="#yaklasim"><span>OKUMAYA BAŞLA</span><i /></a>
+      </section>
+
+      <section className="field2026Press" aria-label="Basında yer alan çalışmalar">
+        <div className="field2026Press__label"><span>BASINDA</span><b>SEÇİLİ YAYINLAR</b></div>
+        <div className="field2026Press__track">
+          {[...pressCoverage, ...pressCoverage].map((item, index) => (
+            <a href={item.url} target="_blank" rel="noreferrer" key={`${item.id}-${index}`}><span>{item.source}</span><i>·</i><b>{item.title}</b><em>↗</em></a>
+          ))}
+        </div>
+      </section>
+
+      <section className="field2026Manifest field2026Page" id="yaklasim">
+        <div className="field2026Manifest__visual field2026Frame" aria-hidden="true"><img src={servicesHeroCinemaV1} alt="" loading="lazy" decoding="async" /><span>01 / YAKLAŞIM</span></div>
+        <div className="field2026Manifest__copy">
+          <p className="field2026Kicker"><span /> HİKÂYEYİ BÜTÜNÜYLE GÖRMEK</p>
+          <h2>Bir sorun değil,<br /><em>bir yaşam bütünü.</em></h2>
+          <p className="field2026Manifest__lead">Her davranışın içinde bir ihtiyaç, her çatışmanın ardında görünmek isteyen bir hikâye vardır. Çalışma süreci yalnızca bugünkü güçlüğe değil; kişinin ilişkilerine, çevresine ve sahip olduğu kaynaklara da bakar.</p>
+          <div className="field2026Manifest__note"><b>“</b><p>Değişim, eksik olduğunuz yeri tamamlamakla değil; sahip olduğunuz gücü yeniden fark etmekle başlar.</p></div>
+          <a className="field2026TextLink" href="#/hakkimda">Yaklaşımı ve mesleki yolculuğu keşfet <span>↗</span></a>
+        </div>
+        <div className="field2026PageNo" aria-hidden="true">01</div>
+      </section>
+
+      <section className="field2026Services field2026Page" aria-labelledby="field2026ServicesTitle">
+        <header className="field2026SectionHead">
+          <p className="field2026Kicker"><span /> ÇALIŞMA ALANLARI</p>
+          <h2 id="field2026ServicesTitle">Hangi konuda<br /><em>destek arıyorsunuz?</em></h2>
+          <p>Size en yakın cümleden başlayın. Her başlık ayrıntılı çalışma alanına açılır.</p>
+        </header>
+        <div className="field2026Services__grid">
+          {editorialServiceChoices.map((item) => (
+            <a className="field2026Service" href={item.href} key={item.no}>
+              <img src={item.image} alt="" loading="lazy" decoding="async" /><div className="field2026Service__shade" />
+              <div className="field2026Service__top"><span>{item.no}</span><small>{item.eyebrow}</small></div>
+              <div className="field2026Service__copy"><h3>{item.title}</h3><p>{item.text}</p><b>BU ALANI İNCELE <i>↗</i></b></div>
+            </a>
+          ))}
+        </div>
+        <div className="field2026PageNo" aria-hidden="true">02</div>
+      </section>
+
+      <section className="field2026Process field2026Page" aria-labelledby="field2026ProcessTitle">
+        <div className="field2026Process__media" aria-hidden="true"><img src={processConsultationCinemaV3} alt="" loading="lazy" decoding="async" /><div /></div>
+        <div className="field2026Process__content">
+          <header className="field2026SectionHead field2026SectionHead--light"><p className="field2026Kicker"><span /> GÖRÜŞME SÜRECİ</p><h2 id="field2026ProcessTitle">Üç sakin adım.<br /><em>Tek bir güvenli başlangıç.</em></h2></header>
+          <ol className="field2026Process__steps">
+            <li><span>01</span><div><b>İhtiyacı anlatın</b><p>Çalışmak istediğiniz alanı seçin; emin değilseniz ön görüşmeyle başlayın.</p></div></li>
+            <li><span>02</span><div><b>Zamanı belirleyin</b><p>Uygun gün, saat ve görüşme biçimini randevu ekranından seçin.</p></div></li>
+            <li><span>03</span><div><b>Yol haritasını kurun</b><p>İlk görüşmede ihtiyaçları, sınırları ve sürecin nasıl ilerleyeceğini birlikte netleştirin.</p></div></li>
+          </ol>
+          <a className="field2026Button field2026Button--cream" href="#/randevu">Randevu Adımlarını Başlat <span>↗</span></a>
+        </div>
+        <div className="field2026PageNo field2026PageNo--light" aria-hidden="true">03</div>
+      </section>
+
+      <section className="field2026Story field2026Page" aria-labelledby="field2026StoryTitle">
+        <div className="field2026Story__intro">
+          <p className="field2026Kicker"><span /> SAHADAN GELEN BİR BAKIŞ</p>
+          <h2 id="field2026StoryTitle">Teoriyle değil,<br /><em>insanın içinde.</em></h2>
+          <p>Sosyal hizmet; insanı yalnızca bireysel özellikleriyle değil, yaşadığı çevre ve karşılaştığı koşullarla birlikte anlamayı gerektirir. Bu yaklaşım, yıllar boyunca farklı kurumlarda edinilen saha deneyimiyle şekillendi.</p>
+          <a className="field2026TextLink" href="#/hakkimda">Mesleki özgeçmişi incele <span>↗</span></a>
+        </div>
+        <div className="field2026Story__timeline">
+          <article><span>2016—2021</span><h3>Sosyal Hizmet Eğitimi</h3><p>İstanbul Aydın Üniversitesi Sağlık Bilimleri Fakültesi.</p></article>
+          <article><span>SAHA DENEYİMİ</span><h3>Farklı yaşam alanları</h3><p>ÇODEM, sivil toplum kuruluşları, sosyal yardım ve toplum temelli çalışmalar.</p></article>
+          <article><span>2023—BUGÜN</span><h3>Kırşehir Belediyesi</h3><p>Sosyal yardım, inceleme ve psikososyal saha uygulamaları.</p></article>
+        </div>
+        <div className="field2026Story__image field2026Frame" aria-hidden="true"><img src={processPracticeAbstractV2} alt="" loading="lazy" decoding="async" /><span>04 / SAHA</span></div>
+        <div className="field2026PageNo" aria-hidden="true">04</div>
+      </section>
+
+      <section className="field2026Journal field2026Page" aria-labelledby="field2026JournalTitle">
+        <header className="field2026SectionHead"><p className="field2026Kicker"><span /> SAHA NOTLARI & YAZILAR</p><h2 id="field2026JournalTitle">Yavaş okuyun.<br /><em>Derin düşünün.</em></h2><a className="field2026TextLink" href="#/blog">Tüm yazıları gör <span>↗</span></a></header>
+        <div className="field2026Journal__grid">
+          {visibleArticles.map((article, index) => (
+            <a className={`field2026Article field2026Article--${index + 1}`} href={`#/blog/${article.slug}`} key={article.id || article.slug}>
+              <div className="field2026Article__image"><img src={article.image || [blogEditorialSunlit, blogCinemaStudio, blogCinemaJournal][index]} alt="" loading="lazy" decoding="async" /><span>{String(index + 1).padStart(2, "0")}</span></div>
+              <div className="field2026Article__copy"><small>{article.category || "YAZI"} · {article.readTime || "OKUMA"}</small><h3>{article.title}</h3><p>{article.excerpt}</p><b>YAZIYI OKU <i>↗</i></b></div>
+            </a>
+          ))}
+        </div>
+        <div className="field2026PageNo" aria-hidden="true">05</div>
+      </section>
+
+      <section className="field2026Final field2026Page">
+        <div className="field2026Final__media" aria-hidden="true"><img src={contactAppointmentCinemaV1} alt="" loading="lazy" decoding="async" /><div /></div>
+        <div className="field2026Final__copy">
+          <p className="field2026Kicker"><span /> İLK ADIM</p><h2>Bazen değişim,<br /><em>yalnızca anlatmakla başlar.</em></h2>
+          <p>Görüşme alanını seçin, size uygun zamanı belirleyin ve randevu talebinizi güvenle oluşturun.</p>
+          <div><a className="field2026Button field2026Button--gold" href="#/randevu">Randevu Talebi Oluştur <span>↗</span></a><a className="field2026Button field2026Button--darkLine" href="#/iletisim">İletişime Geç <span>→</span></a></div>
+        </div>
+      </section>
+
+      <footer className="field2026Footer">
+        <div><img src={kaanOzkanEmblem} alt="" /><span><small>SOSYAL HİZMET UZMANI</small><b>KAAN ÖZKAN</b></span></div>
+        <nav><a href="#/hizmetler">Çalışma Alanları</a><a href="#/hakkimda">Hakkımda</a><a href="#/blog">Yazılar</a><a href="#/basinda-biz">Basında</a><a href="#/iletisim">İletişim</a></nav>
+        <p>© 2026 Kaan Özkan · Tüm hakları saklıdır.</p>
+      </footer>
+      {typeof document !== "undefined" && createPortal(
+        <a className="field2026StickyCta" href="#/randevu"><span>RANDEVU</span><b>↗</b></a>,
+        document.body
+      )}
+    </main>
+  );
+}
+
 function SiteApp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -2628,7 +2766,7 @@ function SiteApp() {
               <img src={kaanOzkanEmblem} alt="" decoding="async" />
             </span>
             <span className="brandLogoCopy">
-              <small>SOSYAL HİZMET UZMANI &amp; AİLE DANIŞMANI</small>
+              <small>SOSYAL HİZMET UZMANI</small>
               <strong>KAAN ÖZKAN</strong>
               <span className="brandLogoOrnament" aria-hidden="true">
                 <svg viewBox="0 0 52 18" focusable="false">
@@ -2764,7 +2902,11 @@ function SiteApp() {
         ) : page === "authorPortal" ? (
           <AuthorPortalPage blogContent={blogContent} />
         ) : (
-        <main className="lux155">
+        <>
+        {USE_EDITORIAL_HOME_2026 ? (
+        <EditorialHome2026 articles={blogContent.posts} />
+        ) : (
+        <main className="lux155 editorial2026Legacy" aria-hidden="true">
           <section
             className="lux155Hero"
             id="anasayfa"
@@ -3267,6 +3409,8 @@ function SiteApp() {
             </div>
           </footer>
         </main>
+        )}
+        </>
         )}
       </div>
           <Analytics />
