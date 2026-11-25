@@ -2765,12 +2765,7 @@ function SiteApp() {
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
-              <svg className="brandLogoMark2026" viewBox="0 0 72 72" focusable="false">
-                <path className="brandLogoMark2026__outer" d="M12 62V32C12 17 22 8 36 8s24 9 24 24v30" />
-                <path className="brandLogoMark2026__inner" d="M22 62V35c0-10 6-17 14-17s14 7 14 17v27" />
-                <path className="brandLogoMark2026__path" d="M29 62c1-9 3-15 7-20 4 5 6 11 7 20" />
-                <circle cx="36" cy="32" r="3.5" />
-              </svg>
+              <span className="brandLogoMonogram2026">KÖ</span>
             </span>
             <span className="brandLogoCopy">
               <small>SOSYAL HİZMET UZMANI</small>

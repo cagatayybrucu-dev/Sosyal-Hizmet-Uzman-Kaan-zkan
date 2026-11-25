@@ -136,6 +136,10 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
               <div className="cosmic2026Ring cosmic2026Ring--three"><span className="cosmic2026Node cosmic2026Node--four" /><span className="cosmic2026Node cosmic2026Node--five" /></div>
               <div className="cosmic2026Meridian cosmic2026Meridian--one" />
               <div className="cosmic2026Meridian cosmic2026Meridian--two" />
+              <div className="cosmic2026Sculpture__scene" key={scene}>
+                <small>0{scene + 1}</small>
+                <strong>{JOURNEY_SCENES[scene].label}</strong>
+              </div>
             </div>
           </div>
 
