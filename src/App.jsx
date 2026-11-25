@@ -2765,7 +2765,22 @@ function SiteApp() {
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
-              <span className="brandLogoMonogram2026">KÖ</span>
+              <svg className="brandLogoSeal2026" viewBox="0 0 96 96" focusable="false">
+                <defs>
+                  <linearGradient id="kaanOzkanGold" x1="18" y1="14" x2="78" y2="82" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stopColor="#f4dfae" />
+                    <stop offset=".42" stopColor="#c89a4d" />
+                    <stop offset="1" stopColor="#8a5b22" />
+                  </linearGradient>
+                </defs>
+                <circle className="brandLogoSeal2026__field" cx="48" cy="48" r="44" />
+                <circle className="brandLogoSeal2026__ring" cx="48" cy="48" r="37.5" />
+                <path className="brandLogoSeal2026__k" d="M28 27v42M29 49l18-22M29 49l20 22" />
+                <ellipse className="brandLogoSeal2026__o" cx="60" cy="49" rx="17" ry="22" />
+                <circle className="brandLogoSeal2026__dot" cx="55" cy="20.5" r="2.3" />
+                <circle className="brandLogoSeal2026__dot" cx="65" cy="20.5" r="2.3" />
+                <path className="brandLogoSeal2026__leaf" d="M38 78c6-5 13-7 21-5-5 5-12 7-21 5Zm20-5c3-4 7-6 11-6-2 5-6 7-11 6Z" />
+              </svg>
             </span>
             <span className="brandLogoCopy">
               <small>SOSYAL HİZMET UZMANI</small>
