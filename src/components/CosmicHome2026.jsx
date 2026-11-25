@@ -9,6 +9,7 @@ import journalFallbackTwo from "../assets/blog-cinema-02-studio.png";
 import journalFallbackThree from "../assets/blog-cinema-03-journal.png";
 import finalScene from "../assets/contact-appointment-cinema-v1.png";
 import emblem from "../assets/kaan-ozkan-emblem.png";
+import homeLightCinema from "../assets/home-light-cinema-hero-v1.png";
 
 const JOURNEY_SCENES = [
   {
@@ -108,6 +109,8 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
   return (
     <main className="cosmic2026" id="anasayfa">
       <section className="cosmic2026Hero">
+        <img className="cosmic2026Hero__room" src={homeLightCinema} alt="Gün ışığı alan sakin bir görüşme alanı" />
+        <div className="cosmic2026Hero__veil" aria-hidden="true" />
         <div className="cosmic2026Noise" aria-hidden="true" />
         <div className="cosmic2026Hero__halo" aria-hidden="true" />
         <div className="cosmic2026Hero__orb" aria-hidden="true"><i /><i /><i /><span /></div>
