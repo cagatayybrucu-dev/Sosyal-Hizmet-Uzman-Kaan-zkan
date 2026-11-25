@@ -26,7 +26,7 @@ const JOURNEY_SCENES = [
   {
     no: "03",
     label: "AİLE",
-    title: "Yakın çevre, görünmeyen bir yörüngedir.",
+    title: "Yakın çevre, hayatın taşıyıcı dokusudur.",
     text: "Roller, sınırlar, geçmişten gelen örüntüler ve günlük yaşam koşulları kişinin hareket alanını şekillendirir.",
   },
   {
@@ -74,11 +74,11 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
       const wave = Math.sin(progress * Math.PI * 4);
 
       stage.style.setProperty("--journey", progress.toFixed(4));
-      stage.style.setProperty("--journey-turn", `${(progress * 1120 - 80).toFixed(2)}deg`);
-      stage.style.setProperty("--journey-tilt", `${(52 + wave * 18).toFixed(2)}deg`);
-      stage.style.setProperty("--journey-scale", `${(0.72 + Math.sin(progress * Math.PI) * 0.58).toFixed(3)}`);
-      stage.style.setProperty("--journey-x", `${(Math.sin(progress * Math.PI * 3) * 13).toFixed(2)}vw`);
-      stage.style.setProperty("--journey-y", `${(Math.cos(progress * Math.PI * 2) * 7).toFixed(2)}vh`);
+      stage.style.setProperty("--journey-turn", `${(progress * 26 - 13).toFixed(2)}deg`);
+      stage.style.setProperty("--journey-tilt", `${(wave * 2.5).toFixed(2)}deg`);
+      stage.style.setProperty("--journey-scale", `${(0.78 + Math.sin(progress * Math.PI) * 0.42).toFixed(3)}`);
+      stage.style.setProperty("--journey-x", `${(Math.sin(progress * Math.PI * 3) * 9).toFixed(2)}vw`);
+      stage.style.setProperty("--journey-y", `${(Math.cos(progress * Math.PI * 2) * 5).toFixed(2)}vh`);
 
       if (nextScene !== activeScene) {
         activeScene = nextScene;
@@ -112,7 +112,7 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
         <div className="cosmic2026Hero__halo" aria-hidden="true" />
         <div className="cosmic2026Hero__orb" aria-hidden="true"><i /><i /><i /><span /></div>
         <p className="cosmic2026Eyebrow">SOSYAL HİZMET UZMANI · KAAN ÖZKAN</p>
-        <h1><span>İNSAN</span><em>ÇEVRESİYLE</em><span>BİR BÜTÜNDÜR.</span></h1>
+        <h1><span>İNSAN</span><em>İLİŞKİLERİYLE</em><span>ŞEKİLLENİR.</span></h1>
         <div className="cosmic2026Hero__bottom">
           <p>İnsan–aile–çevre–toplum katmanlarında ilerleyen, güçlenme ve sürdürülebilir değişim odaklı bir görüşme alanı.</p>
           <div><a href="#/randevu">RANDEVU TALEBİ <b>↗</b></a><a href="#sosyal-ekosistem">YOLCULUĞU BAŞLAT <b>↓</b></a></div>
@@ -136,7 +136,7 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
             </div>
           </div>
 
-          <div className="cosmic2026Stage__label" aria-hidden="true">SOSYAL<br />EKOSİSTEM</div>
+          <div className="cosmic2026Stage__label" aria-hidden="true">İNSAN<br />İLİŞKİ<br />ÇEVRE</div>
           <div className="cosmic2026Stage__scenes">
             {JOURNEY_SCENES.map((item, index) => (
               <article className={`cosmic2026Scene ${scene === index ? "cosmic2026Scene--active" : ""}`} key={item.no}>
