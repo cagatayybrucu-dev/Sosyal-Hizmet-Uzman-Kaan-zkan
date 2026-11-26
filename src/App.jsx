@@ -1569,7 +1569,6 @@ const analyticsPageLabel = (hash = "") => {
   if (hash === "#/surec") return "Süreç";
   if (hash === "#/yorumlar") return "Değerli Yorumlarınız";
   if (hash === "#/icerikler") return "İçerikler";
-  if (hash === "#/basinda-biz") return "Basında Biz";
   if (hash === "#/blog") return "Blog";
   if (hash.startsWith("#/blog/")) return "Blog Yazısı";
   if (hash === "#/yazar-basvuru") return "Yazar Başvurusu";
@@ -1927,8 +1926,6 @@ function SiteApp() {
       ? "testimonials"
       : window.location.hash === "#/icerikler"
       ? "content"
-      : window.location.hash === "#/basinda-biz"
-      ? "press"
       : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/") || Boolean(getSharedBlogSlug())
       ? "blog"
       : window.location.hash === "#/yazar-basvuru"
@@ -2172,7 +2169,6 @@ function SiteApp() {
       blog: ["Blog | Kaan Özkan", "Aile, ilişkiler, psikososyal destek, kişisel gelişim ve sosyal hizmet alanlarında bilgilendirici yazıları keşfedin."],
       contact: ["İletişim | Kaan Özkan", "Kaan Özkan ile telefon veya e-posta üzerinden iletişime geçin ve randevu süreci hakkında bilgi alın."],
       content: ["İçerikler | Kaan Özkan", "Podcast, video ve sosyal hizmet alanındaki güncel içerikleri inceleyin."],
-      press: ["Basında Biz | Kaan Özkan", "Kaan Özkan'ın psikososyal danışmanlık ve aile danışmanlığı çalışmalarının basındaki yansımalarını inceleyin."],
       authors: ["Yazarlarımız | Kaan Özkan", "Sosyal hizmet, aile ve ilişkiler alanlarından yazarların güncel yazılarını ve profillerini keşfedin."],
       writerApplication: ["Yazar Başvurusu | Kaan Özkan", "Kaan Özkan blogunda yazmak için yazar başvurunuzu ve çalışma örneğinizi gönderin."],
       privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
@@ -2427,8 +2423,6 @@ function SiteApp() {
           ? "testimonials"
           : window.location.hash === "#/icerikler"
           ? "content"
-          : window.location.hash === "#/basinda-biz"
-          ? "press"
           : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
           ? "blog"
           : window.location.hash === "#/yazar-basvuru"
@@ -2665,7 +2659,7 @@ function SiteApp() {
             >
               Süreç
             </a>
-            <details className={`navContentMenu ${["content","blog","authors","writerApplication","press"].includes(page) ? "is-active" : ""}`}>
+            <details className={`navContentMenu ${["content","blog","authors","writerApplication"].includes(page) ? "is-active" : ""}`}>
               <summary>
                 İçerikler
                 <span className="navContentMenu__chevron" aria-hidden="true">⌄</span>
@@ -2694,14 +2688,6 @@ function SiteApp() {
                 >
                   <span className="navContentMenu__mark" aria-hidden="true">✦</span>
                   <span><strong>Podcast & Video</strong><small>Dinle ve izle</small></span>
-                </a>
-                <a
-                  href="#/basinda-biz"
-                  className={page === "press" ? "is-active" : ""}
-                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
-                >
-                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
-                  <span><strong>Basında Biz</strong><small>Haberler ve yayınlar</small></span>
                 </a>
               </div>
             </details>
@@ -2741,8 +2727,6 @@ function SiteApp() {
           <TestimonialsPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
-        ) : page === "press" ? (
-          <PressPage />
         ) : page === "writerApplication" ? (
           <WriterApplicationPage />
         ) : page === "blog" ? (
@@ -3106,44 +3090,6 @@ function SiteApp() {
             </div>
           </section>
 
-          <section className="homePress167" aria-labelledby="homePressTitle">
-            <div className="homePress167__head">
-              <div>
-                <span className="homePress167__eyebrow">BASINDA BİZ</span>
-                <h2 id="homePressTitle">Çalışmalarımızdan <em>basına yansıyanlar.</em></h2>
-              </div>
-              <div className="homePress167__intro">
-                <p>Psikososyal danışmanlık ve aile danışmanlığı çalışmalarımızın yerel ve ulusal basındaki yansımalarından seçkiler.</p>
-                <a href="#/basinda-biz">TÜM HABERLERİ GÖR <span>↗</span></a>
-              </div>
-            </div>
-
-            <div className="homePress167__grid">
-              {pressCoverage.slice(0, 3).map((item, index) => (
-                <a
-                  className="homePress167__card"
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={item.id}
-                  aria-label={`${item.title} — ${item.source} kaynağında aç`}
-                >
-                  <div className={`homePress167__visual ${item.imageFocus ? `homePress167__visual--${item.imageFocus}` : ""}`}>
-                    <img src={item.image} alt="" loading="lazy" decoding="async" />
-                    <span>{item.source}</span>
-                    <i>{String(index + 1).padStart(2, "0")}</i>
-                  </div>
-                  <div className="homePress167__body">
-                    <small>{item.date}</small>
-                    <h3>{item.title}</h3>
-                    <p>{item.excerpt}</p>
-                    <b>HABERİ KAYNAĞINDA OKU <span>↗</span></b>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
           <section className="section contactSection" id="iletisim">
             <div className="contactLead reveal">
               <span className="sectionEyebrow">İLETİŞİME GEÇİN</span>
@@ -3225,7 +3171,6 @@ function SiteApp() {
                 <a href="#/surec">Süreç</a>
                 <a href="#/icerikler">İçerikler</a>
                 <a href="#/blog">Blog</a>
-                <a href="#/basinda-biz">Basında Biz</a>
                 <a href="#/iletisim">İletişim</a>
               </div>
 

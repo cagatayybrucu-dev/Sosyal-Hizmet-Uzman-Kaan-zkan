@@ -28512,6 +28512,11 @@ html{background:#f7f3eb;overscroll-behavior-y:none}body{min-width:320px}:focus-v
 
 .press167Hero__content>button{display:inline-flex;align-items:center;gap:15px;margin-top:30px;padding:15px 18px;border:1px solid rgba(215,177,112,.55);border-radius:2px;background:rgba(197,149,76,.08);color:#f2debb;font-size:9px;font-weight:850;letter-spacing:.14em;cursor:pointer;transition:gap .25s ease,background .25s ease}.press167Hero__content>button:hover{gap:22px;background:rgba(197,149,76,.16)}
 
+/* Ana sahne metnini geniş ekranlarda görselin merkezine daha dengeli yaklaştırır. */
+@media(min-width:901px){
+  .lux155Hero__copy,.lux155Hero__signature{margin-left:clamp(74px,7vw,138px)}
+}
+
 /* BASINDA BİZ — SADELEŞTİRİLMİŞ BAŞLIK VE GÖRSELSİZ HABER KARTLARI */
 .press167Hero{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:end;padding:132px clamp(23px,7vw,118px) 76px;background:#f5f1e9;border-bottom:1px solid rgba(63,76,65,.14)}
 .press167Hero__back{top:34px;color:#5d685e}.press167Hero__back:hover{color:#26372d}
