@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <defs>
+    <linearGradient id="koGoldA" x1="10" y1="8" x2="76" y2="87" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0C7"/>
+      <stop offset=".34" stop-color="#DFB769"/>
+      <stop offset=".72" stop-color="#A56E2F"/>
+      <stop offset="1" stop-color="#E7C785"/>
+    </linearGradient>
+    <linearGradient id="koGoldB" x1="86" y1="10" x2="20" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7E1AF"/>
+      <stop offset=".52" stop-color="#C48D43"/>
+      <stop offset="1" stop-color="#7E4E21"/>
+    </linearGradient>
+  </defs>
+  <path d="M47.5 8C27.3 8 11 24.4 11 44.6c0 14 7.8 26.1 19.3 32.3l8.3-13.5C31.7 60 27 52.8 27 44.6c0-11.6 9.3-21 20.5-21V8Z" fill="url(#koGoldA)"/>
+  <path d="M48.5 8v15.6c11.3 0 20.5 9.4 20.5 21 0 8.2-4.7 15.4-11.6 18.8l8.3 13.5C77.2 70.7 85 58.6 85 44.6 85 24.4 68.7 8 48.5 8Z" fill="url(#koGoldB)"/>
+  <path d="M30.3 76.9C35.6 79.8 41.6 81.5 48 81.5s12.4-1.7 17.7-4.6l-8.3-13.5c-2.8 1.5-6 2.3-9.4 2.3s-6.6-.8-9.4-2.3l-8.3 13.5Z" fill="url(#koGoldA)"/>
+  <path d="M48 33.2c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13-5.8-13-13-13Zm0 7.3a5.7 5.7 0 1 1 0 11.4 5.7 5.7 0 0 1 0-11.4Z" fill="#F8E6BB" fill-opacity=".92"/>
+  <path d="M18.3 44.7c0-16.4 13.3-29.8 29.7-29.8M77.7 44.7c0-16.4-13.3-29.8-29.7-29.8" stroke="#FFF5D8" stroke-opacity=".5" stroke-width="1.15" stroke-linecap="round"/>
+</svg>

@@ -9,7 +9,7 @@ import journalFallbackOne from "../assets/blog-editorial-sunlit-v1.png";
 import journalFallbackTwo from "../assets/blog-cinema-02-studio.png";
 import journalFallbackThree from "../assets/blog-cinema-03-journal.png";
 import finalScene from "../assets/contact-appointment-cinema-v1.png";
-import emblem from "../assets/kaan-ozkan-emblem.png";
+import brandMark from "../assets/kaan-ozkan-brand-mark-v3.svg";
 import homeLightCinema from "../assets/home-light-cinema-hero-v1.png";
 
 const JOURNEY_SCENES = [
@@ -56,7 +56,7 @@ const WORK_AREAS = [
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
-export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
+export default function CosmicHome2026({ articles = [] }) {
   const journeyRef = useRef(null);
   const stageRef = useRef(null);
   const [scene, setScene] = useState(0);
@@ -107,7 +107,6 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
 
   const visibleArticles = (Array.isArray(articles) ? articles : []).filter((article) => article?.status !== "draft").slice(0, 3);
   const articleFallbacks = [journalFallbackOne, journalFallbackTwo, journalFallbackThree];
-  const visiblePress = (Array.isArray(pressCoverage) ? pressCoverage : []).slice(0, 5);
 
   return (
     <main className="cosmic2026" id="anasayfa">
@@ -188,13 +187,6 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
         <a href="#/randevu">RANDEVU ADIMLARINI BAŞLAT <span>↗</span></a>
       </section>
 
-      {visiblePress.length > 0 && (
-        <section className="cosmic2026Press" aria-label="Basında yer alan çalışmalar">
-          <p>BASINDA / SEÇİLİ YAYINLAR</p>
-          <div>{visiblePress.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id || item.url}><span>0{index + 1}</span><b>{item.source}</b><em>{item.title}</em><i>↗</i></a>)}</div>
-        </section>
-      )}
-
       {visibleArticles.length > 0 && (
         <section className="cosmic2026Journal" aria-labelledby="cosmicJournalTitle">
           <header><p>SAHA NOTLARI</p><h2 id="cosmicJournalTitle">YAVAŞ OKU.<br /><em>DERİN DÜŞÜN.</em></h2><a href="#/blog">TÜM YAZILAR ↗</a></header>
@@ -207,7 +199,7 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
         <div className="cosmic2026Final__copy"><p>YOLCULUĞUN İLK ADIMI</p><h2>ANLATMAK,<br /><em>ALANI DEĞİŞTİRİR.</em></h2><span>Görüşme alanını seçin, uygun zamanı belirleyin ve randevu talebinizi güvenle oluşturun.</span><div><a href="#/randevu">RANDEVU TALEBİ ↗</a><a href="#/iletisim">İLETİŞİM →</a></div></div>
       </section>
 
-      <footer className="cosmic2026Footer"><div><img src={emblem} alt="" /><span><small>SOSYAL HİZMET UZMANI</small><b>KAAN ÖZKAN</b></span></div><nav><a href="#/hizmetler">Çalışma Alanları</a><a href="#/hakkimda">Hakkımda</a><a href="#/blog">Yazılar</a><a href="#/basinda-biz">Basında</a><a href="#/iletisim">İletişim</a></nav><p>© 2026 Kaan Özkan · Tüm hakları saklıdır.</p></footer>
+      <footer className="cosmic2026Footer"><div><img src={brandMark} alt="" /><span><small>SOSYAL HİZMET UZMANI</small><b>KAAN ÖZKAN</b></span></div><nav><a href="#/hizmetler">Çalışma Alanları</a><a href="#/hakkimda">Hakkımda</a><a href="#/blog">Yazılar</a><a href="#/iletisim">İletişim</a></nav><p>© 2026 Kaan Özkan · Tüm hakları saklıdır.</p></footer>
 
       {typeof document !== "undefined" && createPortal(<a className="cosmic2026Sticky" href="#/randevu"><span>RANDEVU</span><b>↗</b></a>, document.body)}
     </main>

@@ -11,6 +11,7 @@ import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
 import kaanOzkanLogo2026 from "./assets/kaan-ozkan-logo-2026.jpeg";
 import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
+import kaanOzkanBrandMarkV3 from "./assets/kaan-ozkan-brand-mark-v3.svg";
 import serviceIndividualImage from "./assets/service-individual-therapy.jpg";
 import serviceCoupleImage from "./assets/service-couple-consultation.jpg";
 import serviceOnlineConsultationImage from "./assets/service-online-consultation.jpg";
@@ -1650,7 +1651,6 @@ const analyticsPageLabel = (hash = "") => {
   if (hash === "#/surec") return "Süreç";
   if (hash === "#/yorumlar") return "Değerli Yorumlarınız";
   if (hash === "#/icerikler") return "İçerikler";
-  if (hash === "#/basinda-biz") return "Basında Biz";
   if (hash === "#/blog") return "Blog";
   if (hash.startsWith("#/blog/")) return "Blog Yazısı";
   if (hash === "#/yazar-basvuru") return "Yazar Başvurusu";
@@ -2145,8 +2145,6 @@ function SiteApp() {
       ? "testimonials"
       : window.location.hash === "#/icerikler"
       ? "content"
-      : window.location.hash === "#/basinda-biz"
-      ? "press"
       : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/") || Boolean(getSharedBlogSlug())
       ? "blog"
       : window.location.hash === "#/yazar-basvuru"
@@ -2390,7 +2388,6 @@ function SiteApp() {
       blog: ["Blog | Kaan Özkan", "Aile, ilişkiler, psikososyal destek, kişisel gelişim ve sosyal hizmet alanlarında bilgilendirici yazıları keşfedin."],
       contact: ["İletişim | Kaan Özkan", "Kaan Özkan ile telefon veya e-posta üzerinden iletişime geçin ve randevu süreci hakkında bilgi alın."],
       content: ["İçerikler | Kaan Özkan", "Podcast, video ve sosyal hizmet alanındaki güncel içerikleri inceleyin."],
-      press: ["Basında Biz | Kaan Özkan", "Kaan Özkan'ın psikososyal danışmanlık ve aile danışmanlığı çalışmalarının basındaki yansımalarını inceleyin."],
       authors: ["Yazarlarımız | Kaan Özkan", "Sosyal hizmet, aile ve ilişkiler alanlarından yazarların güncel yazılarını ve profillerini keşfedin."],
       writerApplication: ["Yazar Başvurusu | Kaan Özkan", "Kaan Özkan blogunda yazmak için yazar başvurunuzu ve çalışma örneğinizi gönderin."],
       privacy: ["Gizlilik Politikası | Kaan Özkan", "Kaan Özkan web sitesi gizlilik politikası."],
@@ -2645,8 +2642,6 @@ function SiteApp() {
           ? "testimonials"
           : window.location.hash === "#/icerikler"
           ? "content"
-          : window.location.hash === "#/basinda-biz"
-          ? "press"
           : window.location.hash === "#/blog" || window.location.hash.startsWith("#/blog/")
           ? "blog"
           : window.location.hash === "#/yazar-basvuru"
@@ -2843,26 +2838,11 @@ function SiteApp() {
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
-              <svg className="brandLogoSignature2026" viewBox="0 0 112 80" focusable="false">
-                <defs>
-                  <linearGradient id="kaanOzkanSignatureGold" x1="9" y1="8" x2="103" y2="72" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stopColor="#fff0c8" />
-                    <stop offset=".38" stopColor="#d6aa5e" />
-                    <stop offset=".72" stopColor="#a66d2e" />
-                    <stop offset="1" stopColor="#f0d79e" />
-                  </linearGradient>
-                </defs>
-                <path className="brandLogoSignature2026__k" d="M18 69C29 55 34 38 33 13M33 41C45 23 56 15 69 13M33 41C48 45 58 57 69 70" />
-                <path className="brandLogoSignature2026__o" d="M98 24C88 15 72 18 65 30c-8 13-5 29 7 35 13 7 27-3 30-18 3-12-2-22-12-26-9-4-20 1-24 10-5 10-1 22 8 26 9 4 19-3 20-13" />
-                <path className="brandLogoSignature2026__thread" d="M12 73c20 3 42 2 65-2 10-2 19-5 27-9" />
-                <circle className="brandLogoSignature2026__dot" cx="75" cy="9" r="2.5" />
-                <circle className="brandLogoSignature2026__dot" cx="86" cy="7" r="2.5" />
-                <path className="brandLogoSignature2026__leaf" d="M84 69c5-7 12-10 20-9-4 7-11 10-20 9Z" />
-              </svg>
+              <img className="brandMark2026" src={kaanOzkanBrandMarkV3} alt="" />
             </span>
             <span className="brandLogoCopy">
               <small>SOSYAL HİZMET UZMANI</small>
-              <strong className="brandWordmark2026"><span>KAAN</span><em>ÖZKAN</em></strong>
+              <strong className="brandWordmark2026">KAAN ÖZKAN</strong>
               <span className="brandLogoOrnament" aria-hidden="true">
                 <svg viewBox="0 0 52 18" focusable="false">
                   <path d="M3 9h15M34 9h15" />
@@ -2898,7 +2878,7 @@ function SiteApp() {
             >
               Süreç
             </a>
-            <details className={`navContentMenu ${["content","blog","authors","writerApplication","press"].includes(page) ? "is-active" : ""}`}>
+            <details className={`navContentMenu ${["content","blog","authors","writerApplication"].includes(page) ? "is-active" : ""}`}>
               <summary>
                 İçerikler
                 <span className="navContentMenu__chevron" aria-hidden="true">⌄</span>
@@ -2927,14 +2907,6 @@ function SiteApp() {
                 >
                   <span className="navContentMenu__mark" aria-hidden="true">✦</span>
                   <span><strong>Podcast & Video</strong><small>Dinle ve izle</small></span>
-                </a>
-                <a
-                  href="#/basinda-biz"
-                  className={page === "press" ? "is-active" : ""}
-                  onClick={(e) => { setMenuOpen(false); e.currentTarget.closest("details")?.removeAttribute("open"); }}
-                >
-                  <span className="navContentMenu__mark" aria-hidden="true">✦</span>
-                  <span><strong>Basında Biz</strong><small>Haberler ve yayınlar</small></span>
                 </a>
               </div>
             </details>
@@ -2974,8 +2946,6 @@ function SiteApp() {
           <TestimonialsPage content={processContent} />
         ) : page === "content" ? (
           <ContentDetailPage />
-        ) : page === "press" ? (
-          <PressPage />
         ) : page === "writerApplication" ? (
           <WriterApplicationPage />
         ) : page === "blog" ? (
@@ -2999,7 +2969,7 @@ function SiteApp() {
         ) : (
         <>
         {USE_COSMIC_HOME_2026 ? (
-        <CosmicHome2026 articles={blogContent.posts} pressCoverage={pressCoverage} />
+        <CosmicHome2026 articles={blogContent.posts} />
         ) : USE_EDITORIAL_HOME_2026 ? (
         <EditorialHome2026 articles={blogContent.posts} />
         ) : (
