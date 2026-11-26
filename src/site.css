@@ -28512,9 +28512,10 @@ html{background:#f7f3eb;overscroll-behavior-y:none}body{min-width:320px}:focus-v
 
 .press167Hero__content>button{display:inline-flex;align-items:center;gap:15px;margin-top:30px;padding:15px 18px;border:1px solid rgba(215,177,112,.55);border-radius:2px;background:rgba(197,149,76,.08);color:#f2debb;font-size:9px;font-weight:850;letter-spacing:.14em;cursor:pointer;transition:gap .25s ease,background .25s ease}.press167Hero__content>button:hover{gap:22px;background:rgba(197,149,76,.16)}
 
-/* Ana sahne metnini geniş ekranlarda görselin merkezine daha dengeli yaklaştırır. */
+/* Ana sahne metnini geniş ekranlarda orta konteynerden çıkarıp sola hizalar. */
 @media(min-width:901px){
-  .lux155Hero__copy,.lux155Hero__signature{margin-left:clamp(74px,7vw,138px)}
+  .lux155Hero__content{width:min(1620px,calc(100vw - 96px))}
+  .lux155Hero__copy,.lux155Hero__signature{margin-left:0}
 }
 
 /* BASINDA BİZ — SADELEŞTİRİLMİŞ BAŞLIK VE GÖRSELSİZ HABER KARTLARI */
