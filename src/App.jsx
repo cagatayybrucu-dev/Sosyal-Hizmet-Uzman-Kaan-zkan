@@ -33,6 +33,10 @@ import contactEmailCinemaV1 from "./assets/contact-email-cinema-v1.png";
 import contactInstagramCinemaV1 from "./assets/contact-instagram-cinema-v1.png";
 import contactAppointmentCinemaV1 from "./assets/contact-appointment-cinema-v1.png";
 import appointmentSunlitThresholdV1 from "./assets/appointment-sunlit-threshold-v1.png";
+import serviceFamily2026 from "./assets/services-2026/family-counseling.jpeg";
+import serviceDivorceGrief2026 from "./assets/services-2026/divorce-grief.jpeg";
+import servicePremarital2026 from "./assets/services-2026/premarital.jpeg";
+import serviceIndividual2026 from "./assets/services-2026/individual-02.jpeg";
 import homeLightCinemaHero from "./assets/home-light-cinema-hero-v1.png";
 import blogEditorialSunlit from "./assets/blog-editorial-sunlit-v1.png";
 import blogEditorialConnection from "./assets/blog-editorial-connection-v1.png";
@@ -1510,6 +1514,80 @@ const detailedServicePages = {
   }
 };
 
+// 26.11.2026 — Kullanıcı tarafından onaylanan dört danışmanlık alanı.
+// Eski uzun içerikler kaynakta korunur; ziyaretçi tarafında yalnızca bu güncel kapsam kullanılır.
+Object.assign(detailedServicePages, {
+  "aile-danismanligi": {
+    no: "01", eyebrow: "AİLE DANIŞMANLIĞI", title: "Aile", accent: "Danışmanlığı", icon: "users",
+    image: serviceFamily2026,
+    intro: "Aile üyelerinin iletişim, problem çözme, karar alma ve aile yaşamındaki geçişlere uyum becerilerini birlikte güçlendirmeye odaklanan danışmanlık alanı.",
+    paragraphs: [
+      "Hizmetin kapsamı",
+      "a) İletişim becerilerinin geliştirilmesi.",
+      "b) Duygularını tanıma ve ifade etme becerilerinin geliştirilmesi.",
+      "c) İşlevsel aile özelliklerinin geliştirilmesi.",
+      "ç) Problem çözme becerilerinin geliştirilmesi.",
+      "d) Aile içi karar alma becerilerinin geliştirilmesi.",
+      "e) Çiftler arası ilişkiler, roller, sınırlar ve sorumluluklar konusunda farkındalığın artırılması.",
+      "f) Aile içi çatışma çözme becerilerinin geliştirilmesi.",
+      "g) Aile yaşam döngüsü geçişlerindeki zorluklarla baş etme ve uyum becerilerinin geliştirilmesi.",
+      "ğ) Olumlu anne baba olma becerilerinin desteklenmesi.",
+      "h) Çocuğun gelişimsel sürecinin desteklenmesine yönelik aile üyelerinin yaşam becerilerinin geliştirilmesi.",
+      "Bilgilendirme ve yönlendirme",
+      "Daha ileri düzeyde klinik değerlendirme, tedavi ya da yasal müdahale gerektiren durumların tespiti hâlinde gerekli bilgilendirme ve rehberlik yapılarak ilgili kurumlara yönlendirme sağlanır.",
+      "Danışmanlık sürecinde şiddet ve/veya istismar olgusu tespit edilen vakalar, adli destek ve sosyal hizmet müdahalesinin gerçekleştirilmesi amacıyla ilgili birim ve/veya kurumlara yönlendirilir; gerekli hâllerde bildirimde bulunulur.",
+    ],
+  },
+  "bosanma-ve-yas-danismanligi": {
+    no: "02", eyebrow: "BOŞANMA VE YAS DANIŞMANLIĞI", title: "Boşanma ve Yas", accent: "Danışmanlığı", icon: "compass",
+    image: serviceDivorceGrief2026,
+    intro: "Boşanmanın ve kaybın getirdiği duygusal zorluklarla baş etme, yeni yaşam düzenine uyum ve ortak ebeveynlik becerilerini güçlendirme süreci.",
+    paragraphs: [
+      "Hizmetin kapsamı",
+      "a) Boşanmanın getirdiği stres, üzüntü, öfke, kaygı, kayıp ve diğer duygusal zorluklarla baş etme becerilerinin geliştirilmesi.",
+      "b) Boşanma sürecine uyum sağlama becerilerinin geliştirilmesi.",
+      "c) Çocukların boşanma sürecine uyumu konusunda aile üyelerine rehberlik sağlanması.",
+      "ç) Boşanma süreci ve sonrasında anne babaların rol ve sorumluluklarının yeniden yapılandırılarak ortak anne babalık becerilerinin geliştirilmesi.",
+      "Bilgilendirme ve yönlendirme",
+      "Daha ileri düzeyde klinik değerlendirme, tedavi ya da yasal müdahale gerektiren durumların tespiti hâlinde gerekli bilgilendirme ve rehberlik yapılarak ilgili kurumlara yönlendirme sağlanır.",
+      "Şiddet ve/veya istismar olgusu tespit edildiğinde adli destek ve sosyal hizmet müdahalesi için ilgili birim ve kurumlara yönlendirme yapılır; gerekli hâllerde bildirimde bulunulur.",
+    ],
+  },
+  "evlilik-oncesi-danismanlik": {
+    no: "03", eyebrow: "EVLİLİK ÖNCESİ DANIŞMANLIK", title: "Evlilik Öncesi", accent: "Danışmanlık", icon: "heart",
+    image: servicePremarital2026,
+    intro: "Çiftlerin birbirlerini daha yakından tanımalarına, ortak bir yaşam anlayışı geliştirmelerine ve evliliğe çok yönlü hazırlanmalarına eşlik eden danışmanlık alanı.",
+    paragraphs: [
+      "Hizmetin kapsamı",
+      "a) Çiftlerin birbirlerinin kişilik özelliklerini, güçlü ve gelişime açık yönlerini tanımaları hususunda rehberlik edilmesi.",
+      "b) Sağlıklı iletişim kurma ve empati becerilerinin desteklenmesi.",
+      "c) Olası çatışma alanlarını fark etme ve bu çatışmalara yönelik çözüm yolları oluşturma becerilerinin desteklenmesi.",
+      "ç) Evlilikteki sorumluluklar ve roller konusunda ortak bir anlayış geliştirilmesi.",
+      "d) Köken ailelerle olan ilişkiler konusunda farkındalık geliştirilmesi.",
+      "e) Evliliğe zihinsel, duygusal, psikolojik ve sosyal açıdan hazır oluş düzeylerinin artırılması.",
+      "Bilgilendirme ve yönlendirme",
+      "Daha ileri düzeyde klinik değerlendirme, tedavi ya da yasal müdahale gerektiren durumların tespiti hâlinde gerekli bilgilendirme ve rehberlik yapılarak ilgili kurumlara yönlendirme sağlanır.",
+      "Şiddet ve/veya istismar olgusu tespit edildiğinde adli destek ve sosyal hizmet müdahalesi için ilgili birim ve kurumlara yönlendirme yapılır; gerekli hâllerde bildirimde bulunulur.",
+    ],
+  },
+  "bireysel-danismanlik": {
+    no: "04", eyebrow: "BİREYSEL DANIŞMANLIK", title: "Bireysel", accent: "Danışmanlık", icon: "user",
+    image: serviceIndividual2026,
+    intro: "Yetişkinlerin günlük yaşamda karşılaştığı duygusal zorlukları anlamlandırmasına, yaşam becerilerini ve olumlu benlik algısını güçlendirmesine yönelik danışmanlık alanı.",
+    paragraphs: [
+      "Hizmetin kapsamı",
+      "a) Bireyin günlük hayatta yaşadığı stres, kaygı, öfke gibi duygusal zorluklarla baş etme becerilerinin geliştirilmesi.",
+      "b) Bireyin duygu, düşünce ve davranışlarını fark etmesi ve anlamlandırması konusunda rehberlik edilmesi.",
+      "c) Bireyin iletişim, sorun çözme ve karar verme becerilerinin geliştirilmesi.",
+      "ç) Zorlu yaşam olayları sonrası yaşanan duygusal tepkiler hakkında kişinin farkındalığının artırılması ve ihtiyaç dâhilinde ruh sağlığı hizmetlerine yönlendirilmesi.",
+      "d) Kişinin öz güvenini güçlendirme ve olumlu benlik algısı geliştirmesine yardımcı olunması.",
+      "Bilgilendirme ve yönlendirme",
+      "Daha ileri düzeyde klinik değerlendirme, tedavi ya da yasal müdahale gerektiren durumların tespiti hâlinde gerekli bilgilendirme ve rehberlik yapılarak ilgili kurumlara yönlendirme sağlanır.",
+      "Şiddet ve/veya istismar olgusu tespit edildiğinde adli destek ve sosyal hizmet müdahalesi için ilgili birim ve kurumlara yönlendirme yapılır; gerekli hâllerde bildirimde bulunulur.",
+    ],
+  },
+});
+
 
 /* =========================================================
    STEP197 — PRIVACY-FIRST VISITOR ANALYTICS
@@ -2303,9 +2381,9 @@ function SiteApp() {
       ? (Array.isArray(blogContent?.posts) ? blogContent.posts : []).find((post) => createBlogSlug(post.slug || post.title || "") === createBlogSlug(blogSlug))
       : null;
     const defaultSeo = {
-      home: ["Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", "Kaan Özkan ile bireysel, çift ve aile danışmanlığı; psikososyal destek ve profesyonel danışmanlık hizmetleri hakkında bilgi alın."],
+      home: ["Kaan Özkan | Sosyal Hizmet Uzmanı & Aile Danışmanı", "Aile danışmanlığı, boşanma ve yas danışmanlığı, evlilik öncesi danışmanlık ve bireysel danışmanlık hizmetleri hakkında bilgi alın."],
       about: ["Hakkımda | Kaan Özkan", "Sosyal Hizmet Uzmanı ve Aile Danışmanı Kaan Özkan'ın mesleki yolculuğu, saha deneyimi ve danışmanlık yaklaşımı."],
-      services: ["Çalışma Alanları | Kaan Özkan", "Bireysel danışmanlık, çift ve aile danışmanlığı, yas, boşanma ve farklı psikososyal güçlüklerde profesyonel çalışma alanlarını inceleyin."],
+      services: ["Çalışma Alanları | Kaan Özkan", "Aile danışmanlığı, boşanma ve yas danışmanlığı, evlilik öncesi danışmanlık ve bireysel danışmanlık alanlarını inceleyin."],
       process: ["Danışmanlık Süreci | Kaan Özkan", "Danışmanlık sürecinin nasıl ilerlediğini inceleyin."],
       testimonials: ["Değerli Yorumlarınız | Kaan Özkan", "Danışmanlık sürecine dair paylaşılan anonim danışan deneyimlerini ve değerli yorumları okuyun."],
       appointment: ["Randevu | Kaan Özkan", "Kaan Özkan ile ücretsiz ön görüşme talebinizi oluşturun; size uygun tarih ve saati seçin."],
@@ -4790,10 +4868,10 @@ function AppointmentDemoPage() {
   });
 
   const services = [
-    ["individual", "user", "Bireysel Danışmanlık", "Bireysel güçlükler, yaşam olayları ve psikososyal destek süreçleri."],
-    ["family", "users", "Aile Danışmanlığı", "Aile içi iletişim, roller, sınırlar ve ilişki dinamikleri."],
-    ["couple", "heart", "Çift Danışmanlığı", "İletişim, güven, çatışma, ayrılık ve ilişki süreçleri."],
-    ["other", "message", "Kararsızım / Ön Görüşme", "Hangi hizmetin uygun olduğunu ilk görüşmede birlikte değerlendirelim."],
+    ["family", "users", "Aile Danışmanlığı", "Aile içi iletişim, roller, sınırlar, karar alma ve çatışma çözme becerileri."],
+    ["divorce-grief", "compass", "Boşanma ve Yas Danışmanlığı", "Kayıp, ayrılık, uyum ve ortak anne babalık süreçleri."],
+    ["premarital", "heart", "Evlilik Öncesi Danışmanlık", "İletişim, empati, roller, köken aileler ve evliliğe hazırlık."],
+    ["individual", "user", "Bireysel Danışmanlık", "Duygusal zorluklar, yaşam becerileri, öz güven ve olumlu benlik algısı."],
   ];
   const formattedAppointmentDate = form.date
     ? new Intl.DateTimeFormat("tr-TR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date(`${form.date}T12:00:00`))
@@ -5092,7 +5170,7 @@ function AppointmentDemoPage() {
                 <header>
                   <span>01 / HİZMET SEÇİMİ</span>
                   <h2>Hangi konuda görüşmek istersiniz?</h2>
-                  <p>Kararsızsanız “Ön Görüşme” seçeneğini tercih edebilirsiniz.</p>
+                  <p>Size en yakın çalışma alanını seçin; ihtiyaçlarınız ilk görüşmede birlikte netleştirilir.</p>
                 </header>
 
                 <div className="aptCineServices">
@@ -10614,49 +10692,40 @@ const getServicePreview = (value, maxLength = 360) => {
 function ServicesDetailPage({ content }) {
   const serviceCards = [
     {
-      no: "01", icon: "user", slug: "bireysel-danismanlik",
-      eyebrow: "BİREYSEL ÇALIŞMA",
-      title: "Bireysel Danışmanlık",
-      short: getServicePreview(toCounselingLanguage(content.individualShort)),
-      image: serviceIndividualCinemaV2,
-      meta: "Kaygı · Duygu Düzenleme · Özdeğer",
-      quote: "Kendinizi daha yakından anlamak ve yaşamınızda daha işlevsel bir denge kurmak için.",
+      no: "01", icon: "users", slug: "aile-danismanligi",
+      eyebrow: "BAĞ · İLETİŞİM · UYUM",
+      title: "Aile Danışmanlığı",
+      short: "İletişimden aile içi karar almaya, çatışma çözmeden ebeveynlik becerilerine uzanan bütüncül danışmanlık alanı.",
+      image: serviceFamily2026,
+      meta: "İletişim · Roller · Aile Sistemi",
+      quote: "Aynı evin içinde yeniden duyulmak, değişimin başladığı yerdir.",
     },
     {
-      no: "02", icon: "heart", slug: "cift-danismanligi",
-      eyebrow: "İLİŞKİ & İLETİŞİM",
-      title: "Çift Danışmanlığı",
-      short: getServicePreview(toCounselingLanguage(content.coupleShort)),
-      image: serviceCoupleImage,
-      meta: "İletişim · Güven · Bağlanma",
-      quote: "İlişkinizi yalnızca çatışmalar üzerinden değil, kurduğunuz bağın bütünü üzerinden ele almak için.",
-    },
-    {
-      no: "03", icon: "shield", slug: "psikososyal-destek",
-      eyebrow: "GÜÇLENME & UYUM",
-      title: "Psikososyal Destek",
-      short: getServicePreview(content.psychosocialShort),
-      image: servicePsychosocialSupportV3,
-      meta: "Yas · Uyum · Dayanıklılık",
-      quote: "Zorlu yaşam dönemlerinde yalnızca soruna değil, sahip olduğunuz kaynaklara da birlikte bakmak için.",
-    },
-    {
-      no: "04", icon: "compass", slug: "bosanma-ve-yas-danismanligi",
-      eyebrow: "KAYIP & YENİDEN YAPILANMA",
+      no: "02", icon: "compass", slug: "bosanma-ve-yas-danismanligi",
+      eyebrow: "KAYIP · UYUM · YENİDEN YAPILANMA",
       title: "Boşanma ve Yas Danışmanlığı",
-      short: "Boşanma, kayıp ve yaşamın yeniden yapılandırıldığı dönemlerde psikolojik ve sosyal uyuma odaklanan bütüncül danışmanlık.",
-      image: serviceDivorceGriefCoupleV3,
-      meta: "Kayıp · Uyum · Yeniden Yapılanma",
-      quote: "Bir dönemin sona ermesini, yaşamınızın tamamının sona ermesi gibi yaşamamak için yeni bir alan açmak.",
+      short: "Boşanmanın ve kaybın getirdiği duygusal zorluklarla baş etme, yeni yaşam düzenine ve ortak ebeveynliğe uyum süreci.",
+      image: serviceDivorceGrief2026,
+      meta: "Kayıp · Uyum · Ortak Ebeveynlik",
+      quote: "Bir dönemin sonu, yaşamın tamamının sonu olmak zorunda değildir.",
     },
     {
-      no: "05", icon: "users", slug: "bekar-danismanligi",
-      eyebrow: "ÖZDEĞER & İLİŞKİSEL FARKINDALIK",
-      title: "Bekar Danışmanlığı",
-      short: "İlişki durumundan bağımsız psikolojik iyi oluş, özdeğer, ilişki örüntüleri, sosyal bağlar ve sağlıklı sınırlar üzerine çalışma.",
-      image: serviceSingleConsultationImage,
-      meta: "Özdeğer · İlişkiler · Sınırlar",
-      quote: "Kendinizle kurduğunuz ilişkiyi güçlendirmek, gelecekte kuracağınız ilişkilerin de zeminini güçlendirir.",
+      no: "03", icon: "heart", slug: "evlilik-oncesi-danismanlik",
+      eyebrow: "HAZIRLIK · EMPATİ · ORTAK ANLAYIŞ",
+      title: "Evlilik Öncesi Danışmanlık",
+      short: "Çiftlerin birbirini daha yakından tanımasına, olası çatışma alanlarını fark etmesine ve evliliğe çok yönlü hazırlanmasına eşlik eden danışmanlık.",
+      image: servicePremarital2026,
+      meta: "İletişim · Roller · Köken Aile",
+      quote: "Birlikte yaşama, birbirini gerçekten tanımakla başlar.",
+    },
+    {
+      no: "04", icon: "user", slug: "bireysel-danismanlik",
+      eyebrow: "FARKINDALIK · YAŞAM BECERİLERİ",
+      title: "Bireysel Danışmanlık",
+      short: "Stres, kaygı ve öfke gibi duygusal zorlukları anlamlandırma; iletişim, karar verme, öz güven ve olumlu benlik algısını güçlendirme alanı.",
+      image: serviceIndividual2026,
+      meta: "Duygular · Karar Verme · Öz Güven",
+      quote: "Kendinizi daha yakından anlamak, değişimin ilk alanını açar.",
     },
   ];
 
@@ -10689,7 +10758,7 @@ function ServicesDetailPage({ content }) {
           </div>
 
           <div className="svcCineHero__rail" aria-hidden="true">
-            <div><b>5</b><span>ÇALIŞMA<br/>ALANI</span></div>
+            <div><b>4</b><span>ÇALIŞMA<br/>ALANI</span></div>
             <div><b>ETİK</b><span>GİZLİLİKLE<br/>YÜRÜTÜLEN</span></div>
             <div><b>ESNEK</b><span>BÜTÜNCÜL<br/>BAKIŞ</span></div>
           </div>

@@ -1,9 +1,10 @@
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import serviceIndividualCinema from "../assets/service-individual-cinema-v2.png";
-import serviceRelationshipCinema from "../assets/service-divorce-grief-couple-v3.png";
-import servicePsychosocialCinema from "../assets/service-psychosocial-family-v3.png";
-import serviceFirstStepCinema from "../assets/appointment-sunlit-threshold-v1.png";
+import serviceIndividualOne from "../assets/services-2026/individual-01.jpeg";
+import serviceIndividualTwo from "../assets/services-2026/individual-02.jpeg";
+import serviceDivorceGrief from "../assets/services-2026/divorce-grief.jpeg";
+import servicePremarital from "../assets/services-2026/premarital.jpeg";
+import serviceFamily from "../assets/services-2026/family-counseling.jpeg";
 import journalFallbackOne from "../assets/blog-editorial-sunlit-v1.png";
 import journalFallbackTwo from "../assets/blog-cinema-02-studio.png";
 import journalFallbackThree from "../assets/blog-cinema-03-journal.png";
@@ -14,41 +15,43 @@ import homeLightCinema from "../assets/home-light-cinema-hero-v1.png";
 const JOURNEY_SCENES = [
   {
     no: "01",
-    label: "BİREY",
-    title: "Her şey bir insanla başlar.",
-    text: "Duygular, deneyimler, sınırlar ve güçlü yönler; görünen sorunun çok ötesinde, kişiye özgü bir dünya oluşturur.",
+    label: "AİLE DANIŞMANLIĞI",
+    title: "Aynı evin içinde, yeniden duyulmak.",
+    text: "İletişim, roller, sınırlar, karar alma ve çatışma çözme becerilerini bütüncül bir aile sistemi içinde ele alan danışmanlık alanı.",
+    href: "#/hizmetler/aile-danismanligi",
+    images: [serviceFamily],
   },
   {
     no: "02",
-    label: "İLİŞKİ",
-    title: "Hiçbir hikâye tek başına yazılmaz.",
-    text: "Bağ kurma biçimimiz, duyulma ihtiyacımız ve çatışma döngülerimiz ilişkisel alanın içinde anlam kazanır.",
+    label: "BOŞANMA VE YAS",
+    title: "Bir sonun ardından, yaşamı yeniden kurmak.",
+    text: "Kayıp, ayrılık ve boşanmanın getirdiği duygusal yükle baş etme; yeni yaşam düzenine ve ortak ebeveynliğe uyum süreci.",
+    href: "#/hizmetler/bosanma-ve-yas-danismanligi",
+    images: [serviceDivorceGrief],
   },
   {
     no: "03",
-    label: "AİLE",
-    title: "Yakın çevre, hayatın taşıyıcı dokusudur.",
-    text: "Roller, sınırlar, geçmişten gelen örüntüler ve günlük yaşam koşulları kişinin hareket alanını şekillendirir.",
+    label: "EVLİLİK ÖNCESİ",
+    title: "Birlikte yaşama, birbirini tanımakla başlar.",
+    text: "İletişim, empati, roller, köken aileler ve olası çatışma alanları üzerine ortak bir anlayış geliştirme süreci.",
+    href: "#/hizmetler/evlilik-oncesi-danismanlik",
+    images: [servicePremarital],
   },
   {
     no: "04",
-    label: "TOPLUM",
-    title: "İnsan, çevresinden bağımsız değildir.",
-    text: "Ekonomik, kültürel ve toplumsal koşullar deneyimlerin arka planını oluşturur; çözüm de bu bütünün içinde gelişir.",
-  },
-  {
-    no: "05",
-    label: "GÜÇLENME",
-    title: "Katmanlar görünür olduğunda yol belirir.",
-    text: "Amaç yalnızca güçlüğü azaltmak değil; kaynakları, seçenekleri ve sürdürülebilir değişim kapasitesini birlikte büyütmektir.",
+    label: "BİREYSEL DANIŞMANLIK",
+    title: "Kendini anlamak, değişimin ilk alanıdır.",
+    text: "Duygu, düşünce ve davranışları fark etme; stresle baş etme, karar verme, öz güven ve olumlu benlik algısını güçlendirme alanı.",
+    href: "#/hizmetler/bireysel-danismanlik",
+    images: [serviceIndividualOne, serviceIndividualTwo],
   },
 ];
 
 const WORK_AREAS = [
-  { no: "01", title: "Kendimi anlamak istiyorum.", label: "BİREYSEL ÇALIŞMA", href: "#/hizmetler/bireysel-danismanlik", image: serviceIndividualCinema },
-  { no: "02", title: "İlişkimizde iletişim zorlaştı.", label: "İLİŞKİ & İLETİŞİM", href: "#/hizmetler/cift-danismanligi", image: serviceRelationshipCinema },
-  { no: "03", title: "Bir kayıp veya değişim yaşıyorum.", label: "PSİKOSOSYAL DESTEK", href: "#/hizmetler/psikososyal-destek", image: servicePsychosocialCinema },
-  { no: "04", title: "Nereden başlayacağımı bilmiyorum.", label: "ÜCRETSİZ ÖN GÖRÜŞME", href: "#/randevu", image: serviceFirstStepCinema },
+  { no: "01", title: "Aile içinde yeniden bağ kurmak.", label: "AİLE DANIŞMANLIĞI", href: "#/hizmetler/aile-danismanligi", image: serviceFamily },
+  { no: "02", title: "Kayıptan sonra yaşamı yeniden kurmak.", label: "BOŞANMA VE YAS", href: "#/hizmetler/bosanma-ve-yas-danismanligi", image: serviceDivorceGrief },
+  { no: "03", title: "Evliliğe birlikte hazırlanmak.", label: "EVLİLİK ÖNCESİ", href: "#/hizmetler/evlilik-oncesi-danismanlik", image: servicePremarital },
+  { no: "04", title: "Kendimi daha iyi anlamak.", label: "BİREYSEL DANIŞMANLIK", href: "#/hizmetler/bireysel-danismanlik", image: serviceIndividualTwo },
 ];
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -118,9 +121,9 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
         <h1><span>İNSAN</span><em>İLİŞKİLERİYLE</em><span>ŞEKİLLENİR.</span></h1>
         <div className="cosmic2026Hero__bottom">
           <p>İnsan–aile–çevre–toplum katmanlarında ilerleyen, güçlenme ve sürdürülebilir değişim odaklı bir görüşme alanı.</p>
-          <div><a href="#/randevu">RANDEVU TALEBİ <b>↗</b></a><a href="#sosyal-ekosistem">YOLCULUĞU BAŞLAT <b>↓</b></a></div>
+          <div><a href="#/randevu">RANDEVU TALEBİ <b>↗</b></a><a href="#sosyal-ekosistem" onClick={(event) => { event.preventDefault(); journeyRef.current?.scrollIntoView({ behavior: "smooth" }); }}>YOLCULUĞU BAŞLAT <b>↓</b></a></div>
         </div>
-        <div className="cosmic2026Hero__index" aria-hidden="true"><span>01</span><i /><span>05</span></div>
+        <div className="cosmic2026Hero__index" aria-hidden="true"><span>01</span><i /><span>04</span></div>
       </section>
 
       <section className="cosmic2026Journey" id="sosyal-ekosistem" ref={journeyRef}>
@@ -128,26 +131,25 @@ export default function CosmicHome2026({ articles = [], pressCoverage = [] }) {
           <div className="cosmic2026Stage__grid" aria-hidden="true" />
           <div className="cosmic2026Stage__stars" aria-hidden="true" />
 
-          <div className="cosmic2026Sculpture" aria-hidden="true">
-            <div className="cosmic2026Sculpture__axis">
-              <div className="cosmic2026Core"><span /><i /></div>
-              <div className="cosmic2026Ring cosmic2026Ring--one"><span className="cosmic2026Node cosmic2026Node--one" /><span className="cosmic2026Node cosmic2026Node--two" /></div>
-              <div className="cosmic2026Ring cosmic2026Ring--two"><span className="cosmic2026Node cosmic2026Node--three" /></div>
-              <div className="cosmic2026Ring cosmic2026Ring--three"><span className="cosmic2026Node cosmic2026Node--four" /><span className="cosmic2026Node cosmic2026Node--five" /></div>
-              <div className="cosmic2026Meridian cosmic2026Meridian--one" />
-              <div className="cosmic2026Meridian cosmic2026Meridian--two" />
-              <div className="cosmic2026Sculpture__scene" key={scene}>
-                <small>0{scene + 1}</small>
-                <strong>{JOURNEY_SCENES[scene].label}</strong>
-              </div>
-            </div>
+          <div className="cosmic2026Cinema" aria-hidden="true">
+            {JOURNEY_SCENES.map((item, index) => (
+              <figure className={`cosmic2026Cinema__scene ${scene === index ? "is-active" : ""}`} key={item.no}>
+                <div className={`cosmic2026Cinema__media ${item.images.length > 1 ? "has-pair" : ""}`}>
+                  {item.images.map((image, imageIndex) => (
+                    <img src={image} alt="" key={image} className={`cosmic2026Cinema__image cosmic2026Cinema__image--${imageIndex + 1}`} />
+                  ))}
+                  <span className="cosmic2026Cinema__wash" />
+                </div>
+                <figcaption><small>{item.no}</small><strong>{item.label}</strong><i /></figcaption>
+              </figure>
+            ))}
           </div>
 
-          <div className="cosmic2026Stage__label" aria-hidden="true">İNSAN<br />İLİŞKİ<br />ÇEVRE</div>
+          <div className="cosmic2026Stage__label" aria-hidden="true">BAĞ<br />UYUM<br />DEĞİŞİM</div>
           <div className="cosmic2026Stage__scenes">
             {JOURNEY_SCENES.map((item, index) => (
               <article className={`cosmic2026Scene ${scene === index ? "cosmic2026Scene--active" : ""}`} key={item.no}>
-                <span>{item.no} / {item.label}</span><h2>{item.title}</h2><p>{item.text}</p>
+                <span>{item.no} / {item.label}</span><h2>{item.title}</h2><p>{item.text}</p><a href={item.href}>DETAYLI BİLGİ <b>↗</b></a>
               </article>
             ))}
           </div>
