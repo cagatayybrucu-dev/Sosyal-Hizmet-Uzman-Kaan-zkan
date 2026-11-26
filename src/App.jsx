@@ -11,7 +11,7 @@ import processHeroDesk from "./assets/process-hero-desk.jpg";
 import contentHeroMic from "./assets/content-hero-mic-clean.jpg";
 import kaanOzkanLogo2026 from "./assets/kaan-ozkan-logo-2026.jpeg";
 import kaanOzkanEmblem from "./assets/kaan-ozkan-emblem.png";
-import kaanOzkanBrandMarkV3 from "./assets/kaan-ozkan-brand-mark-v3.svg";
+import kaanOzkanFamilyMark2026 from "./assets/kaan-ozkan-family-mark-2026.png";
 import serviceIndividualImage from "./assets/service-individual-therapy.jpg";
 import serviceCoupleImage from "./assets/service-couple-consultation.jpg";
 import serviceOnlineConsultationImage from "./assets/service-online-consultation.jpg";
@@ -2838,7 +2838,7 @@ function SiteApp() {
       <header className={page === "admin" ? "topbar" : "topbar topbar--light"} style={page === "authorPortal" ? { display: "none" } : undefined}>
           <a href="#anasayfa" className="brand brand--newLogo brand--imageLogo" onClick={() => setMenuOpen(false)} aria-label="Kaan Özkan - Ana Sayfa">
             <span className="brandLogoArtwork" aria-hidden="true">
-              <img className="brandMark2026" src={kaanOzkanBrandMarkV3} alt="" />
+              <img className="brandMark2026" src={kaanOzkanFamilyMark2026} alt="" />
             </span>
             <span className="brandLogoCopy">
               <small>SOSYAL HİZMET UZMANI</small>

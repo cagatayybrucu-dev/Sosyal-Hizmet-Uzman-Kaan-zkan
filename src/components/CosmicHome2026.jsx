@@ -9,7 +9,7 @@ import journalFallbackOne from "../assets/blog-editorial-sunlit-v1.png";
 import journalFallbackTwo from "../assets/blog-cinema-02-studio.png";
 import journalFallbackThree from "../assets/blog-cinema-03-journal.png";
 import finalScene from "../assets/contact-appointment-cinema-v1.png";
-import brandMark from "../assets/kaan-ozkan-brand-mark-v3.svg";
+import brandMark from "../assets/kaan-ozkan-family-mark-2026.png";
 import homeLightCinema from "../assets/home-light-cinema-hero-v1.png";
 
 const JOURNEY_SCENES = [

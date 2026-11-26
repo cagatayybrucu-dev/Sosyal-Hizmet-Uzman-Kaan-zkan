@@ -148,14 +148,14 @@
 }
 @media(prefers-reduced-motion:reduce){.cosmic2026Cinema{height:390px}.cosmic2026Cinema__scene:before,.cosmic2026Cinema__media:after{animation:none!important}}
 
-/* v3 brand identity — symbolic mark + balanced wordmark, no initials. */
+/* Family-mark identity — three connected figures, balanced wordmark. */
 .topbar--light .brandLogoArtwork{display:grid!important;place-items:center!important;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
-.topbar--light .brandLogoArtwork .brandMark2026{position:static!important;display:block!important;width:78px!important;height:78px!important;max-width:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;mix-blend-mode:normal!important;filter:drop-shadow(0 7px 12px rgba(68,44,18,.2))!important}
+.topbar--light .brandLogoArtwork .brandMark2026{position:static!important;display:block!important;width:82px!important;height:82px!important;max-width:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;mix-blend-mode:normal!important;filter:drop-shadow(0 7px 12px rgba(68,44,18,.2))!important}
 .topbar--light .brandLogoCopy strong.brandWordmark2026{display:block!important;margin:0!important;color:#27241f!important;font:600 22px/1 Inter,Arial,sans-serif!important;letter-spacing:.18em!important;white-space:nowrap!important}
 .topbar--light .brandLogoOrnament{display:none!important}
-.step145Site--cosmic .topbar--light .brandLogoArtwork .brandMark2026{width:76px!important;height:76px!important;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3))!important}
+.step145Site--cosmic .topbar--light .brandLogoArtwork .brandMark2026{width:80px!important;height:80px!important;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3))!important}
 .step145Site--cosmic .topbar--light .brandLogoCopy strong.brandWordmark2026{color:#f4efe5!important;font-size:20px!important;letter-spacing:.17em!important}
 .step145Site--cosmic .topbar--light .brandLogoCopy small{color:#b8cf9e!important}
 @media(max-width:760px){
-  .topbar--light .brandLogoArtwork .brandMark2026,.step145Site--cosmic .topbar--light .brandLogoArtwork .brandMark2026{width:45px!important;height:45px!important}.topbar--light .brandLogoCopy strong.brandWordmark2026,.step145Site--cosmic .topbar--light .brandLogoCopy strong.brandWordmark2026{font-size:13px!important;letter-spacing:.12em!important}.step145Site--cosmic .topbar--light .brandLogoCopy{width:113px!important;min-width:113px!important}
+  .topbar--light .brandLogoArtwork .brandMark2026,.step145Site--cosmic .topbar--light .brandLogoArtwork .brandMark2026{width:48px!important;height:48px!important}.topbar--light .brandLogoCopy strong.brandWordmark2026,.step145Site--cosmic .topbar--light .brandLogoCopy strong.brandWordmark2026{font-size:13px!important;letter-spacing:.12em!important}.step145Site--cosmic .topbar--light .brandLogoCopy{width:113px!important;min-width:113px!important}
 }
