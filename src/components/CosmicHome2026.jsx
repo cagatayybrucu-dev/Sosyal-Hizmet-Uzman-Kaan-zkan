@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import serviceIndividualOne from "../assets/services-2026/individual-01.jpeg";
 import serviceIndividualTwo from "../assets/services-2026/individual-02.jpeg";
 import serviceDivorceGrief from "../assets/services-2026/divorce-grief.jpeg";
-import servicePremarital from "../assets/services-2026/premarital.jpeg";
+import servicePremarital from "../assets/services-2026/premarital-hd-v2.png";
 import serviceFamily from "../assets/services-2026/family-counseling.jpeg";
 import journalFallbackOne from "../assets/blog-editorial-sunlit-v1.png";
 import journalFallbackTwo from "../assets/blog-cinema-02-studio.png";

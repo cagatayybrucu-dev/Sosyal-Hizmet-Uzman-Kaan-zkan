@@ -35,7 +35,7 @@ import contactAppointmentCinemaV1 from "./assets/contact-appointment-cinema-v1.p
 import appointmentSunlitThresholdV1 from "./assets/appointment-sunlit-threshold-v1.png";
 import serviceFamily2026 from "./assets/services-2026/family-counseling.jpeg";
 import serviceDivorceGrief2026 from "./assets/services-2026/divorce-grief.jpeg";
-import servicePremarital2026 from "./assets/services-2026/premarital.jpeg";
+import servicePremarital2026 from "./assets/services-2026/premarital-hd-v2.png";
 import serviceIndividual2026 from "./assets/services-2026/individual-02.jpeg";
 import homeLightCinemaHero from "./assets/home-light-cinema-hero-v1.png";
 import blogEditorialSunlit from "./assets/blog-editorial-sunlit-v1.png";
